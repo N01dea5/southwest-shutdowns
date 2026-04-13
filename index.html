@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Southwest Shutdowns &mdash; Unified Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Southwest Shutdowns</h1>
+      <span class="subtitle">Fulfillment &amp; retention across Covalent, Tronox, CSBP</span>
+    </div>
+    <div class="freshness" id="freshness">Loading data&hellip;</div>
+  </header>
+
+  <nav class="filterbar" id="filterbar" aria-label="Company filter">
+    <button class="chip active" data-co="all">All companies</button>
+    <button class="chip" data-co="Covalent">Covalent</button>
+    <button class="chip" data-co="Tronox">Tronox</button>
+    <button class="chip" data-co="CSBP">CSBP</button>
+  </nav>
+
+  <main>
+    <section class="kpis" id="kpis">
+      <div class="kpi"><div class="kpi-label">Positions required</div><div class="kpi-value" id="kpi-required">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Positions filled</div><div class="kpi-value" id="kpi-filled">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Overall fill rate</div><div class="kpi-value" id="kpi-fillrate">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Shutdowns covered</div><div class="kpi-value" id="kpi-shutdowns">&mdash;</div></div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <h2>Fill rate by company</h2>
+        <div class="chart-wrap"><canvas id="chart-company"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Fill rate by trade</h2>
+        <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Retention &amp; carry-over</h2>
+        <p class="hint">Side-by-side: workers returning at the <strong>same company</strong> (loyalty) vs. workers who appeared at <strong>any of the three companies</strong> before (regional stickiness). Matched on normalised name + role &mdash; there are no stable employee IDs in the source data.</p>
+      </div>
+      <div class="chart-wrap tall"><canvas id="chart-retention"></canvas></div>
+      <div class="table-wrap">
+        <table id="retention-table">
+          <thead>
+            <tr>
+              <th>Shutdown</th><th>Company</th><th>Start</th>
+              <th class="num">Roster</th>
+              <th class="num">Returning (same co.)</th>
+              <th class="num">Returning (cross co.)</th>
+              <th class="num">New hires</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Shutdown timeline</h2>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary><h2 style="display:inline">Data-quality warnings</h2></summary>
+        <p class="hint">Ambiguous matches &mdash; the same normalised name + role appears at two companies with overlapping dates. Probably two different workers; surface for ops review.</p>
+        <div id="warnings"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <small>Internal only &middot; reads <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
+  </footer>
+</body>
+</html>

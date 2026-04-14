@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260414-gantt-weeks" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260414-kpi-tiles" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260414-gantt-weeks" defer></script>
+  <script src="assets/app.js?v=20260414-kpi-tiles" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -41,11 +41,22 @@
     <div id="placeholder-banner" class="banner" hidden></div>
 
     <section class="kpis" id="kpis">
-      <div class="kpi"><div class="kpi-label">Planned positions</div><div class="kpi-value" id="kpi-required">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Confirmed positions</div><div class="kpi-value" id="kpi-filled">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Overall fill rate</div><div class="kpi-value" id="kpi-fillrate">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Open positions <span class="kpi-sub" id="kpi-booked-sub"></span></div><div class="kpi-value" id="kpi-booked">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Shutdowns <span class="kpi-sub">booked / in prog / done</span></div><div class="kpi-value" id="kpi-shutdowns">&mdash;</div></div>
+      <div class="kpi">
+        <div class="kpi-value" id="kpi-positions">&mdash;</div>
+        <div class="kpi-label">Confirmed / Requested positions</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value" id="kpi-fillrate">&mdash;</div>
+        <div class="kpi-label">Overall fill rate</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value" id="kpi-retention">&mdash;</div>
+        <div class="kpi-label">Avg retention rate <span class="kpi-sub">Cross-company carry-over</span></div>
+      </div>
+      <div class="kpi kpi-next">
+        <div class="kpi-value" id="kpi-next">&mdash;</div>
+        <div class="kpi-label">Next shutdown <span class="kpi-sub" id="kpi-next-sub">&mdash;</span></div>
+      </div>
     </section>
 
     <section class="grid-2">

@@ -187,9 +187,12 @@ main {
 
 .kpis {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
+@media (max-width: 960px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .kpis { grid-template-columns: 1fr; } }
+
 .kpi {
   position: relative;
   background: var(--surface);
@@ -197,6 +200,7 @@ main {
   border-left: 3px solid var(--srg-red);
   padding: 18px 22px;
   box-shadow: var(--shadow-sm);
+  min-width: 0;
 }
 .kpi-value {
   font-size: 30px;
@@ -204,6 +208,13 @@ main {
   color: var(--srg-dark);
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.kpi-value .kpi-sep {
+  color: var(--srg-grey-2);
+  font-weight: 600;
+  margin: 0 4px;
 }
 .kpi-label {
   margin-top: 4px;
@@ -221,6 +232,27 @@ main {
   text-transform: none;
   letter-spacing: 0;
   font-weight: 500;
+}
+/* The "Next shutdown" tile carries a wrapping label, not a number — shrink
+   the value font a bit so longer project names don't overflow. */
+.kpi-next .kpi-value {
+  font-size: 20px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.kpi-next .kpi-next-co {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.kpi-next .kpi-next-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--srg-dark);
+  line-height: 1.15;
 }
 
 /* ----------------- Cards ----------------- */

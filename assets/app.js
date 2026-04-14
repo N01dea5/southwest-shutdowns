@@ -203,16 +203,9 @@ function render() {
   // Retention is always computed across the full chronology — filtering happens on display only.
   retentionRollup(state.shutdowns);
 
-  const view       = filtered();
-  const completed  = view.filter(s => s.status === "completed");
-  const inProgress = view.filter(s => s.status === "in_progress");
-  const booked     = view.filter(s => s.status === "booked");
-  // "Open" = not yet completed. In-progress and booked shutdowns both have
-  // positions left to fill and are tracked together in the headline KPI.
-  const openSds    = view.filter(s => s.status !== "completed");
+  const view = filtered();
 
   const totalRoll = fulfillmentRollup(view);
-  const openRoll  = fulfillmentRollup(openSds);
 
   // Detect placeholder-target shutdowns (Rapid Crews roster only — no real
   // headcount target supplied yet). When present, fill rate trivially reads
@@ -224,19 +217,51 @@ function render() {
 
   const star = (cond) => cond ? '<span class="kpi-star" title="No real target supplied — value derived from confirmed roster">*</span>' : "";
 
-  document.getElementById("kpi-required").innerHTML = fmtInt(totalRoll.required) + star(allPlaceholder);
-  document.getElementById("kpi-filled").textContent = fmtInt(totalRoll.filled);
+  // 1. Confirmed / Requested positions (two numbers in one tile).
+  document.getElementById("kpi-positions").innerHTML = totalRoll.required
+    ? `${fmtInt(totalRoll.filled)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.required)}${star(allPlaceholder)}`
+    : "—";
+
+  // 2. Overall fill rate.
   document.getElementById("kpi-fillrate").innerHTML = (totalRoll.required
     ? fmtPct(totalRoll.filled / totalRoll.required)
     : "—") + star(allPlaceholder);
-  document.getElementById("kpi-booked").innerHTML   = (openRoll.required
-    ? `${fmtInt(openRoll.filled)} / ${fmtInt(openRoll.required)}`
-    : "—") + star(openSds.length > 0 && openSds.every(s => s._source?.required_target_source === "PLACEHOLDER_FROM_ROSTER"));
-  document.getElementById("kpi-booked-sub").textContent = openRoll.required
-    ? `${fmtPct(openRoll.filled / openRoll.required)} confirmed`
-    : "booked / in prog / done";
-  document.getElementById("kpi-shutdowns").textContent =
-    `${fmtInt(booked.length)} / ${fmtInt(inProgress.length)} / ${fmtInt(completed.length)}`;
+
+  // 3. Average cross-company retention rate across shutdowns that have any
+  //    prior shutdown in the full chronology (the seed shutdown at t=0 has
+  //    no priors and would always register 0 — excluding it).
+  const sortedAll = [...state.shutdowns].sort((a, b) => a.start_date.localeCompare(b.start_date));
+  const seedStart = sortedAll[0]?.start_date;
+  const retentionSample = view.filter(s => s.start_date > seedStart && s.metrics);
+  if (retentionSample.length > 0) {
+    const avg = retentionSample.reduce((a, s) => a + s.metrics.crossRetPct, 0) / retentionSample.length;
+    document.getElementById("kpi-retention").textContent = fmtPct(avg);
+  } else {
+    document.getElementById("kpi-retention").textContent = "—";
+  }
+
+  // 4. Next shutdown — the soonest-starting booked or in-progress job.
+  const todayIsoNow = new Date().toISOString().slice(0, 10);
+  const upcoming = view
+    .filter(s => s.status !== "completed")
+    .sort((a, b) => a.start_date.localeCompare(b.start_date));
+  const next = upcoming[0];
+  const nextValEl = document.getElementById("kpi-next");
+  const nextSubEl = document.getElementById("kpi-next-sub");
+  if (next) {
+    const shortName = next.name.replace(/^Kwinana\s+/, "");
+    nextValEl.innerHTML = `<span class="kpi-next-co" style="color:${companyColor(next.company)}">${next.company}</span> <span class="kpi-next-name">${shortName}</span>`;
+    const daysTo = Math.round((new Date(next.start_date + "T00:00:00Z") - new Date(todayIsoNow + "T00:00:00Z")) / 86400000);
+    const when = next.status === "in_progress"
+      ? `In progress · ends ${fmtDate(next.end_date)}`
+      : daysTo <= 0
+        ? `Starts today · ${fmtDate(next.start_date)}`
+        : `Starts in ${daysTo} day${daysTo === 1 ? "" : "s"} · ${fmtDate(next.start_date)}`;
+    nextSubEl.textContent = when;
+  } else {
+    nextValEl.textContent = "—";
+    nextSubEl.textContent = "No upcoming shutdowns";
+  }
 
   // Each render step is isolated — one failure shouldn't black out the rest of the page.
   const chartRoll = fulfillmentRollup(view);

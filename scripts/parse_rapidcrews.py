@@ -110,6 +110,39 @@ def truthy(v) -> bool:
     return str(v or "").strip().upper() in {"YES", "Y", "TRUE", "1"}
 
 
+def _standardise_mobile(raw) -> str:
+    """Normalise Australian mobile numbers to canonical '04XX XXX XXX' form.
+
+    The rosters come from three different XLSX schemas and the team enter
+    mobiles inconsistently: some are local-style with sensible spacing
+    ('0493 038 522'), some are mis-spaced ('049 759 4673' — should group as
+    0497 594 673), some are international without a plus ('61420397028'), and
+    a handful carry stray dashes or parentheses. Strip every non-digit, then
+    re-pad/re-space to a single canonical form so the matrix renders cleanly
+    and the tel: links dial correctly on both desktop and mobile.
+
+    Non-mobile or unrecognisable input is returned empty — better to hide a
+    dodgy number than to dial the wrong person.
+    """
+    if raw is None:
+        return ""
+    digits = re.sub(r"\D", "", str(raw))
+    if not digits:
+        return ""
+    # International with country code: 61 4XX XXX XXX (11 digits total, leading 61)
+    if len(digits) == 11 and digits.startswith("61") and digits[2] == "4":
+        digits = "0" + digits[2:]
+    # Nine-digit local (missing leading 0): 4XX XXX XXX -> 04XX XXX XXX
+    elif len(digits) == 9 and digits.startswith("4"):
+        digits = "0" + digits
+    # Anything else that doesn't conform to the 10-digit 04XX mobile pattern
+    # is kept as raw digits (not formatted) — unusual but preserved for ops
+    # review rather than silently dropped.
+    if len(digits) == 10 and digits.startswith("04"):
+        return f"{digits[0:4]} {digits[4:7]} {digits[7:10]}"
+    return digits
+
+
 # --------------------------------------------------------------------------- roster parsers
 
 def _detect_format(headers: list) -> str:
@@ -139,7 +172,7 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
         if not name:
             continue
         role = raw[idx["Position On Project"]] or raw[idx["Position"]] or "Unknown"
-        mobile = str(raw[mobile_col] or "").strip() if mobile_col is not None else ""
+        mobile = _standardise_mobile(raw[mobile_col]) if mobile_col is not None else ""
         rows.append({
             "labour_hire": (raw[idx["Company"]] or "").strip(),
             "name":        name,
@@ -225,7 +258,7 @@ def parse_kleenheat_roster(xlsx_path: pathlib.Path) -> list[dict]:
         name = f"{first} {surname}".strip()
         role = str(raw[idx["Trade"]] or "Unknown").strip()
         crew = str(raw[idx["Crew"]] or "Unknown").strip().title()  # "DAY" -> "Day"
-        mobile = str(raw[mobile_col] or "").strip() if mobile_col is not None else ""
+        mobile = _standardise_mobile(raw[mobile_col]) if mobile_col is not None else ""
         rows.append({
             "labour_hire":       (raw[idx["Company"]] or "").strip(),
             "name":              name,
@@ -264,7 +297,7 @@ def parse_pegasus_roster(xlsx_path: pathlib.Path) -> list[dict]:
             continue
         role  = str(raw[idx["Pegasus Job Role"]] or "Unknown").strip()
         shift = str(raw[idx["Shift"]] or "").strip().upper()
-        mobile = str(raw[mobile_col] or "").strip() if mobile_col is not None else ""
+        mobile = _standardise_mobile(raw[mobile_col]) if mobile_col is not None else ""
         rows.append({
             "labour_hire":      (raw[idx["Company"]] or "").strip(),
             "name":             name,

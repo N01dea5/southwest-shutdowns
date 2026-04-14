@@ -9,36 +9,36 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Basic Rigger": 4,
-        "Mechanical Fitter": 24,
-        "Coded Welder": 1,
-        "Telehandler Operator": 2,
-        "Supervisor - Mechanical": 6,
         "Boilermaker": 4,
-        "Advanced Rigger": 4,
+        "Lube Technician": 3,
+        "HSE Advisor": 2,
+        "Mechanical Fitter": 24,
         "Supervisor": 2,
+        "Trade Assistant": 5,
+        "Telehandler Operator": 2,
         "Site Coordinator": 1,
+        "Coded Welder": 1,
+        "Basic Rigger": 4,
         "Superintendent": 1,
         "Electrician": 4,
-        "Trade Assistant": 5,
-        "HSE Advisor": 2,
-        "Lube Technician": 3
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 6
       },
       "filled_by_role": {
-        "Basic Rigger": 4,
-        "Mechanical Fitter": 23,
-        "Coded Welder": 1,
-        "Telehandler Operator": 2,
-        "Supervisor - Mechanical": 6,
         "Boilermaker": 4,
-        "Advanced Rigger": 4,
+        "Lube Technician": 3,
+        "HSE Advisor": 2,
+        "Mechanical Fitter": 23,
         "Supervisor": 1,
+        "Trade Assistant": 5,
+        "Telehandler Operator": 2,
         "Site Coordinator": 1,
+        "Coded Welder": 1,
+        "Basic Rigger": 4,
         "Superintendent": 1,
         "Electrician": 4,
-        "Trade Assistant": 5,
-        "HSE Advisor": 2,
-        "Lube Technician": 3
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 6
       },
       "crew_split": {
         "Day": 32,
@@ -72,12 +72,12 @@
         {
           "name": "Teufik (Teo) MEDANOVIC",
           "role": "Electrician",
-          "mobile": "0451029041"
+          "mobile": "0451 029 041"
         },
         {
           "name": "Benjamin \ud83d\udd37 CHOPPING",
           "role": "Electrician",
-          "mobile": "0422011648"
+          "mobile": "0422 011 648"
         },
         {
           "name": "King GARCIA",
@@ -102,7 +102,7 @@
         {
           "name": "Timo \ud83d\udd37 GRONENBERG",
           "role": "Mechanical Fitter",
-          "mobile": "0457325980"
+          "mobile": "0457 325 980"
         },
         {
           "name": "Malcolm GRAINGER-ROUSSEAU",
@@ -122,12 +122,12 @@
         {
           "name": "Omkar Uttam DORUGADE",
           "role": "Mechanical Fitter",
-          "mobile": "0424804281"
+          "mobile": "0424 804 281"
         },
         {
           "name": "Sebastian \ud83d\udd37 DJAFFER",
           "role": "Lube Technician",
-          "mobile": "0401117401"
+          "mobile": "0401 117 401"
         },
         {
           "name": "Lewis NEWELL",
@@ -147,12 +147,12 @@
         {
           "name": "Mehdi \ud83d\udd37 MOKEDDEM",
           "role": "Lube Technician",
-          "mobile": "0433410707"
+          "mobile": "0433 410 707"
         },
         {
           "name": "Sujin JEON",
           "role": "Telehandler Operator",
-          "mobile": "0474828152"
+          "mobile": "0474 828 152"
         },
         {
           "name": "Christopher McLENNAN",
@@ -202,12 +202,12 @@
         {
           "name": "Adam RILEY",
           "role": "Superintendent",
-          "mobile": "0457162100"
+          "mobile": "0457 162 100"
         },
         {
           "name": "Adam RILEY",
           "role": "Superintendent",
-          "mobile": "0457162100"
+          "mobile": "0457 162 100"
         },
         {
           "name": "Jacinta JEFFERY",
@@ -257,7 +257,7 @@
         {
           "name": "Selva \ud83d\udd37 LOORTHSMAY",
           "role": "Mechanical Fitter",
-          "mobile": "0467302917"
+          "mobile": "0467 302 917"
         },
         {
           "name": "Jordan KIRKBY",
@@ -327,7 +327,7 @@
         {
           "name": "Herbert MUKUNGA",
           "role": "Mechanical Fitter",
-          "mobile": "0459183602"
+          "mobile": "0459 183 602"
         },
         {
           "name": "Jamie ADAMS",
@@ -342,7 +342,7 @@
         {
           "name": "William \ud83d\udd37 ROBINSON",
           "role": "Boilermaker",
-          "mobile": "0410842339"
+          "mobile": "0410 842 339"
         },
         {
           "name": "Drew BRAND",
@@ -362,17 +362,17 @@
         {
           "name": "Sang Woo \ud83d\udd37 KIM",
           "role": "Trade Assistant",
-          "mobile": "0459883208"
+          "mobile": "0459 883 208"
         },
         {
           "name": "Sven \ud83d\udd37 HOPLA",
           "role": "Advanced Rigger",
-          "mobile": "0447103566"
+          "mobile": "0447 103 566"
         },
         {
           "name": "Nathan \ud83d\udd37 ARBUCKLE",
           "role": "Advanced Rigger",
-          "mobile": "0427546026"
+          "mobile": "0427 546 026"
         },
         {
           "name": "Julia VAATAINEN",
@@ -382,7 +382,7 @@
         {
           "name": "Rhys \ud83d\udd37 CORBETT",
           "role": "Advanced Rigger",
-          "mobile": "0487853435"
+          "mobile": "0487 853 435"
         },
         {
           "name": "Gary CAVERZASIO",
@@ -427,5 +427,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T23:49:36Z"
+  "generated_at": "2026-04-14T23:58:45Z"
 }

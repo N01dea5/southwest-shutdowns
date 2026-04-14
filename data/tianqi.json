@@ -9,18 +9,18 @@
       "end_date": "2026-06-07",
       "status": "in_progress",
       "required_by_role": {
-        "Coded Welder": 4,
-        "Trade Assistant": 4,
-        "Supervisor - Mechanical": 2,
         "Boilermaker": 4,
-        "Advanced Rigger": 4
+        "Coded Welder": 4,
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 2,
+        "Trade Assistant": 4
       },
       "filled_by_role": {
-        "Coded Welder": 4,
-        "Trade Assistant": 4,
-        "Supervisor - Mechanical": 2,
         "Boilermaker": 3,
-        "Advanced Rigger": 0
+        "Coded Welder": 4,
+        "Advanced Rigger": 0,
+        "Supervisor - Mechanical": 2,
+        "Trade Assistant": 4
       },
       "crew_split": {
         "Day": 12,
@@ -76,12 +76,12 @@
         {
           "name": "Eleonora TRAORE",
           "role": "Trade Assistant",
-          "mobile": "0421524270"
+          "mobile": "0421 524 270"
         },
         {
           "name": "Lise-Elodie \ud83d\udd37 BONNEAU",
           "role": "Trade Assistant",
-          "mobile": "0477747377"
+          "mobile": "0477 747 377"
         },
         {
           "name": "Roberto RAFFAELE",
@@ -91,7 +91,7 @@
         {
           "name": "Modesto JAIME",
           "role": "Coded Welder",
-          "mobile": "0407224882"
+          "mobile": "0407 224 882"
         },
         {
           "name": "Samuel MATHERSON",
@@ -121,7 +121,7 @@
         {
           "name": "Modesto JAIME",
           "role": "Coded Welder",
-          "mobile": "0407224882"
+          "mobile": "0407 224 882"
         },
         {
           "name": "Pieter DU TOIT",
@@ -158,5 +158,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T23:49:36Z"
+  "generated_at": "2026-04-14T23:58:45Z"
 }

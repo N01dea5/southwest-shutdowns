@@ -9,22 +9,22 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Mechanical Fitter": 40,
-        "Coded Welder": 10,
-        "Trade Assistant": 20,
-        "Intermediate Rigger": 10,
-        "Supervisor - Mechanical": 4,
         "Boilermaker": 10,
-        "Advanced Rigger": 10
+        "Coded Welder": 10,
+        "Intermediate Rigger": 10,
+        "Mechanical Fitter": 40,
+        "Advanced Rigger": 10,
+        "Supervisor - Mechanical": 4,
+        "Trade Assistant": 20
       },
       "filled_by_role": {
-        "Mechanical Fitter": 16,
-        "Coded Welder": 1,
-        "Trade Assistant": 20,
-        "Intermediate Rigger": 4,
-        "Supervisor - Mechanical": 1,
         "Boilermaker": 1,
-        "Advanced Rigger": 4
+        "Coded Welder": 1,
+        "Intermediate Rigger": 4,
+        "Mechanical Fitter": 16,
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 1,
+        "Trade Assistant": 20
       },
       "crew_split": {
         "Night": 22,
@@ -43,7 +43,7 @@
         {
           "name": "Graham WANGLER",
           "role": "Mechanical Fitter",
-          "mobile": "0476247673"
+          "mobile": "0476 247 673"
         },
         {
           "name": "Melvin TIAMSON",
@@ -63,7 +63,7 @@
         {
           "name": "Herbert MUKUNGA",
           "role": "Mechanical Fitter",
-          "mobile": "0459183602"
+          "mobile": "0459 183 602"
         },
         {
           "name": "Renan SANCHEZ",
@@ -93,7 +93,7 @@
         {
           "name": "Jessica DILENA",
           "role": "Trade Assistant",
-          "mobile": "0477841414"
+          "mobile": "0477 841 414"
         },
         {
           "name": "Federico Sarti",
@@ -118,7 +118,7 @@
         {
           "name": "Issac REID",
           "role": "Trade Assistant",
-          "mobile": "0428969952"
+          "mobile": "0428 969 952"
         },
         {
           "name": "Gabriel NGUYEN",
@@ -168,7 +168,7 @@
         {
           "name": "Naomi NDENGA",
           "role": "Trade Assistant",
-          "mobile": "0472586919"
+          "mobile": "0472 586 919"
         },
         {
           "name": "Stefanos KARIKIS",
@@ -238,7 +238,7 @@
         {
           "name": "Abhinav ABHINAV",
           "role": "Mechanical Fitter",
-          "mobile": "0424848290"
+          "mobile": "0424 848 290"
         },
         {
           "name": "Edward GARDINER",
@@ -258,7 +258,7 @@
         {
           "name": "Omkar Uttam DORUGADE",
           "role": "Mechanical Fitter",
-          "mobile": "0424804281"
+          "mobile": "0424 804 281"
         },
         {
           "name": "Wayne FORREST",
@@ -295,5 +295,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T23:49:36Z"
+  "generated_at": "2026-04-14T23:58:45Z"
 }

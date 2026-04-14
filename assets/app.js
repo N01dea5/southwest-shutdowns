@@ -288,6 +288,7 @@ function render() {
     ["shutdown summary", () => renderShutdownSummary(view)],
     ["retention chart",  () => renderRetentionChart(view)],
     ["retention table",  () => renderRetentionTable(view)],
+    ["worker matrix",    () => renderWorkerMatrix(view)],
     ["warnings",         () => renderWarnings()],
   ];
   for (const [name, fn] of steps) {
@@ -338,7 +339,7 @@ function renderCompanyChart(roll) {
     data: {
       labels,
       datasets: [
-        { label: "Required", data: required, backgroundColor: BRAND.dark, borderWidth: 0 },
+        { label: "Required", data: required, backgroundColor: BRAND.required, borderColor: BRAND.border, borderWidth: 1 },
         { label: "Filled",   data: filled,   backgroundColor: BRAND.red, borderWidth: 0 },
       ],
     },
@@ -724,7 +725,7 @@ function renderShutdownSummary(view) {
           <td>${r}</td>
           <td class="num">${fmtInt(rq)}</td>
           <td class="num">${fmtInt(fl)}</td>
-          <td class="num ${gapCls}">${gap > 0 ? "+" : ""}${fmtInt(gap)}</td>
+          <td class="num ${gapCls}">${fmtInt(gap)}</td>
           <td class="num">${fillLbl}</td>
         </tr>`;
     }).join("");
@@ -758,7 +759,7 @@ function renderShutdownSummary(view) {
         <div class="sd-kpis">
           <div class="sd-kpi"><span class="sd-kpi-lbl">Planned</span><span class="sd-kpi-val">${fmtInt(totalReq)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
           <div class="sd-kpi"><span class="sd-kpi-lbl">Confirmed</span><span class="sd-kpi-val">${fmtInt(totalFilled)}</span></div>
-          <div class="sd-kpi"><span class="sd-kpi-lbl">Gap</span><span class="sd-kpi-val ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</span></div>
+          <div class="sd-kpi"><span class="sd-kpi-lbl">Gap</span><span class="sd-kpi-val ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${fmtInt(totalGap)}</span></div>
           <div class="sd-kpi"><span class="sd-kpi-lbl">Fill rate</span><span class="sd-kpi-val">${totalReq ? fmtPct(fillRate) : "—"}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
         </div>
         <div class="table-wrap sd-table-wrap">
@@ -775,7 +776,7 @@ function renderShutdownSummary(view) {
                 <td>Total</td>
                 <td class="num">${fmtInt(totalReq)}</td>
                 <td class="num">${fmtInt(totalFilled)}</td>
-                <td class="num ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</td>
+                <td class="num ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${fmtInt(totalGap)}</td>
                 <td class="num">${totalReq ? `<span class="fill-cell ${fillRate >= 1 ? "fill-ok" : fillRate >= 0.8 ? "fill-warn" : "fill-bad"}">${fmtPct(fillRate)}</span>` : '<span class="fill-empty">—</span>'}</td>
               </tr>
             </tbody>
@@ -784,6 +785,88 @@ function renderShutdownSummary(view) {
       </div>
     `;
     host.appendChild(card);
+  }
+}
+
+/**
+ * Worker retention matrix — one row per unique worker (normalised name + role)
+ * across ALL shutdowns (not just the filtered view, so cross-company stickiness
+ * stays visible even when filtered down to one company). Tick marks identify
+ * the shutdowns each worker was rostered on, sorted by total count descending.
+ */
+function renderWorkerMatrix(viewShutdowns) {
+  const table = document.getElementById("worker-matrix");
+  if (!table) return;
+
+  // Always show all shutdowns in chronological order as the columns, so
+  // switching filters doesn't hide the context needed to spot returners.
+  const shutdowns = [...state.shutdowns].sort((a, b) => a.start_date.localeCompare(b.start_date));
+
+  // Build worker records: key -> { displayName, role, appearances: Set<shutdownId> }
+  const workers = new Map();
+  for (const s of shutdowns) {
+    for (const w of s.roster) {
+      const k = workerKey(w);
+      if (!workers.has(k)) {
+        workers.set(k, { key: k, displayName: w.name, role: w.role, appearances: new Set() });
+      }
+      workers.get(k).appearances.add(s.id);
+    }
+  }
+  const rows = [...workers.values()]
+    .map(w => ({ ...w, total: w.appearances.size }))
+    .sort((a, b) => b.total - a.total
+                  || a.displayName.localeCompare(b.displayName));
+
+  // Header — company dot + short name per shutdown.
+  const thead = table.querySelector("thead");
+  thead.innerHTML = `<tr>
+    <th>Worker</th>
+    <th>Role</th>
+    ${shutdowns.map(s => `<th class="num matrix-col">
+      <span class="co-dot" style="background:${companyColor(s.company)}"></span>
+      ${s.company}<br>
+      <span class="matrix-col-sub">${fmtDate(s.start_date)}</span>
+    </th>`).join("")}
+    <th class="num">Shutdowns</th>
+  </tr>`;
+
+  const tbody = table.querySelector("tbody");
+  const html = rows.map(w => `<tr data-key="${w.key}">
+    <td>${w.displayName}</td>
+    <td>${w.role}</td>
+    ${shutdowns.map(s => `<td class="num">${w.appearances.has(s.id)
+      ? '<span class="tick" aria-label="Present">&#10003;</span>'
+      : '<span class="tick-empty" aria-label="Absent">&middot;</span>'}</td>`).join("")}
+    <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
+  </tr>`).join("");
+  tbody.innerHTML = html;
+
+  // Count + search filter.
+  const countEl = document.getElementById("matrix-count");
+  const total   = rows.length;
+  const returners = rows.filter(w => w.total > 1).length;
+  if (countEl) {
+    countEl.innerHTML = `<strong>${fmtInt(total)}</strong> unique workers &middot; <strong>${fmtInt(returners)}</strong> returner${returners === 1 ? "" : "s"}`;
+  }
+
+  // Wire search once per render (clears + re-attaches).
+  const search = document.getElementById("matrix-search");
+  if (search) {
+    const handler = () => {
+      const q = search.value.trim().toLowerCase();
+      const trs = tbody.querySelectorAll("tr");
+      let visible = 0;
+      trs.forEach(tr => {
+        const match = !q || tr.textContent.toLowerCase().includes(q);
+        tr.style.display = match ? "" : "none";
+        if (match) visible++;
+      });
+      if (countEl) countEl.innerHTML = q
+        ? `<strong>${fmtInt(visible)}</strong> of ${fmtInt(total)} shown`
+        : `<strong>${fmtInt(total)}</strong> unique workers &middot; <strong>${fmtInt(returners)}</strong> returner${returners === 1 ? "" : "s"}`;
+    };
+    search.oninput = handler;
   }
 }
 

@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260414-toned-down" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260414-matrix" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260414-toned-down" defer></script>
+  <script src="assets/app.js?v=20260414-matrix" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -128,7 +128,24 @@
 
     <section class="card">
       <details>
-        <summary><h2 style="display:inline">Data-quality warnings</h2></summary>
+        <summary><h2>Worker retention matrix</h2></summary>
+        <p class="hint">Each unique worker's appearance across every shutdown we have data for, sorted by <strong>count descending</strong> so repeat returners show first. Green tick &rarr; confirmed on that roster. Matched on normalised <em>name + role</em>.</p>
+        <div class="matrix-toolbar">
+          <input type="search" id="matrix-search" class="matrix-search" placeholder="Filter by name or role&hellip;" autocomplete="off" />
+          <span class="matrix-count" id="matrix-count"></span>
+        </div>
+        <div class="table-wrap matrix-wrap">
+          <table id="worker-matrix">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary><h2>Data-quality warnings</h2></summary>
         <p class="hint">Ambiguous matches &mdash; the same normalised name + role appears at two companies with overlapping dates. Probably two different workers; surface for ops review.</p>
         <div id="warnings"></div>
       </details>

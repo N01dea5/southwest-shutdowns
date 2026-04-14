@@ -170,7 +170,8 @@ queue up behind the current run rather than stepping on it.
 ### What's still manual
 
 1. Uploading a RosterCut XLSX to `data/raw/` when a new Rapid Crews snapshot
-   is available (drag into the GitHub web UI, or commit via git).
+   is available (three options below: GitHub web UI, SharePoint drop-zone, or
+   `git add && push`).
 2. Editing `data/targets/*.json` or `data/imports/*.json` by hand when the
    per-site dashboard role mapping needs a tweak — everything else is picked
    up by the sync script.
@@ -182,6 +183,71 @@ Everything after those two things is automatic.
 Actions tab → "Refresh dashboard data" workflow. Click a run to see the
 per-step logs and the summary (which site dashboards were polled, whether
 anything changed). Hit "Run workflow" in the top-right for a manual refresh.
+
+## SharePoint drop-zone
+
+The refresh workflow already calls `scripts/sync_sharepoint.py` as its first
+step. It's a no-op unless five secrets are configured; once they are, any
+`.xlsx` dropped into the configured SharePoint folder is pulled into
+`data/raw/` on the next workflow run.
+
+Two ways to wire up the drop-zone — pick one:
+
+### Option A — Power Automate flow (no code, near-instant)
+
+Trigger a `workflow_dispatch` event the moment SharePoint sees the new file,
+so the unified dashboard refreshes within a minute of the drop.
+
+1. **In Microsoft 365 → Power Automate**, create a new automated cloud flow.
+2. **Trigger**: *SharePoint → When a file is created (properties only)*,
+   pointed at the SharePoint site + folder you want as the drop-zone.
+3. **Condition**: `triggerOutputs()?['body/{Name}']` ends with `.xlsx`.
+4. **Action — HTTP** (or the built-in GitHub connector):
+   - Method: `POST`
+   - URI: `https://api.github.com/repos/N01dea5/southwest-shutdowns/actions/workflows/refresh-data.yml/dispatches`
+   - Headers:
+     ```
+     Authorization: Bearer <GitHub PAT with `repo` and `workflow` scopes>
+     Accept:        application/vnd.github+json
+     Content-Type:  application/json
+     ```
+   - Body: `{ "ref": "main" }`
+5. **Action — SharePoint → Get file content**, chained into a
+   **GitHub → Create or update file contents** action targeting
+   `data/raw/<filename>` on `main`. This commits the actual XLSX.
+
+   The `refresh-data` workflow sees the new file land and re-parses
+   automatically.
+
+Store the GitHub PAT in the flow's connection (Power Automate never exposes
+it in run logs). Rotate whenever org policy demands.
+
+### Option B — GitHub Actions + Microsoft Graph (code-first)
+
+Keeps the entire pipeline inside this repo; no Power Automate needed.
+
+1. **Azure AD (Entra ID)** → register a new application.
+2. Grant it the **application** permission `Files.Read.All` (or the narrower
+   `Sites.Selected` with admin-consented read on the one site). Admin consent
+   required.
+3. Create a client secret; copy the value.
+4. **Repo → Settings → Secrets and variables → Actions** — add:
+
+   | Secret | Value |
+   |---|---|
+   | `SHAREPOINT_TENANT_ID` | Directory (tenant) ID |
+   | `SHAREPOINT_CLIENT_ID` | Application (client) ID |
+   | `SHAREPOINT_CLIENT_SECRET` | client secret value |
+   | `SHAREPOINT_SITE` | `<tenant>.sharepoint.com:/sites/<site-name>` |
+   | `SHAREPOINT_FOLDER` | path to the drop-zone inside the site's drive, e.g. `Shared Documents/Rosters` |
+
+5. The scheduled cron in `refresh-data.yml` now picks up any new XLSX inside
+   the folder on each run (nightly 22:00 UTC by default). Bump the cron to
+   `*/30 * * * *` or similar if you want sub-hourly polling.
+
+No secrets set → the SharePoint step logs `SharePoint sync skipped — no
+secrets configured` and the workflow continues as normal. Safe to enable
+later without touching the workflow file.
 
 ## Retention semantics
 

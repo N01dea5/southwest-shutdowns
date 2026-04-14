@@ -57,6 +57,17 @@ jobs:
       - name: Install dependencies
         run: pip install openpyxl
 
+      - name: Pull new rosters from SharePoint
+        # No-ops when the five SHAREPOINT_* secrets aren't configured —
+        # only pulls when the drop-zone is wired up.
+        env:
+          SHAREPOINT_TENANT_ID:     ${{ secrets.SHAREPOINT_TENANT_ID }}
+          SHAREPOINT_CLIENT_ID:     ${{ secrets.SHAREPOINT_CLIENT_ID }}
+          SHAREPOINT_CLIENT_SECRET: ${{ secrets.SHAREPOINT_CLIENT_SECRET }}
+          SHAREPOINT_SITE:          ${{ secrets.SHAREPOINT_SITE }}
+          SHAREPOINT_FOLDER:        ${{ secrets.SHAREPOINT_FOLDER }}
+        run: python3 scripts/sync_sharepoint.py
+
       - name: Sync targets + fill counts from per-site dashboards
         run: python3 scripts/sync_source_targets.py
 

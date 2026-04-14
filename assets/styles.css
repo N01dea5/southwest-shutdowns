@@ -23,10 +23,19 @@
   --surface:       #FFFFFF;
   --surface-2:     #FAFAFA;
 
-  /* --- Status chip tones (kept light, aligned with Tronox/Covalent pills) --- */
+  /* --- Status / trend tones (aligned with the corporate presentation:
+     bright green for positive changes, amber for partial, red for misses) --- */
   --ok:            #16A34A;
+  --ok-soft:       #E7F6EC;
   --warn:          #F59E0B;
+  --warn-soft:     #FEF3D7;
   --bad:           #DC2626;
+  --bad-soft:      #FDECEE;
+
+  /* Soft aqua callout (matches the dashed-green "Upgraded FY26 Guidance"
+     box on the Executive Summary slide). */
+  --callout-fill:  #EAF6F5;
+  --callout-line:  #23B1A5;
 
   /* --- Company identity (stays clear of the brand red) --- */
   --co-kleenheat:  #7A5A2B;   /* earthy amber — sits apart from the three active clients */
@@ -35,9 +44,9 @@
   --co-csbp:       #1F4E79;   /* navy blue */
 
   /* --- System --- */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --radius:    2px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --radius:    6px;
 
   /* Single font family — matches per-site dashboards exactly. */
   --body:      "Source Sans 3", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
@@ -125,6 +134,17 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
   background: var(--surface);
   border-bottom: 1px solid var(--srg-border);
 }
+.filter-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-group + .filter-group {
+  margin-left: 10px;
+  padding-left: 14px;
+  border-left: 1px solid var(--srg-border);
+}
 .filter-label {
   font-size: 10px;
   font-weight: 700;
@@ -190,23 +210,31 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
-@media (max-width: 960px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .kpis { grid-template-columns: 1fr; } }
+@media (max-width: 960px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .kpi-value { font-size: 36px; }
+}
+@media (max-width: 520px) {
+  .kpis { grid-template-columns: 1fr; }
+  .kpi-value { font-size: 32px; }
+}
 
 .kpi {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--srg-border);
   border-left: 3px solid var(--srg-red);
-  padding: 18px 22px;
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
   min-width: 0;
 }
 .kpi-value {
-  font-size: 30px;
+  font-size: 44px;
   font-weight: 800;
   color: var(--srg-dark);
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -217,10 +245,10 @@ main {
   margin: 0 4px;
 }
 .kpi-label {
-  margin-top: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--srg-grey);
 }
@@ -233,49 +261,64 @@ main {
   letter-spacing: 0;
   font-weight: 500;
 }
-/* The "Next shutdown" tile carries a wrapping label, not a number — shrink
-   the value font a bit so longer project names don't overflow. */
-.kpi-next .kpi-value {
-  font-size: 20px;
+.kpi-value.positive { color: var(--ok); }
+.kpi-value.negative { color: var(--srg-red); }
+
+/* "Next shutdown" tile styled like the 'Upgraded FY26 Guidance' callout on
+   the Executive Summary slide: soft aqua background + dashed brand-green
+   border, so the upcoming shutdown catches the eye ahead of the other
+   three plain tiles. */
+.kpi.kpi-next {
+  background: var(--callout-fill);
+  border: 1.5px dashed var(--callout-line);
+  border-left: 1.5px dashed var(--callout-line);
+  box-shadow: none;
+}
+.kpi.kpi-next .kpi-value {
+  font-size: 22px;
   line-height: 1.2;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-.kpi-next .kpi-next-co {
-  font-size: 11px;
+.kpi.kpi-next .kpi-next-co {
+  font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.kpi-next .kpi-next-name {
-  font-size: 18px;
+.kpi.kpi-next .kpi-next-name {
+  font-size: 19px;
   font-weight: 800;
   color: var(--srg-dark);
   line-height: 1.15;
 }
+.kpi.kpi-next .kpi-label { color: var(--callout-line); }
 
 /* ----------------- Cards ----------------- */
 
 .card {
   background: var(--surface);
   border: 1px solid var(--srg-border);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
 }
+/* Red banner headers — mirrors the corporate presentation's "Balance Sheet ($m)"
+   and "Undrawn Facilities Available" bars. White uppercase text on the brand red. */
 .card h2 {
   margin: 0;
-  padding: 14px 20px;
-  background: var(--surface);
-  border-bottom: 2px solid var(--srg-red);
-  font-size: 12px;
-  font-weight: 700;
+  padding: 11px 20px;
+  background: var(--srg-red);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--srg-dark);
+  border-bottom: none;
 }
 .card > .card-head { padding: 0; }
-.card > .card-head h2 { border-bottom: 2px solid var(--srg-red); }
+.card > .card-head h2 { border-bottom: none; }
 .card > .card-head + * { margin-top: 0; }
 .card .card-head .hint {
   padding: 10px 20px 0;
@@ -289,7 +332,9 @@ main {
   color: var(--srg-red);
   font-weight: 700;
 }
-.card > *:not(h2):not(.card-head) { padding: 16px 20px; }
+.card > *:not(h2):not(.card-head):not(details) { padding: 16px 20px; }
+.card > details > summary { padding: 0; }
+.card > details > *:not(summary) { padding: 12px 20px 16px; }
 .card > .card-head + .chart-wrap,
 .card > .card-head + .gantt-legend,
 .card > .card-head + .gantt,
@@ -552,9 +597,33 @@ td.num, th.num {
 .sd-card {
   border: 1px solid var(--srg-border);
   border-top: 3px solid var(--srg-red);
+  border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
+}
+/* "Next shutdown" detail card — dashed green callout, mirrors the matching
+   KPI tile so the visual link is clear. */
+.sd-card.sd-card-next {
+  border: 1.5px dashed var(--callout-line);
+  border-top: 1.5px dashed var(--callout-line);
+  background: var(--surface);
+}
+.sd-card.sd-card-next .sd-head {
+  background: var(--callout-fill);
+}
+.sd-card-next-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-left: 8px;
+  background: var(--callout-line);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  vertical-align: 2px;
 }
 /* <details> collapsible mechanics — hide native marker, add our own chevron. */
 .sd-card > summary { list-style: none; cursor: pointer; user-select: none; }
@@ -665,6 +734,23 @@ td.num, th.num {
 .gap-over  { color: var(--ok); font-weight: 700; }
 .gap-even  { color: var(--srg-grey-2); }
 
+/* Traffic-light fill-rate cells — matches the readiness pills on the
+   per-site dashboards. Green ≥100%, amber 80-99%, red <80%. */
+.fill-cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.fill-ok    { background: var(--ok-soft);    color: var(--ok); }
+.fill-warn  { background: var(--warn-soft);  color: #8A5A00; }
+.fill-bad   { background: var(--bad-soft);   color: var(--bad); }
+.fill-empty { color: var(--srg-grey-2); font-weight: 500; }
+
 @media (max-width: 700px) {
   .sd-kpis { grid-template-columns: repeat(2, 1fr); }
   .sd-kpi:nth-child(2) { border-right: none; }
@@ -676,16 +762,26 @@ td.num, th.num {
 
 details summary {
   cursor: pointer;
-  list-style: revert;
+  list-style: none;
   padding: 0;
 }
+details summary::-webkit-details-marker { display: none; }
 details summary h2 {
-  display: inline-block !important;
+  display: block !important;
   margin: 0;
-  padding: 14px 20px;
-  width: auto;
-  border-bottom: 2px solid var(--srg-red);
+  padding: 11px 20px;
+  background: var(--srg-red);
+  color: #fff;
+  border-bottom: none;
 }
+details summary h2::after {
+  content: "▾";
+  float: right;
+  font-size: 10px;
+  opacity: 0.8;
+  transition: transform .15s ease;
+}
+details[open] summary h2::after { transform: rotate(180deg); display: inline-block; }
 #warnings ul {
   list-style: none;
   margin: 8px 0 0 0;

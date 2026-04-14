@@ -23,10 +23,11 @@ const COMPANIES = [
 ];
 
 const state = {
-  raw: {},            // company-name -> file payload
-  shutdowns: [],      // flat, chronological list across all companies
-  filter: "all",      // "all" | company display name
-  charts: {},         // Chart.js handles, so we can destroy() on re-render
+  raw: {},                 // company-name -> file payload
+  shutdowns: [],           // flat, chronological list across all companies
+  filter: "all",           // "all" | company display name
+  statusFilter: "all",     // "all" | "booked" | "in_progress" | "completed"
+  charts: {},              // Chart.js handles, so we can destroy() on re-render
 };
 
 // -------------------- helpers --------------------
@@ -96,9 +97,14 @@ function setupFilter() {
   document.getElementById("filterbar").addEventListener("click", e => {
     const btn = e.target.closest(".chip");
     if (!btn) return;
-    document.querySelectorAll(".filterbar .chip").forEach(c => c.classList.remove("active"));
+    // Each filter group (company / status) toggles independently.
+    const group = btn.closest(".filter-group");
+    if (group) {
+      group.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+    }
     btn.classList.add("active");
-    state.filter = btn.dataset.co;
+    if (btn.dataset.co) state.filter = btn.dataset.co;
+    if (btn.dataset.status) state.statusFilter = btn.dataset.status;
     render();
   });
 }
@@ -106,8 +112,11 @@ function setupFilter() {
 // -------------------- compute --------------------
 
 function filtered() {
-  if (state.filter === "all") return state.shutdowns;
-  return state.shutdowns.filter(s => s.company === state.filter);
+  return state.shutdowns.filter(s => {
+    if (state.filter !== "all" && s.company !== state.filter) return false;
+    if (state.statusFilter !== "all" && s.status !== state.statusFilter) return false;
+    return true;
+  });
 }
 
 function fulfillmentRollup(shutdowns) {
@@ -222,10 +231,16 @@ function render() {
     ? `${fmtInt(totalRoll.filled)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.required)}${star(allPlaceholder)}`
     : "—";
 
-  // 2. Overall fill rate.
-  document.getElementById("kpi-fillrate").innerHTML = (totalRoll.required
-    ? fmtPct(totalRoll.filled / totalRoll.required)
-    : "—") + star(allPlaceholder);
+  // 2. Overall fill rate — coloured green/red when ≥100% / <100%.
+  const fillRateEl = document.getElementById("kpi-fillrate");
+  fillRateEl.className = "kpi-value";
+  if (totalRoll.required) {
+    const ratio = totalRoll.filled / totalRoll.required;
+    fillRateEl.classList.add(ratio >= 1 ? "positive" : "");
+    fillRateEl.innerHTML = fmtPct(ratio) + star(allPlaceholder);
+  } else {
+    fillRateEl.innerHTML = "—";
+  }
 
   // 3. Average cross-company retention rate across shutdowns that have any
   //    prior shutdown in the full chronology (the seed shutdown at t=0 has
@@ -246,6 +261,7 @@ function render() {
     .filter(s => s.status !== "completed")
     .sort((a, b) => a.start_date.localeCompare(b.start_date));
   const next = upcoming[0];
+  state.nextShutdownId = next ? next.id : null;  // cross-referenced by renderShutdownSummary
   const nextValEl = document.getElementById("kpi-next");
   const nextSubEl = document.getElementById("kpi-next-sub");
   if (next) {
@@ -697,29 +713,38 @@ function renderShutdownSummary(view) {
       const fl   = fil[r] || 0;
       const gap  = rq - fl;
       const rate = rq ? fl / rq : 0;
-      const gapCls = gap > 0 ? "gap-short" : gap < 0 ? "gap-over" : "gap-even";
+      const gapCls  = gap > 0 ? "gap-short" : gap < 0 ? "gap-over" : "gap-even";
+      const fillCls = !rq                 ? "fill-empty"
+                   : rate >= 1            ? "fill-ok"
+                   : rate >= 0.8          ? "fill-warn"
+                                          : "fill-bad";
+      const fillLbl = rq ? `<span class="fill-cell ${fillCls}">${fmtPct(rate)}</span>` : '<span class="fill-empty">—</span>';
       return `
         <tr>
           <td>${r}</td>
           <td class="num">${fmtInt(rq)}</td>
           <td class="num">${fmtInt(fl)}</td>
           <td class="num ${gapCls}">${gap > 0 ? "+" : ""}${fmtInt(gap)}</td>
-          <td class="num">${rq ? fmtPct(rate) : "—"}</td>
+          <td class="num">${fillLbl}</td>
         </tr>`;
     }).join("");
 
-    // <details> makes each card natively collapsible — default open so
-    // everything is visible on load; chevron on the right flips on toggle.
+    // <details> makes each card natively collapsible. Default behaviour:
+    // collapse most cards (there's a compact quick-stat on the head); keep
+    // the "next shutdown" card and any in-progress ones expanded so the
+    // current action is one glance.
     const card = document.createElement("details");
-    card.className = "sd-card";
-    card.open = true;
+    const isNext = state.nextShutdownId === s.id;
+    card.className = "sd-card" + (isNext ? " sd-card-next" : "");
+    card.open = isNext || s.status === "in_progress";
+    const nextPill = isNext ? '<span class="sd-card-next-pill">Up next</span>' : "";
     card.innerHTML = `
       <summary class="sd-head">
         <div class="sd-title">
           <span class="co-dot" style="background:${companyColor(s.company)}"></span>
           <span class="sd-co">${s.company}</span>
           <span class="sd-sep">&middot;</span>
-          <span class="sd-name">${s.name}</span>
+          <span class="sd-name">${s.name}</span>${nextPill}
         </div>
         <div class="sd-meta">
           <span class="sd-status status-${s.status}">${statusLabel(s.status)}</span>
@@ -751,7 +776,7 @@ function renderShutdownSummary(view) {
                 <td class="num">${fmtInt(totalReq)}</td>
                 <td class="num">${fmtInt(totalFilled)}</td>
                 <td class="num ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</td>
-                <td class="num">${totalReq ? fmtPct(fillRate) : "—"}</td>
+                <td class="num">${totalReq ? `<span class="fill-cell ${fillRate >= 1 ? "fill-ok" : fillRate >= 0.8 ? "fill-warn" : "fill-bad"}">${fmtPct(fillRate)}</span>` : '<span class="fill-empty">—</span>'}</td>
               </tr>
             </tbody>
           </table>

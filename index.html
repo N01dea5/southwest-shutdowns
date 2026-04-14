@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260414-reorder" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260414-brand-refresh" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260414-reorder" defer></script>
+  <script src="assets/app.js?v=20260414-brand-refresh" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -28,13 +28,22 @@
     </div>
   </header>
 
-  <nav class="filterbar" id="filterbar" aria-label="Company filter">
-    <span class="filter-label">Filter:</span>
-    <button class="chip active" data-co="all">All companies</button>
-    <button class="chip" data-co="Kleenheat">Kleenheat</button>
-    <button class="chip" data-co="Covalent">Covalent</button>
-    <button class="chip" data-co="Tronox">Tronox</button>
-    <button class="chip" data-co="CSBP">CSBP</button>
+  <nav class="filterbar" id="filterbar" aria-label="Filters">
+    <div class="filter-group">
+      <span class="filter-label">Company:</span>
+      <button class="chip active" data-co="all">All</button>
+      <button class="chip" data-co="Kleenheat">Kleenheat</button>
+      <button class="chip" data-co="Covalent">Covalent</button>
+      <button class="chip" data-co="Tronox">Tronox</button>
+      <button class="chip" data-co="CSBP">CSBP</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Status:</span>
+      <button class="chip chip-status active" data-status="all">All</button>
+      <button class="chip chip-status" data-status="booked">Booked</button>
+      <button class="chip chip-status" data-status="in_progress">In progress</button>
+      <button class="chip chip-status" data-status="completed">Completed</button>
+    </div>
   </nav>
 
   <main>

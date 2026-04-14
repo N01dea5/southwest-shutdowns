@@ -9,19 +9,19 @@
       "end_date": "2026-05-01",
       "status": "completed",
       "required_by_role": {
-        "Boilermaker": 5,
-        "Electrician": 4,
-        "Basic Rigger": 4,
-        "Mechanical Fitter": 22,
+        "Mechanical Fitter": 24,
+        "Intermediate Rigger": 3,
         "Lube Technician": 3,
         "Supervisor - Mechanical": 6,
+        "Trade Assistant": 5,
         "Telehandler Operator": 2,
-        "Supervisor": 1,
-        "Advanced Rigger": 4,
-        "Trade Assistant": 7,
-        "Superintendent": 2,
         "HSE Advisor": 2,
-        "Intermediate Rigger": 3,
+        "Advanced Rigger": 4,
+        "Superintendent": 1,
+        "Boilermaker": 4,
+        "Supervisor": 2,
+        "Electrician": 4,
+        "Basic Rigger": 4,
         "Site Coordinator": 1,
         "Coded Welder": 1
       },
@@ -333,9 +333,9 @@
       "_source": {
         "rapid_crews_roster_id": "1359",
         "rapid_crews_export_file": "1359 (RosterCut) 2026-04-14_15-11-34.xlsx",
-        "required_target_source": "PLACEHOLDER_FROM_ROSTER"
+        "required_target_source": "REAL_TARGET"
       }
     }
   ],
-  "generated_at": "2026-04-14T07:25:31Z"
+  "generated_at": "2026-04-14T08:17:53Z"
 }

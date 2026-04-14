@@ -1,0 +1,639 @@
+{
+  "source_repo": "N01dea5/Covalent-Mt-Holland---April-2026",
+  "source_file": "index.html",
+  "source_ref": "main",
+  "source_url": "https://raw.githubusercontent.com/N01dea5/Covalent-Mt-Holland---April-2026/main/index.html",
+  "client": "Covalent Lithium",
+  "project": "Mt Holland Shutdown",
+  "site": "Mt Holland",
+  "shutdown_id": "covalent-2026-04",
+  "dates_text": "17 April \u2013 4 May 2026 (18 days)",
+  "start_date": "2026-04-17",
+  "end_date": "2026-05-04",
+  "contingency": {
+    "total": 37,
+    "by_group": {
+      "Leadership": 0,
+      "HSE": 0,
+      "Boilermaker": 3,
+      "Electrical": 2,
+      "Fitter": 14,
+      "Inspections": 0,
+      "Rigger": 3,
+      "Roller Crew": 5,
+      "Lube Tech": 0,
+      "Trade Assistant": 10
+    }
+  },
+  "summary": {
+    "total_planned": 63,
+    "confirmed": 62,
+    "tbc": 1,
+    "by_role": {
+      "Superintendent": 1,
+      "Supervisor DS": 3,
+      "Supervisor Elec": 1,
+      "Supervisor NS": 3,
+      "Coordinator": 1,
+      "HSE": 2,
+      "Boilermaker": 4,
+      "Coded Welder": 1,
+      "Electrician": 4,
+      "Fitter": 18,
+      "Fitter - Conveyor Inspections": 4,
+      "Fitter - Inspections": 2,
+      "Rigger Advanced": 4,
+      "Roller Crew Supervisor": 1,
+      "Roller Tech": 4,
+      "Lube Tech T/A": 3,
+      "T.A. (Sentry)": 4,
+      "T.A. Telehandler": 2,
+      "Bus Driver": 1
+    },
+    "by_group": {
+      "Leadership": 9,
+      "HSE": 2,
+      "Boilermaker": 5,
+      "Electrical": 4,
+      "Fitter": 18,
+      "Inspections": 6,
+      "Rigger": 4,
+      "Roller Crew": 5,
+      "Lube Tech": 3,
+      "Trade Assistant": 7
+    },
+    "by_shift": {
+      "Day": 36,
+      "Night": 27
+    }
+  },
+  "roster": [
+    {
+      "id": 1,
+      "name": "Adam Riley",
+      "role": "Superintendent",
+      "shift": "Day",
+      "days": 10,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 2,
+      "name": "Lewis Newell",
+      "role": "Supervisor DS",
+      "shift": "Day",
+      "days": 10,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 3,
+      "name": "Peter Burns",
+      "role": "Supervisor DS",
+      "shift": "Day",
+      "days": 10,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 4,
+      "name": "Kapil Chaudhary",
+      "role": "Supervisor DS",
+      "shift": "Day",
+      "days": 7,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 55,
+      "name": "TBC",
+      "role": "Supervisor Elec",
+      "shift": "Day",
+      "days": 7,
+      "group": "Leadership",
+      "tbc": true
+    },
+    {
+      "id": 56,
+      "name": "Mark Sullivan",
+      "role": "Supervisor NS",
+      "shift": "Night",
+      "days": 8,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 57,
+      "name": "Jordan Kirkby",
+      "role": "Supervisor NS",
+      "shift": "Night",
+      "days": 6,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 58,
+      "name": "Tsarina McCowat",
+      "role": "Supervisor NS",
+      "shift": "Night",
+      "days": 6,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 31,
+      "name": "Anthony Smith",
+      "role": "Coordinator",
+      "shift": "Night",
+      "days": 8,
+      "group": "Leadership",
+      "tbc": false
+    },
+    {
+      "id": 26,
+      "name": "Jacinta Jeffery",
+      "role": "HSE",
+      "shift": "Day",
+      "days": 9,
+      "group": "HSE",
+      "tbc": false
+    },
+    {
+      "id": 27,
+      "name": "Pare Te Nahu",
+      "role": "HSE",
+      "shift": "Night",
+      "days": 7,
+      "group": "HSE",
+      "tbc": false
+    },
+    {
+      "id": 14,
+      "name": "Ben Attack",
+      "role": "Boilermaker",
+      "shift": "Day",
+      "days": 9,
+      "group": "Boilermaker",
+      "tbc": false
+    },
+    {
+      "id": 15,
+      "name": "Mathias Mendy",
+      "role": "Boilermaker",
+      "shift": "Day",
+      "days": 7,
+      "group": "Boilermaker",
+      "tbc": false
+    },
+    {
+      "id": 44,
+      "name": "Arron Nairn",
+      "role": "Boilermaker",
+      "shift": "Night",
+      "days": 4,
+      "group": "Boilermaker",
+      "tbc": false
+    },
+    {
+      "id": 45,
+      "name": "William Robinson",
+      "role": "Boilermaker",
+      "shift": "Night",
+      "days": 4,
+      "group": "Boilermaker",
+      "tbc": false
+    },
+    {
+      "id": 16,
+      "name": "Mirko Rischia",
+      "role": "Coded Welder",
+      "shift": "Day",
+      "days": 4,
+      "group": "Boilermaker",
+      "tbc": false
+    },
+    {
+      "id": 22,
+      "name": "Teo Medanovic",
+      "role": "Electrician",
+      "shift": "Day",
+      "days": 7,
+      "group": "Electrical",
+      "tbc": false
+    },
+    {
+      "id": 23,
+      "name": "Benjamin Chopping",
+      "role": "Electrician",
+      "shift": "Day",
+      "days": 7,
+      "group": "Electrical",
+      "tbc": false
+    },
+    {
+      "id": 24,
+      "name": "James Mahoney",
+      "role": "Electrician",
+      "shift": "Night",
+      "days": 7,
+      "group": "Electrical",
+      "tbc": false
+    },
+    {
+      "id": 25,
+      "name": "Drew Brand",
+      "role": "Electrician",
+      "shift": "Night",
+      "days": 7,
+      "group": "Electrical",
+      "tbc": false
+    },
+    {
+      "id": 5,
+      "name": "Edward Gardiner",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 6,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 6,
+      "name": "Malcolm Grainger-Rousseau",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 6,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 7,
+      "name": "Russell Phillips",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 9,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 8,
+      "name": "Darren James",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 7,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 9,
+      "name": "Jake Gangemi",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 7,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 10,
+      "name": "Mao Li",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 11,
+      "name": "Walid Boulahdid",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 12,
+      "name": "Donggyu (Peter) Kim",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 13,
+      "name": "Omkar Dorugade",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 35,
+      "name": "Herbert Mukunga",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 6,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 36,
+      "name": "Charlie Capaldi",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 6,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 37,
+      "name": "Jordi Patino Roca",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 6,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 38,
+      "name": "Gurshwinder Singh",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 39,
+      "name": "Kulvinder Singh",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 40,
+      "name": "Abdikadir Mohamed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 41,
+      "name": "Jamie Adams",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 42,
+      "name": "Omar Anadif",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 43,
+      "name": "Clemens Schaaf",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 4,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 59,
+      "name": "Florian Chavot",
+      "role": "Fitter - Conveyor Inspections",
+      "shift": "Day",
+      "days": 5,
+      "group": "Inspections",
+      "tbc": false
+    },
+    {
+      "id": 60,
+      "name": "Timo Gronenberg",
+      "role": "Fitter - Conveyor Inspections",
+      "shift": "Day",
+      "days": 5,
+      "group": "Inspections",
+      "tbc": false
+    },
+    {
+      "id": 61,
+      "name": "Gerry Uy",
+      "role": "Fitter - Conveyor Inspections",
+      "shift": "Night",
+      "days": 5,
+      "group": "Inspections",
+      "tbc": false
+    },
+    {
+      "id": 62,
+      "name": "Samuel Gunn",
+      "role": "Fitter - Conveyor Inspections",
+      "shift": "Night",
+      "days": 5,
+      "group": "Inspections",
+      "tbc": false
+    },
+    {
+      "id": 63,
+      "name": "Amit Gund",
+      "role": "Fitter - Inspections",
+      "shift": "Day",
+      "days": 5,
+      "group": "Inspections",
+      "tbc": false
+    },
+    {
+      "id": 64,
+      "name": "Wisdom Mandizvidza",
+      "role": "Fitter - Inspections",
+      "shift": "Night",
+      "days": 5,
+      "group": "Inspections",
+      "tbc": false
+    },
+    {
+      "id": 17,
+      "name": "Joe Dack",
+      "role": "Rigger Advanced",
+      "shift": "Day",
+      "days": 9,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 18,
+      "name": "Darren Taylor",
+      "role": "Rigger Advanced",
+      "shift": "Day",
+      "days": 7,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 46,
+      "name": "Ricky Truslove",
+      "role": "Rigger Advanced",
+      "shift": "Night",
+      "days": 6,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 47,
+      "name": "Chaeyoon Kim",
+      "role": "Rigger Advanced",
+      "shift": "Night",
+      "days": 4,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 53,
+      "name": "Christopher McLennan",
+      "role": "Roller Crew Supervisor",
+      "shift": "Day",
+      "days": 7,
+      "group": "Roller Crew",
+      "tbc": false
+    },
+    {
+      "id": 54,
+      "name": "Stefanos Karikis",
+      "role": "Roller Tech",
+      "shift": "Day",
+      "days": 7,
+      "group": "Roller Crew",
+      "tbc": false
+    },
+    {
+      "id": 551,
+      "name": "King Garcia",
+      "role": "Roller Tech",
+      "shift": "Day",
+      "days": 7,
+      "group": "Roller Crew",
+      "tbc": false
+    },
+    {
+      "id": 561,
+      "name": "Jeremy Larock",
+      "role": "Roller Tech",
+      "shift": "Day",
+      "days": 6,
+      "group": "Roller Crew",
+      "tbc": false
+    },
+    {
+      "id": 571,
+      "name": "Henri Martins",
+      "role": "Roller Tech",
+      "shift": "Day",
+      "days": 6,
+      "group": "Roller Crew",
+      "tbc": false
+    },
+    {
+      "id": 50,
+      "name": "Sebastien Djaffer",
+      "role": "Lube Tech T/A",
+      "shift": "Day",
+      "days": 4,
+      "group": "Lube Tech",
+      "tbc": false
+    },
+    {
+      "id": 51,
+      "name": "Mehdi Mokeddem",
+      "role": "Lube Tech T/A",
+      "shift": "Day",
+      "days": 4,
+      "group": "Lube Tech",
+      "tbc": false
+    },
+    {
+      "id": 52,
+      "name": "Lakshman Vasanthan",
+      "role": "Lube Tech T/A",
+      "shift": "Night",
+      "days": 5,
+      "group": "Lube Tech",
+      "tbc": false
+    },
+    {
+      "id": 19,
+      "name": "Mehdi Bendani",
+      "role": "T.A. (Sentry)",
+      "shift": "Day",
+      "days": 7,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 20,
+      "name": "Madeline Jones",
+      "role": "T.A. (Sentry)",
+      "shift": "Day",
+      "days": 10,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 48,
+      "name": "William Thompson",
+      "role": "T.A. (Sentry)",
+      "shift": "Night",
+      "days": 4,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 49,
+      "name": "Lea Mondesir",
+      "role": "T.A. (Sentry)",
+      "shift": "Night",
+      "days": 4,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 28,
+      "name": "Ellie Jeon",
+      "role": "T.A. Telehandler",
+      "shift": "Day",
+      "days": 10,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 29,
+      "name": "Lewis Ferris",
+      "role": "T.A. Telehandler",
+      "shift": "Night",
+      "days": 8,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 30,
+      "name": "David Bryce",
+      "role": "Bus Driver",
+      "shift": "Day",
+      "days": 9,
+      "group": "Trade Assistant",
+      "tbc": false
+    }
+  ]
+}

@@ -10,10 +10,10 @@
       "status": "booked",
       "required_by_role": {
         "Mechanical Fitter": 13,
-        "Advanced Rigger": 3,
-        "Supervisor - Mechanical": 1,
-        "Trade Assistant": 15,
-        "Intermediate Rigger": 1
+        "Intermediate Rigger": 1,
+        "Supervisor - Mechanical": 3,
+        "Trade Assistant": 16,
+        "Advanced Rigger": 3
       },
       "filled_by_role": {
         "Mechanical Fitter": 13,
@@ -167,9 +167,9 @@
       "_source": {
         "rapid_crews_roster_id": "1375",
         "rapid_crews_export_file": "1375 (RosterCut) 2026-04-14_15-18-44.xlsx",
-        "required_target_source": "PLACEHOLDER_FROM_ROSTER"
+        "required_target_source": "REAL_TARGET"
       }
     }
   ],
-  "generated_at": "2026-04-14T07:25:31Z"
+  "generated_at": "2026-04-14T08:17:53Z"
 }

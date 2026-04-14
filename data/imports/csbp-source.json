@@ -1,0 +1,369 @@
+{
+  "source_repo": "N01dea5/csbp-naan2-shutdown-workforce-dashboard",
+  "source_file": "index.html",
+  "source_ref": "claude/csbp-demo-dashboard-6OFlN",
+  "source_url": "https://raw.githubusercontent.com/N01dea5/csbp-naan2-shutdown-workforce-dashboard/claude/csbp-demo-dashboard-6OFlN/index.html",
+  "client": "CSBP",
+  "project": "CSBP NAAN2 Shutdown 2026",
+  "site": "Kwinana",
+  "shutdown_id": "csbp-2026-05",
+  "dates_text": "25 May \u2013 21 Jun 2026 (28 days). Phases: Pre-Shut 25 May\u20135 Jun \u00b7 Shutdown 6\u201318 Jun \u00b7 Post-Shut 19\u201321 Jun",
+  "start_date": "2026-05-25",
+  "end_date": "2026-06-21",
+  "contingency": {
+    "total": 0,
+    "by_group": {
+      "Supervisor": 0,
+      "Fitter": 0,
+      "Rigger": 0,
+      "Trade Assistant": 0
+    }
+  },
+  "summary": {
+    "total_planned": 36,
+    "confirmed": 33,
+    "tbc": 3,
+    "by_role": {
+      "Supervisor": 3,
+      "Fitter": 13,
+      "Rigger": 4,
+      "Trade Assistant": 16
+    },
+    "by_group": {
+      "Supervisor": 3,
+      "Fitter": 13,
+      "Rigger": 4,
+      "Trade Assistant": 16
+    },
+    "by_shift": {
+      "Day": 22,
+      "Night": 14
+    }
+  },
+  "roster": [
+    {
+      "id": 1,
+      "name": "Confirmed",
+      "role": "Supervisor",
+      "shift": "Day",
+      "days": 24,
+      "group": "Supervisor",
+      "tbc": false
+    },
+    {
+      "id": 2,
+      "name": "TBC",
+      "role": "Supervisor",
+      "shift": "Day",
+      "days": 24,
+      "group": "Supervisor",
+      "tbc": true
+    },
+    {
+      "id": 3,
+      "name": "TBC",
+      "role": "Supervisor",
+      "shift": "Night",
+      "days": 19,
+      "group": "Supervisor",
+      "tbc": true
+    },
+    {
+      "id": 4,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 18,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 5,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 16,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 6,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 13,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 7,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 13,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 8,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 11,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 9,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 11,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 10,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Day",
+      "days": 11,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 11,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 16,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 12,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 16,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 13,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 12,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 14,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 12,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 15,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 11,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 16,
+      "name": "Confirmed",
+      "role": "Fitter",
+      "shift": "Night",
+      "days": 11,
+      "group": "Fitter",
+      "tbc": false
+    },
+    {
+      "id": 17,
+      "name": "Confirmed",
+      "role": "Rigger",
+      "shift": "Day",
+      "days": 18,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 18,
+      "name": "Confirmed",
+      "role": "Rigger",
+      "shift": "Day",
+      "days": 15,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 19,
+      "name": "Confirmed",
+      "role": "Rigger",
+      "shift": "Night",
+      "days": 16,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 20,
+      "name": "Confirmed",
+      "role": "Rigger",
+      "shift": "Night",
+      "days": 11,
+      "group": "Rigger",
+      "tbc": false
+    },
+    {
+      "id": 21,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 13,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 22,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 13,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 23,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 13,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 24,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 25,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 26,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 27,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 28,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 29,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 30,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 31,
+      "name": "TBC",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": true
+    },
+    {
+      "id": 32,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Night",
+      "days": 13,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 33,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Night",
+      "days": 13,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 34,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Night",
+      "days": 12,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 35,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Night",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    },
+    {
+      "id": 36,
+      "name": "Confirmed",
+      "role": "Trade Assistant",
+      "shift": "Night",
+      "days": 11,
+      "group": "Trade Assistant",
+      "tbc": false
+    }
+  ]
+}

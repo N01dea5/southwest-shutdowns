@@ -21,7 +21,10 @@ data/
   csbp.json
   schema.md                      JSON contract documented
   raw/                           Rapid Crews "RosterCut" XLSX exports (one per shutdown)
-  targets/                       optional per-shutdown {role: required_headcount} overrides
+  targets/                       per-shutdown {role: required_headcount} overrides
+                                 (synced from each site's source dashboard repo)
+  imports/                       raw planned-roster extracts from each site dashboard
+                                 (full names, roles, groups, shifts, TBC flags, contingency)
 scripts/
   parse_rapidcrews.py            converts data/raw/*.xlsx → data/<company>.json
 ```
@@ -53,11 +56,39 @@ loop:
 ### Real headcount targets
 
 The Rapid Crews roster export only carries *confirmed* heads, not the
-*requested* target. Until you supply real targets, the dashboard runs with
+*requested* target. If a shutdown has no target file, the dashboard runs with
 `required_by_role = filled_by_role` (so fill rate trivially reads 100%) and
 shows a banner saying as much.
 
-Override per-shutdown by dropping a target file at:
+Targets for the three current shutdowns are now synced from each site's own
+SRG Global dashboard repo:
+
+- `data/targets/covalent-2026-04.json` — from
+  [N01dea5/Covalent-Mt-Holland---April-2026][covalent-src] (63 planned)
+- `data/targets/tronox-2026-05.json` — from
+  [N01dea5/tronox-major-shutdown-may-2026][tronox-src] (104 planned)
+- `data/targets/csbp-2026-05.json` — from
+  [N01dea5/csbp-naan2-shutdown-workforce-dashboard][csbp-src] (36 planned)
+
+[covalent-src]: https://github.com/N01dea5/Covalent-Mt-Holland---April-2026
+[tronox-src]:   https://github.com/N01dea5/tronox-major-shutdown-may-2026
+[csbp-src]:     https://github.com/N01dea5/csbp-naan2-shutdown-workforce-dashboard
+
+Each target file is `{role: required_headcount}` keyed by the role names the
+Rapid Crews roster uses (e.g. `"Mechanical Fitter"`, `"Advanced Rigger"`,
+`"Supervisor - Mechanical"`). The parser merges these on top of the counts
+derived from the Rapid Crews XLSX, flips the shutdown's
+`required_target_source` to `"REAL_TARGET"`, and the dashboard's placeholder
+banner clears.
+
+The full planned roster from each source dashboard — names, shifts, trade
+groups, shift-days, TBC flags and contingency workforce — is archived raw in
+`data/imports/<company>-source.json`. Those files are provenance, not inputs
+to the parser. When a source dashboard changes (new headcount, slot added),
+re-run `scripts/sync_source_targets.py` (see below) to regenerate both
+`data/imports/` and `data/targets/`.
+
+Override per-shutdown by editing the file at:
 
 ```
 data/targets/<shutdown_id>.json
@@ -67,16 +98,28 @@ Example (`data/targets/tronox-2026-05.json`):
 
 ```json
 {
-  "Mechanical Fitter": 28,
-  "Boilermaker": 12,
-  "Trade Assistant": 8,
-  "Advanced Rigger": 4,
-  "Supervisor - Mechanical": 2
+  "Mechanical Fitter": 40,
+  "Boilermaker": 10,
+  "Coded Welder": 10,
+  "Trade Assistant": 20,
+  "Advanced Rigger": 10,
+  "Intermediate Rigger": 10,
+  "Supervisor - Mechanical": 4
 }
 ```
 
 Re-run the parser. The banner disappears for that shutdown and fill-rate
 reflects the gap to target.
+
+### Refreshing from the source dashboards
+
+`scripts/sync_source_targets.py` fetches each source dashboard's `index.html`,
+extracts its planned roster, writes `data/imports/<company>-source.json`, and
+rewrites `data/targets/<shutdown_id>.json` using a per-company role map from
+the source vocabulary (e.g. Covalent's "Fitter - Inspections", Tronox's
+"Rigger - Advanced") into the Rapid Crews vocabulary the parser reads. Run it
+any time a site dashboard ships new targets, then re-run
+`scripts/parse_rapidcrews.py`.
 
 ## Retention semantics
 

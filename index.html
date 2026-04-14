@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260414-order-links" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260414-tianqi" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260414-order-links" defer></script>
+  <script src="assets/app.js?v=20260414-tianqi" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -33,6 +33,7 @@
       <span class="filter-label">Company:</span>
       <button class="chip active" data-co="all">All</button>
       <button class="chip" data-co="Kleenheat">Kleenheat</button>
+      <button class="chip" data-co="Tianqi">Tianqi</button>
       <button class="chip" data-co="Covalent">Covalent</button>
       <button class="chip" data-co="Tronox">Tronox</button>
       <button class="chip" data-co="CSBP">CSBP</button>
@@ -97,6 +98,7 @@
       </div>
       <div class="gantt-legend">
         <span><span class="sw co-kleenheat"></span>Kleenheat</span>
+        <span><span class="sw co-tianqi"></span>Tianqi</span>
         <span><span class="sw co-covalent"></span>Covalent</span>
         <span><span class="sw co-tronox"></span>Tronox</span>
         <span><span class="sw co-csbp"></span>CSBP</span>
@@ -154,7 +156,7 @@
 
   <footer>
     <div class="foot-rule"></div>
-    <small>SRG Global &middot; Internal use only &middot; reads <code>data/kleenheat.json</code>, <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
+    <small>SRG Global &middot; Internal use only &middot; reads <code>data/kleenheat.json</code>, <code>data/tianqi.json</code>, <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
   </footer>
 </body>
 </html>

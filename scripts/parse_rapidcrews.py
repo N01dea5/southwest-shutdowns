@@ -40,15 +40,39 @@ import sys
 import openpyxl
 
 
-# Map the filename key (first space-delimited token) to
-# (company_key, client_display_name, project_label, site).
-ROSTER_MAP: dict[str, tuple[str, str, str, str]] = {
-    # Rapid Crews RosterCut exports — keyed by numeric roster_id
-    "1353":      ("tronox",    "Tronox",    "Major Shutdown May 2026", "Kwinana"),
-    "1359":      ("covalent",  "Covalent",  "Mt Holland April 2026",   "Mt Holland"),
-    "1375":      ("csbp",      "CSBP",      "NAAN2 June 2026",         "Kwinana"),
-    # Kleenheat historical shutdown — keyed by filename prefix
-    "Kleenheat": ("kleenheat", "Kleenheat", "Kwinana Major March 2026", "Kwinana"),
+# Each ROSTER_MAP entry is (company_key, client_display_name, project_label,
+# site). An optional 5th element — shutdown_id_override — lets us
+# disambiguate multiple shutdowns at the same client in the same month
+# (e.g. Tianqi running a Construction Ramp-Up and a Scaffold Shutdown in
+# parallel through April-June 2026). Without the override, shutdown_id
+# defaults to "<company_key>-<YYYY-MM of start_date>" and the two would
+# collide.
+#
+# File-key conventions:
+#   - Numeric leading token  -> Rapid Crews roster id (from the RosterCut
+#                                filename convention)
+#   - Anything else          -> the whole filename stem (minus .xlsx,
+#                                whitespace-trimmed)
+ROSTER_MAP: dict[str, tuple] = {
+    # Rapid Crews RosterCut exports — keyed by numeric roster_id.
+    "1353": ("tronox",   "Tronox",   "Major Shutdown May 2026", "Kwinana"),
+    "1359": ("covalent", "Covalent", "Mt Holland April 2026",   "Mt Holland"),
+    "1375": ("csbp",     "CSBP",     "NAAN2 June 2026",         "Kwinana"),
+
+    # Kleenheat historical shutdown — keyed by filename stem (Pegasus format).
+    "Kleenheat Major March 2026":
+        ("kleenheat", "Kleenheat", "Kwinana Major March 2026", "Kwinana"),
+
+    # Tianqi (Kwinana lithium hydroxide plant) — two parallel scopes running
+    # April-June 2026. Share the "tianqi" company_key so they roll up under
+    # one client, but carry explicit shutdown_ids so they don't collapse
+    # into one bucket (same YYYY-MM start).
+    "Tianqi Construction Ramp Up Project":
+        ("tianqi", "Tianqi", "Construction Ramp Up Project", "Kwinana",
+         "tianqi-construction-2026-04"),
+    "Tianqi Scaffold Shutdown April 2026":
+        ("tianqi", "Tianqi", "Scaffold Shutdown April 2026", "Kwinana",
+         "tianqi-scaffold-2026-04"),
 }
 
 REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
@@ -381,7 +405,9 @@ def _infer_status(start_day: dt.date, end_day: dt.date, today: dt.date) -> str:
 
 
 def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str) -> tuple[str, str, dict]:
-    company_key, client_name, project_label, site = ROSTER_MAP[file_key]
+    entry = ROSTER_MAP[file_key]
+    company_key, client_name, project_label, site = entry[:4]
+    shutdown_id_override = entry[4] if len(entry) > 4 else None
     confirmed = [r for r in rows if r["confirmed"]]
     if not confirmed:
         raise ValueError(f"{xlsx.name}: no confirmed rows")
@@ -402,7 +428,7 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
         if r["mobilised"]:
             mobilised_by_role[r["role"]] = mobilised_by_role.get(r["role"], 0) + 1
 
-    shutdown_id = f"{company_key}-{sd[:7]}"
+    shutdown_id = shutdown_id_override or f"{company_key}-{sd[:7]}"
     required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
     today       = dt.date.today()
     status      = _infer_status(dt.date.fromisoformat(sd),
@@ -458,10 +484,17 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
 # --------------------------------------------------------------------------- main
 
 def _file_key(xlsx: pathlib.Path) -> str:
-    """Leading token of the filename (stops at the first space). For RosterCut
-    files that's the numeric roster_id; for the Kleenheat export it's the word
-    "Kleenheat"."""
-    return xlsx.name.split(" ", 1)[0]
+    """Lookup key into ROSTER_MAP.
+      - Numeric leading token (Rapid Crews RosterCut) -> roster_id (e.g. "1353")
+      - Anything else -> full filename stem, trimmed (e.g.
+        "Tianqi Construction Ramp Up Project", "Kleenheat Major March 2026").
+    Trailing whitespace in filenames is tolerated — the uploader for
+    "Tianqi Construction Ramp Up Project .xlsx" accidentally left a space
+    before the extension."""
+    first = xlsx.name.split(" ", 1)[0]
+    if first.isdigit():
+        return first
+    return xlsx.stem.strip()
 
 
 def main() -> int:
@@ -525,7 +558,7 @@ def main() -> int:
 
     # -- 5. Backfill empty payloads for any client the dashboard lists but
     #       which got no rosters this run (prevents 404s on page load).
-    referenced = {"kleenheat", "covalent", "tronox", "csbp"}
+    referenced = {"kleenheat", "covalent", "tronox", "csbp", "tianqi"}
     for company_key in referenced - by_company.keys():
         path = DATA_DIR / f"{company_key}.json"
         if not path.exists():

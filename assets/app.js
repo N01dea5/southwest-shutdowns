@@ -17,6 +17,7 @@
 // to seed retention/carry-over stats.
 const COMPANIES = [
   { key: "kleenheat", file: "data/kleenheat.json", color: "#7A5A2B" }, // earthy amber
+  { key: "tianqi",    file: "data/tianqi.json",    color: "#6B4F9E" }, // muted purple
   { key: "covalent",  file: "data/covalent.json",  color: "#3A7849" }, // forest green
   { key: "tronox",    file: "data/tronox.json",    color: "#3D4250" }, // graphite slate
   { key: "csbp",      file: "data/csbp.json",      color: "#1F4E79" }, // navy blue
@@ -924,7 +925,12 @@ function renderWorkerMatrix(viewShutdowns) {
   }).sort((a, b) => b.total - a.total || a.displayName.localeCompare(b.displayName));
 
   // Header — company dot + short name per shutdown, plus a tri-state
-  // click-to-cycle filter chip (Any → Present → Absent → Any).
+  // click-to-cycle filter chip (Any → Present → Absent → Any). When a
+  // company has more than one shutdown (Tianqi's Construction + Scaffold
+  // scopes, for instance) we also show a compact project tag so the
+  // columns don't just read as "Tianqi / Tianqi".
+  const companyCounts = shutdowns.reduce((a, s) => { a[s.company] = (a[s.company] || 0) + 1; return a; }, {});
+  const shortProject = (name) => name.replace(/ Project$/, "").replace(/ Shutdown.*$/, "").replace(/\s+\d{4}$/, "").split(" ").slice(0, 2).join(" ");
   const thead = table.querySelector("thead");
   thead.innerHTML = `<tr>
     <th>Worker</th>
@@ -934,9 +940,13 @@ function renderWorkerMatrix(viewShutdowns) {
       const flabel = fstate === "present" ? "✓ only"
                    : fstate === "absent"  ? "blanks"
                    : "any";
+      const projectLine = companyCounts[s.company] > 1
+        ? `<span class="matrix-col-sub">${shortProject(s.name)}</span>`
+        : "";
       return `<th class="num matrix-col">
         <span class="co-dot" style="background:${companyColor(s.company)}"></span>
         ${s.company}<br>
+        ${projectLine}
         <span class="matrix-col-sub">${fmtDate(s.start_date)}</span>
         <button type="button"
                 class="matrix-col-filter"

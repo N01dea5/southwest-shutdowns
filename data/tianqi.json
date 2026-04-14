@@ -1,0 +1,223 @@
+{
+  "company": "Tianqi",
+  "shutdowns": [
+    {
+      "id": "tianqi-scaffold-2026-04",
+      "name": "Scaffold Shutdown April 2026",
+      "site": "Kwinana",
+      "start_date": "2026-04-11",
+      "end_date": "2026-06-07",
+      "status": "in_progress",
+      "required_by_role": {
+        "Trade Assistant": 4,
+        "Advanced Scaffolder": 6,
+        "Supervisor - Scaffold": 1
+      },
+      "filled_by_role": {
+        "Trade Assistant": 4,
+        "Advanced Scaffolder": 6,
+        "Supervisor - Scaffold": 1
+      },
+      "crew_split": {
+        "Day": 5,
+        "Night": 6
+      },
+      "mobilised_by_role": {
+        "Trade Assistant": 2,
+        "Advanced Scaffolder": 3
+      },
+      "labour_hire_split": {
+        "SRG - South West": 11
+      },
+      "roster": [
+        {
+          "name": "Willy FAVA",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Lise MONNET",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Michael TE  PUIA",
+          "role": "Advanced Scaffolder"
+        },
+        {
+          "name": "Jordan ENUA",
+          "role": "Advanced Scaffolder"
+        },
+        {
+          "name": "Peter POWER",
+          "role": "Advanced Scaffolder"
+        },
+        {
+          "name": "Vaughan CSERESZNYES",
+          "role": "Advanced Scaffolder"
+        },
+        {
+          "name": "David LEUCUS",
+          "role": "Advanced Scaffolder"
+        },
+        {
+          "name": "Bilal DAHOUM",
+          "role": "Advanced Scaffolder"
+        },
+        {
+          "name": "Killian MURPHY",
+          "role": "Supervisor - Scaffold"
+        },
+        {
+          "name": "Aaron SYKES",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Jaime HERNANDEZ",
+          "role": "Trade Assistant"
+        }
+      ],
+      "_source": {
+        "rapid_crews_roster_id": "Tianqi Scaffold Shutdown April 2026",
+        "rapid_crews_export_file": "Tianqi Scaffold Shutdown April 2026.xlsx",
+        "source_format": "rapidcrews",
+        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "rapid_crews_roster_size": 11,
+        "rapid_crews_filled_by_role": {
+          "Trade Assistant": 4,
+          "Advanced Scaffolder": 6,
+          "Supervisor - Scaffold": 1
+        },
+        "target_source": null
+      }
+    },
+    {
+      "id": "tianqi-construction-2026-04",
+      "name": "Construction Ramp Up Project",
+      "site": "Kwinana",
+      "start_date": "2026-04-14",
+      "end_date": "2026-06-07",
+      "status": "in_progress",
+      "required_by_role": {
+        "Coded Welder": 4,
+        "Supervisor - Mechanical": 3,
+        "Boilermaker": 3,
+        "Intermediate Rigger": 4,
+        "Trade Assistant": 6
+      },
+      "filled_by_role": {
+        "Coded Welder": 4,
+        "Supervisor - Mechanical": 3,
+        "Boilermaker": 3,
+        "Intermediate Rigger": 4,
+        "Trade Assistant": 6
+      },
+      "crew_split": {
+        "Day": 12,
+        "Night": 8
+      },
+      "mobilised_by_role": {},
+      "labour_hire_split": {
+        "SRG - South West": 9,
+        "SRG - Active": 2,
+        "Hyrd - Labour Hire": 9
+      },
+      "roster": [
+        {
+          "name": "Naing WIN",
+          "role": "Coded Welder"
+        },
+        {
+          "name": "Jordan KIRKBY",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Jordan KIRKBY",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Samuel BRYANT",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Adam \ud83d\udd37 RUSSELL",
+          "role": "Boilermaker"
+        },
+        {
+          "name": "Maximiliano \ud83d\udd37 EVENSEN",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Jordan ATITOA-BRYANT",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Abdirizak ABDIKARIM ISSA",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Eleonora TRAORE",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Lise-Elodie \ud83d\udd37 BONNEAU",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Roberto RAFFAELE",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Modesto JAIME",
+          "role": "Coded Welder"
+        },
+        {
+          "name": "Samuel MATHERSON",
+          "role": "Coded Welder"
+        },
+        {
+          "name": "Javier \ud83d\udd37 ROSTAN",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Troy \ud83d\udd37 ORMEROD",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Ivan \ud83d\udd37 CARRASCO",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Tomas \ud83d\udd37 GARCIA",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Modesto JAIME",
+          "role": "Coded Welder"
+        },
+        {
+          "name": "Pieter DU TOIT",
+          "role": "Boilermaker"
+        },
+        {
+          "name": "Daniel \ud83d\udd37 VISSER",
+          "role": "Boilermaker"
+        }
+      ],
+      "_source": {
+        "rapid_crews_roster_id": "Tianqi Construction Ramp Up Project",
+        "rapid_crews_export_file": "Tianqi Construction Ramp Up Project .xlsx",
+        "source_format": "rapidcrews",
+        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "rapid_crews_roster_size": 20,
+        "rapid_crews_filled_by_role": {
+          "Coded Welder": 4,
+          "Supervisor - Mechanical": 3,
+          "Boilermaker": 3,
+          "Intermediate Rigger": 4,
+          "Trade Assistant": 6
+        },
+        "target_source": null
+      }
+    }
+  ],
+  "generated_at": "2026-04-14T13:27:13Z"
+}

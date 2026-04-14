@@ -38,7 +38,8 @@
   --callout-line:  #23B1A5;
 
   /* --- Company identity (stays clear of the brand red) --- */
-  --co-kleenheat:  #7A5A2B;   /* earthy amber — sits apart from the three active clients */
+  --co-kleenheat:  #7A5A2B;   /* earthy amber — historical retention seed */
+  --co-tianqi:     #6B4F9E;   /* muted purple — lithium hydroxide plant */
   --co-covalent:   #3A7849;   /* forest green */
   --co-tronox:     #3D4250;   /* graphite slate */
   --co-csbp:       #1F4E79;   /* navy blue */
@@ -433,6 +434,7 @@ td.num, th.num {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 .gantt-legend .co-kleenheat { background: var(--co-kleenheat); }
+.gantt-legend .co-tianqi    { background: var(--co-tianqi); }
 .gantt-legend .co-covalent  { background: var(--co-covalent); }
 .gantt-legend .co-tronox    { background: var(--co-tronox); }
 .gantt-legend .co-csbp      { background: var(--co-csbp); }

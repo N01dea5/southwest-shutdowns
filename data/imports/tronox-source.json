@@ -35,6 +35,15 @@
       "Rigger - Intermediate": 10,
       "Trade Assistant": 20
     },
+    "by_role_confirmed": {
+      "Supervisor - Mechanical": 1,
+      "Boilermaker": 1,
+      "Coded Welder": 1,
+      "Mechanical Fitter": 16,
+      "Rigger - Advanced": 4,
+      "Rigger - Intermediate": 4,
+      "Trade Assistant": 20
+    },
     "by_group": {
       "Supervisor - Mechanical": 4,
       "Boilermaker": 10,

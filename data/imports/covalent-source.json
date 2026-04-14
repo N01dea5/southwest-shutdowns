@@ -11,24 +11,24 @@
   "start_date": "2026-04-17",
   "end_date": "2026-05-04",
   "contingency": {
-    "total": 37,
+    "total": 29,
     "by_group": {
       "Leadership": 0,
       "HSE": 0,
       "Boilermaker": 3,
-      "Electrical": 2,
-      "Fitter": 14,
-      "Inspections": 0,
+      "Electrical": 0,
+      "Fitter": 8,
+      "Inspections": 2,
       "Rigger": 3,
       "Roller Crew": 5,
       "Lube Tech": 0,
-      "Trade Assistant": 10
+      "Trade Assistant": 8
     }
   },
   "summary": {
     "total_planned": 63,
-    "confirmed": 62,
-    "tbc": 1,
+    "confirmed": 61,
+    "tbc": 2,
     "by_role": {
       "Superintendent": 1,
       "Supervisor DS": 3,
@@ -40,6 +40,26 @@
       "Coded Welder": 1,
       "Electrician": 4,
       "Fitter": 18,
+      "Fitter - Conveyor Inspections": 4,
+      "Fitter - Inspections": 2,
+      "Rigger Advanced": 4,
+      "Roller Crew Supervisor": 1,
+      "Roller Tech": 4,
+      "Lube Tech T/A": 3,
+      "T.A. (Sentry)": 4,
+      "T.A. Telehandler": 2,
+      "Bus Driver": 1
+    },
+    "by_role_confirmed": {
+      "Superintendent": 1,
+      "Supervisor DS": 3,
+      "Supervisor NS": 3,
+      "Coordinator": 1,
+      "HSE": 2,
+      "Boilermaker": 4,
+      "Coded Welder": 1,
+      "Electrician": 4,
+      "Fitter": 17,
       "Fitter - Conveyor Inspections": 4,
       "Fitter - Inspections": 2,
       "Rigger Advanced": 4,
@@ -313,12 +333,12 @@
     },
     {
       "id": 12,
-      "name": "Donggyu (Peter) Kim",
+      "name": "TBC",
       "role": "Fitter",
       "shift": "Day",
       "days": 4,
       "group": "Fitter",
-      "tbc": false
+      "tbc": true
     },
     {
       "id": 13,
@@ -340,7 +360,7 @@
     },
     {
       "id": 36,
-      "name": "Charlie Capaldi",
+      "name": "Selva Loorthsmay",
       "role": "Fitter",
       "shift": "Night",
       "days": 6,
@@ -349,7 +369,7 @@
     },
     {
       "id": 37,
-      "name": "Jordi Patino Roca",
+      "name": "Alessio Sammito",
       "role": "Fitter",
       "shift": "Night",
       "days": 6,
@@ -475,7 +495,7 @@
     },
     {
       "id": 18,
-      "name": "Darren Taylor",
+      "name": "Nathan Arbuckle",
       "role": "Rigger Advanced",
       "shift": "Day",
       "days": 7,
@@ -619,7 +639,7 @@
     },
     {
       "id": 29,
-      "name": "Lewis Ferris",
+      "name": "Shane Cox",
       "role": "T.A. Telehandler",
       "shift": "Night",
       "days": 8,

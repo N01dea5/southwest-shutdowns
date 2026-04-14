@@ -29,6 +29,12 @@
       "Rigger": 4,
       "Trade Assistant": 16
     },
+    "by_role_confirmed": {
+      "Supervisor": 1,
+      "Fitter": 13,
+      "Rigger": 4,
+      "Trade Assistant": 15
+    },
     "by_group": {
       "Supervisor": 3,
       "Fitter": 13,

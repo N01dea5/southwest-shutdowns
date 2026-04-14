@@ -201,23 +201,28 @@ def _extract_contingency(txt: str) -> dict | None:
 # --------------------------------------------------------------------------- helpers
 
 def _summarise(rows: list[dict]) -> dict:
-    by_role: dict[str, int]  = {}
-    by_group: dict[str, int] = {}
-    by_shift: dict[str, int] = {}
+    by_role: dict[str, int]          = {}
+    by_role_confirmed: dict[str, int] = {}
+    by_group: dict[str, int]         = {}
+    by_shift: dict[str, int]         = {}
     confirmed = tbc = 0
     for r in rows:
         by_role[r["role"]]   = by_role.get(r["role"], 0) + 1
         by_group[r["group"]] = by_group.get(r["group"], 0) + 1
         by_shift[r["shift"]] = by_shift.get(r["shift"], 0) + 1
-        if r.get("tbc"): tbc       += 1
-        else:            confirmed += 1
+        if r.get("tbc"):
+            tbc += 1
+        else:
+            confirmed += 1
+            by_role_confirmed[r["role"]] = by_role_confirmed.get(r["role"], 0) + 1
     return {
-        "total_planned": len(rows),
-        "confirmed":     confirmed,
-        "tbc":           tbc,
-        "by_role":       by_role,
-        "by_group":      by_group,
-        "by_shift":      by_shift,
+        "total_planned":     len(rows),
+        "confirmed":         confirmed,
+        "tbc":               tbc,
+        "by_role":           by_role,
+        "by_role_confirmed": by_role_confirmed,
+        "by_group":          by_group,
+        "by_shift":          by_shift,
     }
 
 
@@ -265,8 +270,10 @@ def main() -> int:
         rows         = EXTRACTORS[cfg["extractor"]](html)
         summary      = _summarise(rows)
         contingency  = _extract_contingency(html)
-        targets      = _map_targets(summary["by_role"], cfg["role_map"],
-                                    cfg.get("split"))
+        required     = _map_targets(summary["by_role"],
+                                    cfg["role_map"], cfg.get("split"))
+        filled       = _map_targets(summary["by_role_confirmed"],
+                                    cfg["role_map"], cfg.get("split"))
 
         # data/imports/<company>-source.json — full planned roster (provenance)
         import_doc = {
@@ -290,11 +297,25 @@ def main() -> int:
         print(f"  wrote {imp_path.relative_to(REPO_ROOT)} "
               f"({summary['total_planned']} planned, {summary['tbc']} TBC)")
 
-        # data/targets/<shutdown_id>.json — RC-role-keyed target counts (parser input)
+        # data/targets/<shutdown_id>.json — both planned and confirmed counts,
+        # sourced from the per-site dashboard. The parser merges these on top
+        # of anything derived from the Rapid Crews roster so headline numbers
+        # stay consistent with each site's own dashboard.
+        target_doc = {
+            "required_by_role": required,
+            "filled_by_role":   filled,
+            "_source": {
+                "dashboard":      cfg["source_repo"],
+                "total_planned":  summary["total_planned"],
+                "total_confirmed": summary["confirmed"],
+                "total_tbc":      summary["tbc"],
+            },
+        }
         tgt_path = TARGETS_DIR / f"{cfg['shutdown_id']}.json"
-        tgt_path.write_text(json.dumps(targets, indent=2) + "\n")
+        tgt_path.write_text(json.dumps(target_doc, indent=2) + "\n")
         print(f"  wrote {tgt_path.relative_to(REPO_ROOT)} "
-              f"(sum={sum(targets.values())}, keys={len(targets)})")
+              f"(required={sum(required.values())}, "
+              f"filled={sum(filled.values())})")
 
     return 0
 

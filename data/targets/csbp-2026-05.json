@@ -1,7 +1,22 @@
 {
-  "Supervisor - Mechanical": 3,
-  "Mechanical Fitter": 13,
-  "Advanced Rigger": 3,
-  "Intermediate Rigger": 1,
-  "Trade Assistant": 16
+  "required_by_role": {
+    "Supervisor - Mechanical": 3,
+    "Mechanical Fitter": 13,
+    "Advanced Rigger": 3,
+    "Intermediate Rigger": 1,
+    "Trade Assistant": 16
+  },
+  "filled_by_role": {
+    "Supervisor - Mechanical": 1,
+    "Mechanical Fitter": 13,
+    "Advanced Rigger": 3,
+    "Intermediate Rigger": 1,
+    "Trade Assistant": 15
+  },
+  "_source": {
+    "dashboard": "N01dea5/csbp-naan2-shutdown-workforce-dashboard",
+    "total_planned": 36,
+    "total_confirmed": 33,
+    "total_tbc": 3
+  }
 }

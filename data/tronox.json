@@ -9,22 +9,22 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Supervisor - Mechanical": 4,
         "Coded Welder": 10,
-        "Advanced Rigger": 10,
-        "Trade Assistant": 20,
-        "Mechanical Fitter": 40,
         "Boilermaker": 10,
-        "Intermediate Rigger": 10
+        "Intermediate Rigger": 10,
+        "Advanced Rigger": 10,
+        "Supervisor - Mechanical": 4,
+        "Trade Assistant": 20,
+        "Mechanical Fitter": 40
       },
       "filled_by_role": {
-        "Mechanical Fitter": 16,
-        "Boilermaker": 1,
-        "Advanced Rigger": 4,
-        "Trade Assistant": 20,
-        "Intermediate Rigger": 4,
         "Coded Welder": 1,
-        "Supervisor - Mechanical": 1
+        "Boilermaker": 1,
+        "Intermediate Rigger": 4,
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 1,
+        "Trade Assistant": 20,
+        "Mechanical Fitter": 16
       },
       "crew_split": {
         "Night": 22,
@@ -228,9 +228,25 @@
         "rapid_crews_roster_id": "1353",
         "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
         "source_format": "rapidcrews",
-        "required_target_source": "REAL_TARGET"
+        "required_target_source": "REAL_TARGET",
+        "rapid_crews_roster_size": 47,
+        "rapid_crews_filled_by_role": {
+          "Mechanical Fitter": 16,
+          "Boilermaker": 1,
+          "Advanced Rigger": 4,
+          "Trade Assistant": 20,
+          "Intermediate Rigger": 4,
+          "Coded Welder": 1,
+          "Supervisor - Mechanical": 1
+        },
+        "target_source": {
+          "dashboard": "N01dea5/tronox-major-shutdown-may-2026",
+          "total_planned": 104,
+          "total_confirmed": 47,
+          "total_tbc": 57
+        }
       }
     }
   ],
-  "generated_at": "2026-04-14T10:13:09Z"
+  "generated_at": "2026-04-14T10:26:52Z"
 }

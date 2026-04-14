@@ -320,14 +320,54 @@ def enrich_kleenheat_names(rows: list[dict], lookup: dict) -> dict[str, int]:
 
 # --------------------------------------------------------------------------- targets
 
-def merge_targets(shutdown_id: str, filled_by_role: dict[str, int]) -> dict[str, int]:
-    """Optional override: data/targets/<shutdown_id>.json with {role: target}."""
+def merge_targets(shutdown_id: str,
+                  filled_by_role: dict[str, int]
+                  ) -> tuple[dict[str, int], dict[str, int], dict | None]:
+    """Read optional overrides from data/targets/<shutdown_id>.json and merge
+    them onto the Rapid Crews-derived counts.
+
+    Two file shapes are supported:
+
+    - Flat dict `{role: int}` — legacy / Kleenheat style — treated as the
+      required-by-role override. `filled_by_role` is left as derived.
+    - Nested `{"required_by_role": {...}, "filled_by_role": {...}, "_source": {...}}`
+      produced by `scripts/sync_source_targets.py`. Both required AND filled
+      are replaced by the per-site dashboard counts (the Rapid Crews roster
+      diverges from the site dashboard's own named list; trust the site).
+
+    Returns (required_by_role, filled_by_role, source_meta | None).
+    """
     path = TARGETS_DIR / f"{shutdown_id}.json"
     if not path.exists():
-        return dict(filled_by_role)
-    overrides: dict = json.loads(path.read_text())
-    return {role: int(overrides.get(role, filled_by_role.get(role, 0)))
-            for role in set(filled_by_role) | set(overrides)}
+        return dict(filled_by_role), dict(filled_by_role), None
+    data: dict = json.loads(path.read_text())
+
+    if "required_by_role" in data:
+        required_override: dict[str, int] = data["required_by_role"]
+        filled_override:   dict[str, int] | None = data.get("filled_by_role")
+        source_meta = data.get("_source")
+    else:
+        # Legacy flat shape — all keys are required-by-role overrides.
+        required_override = data
+        filled_override   = None
+        source_meta       = None
+
+    if filled_override is not None:
+        # Full override from the per-site dashboard — trust it completely.
+        # Don't mix in roles the Rapid Crews roster has but the site doesn't,
+        # or the totals diverge from what the site shows.
+        all_keys = set(required_override) | set(filled_override)
+        required = {r: int(required_override.get(r, 0)) for r in all_keys}
+        filled   = {r: int(filled_override.get(r, 0))   for r in all_keys}
+    else:
+        # Legacy / Kleenheat: target covers required only; filled stays as
+        # the RC-derived count (with required defaulting to filled for any
+        # role the target file didn't mention — the placeholder behaviour).
+        all_keys = set(filled_by_role) | set(required_override)
+        required = {r: int(required_override.get(r, filled_by_role.get(r, 0)))
+                    for r in all_keys}
+        filled   = dict(filled_by_role)
+    return required, filled, source_meta
 
 
 # --------------------------------------------------------------------------- build a shutdown payload
@@ -363,11 +403,12 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
             mobilised_by_role[r["role"]] = mobilised_by_role.get(r["role"], 0) + 1
 
     shutdown_id = f"{company_key}-{sd[:7]}"
-    required    = merge_targets(shutdown_id, filled_by_role)
+    required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
     today       = dt.date.today()
     status      = _infer_status(dt.date.fromisoformat(sd),
                                 dt.date.fromisoformat(ed), today)
 
+    target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
     shutdown = {
         "id":               shutdown_id,
         "name":             project_label,
@@ -376,7 +417,7 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
         "end_date":         ed,
         "status":           status,
         "required_by_role": required,
-        "filled_by_role":   filled_by_role,
+        "filled_by_role":   filled_final,
         "crew_split":       crew_split,
         "mobilised_by_role": mobilised_by_role,
         "labour_hire_split": labour_hire_split,
@@ -386,9 +427,11 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
             "rapid_crews_export_file": xlsx.name,
             "source_format":           fmt,
             "required_target_source": (
-                "REAL_TARGET" if (TARGETS_DIR / f"{shutdown_id}.json").exists()
-                else "PLACEHOLDER_FROM_ROSTER"
+                "REAL_TARGET" if target_exists else "PLACEHOLDER_FROM_ROSTER"
             ),
+            "rapid_crews_roster_size": len(confirmed),
+            "rapid_crews_filled_by_role": filled_by_role,   # preserved for audit
+            "target_source":           target_source_meta,  # None for Kleenheat
         },
     }
     # Provenance for enriched rows — surfaced in data-quality warnings

@@ -9,38 +9,36 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Telehandler Operator": 2,
-        "Lube Technician": 3,
-        "Site Coordinator": 1,
-        "Intermediate Rigger": 3,
-        "Supervisor": 2,
-        "Superintendent": 1,
-        "Electrician": 4,
-        "HSE Advisor": 2,
-        "Supervisor - Mechanical": 6,
-        "Advanced Rigger": 4,
-        "Coded Welder": 1,
-        "Trade Assistant": 5,
         "Basic Rigger": 4,
-        "Mechanical Fitter": 24,
-        "Boilermaker": 4
+        "Superintendent": 1,
+        "Supervisor": 2,
+        "Electrician": 4,
+        "Lube Technician": 3,
+        "Advanced Rigger": 4,
+        "HSE Advisor": 2,
+        "Coded Welder": 1,
+        "Telehandler Operator": 2,
+        "Boilermaker": 4,
+        "Site Coordinator": 1,
+        "Supervisor - Mechanical": 6,
+        "Trade Assistant": 5,
+        "Mechanical Fitter": 24
       },
       "filled_by_role": {
-        "Boilermaker": 5,
-        "Electrician": 4,
         "Basic Rigger": 4,
-        "Mechanical Fitter": 22,
-        "Lube Technician": 3,
-        "Supervisor - Mechanical": 6,
-        "Telehandler Operator": 2,
+        "Superintendent": 1,
         "Supervisor": 1,
+        "Electrician": 4,
+        "Lube Technician": 3,
         "Advanced Rigger": 4,
-        "Trade Assistant": 7,
-        "Superintendent": 2,
         "HSE Advisor": 2,
-        "Intermediate Rigger": 3,
+        "Coded Welder": 1,
+        "Telehandler Operator": 2,
+        "Boilermaker": 4,
         "Site Coordinator": 1,
-        "Coded Welder": 1
+        "Supervisor - Mechanical": 6,
+        "Trade Assistant": 5,
+        "Mechanical Fitter": 23
       },
       "crew_split": {
         "Day": 32,
@@ -334,9 +332,33 @@
         "rapid_crews_roster_id": "1359",
         "rapid_crews_export_file": "1359 (RosterCut) 2026-04-14_15-11-34.xlsx",
         "source_format": "rapidcrews",
-        "required_target_source": "REAL_TARGET"
+        "required_target_source": "REAL_TARGET",
+        "rapid_crews_roster_size": 67,
+        "rapid_crews_filled_by_role": {
+          "Boilermaker": 5,
+          "Electrician": 4,
+          "Basic Rigger": 4,
+          "Mechanical Fitter": 22,
+          "Lube Technician": 3,
+          "Supervisor - Mechanical": 6,
+          "Telehandler Operator": 2,
+          "Supervisor": 1,
+          "Advanced Rigger": 4,
+          "Trade Assistant": 7,
+          "Superintendent": 2,
+          "HSE Advisor": 2,
+          "Intermediate Rigger": 3,
+          "Site Coordinator": 1,
+          "Coded Welder": 1
+        },
+        "target_source": {
+          "dashboard": "N01dea5/Covalent-Mt-Holland---April-2026",
+          "total_planned": 63,
+          "total_confirmed": 61,
+          "total_tbc": 2
+        }
       }
     }
   ],
-  "generated_at": "2026-04-14T10:13:09Z"
+  "generated_at": "2026-04-14T10:26:52Z"
 }

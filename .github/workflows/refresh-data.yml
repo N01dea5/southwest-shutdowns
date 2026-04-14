@@ -17,19 +17,21 @@ name: Refresh dashboard data
 
 on:
   push:
-    branches: [main, claude/unified-company-dashboard-GUq5N]
+    branches: [main]              # main only — pushes to the default branch are mirrored by us
     paths:
       - 'data/raw/**'
       - 'data/targets/**'
       - 'data/imports/**'
       - 'scripts/**'
-  schedule:
-    # 22:00 UTC ≈ 06:00 AWST — first thing in the morning Perth time.
-    - cron: '0 22 * * *'
   workflow_dispatch:
+  # NOTE: nightly schedule disabled until SharePoint pull is wired up.
+  # Re-enable by uncommenting the schedule block below.
+  # schedule:
+  #   - cron: '0 22 * * *'        # 22:00 UTC ≈ 06:00 AWST
 
 concurrency:
-  # One refresh at a time per branch; a newer push waits for the current one.
+  # One refresh at a time per branch; queue rather than cancel so manual
+  # dispatches and pushes don't stomp on each other.
   group: refresh-data-${{ github.ref }}
   cancel-in-progress: false
 
@@ -52,7 +54,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: pip
+          # Note: no `cache: pip` — would require a requirements.txt file to
+          # hash against. openpyxl + urllib are the only deps; install is
+          # quick enough that pip-cache savings aren't worth the constraint.
 
       - name: Install dependencies
         run: pip install openpyxl

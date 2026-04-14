@@ -56,7 +56,9 @@ async function load() {
     if (!r.ok) throw new Error(`Failed to load ${c.file}: ${r.status}`);
     return r.json();
   }));
-  for (const payload of results) state.raw[payload.company] = payload;
+  for (const payload of results) {
+    if (payload && payload.company) state.raw[payload.company] = payload;
+  }
 
   // Flatten and sort chronologically. Infer status from dates when missing.
   // A shutdown is only "completed" once every scheduled worker has
@@ -86,17 +88,8 @@ async function load() {
   }
   state.shutdowns.sort((a, b) => a.start_date.localeCompare(b.start_date));
 
-  renderFreshness(results);
   setupFilter();
   render();
-}
-
-function renderFreshness(payloads) {
-  const parts = payloads.map(p => {
-    const ts = new Date(p.generated_at);
-    return `${p.company} &middot; ${ts.toLocaleDateString()} ${ts.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}`;
-  });
-  document.getElementById("freshness").innerHTML = "Data as of<br>" + parts.join(" &nbsp;|&nbsp; ");
 }
 
 function setupFilter() {
@@ -584,10 +577,13 @@ function renderShutdownSummary(view) {
         </tr>`;
     }).join("");
 
-    const card = document.createElement("div");
+    // <details> makes each card natively collapsible — default open so
+    // everything is visible on load; chevron on the right flips on toggle.
+    const card = document.createElement("details");
     card.className = "sd-card";
+    card.open = true;
     card.innerHTML = `
-      <div class="sd-head">
+      <summary class="sd-head">
         <div class="sd-title">
           <span class="co-dot" style="background:${companyColor(s.company)}"></span>
           <span class="sd-co">${s.company}</span>
@@ -598,33 +594,37 @@ function renderShutdownSummary(view) {
           <span class="sd-status status-${s.status}">${statusLabel(s.status)}</span>
           <span class="sd-dates">${fmtDate(s.start_date)} &rarr; ${fmtDate(s.end_date)}</span>
           <span class="sd-site">${s.site || ""}</span>
+          <span class="sd-quick">${fmtInt(totalFilled)} / ${fmtInt(totalReq)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""} &middot; ${totalReq ? fmtPct(fillRate) : "—"}</span>
+          <span class="sd-chevron" aria-hidden="true">&#9662;</span>
         </div>
-      </div>
-      <div class="sd-kpis">
-        <div class="sd-kpi"><span class="sd-kpi-lbl">Planned</span><span class="sd-kpi-val">${fmtInt(totalReq)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
-        <div class="sd-kpi"><span class="sd-kpi-lbl">Confirmed</span><span class="sd-kpi-val">${fmtInt(totalFilled)}</span></div>
-        <div class="sd-kpi"><span class="sd-kpi-lbl">Gap</span><span class="sd-kpi-val ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</span></div>
-        <div class="sd-kpi"><span class="sd-kpi-lbl">Fill rate</span><span class="sd-kpi-val">${totalReq ? fmtPct(fillRate) : "—"}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
-      </div>
-      <div class="table-wrap sd-table-wrap">
-        <table class="sd-table">
-          <thead><tr>
-            <th>Role</th>
-            <th class="num">Required</th>
-            <th class="num">Filled</th>
-            <th class="num">Gap</th>
-            <th class="num">Fill rate</th>
-          </tr></thead>
-          <tbody>${body}
-            <tr class="sd-total">
-              <td>Total</td>
-              <td class="num">${fmtInt(totalReq)}</td>
-              <td class="num">${fmtInt(totalFilled)}</td>
-              <td class="num ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</td>
-              <td class="num">${totalReq ? fmtPct(fillRate) : "—"}</td>
-            </tr>
-          </tbody>
-        </table>
+      </summary>
+      <div class="sd-body">
+        <div class="sd-kpis">
+          <div class="sd-kpi"><span class="sd-kpi-lbl">Planned</span><span class="sd-kpi-val">${fmtInt(totalReq)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
+          <div class="sd-kpi"><span class="sd-kpi-lbl">Confirmed</span><span class="sd-kpi-val">${fmtInt(totalFilled)}</span></div>
+          <div class="sd-kpi"><span class="sd-kpi-lbl">Gap</span><span class="sd-kpi-val ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</span></div>
+          <div class="sd-kpi"><span class="sd-kpi-lbl">Fill rate</span><span class="sd-kpi-val">${totalReq ? fmtPct(fillRate) : "—"}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
+        </div>
+        <div class="table-wrap sd-table-wrap">
+          <table class="sd-table">
+            <thead><tr>
+              <th>Role</th>
+              <th class="num">Required</th>
+              <th class="num">Filled</th>
+              <th class="num">Gap</th>
+              <th class="num">Fill rate</th>
+            </tr></thead>
+            <tbody>${body}
+              <tr class="sd-total">
+                <td>Total</td>
+                <td class="num">${fmtInt(totalReq)}</td>
+                <td class="num">${fmtInt(totalFilled)}</td>
+                <td class="num ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</td>
+                <td class="num">${totalReq ? fmtPct(fillRate) : "—"}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     `;
     host.appendChild(card);
@@ -673,7 +673,11 @@ function renderWarnings() {
 
 window.addEventListener("DOMContentLoaded", () => {
   load().catch(err => {
-    document.getElementById("freshness").textContent = "Failed to load data: " + err.message;
+    const banner = document.getElementById("placeholder-banner");
+    if (banner) {
+      banner.hidden = false;
+      banner.innerHTML = `<strong>Failed to load data:</strong> ${err.message}`;
+    }
     console.error(err);
   });
 });

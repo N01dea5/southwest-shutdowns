@@ -65,7 +65,7 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
   border-bottom: 1px solid var(--srg-border);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto 1fr;
   gap: 24px;
   align-items: center;
   max-width: 1440px;
@@ -77,28 +77,17 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
   height: 40px;
   background: var(--srg-border);
 }
-.wordmark {
+.logo-link {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0;
+  align-items: center;
   text-decoration: none;
-  font-weight: 800;
-  line-height: 1;
+  flex-shrink: 0;
 }
-.wordmark .wm-srg {
-  color: var(--srg-red);
-  font-size: 32px;
-  letter-spacing: 0.01em;
-  padding-right: 8px;
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
 }
-.wordmark .wm-global {
-  color: var(--srg-dark);
-  font-weight: 700;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-}
-.wordmark:hover .wm-srg { color: var(--srg-red-dark); }
 
 .brand { min-width: 0; }
 .brand .eyebrow {
@@ -115,32 +104,12 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
   color: var(--srg-dark);
   line-height: 1.2;
 }
-.brand .subtitle {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--srg-grey);
-}
-
-.freshness {
-  text-align: right;
-  color: var(--srg-grey-2);
-  font-size: 10.5px;
-  line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
 
 @media (max-width: 880px) {
   .topbar {
     grid-template-columns: auto 1fr;
   }
   .topbar .wm-divider { display: none; }
-  .freshness {
-    grid-column: 1 / -1;
-    text-align: left;
-    padding-top: 8px;
-    border-top: 1px solid var(--srg-border);
-  }
 }
 
 /* ----------------- Filter bar ----------------- */
@@ -518,6 +487,27 @@ td.num, th.num {
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
+/* <details> collapsible mechanics — hide native marker, add our own chevron. */
+.sd-card > summary { list-style: none; cursor: pointer; user-select: none; }
+.sd-card > summary::-webkit-details-marker { display: none; }
+.sd-card .sd-chevron {
+  display: inline-block;
+  color: var(--srg-grey);
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
+  transition: transform .15s ease;
+}
+.sd-card[open] .sd-chevron { transform: rotate(180deg); }
+.sd-card > summary:hover { background: var(--surface-2); }
+.sd-card > summary:hover .sd-chevron { color: var(--srg-dark); }
+.sd-quick {
+  font-weight: 700;
+  color: var(--srg-dark);
+  padding-left: 10px;
+  border-left: 1px solid var(--srg-border);
+}
+.sd-card:not([open]) .sd-head { border-bottom: none; }
 .sd-head {
   display: flex;
   align-items: center;

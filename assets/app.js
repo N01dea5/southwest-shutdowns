@@ -28,6 +28,8 @@ const state = {
   filter: "all",           // "all" | company display name
   statusFilter: "all",     // "all" | "booked" | "in_progress" | "completed"
   charts: {},              // Chart.js handles, so we can destroy() on re-render
+  matrixFilters: {},       // shutdownId -> "present" | "absent" (absent = blank)
+  matrixSearch: "",        // live text filter for the matrix
 };
 
 // -------------------- helpers --------------------
@@ -900,21 +902,43 @@ function renderWorkerMatrix(viewShutdowns) {
     };
   }).sort((a, b) => b.total - a.total || a.displayName.localeCompare(b.displayName));
 
-  // Header — company dot + short name per shutdown.
+  // Header — company dot + short name per shutdown, plus a tri-state
+  // click-to-cycle filter chip (Any → Present → Absent → Any).
   const thead = table.querySelector("thead");
   thead.innerHTML = `<tr>
     <th>Worker</th>
     <th>Role</th>
-    ${shutdowns.map(s => `<th class="num matrix-col">
-      <span class="co-dot" style="background:${companyColor(s.company)}"></span>
-      ${s.company}<br>
-      <span class="matrix-col-sub">${fmtDate(s.start_date)}</span>
-    </th>`).join("")}
+    ${shutdowns.map(s => {
+      const fstate = state.matrixFilters[s.id] || "any";
+      const flabel = fstate === "present" ? "✓ only"
+                   : fstate === "absent"  ? "blanks"
+                   : "any";
+      return `<th class="num matrix-col">
+        <span class="co-dot" style="background:${companyColor(s.company)}"></span>
+        ${s.company}<br>
+        <span class="matrix-col-sub">${fmtDate(s.start_date)}</span>
+        <button type="button"
+                class="matrix-col-filter"
+                data-shutdown-id="${s.id}"
+                data-state="${fstate}"
+                title="Click to cycle: any → present only → blanks only">${flabel}</button>
+      </th>`;
+    }).join("")}
     <th class="num">Shutdowns</th>
   </tr>`;
 
+  // Apply the active per-column filters on top of the name/role search.
+  const filteredRows = rows.filter(w => {
+    for (const [sid, st] of Object.entries(state.matrixFilters)) {
+      const present = w.appearances.has(sid);
+      if (st === "present" && !present) return false;
+      if (st === "absent"  &&  present) return false;
+    }
+    return true;
+  });
+
   const tbody = table.querySelector("tbody");
-  const html = rows.map(w => {
+  const html = filteredRows.map(w => {
     const roleCell = w.priorRoles.length
       ? `<td title="Previously: ${w.priorRoles.join(", ")}">${w.role} <span class="role-shift" aria-hidden="true">↗</span></td>`
       : `<td>${w.role}</td>`;
@@ -932,19 +956,45 @@ function renderWorkerMatrix(viewShutdowns) {
   }).join("");
   tbody.innerHTML = html;
 
-  // Count + search filter.
+  // Re-apply any live text search on top of the column filters, so typing
+  // "joe" then clicking a column filter keeps the typed query in effect.
+  if (state.matrixSearch) {
+    tbody.querySelectorAll("tr").forEach(tr => {
+      if (!tr.textContent.toLowerCase().includes(state.matrixSearch)) tr.style.display = "none";
+    });
+  }
+
+  // Click handlers — cycle each column filter Any → Present → Absent → Any.
+  // Re-wired per render; old handler clears with innerHTML replacement above.
+  thead.addEventListener("click", onMatrixHeaderClick);
+
+  // Count + search + active-filter summary.
   const countEl = document.getElementById("matrix-count");
   const total   = rows.length;
   const returners = rows.filter(w => w.total > 1).length;
+  const activeFilters = Object.entries(state.matrixFilters);
+  const baseSummary = `<strong>${fmtInt(total)}</strong> unique workers &middot; <strong>${fmtInt(returners)}</strong> returner${returners === 1 ? "" : "s"}`;
+
+  // Build a "Clear filters" link that appears when at least one column or
+  // search is active.
+  const clearLink = (activeFilters.length || state.matrixSearch)
+    ? ` <button type="button" id="matrix-clear" class="matrix-clear">Clear filters</button>`
+    : "";
+
   if (countEl) {
-    countEl.innerHTML = `<strong>${fmtInt(total)}</strong> unique workers &middot; <strong>${fmtInt(returners)}</strong> returner${returners === 1 ? "" : "s"}`;
+    countEl.innerHTML = (filteredRows.length === rows.length
+      ? baseSummary
+      : `<strong>${fmtInt(filteredRows.length)}</strong> of ${fmtInt(total)} shown`) + clearLink;
   }
 
-  // Wire search once per render (clears + re-attaches).
+  // Wire search input (debounced via state so re-renders keep the query).
   const search = document.getElementById("matrix-search");
   if (search) {
-    const handler = () => {
-      const q = search.value.trim().toLowerCase();
+    if (search.value !== state.matrixSearch) search.value = state.matrixSearch;
+    search.oninput = () => {
+      state.matrixSearch = search.value.trim().toLowerCase();
+      // Apply purely via DOM so we don't tear the whole matrix down on every keystroke.
+      const q = state.matrixSearch;
       const trs = tbody.querySelectorAll("tr");
       let visible = 0;
       trs.forEach(tr => {
@@ -952,12 +1002,38 @@ function renderWorkerMatrix(viewShutdowns) {
         tr.style.display = match ? "" : "none";
         if (match) visible++;
       });
-      if (countEl) countEl.innerHTML = q
-        ? `<strong>${fmtInt(visible)}</strong> of ${fmtInt(total)} shown`
-        : `<strong>${fmtInt(total)}</strong> unique workers &middot; <strong>${fmtInt(returners)}</strong> returner${returners === 1 ? "" : "s"}`;
+      countEl.innerHTML = q
+        ? `<strong>${fmtInt(visible)}</strong> of ${fmtInt(filteredRows.length)} shown` +
+          ` <button type="button" id="matrix-clear" class="matrix-clear">Clear filters</button>`
+        : (filteredRows.length === rows.length ? baseSummary : `<strong>${fmtInt(filteredRows.length)}</strong> of ${fmtInt(total)} shown`) + clearLink;
     };
-    search.oninput = handler;
   }
+
+  const clearBtn = document.getElementById("matrix-clear");
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      state.matrixFilters = {};
+      state.matrixSearch  = "";
+      if (search) search.value = "";
+      renderWorkerMatrix();
+    };
+  }
+}
+
+// Column-header click handler for tri-state filter cycling. Kept as a module-
+// level function so re-renders don't stack listeners (the innerHTML replacement
+// already drops them, but this is tidier).
+function onMatrixHeaderClick(e) {
+  const btn = e.target.closest(".matrix-col-filter");
+  if (!btn) return;
+  const sid = btn.dataset.shutdownId;
+  const cur = state.matrixFilters[sid] || "any";
+  const next = cur === "any"     ? "present"
+             : cur === "present" ? "absent"
+                                 : "any";
+  if (next === "any") delete state.matrixFilters[sid];
+  else state.matrixFilters[sid] = next;
+  renderWorkerMatrix();
 }
 
 /**

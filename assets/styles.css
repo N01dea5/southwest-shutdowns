@@ -844,6 +844,52 @@ td.num, th.num {
   margin-left: 4px;
   cursor: help;
 }
+/* Tri-state per-column filter chip in the matrix header. Cycles on click:
+   Any → Present (green) → Absent (red) → Any. */
+.matrix-col-filter {
+  appearance: none;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px 8px;
+  border: 1px solid var(--srg-border);
+  background: var(--surface);
+  border-radius: 2px;
+  font-family: var(--body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--srg-grey);
+  cursor: pointer;
+  user-select: none;
+  transition: all .12s ease;
+}
+.matrix-col-filter:hover { border-color: var(--srg-dark); color: var(--srg-dark); }
+.matrix-col-filter[data-state="present"] {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: var(--ok);
+}
+.matrix-col-filter[data-state="absent"] {
+  background: var(--bad-soft);
+  color: var(--bad);
+  border-color: var(--bad);
+}
+.matrix-clear {
+  appearance: none;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border: 1px solid var(--srg-red);
+  background: var(--surface);
+  color: var(--srg-red);
+  border-radius: 2px;
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.matrix-clear:hover { background: var(--srg-red); color: #fff; }
 
 /* ----------------- Disclosure (warnings) ----------------- */
 

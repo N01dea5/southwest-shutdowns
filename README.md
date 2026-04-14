@@ -139,6 +139,50 @@ the source vocabulary (e.g. Covalent's "Fitter - Inspections", Tronox's
 any time a site dashboard ships new targets, then re-run
 `scripts/parse_rapidcrews.py`.
 
+## Automation — GitHub Actions
+
+`.github/workflows/refresh-data.yml` runs the full refresh loop without any
+manual invocation of the scripts. Three triggers:
+
+| Trigger         | When it fires                                        | Use |
+|-----------------|------------------------------------------------------|-----|
+| **Push**        | A roster XLSX, target file, import, or script changes on `main` or the default branch | Auto-regenerates `data/*.json` after you upload a new RosterCut |
+| **Schedule**    | 22:00 UTC (~06:00 AWST) every day                    | Picks up overnight edits made on any per-site dashboard, even if nothing landed in this repo |
+| **Manual**      | "Run workflow" button on the Actions tab             | Force a refresh whenever you like |
+
+Each run:
+
+1. `pip install openpyxl`
+2. `python3 scripts/sync_source_targets.py` — pulls planned + confirmed counts
+   from each per-site dashboard (`Covalent-Mt-Holland---April-2026`,
+   `tronox-major-shutdown-may-2026`, `csbp-naan2-shutdown-workforce-dashboard`)
+3. `python3 scripts/parse_rapidcrews.py` — parses every XLSX in `data/raw/`
+   and merges the target overrides
+4. If any file under `data/` changed, the workflow bumps the `?v=…`
+   cache-buster on `index.html` (so iOS Safari refetches the CSS/JS after GH
+   Pages redeploys) and commits the lot back with
+   `Auto-refresh dashboard data [skip ci]`
+
+The `[skip ci]` in the auto-commit message stops the workflow from
+re-triggering itself. `concurrency: refresh-data-${ref}` lets a newer push
+queue up behind the current run rather than stepping on it.
+
+### What's still manual
+
+1. Uploading a RosterCut XLSX to `data/raw/` when a new Rapid Crews snapshot
+   is available (drag into the GitHub web UI, or commit via git).
+2. Editing `data/targets/*.json` or `data/imports/*.json` by hand when the
+   per-site dashboard role mapping needs a tweak — everything else is picked
+   up by the sync script.
+
+Everything after those two things is automatic.
+
+### Logs and manual runs
+
+Actions tab → "Refresh dashboard data" workflow. Click a run to see the
+per-step logs and the summary (which site dashboards were polled, whether
+anything changed). Hit "Run workflow" in the top-right for a manual refresh.
+
 ## Retention semantics
 
 No stable employee IDs exist in the source data, so matching is on a normalised `name + role` key (lowercased, punctuation stripped, whitespace collapsed). Two retention views are shown side-by-side:

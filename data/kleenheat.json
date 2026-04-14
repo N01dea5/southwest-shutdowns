@@ -9,14 +9,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Sheet Metal Worker": 3,
+        "Scaffolder": 6,
+        "Trade Assistant": 18,
         "Advanced Rigger": 2,
-        "Intermediate Rigger": 3,
+        "Sheet Metal Worker": 3,
+        "Mechanical Fitter": 23,
         "Supervisor - Mechanical": 4,
         "Painter & Blaster": 2,
-        "Trade Assistant": 18,
-        "Scaffolder": 6,
-        "Mechanical Fitter": 23
+        "Intermediate Rigger": 3
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -334,5 +334,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T13:27:13Z"
+  "generated_at": "2026-04-14T13:38:28Z"
 }

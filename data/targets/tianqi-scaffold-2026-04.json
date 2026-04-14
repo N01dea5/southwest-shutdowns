@@ -1,0 +1,19 @@
+{
+  "required_by_role": {
+    "Advanced Scaffolder": 6,
+    "Supervisor - Scaffold": 1,
+    "Trade Assistant": 4
+  },
+  "filled_by_role": {
+    "Advanced Scaffolder": 6,
+    "Supervisor - Scaffold": 1,
+    "Trade Assistant": 4
+  },
+  "_source": {
+    "dashboard": "rapid-crews-1365",
+    "project":   "TIANQI - Y26S01 SHUT",
+    "total_planned":   11,
+    "total_confirmed": 11,
+    "total_tbc":        0
+  }
+}

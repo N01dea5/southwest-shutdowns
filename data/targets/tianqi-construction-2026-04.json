@@ -1,0 +1,24 @@
+{
+  "required_by_role": {
+    "Boilermaker": 4,
+    "Coded Welder": 4,
+    "Advanced Rigger": 4,
+    "Supervisor - Mechanical": 2,
+    "Trade Assistant": 4
+  },
+  "filled_by_role": {
+    "Boilermaker": 3,
+    "Coded Welder": 4,
+    "Advanced Rigger": 0,
+    "Supervisor - Mechanical": 2,
+    "Trade Assistant": 4
+  },
+  "_source": {
+    "dashboard": "rapid-crews-1391",
+    "project":   "TIANQI - TLK-1596_TLK RAMP-UP",
+    "total_planned":   18,
+    "total_confirmed": 13,
+    "total_tbc":        5,
+    "notes": "Filled is requirement-matched (min of booked vs required per role) to stay consistent with Rapid Crews' FILLED/TO FILL semantics. Extra heads booked beyond the original plan (Intermediate Rigger x4, Supervisor extra x1, Trade Assistant extra x2) show up in the Rapid Crews roster but are excluded from FILLED by design — they don't close a required gap."
+  }
+}

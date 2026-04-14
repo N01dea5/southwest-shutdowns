@@ -544,7 +544,10 @@ td.num, th.num {
 .gantt-row {
   display: flex;
   align-items: stretch;
-  height: 44px;
+  /* Height is set inline per lane by renderGantt — grows when overlapping
+     shutdowns need to stack onto separate tracks. Keep a reasonable floor
+     for the common single-track case. */
+  min-height: 44px;
   border-bottom: 1px solid var(--srg-border);
 }
 .gantt-row:last-child { border-bottom: none; }
@@ -569,7 +572,8 @@ td.num, th.num {
 .gantt-track { position: relative; flex: 1; overflow: hidden; }
 .gantt-bar {
   position: absolute;
-  top: 7px; bottom: 7px;
+  /* top + height are set inline per bar by renderGantt (one track row per
+     non-overlapping bar within a lane). */
   color: #fff;
   font-size: 11px;
   font-weight: 700;

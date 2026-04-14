@@ -9,14 +9,14 @@
       "end_date": "2026-06-07",
       "status": "in_progress",
       "required_by_role": {
-        "Trade Assistant": 4,
         "Advanced Scaffolder": 6,
-        "Supervisor - Scaffold": 1
+        "Supervisor - Scaffold": 1,
+        "Trade Assistant": 4
       },
       "filled_by_role": {
-        "Trade Assistant": 4,
         "Advanced Scaffolder": 6,
-        "Supervisor - Scaffold": 1
+        "Supervisor - Scaffold": 1,
+        "Trade Assistant": 4
       },
       "crew_split": {
         "Day": 5,
@@ -79,14 +79,20 @@
         "rapid_crews_roster_id": "Tianqi Scaffold Shutdown April 2026",
         "rapid_crews_export_file": "Tianqi Scaffold Shutdown April 2026.xlsx",
         "source_format": "rapidcrews",
-        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "required_target_source": "REAL_TARGET",
         "rapid_crews_roster_size": 11,
         "rapid_crews_filled_by_role": {
           "Trade Assistant": 4,
           "Advanced Scaffolder": 6,
           "Supervisor - Scaffold": 1
         },
-        "target_source": null
+        "target_source": {
+          "dashboard": "rapid-crews-1365",
+          "project": "TIANQI - Y26S01 SHUT",
+          "total_planned": 11,
+          "total_confirmed": 11,
+          "total_tbc": 0
+        }
       }
     },
     {
@@ -98,17 +104,17 @@
       "status": "in_progress",
       "required_by_role": {
         "Coded Welder": 4,
-        "Supervisor - Mechanical": 3,
-        "Boilermaker": 3,
-        "Intermediate Rigger": 4,
-        "Trade Assistant": 6
+        "Boilermaker": 4,
+        "Trade Assistant": 4,
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 2
       },
       "filled_by_role": {
         "Coded Welder": 4,
-        "Supervisor - Mechanical": 3,
         "Boilermaker": 3,
-        "Intermediate Rigger": 4,
-        "Trade Assistant": 6
+        "Trade Assistant": 4,
+        "Advanced Rigger": 0,
+        "Supervisor - Mechanical": 2
       },
       "crew_split": {
         "Day": 12,
@@ -206,7 +212,7 @@
         "rapid_crews_roster_id": "Tianqi Construction Ramp Up Project",
         "rapid_crews_export_file": "Tianqi Construction Ramp Up Project .xlsx",
         "source_format": "rapidcrews",
-        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "required_target_source": "REAL_TARGET",
         "rapid_crews_roster_size": 20,
         "rapid_crews_filled_by_role": {
           "Coded Welder": 4,
@@ -215,9 +221,16 @@
           "Intermediate Rigger": 4,
           "Trade Assistant": 6
         },
-        "target_source": null
+        "target_source": {
+          "dashboard": "rapid-crews-1391",
+          "project": "TIANQI - TLK-1596_TLK RAMP-UP",
+          "total_planned": 18,
+          "total_confirmed": 13,
+          "total_tbc": 5,
+          "notes": "Filled is requirement-matched (min of booked vs required per role) to stay consistent with Rapid Crews' FILLED/TO FILL semantics. Extra heads booked beyond the original plan (Intermediate Rigger x4, Supervisor extra x1, Trade Assistant extra x2) show up in the Rapid Crews roster but are excluded from FILLED by design \u2014 they don't close a required gap."
+        }
       }
     }
   ],
-  "generated_at": "2026-04-14T13:27:13Z"
+  "generated_at": "2026-04-14T13:38:28Z"
 }

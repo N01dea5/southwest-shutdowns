@@ -700,9 +700,43 @@ function renderGantt(view) {
     grid.appendChild(todayLine);
   }
 
+  // Pixel height per bar/track within a lane. Overlapping shutdowns in the
+  // same lane stack onto separate tracks using greedy interval scheduling,
+  // so e.g. Tianqi's Construction Ramp-Up and Scaffold Shutdown don't
+  // visually collide when they run in parallel.
+  const TRACK_H  = 34;
+  const TRACK_PAD = 4;
+
+  function assignTracks(shutdownsInLane) {
+    const sorted = [...shutdownsInLane].sort((a, b) => a.start_date.localeCompare(b.start_date));
+    const trackEnds = [];          // max end_date on each track so far
+    const tracks    = new Map();   // shutdown.id -> track index
+    for (const s of sorted) {
+      let placed = false;
+      for (let t = 0; t < trackEnds.length; t++) {
+        if (trackEnds[t] < s.start_date) {
+          trackEnds[t] = s.end_date;
+          tracks.set(s.id, t);
+          placed = true;
+          break;
+        }
+      }
+      if (!placed) {
+        tracks.set(s.id, trackEnds.length);
+        trackEnds.push(s.end_date);
+      }
+    }
+    return { tracks, trackCount: Math.max(1, trackEnds.length) };
+  }
+
   for (const lane of lanes) {
+    const laneShutdowns      = view.filter(x => x.company === lane);
+    const { tracks, trackCount } = assignTracks(laneShutdowns);
+    const laneH = trackCount * TRACK_H + TRACK_PAD * 2;
+
     const row = document.createElement("div");
     row.className = "gantt-row";
+    row.style.height = laneH + "px";
 
     const label = document.createElement("div");
     label.className = "gantt-row-label";
@@ -712,17 +746,20 @@ function renderGantt(view) {
     const track = document.createElement("div");
     track.className = "gantt-track";
 
-    for (const s of view.filter(x => x.company === lane)) {
+    for (const s of laneShutdowns) {
       const sd = new Date(s.start_date + "T00:00:00Z");
       const ed = new Date(s.end_date + "T00:00:00Z");
       const filled = Object.values(s.filled_by_role).reduce((a, b) => a + b, 0);
       const req    = Object.values(s.required_by_role).reduce((a, b) => a + b, 0);
       const fillPct = req ? filled / req : 0;
+      const tIdx = tracks.get(s.id);
 
       const bar = document.createElement("div");
       bar.className = "gantt-bar status-" + s.status + (s.status === "booked" ? " booked" : "");
-      bar.style.left  = px(sd) + "px";
-      bar.style.width = Math.max(4, px(ed) - px(sd)) + "px";
+      bar.style.left   = px(sd) + "px";
+      bar.style.width  = Math.max(4, px(ed) - px(sd)) + "px";
+      bar.style.top    = (TRACK_PAD + tIdx * TRACK_H) + "px";
+      bar.style.height = (TRACK_H - 4) + "px";
       bar.style.setProperty("--co", companyColor(lane));
       bar.style.setProperty("--fill-opacity", (0.35 + 0.6 * fillPct).toFixed(2));
       bar.title = [

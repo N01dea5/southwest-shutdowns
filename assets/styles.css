@@ -46,14 +46,17 @@ body {
 main { padding: 20px 24px; display: flex; flex-direction: column; gap: 20px; max-width: 1400px; margin: 0 auto; }
 
 .kpis {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
 }
 .kpi {
   background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
   padding: 14px 16px; box-shadow: var(--shadow);
 }
 .kpi-label { color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
-.kpi-value { font-size: 26px; font-weight: 600; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.kpi-sub   { color: var(--muted); font-size: 10.5px; font-weight: 500; text-transform: none; letter-spacing: 0; margin-left: 6px; }
+.kpi-value { font-size: 24px; font-weight: 600; margin-top: 6px; font-variant-numeric: tabular-nums; }
+@media (max-width: 1100px) { .kpis { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .kpis { grid-template-columns: repeat(2, 1fr); } }
 
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
@@ -68,6 +71,11 @@ main { padding: 20px 24px; display: flex; flex-direction: column; gap: 20px; max
 
 .chart-wrap { position: relative; height: 260px; }
 .chart-wrap.tall { height: 340px; }
+.chart-offline {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 12px; font-style: italic;
+  background: repeating-linear-gradient(45deg, #f8fafd, #f8fafd 6px, #eef2f7 6px, #eef2f7 12px);
+}
 
 .table-wrap { overflow-x: auto; margin-top: 12px; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -80,21 +88,96 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   margin-right: 6px; vertical-align: middle;
 }
 
-.timeline { padding: 6px 0; }
-.timeline-track {
-  position: relative; height: 40px; background: var(--accent-soft);
-  border-radius: 4px; margin-top: 6px;
+/* ---------- Gantt ---------- */
+
+.gantt-legend {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  margin: 0 0 10px 0; color: var(--muted); font-size: 12px;
 }
-.timeline-block {
-  position: absolute; top: 4px; bottom: 4px;
+.gantt-legend .sep { opacity: 0.5; }
+.gantt-legend .sw {
+  display: inline-block; width: 14px; height: 10px; border-radius: 2px;
+  margin-right: 6px; vertical-align: middle;
+}
+.gantt-legend .booked-swatch {
+  background: transparent;
+  border: 1.5px dashed var(--muted);
+}
+.gantt-legend .today-swatch {
+  background: #c0392b; width: 2px; height: 14px; border-radius: 0;
+}
+
+.gantt {
+  --lane-label-w: 120px;
+  border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+  background: var(--surface);
+}
+
+.gantt-axis {
+  position: relative; display: block; height: 34px;
+  margin-left: var(--lane-label-w);
+  border-bottom: 1px solid var(--border);
+  background: #f8fafd;
+}
+.gantt-tick {
+  position: absolute; top: 0; bottom: 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding-left: 4px; border-left: 1px solid var(--border);
+  font-size: 10.5px; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.gantt-tick .mo { font-weight: 600; color: var(--text); }
+.gantt-tick .yr { font-size: 9.5px; }
+
+.gantt-body {
+  position: relative;
+}
+.gantt-body > .gantt-grid,
+.gantt-body > .gantt-today { position: absolute; }
+.gantt-grid {
+  position: absolute;
+  left: var(--lane-label-w); right: 0; top: 0; bottom: 0;
+  pointer-events: none;
+}
+.gantt-gridline {
+  position: absolute; top: 0; bottom: 0; width: 1px;
+  background: var(--border);
+}
+.gantt-today {
+  top: 0; bottom: 0; width: 2px;
+  background: #c0392b; z-index: 2;
+  box-shadow: 0 0 0 1px rgba(192, 57, 43, 0.15);
+  /* Lives inside .gantt-grid so `left: X%` is relative to the track area width. */
+}
+
+.gantt-row {
+  display: flex; align-items: stretch;
+  height: 44px; border-bottom: 1px solid var(--border);
+}
+.gantt-row:last-child { border-bottom: none; }
+.gantt-row-label {
+  flex: 0 0 var(--lane-label-w);
+  padding: 0 12px; display: flex; align-items: center;
+  font-size: 12.5px; font-weight: 600;
+  background: #fafbfd; border-right: 1px solid var(--border);
+}
+.gantt-track {
+  position: relative; flex: 1; overflow: hidden;
+}
+.gantt-bar {
+  position: absolute; top: 7px; bottom: 7px;
   border-radius: 3px; color: #fff; font-size: 11px; font-weight: 600;
   padding: 0 6px; display: flex; align-items: center; overflow: hidden;
-  white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+  white-space: nowrap; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+  background: var(--co); opacity: var(--fill-opacity, 1);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: default;
 }
-.timeline-axis {
-  display: flex; justify-content: space-between; margin-top: 6px;
-  color: var(--muted); font-size: 11px; font-family: var(--mono);
+.gantt-bar.booked {
+  border: 1.5px dashed rgba(0, 0, 0, 0.55);
+  background: var(--co);
 }
+.gantt-bar:hover { filter: brightness(1.08); opacity: 1; }
+.gantt-bar > span { overflow: hidden; text-overflow: ellipsis; }
 
 details summary { cursor: pointer; list-style: revert; }
 details summary h2 { margin: 0 0 0 6px; }

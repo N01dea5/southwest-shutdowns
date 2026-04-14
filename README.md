@@ -2,8 +2,10 @@
 
 Internal-only roll-up of the three site dashboards (Covalent, Tronox, CSBP). Shows:
 
-- **Fulfillment** — positions required vs. filled, overall and by trade.
+- **Fulfillment** — positions required vs. filled, overall and by trade, for completed shutdowns.
+- **Booked positions** — aggregate confirmed-vs-target headcount for upcoming shutdowns.
 - **Retention / carry-over** — how many workers return on the next shutdown, both at the **same company** and **across any of the three companies**.
+- **Gantt schedule** — swimlane view of every shutdown (completed and booked) with a "today" marker and fill shading.
 
 Static site, no server. Each source dashboard pushes its canonical data into this repo as JSON; this page re-reads on load.
 

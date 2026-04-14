@@ -26,10 +26,11 @@
 
   <main>
     <section class="kpis" id="kpis">
-      <div class="kpi"><div class="kpi-label">Positions required</div><div class="kpi-value" id="kpi-required">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Positions filled</div><div class="kpi-value" id="kpi-filled">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Overall fill rate</div><div class="kpi-value" id="kpi-fillrate">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Shutdowns covered</div><div class="kpi-value" id="kpi-shutdowns">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Completed: required</div><div class="kpi-value" id="kpi-required">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Completed: filled</div><div class="kpi-value" id="kpi-filled">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Completed fill rate</div><div class="kpi-value" id="kpi-fillrate">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Booked positions <span class="kpi-sub" id="kpi-booked-sub"></span></div><div class="kpi-value" id="kpi-booked">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Shutdowns (completed / booked)</div><div class="kpi-value" id="kpi-shutdowns">&mdash;</div></div>
     </section>
 
     <section class="grid-2">
@@ -66,8 +67,19 @@
     </section>
 
     <section class="card">
-      <h2>Shutdown timeline</h2>
-      <div id="timeline" class="timeline"></div>
+      <div class="card-head">
+        <h2>Shutdown schedule (Gantt)</h2>
+        <p class="hint">Booked shutdowns across all three sites. Shading encodes fill &mdash; darker means closer to the required headcount. Dashed outline = booked (not yet mobilised).</p>
+      </div>
+      <div class="gantt-legend">
+        <span><span class="sw" style="background:#1f77b4"></span>Covalent</span>
+        <span><span class="sw" style="background:#d6731b"></span>Tronox</span>
+        <span><span class="sw" style="background:#2ca02c"></span>CSBP</span>
+        <span class="sep">|</span>
+        <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
+        <span><span class="sw today-swatch"></span>Today</span>
+      </div>
+      <div id="gantt" class="gantt"></div>
     </section>
 
     <section class="card">

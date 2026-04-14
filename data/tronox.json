@@ -8,27 +8,28 @@
       "site": "Kwinana",
       "start_date": "2024-03-11",
       "end_date": "2024-03-29",
+      "status": "completed",
       "required_by_role": {
-        "Electrician": 4,
-        "Mechanical Fitter": 4,
-        "Supervisor": 5,
-        "Safety Officer": 5,
-        "Boilermaker": 5,
-        "Scaffolder": 2,
-        "Rigger": 4,
-        "Welder": 2,
-        "Pipefitter": 3
-      },
-      "filled_by_role": {
-        "Electrician": 4,
-        "Mechanical Fitter": 4,
+        "Electrician": 6,
+        "Mechanical Fitter": 3,
         "Supervisor": 5,
         "Safety Officer": 4,
-        "Boilermaker": 5,
-        "Scaffolder": 2,
+        "Boilermaker": 2,
+        "Scaffolder": 1,
         "Rigger": 4,
-        "Welder": 1,
-        "Pipefitter": 3
+        "Welder": 5,
+        "Pipefitter": 4
+      },
+      "filled_by_role": {
+        "Electrician": 6,
+        "Mechanical Fitter": 3,
+        "Supervisor": 5,
+        "Safety Officer": 4,
+        "Boilermaker": 2,
+        "Scaffolder": 1,
+        "Rigger": 3,
+        "Welder": 4,
+        "Pipefitter": 4
       },
       "roster": [
         {
@@ -88,75 +89,75 @@
           "role": "Boilermaker"
         },
         {
-          "name": "Sean Morris",
-          "role": "Supervisor"
-        },
-        {
-          "name": "Richard Anderson",
-          "role": "Mechanical Fitter"
+          "name": "Walter Ortiz",
+          "role": "Welder"
         },
         {
           "name": "John Torres",
           "role": "Pipefitter"
         },
         {
-          "name": "Jeffrey Martin",
-          "role": "Boilermaker"
+          "name": "Roger Bailey",
+          "role": "Safety Officer"
         },
         {
-          "name": "Roger Roberts",
-          "role": "Boilermaker"
+          "name": "Richard Lewis",
+          "role": "Electrician"
         },
         {
-          "name": "Sean Baker",
+          "name": "William Wilson",
+          "role": "Electrician"
+        },
+        {
+          "name": "Sean Morris",
           "role": "Supervisor"
-        },
-        {
-          "name": "Jordan Edwards",
-          "role": "Pipefitter"
-        },
-        {
-          "name": "Raymond Smith",
-          "role": "Scaffolder"
         },
         {
           "name": "Douglas Morales",
           "role": "Electrician"
         },
         {
-          "name": "Paul Lewis",
-          "role": "Safety Officer"
-        },
-        {
-          "name": "Daniel King",
-          "role": "Rigger"
+          "name": "Lawrence Peterson",
+          "role": "Welder"
         },
         {
           "name": "Dennis Martin",
           "role": "Mechanical Fitter"
         },
         {
-          "name": "Jonathan Watson",
-          "role": "Boilermaker"
+          "name": "Sean Baker",
+          "role": "Supervisor"
         },
         {
-          "name": "Charles Gutierrez",
+          "name": "Samuel Kelly",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Steven Mitchell",
           "role": "Rigger"
         },
         {
-          "name": "Joe Cook",
-          "role": "Rigger"
-        },
-        {
-          "name": "Michael Davis",
-          "role": "Electrician"
-        },
-        {
-          "name": "Kenneth Turner",
+          "name": "Jesse Parker",
           "role": "Safety Officer"
         },
         {
-          "name": "Terry Gonzalez",
+          "name": "William Turner",
+          "role": "Welder"
+        },
+        {
+          "name": "Jordan Carter",
+          "role": "Electrician"
+        },
+        {
+          "name": "Austin Mitchell",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Dennis Evans",
+          "role": "Rigger"
+        },
+        {
+          "name": "David Hall",
           "role": "Supervisor"
         }
       ]
@@ -167,26 +168,27 @@
       "site": "Kwinana",
       "start_date": "2024-09-09",
       "end_date": "2024-09-27",
+      "status": "completed",
       "required_by_role": {
-        "Electrician": 3,
+        "Electrician": 4,
         "Mechanical Fitter": 5,
-        "Supervisor": 3,
-        "Safety Officer": 4,
-        "Boilermaker": 4,
-        "Scaffolder": 3,
-        "Rigger": 5,
-        "Welder": 4,
+        "Supervisor": 5,
+        "Safety Officer": 6,
+        "Boilermaker": 6,
+        "Scaffolder": 1,
+        "Rigger": 3,
+        "Welder": 3,
         "Pipefitter": 3
       },
       "filled_by_role": {
         "Electrician": 3,
         "Mechanical Fitter": 5,
-        "Supervisor": 2,
-        "Safety Officer": 4,
-        "Boilermaker": 4,
-        "Scaffolder": 2,
-        "Rigger": 5,
-        "Welder": 4,
+        "Supervisor": 4,
+        "Safety Officer": 5,
+        "Boilermaker": 6,
+        "Scaffolder": 1,
+        "Rigger": 2,
+        "Welder": 3,
         "Pipefitter": 3
       },
       "roster": [
@@ -247,76 +249,76 @@
           "role": "Boilermaker"
         },
         {
-          "name": "Lawrence Peterson",
-          "role": "Welder"
+          "name": "Anthony Taylor",
+          "role": "Mechanical Fitter"
         },
         {
-          "name": "Matthew Gonzalez",
-          "role": "Scaffolder"
+          "name": "David Diaz",
+          "role": "Boilermaker"
         },
         {
-          "name": "Jordan Edwards",
-          "role": "Pipefitter"
+          "name": "Roger Bailey",
+          "role": "Safety Officer"
+        },
+        {
+          "name": "Richard Lewis",
+          "role": "Electrician"
         },
         {
           "name": "Dennis Martin",
           "role": "Mechanical Fitter"
         },
         {
-          "name": "Justin Scott",
+          "name": "Walter Ortiz",
           "role": "Welder"
-        },
-        {
-          "name": "Steven Mitchell",
-          "role": "Rigger"
-        },
-        {
-          "name": "Jonathan Jackson",
-          "role": "Mechanical Fitter"
-        },
-        {
-          "name": "Peter Jones",
-          "role": "Welder"
-        },
-        {
-          "name": "Daniel King",
-          "role": "Rigger"
         },
         {
           "name": "Roger Roberts",
           "role": "Boilermaker"
         },
         {
+          "name": "Jordan Edwards",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Jonathan Sanchez",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Brian Thomas",
+          "role": "Supervisor"
+        },
+        {
           "name": "Paul Murphy",
           "role": "Safety Officer"
         },
         {
-          "name": "Gary Rivera",
-          "role": "Safety Officer"
+          "name": "Steven Mitchell",
+          "role": "Rigger"
         },
         {
-          "name": "Jonathan Watson",
+          "name": "Billy Thomas",
+          "role": "Welder"
+        },
+        {
+          "name": "Walter Martin",
           "role": "Boilermaker"
         },
         {
-          "name": "Joe Cook",
-          "role": "Rigger"
+          "name": "David Hall",
+          "role": "Supervisor"
         },
         {
-          "name": "Charles Gutierrez",
-          "role": "Rigger"
+          "name": "William Reed",
+          "role": "Safety Officer"
         },
         {
-          "name": "Paul Morris",
+          "name": "Joe Cooper",
           "role": "Pipefitter"
         },
         {
-          "name": "Terry Allen",
-          "role": "Mechanical Fitter"
-        },
-        {
-          "name": "Jeremy Cox",
-          "role": "Electrician"
+          "name": "Henry Young",
+          "role": "Boilermaker"
         }
       ]
     },
@@ -326,27 +328,28 @@
       "site": "Kwinana",
       "start_date": "2025-03-10",
       "end_date": "2025-03-28",
+      "status": "completed",
       "required_by_role": {
-        "Electrician": 3,
-        "Mechanical Fitter": 5,
-        "Supervisor": 6,
+        "Electrician": 5,
+        "Mechanical Fitter": 3,
+        "Supervisor": 5,
         "Safety Officer": 4,
-        "Boilermaker": 4,
-        "Scaffolder": 2,
-        "Rigger": 2,
-        "Welder": 4,
-        "Pipefitter": 4
+        "Boilermaker": 5,
+        "Scaffolder": 4,
+        "Rigger": 3,
+        "Welder": 3,
+        "Pipefitter": 3
       },
       "filled_by_role": {
-        "Electrician": 3,
-        "Mechanical Fitter": 4,
+        "Electrician": 5,
+        "Mechanical Fitter": 3,
         "Supervisor": 5,
         "Safety Officer": 4,
         "Boilermaker": 4,
-        "Scaffolder": 2,
-        "Rigger": 2,
-        "Welder": 4,
-        "Pipefitter": 4
+        "Scaffolder": 3,
+        "Rigger": 3,
+        "Welder": 2,
+        "Pipefitter": 3
       },
       "roster": [
         {
@@ -406,76 +409,76 @@
           "role": "Boilermaker"
         },
         {
-          "name": "Steven Ortiz",
-          "role": "Boilermaker"
+          "name": "Steven Mitchell",
+          "role": "Rigger"
         },
         {
-          "name": "Richard Anderson",
-          "role": "Mechanical Fitter"
-        },
-        {
-          "name": "Matthew Gonzalez",
-          "role": "Scaffolder"
+          "name": "Paul Murphy",
+          "role": "Safety Officer"
         },
         {
           "name": "Peter Jones",
           "role": "Welder"
         },
         {
-          "name": "Jonathan Jackson",
-          "role": "Mechanical Fitter"
-        },
-        {
-          "name": "Samuel Kelly",
-          "role": "Pipefitter"
-        },
-        {
           "name": "Douglas Morales",
           "role": "Electrician"
-        },
-        {
-          "name": "Jordan Edwards",
-          "role": "Pipefitter"
-        },
-        {
-          "name": "Justin Scott",
-          "role": "Welder"
-        },
-        {
-          "name": "Steven Mitchell",
-          "role": "Rigger"
         },
         {
           "name": "Sean Baker",
           "role": "Supervisor"
         },
         {
-          "name": "Jack Rivera",
+          "name": "Roger Bailey",
           "role": "Safety Officer"
         },
         {
-          "name": "Billy Thomas",
-          "role": "Welder"
+          "name": "William Wilson",
+          "role": "Electrician"
         },
         {
-          "name": "Jesse Parker",
-          "role": "Safety Officer"
+          "name": "Matthew Gonzalez",
+          "role": "Scaffolder"
         },
         {
-          "name": "Henry Stewart",
-          "role": "Pipefitter"
+          "name": "Jeremy Kim",
+          "role": "Scaffolder"
         },
         {
-          "name": "Justin Green",
+          "name": "Sean Morris",
           "role": "Supervisor"
         },
         {
-          "name": "Jonathan Watson",
+          "name": "David Diaz",
           "role": "Boilermaker"
         },
         {
-          "name": "Nathan Edwards",
+          "name": "Brian Thomas",
           "role": "Supervisor"
+        },
+        {
+          "name": "Jeffrey Williams",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Paul Morris",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Henry Young",
+          "role": "Boilermaker"
+        },
+        {
+          "name": "Jordan Carter",
+          "role": "Electrician"
+        },
+        {
+          "name": "Joe Cook",
+          "role": "Rigger"
+        },
+        {
+          "name": "Austin Cooper",
+          "role": "Pipefitter"
         }
       ]
     },
@@ -485,27 +488,28 @@
       "site": "Kwinana",
       "start_date": "2025-10-06",
       "end_date": "2025-10-24",
+      "status": "completed",
       "required_by_role": {
         "Electrician": 4,
-        "Mechanical Fitter": 2,
-        "Supervisor": 4,
-        "Safety Officer": 6,
+        "Mechanical Fitter": 7,
+        "Supervisor": 6,
+        "Safety Officer": 3,
         "Boilermaker": 4,
-        "Scaffolder": 6,
-        "Rigger": 2,
-        "Welder": 3,
-        "Pipefitter": 2
+        "Scaffolder": 3,
+        "Rigger": 3,
+        "Welder": 2,
+        "Pipefitter": 4
       },
       "filled_by_role": {
-        "Electrician": 3,
-        "Mechanical Fitter": 2,
-        "Supervisor": 4,
-        "Safety Officer": 6,
+        "Electrician": 4,
+        "Mechanical Fitter": 6,
+        "Supervisor": 6,
+        "Safety Officer": 2,
         "Boilermaker": 4,
-        "Scaffolder": 6,
+        "Scaffolder": 2,
         "Rigger": 2,
-        "Welder": 3,
-        "Pipefitter": 2
+        "Welder": 2,
+        "Pipefitter": 4
       },
       "roster": [
         {
@@ -565,76 +569,213 @@
           "role": "Boilermaker"
         },
         {
-          "name": "John Torres",
-          "role": "Pipefitter"
+          "name": "Jonathan Sanchez",
+          "role": "Mechanical Fitter"
         },
         {
-          "name": "Matthew Gonzalez",
-          "role": "Scaffolder"
+          "name": "Sean Baker",
+          "role": "Supervisor"
+        },
+        {
+          "name": "Dennis Martin",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Richard Lewis",
+          "role": "Electrician"
+        },
+        {
+          "name": "Jordan Edwards",
+          "role": "Pipefitter"
         },
         {
           "name": "Sean Morris",
           "role": "Supervisor"
         },
         {
-          "name": "Lawrence Peterson",
-          "role": "Welder"
-        },
-        {
           "name": "Brian Thomas",
           "role": "Supervisor"
         },
         {
-          "name": "Paul Lewis",
-          "role": "Safety Officer"
+          "name": "Harold Hill",
+          "role": "Boilermaker"
+        },
+        {
+          "name": "David Diaz",
+          "role": "Boilermaker"
+        },
+        {
+          "name": "Anthony Taylor",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Justin Scott",
+          "role": "Welder"
+        },
+        {
+          "name": "Paul Thompson",
+          "role": "Rigger"
+        },
+        {
+          "name": "Jacob Ramirez",
+          "role": "Electrician"
+        },
+        {
+          "name": "Brandon Martinez",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Terry Gonzalez",
+          "role": "Supervisor"
+        },
+        {
+          "name": "Jeffrey Williams",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Henry Stewart",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Jose Hernandez",
+          "role": "Scaffolder"
+        }
+      ]
+    },
+    {
+      "id": "tronox-2026-05",
+      "name": "Kwinana May 2026",
+      "site": "Kwinana",
+      "start_date": "2026-05-11",
+      "end_date": "2026-05-29",
+      "status": "booked",
+      "required_by_role": {
+        "Electrician": 4,
+        "Mechanical Fitter": 6,
+        "Supervisor": 4,
+        "Safety Officer": 3,
+        "Boilermaker": 5,
+        "Scaffolder": 4,
+        "Rigger": 1,
+        "Welder": 3,
+        "Pipefitter": 4
+      },
+      "filled_by_role": {
+        "Supervisor": 2,
+        "Boilermaker": 4,
+        "Electrician": 2,
+        "Pipefitter": 2,
+        "Scaffolder": 2,
+        "Mechanical Fitter": 2,
+        "Welder": 1
+      },
+      "roster": [
+        {
+          "name": "Jerry Roberts",
+          "role": "Supervisor"
+        },
+        {
+          "name": "Adam Gomez",
+          "role": "Boilermaker"
+        },
+        {
+          "name": "Ryan Davis",
+          "role": "Supervisor"
+        },
+        {
+          "name": "Raymond Ward",
+          "role": "Electrician"
+        },
+        {
+          "name": "Dennis Martin",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "William Wilson",
+          "role": "Electrician"
+        },
+        {
+          "name": "Roger Roberts",
+          "role": "Boilermaker"
         },
         {
           "name": "Jeremy Kim",
           "role": "Scaffolder"
         },
         {
-          "name": "Jonathan Richardson",
-          "role": "Scaffolder"
-        },
-        {
-          "name": "Roger Bailey",
-          "role": "Safety Officer"
-        },
-        {
-          "name": "Raymond Smith",
-          "role": "Scaffolder"
+          "name": "Anthony Taylor",
+          "role": "Mechanical Fitter"
         },
         {
           "name": "Jeffrey Martin",
           "role": "Boilermaker"
         },
         {
-          "name": "Paul Murphy",
-          "role": "Safety Officer"
-        },
-        {
-          "name": "Jacob Sanchez",
-          "role": "Welder"
-        },
-        {
-          "name": "Joe Cook",
-          "role": "Rigger"
-        },
-        {
-          "name": "Ethan Morgan",
+          "name": "Jonathan Watson",
           "role": "Boilermaker"
         },
         {
-          "name": "Brian Hall",
-          "role": "Safety Officer"
+          "name": "Henry Stewart",
+          "role": "Pipefitter"
         },
         {
-          "name": "Jordan Carter",
-          "role": "Electrician"
-        },
-        {
-          "name": "Jason Cooper",
+          "name": "Michael Lewis",
           "role": "Scaffolder"
+        },
+        {
+          "name": "Christian Flores",
+          "role": "Welder"
+        },
+        {
+          "name": "Robert Lopez",
+          "role": "Mechanical Fitter"
+        }
+      ]
+    },
+    {
+      "id": "tronox-2026-11",
+      "name": "Kwinana Nov 2026",
+      "site": "Kwinana",
+      "start_date": "2026-11-02",
+      "end_date": "2026-11-20",
+      "status": "booked",
+      "required_by_role": {
+        "Electrician": 3,
+        "Mechanical Fitter": 5,
+        "Supervisor": 7,
+        "Safety Officer": 3,
+        "Boilermaker": 4,
+        "Scaffolder": 3,
+        "Rigger": 2,
+        "Welder": 3,
+        "Pipefitter": 3
+      },
+      "filled_by_role": {
+        "Mechanical Fitter": 1,
+        "Rigger": 1,
+        "Supervisor": 1,
+        "Pipefitter": 2
+      },
+      "roster": [
+        {
+          "name": "Mark Hill",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Paul Brown",
+          "role": "Rigger"
+        },
+        {
+          "name": "Jack Lopez",
+          "role": "Supervisor"
+        },
+        {
+          "name": "Brandon Martinez",
+          "role": "Pipefitter"
+        },
+        {
+          "name": "Bruce Howard",
+          "role": "Pipefitter"
         }
       ]
     }

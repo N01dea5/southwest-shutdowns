@@ -53,12 +53,15 @@ async function load() {
   }));
   for (const payload of results) state.raw[payload.company] = payload;
 
-  // Flatten and sort chronologically
+  // Flatten and sort chronologically. Infer status from start_date when missing.
+  const todayIso = new Date().toISOString().slice(0, 10);
   state.shutdowns = [];
   for (const payload of results) {
     for (const s of payload.shutdowns) {
+      const status = s.status || (s.start_date > todayIso ? "booked" : "completed");
       state.shutdowns.push({
         ...s,
+        status,
         company: payload.company,
         rosterKeys: new Set(s.roster.map(workerKey)),
       });
@@ -191,26 +194,56 @@ function render() {
   retentionRollup(state.shutdowns);
 
   const view = filtered();
-  const roll = fulfillmentRollup(view);
+  const completed = view.filter(s => s.status === "completed");
+  const booked    = view.filter(s => s.status === "booked");
 
-  // KPIs
+  // Fill-rate KPIs reflect completed work only — booked shutdowns have partial fills by design.
+  const roll = fulfillmentRollup(completed);
+  const bookedRoll = fulfillmentRollup(booked);
+
   document.getElementById("kpi-required").textContent = fmtInt(roll.required);
   document.getElementById("kpi-filled").textContent = fmtInt(roll.filled);
   document.getElementById("kpi-fillrate").textContent = roll.required ? fmtPct(roll.filled / roll.required) : "—";
-  document.getElementById("kpi-shutdowns").textContent = fmtInt(view.length);
+  document.getElementById("kpi-booked").textContent = bookedRoll.required
+    ? `${fmtInt(bookedRoll.filled)} / ${fmtInt(bookedRoll.required)}`
+    : "—";
+  document.getElementById("kpi-booked-sub").textContent = bookedRoll.required
+    ? `${fmtPct(bookedRoll.filled / bookedRoll.required)} confirmed`
+    : "";
+  document.getElementById("kpi-shutdowns").textContent = `${fmtInt(completed.length)} / ${fmtInt(booked.length)}`;
 
-  renderCompanyChart(roll);
-  renderTradeChart(roll);
-  renderRetentionChart(view);
-  renderRetentionTable(view);
-  renderTimeline(view);
-  renderWarnings();
+  // Each render step is isolated — one failure shouldn't black out the rest of the page.
+  const chartRoll = fulfillmentRollup(view);
+  const steps = [
+    ["company chart",   () => renderCompanyChart(chartRoll)],
+    ["trade chart",     () => renderTradeChart(chartRoll)],
+    ["retention chart", () => renderRetentionChart(view)],
+    ["retention table", () => renderRetentionTable(view)],
+    ["gantt",           () => renderGantt(view)],
+    ["warnings",        () => renderWarnings()],
+  ];
+  for (const [name, fn] of steps) {
+    try { fn(); } catch (e) { console.error(`[render] ${name} failed:`, e); }
+  }
 }
 
 function makeChart(id, config) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  if (typeof Chart === "undefined") {
+    // Chart.js CDN didn't load (offline / blocked). Show a graceful placeholder
+    // instead of throwing and aborting the rest of the render pipeline.
+    const parent = canvas.parentElement;
+    if (parent && !parent.querySelector(".chart-offline")) {
+      const note = document.createElement("div");
+      note.className = "chart-offline";
+      note.textContent = "Chart unavailable — Chart.js failed to load.";
+      parent.appendChild(note);
+    }
+    return;
+  }
   if (state.charts[id]) state.charts[id].destroy();
-  const ctx = document.getElementById(id).getContext("2d");
-  state.charts[id] = new Chart(ctx, config);
+  state.charts[id] = new Chart(canvas.getContext("2d"), config);
 }
 
 function renderCompanyChart(roll) {
@@ -347,41 +380,126 @@ function renderRetentionTable(view) {
   }
 }
 
-function renderTimeline(view) {
-  const host = document.getElementById("timeline");
+/**
+ * Swimlane Gantt of all shutdowns in the filtered view.
+ *   - one lane per company
+ *   - x-axis: month ticks spanning [earliest start, latest end], padded to month boundaries
+ *   - each shutdown is a positioned bar, shaded darker as fill% → 100%
+ *   - booked shutdowns get a dashed outline
+ *   - vertical "today" marker shown if it falls within the span
+ */
+function renderGantt(view) {
+  const host = document.getElementById("gantt");
   host.innerHTML = "";
-  const rows = [...view].sort((a, b) => a.start_date.localeCompare(b.start_date));
-  if (rows.length === 0) { host.textContent = "No shutdowns for this filter."; return; }
+  if (view.length === 0) { host.textContent = "No shutdowns for this filter."; return; }
 
-  const minDate = new Date(rows[0].start_date);
-  const maxDate = new Date(rows[rows.length - 1].end_date);
-  const span = Math.max(1, maxDate - minDate);
+  // Determine lanes in canonical COMPANIES order (so the y-axis stays stable across filters).
+  const presentCompanies = new Set(view.map(s => s.company));
+  const lanes = Object.keys(state.raw)
+    .sort((a, b) => {
+      const ai = COMPANIES.findIndex(c => c.key === a.toLowerCase());
+      const bi = COMPANIES.findIndex(c => c.key === b.toLowerCase());
+      return ai - bi;
+    })
+    .filter(name => presentCompanies.has(name));
 
-  const track = document.createElement("div");
-  track.className = "timeline-track";
-  for (const s of rows) {
-    const left = ((new Date(s.start_date) - minDate) / span) * 100;
-    const width = Math.max(2, ((new Date(s.end_date) - new Date(s.start_date)) / span) * 100);
-    const filled = Object.values(s.filled_by_role).reduce((a, b) => a + b, 0);
-    const req    = Object.values(s.required_by_role).reduce((a, b) => a + b, 0);
-    const pct = req ? filled / req : 0;
+  // Span: pad to month start/end so month ticks look clean.
+  const minStart = view.reduce((m, s) => s.start_date < m ? s.start_date : m, view[0].start_date);
+  const maxEnd   = view.reduce((m, s) => s.end_date   > m ? s.end_date   : m, view[0].end_date);
+  const spanStart = new Date(Date.UTC(+minStart.slice(0, 4), +minStart.slice(5, 7) - 1, 1));
+  const endD = new Date(maxEnd + "T00:00:00Z");
+  const spanEnd   = new Date(Date.UTC(endD.getUTCFullYear(), endD.getUTCMonth() + 1, 1));
+  const totalMs   = spanEnd - spanStart;
 
-    const block = document.createElement("div");
-    block.className = "timeline-block";
-    block.style.left = left + "%";
-    block.style.width = width + "%";
-    block.style.background = companyColor(s.company);
-    block.style.opacity = (0.4 + 0.6 * pct).toFixed(2);
-    block.title = `${s.company} – ${s.name}\n${s.start_date} → ${s.end_date}\nFill: ${filled}/${req} (${fmtPct(pct)})`;
-    block.innerHTML = `<span>${s.company} ${fmtPct(pct)}</span>`;
-    track.appendChild(block);
-  }
-  host.appendChild(track);
+  const pct = (d) => ((d - spanStart) / totalMs) * 100;
 
+  // --- Axis: month ticks ---
   const axis = document.createElement("div");
-  axis.className = "timeline-axis";
-  axis.innerHTML = `<span>${fmtDate(rows[0].start_date)}</span><span>${fmtDate(rows[rows.length - 1].end_date)}</span>`;
+  axis.className = "gantt-axis";
+  const cursor = new Date(spanStart);
+  while (cursor < spanEnd) {
+    const next = new Date(Date.UTC(cursor.getUTCFullYear(), cursor.getUTCMonth() + 1, 1));
+    const left = pct(cursor);
+    const width = pct(next) - left;
+    const tick = document.createElement("div");
+    tick.className = "gantt-tick";
+    tick.style.left = left + "%";
+    tick.style.width = width + "%";
+    const monthLabel = cursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
+    const yearLabel  = cursor.getUTCMonth() === 0 ? cursor.getUTCFullYear() : "";
+    tick.innerHTML = `<span class="mo">${monthLabel}</span><span class="yr">${yearLabel}</span>`;
+    axis.appendChild(tick);
+    cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+  }
   host.appendChild(axis);
+
+  // --- Body: one swimlane per company ---
+  const body = document.createElement("div");
+  body.className = "gantt-body";
+
+  // Gridlines aligned with the month ticks — drawn once behind all lanes.
+  const grid = document.createElement("div");
+  grid.className = "gantt-grid";
+  const g = new Date(spanStart);
+  while (g < spanEnd) {
+    const line = document.createElement("div");
+    line.className = "gantt-gridline";
+    line.style.left = pct(g) + "%";
+    grid.appendChild(line);
+    g.setUTCMonth(g.getUTCMonth() + 1);
+  }
+  body.appendChild(grid);
+
+  // Today marker — inside .gantt-grid so its % positioning aligns with the tracks.
+  const today = new Date();
+  if (today >= spanStart && today <= spanEnd) {
+    const todayLine = document.createElement("div");
+    todayLine.className = "gantt-today";
+    todayLine.style.left = pct(today) + "%";
+    todayLine.title = "Today";
+    grid.appendChild(todayLine);
+  }
+
+  for (const lane of lanes) {
+    const row = document.createElement("div");
+    row.className = "gantt-row";
+
+    const label = document.createElement("div");
+    label.className = "gantt-row-label";
+    label.innerHTML = `<span class="co-dot" style="background:${companyColor(lane)}"></span>${lane}`;
+    row.appendChild(label);
+
+    const track = document.createElement("div");
+    track.className = "gantt-track";
+
+    for (const s of view.filter(x => x.company === lane)) {
+      const sd = new Date(s.start_date + "T00:00:00Z");
+      const ed = new Date(s.end_date + "T00:00:00Z");
+      const filled = Object.values(s.filled_by_role).reduce((a, b) => a + b, 0);
+      const req    = Object.values(s.required_by_role).reduce((a, b) => a + b, 0);
+      const fillPct = req ? filled / req : 0;
+
+      const bar = document.createElement("div");
+      bar.className = "gantt-bar" + (s.status === "booked" ? " booked" : "");
+      bar.style.left  = pct(sd) + "%";
+      bar.style.width = Math.max(0.4, pct(ed) - pct(sd)) + "%";
+      bar.style.setProperty("--co", companyColor(lane));
+      bar.style.setProperty("--fill-opacity", (0.35 + 0.6 * fillPct).toFixed(2));
+      bar.title = [
+        `${s.company} – ${s.name}`,
+        `${fmtDate(s.start_date)} → ${fmtDate(s.end_date)}`,
+        `Status: ${s.status}`,
+        `${s.status === "booked" ? "Confirmed" : "Filled"}: ${filled}/${req} (${fmtPct(fillPct)})`,
+      ].join("\n");
+      bar.innerHTML = `<span>${s.name.replace(/^Kwinana /, "")} &middot; ${fmtPct(fillPct)}</span>`;
+      track.appendChild(bar);
+    }
+
+    row.appendChild(track);
+    body.appendChild(row);
+  }
+
+  host.appendChild(body);
 }
 
 function renderWarnings() {

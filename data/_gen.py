@@ -56,6 +56,9 @@ PERM = {
 FLOAT = POOL[42:82]             # rotate across companies (cross-company carry-over)
 CASUAL = POOL[82:140]           # appear once, drive "new hire" counts
 
+TODAY = dt.date(2026, 4, 14)   # anchor for completed/booked split (matches session date)
+
+# Each tuple: (id, name, start, end). Anything with start > TODAY is treated as booked.
 COMPANIES = [
     {
         "key": "covalent",
@@ -66,6 +69,9 @@ COMPANIES = [
             ("covalent-2024-11", "Kwinana Nov 2024", "2024-11-04", "2024-11-22"),
             ("covalent-2025-06", "Kwinana Jun 2025", "2025-06-02", "2025-06-20"),
             ("covalent-2026-01", "Kwinana Jan 2026", "2026-01-12", "2026-01-30"),
+            # --- booked ---
+            ("covalent-2026-07", "Kwinana Jul 2026", "2026-07-06", "2026-07-24"),
+            ("covalent-2027-02", "Kwinana Feb 2027", "2027-02-08", "2027-02-26"),
         ],
     },
     {
@@ -77,6 +83,9 @@ COMPANIES = [
             ("tronox-2024-09", "Kwinana Sep 2024", "2024-09-09", "2024-09-27"),
             ("tronox-2025-03", "Kwinana Mar 2025", "2025-03-10", "2025-03-28"),
             ("tronox-2025-10", "Kwinana Oct 2025", "2025-10-06", "2025-10-24"),
+            # --- booked ---
+            ("tronox-2026-05", "Kwinana May 2026", "2026-05-11", "2026-05-29"),
+            ("tronox-2026-11", "Kwinana Nov 2026", "2026-11-02", "2026-11-20"),
         ],
     },
     {
@@ -88,6 +97,9 @@ COMPANIES = [
             ("csbp-2025-02", "Kwinana Feb 2025", "2025-02-10", "2025-02-28"),
             ("csbp-2025-08", "Kwinana Aug 2025", "2025-08-11", "2025-08-29"),
             ("csbp-2026-02", "Kwinana Feb 2026", "2026-02-09", "2026-02-27"),
+            # --- booked ---
+            ("csbp-2026-08", "Kwinana Aug 2026", "2026-08-10", "2026-08-28"),
+            ("csbp-2027-03", "Kwinana Mar 2027", "2027-03-08", "2027-03-26"),
         ],
     },
 ]
@@ -118,21 +130,42 @@ out_dir = pathlib.Path(__file__).parent
 for co in COMPANIES:
     shutdowns_out = []
     for idx, (sid, sname, sstart, send) in enumerate(co["shutdowns"]):
-        roster = compose_roster(co["key"], idx)
-        filled = by_role_counts(roster)
-        # Required = filled inflated by a small, per-role shortfall so fill rate isn't 100%
+        start_d = dt.date.fromisoformat(sstart)
+        is_booked = start_d > TODAY
+
+        # Pretend we composed the full roster first (target headcount), then
+        # decide how much of it is actually "confirmed" for booked shutdowns.
+        full_roster = compose_roster(co["key"], idx)
+        full_filled = by_role_counts(full_roster)
+
+        # Required = full roster inflated by a small, per-role shortfall.
         req_rng = random.Random(hash((co["key"], idx, "req")) & 0xFFFFFFFF)
         required = {}
-        for role, n in filled.items():
-            # Most roles fill cleanly; a few have a single unfilled seat.
+        for role, n in full_filled.items():
             shortfall = 1 if req_rng.random() < 0.3 else 0
             required[role] = n + shortfall
+
+        if is_booked:
+            # Near-term bookings (<120 days out): ~50% confirmed.
+            # Far-term bookings: ~10% confirmed.
+            days_out = (start_d - TODAY).days
+            confirm_pct = 0.50 if days_out < 120 else 0.10
+            confirm_rng = random.Random(hash((co["key"], idx, "confirm")) & 0xFFFFFFFF)
+            roster = [w for w in full_roster if confirm_rng.random() < confirm_pct]
+            filled = by_role_counts(roster)
+            status = "booked"
+        else:
+            roster = full_roster
+            filled = full_filled
+            status = "completed"
+
         shutdowns_out.append({
             "id": sid,
             "name": sname,
             "site": co["site"],
             "start_date": sstart,
             "end_date": send,
+            "status": status,
             "required_by_role": required,
             "filled_by_role": filled,
             "roster": [{"name": w["name"], "role": w["role"]} for w in roster],

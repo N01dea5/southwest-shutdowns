@@ -1,0 +1,83 @@
+{
+  "source_document": "Labour spreadsheet KPF LNG - REV1 20260226.pdf",
+  "client": "Kleenheat",
+  "project": "KPF LNG Major Shutdown March 2026",
+  "shutdown_id": "kleenheat-2026-03",
+  "notes": "Day shift = DS, Night shift = NS. Three phases: Pre-Shut (4\u201314 Mar, prep), Shutdown (15\u201320 Mar), Post-Shut (21\u201322 Mar, demob). Role names use the source spreadsheet's coarse vocabulary; the target file at data/targets/kleenheat-2026-03.json maps these onto the Rapid Crews role keys (Fitter \u2192 Mechanical Fitter, Rigger \u2192 Advanced + Intermediate, Supervisor \u2192 Supervisor - Mechanical).",
+  "phases": {
+    "pre_shut": {
+      "label": "Pre-Shut (prep)",
+      "start_date": "2026-03-04",
+      "end_date":   "2026-03-14",
+      "days": [
+        { "date": "2026-03-04", "weekday": "Wed", "day": { "Supervisor": 3, "Fitter": 0, "Rigger": 0, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 3, "night": 0 } },
+        { "date": "2026-03-05", "weekday": "Thu", "day": { "Supervisor": 3, "Fitter": 0, "Rigger": 0, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 3, "night": 0 } },
+        { "date": "2026-03-06", "weekday": "Fri", "day": { "Supervisor": 3, "Fitter": 0, "Rigger": 0, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 3, "night": 0 } },
+        { "date": "2026-03-07", "weekday": "Sat", "day": {}, "night": {}, "totals": { "day": 0, "night": 0 } },
+        { "date": "2026-03-08", "weekday": "Sun", "day": {}, "night": {}, "totals": { "day": 0, "night": 0 } },
+        { "date": "2026-03-09", "weekday": "Mon", "day": {}, "night": {}, "totals": { "day": 0, "night": 0 } },
+        { "date": "2026-03-10", "weekday": "Tue", "day": { "Supervisor": 0, "Fitter": 4, "Rigger": 0, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 4, "night": 0 } },
+        { "date": "2026-03-11", "weekday": "Wed", "day": { "Supervisor": 0, "Fitter": 4, "Rigger": 0, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 4, "night": 0 } },
+        { "date": "2026-03-12", "weekday": "Thu", "day": { "Supervisor": 0, "Fitter": 4, "Rigger": 0, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 4, "night": 0 } },
+        { "date": "2026-03-13", "weekday": "Fri", "day": { "Supervisor": 0, "Fitter": 7, "Rigger": 2, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 9, "night": 0 } },
+        { "date": "2026-03-14", "weekday": "Sat", "day": { "Supervisor": 0, "Fitter": 7, "Rigger": 2, "Trade Assistant": 0 }, "night": {}, "totals": { "day": 9, "night": 0 } }
+      ],
+      "totals": { "man_days_day": 39, "man_days_night": 0 }
+    },
+    "shutdown": {
+      "label": "Shutdown",
+      "start_date": "2026-03-15",
+      "end_date":   "2026-03-20",
+      "days": [
+        { "date": "2026-03-15", "weekday": "Sun", "day": { "Supervisor": 2, "Fitter": 11, "Rigger": 1, "Trade Assistant": 8 },  "night": { "Supervisor": 1, "Fitter": 7, "Rigger": 1, "Trade Assistant": 5 }, "totals": { "day": 22, "night": 14 } },
+        { "date": "2026-03-16", "weekday": "Mon", "day": { "Supervisor": 3, "Fitter": 16, "Rigger": 3, "Trade Assistant": 13 }, "night": { "Supervisor": 1, "Fitter": 7, "Rigger": 2, "Trade Assistant": 5 }, "totals": { "day": 35, "night": 15 } },
+        { "date": "2026-03-17", "weekday": "Tue", "day": { "Supervisor": 3, "Fitter": 16, "Rigger": 3, "Trade Assistant": 13 }, "night": { "Supervisor": 1, "Fitter": 7, "Rigger": 2, "Trade Assistant": 5 }, "totals": { "day": 35, "night": 15 } },
+        { "date": "2026-03-18", "weekday": "Wed", "day": { "Supervisor": 3, "Fitter": 16, "Rigger": 3, "Trade Assistant": 13 }, "night": { "Supervisor": 1, "Fitter": 7, "Rigger": 2, "Trade Assistant": 5 }, "totals": { "day": 35, "night": 15 } },
+        { "date": "2026-03-19", "weekday": "Thu", "day": { "Supervisor": 3, "Fitter": 16, "Rigger": 3, "Trade Assistant": 13 }, "night": { "Supervisor": 1, "Fitter": 7, "Rigger": 2, "Trade Assistant": 5 }, "totals": { "day": 35, "night": 15 } },
+        { "date": "2026-03-20", "weekday": "Fri", "day": { "Supervisor": 3, "Fitter": 16, "Rigger": 3, "Trade Assistant": 13 }, "night": { "Supervisor": 1, "Fitter": 2, "Rigger": 2, "Trade Assistant": 2 }, "totals": { "day": 35, "night": 7  } }
+      ],
+      "totals": { "man_days_day": 197, "man_days_night": 81 }
+    },
+    "post_shut": {
+      "label": "Post-Shut (demob)",
+      "start_date": "2026-03-21",
+      "end_date":   "2026-03-22",
+      "days": [
+        { "date": "2026-03-21", "weekday": "Sat", "day": { "Supervisor": 1, "Fitter": 2, "Rigger": 2, "Trade Assistant": 2 }, "night": { "Supervisor": 1, "Fitter": 2, "Rigger": 2, "Trade Assistant": 2 }, "totals": { "day": 7, "night": 7 } },
+        { "date": "2026-03-22", "weekday": "Sun", "day": { "Supervisor": 1, "Fitter": 1, "Rigger": 1, "Trade Assistant": 1 }, "night": {}, "totals": { "day": 4, "night": 0 } }
+      ],
+      "totals": { "man_days_day": 11, "man_days_night": 7 }
+    }
+  },
+  "peak_simultaneous": {
+    "date_range":    "2026-03-16 \u2192 2026-03-19",
+    "day_shift":     { "Supervisor": 3, "Fitter": 16, "Rigger": 3, "Trade Assistant": 13, "total": 35 },
+    "night_shift":   { "Supervisor": 1, "Fitter": 7,  "Rigger": 2, "Trade Assistant": 5,  "total": 15 },
+    "combined":      { "Supervisor": 4, "Fitter": 23, "Rigger": 5, "Trade Assistant": 18, "total": 50 }
+  },
+  "role_mapping_to_rapid_crews": {
+    "Supervisor":      "Supervisor - Mechanical",
+    "Fitter":          "Mechanical Fitter",
+    "Rigger":          ["Advanced Rigger", "Intermediate Rigger"],
+    "Trade Assistant": "Trade Assistant"
+  },
+  "trade_requirements": {
+    "Fitter": [
+      "Confined Space Entry trained",
+      "Working at Heights trained",
+      "25% of fitters should be Breathing Apparatus trained",
+      "At least 2x fitters to be Gas fitters"
+    ],
+    "Rigger": [
+      "Minimum 1 Advanced Rigging trained",
+      "Confined Space Entry trained",
+      "Working at Heights trained"
+    ],
+    "Trade Assistant": [
+      "Confined Space Entry trained",
+      "Working at Heights trained",
+      "25% of TAs should be Breathing Apparatus trained"
+    ]
+  },
+  "total_man_days": { "day": 247, "night": 88, "combined": 335 }
+}

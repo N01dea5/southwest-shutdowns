@@ -9,13 +9,13 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Supervisor - Mechanical": 4,
-        "Trade Assistant": 18,
         "Sheet Metal Worker": 3,
+        "Supervisor - Mechanical": 4,
         "Advanced Rigger": 2,
-        "Intermediate Rigger": 5,
-        "Mechanical Fitter": 25,
         "Scaffolder": 6,
+        "Trade Assistant": 18,
+        "Mechanical Fitter": 23,
+        "Intermediate Rigger": 3,
         "Painter & Blaster": 2
       },
       "filled_by_role": {
@@ -311,7 +311,7 @@
         "rapid_crews_roster_id": "Kleenheat",
         "rapid_crews_export_file": "Kleenheat Major March 2026.xlsx",
         "source_format": "pegasus",
-        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "required_target_source": "REAL_TARGET",
         "name_resolution": {
           "explicit_column": 65,
           "email_heuristic": 0,
@@ -322,5 +322,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T08:52:39Z"
+  "generated_at": "2026-04-14T10:13:09Z"
 }

@@ -1,6 +1,6 @@
 # Southwest Shutdowns — Unified Dashboard
 
-Internal-only roll-up of the three site dashboards (Covalent, Tronox, CSBP) plus the Kleenheat March 2026 shutdown (historical, seeded purely for cross-shutdown retention stats). Shows:
+Internal-only roll-up of the four live site dashboards (Tianqi, Covalent, Tronox, CSBP). The CSBP umbrella covers both the NAAN2 fertiliser shutdown and the KPF LNG (Kleenheat-branded) March 2026 shutdown — both run by WesCEF. Shows:
 
 - **Fulfillment** — positions required vs. filled, overall and by trade, for completed shutdowns.
 - **Booked positions** — aggregate confirmed-vs-target headcount for upcoming shutdowns.

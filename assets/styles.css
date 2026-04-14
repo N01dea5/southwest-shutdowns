@@ -38,11 +38,10 @@
   --callout-line:  #23B1A5;
 
   /* --- Company identity (stays clear of the brand red) --- */
-  --co-kleenheat:  #7A5A2B;   /* earthy amber — historical retention seed */
   --co-tianqi:     #6B4F9E;   /* muted purple — lithium hydroxide plant */
   --co-covalent:   #3A7849;   /* forest green */
   --co-tronox:     #3D4250;   /* graphite slate */
-  --co-csbp:       #1F4E79;   /* navy blue */
+  --co-csbp:       #1F4E79;   /* navy blue — umbrella for NAAN2 + KPF LNG (Kleenheat) */
 
   /* --- System --- */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -433,7 +432,6 @@ td.num, th.num {
   vertical-align: middle;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
-.gantt-legend .co-kleenheat { background: var(--co-kleenheat); }
 .gantt-legend .co-tianqi    { background: var(--co-tianqi); }
 .gantt-legend .co-covalent  { background: var(--co-covalent); }
 .gantt-legend .co-tronox    { background: var(--co-tronox); }
@@ -871,6 +869,20 @@ td.num, th.num {
   font-size: 11px;
   margin-left: 4px;
   cursor: help;
+}
+/* Click-to-call mobile numbers in the matrix. tel: hrefs hand off to the
+   device dialer on iOS / Android; on desktop they open the default handler. */
+.mobile-link {
+  color: var(--srg-dark);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.mobile-link:hover {
+  color: var(--srg-red);
+  text-decoration: underline;
 }
 /* Tri-state per-column filter chip in the matrix header. Cycles on click:
    Any → Present (green) → Absent (red) → Any. */

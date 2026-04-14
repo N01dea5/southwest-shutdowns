@@ -59,9 +59,16 @@ ROSTER_MAP: dict[str, tuple] = {
     "1359": ("covalent", "Covalent", "Mt Holland April 2026",   "Mt Holland"),
     "1375": ("csbp",     "CSBP",     "NAAN2 June 2026",         "Kwinana"),
 
-    # Kleenheat historical shutdown — keyed by filename stem (Pegasus format).
+    # CSBP is the umbrella WesCEF client — their Kwinana estate covers the
+    # KPF LNG (Kleenheat-branded) plant and the NAAN2 fertiliser unit. Both
+    # roll up under the same company_key so the unified dashboard treats
+    # them as one client for filter/retention purposes. The shutdown_id for
+    # the historical KPF LNG roster stays "kleenheat-2026-03" so the
+    # existing target file (data/targets/kleenheat-2026-03.json) keeps
+    # working without a rename.
     "Kleenheat Major March 2026":
-        ("kleenheat", "Kleenheat", "Kwinana Major March 2026", "Kwinana"),
+        ("csbp", "CSBP", "KPF LNG Major Shutdown March 2026 (Kleenheat)", "Kwinana",
+         "kleenheat-2026-03"),
 
     # Tianqi (Kwinana lithium hydroxide plant) — the TLK-1596 construction
     # ramp-up scope. A parallel Scaffold Shutdown roster was tracked briefly
@@ -122,6 +129,7 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
     ws = wb.active
     headers = [c.value for c in ws[1]]
     idx = {h: i for i, h in enumerate(headers)}
+    mobile_col = idx.get("Mobile")
 
     rows: list[dict] = []
     for raw in ws.iter_rows(min_row=2, values_only=True):
@@ -131,10 +139,12 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
         if not name:
             continue
         role = raw[idx["Position On Project"]] or raw[idx["Position"]] or "Unknown"
+        mobile = str(raw[mobile_col] or "").strip() if mobile_col is not None else ""
         rows.append({
             "labour_hire": (raw[idx["Company"]] or "").strip(),
             "name":        name,
             "role":        str(role).strip(),
+            "mobile":      mobile,
             "start":       to_iso(raw[idx["Start Date"]]),
             "end":         to_iso(raw[idx["End Date"]]),
             "confirmed":   truthy(raw[idx["Confirmed"]]),
@@ -193,6 +203,7 @@ def parse_kleenheat_roster(xlsx_path: pathlib.Path) -> list[dict]:
     idx = {h: i for i, h in enumerate(headers)}
     surname_col = next((idx[c] for c in _LAST_NAME_COL_CANDIDATES if c in idx), None)
     email_col   = idx.get("Email")
+    mobile_col  = idx.get("Mobile")
 
     rows: list[dict] = []
     for raw in ws.iter_rows(min_row=2, values_only=True):
@@ -214,11 +225,13 @@ def parse_kleenheat_roster(xlsx_path: pathlib.Path) -> list[dict]:
         name = f"{first} {surname}".strip()
         role = str(raw[idx["Trade"]] or "Unknown").strip()
         crew = str(raw[idx["Crew"]] or "Unknown").strip().title()  # "DAY" -> "Day"
+        mobile = str(raw[mobile_col] or "").strip() if mobile_col is not None else ""
         rows.append({
             "labour_hire":       (raw[idx["Company"]] or "").strip(),
             "name":              name,
             "first_name":        first,
             "role":              role,
+            "mobile":            mobile,
             "start":             to_iso(raw[idx["On Site"]]),
             "end":               to_iso(raw[idx["Off Site"]]),
             "confirmed":         True,
@@ -238,6 +251,7 @@ def parse_pegasus_roster(xlsx_path: pathlib.Path) -> list[dict]:
     headers = [c.value for c in ws[1]]
     idx = {h: i for i, h in enumerate(headers)}
     shift_label = {"DS": "Day", "NS": "Night", "DAY": "Day", "NIGHT": "Night"}
+    mobile_col = idx.get("Contractor Mobile Number") or idx.get("Mobile")
 
     rows: list[dict] = []
     for raw in ws.iter_rows(min_row=2, values_only=True):
@@ -250,10 +264,12 @@ def parse_pegasus_roster(xlsx_path: pathlib.Path) -> list[dict]:
             continue
         role  = str(raw[idx["Pegasus Job Role"]] or "Unknown").strip()
         shift = str(raw[idx["Shift"]] or "").strip().upper()
+        mobile = str(raw[mobile_col] or "").strip() if mobile_col is not None else ""
         rows.append({
             "labour_hire":      (raw[idx["Company"]] or "").strip(),
             "name":             name,
             "role":             role,
+            "mobile":           mobile,
             "start":            to_iso(raw[idx["Date In"]]),
             "end":              to_iso(raw[idx["Date Out"]]),
             "confirmed":        True,
@@ -445,7 +461,12 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
         "crew_split":       crew_split,
         "mobilised_by_role": mobilised_by_role,
         "labour_hire_split": labour_hire_split,
-        "roster":           [{"name": r["name"], "role": r["role"]} for r in confirmed],
+        "roster": [
+            {"name": r["name"],
+             "role": r["role"],
+             **({"mobile": r["mobile"]} if r.get("mobile") else {})}
+            for r in confirmed
+        ],
         "_source": {
             "rapid_crews_roster_id":   file_key,
             "rapid_crews_export_file": xlsx.name,
@@ -556,7 +577,7 @@ def main() -> int:
 
     # -- 5. Backfill empty payloads for any client the dashboard lists but
     #       which got no rosters this run (prevents 404s on page load).
-    referenced = {"kleenheat", "covalent", "tronox", "csbp", "tianqi"}
+    referenced = {"covalent", "tronox", "csbp", "tianqi"}
     for company_key in referenced - by_company.keys():
         path = DATA_DIR / f"{company_key}.json"
         if not path.exists():

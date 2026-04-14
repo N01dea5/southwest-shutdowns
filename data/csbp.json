@@ -2,6 +2,403 @@
   "company": "CSBP",
   "shutdowns": [
     {
+      "id": "kleenheat-2026-03",
+      "name": "KPF LNG Major Shutdown March 2026 (Kleenheat)",
+      "site": "Kwinana",
+      "start_date": "2026-03-04",
+      "end_date": "2026-03-22",
+      "status": "completed",
+      "required_by_role": {
+        "Mechanical Fitter": 23,
+        "Sheet Metal Worker": 3,
+        "Trade Assistant": 18,
+        "Intermediate Rigger": 3,
+        "Supervisor - Mechanical": 4,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2,
+        "Advanced Rigger": 2
+      },
+      "filled_by_role": {
+        "Supervisor - Mechanical": 4,
+        "Trade Assistant": 18,
+        "Sheet Metal Worker": 3,
+        "Advanced Rigger": 2,
+        "Intermediate Rigger": 5,
+        "Mechanical Fitter": 25,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2
+      },
+      "crew_split": {
+        "Day": 49,
+        "Night": 16
+      },
+      "mobilised_by_role": {
+        "Supervisor - Mechanical": 4,
+        "Trade Assistant": 18,
+        "Sheet Metal Worker": 3,
+        "Advanced Rigger": 2,
+        "Intermediate Rigger": 5,
+        "Mechanical Fitter": 25,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2
+      },
+      "labour_hire_split": {
+        "SRG Global Integrated Services": 65
+      },
+      "roster": [
+        {
+          "name": "Patrick DALY",
+          "role": "Supervisor - Mechanical",
+          "mobile": "61420397028"
+        },
+        {
+          "name": "Wayne CARTER",
+          "role": "Supervisor - Mechanical",
+          "mobile": "61414774682"
+        },
+        {
+          "name": "Jordan KIRKBY",
+          "role": "Supervisor - Mechanical",
+          "mobile": "61406872504"
+        },
+        {
+          "name": "Lewis NEWELL",
+          "role": "Supervisor - Mechanical",
+          "mobile": "61434841251"
+        },
+        {
+          "name": "Willy FAVA",
+          "role": "Trade Assistant",
+          "mobile": "61481092939"
+        },
+        {
+          "name": "Sharon GILCHRIST",
+          "role": "Trade Assistant",
+          "mobile": "61417096745"
+        },
+        {
+          "name": "Jessica DILENA",
+          "role": "Trade Assistant",
+          "mobile": "61477841414"
+        },
+        {
+          "name": "King GARCIA",
+          "role": "Trade Assistant",
+          "mobile": "61498054425"
+        },
+        {
+          "name": "Robert HARRIS",
+          "role": "Trade Assistant",
+          "mobile": "61405745828"
+        },
+        {
+          "name": "Jacinta JEFFERY",
+          "role": "Trade Assistant",
+          "mobile": "61428238866"
+        },
+        {
+          "name": "Beau WITHERS",
+          "role": "Trade Assistant",
+          "mobile": "61435441418"
+        },
+        {
+          "name": "Adrian WILLIAMS",
+          "role": "Trade Assistant",
+          "mobile": "61428421338"
+        },
+        {
+          "name": "Lise MONNET",
+          "role": "Trade Assistant",
+          "mobile": "61427753796"
+        },
+        {
+          "name": "Jeremias MENDIVIL",
+          "role": "Trade Assistant",
+          "mobile": "61433197500"
+        },
+        {
+          "name": "Keron KAPPET",
+          "role": "Trade Assistant",
+          "mobile": "61437976484"
+        },
+        {
+          "name": "Lea MONDESIR",
+          "role": "Trade Assistant",
+          "mobile": "61436652133"
+        },
+        {
+          "name": "Jaime HERNANDEZ",
+          "role": "Trade Assistant",
+          "mobile": "61499422603"
+        },
+        {
+          "name": "Federico Sarti",
+          "role": "Trade Assistant",
+          "mobile": "61493955585"
+        },
+        {
+          "name": "Naomi NDENGA",
+          "role": "Trade Assistant",
+          "mobile": "61472586919"
+        },
+        {
+          "name": "Stefanos KARIKIS",
+          "role": "Trade Assistant",
+          "mobile": "61403267784"
+        },
+        {
+          "name": "Issac REID",
+          "role": "Trade Assistant",
+          "mobile": "61428969952"
+        },
+        {
+          "name": "William THOMPSON",
+          "role": "Trade Assistant",
+          "mobile": "61429331817"
+        },
+        {
+          "name": "Samsul FATA",
+          "role": "Sheet Metal Worker",
+          "mobile": "61490804999"
+        },
+        {
+          "name": "Daniel JONES",
+          "role": "Sheet Metal Worker",
+          "mobile": "61457632156"
+        },
+        {
+          "name": "David STITZ",
+          "role": "Sheet Metal Worker",
+          "mobile": "61408939455"
+        },
+        {
+          "name": "Eileen HIELSCHER",
+          "role": "Advanced Rigger",
+          "mobile": "61448678573"
+        },
+        {
+          "name": "Hemi RATAHI",
+          "role": "Advanced Rigger",
+          "mobile": "61457420744"
+        },
+        {
+          "name": "Daniel SILLIS",
+          "role": "Intermediate Rigger",
+          "mobile": "61449125720"
+        },
+        {
+          "name": "Julian VAN DER ZANDEN",
+          "role": "Intermediate Rigger",
+          "mobile": "61433449381"
+        },
+        {
+          "name": "Chaeyoon KIM",
+          "role": "Intermediate Rigger",
+          "mobile": "61419549708"
+        },
+        {
+          "name": "Julian VAN DER ZANDEN",
+          "role": "Intermediate Rigger",
+          "mobile": "61433449381"
+        },
+        {
+          "name": "Joe DACK",
+          "role": "Intermediate Rigger",
+          "mobile": "61449995304"
+        },
+        {
+          "name": "Pramod CHANDRASKHAR",
+          "role": "Mechanical Fitter",
+          "mobile": "61494037814"
+        },
+        {
+          "name": "Jack MONTEBELLO",
+          "role": "Mechanical Fitter",
+          "mobile": "61437264211"
+        },
+        {
+          "name": "Gurshwinder SINGH",
+          "role": "Mechanical Fitter",
+          "mobile": "61431100007"
+        },
+        {
+          "name": "Tabani CHIPIRI",
+          "role": "Mechanical Fitter",
+          "mobile": "61497594673"
+        },
+        {
+          "name": "Darren JAMES",
+          "role": "Mechanical Fitter",
+          "mobile": "61432522247"
+        },
+        {
+          "name": "Mitya DOBBELAERE",
+          "role": "Mechanical Fitter",
+          "mobile": "61447582473"
+        },
+        {
+          "name": "Daniel GOVHONGO",
+          "role": "Mechanical Fitter",
+          "mobile": "61484563607"
+        },
+        {
+          "name": "Harrison ELLIOT",
+          "role": "Mechanical Fitter",
+          "mobile": "61447156618"
+        },
+        {
+          "name": "Gerry \ud83d\udd37 UY",
+          "role": "Mechanical Fitter",
+          "mobile": "61455733546"
+        },
+        {
+          "name": "Senthil DHANAPAL",
+          "role": "Mechanical Fitter",
+          "mobile": "61433394685"
+        },
+        {
+          "name": "Jonathan MUTEMBO",
+          "role": "Mechanical Fitter",
+          "mobile": "61420268896"
+        },
+        {
+          "name": "Walid BOULAHDID",
+          "role": "Mechanical Fitter",
+          "mobile": "61404303830"
+        },
+        {
+          "name": "Teneesha TRUSCOTT",
+          "role": "Mechanical Fitter",
+          "mobile": "61447711925"
+        },
+        {
+          "name": "Amit \ud83d\udd37 GUND",
+          "role": "Mechanical Fitter",
+          "mobile": "61423173031"
+        },
+        {
+          "name": "James GARDINER",
+          "role": "Mechanical Fitter",
+          "mobile": "61458420731"
+        },
+        {
+          "name": "Mark \ud83d\udd37 SULLIVAN",
+          "role": "Mechanical Fitter",
+          "mobile": "61473108682"
+        },
+        {
+          "name": "Russell PHILLIPS",
+          "role": "Mechanical Fitter",
+          "mobile": "61421795621"
+        },
+        {
+          "name": "Edward GARDINER",
+          "role": "Mechanical Fitter",
+          "mobile": "61457470330"
+        },
+        {
+          "name": "Kulvinder SINGH",
+          "role": "Mechanical Fitter",
+          "mobile": "61411406465"
+        },
+        {
+          "name": "Ngoni USORE",
+          "role": "Mechanical Fitter",
+          "mobile": "61401500098"
+        },
+        {
+          "name": "Viet NGUYEN",
+          "role": "Mechanical Fitter",
+          "mobile": "61434326455"
+        },
+        {
+          "name": "Manish TOMAR",
+          "role": "Mechanical Fitter",
+          "mobile": "61488751209"
+        },
+        {
+          "name": "Abhinav ABHINAV",
+          "role": "Mechanical Fitter",
+          "mobile": "61424848290"
+        },
+        {
+          "name": "Mao LI",
+          "role": "Mechanical Fitter",
+          "mobile": "61432066471"
+        },
+        {
+          "name": "Loyid JOSEPH",
+          "role": "Mechanical Fitter",
+          "mobile": "61450060007"
+        },
+        {
+          "name": "Santana PAYNE",
+          "role": "Scaffolder",
+          "mobile": "61434734382"
+        },
+        {
+          "name": "Francis AH KIAU",
+          "role": "Scaffolder",
+          "mobile": "61434580355"
+        },
+        {
+          "name": "Dylan DIXON",
+          "role": "Scaffolder",
+          "mobile": "61481845862"
+        },
+        {
+          "name": "Zachary GARDINER",
+          "role": "Scaffolder",
+          "mobile": "61499756868"
+        },
+        {
+          "name": "Wahib NADI",
+          "role": "Scaffolder",
+          "mobile": "61421543441"
+        },
+        {
+          "name": "Margaux VERGEZ",
+          "role": "Scaffolder",
+          "mobile": "61435319380"
+        },
+        {
+          "name": "Samuel BRYANT",
+          "role": "Painter & Blaster",
+          "mobile": "61408500677"
+        },
+        {
+          "name": "Jordan ATITOA-BRYANT",
+          "role": "Painter & Blaster",
+          "mobile": "61414579891"
+        }
+      ],
+      "_source": {
+        "rapid_crews_roster_id": "Kleenheat Major March 2026",
+        "rapid_crews_export_file": "Kleenheat Major March 2026.xlsx",
+        "source_format": "pegasus",
+        "required_target_source": "REAL_TARGET",
+        "rapid_crews_roster_size": 65,
+        "rapid_crews_filled_by_role": {
+          "Supervisor - Mechanical": 4,
+          "Trade Assistant": 18,
+          "Sheet Metal Worker": 3,
+          "Advanced Rigger": 2,
+          "Intermediate Rigger": 5,
+          "Mechanical Fitter": 25,
+          "Scaffolder": 6,
+          "Painter & Blaster": 2
+        },
+        "target_source": null,
+        "name_resolution": {
+          "explicit_column": 65,
+          "email_heuristic": 0,
+          "xref_exact": 0,
+          "unmatched": 0,
+          "ambiguous_samples": []
+        }
+      }
+    },
+    {
       "id": "csbp-2026-05",
       "name": "NAAN2 June 2026",
       "site": "Kwinana",
@@ -9,18 +406,18 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
-        "Intermediate Rigger": 1,
-        "Advanced Rigger": 3,
-        "Trade Assistant": 16,
         "Mechanical Fitter": 13,
-        "Supervisor - Mechanical": 3
+        "Trade Assistant": 16,
+        "Intermediate Rigger": 1,
+        "Supervisor - Mechanical": 3,
+        "Advanced Rigger": 3
       },
       "filled_by_role": {
-        "Intermediate Rigger": 1,
-        "Advanced Rigger": 3,
-        "Trade Assistant": 15,
         "Mechanical Fitter": 13,
-        "Supervisor - Mechanical": 1
+        "Trade Assistant": 15,
+        "Intermediate Rigger": 1,
+        "Supervisor - Mechanical": 1,
+        "Advanced Rigger": 3
       },
       "crew_split": {
         "Day": 20,
@@ -33,135 +430,168 @@
       "roster": [
         {
           "name": "Tabani CHIPIRI",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "049 759 4673"
         },
         {
           "name": "Joe DACK",
-          "role": "Advanced Rigger"
+          "role": "Advanced Rigger",
+          "mobile": "0449 995 304"
         },
         {
           "name": "Peter BURNS",
-          "role": "Supervisor - Mechanical"
+          "role": "Supervisor - Mechanical",
+          "mobile": "0437 183 009"
         },
         {
           "name": "Mao LI",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0432 066 471"
         },
         {
           "name": "Mitya DOBBELAERE",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0447 582 473"
         },
         {
           "name": "Wayne FORREST",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0438 101 966"
         },
         {
           "name": "Paul BESTWICK",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0406 613 783"
         },
         {
           "name": "Jake GANGEMI",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0426 994 235"
         },
         {
           "name": "Malcolm GRAINGER-ROUSSEAU",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0487 104 895"
         },
         {
           "name": "Robert HARRIS",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0405 745 828"
         },
         {
           "name": "Mehdi BENDANI",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0493 536 751"
         },
         {
           "name": "Robert FRONGILLO",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0404 632 455"
         },
         {
           "name": "Eileen HIELSCHER",
-          "role": "Advanced Rigger"
+          "role": "Advanced Rigger",
+          "mobile": "0448 678 573"
         },
         {
           "name": "Roberto RAFFAELE",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0419 949 242"
         },
         {
           "name": "Fabien ONOLFO",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0498 459 340"
         },
         {
           "name": "Naomi NDENGA",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0472586919"
         },
         {
           "name": "Lea MONDESIR",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0436 652 133"
         },
         {
           "name": "Stefanos KARIKIS",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0403 267 784"
         },
         {
           "name": "King GARCIA",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0498 054 425"
         },
         {
           "name": "Jessica DILENA",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0477841414"
         },
         {
           "name": "Julian VAN DER ZANDEN",
-          "role": "Intermediate Rigger"
+          "role": "Intermediate Rigger",
+          "mobile": "0433 449 381"
         },
         {
           "name": "Joe BROOKS",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0421 411 263"
         },
         {
           "name": "William THOMPSON",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0429 331 817"
         },
         {
           "name": "Sharon GILCHRIST",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0417 096 745"
         },
         {
           "name": "Gabriel NGUYEN",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0448 737 990"
         },
         {
           "name": "Federico Sarti",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0493 955 585"
         },
         {
           "name": "Ganesh MOHITE",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0469 591 660"
         },
         {
           "name": "Abdikadir MOHAMED",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0478 161 027"
         },
         {
           "name": "Renan SANCHEZ",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0431 951 293"
         },
         {
           "name": "Clifford LEMON",
-          "role": "Advanced Rigger"
+          "role": "Advanced Rigger",
+          "mobile": "0438 800 692"
         },
         {
           "name": "Herbert MUKUNGA",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0459183602"
         },
         {
           "name": "Jonathan MUTEMBO",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0420 268 896"
         },
         {
           "name": "Cormac NAGLE",
-          "role": "Mechanical Fitter"
+          "role": "Mechanical Fitter",
+          "mobile": "0449 552 403"
         }
       ],
       "_source": {
@@ -186,5 +616,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T13:39:52Z"
+  "generated_at": "2026-04-14T23:49:36Z"
 }

@@ -9,18 +9,18 @@
       "end_date": "2026-06-07",
       "status": "in_progress",
       "required_by_role": {
-        "Advanced Rigger": 4,
-        "Boilermaker": 4,
         "Coded Welder": 4,
         "Trade Assistant": 4,
-        "Supervisor - Mechanical": 2
+        "Supervisor - Mechanical": 2,
+        "Boilermaker": 4,
+        "Advanced Rigger": 4
       },
       "filled_by_role": {
-        "Advanced Rigger": 0,
-        "Boilermaker": 3,
         "Coded Welder": 4,
         "Trade Assistant": 4,
-        "Supervisor - Mechanical": 2
+        "Supervisor - Mechanical": 2,
+        "Boilermaker": 3,
+        "Advanced Rigger": 0
       },
       "crew_split": {
         "Day": 12,
@@ -35,83 +35,103 @@
       "roster": [
         {
           "name": "Naing WIN",
-          "role": "Coded Welder"
+          "role": "Coded Welder",
+          "mobile": "0432 253 416"
         },
         {
           "name": "Jordan KIRKBY",
-          "role": "Supervisor - Mechanical"
+          "role": "Supervisor - Mechanical",
+          "mobile": "0406 872 504"
         },
         {
           "name": "Jordan KIRKBY",
-          "role": "Supervisor - Mechanical"
+          "role": "Supervisor - Mechanical",
+          "mobile": "0406 872 504"
         },
         {
           "name": "Samuel BRYANT",
-          "role": "Supervisor - Mechanical"
+          "role": "Supervisor - Mechanical",
+          "mobile": "0408 500 677"
         },
         {
           "name": "Adam \ud83d\udd37 RUSSELL",
-          "role": "Boilermaker"
+          "role": "Boilermaker",
+          "mobile": "0433 657 436"
         },
         {
           "name": "Maximiliano \ud83d\udd37 EVENSEN",
-          "role": "Intermediate Rigger"
+          "role": "Intermediate Rigger",
+          "mobile": "0415 694 891"
         },
         {
           "name": "Jordan ATITOA-BRYANT",
-          "role": "Intermediate Rigger"
+          "role": "Intermediate Rigger",
+          "mobile": "0414 579 891"
         },
         {
           "name": "Abdirizak ABDIKARIM ISSA",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0412 848 672"
         },
         {
           "name": "Eleonora TRAORE",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0421524270"
         },
         {
           "name": "Lise-Elodie \ud83d\udd37 BONNEAU",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0477747377"
         },
         {
           "name": "Roberto RAFFAELE",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0419 949 242"
         },
         {
           "name": "Modesto JAIME",
-          "role": "Coded Welder"
+          "role": "Coded Welder",
+          "mobile": "0407224882"
         },
         {
           "name": "Samuel MATHERSON",
-          "role": "Coded Welder"
+          "role": "Coded Welder",
+          "mobile": "0460 962 300"
         },
         {
           "name": "Javier \ud83d\udd37 ROSTAN",
-          "role": "Intermediate Rigger"
+          "role": "Intermediate Rigger",
+          "mobile": "0448 174 044"
         },
         {
           "name": "Troy \ud83d\udd37 ORMEROD",
-          "role": "Intermediate Rigger"
+          "role": "Intermediate Rigger",
+          "mobile": "0467 380 474"
         },
         {
           "name": "Ivan \ud83d\udd37 CARRASCO",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0428 746 251"
         },
         {
           "name": "Tomas \ud83d\udd37 GARCIA",
-          "role": "Trade Assistant"
+          "role": "Trade Assistant",
+          "mobile": "0455 987 231"
         },
         {
           "name": "Modesto JAIME",
-          "role": "Coded Welder"
+          "role": "Coded Welder",
+          "mobile": "0407224882"
         },
         {
           "name": "Pieter DU TOIT",
-          "role": "Boilermaker"
+          "role": "Boilermaker",
+          "mobile": "0420 863 329"
         },
         {
           "name": "Daniel \ud83d\udd37 VISSER",
-          "role": "Boilermaker"
+          "role": "Boilermaker",
+          "mobile": "0476 148 300"
         }
       ],
       "_source": {
@@ -138,5 +158,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T13:39:52Z"
+  "generated_at": "2026-04-14T23:49:36Z"
 }

@@ -16,11 +16,10 @@
 // outside the red family. Kleenheat is a historical client used here purely
 // to seed retention/carry-over stats.
 const COMPANIES = [
-  { key: "kleenheat", file: "data/kleenheat.json", color: "#7A5A2B" }, // earthy amber
   { key: "tianqi",    file: "data/tianqi.json",    color: "#6B4F9E" }, // muted purple
   { key: "covalent",  file: "data/covalent.json",  color: "#3A7849" }, // forest green
   { key: "tronox",    file: "data/tronox.json",    color: "#3D4250" }, // graphite slate
-  { key: "csbp",      file: "data/csbp.json",      color: "#1F4E79" }, // navy blue
+  { key: "csbp",      file: "data/csbp.json",      color: "#1F4E79" }, // navy blue — CSBP umbrella covers the NAAN2 + KPF LNG (Kleenheat) plants
 ];
 
 const state = {
@@ -938,6 +937,7 @@ function renderWorkerMatrix(viewShutdowns) {
           displayName: w.name,      // standardised at load
           rolesByShutdown: {},      // shutdownId -> role
           appearances: new Set(),
+          mobile: "",               // latest non-empty wins
         });
       }
       const rec = workers.get(k);
@@ -946,6 +946,10 @@ function renderWorkerMatrix(viewShutdowns) {
       // Keep the display name in sync if a later shutdown has a fuller form
       // (e.g. standardised "Julian VAN DER ZANDEN" vs bare "Julian").
       if (w.name.length > rec.displayName.length) rec.displayName = w.name;
+      // Track the most-recent known mobile number. Iterating shutdowns in
+      // chronological order means a later roster's number overrides an
+      // earlier one — workers do sometimes change numbers.
+      if (w.mobile && String(w.mobile).trim()) rec.mobile = String(w.mobile).trim();
     }
   }
   // Resolve each worker's "latest role" = role at their most recent shutdown.
@@ -972,6 +976,7 @@ function renderWorkerMatrix(viewShutdowns) {
   thead.innerHTML = `<tr>
     <th>Worker</th>
     <th>Role</th>
+    <th>Mobile</th>
     ${shutdowns.map(s => {
       const fstate = state.matrixFilters[s.id] || "any";
       const flabel = fstate === "present" ? "✓ only"
@@ -1010,9 +1015,14 @@ function renderWorkerMatrix(viewShutdowns) {
     const roleCell = w.priorRoles.length
       ? `<td title="Previously: ${w.priorRoles.join(", ")}">${w.role} <span class="role-shift" aria-hidden="true">↗</span></td>`
       : `<td>${w.role}</td>`;
+    // tel: link — strip spaces for the href so iOS/Android dialers accept it.
+    const mobileCell = w.mobile
+      ? `<td><a class="mobile-link" href="tel:${w.mobile.replace(/\s+/g, "")}">${w.mobile}</a></td>`
+      : `<td class="fill-empty">—</td>`;
     return `<tr data-key="${w.key}">
       <td>${w.displayName}</td>
       ${roleCell}
+      ${mobileCell}
       ${shutdowns.map(s => {
         const r = w.rolesByShutdown[s.id];
         return `<td class="num">${r

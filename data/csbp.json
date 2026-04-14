@@ -9,11 +9,11 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
-        "Trade Assistant": 16,
-        "Advanced Rigger": 3,
-        "Intermediate Rigger": 1,
+        "Mechanical Fitter": 13,
         "Supervisor - Mechanical": 3,
-        "Mechanical Fitter": 13
+        "Intermediate Rigger": 1,
+        "Advanced Rigger": 3,
+        "Trade Assistant": 16
       },
       "filled_by_role": {
         "Mechanical Fitter": 13,
@@ -172,5 +172,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T08:48:12Z"
+  "generated_at": "2026-04-14T08:52:39Z"
 }

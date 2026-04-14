@@ -59,6 +59,8 @@ TARGETS_DIR = DATA_DIR / "targets"     # optional override: targets/<shutdown_id
 RAPIDCREWS_COLS = ["Company", "Name", "Surname", "Position", "Position On Project",
                    "Start Date", "End Date", "Confirmed", "Crew Type", "Mobilised"]
 KLEENHEAT_COLS  = ["Name", "Trade", "Company", "On Site", "Off Site", "Crew"]
+PEGASUS_COLS    = ["Company", "Date In", "Date Out", "Shift", "Surname", "First Name",
+                   "Pegasus Job Role"]
 
 
 # --------------------------------------------------------------------------- helpers
@@ -82,10 +84,12 @@ def truthy(v) -> bool:
 # --------------------------------------------------------------------------- roster parsers
 
 def _detect_format(headers: list) -> str:
-    """Return either 'rapidcrews' or 'kleenheat' based on the header row."""
+    """Detect which of our three supported roster schemas the XLSX is using."""
     hs = {h for h in headers if h}
     if set(RAPIDCREWS_COLS).issubset(hs):
         return "rapidcrews"
+    if set(PEGASUS_COLS).issubset(hs):
+        return "pegasus"
     if set(KLEENHEAT_COLS).issubset(hs):
         return "kleenheat"
     return "unknown"
@@ -203,6 +207,41 @@ def parse_kleenheat_roster(xlsx_path: pathlib.Path) -> list[dict]:
     return rows
 
 
+def parse_pegasus_roster(xlsx_path: pathlib.Path) -> list[dict]:
+    """Pegasus-style labour list: First Name + Surname columns, Date In/Out,
+    Shift (DS/NS), Pegasus Job Role. Every row is treated as confirmed +
+    mobilised — the shutdown has already happened."""
+    wb = openpyxl.load_workbook(xlsx_path, data_only=True)
+    ws = wb.active
+    headers = [c.value for c in ws[1]]
+    idx = {h: i for i, h in enumerate(headers)}
+    shift_label = {"DS": "Day", "NS": "Night", "DAY": "Day", "NIGHT": "Night"}
+
+    rows: list[dict] = []
+    for raw in ws.iter_rows(min_row=2, values_only=True):
+        if not any(raw):
+            continue
+        first = (raw[idx["First Name"]] or "").strip()
+        last  = (raw[idx["Surname"]]    or "").strip()
+        name  = f"{first} {last}".strip()
+        if not name:
+            continue
+        role  = str(raw[idx["Pegasus Job Role"]] or "Unknown").strip()
+        shift = str(raw[idx["Shift"]] or "").strip().upper()
+        rows.append({
+            "labour_hire":      (raw[idx["Company"]] or "").strip(),
+            "name":             name,
+            "role":             role,
+            "start":            to_iso(raw[idx["Date In"]]),
+            "end":              to_iso(raw[idx["Date Out"]]),
+            "confirmed":        True,
+            "crew_type":        shift_label.get(shift, shift.title() or "Unknown"),
+            "mobilised":        True,
+            "_name_resolution": "explicit_column",
+        })
+    return rows
+
+
 def parse_roster(xlsx_path: pathlib.Path) -> tuple[str, list[dict]]:
     """Sniff the XLSX, dispatch to the right parser, return (format, rows)."""
     wb = openpyxl.load_workbook(xlsx_path, data_only=True, read_only=True)
@@ -213,6 +252,8 @@ def parse_roster(xlsx_path: pathlib.Path) -> tuple[str, list[dict]]:
     wb.close()
     if fmt == "rapidcrews":
         return fmt, parse_rapidcrews_roster(xlsx_path)
+    if fmt == "pegasus":
+        return fmt, parse_pegasus_roster(xlsx_path)
     if fmt == "kleenheat":
         return fmt, parse_kleenheat_roster(xlsx_path)
     raise ValueError(f"{xlsx_path.name}: unrecognised roster columns {headers}")

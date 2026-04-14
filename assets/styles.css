@@ -304,21 +304,23 @@ main {
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
-/* Red banner headers — mirrors the corporate presentation's "Balance Sheet ($m)"
-   and "Undrawn Facilities Available" bars. White uppercase text on the brand red. */
+/* Card headers: dark text on white with a 2px red rule beneath — matches the
+   bold black section titles on the investor deck's Executive Summary slide
+   (eg "Record 1H Financial Result") where red is used as an accent, not a
+   full banner. Understated, readable, still on-brand. */
 .card h2 {
   margin: 0;
-  padding: 11px 20px;
-  background: var(--srg-red);
-  color: #fff;
-  font-size: 11.5px;
+  padding: 14px 20px;
+  background: var(--surface);
+  color: var(--srg-dark);
+  border-bottom: 2px solid var(--srg-red);
+  font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border-bottom: none;
+  letter-spacing: 0.08em;
 }
 .card > .card-head { padding: 0; }
-.card > .card-head h2 { border-bottom: none; }
+.card > .card-head h2 { border-bottom: 2px solid var(--srg-red); }
 .card > .card-head + * { margin-top: 0; }
 .card .card-head .hint {
   padding: 10px 20px 0;
@@ -769,16 +771,16 @@ details summary::-webkit-details-marker { display: none; }
 details summary h2 {
   display: block !important;
   margin: 0;
-  padding: 11px 20px;
-  background: var(--srg-red);
-  color: #fff;
-  border-bottom: none;
+  padding: 14px 20px;
+  background: var(--surface);
+  color: var(--srg-dark);
+  border-bottom: 2px solid var(--srg-red);
 }
 details summary h2::after {
   content: "▾";
   float: right;
-  font-size: 10px;
-  opacity: 0.8;
+  font-size: 11px;
+  color: var(--srg-grey);
   transition: transform .15s ease;
 }
 details[open] summary h2::after { transform: rotate(180deg); display: inline-block; }

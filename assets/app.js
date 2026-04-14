@@ -231,12 +231,12 @@ function render() {
     ? `${fmtInt(totalRoll.filled)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.required)}${star(allPlaceholder)}`
     : "—";
 
-  // 2. Overall fill rate — coloured green/red when ≥100% / <100%.
+  // 2. Overall fill rate — coloured green when ≥100%.
   const fillRateEl = document.getElementById("kpi-fillrate");
   fillRateEl.className = "kpi-value";
   if (totalRoll.required) {
     const ratio = totalRoll.filled / totalRoll.required;
-    fillRateEl.classList.add(ratio >= 1 ? "positive" : "");
+    if (ratio >= 1) fillRateEl.classList.add("positive");
     fillRateEl.innerHTML = fmtPct(ratio) + star(allPlaceholder);
   } else {
     fillRateEl.innerHTML = "—";

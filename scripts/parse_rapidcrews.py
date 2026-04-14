@@ -129,8 +129,19 @@ def build_shutdown(roster_id: str, xlsx: pathlib.Path) -> tuple[str, str, dict]:
 
     shutdown_id = f"{company_key}-{sd[:7]}"   # e.g. covalent-2026-04
     required = merge_targets(shutdown_id, filled_by_role)
-    today = dt.date.today()
-    status = "completed" if dt.date.fromisoformat(sd) <= today else "booked"
+    today      = dt.date.today()
+    start_day  = dt.date.fromisoformat(sd)
+    end_day    = dt.date.fromisoformat(ed)
+    # Three-way status. A shutdown is only "completed" once every scheduled
+    # worker has demobilised (end_date strictly before today). Between start
+    # and end it's "in_progress" — the roster is on site but the job isn't
+    # done. Before start it's still "booked".
+    if end_day < today:
+        status = "completed"
+    elif start_day <= today:
+        status = "in_progress"
+    else:
+        status = "booked"
 
     shutdown = {
         "id": shutdown_id,

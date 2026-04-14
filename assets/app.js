@@ -56,12 +56,24 @@ async function load() {
   }));
   for (const payload of results) state.raw[payload.company] = payload;
 
-  // Flatten and sort chronologically. Infer status from start_date when missing.
+  // Flatten and sort chronologically. Infer status from dates when missing.
+  // A shutdown is only "completed" once every scheduled worker has
+  // demobilised (end_date strictly before today). Between start and end it's
+  // "in_progress". Before start it's "booked".
   const todayIso = new Date().toISOString().slice(0, 10);
+  const inferStatus = (sd, ed) => ed < todayIso ? "completed"
+                                : sd <= todayIso ? "in_progress"
+                                : "booked";
   state.shutdowns = [];
   for (const payload of results) {
     for (const s of payload.shutdowns) {
-      const status = s.status || (s.start_date > todayIso ? "booked" : "completed");
+      // Re-infer if the file says "completed" but end_date is still in the
+      // future — protects against old files from before the three-way status
+      // change.
+      let status = s.status || inferStatus(s.start_date, s.end_date);
+      if (status === "completed" && s.end_date >= todayIso) {
+        status = inferStatus(s.start_date, s.end_date);
+      }
       state.shutdowns.push({
         ...s,
         status,
@@ -196,13 +208,16 @@ function render() {
   // Retention is always computed across the full chronology — filtering happens on display only.
   retentionRollup(state.shutdowns);
 
-  const view = filtered();
-  const completed = view.filter(s => s.status === "completed");
-  const booked    = view.filter(s => s.status === "booked");
+  const view       = filtered();
+  const completed  = view.filter(s => s.status === "completed");
+  const inProgress = view.filter(s => s.status === "in_progress");
+  const booked     = view.filter(s => s.status === "booked");
+  // "Open" = not yet completed. In-progress and booked shutdowns both have
+  // positions left to fill and are tracked together in the headline KPI.
+  const openSds    = view.filter(s => s.status !== "completed");
 
-  // Fill-rate KPIs reflect completed work only — booked shutdowns have partial fills by design.
-  const roll = fulfillmentRollup(completed);
-  const bookedRoll = fulfillmentRollup(booked);
+  const totalRoll = fulfillmentRollup(view);
+  const openRoll  = fulfillmentRollup(openSds);
 
   // Detect placeholder-target shutdowns (Rapid Crews roster only — no real
   // headcount target supplied yet). When present, fill rate trivially reads
@@ -214,26 +229,30 @@ function render() {
 
   const star = (cond) => cond ? '<span class="kpi-star" title="No real target supplied — value derived from confirmed roster">*</span>' : "";
 
-  document.getElementById("kpi-required").innerHTML  = fmtInt(roll.required) + star(allPlaceholder);
-  document.getElementById("kpi-filled").textContent  = fmtInt(roll.filled);
-  document.getElementById("kpi-fillrate").innerHTML  = (roll.required ? fmtPct(roll.filled / roll.required) : "—") + star(allPlaceholder);
-  document.getElementById("kpi-booked").innerHTML    = (bookedRoll.required
-    ? `${fmtInt(bookedRoll.filled)} / ${fmtInt(bookedRoll.required)}`
-    : "—") + star(booked.length > 0 && booked.every(s => s._source?.required_target_source === "PLACEHOLDER_FROM_ROSTER"));
-  document.getElementById("kpi-booked-sub").textContent = bookedRoll.required
-    ? `${fmtPct(bookedRoll.filled / bookedRoll.required)} confirmed`
-    : "";
-  document.getElementById("kpi-shutdowns").textContent = `${fmtInt(completed.length)} / ${fmtInt(booked.length)}`;
+  document.getElementById("kpi-required").innerHTML = fmtInt(totalRoll.required) + star(allPlaceholder);
+  document.getElementById("kpi-filled").textContent = fmtInt(totalRoll.filled);
+  document.getElementById("kpi-fillrate").innerHTML = (totalRoll.required
+    ? fmtPct(totalRoll.filled / totalRoll.required)
+    : "—") + star(allPlaceholder);
+  document.getElementById("kpi-booked").innerHTML   = (openRoll.required
+    ? `${fmtInt(openRoll.filled)} / ${fmtInt(openRoll.required)}`
+    : "—") + star(openSds.length > 0 && openSds.every(s => s._source?.required_target_source === "PLACEHOLDER_FROM_ROSTER"));
+  document.getElementById("kpi-booked-sub").textContent = openRoll.required
+    ? `${fmtPct(openRoll.filled / openRoll.required)} confirmed`
+    : "booked / in prog / done";
+  document.getElementById("kpi-shutdowns").textContent =
+    `${fmtInt(booked.length)} / ${fmtInt(inProgress.length)} / ${fmtInt(completed.length)}`;
 
   // Each render step is isolated — one failure shouldn't black out the rest of the page.
   const chartRoll = fulfillmentRollup(view);
   const steps = [
-    ["company chart",   () => renderCompanyChart(chartRoll)],
-    ["trade chart",     () => renderTradeChart(chartRoll)],
-    ["retention chart", () => renderRetentionChart(view)],
-    ["retention table", () => renderRetentionTable(view)],
-    ["gantt",           () => renderGantt(view)],
-    ["warnings",        () => renderWarnings()],
+    ["company chart",    () => renderCompanyChart(chartRoll)],
+    ["trade chart",      () => renderTradeChart(chartRoll)],
+    ["gantt",            () => renderGantt(view)],
+    ["shutdown summary", () => renderShutdownSummary(view)],
+    ["retention chart",  () => renderRetentionChart(view)],
+    ["retention table",  () => renderRetentionTable(view)],
+    ["warnings",         () => renderWarnings()],
   ];
   for (const [name, fn] of steps) {
     try { fn(); } catch (e) { console.error(`[render] ${name} failed:`, e); }
@@ -493,7 +512,7 @@ function renderGantt(view) {
       const fillPct = req ? filled / req : 0;
 
       const bar = document.createElement("div");
-      bar.className = "gantt-bar" + (s.status === "booked" ? " booked" : "");
+      bar.className = "gantt-bar status-" + s.status + (s.status === "booked" ? " booked" : "");
       bar.style.left  = pct(sd) + "%";
       bar.style.width = Math.max(0.4, pct(ed) - pct(sd)) + "%";
       bar.style.setProperty("--co", companyColor(lane));
@@ -501,8 +520,8 @@ function renderGantt(view) {
       bar.title = [
         `${s.company} – ${s.name}`,
         `${fmtDate(s.start_date)} → ${fmtDate(s.end_date)}`,
-        `Status: ${s.status}`,
-        `${s.status === "booked" ? "Confirmed" : "Filled"}: ${filled}/${req} (${fmtPct(fillPct)})`,
+        `Status: ${statusLabel(s.status)}`,
+        `${s.status === "completed" ? "Filled" : "Confirmed"}: ${filled}/${req} (${fmtPct(fillPct)})`,
       ].join("\n");
       bar.innerHTML = `<span>${s.name.replace(/^Kwinana /, "")} &middot; ${fmtPct(fillPct)}</span>`;
       track.appendChild(bar);
@@ -513,6 +532,101 @@ function renderGantt(view) {
   }
 
   host.appendChild(body);
+}
+
+function statusLabel(st) {
+  return st === "in_progress" ? "In progress"
+       : st === "completed"   ? "Completed"
+       : "Booked";
+}
+
+/**
+ * One summary card per shutdown. Mirrors the per-site dashboards' trade-group
+ * table: for each role show required vs filled, the gap, and the per-role
+ * fill rate. Over-fills (filled > required) render with a negative gap — this
+ * is truthful: e.g. the live Covalent shutdown grew beyond its original plan.
+ */
+function renderShutdownSummary(view) {
+  const host = document.getElementById("shutdown-summary");
+  host.innerHTML = "";
+  if (view.length === 0) {
+    host.innerHTML = `<p class="muted">No shutdowns for this filter.</p>`;
+    return;
+  }
+
+  for (const s of view) {
+    const req = s.required_by_role || {};
+    const fil = s.filled_by_role   || {};
+    const roles = [...new Set([...Object.keys(req), ...Object.keys(fil)])]
+      .sort((a, b) => (req[b] || 0) - (req[a] || 0) || a.localeCompare(b));
+
+    const totalReq    = Object.values(req).reduce((a, b) => a + b, 0);
+    const totalFilled = Object.values(fil).reduce((a, b) => a + b, 0);
+    const totalGap    = totalReq - totalFilled;
+    const fillRate    = totalReq ? totalFilled / totalReq : 0;
+    const isPlaceholder = s._source?.required_target_source === "PLACEHOLDER_FROM_ROSTER";
+
+    const body = roles.map(r => {
+      const rq   = req[r] || 0;
+      const fl   = fil[r] || 0;
+      const gap  = rq - fl;
+      const rate = rq ? fl / rq : 0;
+      const gapCls = gap > 0 ? "gap-short" : gap < 0 ? "gap-over" : "gap-even";
+      return `
+        <tr>
+          <td>${r}</td>
+          <td class="num">${fmtInt(rq)}</td>
+          <td class="num">${fmtInt(fl)}</td>
+          <td class="num ${gapCls}">${gap > 0 ? "+" : ""}${fmtInt(gap)}</td>
+          <td class="num">${rq ? fmtPct(rate) : "—"}</td>
+        </tr>`;
+    }).join("");
+
+    const card = document.createElement("div");
+    card.className = "sd-card";
+    card.innerHTML = `
+      <div class="sd-head">
+        <div class="sd-title">
+          <span class="co-dot" style="background:${companyColor(s.company)}"></span>
+          <span class="sd-co">${s.company}</span>
+          <span class="sd-sep">&middot;</span>
+          <span class="sd-name">${s.name}</span>
+        </div>
+        <div class="sd-meta">
+          <span class="sd-status status-${s.status}">${statusLabel(s.status)}</span>
+          <span class="sd-dates">${fmtDate(s.start_date)} &rarr; ${fmtDate(s.end_date)}</span>
+          <span class="sd-site">${s.site || ""}</span>
+        </div>
+      </div>
+      <div class="sd-kpis">
+        <div class="sd-kpi"><span class="sd-kpi-lbl">Planned</span><span class="sd-kpi-val">${fmtInt(totalReq)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
+        <div class="sd-kpi"><span class="sd-kpi-lbl">Confirmed</span><span class="sd-kpi-val">${fmtInt(totalFilled)}</span></div>
+        <div class="sd-kpi"><span class="sd-kpi-lbl">Gap</span><span class="sd-kpi-val ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</span></div>
+        <div class="sd-kpi"><span class="sd-kpi-lbl">Fill rate</span><span class="sd-kpi-val">${totalReq ? fmtPct(fillRate) : "—"}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""}</span></div>
+      </div>
+      <div class="table-wrap sd-table-wrap">
+        <table class="sd-table">
+          <thead><tr>
+            <th>Role</th>
+            <th class="num">Required</th>
+            <th class="num">Filled</th>
+            <th class="num">Gap</th>
+            <th class="num">Fill rate</th>
+          </tr></thead>
+          <tbody>${body}
+            <tr class="sd-total">
+              <td>Total</td>
+              <td class="num">${fmtInt(totalReq)}</td>
+              <td class="num">${fmtInt(totalFilled)}</td>
+              <td class="num ${totalGap > 0 ? "gap-short" : totalGap < 0 ? "gap-over" : "gap-even"}">${totalGap > 0 ? "+" : ""}${fmtInt(totalGap)}</td>
+              <td class="num">${totalReq ? fmtPct(fillRate) : "—"}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+    host.appendChild(card);
+  }
 }
 
 /**

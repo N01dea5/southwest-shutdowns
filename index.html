@@ -38,11 +38,11 @@
     <div id="placeholder-banner" class="banner" hidden></div>
 
     <section class="kpis" id="kpis">
-      <div class="kpi"><div class="kpi-label">Completed: required</div><div class="kpi-value" id="kpi-required">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Completed: filled</div><div class="kpi-value" id="kpi-filled">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Completed fill rate</div><div class="kpi-value" id="kpi-fillrate">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Booked positions <span class="kpi-sub" id="kpi-booked-sub"></span></div><div class="kpi-value" id="kpi-booked">&mdash;</div></div>
-      <div class="kpi"><div class="kpi-label">Shutdowns (completed / booked)</div><div class="kpi-value" id="kpi-shutdowns">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Planned positions</div><div class="kpi-value" id="kpi-required">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Confirmed positions</div><div class="kpi-value" id="kpi-filled">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Overall fill rate</div><div class="kpi-value" id="kpi-fillrate">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Open positions <span class="kpi-sub" id="kpi-booked-sub"></span></div><div class="kpi-value" id="kpi-booked">&mdash;</div></div>
+      <div class="kpi"><div class="kpi-label">Shutdowns <span class="kpi-sub">booked / in prog / done</span></div><div class="kpi-value" id="kpi-shutdowns">&mdash;</div></div>
     </section>
 
     <section class="grid-2">
@@ -54,6 +54,30 @@
         <h2>Fill rate by trade</h2>
         <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
       </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Shutdown schedule (Gantt)</h2>
+        <p class="hint">All shutdowns across the three sites. Shading encodes fill &mdash; darker means closer to target. Dashed outline = booked (not yet mobilised); solid = in progress or completed.</p>
+      </div>
+      <div class="gantt-legend">
+        <span><span class="sw co-covalent"></span>Covalent</span>
+        <span><span class="sw co-tronox"></span>Tronox</span>
+        <span><span class="sw co-csbp"></span>CSBP</span>
+        <span class="sep">|</span>
+        <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
+        <span><span class="sw today-swatch"></span>Today</span>
+      </div>
+      <div id="gantt" class="gantt"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Shutdown summary</h2>
+        <p class="hint">One table per shutdown, mirroring the per-site dashboards. Shows <strong>required vs filled</strong> by role, with the gap and per-role fill rate. Status chip reflects roster state: <em>Booked</em> (nobody mobilised yet) &middot; <em>In progress</em> (roster on site, not yet demobilised) &middot; <em>Completed</em> (all end dates in the past).</p>
+      </div>
+      <div id="shutdown-summary" class="shutdown-summary"></div>
     </section>
 
     <section class="card">
@@ -76,22 +100,6 @@
           <tbody></tbody>
         </table>
       </div>
-    </section>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Shutdown schedule (Gantt)</h2>
-        <p class="hint">Booked shutdowns across all three sites. Shading encodes fill &mdash; darker means closer to the required headcount. Dashed outline = booked (not yet mobilised).</p>
-      </div>
-      <div class="gantt-legend">
-        <span><span class="sw co-covalent"></span>Covalent</span>
-        <span><span class="sw co-tronox"></span>Tronox</span>
-        <span><span class="sw co-csbp"></span>CSBP</span>
-        <span class="sep">|</span>
-        <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
-        <span><span class="sw today-swatch"></span>Today</span>
-      </div>
-      <div id="gantt" class="gantt"></div>
     </section>
 
     <section class="card">

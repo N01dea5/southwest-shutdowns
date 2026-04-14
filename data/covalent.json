@@ -7,23 +7,23 @@
       "site": "Mt Holland",
       "start_date": "2026-04-09",
       "end_date": "2026-05-01",
-      "status": "completed",
+      "status": "in_progress",
       "required_by_role": {
-        "Mechanical Fitter": 24,
-        "Intermediate Rigger": 3,
-        "Lube Technician": 3,
-        "Supervisor - Mechanical": 6,
         "Trade Assistant": 5,
+        "Lube Technician": 3,
+        "Site Coordinator": 1,
         "Telehandler Operator": 2,
-        "HSE Advisor": 2,
-        "Advanced Rigger": 4,
-        "Superintendent": 1,
-        "Boilermaker": 4,
         "Supervisor": 2,
+        "Superintendent": 1,
+        "Mechanical Fitter": 24,
+        "Boilermaker": 4,
+        "Intermediate Rigger": 3,
+        "Coded Welder": 1,
         "Electrician": 4,
         "Basic Rigger": 4,
-        "Site Coordinator": 1,
-        "Coded Welder": 1
+        "HSE Advisor": 2,
+        "Supervisor - Mechanical": 6,
+        "Advanced Rigger": 4
       },
       "filled_by_role": {
         "Boilermaker": 5,
@@ -337,5 +337,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T08:17:53Z"
+  "generated_at": "2026-04-14T08:32:36Z"
 }

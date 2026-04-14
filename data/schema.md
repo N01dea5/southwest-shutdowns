@@ -31,7 +31,7 @@ also hand-edit a JSON if needed — the dashboard is forgiving about extra field
       "site":       "Kwinana",            // physical site
       "start_date": "2025-11-01",         // ISO date
       "end_date":   "2025-11-20",         // ISO date
-      "status":     "completed",          // "completed" | "booked" (optional; inferred from dates if absent)
+      "status":     "completed",          // "booked" | "in_progress" | "completed" (optional; inferred from dates)
 
       // Role-level headcount. Keys are trade names; values are integer counts.
       // Keys MUST match between required_by_role and filled_by_role for the same shutdown.
@@ -97,7 +97,7 @@ by the parser — only the `data/targets/` files are.
 - `roster.length` should roughly equal `sum(filled_by_role)`; small mismatches are tolerated but flagged in the data-quality panel.
 - Role names should be consistent across companies (e.g. always `Boilermaker`, not `boilermaker` or `BM`) so cross-site trade rollups work. The dashboard also normalizes casing.
 - Names in `roster` should be the full display name as known to the company. The dashboard lowercases, strips punctuation, and collapses whitespace before matching.
-- `status` is optional. If absent, the dashboard infers `booked` when `start_date` is in the future and `completed` otherwise. Booked shutdowns are included in the Gantt and in the booked-positions KPI, but excluded from completed fill-rate KPIs.
+- `status` is optional. If absent, the dashboard infers it from the dates: `booked` when `start_date` is still in the future, `completed` when `end_date` has strictly passed, and `in_progress` in between (roster is on site, nobody has demobilised yet). Completed counts include only truly-finished shutdowns; `in_progress` and `booked` are both counted as "open" in the headline KPIs.
 
 ## Retention semantics
 

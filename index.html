@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260414-kpi-tiles" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260414-reorder" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260414-kpi-tiles" defer></script>
+  <script src="assets/app.js?v=20260414-reorder" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -59,42 +59,6 @@
       </div>
     </section>
 
-    <section class="grid-2">
-      <div class="card">
-        <h2>Fill rate by company</h2>
-        <div class="chart-wrap"><canvas id="chart-company"></canvas></div>
-      </div>
-      <div class="card">
-        <h2>Fill rate by trade</h2>
-        <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Shutdown schedule (Gantt)</h2>
-        <p class="hint">All shutdowns across the three sites. Shading encodes fill &mdash; darker means closer to target. Dashed outline = booked (not yet mobilised); solid = in progress or completed.</p>
-      </div>
-      <div class="gantt-legend">
-        <span><span class="sw co-kleenheat"></span>Kleenheat</span>
-        <span><span class="sw co-covalent"></span>Covalent</span>
-        <span><span class="sw co-tronox"></span>Tronox</span>
-        <span><span class="sw co-csbp"></span>CSBP</span>
-        <span class="sep">|</span>
-        <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
-        <span><span class="sw today-swatch"></span>Today</span>
-      </div>
-      <div id="gantt" class="gantt"></div>
-    </section>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Shutdown summary</h2>
-        <p class="hint">One table per shutdown, mirroring the per-site dashboards. Shows <strong>required vs filled</strong> by role, with the gap and per-role fill rate. Status chip reflects roster state: <em>Booked</em> (nobody mobilised yet) &middot; <em>In progress</em> (roster on site, not yet demobilised) &middot; <em>Completed</em> (all end dates in the past).</p>
-      </div>
-      <div id="shutdown-summary" class="shutdown-summary"></div>
-    </section>
-
     <section class="card">
       <div class="card-head">
         <h2>Retention &amp; carry-over</h2>
@@ -115,6 +79,42 @@
           <tbody></tbody>
         </table>
       </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Shutdown schedule (Gantt)</h2>
+        <p class="hint">All shutdowns across the sites, week-resolution. Shading encodes fill &mdash; darker means closer to target. Dashed outline = booked (not yet mobilised); solid = in progress or completed. Scrolls horizontally for long spans.</p>
+      </div>
+      <div class="gantt-legend">
+        <span><span class="sw co-kleenheat"></span>Kleenheat</span>
+        <span><span class="sw co-covalent"></span>Covalent</span>
+        <span><span class="sw co-tronox"></span>Tronox</span>
+        <span><span class="sw co-csbp"></span>CSBP</span>
+        <span class="sep">|</span>
+        <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
+        <span><span class="sw today-swatch"></span>Today</span>
+      </div>
+      <div id="gantt" class="gantt"></div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <h2>Fill rate by company</h2>
+        <div class="chart-wrap"><canvas id="chart-company"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Fill rate by trade</h2>
+        <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Shutdown detail</h2>
+        <p class="hint">One collapsible card per shutdown, mirroring the per-site dashboards. Shows <strong>required vs filled</strong> by role, with the gap and per-role fill rate. Status chip reflects roster state: <em>Booked</em> (nobody mobilised yet) &middot; <em>In progress</em> (roster on site, not yet demobilised) &middot; <em>Completed</em> (all end dates in the past).</p>
+      </div>
+      <div id="shutdown-summary" class="shutdown-summary"></div>
     </section>
 
     <section class="card">

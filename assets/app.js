@@ -310,7 +310,10 @@ const BRAND = {
 };
 
 function renderCompanyChart(roll) {
-  const labels = Object.keys(roll.byCompany);
+  // Preserve the canonical company order (Kleenheat → CSBP) so filter
+  // changes don't reshuffle the rows.
+  const labels = COMPANIES.map(c => Object.keys(roll.byCompany).find(k => k.toLowerCase() === c.key))
+    .filter(Boolean);
   const required = labels.map(l => roll.byCompany[l].required);
   const filled   = labels.map(l => roll.byCompany[l].filled);
 
@@ -319,8 +322,8 @@ function renderCompanyChart(roll) {
     data: {
       labels,
       datasets: [
-        { label: "Required", data: required, backgroundColor: BRAND.required, borderColor: BRAND.border, borderWidth: 1 },
-        { label: "Filled",   data: filled,   backgroundColor: labels.map(companyColor) },
+        { label: "Required", data: required, backgroundColor: BRAND.dark, borderWidth: 0 },
+        { label: "Filled",   data: filled,   backgroundColor: BRAND.red, borderWidth: 0 },
       ],
     },
     options: {
@@ -328,7 +331,7 @@ function renderCompanyChart(roll) {
       responsive: true, maintainAspectRatio: false,
       scales: {
         x: { beginAtZero: true, grid: { color: BRAND.border }, ticks: { color: BRAND.grey } },
-        y: { grid: { color: BRAND.border }, ticks: { color: BRAND.dark, font: { weight: "600" } } },
+        y: { grid: { display: false }, ticks: { color: BRAND.dark, font: { weight: "700" } } },
       },
       plugins: {
         legend: { labels: { color: BRAND.dark, font: { weight: "600" } } },
@@ -352,7 +355,10 @@ function renderCompanyChart(roll) {
 }
 
 function renderTradeChart(roll) {
-  const roles = Object.keys(roll.byRole).sort();
+  // Sort roles by required size (descending) so the biggest demands lead —
+  // more useful than alphabetical when roles vary wildly in size.
+  const roles = Object.keys(roll.byRole)
+    .sort((a, b) => (roll.byRole[b].required - roll.byRole[a].required) || a.localeCompare(b));
   const required = roles.map(r => roll.byRole[r].required);
   const filled   = roles.map(r => roll.byRole[r].filled);
 

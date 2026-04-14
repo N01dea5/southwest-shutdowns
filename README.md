@@ -195,32 +195,98 @@ Two ways to wire up the drop-zone — pick one:
 
 ### Option A — Power Automate flow (no code, near-instant)
 
-Trigger a `workflow_dispatch` event the moment SharePoint sees the new file,
-so the unified dashboard refreshes within a minute of the drop.
+SharePoint drop-zone → Power Automate → commits the XLSX to `data/raw/` on
+GitHub → the existing `refresh-data` workflow sees the push and reruns the
+whole pipeline. End-to-end latency ~ 60-90 seconds.
 
-1. **In Microsoft 365 → Power Automate**, create a new automated cloud flow.
-2. **Trigger**: *SharePoint → When a file is created (properties only)*,
-   pointed at the SharePoint site + folder you want as the drop-zone.
-3. **Condition**: `triggerOutputs()?['body/{Name}']` ends with `.xlsx`.
-4. **Action — HTTP** (or the built-in GitHub connector):
-   - Method: `POST`
-   - URI: `https://api.github.com/repos/N01dea5/southwest-shutdowns/actions/workflows/refresh-data.yml/dispatches`
-   - Headers:
+#### 1. Create a GitHub personal access token
+
+Needed once, stored in the Power Automate GitHub connection.
+
+1. GitHub → your avatar → **Settings** → **Developer settings** →
+   **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
+2. **Resource owner**: `N01dea5` · **Repository access**: "Only select
+   repositories" → `southwest-shutdowns`.
+3. **Permissions → Repository**:
+   - *Contents*: **Read and write** (so the flow can commit files)
+   - *Metadata*: **Read-only** (auto-enabled)
+   - *Actions*: **Read and write** (only if you want the optional
+     `workflow_dispatch` step below — otherwise skip)
+4. **Expiration**: 90 days is a sensible default; set a calendar reminder
+   to rotate.
+5. **Generate token** → copy the value. You will not see it again.
+
+#### 2. Build the flow
+
+1. **Power Automate** → **My flows** → **New flow** → **Automated cloud flow**.
+2. Name it "Southwest shutdowns — roster drop". Trigger: **When a file is
+   created (properties only)** (SharePoint connector).
+3. Trigger config:
+   - **Site Address**: the SharePoint site hosting the drop folder.
+   - **Library Name**: the document library (usually "Documents").
+   - **Folder**: the drop-zone subfolder (e.g. `/Rosters`). Leave blank to
+     watch the library root.
+4. **+ New step → Condition**:
+   - Left: `ends with` — drag in **File name with extension** from the
+     trigger's dynamic content.
+   - Operator: `ends with`
+   - Right: `.xlsx`
+   - This filters out Office temp files and anything that isn't a roster
+     export.
+5. Under **If yes**: **+ Add an action → SharePoint → Get file content**.
+   - **Site Address**: same site.
+   - **File Identifier**: select **Identifier** from the trigger's dynamic
+     content.
+6. **+ Add an action → GitHub → Create or update file contents**
+   (connection: sign in with your GitHub PAT when prompted).
+   - **Repository Owner**: `N01dea5`
+   - **Repository**: `southwest-shutdowns`
+   - **Branch**: `main`
+   - **File Path**: expression
      ```
-     Authorization: Bearer <GitHub PAT with `repo` and `workflow` scopes>
-     Accept:        application/vnd.github+json
-     Content-Type:  application/json
+     concat('data/raw/', triggerOutputs()?['body/{FilenameWithExtension}'])
      ```
-   - Body: `{ "ref": "main" }`
-5. **Action — SharePoint → Get file content**, chained into a
-   **GitHub → Create or update file contents** action targeting
-   `data/raw/<filename>` on `main`. This commits the actual XLSX.
+   - **Commit Message**: expression
+     ```
+     concat('roster: drop ', triggerOutputs()?['body/{FilenameWithExtension}'])
+     ```
+   - **File Content**: **File Content** from the "Get file content" step's
+     output (the connector handles base64 encoding internally).
+7. **Save**.
 
-   The `refresh-data` workflow sees the new file land and re-parses
-   automatically.
+That's the minimum. The push to `data/raw/` hits the existing `on: push`
+trigger in `refresh-data.yml`, which re-parses and commits the regenerated
+`data/*.json` back to the same branch. GH Pages rebuilds and the dashboard
+picks up the new cache-buster.
 
-Store the GitHub PAT in the flow's connection (Power Automate never exposes
-it in run logs). Rotate whenever org policy demands.
+#### 3. (Optional) Kick the workflow manually for instant feedback
+
+Useful when the push event is rate-limited or delayed. Add one more step
+after **Create or update file contents**:
+
+- **+ Add an action → HTTP**:
+  - Method: `POST`
+  - URI: `https://api.github.com/repos/N01dea5/southwest-shutdowns/actions/workflows/refresh-data.yml/dispatches`
+  - Headers:
+    ```
+    Authorization: Bearer <same PAT as above>
+    Accept:        application/vnd.github+json
+    Content-Type:  application/json
+    ```
+  - Body: `{ "ref": "main" }`
+
+Drop the PAT into a Power Automate connection (**Settings → Connections**)
+rather than hard-coding it in the step, so it doesn't show up in run history.
+
+#### 4. Test it
+
+1. Drop a file named `9999 (RosterCut) 2026-04-14_18-00-00.xlsx` into the
+   SharePoint folder (use a copy of an existing roster).
+2. Flow run should appear green within a minute.
+3. GitHub → **Actions** tab → the "Refresh dashboard data" run should follow
+   seconds later, parse the file (skip-unmapped for unknown roster ids, or
+   parse normally if it's a mapped id), and commit the regenerated JSONs.
+4. Remove the test file from SharePoint and the repo when done.
 
 ### Option B — GitHub Actions + Microsoft Graph (code-first)
 

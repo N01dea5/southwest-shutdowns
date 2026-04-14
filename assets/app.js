@@ -273,6 +273,17 @@ function makeChart(id, config) {
   state.charts[id] = new Chart(canvas.getContext("2d"), config);
 }
 
+// SRG brand tokens used by the charts — kept in sync with :root in styles.css.
+const BRAND = {
+  red:       "#E30613",
+  dark:      "#1A1A1A",
+  grey:      "#595959",
+  grey2:     "#8C8C8C",
+  light:     "#F5F5F5",
+  border:    "#E5E5E5",
+  required:  "#D9DCE1",   // muted neutral for "Required" bars — sits behind the brand-coloured "Filled"
+};
+
 function renderCompanyChart(roll) {
   const labels = Object.keys(roll.byCompany);
   const required = labels.map(l => roll.byCompany[l].required);
@@ -283,16 +294,25 @@ function renderCompanyChart(roll) {
     data: {
       labels,
       datasets: [
-        { label: "Required", data: required, backgroundColor: "#cfd8e3" },
+        { label: "Required", data: required, backgroundColor: BRAND.required, borderColor: BRAND.border, borderWidth: 1 },
         { label: "Filled",   data: filled,   backgroundColor: labels.map(companyColor) },
       ],
     },
     options: {
       indexAxis: "y",
       responsive: true, maintainAspectRatio: false,
-      scales: { x: { beginAtZero: true } },
+      scales: {
+        x: { beginAtZero: true, grid: { color: BRAND.border }, ticks: { color: BRAND.grey } },
+        y: { grid: { color: BRAND.border }, ticks: { color: BRAND.dark, font: { weight: "600" } } },
+      },
       plugins: {
+        legend: { labels: { color: BRAND.dark, font: { weight: "600" } } },
         tooltip: {
+          backgroundColor: BRAND.dark,
+          titleColor: "#fff",
+          bodyColor: "#fff",
+          borderColor: BRAND.red,
+          borderWidth: 1,
           callbacks: {
             afterLabel: (ctx) => {
               const co = labels[ctx.dataIndex];
@@ -316,15 +336,24 @@ function renderTradeChart(roll) {
     data: {
       labels: roles,
       datasets: [
-        { label: "Required", data: required, backgroundColor: "#cfd8e3" },
-        { label: "Filled",   data: filled,   backgroundColor: "#1f77b4" },
+        { label: "Required", data: required, backgroundColor: BRAND.required, borderColor: BRAND.border, borderWidth: 1 },
+        { label: "Filled",   data: filled,   backgroundColor: BRAND.red },
       ],
     },
     options: {
       responsive: true, maintainAspectRatio: false,
-      scales: { y: { beginAtZero: true } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: BRAND.border }, ticks: { color: BRAND.grey } },
+        x: { grid: { display: false }, ticks: { color: BRAND.dark, font: { weight: "600" }, maxRotation: 50, minRotation: 30 } },
+      },
       plugins: {
+        legend: { labels: { color: BRAND.dark, font: { weight: "600" } } },
         tooltip: {
+          backgroundColor: BRAND.dark,
+          titleColor: "#fff",
+          bodyColor: "#fff",
+          borderColor: BRAND.red,
+          borderWidth: 1,
           callbacks: {
             afterLabel: (ctx) => {
               const r = roll.byRole[roles[ctx.dataIndex]];
@@ -364,11 +393,13 @@ function renderRetentionChart(view) {
   datasets.push({
     label: "Any company – cross-company carry-over",
     data: ordered.map(s => +(s.metrics.crossRetPct * 100).toFixed(1)),
-    borderColor: "#555",
-    backgroundColor: "#555",
+    borderColor: BRAND.red,
+    backgroundColor: BRAND.red,
     borderDash: [6, 4],
     tension: 0.25,
-    borderWidth: 2,
+    borderWidth: 2.5,
+    pointRadius: 4,
+    pointHoverRadius: 6,
   });
 
   makeChart("chart-retention", {
@@ -377,12 +408,26 @@ function renderRetentionChart(view) {
     options: {
       responsive: true, maintainAspectRatio: false,
       scales: {
-        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + "%" } },
-        x: { ticks: { maxRotation: 60, minRotation: 30, autoSkip: false } },
+        y: {
+          beginAtZero: true, max: 100,
+          grid: { color: BRAND.border },
+          ticks: { color: BRAND.grey, callback: v => v + "%" },
+        },
+        x: {
+          grid: { color: BRAND.border },
+          ticks: { color: BRAND.dark, font: { weight: "600" }, maxRotation: 60, minRotation: 30, autoSkip: false },
+        },
       },
       plugins: {
-        legend: { position: "bottom" },
-        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ": " + ctx.parsed.y + "%" } },
+        legend: { position: "bottom", labels: { color: BRAND.dark, font: { weight: "600" } } },
+        tooltip: {
+          backgroundColor: BRAND.dark,
+          titleColor: "#fff",
+          bodyColor: "#fff",
+          borderColor: BRAND.red,
+          borderWidth: 1,
+          callbacks: { label: ctx => ctx.dataset.label + ": " + ctx.parsed.y + "%" },
+        },
       },
     },
   });
@@ -409,8 +454,10 @@ function renderRetentionTable(view) {
 
 /**
  * Swimlane Gantt of all shutdowns in the filtered view.
- *   - one lane per company
- *   - x-axis: month ticks spanning [earliest start, latest end], padded to month boundaries
+ *   - one lane per company; lane label is sticky-left so it stays visible
+ *     while the chart scrolls horizontally
+ *   - x-axis has two tiers: month labels (upper) and ISO-week ticks (lower)
+ *   - each week is a fixed pixel width (WEEK_PX) so long spans scroll cleanly
  *   - each shutdown is a positioned bar, shaded darker as fill% → 100%
  *   - booked shutdowns get a dashed outline
  *   - vertical "today" marker shown if it falls within the span
@@ -430,59 +477,103 @@ function renderGantt(view) {
     })
     .filter(name => presentCompanies.has(name));
 
-  // Span: pad to month start/end so month ticks look clean.
-  const minStart = view.reduce((m, s) => s.start_date < m ? s.start_date : m, view[0].start_date);
-  const maxEnd   = view.reduce((m, s) => s.end_date   > m ? s.end_date   : m, view[0].end_date);
-  const spanStart = new Date(Date.UTC(+minStart.slice(0, 4), +minStart.slice(5, 7) - 1, 1));
-  const endD = new Date(maxEnd + "T00:00:00Z");
-  const spanEnd   = new Date(Date.UTC(endD.getUTCFullYear(), endD.getUTCMonth() + 1, 1));
+  // --- Span: pad to Monday-of-start-week → Sunday-of-end-week so week ticks align.
+  const WEEK_PX      = 56;                 // column width per week
+  const LANE_LABEL_W = 120;                // matches CSS --lane-label-w
+  const mondayOf = (d) => {
+    const nd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+    const dow = nd.getUTCDay();             // 0=Sun..6=Sat
+    const offset = (dow + 6) % 7;           // Mon=0
+    nd.setUTCDate(nd.getUTCDate() - offset);
+    return nd;
+  };
+  const minStart  = view.reduce((m, s) => s.start_date < m ? s.start_date : m, view[0].start_date);
+  const maxEnd    = view.reduce((m, s) => s.end_date   > m ? s.end_date   : m, view[0].end_date);
+  const spanStart = mondayOf(new Date(minStart + "T00:00:00Z"));
+  const spanEndRaw = new Date(maxEnd + "T00:00:00Z");
+  const spanEnd   = mondayOf(spanEndRaw);
+  spanEnd.setUTCDate(spanEnd.getUTCDate() + 7);      // include full week of end
   const totalMs   = spanEnd - spanStart;
+  const totalWeeks = Math.round(totalMs / (7 * 86400 * 1000));
+  const innerW    = totalWeeks * WEEK_PX;
+  const px = (d) => ((d - spanStart) / totalMs) * innerW;
 
-  const pct = (d) => ((d - spanStart) / totalMs) * 100;
+  // --- Inner scroll container (width = weeks * column width) ---
+  const inner = document.createElement("div");
+  inner.className = "gantt-inner";
+  inner.style.width = (LANE_LABEL_W + innerW) + "px";
 
-  // --- Axis: month ticks ---
+  // --- Axis: two tiers (month label row on top, week ticks below) ---
   const axis = document.createElement("div");
   axis.className = "gantt-axis";
-  const cursor = new Date(spanStart);
-  while (cursor < spanEnd) {
-    const next = new Date(Date.UTC(cursor.getUTCFullYear(), cursor.getUTCMonth() + 1, 1));
-    const left = pct(cursor);
-    const width = pct(next) - left;
-    const tick = document.createElement("div");
-    tick.className = "gantt-tick";
-    tick.style.left = left + "%";
-    tick.style.width = width + "%";
-    const monthLabel = cursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
-    const yearLabel  = cursor.getUTCMonth() === 0 ? cursor.getUTCFullYear() : "";
-    tick.innerHTML = `<span class="mo">${monthLabel}</span><span class="yr">${yearLabel}</span>`;
-    axis.appendChild(tick);
-    cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+
+  // Month tier: one block per calendar month
+  const months = document.createElement("div");
+  months.className = "gantt-axis-months";
+  const mCursor = new Date(Date.UTC(spanStart.getUTCFullYear(), spanStart.getUTCMonth(), 1));
+  while (mCursor < spanEnd) {
+    const next = new Date(Date.UTC(mCursor.getUTCFullYear(), mCursor.getUTCMonth() + 1, 1));
+    const left  = Math.max(0, px(mCursor));
+    const right = Math.min(innerW, px(next));
+    const width = right - left;
+    if (width > 0) {
+      const tick = document.createElement("div");
+      tick.className = "gantt-month-tick";
+      tick.style.left  = left + "px";
+      tick.style.width = width + "px";
+      const mo = mCursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
+      const yr = mCursor.getUTCMonth() === 0 ? " " + mCursor.getUTCFullYear() : "";
+      tick.innerHTML = `<span>${mo}${yr}</span>`;
+      months.appendChild(tick);
+    }
+    mCursor.setUTCMonth(mCursor.getUTCMonth() + 1);
   }
-  host.appendChild(axis);
+  axis.appendChild(months);
+
+  // Week tier: one block per ISO week, labelled by Monday's day-of-month
+  const weeks = document.createElement("div");
+  weeks.className = "gantt-axis-weeks";
+  const wCursor = new Date(spanStart);
+  while (wCursor < spanEnd) {
+    const next = new Date(wCursor);
+    next.setUTCDate(next.getUTCDate() + 7);
+    const left = px(wCursor);
+    const tick = document.createElement("div");
+    tick.className = "gantt-week-tick";
+    tick.style.left  = left + "px";
+    tick.style.width = WEEK_PX + "px";
+    const monthLetter = wCursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
+    const dom = wCursor.getUTCDate();
+    tick.innerHTML = `<span class="dom">${dom}</span><span class="mo">${monthLetter}</span>`;
+    weeks.appendChild(tick);
+    wCursor.setUTCDate(wCursor.getUTCDate() + 7);
+  }
+  axis.appendChild(weeks);
+  inner.appendChild(axis);
 
   // --- Body: one swimlane per company ---
   const body = document.createElement("div");
   body.className = "gantt-body";
 
-  // Gridlines aligned with the month ticks — drawn once behind all lanes.
+  // Weekly gridlines — drawn once behind all lanes.
   const grid = document.createElement("div");
   grid.className = "gantt-grid";
   const g = new Date(spanStart);
   while (g < spanEnd) {
     const line = document.createElement("div");
     line.className = "gantt-gridline";
-    line.style.left = pct(g) + "%";
+    line.style.left = px(g) + "px";
     grid.appendChild(line);
-    g.setUTCMonth(g.getUTCMonth() + 1);
+    g.setUTCDate(g.getUTCDate() + 7);
   }
   body.appendChild(grid);
 
-  // Today marker — inside .gantt-grid so its % positioning aligns with the tracks.
+  // Today marker — inside .gantt-grid so its positioning aligns with the tracks.
   const today = new Date();
   if (today >= spanStart && today <= spanEnd) {
     const todayLine = document.createElement("div");
     todayLine.className = "gantt-today";
-    todayLine.style.left = pct(today) + "%";
+    todayLine.style.left = px(today) + "px";
     todayLine.title = "Today";
     grid.appendChild(todayLine);
   }
@@ -508,8 +599,8 @@ function renderGantt(view) {
 
       const bar = document.createElement("div");
       bar.className = "gantt-bar status-" + s.status + (s.status === "booked" ? " booked" : "");
-      bar.style.left  = pct(sd) + "%";
-      bar.style.width = Math.max(0.4, pct(ed) - pct(sd)) + "%";
+      bar.style.left  = px(sd) + "px";
+      bar.style.width = Math.max(4, px(ed) - px(sd)) + "px";
       bar.style.setProperty("--co", companyColor(lane));
       bar.style.setProperty("--fill-opacity", (0.35 + 0.6 * fillPct).toFixed(2));
       bar.title = [
@@ -526,7 +617,16 @@ function renderGantt(view) {
     body.appendChild(row);
   }
 
-  host.appendChild(body);
+  inner.appendChild(body);
+  host.appendChild(inner);
+
+  // Scroll so "today" (or the earliest in-progress/booked shutdown) is
+  // visible on first render — for booked work months ahead, this lands the
+  // viewport on the relevant week instead of the empty pre-shutdown padding.
+  const focus = today >= spanStart && today <= spanEnd
+              ? px(today) - 80
+              : px(new Date(view[0].start_date + "T00:00:00Z")) - 80;
+  host.scrollLeft = Math.max(0, focus);
 }
 
 function statusLabel(st) {

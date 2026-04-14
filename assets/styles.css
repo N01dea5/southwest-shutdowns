@@ -370,39 +370,71 @@ td.num, th.num {
 .gantt {
   --lane-label-w: 120px;
   border: 1px solid var(--srg-border);
-  overflow: hidden;
+  overflow-x: auto;                 /* horizontal scroll for long spans */
+  overflow-y: hidden;
   background: var(--surface);
+  -webkit-overflow-scrolling: touch;
+}
+.gantt-inner {
+  position: relative;
+  /* width set inline by JS = LANE_LABEL_W + totalWeeks * WEEK_PX */
 }
 
 .gantt-axis {
   position: relative;
   display: block;
-  height: 34px;
+  height: 44px;
   margin-left: var(--lane-label-w);
   border-bottom: 1px solid var(--srg-border);
   background: var(--surface-2);
 }
-.gantt-tick {
+.gantt-axis-months {
+  position: relative;
+  height: 22px;
+  border-bottom: 1px solid var(--srg-border);
+}
+.gantt-month-tick {
+  position: absolute;
+  top: 0; bottom: 0;
+  display: flex; align-items: center;
+  padding: 0 8px;
+  border-left: 1px solid var(--srg-border);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--srg-dark);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gantt-axis-weeks {
+  position: relative;
+  height: 22px;
+}
+.gantt-week-tick {
   position: absolute;
   top: 0; bottom: 0;
   display: flex; flex-direction: column;
   justify-content: center;
-  padding-left: 6px;
+  align-items: flex-start;
+  padding-left: 4px;
   border-left: 1px solid var(--srg-border);
-  font-size: 10px;
+  font-size: 9.5px;
   color: var(--srg-grey);
   font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
-.gantt-tick .mo {
+.gantt-week-tick .dom {
   font-weight: 700;
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--srg-dark);
 }
-.gantt-tick .yr {
-  font-size: 9px;
+.gantt-week-tick .mo {
+  font-size: 8.5px;
   color: var(--srg-grey-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
 }
 
 .gantt-body { position: relative; }
@@ -447,6 +479,11 @@ td.num, th.num {
   color: var(--srg-dark);
   background: var(--surface-2);
   border-right: 1px solid var(--srg-border);
+  /* Sticky so the company name stays visible while the chart scrolls. */
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  box-shadow: 1px 0 0 var(--srg-border);
 }
 .gantt-track { position: relative; flex: 1; overflow: hidden; }
 .gantt-bar {

@@ -526,7 +526,7 @@ function renderGantt(view) {
     .filter(name => presentCompanies.has(name));
 
   // --- Span: pad to Monday-of-start-week → Sunday-of-end-week so week ticks align.
-  const WEEK_PX      = 56;                 // column width per week
+  const MIN_WEEK_PX  = 44;                 // minimum column width before we start scrolling
   const LANE_LABEL_W = 120;                // matches CSS --lane-label-w
   const mondayOf = (d) => {
     const nd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
@@ -541,9 +541,18 @@ function renderGantt(view) {
   const spanEndRaw = new Date(maxEnd + "T00:00:00Z");
   const spanEnd   = mondayOf(spanEndRaw);
   spanEnd.setUTCDate(spanEnd.getUTCDate() + 7);      // include full week of end
-  const totalMs   = spanEnd - spanStart;
+  const totalMs    = spanEnd - spanStart;
   const totalWeeks = Math.round(totalMs / (7 * 86400 * 1000));
-  const innerW    = totalWeeks * WEEK_PX;
+
+  // Fit the Gantt to the container's current width so the whole span is
+  // visible by default — only fall back to horizontal scroll when the
+  // weeks would get squashed below MIN_WEEK_PX.
+  const containerW = host.clientWidth
+                  || host.parentElement?.clientWidth
+                  || 1200;
+  const fitWeekPx  = (containerW - LANE_LABEL_W) / totalWeeks;
+  const WEEK_PX    = Math.max(MIN_WEEK_PX, fitWeekPx);
+  const innerW     = Math.round(totalWeeks * WEEK_PX);
   const px = (d) => ((d - spanStart) / totalMs) * innerW;
 
   // --- Inner scroll container (width = weeks * column width) ---
@@ -919,4 +928,16 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     console.error(err);
   });
+});
+
+// Reflow the Gantt when the viewport resizes so the bars keep filling the
+// card width. Debounced to a single trailing call per burst.
+let _resizeTimer = null;
+window.addEventListener("resize", () => {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => {
+    if (state.shutdowns.length) {
+      try { renderGantt(filtered()); } catch (e) { console.error("[resize] gantt failed:", e); }
+    }
+  }, 120);
 });

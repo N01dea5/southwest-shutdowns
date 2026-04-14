@@ -1,12 +1,21 @@
 # Company Shutdown Data Schema
 
-Each of the three source dashboards (Covalent, Tronox, CSBP) writes to its own JSON file in this directory:
+Each client (Covalent, Tronox, CSBP) has its own JSON in this directory:
 
 - `covalent.json`
 - `tronox.json`
 - `csbp.json`
 
-The unified dashboard (`/index.html`) reads all three on load. Overwriting any file and re-serving the page is the only step required to refresh the roll-up view — no rebuild, no code change.
+The unified dashboard (`/index.html`) reads all three on load. **The canonical
+data flow today is**:
+
+1. Export a roster from Rapid Crews (RosterCut XLSX)
+2. Drop the file in `data/raw/`
+3. Run `python3 scripts/parse_rapidcrews.py`
+4. Commit the regenerated JSONs
+
+The script handles the schema below, including the optional fields. You can
+also hand-edit a JSON if needed — the dashboard is forgiving about extra fields.
 
 ## Shape
 
@@ -35,11 +44,42 @@ The unified dashboard (`/index.html`) reads all three on load. Overwriting any f
       "roster": [
         { "name": "John Smith",  "role": "Boilermaker" },
         { "name": "Alex O'Neil", "role": "Scaffolder"  }
-      ]
+      ],
+
+      // ---- Optional fields produced by scripts/parse_rapidcrews.py ----
+      "crew_split":        { "Day": 25, "Night": 22, "Contingency": 8 },
+      "mobilised_by_role": { "Boilermaker": 38, "Scaffolder": 22 },
+      "labour_hire_split": { "SRG - South West": 47, "MMFS - Labour Hire": 6 },
+
+      // Provenance / data-quality block.
+      "_source": {
+        "rapid_crews_roster_id":   "1353",
+        "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
+        // "REAL_TARGET" if data/targets/<id>.json supplies real headcount targets,
+        // otherwise "PLACEHOLDER_FROM_ROSTER" (required_by_role = filled_by_role).
+        "required_target_source": "PLACEHOLDER_FROM_ROSTER"
+      }
     }
   ]
 }
 ```
+
+## Overriding `required_by_role` with real targets
+
+The Rapid Crews roster export only knows who's *confirmed* — not the original
+*requested* headcount. Until that's supplied, the parser writes
+`required_by_role = filled_by_role` and tags the shutdown
+`required_target_source: "PLACEHOLDER_FROM_ROSTER"`. The dashboard surfaces a
+banner and a `*` next to affected fill-rate KPIs.
+
+To supply real targets, drop a file at `data/targets/<shutdown_id>.json`:
+
+```json
+{ "Boilermaker": 12, "Scaffolder": 8, "Mechanical Fitter": 18 }
+```
+
+Re-run the parser. The dashboard banner disappears and fill-rate becomes
+meaningful again.
 
 ## Rules
 

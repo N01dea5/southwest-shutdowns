@@ -188,6 +188,24 @@ main {
   max-width: 1440px; margin: 0 auto;
 }
 
+/* ----------------- Placeholder banner ----------------- */
+
+.banner {
+  background: var(--srg-red-soft);
+  border-left: 3px solid var(--srg-red);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 12.5px; line-height: 1.5;
+  color: var(--ink-2);
+}
+.banner strong { color: var(--srg-red); }
+.kpi-star {
+  color: var(--srg-red);
+  font-weight: 700;
+  margin-left: 2px;
+  cursor: help;
+}
+
 /* ----------------- KPIs ----------------- */
 
 .kpis {

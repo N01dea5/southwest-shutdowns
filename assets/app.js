@@ -204,12 +204,22 @@ function render() {
   const roll = fulfillmentRollup(completed);
   const bookedRoll = fulfillmentRollup(booked);
 
-  document.getElementById("kpi-required").textContent = fmtInt(roll.required);
-  document.getElementById("kpi-filled").textContent = fmtInt(roll.filled);
-  document.getElementById("kpi-fillrate").textContent = roll.required ? fmtPct(roll.filled / roll.required) : "—";
-  document.getElementById("kpi-booked").textContent = bookedRoll.required
+  // Detect placeholder-target shutdowns (Rapid Crews roster only — no real
+  // headcount target supplied yet). When present, fill rate trivially reads
+  // 100%; we mark the KPIs and surface a banner so it isn't misleading.
+  const placeholderShutdowns = view.filter(s =>
+    s._source && s._source.required_target_source === "PLACEHOLDER_FROM_ROSTER");
+  const allPlaceholder = view.length > 0 && placeholderShutdowns.length === view.length;
+  togglePlaceholderBanner(placeholderShutdowns, view);
+
+  const star = (cond) => cond ? '<span class="kpi-star" title="No real target supplied — value derived from confirmed roster">*</span>' : "";
+
+  document.getElementById("kpi-required").innerHTML  = fmtInt(roll.required) + star(allPlaceholder);
+  document.getElementById("kpi-filled").textContent  = fmtInt(roll.filled);
+  document.getElementById("kpi-fillrate").innerHTML  = (roll.required ? fmtPct(roll.filled / roll.required) : "—") + star(allPlaceholder);
+  document.getElementById("kpi-booked").innerHTML    = (bookedRoll.required
     ? `${fmtInt(bookedRoll.filled)} / ${fmtInt(bookedRoll.required)}`
-    : "—";
+    : "—") + star(booked.length > 0 && booked.every(s => s._source?.required_target_source === "PLACEHOLDER_FROM_ROSTER"));
   document.getElementById("kpi-booked-sub").textContent = bookedRoll.required
     ? `${fmtPct(bookedRoll.filled / bookedRoll.required)} confirmed`
     : "";
@@ -503,6 +513,27 @@ function renderGantt(view) {
   }
 
   host.appendChild(body);
+}
+
+/**
+ * Show / hide the placeholder-target banner. The Rapid Crews roster export
+ * doesn't carry the original requested headcount, so when a shutdown's
+ * `_source.required_target_source === "PLACEHOLDER_FROM_ROSTER"` the dashboard
+ * is using `required = filled`, which makes fill-rate trivially 100%. This
+ * banner makes that obvious and tells the user how to override.
+ */
+function togglePlaceholderBanner(placeholderShutdowns, allInView) {
+  const host = document.getElementById("placeholder-banner");
+  if (!host) return;
+  if (placeholderShutdowns.length === 0) { host.hidden = true; return; }
+  const ids = placeholderShutdowns.map(s => s.id).join(", ");
+  host.hidden = false;
+  host.innerHTML =
+    `<strong>Heads up:</strong> ${placeholderShutdowns.length} of ${allInView.length} shutdown(s) ` +
+    `are missing a real headcount target — fill-rate KPIs marked <span class="kpi-star">*</span> ` +
+    `default to 100% of the confirmed roster. Drop a target file at ` +
+    `<code>data/targets/&lt;shutdown_id&gt;.json</code> to override (affected: ` +
+    `<code>${ids}</code>).`;
 }
 
 function renderWarnings() {

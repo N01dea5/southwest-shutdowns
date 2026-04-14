@@ -1,0 +1,334 @@
+{
+  "company": "Kleenheat",
+  "shutdowns": [
+    {
+      "id": "kleenheat-2026-03",
+      "name": "Kwinana Major March 2026",
+      "site": "Kwinana",
+      "start_date": "2026-03-04",
+      "end_date": "2026-03-22",
+      "status": "completed",
+      "required_by_role": {
+        "Intermediate Rigger": 5,
+        "Mechanical Fitter": 25,
+        "Sheet Metal Worker": 3,
+        "Trade Assistant": 18,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2,
+        "Supervisor - Mechanical": 4,
+        "Advanced Rigger": 2
+      },
+      "filled_by_role": {
+        "Intermediate Rigger": 5,
+        "Mechanical Fitter": 25,
+        "Sheet Metal Worker": 3,
+        "Trade Assistant": 18,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2,
+        "Supervisor - Mechanical": 4,
+        "Advanced Rigger": 2
+      },
+      "crew_split": {
+        "Day": 49,
+        "Night": 16
+      },
+      "mobilised_by_role": {
+        "Intermediate Rigger": 5,
+        "Mechanical Fitter": 25,
+        "Sheet Metal Worker": 3,
+        "Trade Assistant": 18,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2,
+        "Supervisor - Mechanical": 4,
+        "Advanced Rigger": 2
+      },
+      "labour_hire_split": {
+        "SRG - South West": 60,
+        "SRG - Active": 2,
+        "Hyrd - Labour Hire": 3
+      },
+      "roster": [
+        {
+          "name": "Julian VAN DER ZANDEN",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Joe Dack",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Tabani Chipiri",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Samsul Fata",
+          "role": "Sheet Metal Worker"
+        },
+        {
+          "name": "Willy Fava",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Santana Payne",
+          "role": "Scaffolder"
+        },
+        {
+          "name": "Pramod Nick",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Francis Ahkiau",
+          "role": "Scaffolder"
+        },
+        {
+          "name": "Sharon GILCHRIST",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Jessica J",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Daniel SILLIS",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "King Dave",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Jack Mont",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Gurshwinder Dhaliwal",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Darren Johnjames",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Daniel",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Daniel Jones",
+          "role": "Sheet Metal Worker"
+        },
+        {
+          "name": "Jacinta Birch",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Harrison Elliott",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Zachary",
+          "role": "Scaffolder"
+        },
+        {
+          "name": "Senthil",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Samuel Bryant",
+          "role": "Painter & Blaster"
+        },
+        {
+          "name": "Adrian",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Jonathan MUTEMBO",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Lise Monnet",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Jeremias Mendivil",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Keron Kappetaus",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Walid Boulahdid",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Jordan KIRKBY",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Wahib Nadi",
+          "role": "Scaffolder"
+        },
+        {
+          "name": "Teneesha Truscott",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Lea Mondesir",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Naomi NDENGA",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Russell PHILLIPS",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Kulvinder SINGH",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Viet",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "David Stitz",
+          "role": "Sheet Metal Worker"
+        },
+        {
+          "name": "Abhinav ABHINAV",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Jordan",
+          "role": "Painter & Blaster"
+        },
+        {
+          "name": "Margaux Vergez",
+          "role": "Scaffolder"
+        },
+        {
+          "name": "William THOMPSON",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Dylan Dixon",
+          "role": "Scaffolder"
+        },
+        {
+          "name": "Julian VAN DER ZANDEN",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Chaeyoon KIM",
+          "role": "Intermediate Rigger"
+        },
+        {
+          "name": "Mitya Dobbelaere",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Gerry \ud83d\udd37",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Wayne X",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Amit \ud83d\udd37",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Jaime Hern",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Federico Sarti",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Mark \ud83d\udd37",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Stefanos Stefanoskarikis",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Edward Eg",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Manish Tomar",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Mao LI",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Issac Reid",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Loyid Joseph",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Robert",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Patrick",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Beau WITHERS",
+          "role": "Trade Assistant"
+        },
+        {
+          "name": "Lewis Newell",
+          "role": "Supervisor - Mechanical"
+        },
+        {
+          "name": "Hemi J",
+          "role": "Advanced Rigger"
+        },
+        {
+          "name": "Ngoni USORE",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "James",
+          "role": "Mechanical Fitter"
+        },
+        {
+          "name": "Eileen Hielscher",
+          "role": "Advanced Rigger"
+        }
+      ],
+      "_source": {
+        "rapid_crews_roster_id": "Kleenheat",
+        "rapid_crews_export_file": "Kleenheat Major March 2026.xlsx",
+        "source_format": "kleenheat",
+        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "name_resolution": {
+          "explicit_column": 0,
+          "email_heuristic": 38,
+          "xref_exact": 15,
+          "unmatched": 11,
+          "xref_ambiguous": 1,
+          "ambiguous_samples": [
+            {
+              "first_name": "Robert",
+              "role": "Trade Assistant"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-04-14T08:48:12Z"
+}

@@ -10,12 +10,12 @@
       "status": "booked",
       "required_by_role": {
         "Trade Assistant": 20,
-        "Boilermaker": 10,
-        "Intermediate Rigger": 10,
         "Coded Welder": 10,
-        "Supervisor - Mechanical": 4,
         "Mechanical Fitter": 40,
-        "Advanced Rigger": 10
+        "Advanced Rigger": 10,
+        "Intermediate Rigger": 10,
+        "Supervisor - Mechanical": 4,
+        "Boilermaker": 10
       },
       "filled_by_role": {
         "Mechanical Fitter": 16,
@@ -227,9 +227,10 @@
       "_source": {
         "rapid_crews_roster_id": "1353",
         "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
+        "source_format": "rapidcrews",
         "required_target_source": "REAL_TARGET"
       }
     }
   ],
-  "generated_at": "2026-04-14T08:32:36Z"
+  "generated_at": "2026-04-14T08:48:12Z"
 }

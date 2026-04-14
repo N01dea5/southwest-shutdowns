@@ -1,6 +1,6 @@
 # Southwest Shutdowns — Unified Dashboard
 
-Internal-only roll-up of the three site dashboards (Covalent, Tronox, CSBP). Shows:
+Internal-only roll-up of the three site dashboards (Covalent, Tronox, CSBP) plus the Kleenheat March 2026 shutdown (historical, seeded purely for cross-shutdown retention stats). Shows:
 
 - **Fulfillment** — positions required vs. filled, overall and by trade, for completed shutdowns.
 - **Booked positions** — aggregate confirmed-vs-target headcount for upcoming shutdowns.
@@ -16,6 +16,7 @@ index.html                       unified dashboard
 assets/app.js                    load → normalise → compute → render
 assets/styles.css
 data/
+  kleenheat.json                 historical shutdown (retention seed only)
   covalent.json                  source-of-truth data per client
   tronox.json
   csbp.json
@@ -52,6 +53,23 @@ loop:
    `data/<company>.json` from every roster in `data/raw/`.
 5. **Commit** the regenerated JSONs. The dashboard re-reads on every page load,
    so the next refresh picks the change up — no code deploy needed.
+
+### Kleenheat-style rosters (alternate XLSX format)
+
+The parser also accepts a looser spreadsheet schema (columns: `Name`, `Trade`,
+`Company`, `On Site`, `Off Site`, `Crew`, `Email`, …), used for the Kleenheat
+March 2026 historical roster that seeds retention stats. When the spreadsheet
+only carries first names, surnames are reconstructed in priority order:
+
+1. An explicit `Last Dna` / `Last Name` / `Surname` column if populated.
+2. The `Email` local-part — e.g. `dackjoe@outlook.com` → `Joe Dack`.
+3. Cross-reference against the three Rapid Crews rosters by first-name + role
+   (when a Kleenheat "Joe, Intermediate Rigger" has exactly one match in the
+   other companies' Intermediate Riggers, the full name from there is copied).
+
+Each row is tagged with its `_name_resolution` (`explicit_column` /
+`email_heuristic` / `xref_exact` / `xref_ambiguous` / `unmatched`) and a
+roll-up lands in `_source.name_resolution` for ops review.
 
 ### Real headcount targets
 

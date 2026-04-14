@@ -11,13 +11,15 @@
  * reload — no code change required.
  */
 
-// Per-company colours. Brand red (#CC0000) is reserved for SRG Global accents
-// (active chip, today marker, KPI rule), so company colours sit clearly outside
-// the red family.
+// Per-company colours. Brand red (#E30613) is reserved for SRG Global accents
+// (active chip, today marker, card top-rule), so company colours sit clearly
+// outside the red family. Kleenheat is a historical client used here purely
+// to seed retention/carry-over stats.
 const COMPANIES = [
-  { key: "covalent", file: "data/covalent.json", color: "#3A7849" }, // forest green
-  { key: "tronox",   file: "data/tronox.json",   color: "#3D4250" }, // graphite slate
-  { key: "csbp",     file: "data/csbp.json",     color: "#1F4E79" }, // navy blue
+  { key: "kleenheat", file: "data/kleenheat.json", color: "#7A5A2B" }, // earthy amber
+  { key: "covalent",  file: "data/covalent.json",  color: "#3A7849" }, // forest green
+  { key: "tronox",    file: "data/tronox.json",    color: "#3D4250" }, // graphite slate
+  { key: "csbp",      file: "data/csbp.json",      color: "#1F4E79" }, // navy blue
 ];
 
 const state = {

@@ -6,7 +6,7 @@
   <title>SRG Global &mdash; Southwest Shutdowns</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bebas+Neue&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="assets/app.js" defer></script>
@@ -16,19 +16,19 @@
     <a class="wordmark" href="https://www.srgglobal.com.au" target="_blank" rel="noopener" aria-label="SRG Global">
       <span class="wm-srg">SRG</span><span class="wm-global">GLOBAL</span>
     </a>
+    <div class="wm-divider" aria-hidden="true"></div>
     <div class="brand">
-      <div class="eyebrow">Diversified Infrastructure Services</div>
-      <h1>Southwest Shutdowns</h1>
-      <span class="subtitle">Fulfillment &amp; retention across Covalent, Tronox and CSBP</span>
+      <div class="eyebrow">Asset Maintenance &middot; Integrated Services</div>
+      <h1>Southwest Shutdowns &mdash; Workforce Dashboard</h1>
+      <div class="subtitle">Fulfilment &amp; retention across Kleenheat, Covalent, Tronox and CSBP</div>
     </div>
     <div class="freshness" id="freshness">Loading data&hellip;</div>
   </header>
 
-  <div class="tagline-strip">Making the complex simple</div>
-
   <nav class="filterbar" id="filterbar" aria-label="Company filter">
     <span class="filter-label">Filter:</span>
     <button class="chip active" data-co="all">All companies</button>
+    <button class="chip" data-co="Kleenheat">Kleenheat</button>
     <button class="chip" data-co="Covalent">Covalent</button>
     <button class="chip" data-co="Tronox">Tronox</button>
     <button class="chip" data-co="CSBP">CSBP</button>
@@ -62,6 +62,7 @@
         <p class="hint">All shutdowns across the three sites. Shading encodes fill &mdash; darker means closer to target. Dashed outline = booked (not yet mobilised); solid = in progress or completed.</p>
       </div>
       <div class="gantt-legend">
+        <span><span class="sw co-kleenheat"></span>Kleenheat</span>
         <span><span class="sw co-covalent"></span>Covalent</span>
         <span><span class="sw co-tronox"></span>Tronox</span>
         <span><span class="sw co-csbp"></span>CSBP</span>
@@ -113,7 +114,7 @@
 
   <footer>
     <div class="foot-rule"></div>
-    <small>SRG Global &middot; Internal use only &middot; reads <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
+    <small>SRG Global &middot; Internal use only &middot; reads <code>data/kleenheat.json</code>, <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
   </footer>
 </body>
 </html>

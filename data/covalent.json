@@ -10,20 +10,20 @@
       "status": "in_progress",
       "required_by_role": {
         "Trade Assistant": 5,
-        "Lube Technician": 3,
-        "Site Coordinator": 1,
-        "Telehandler Operator": 2,
-        "Supervisor": 2,
-        "Superintendent": 1,
-        "Mechanical Fitter": 24,
-        "Boilermaker": 4,
-        "Intermediate Rigger": 3,
         "Coded Welder": 1,
-        "Electrician": 4,
-        "Basic Rigger": 4,
-        "HSE Advisor": 2,
+        "Supervisor": 2,
+        "Intermediate Rigger": 3,
+        "Telehandler Operator": 2,
         "Supervisor - Mechanical": 6,
-        "Advanced Rigger": 4
+        "Boilermaker": 4,
+        "HSE Advisor": 2,
+        "Lube Technician": 3,
+        "Superintendent": 1,
+        "Basic Rigger": 4,
+        "Electrician": 4,
+        "Advanced Rigger": 4,
+        "Site Coordinator": 1,
+        "Mechanical Fitter": 24
       },
       "filled_by_role": {
         "Boilermaker": 5,
@@ -333,9 +333,10 @@
       "_source": {
         "rapid_crews_roster_id": "1359",
         "rapid_crews_export_file": "1359 (RosterCut) 2026-04-14_15-11-34.xlsx",
+        "source_format": "rapidcrews",
         "required_target_source": "REAL_TARGET"
       }
     }
   ],
-  "generated_at": "2026-04-14T08:32:36Z"
+  "generated_at": "2026-04-14T08:48:12Z"
 }

@@ -627,6 +627,28 @@ td.num, th.num {
   border-radius: 2px;
   vertical-align: 2px;
 }
+/* "Open site dashboard" link on each per-shutdown card heading — subtle
+   red-outlined pill, only appears when a per-site dashboard URL exists. */
+.sd-open {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 10px;
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--srg-red);
+  border: 1px solid var(--srg-red);
+  background: var(--surface);
+  border-radius: 2px;
+  text-decoration: none;
+  vertical-align: 2px;
+}
+.sd-open:hover {
+  background: var(--srg-red);
+  color: #fff;
+}
 /* <details> collapsible mechanics — hide native marker, add our own chevron. */
 .sd-card > summary { list-style: none; cursor: pointer; user-select: none; }
 .sd-card > summary::-webkit-details-marker { display: none; }

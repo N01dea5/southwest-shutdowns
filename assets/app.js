@@ -280,9 +280,9 @@ function render() {
 
   const star = (cond) => cond ? '<span class="kpi-star" title="No real target supplied — value derived from confirmed roster">*</span>' : "";
 
-  // 1. Confirmed / Requested positions (two numbers in one tile).
+  // 1. Requested / Confirmed positions (demand first, supply second).
   document.getElementById("kpi-positions").innerHTML = totalRoll.required
-    ? `${fmtInt(totalRoll.filled)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.required)}${star(allPlaceholder)}`
+    ? `${fmtInt(totalRoll.required)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.filled)}${star(allPlaceholder)}`
     : "—";
 
   // 2. Overall fill rate — coloured green when ≥100%.
@@ -368,6 +368,16 @@ function makeChart(id, config) {
   if (state.charts[id]) state.charts[id].destroy();
   state.charts[id] = new Chart(canvas.getContext("2d"), config);
 }
+
+// Each live shutdown has its own per-site dashboard repo with a GitHub Pages
+// deployment. Used on the per-shutdown detail card heading so you can jump
+// straight to the site's own workforce dashboard. Kleenheat is historical —
+// no per-site dashboard — so there's nothing to link.
+const SHUTDOWN_LINKS = {
+  "covalent-2026-04": "https://n01dea5.github.io/Covalent-Mt-Holland---April-2026/",
+  "tronox-2026-05":   "https://n01dea5.github.io/tronox-major-shutdown-may-2026/",
+  "csbp-2026-05":     "https://n01dea5.github.io/csbp-naan2-shutdown-workforce-dashboard/",
+};
 
 // SRG brand tokens used by the charts — kept in sync with :root in styles.css.
 const BRAND = {
@@ -802,6 +812,16 @@ function renderShutdownSummary(view) {
     card.className = "sd-card" + (isNext ? " sd-card-next" : "");
     card.open = isNext || s.status === "in_progress";
     const nextPill = isNext ? '<span class="sd-card-next-pill">Up next</span>' : "";
+    // Per-site dashboard link (Kleenheat has none — it's a historical roster).
+    // stopPropagation on click so hitting the link doesn't also toggle the
+    // enclosing <details> open/closed.
+    const siteUrl = SHUTDOWN_LINKS[s.id];
+    const siteLink = siteUrl
+      ? `<a class="sd-open" href="${siteUrl}" target="_blank" rel="noopener"
+           onclick="event.stopPropagation()"
+           title="Open ${s.company}'s workforce dashboard in a new tab"
+        >Open site dashboard <span aria-hidden="true">↗</span></a>`
+      : "";
     card.innerHTML = `
       <summary class="sd-head">
         <div class="sd-title">
@@ -809,12 +829,13 @@ function renderShutdownSummary(view) {
           <span class="sd-co">${s.company}</span>
           <span class="sd-sep">&middot;</span>
           <span class="sd-name">${s.name}</span>${nextPill}
+          ${siteLink}
         </div>
         <div class="sd-meta">
           <span class="sd-status status-${s.status}">${statusLabel(s.status)}</span>
           <span class="sd-dates">${fmtDate(s.start_date)} &rarr; ${fmtDate(s.end_date)}</span>
           <span class="sd-site">${s.site || ""}</span>
-          <span class="sd-quick">${fmtInt(totalFilled)} / ${fmtInt(totalReq)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""} &middot; ${totalReq ? fmtPct(fillRate) : "—"}</span>
+          <span class="sd-quick">${fmtInt(totalReq)} / ${fmtInt(totalFilled)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""} &middot; ${totalReq ? fmtPct(fillRate) : "—"}</span>
           <span class="sd-chevron" aria-hidden="true">&#9662;</span>
         </div>
       </summary>

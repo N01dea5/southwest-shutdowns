@@ -11,10 +11,14 @@
  * reload — no code change required.
  */
 
+// Company colours are kept distinct from the SRG Global brand orange, which
+// is reserved for accents (active chip, today marker, KPI highlight). They
+// loosely echo each site's own identity while sitting comfortably alongside
+// the navy / orange brand.
 const COMPANIES = [
-  { key: "covalent", file: "data/covalent.json", color: "#1f77b4" },
-  { key: "tronox",   file: "data/tronox.json",   color: "#d6731b" },
-  { key: "csbp",     file: "data/csbp.json",     color: "#2ca02c" },
+  { key: "covalent", file: "data/covalent.json", color: "#4A7C59" }, // muted forest green
+  { key: "tronox",   file: "data/tronox.json",   color: "#9B2D20" }, // deep oxide red
+  { key: "csbp",     file: "data/csbp.json",     color: "#1E4E7C" }, // navy blue
 ];
 
 const state = {

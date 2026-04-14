@@ -3,21 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Southwest Shutdowns &mdash; Unified Dashboard</title>
+  <title>SRG Global &mdash; Southwest Shutdowns</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="assets/app.js" defer></script>
 </head>
 <body>
   <header class="topbar">
+    <a class="wordmark" href="https://www.srgglobal.com.au" target="_blank" rel="noopener" aria-label="SRG Global">
+      <span class="wm-srg">SRG</span><span class="wm-global">GLOBAL</span>
+    </a>
     <div class="brand">
+      <div class="eyebrow">Asset Services &middot; Western Australia</div>
       <h1>Southwest Shutdowns</h1>
-      <span class="subtitle">Fulfillment &amp; retention across Covalent, Tronox, CSBP</span>
+      <span class="subtitle">Fulfillment &amp; retention across Covalent, Tronox and CSBP</span>
     </div>
     <div class="freshness" id="freshness">Loading data&hellip;</div>
   </header>
 
   <nav class="filterbar" id="filterbar" aria-label="Company filter">
+    <span class="filter-label">Filter:</span>
     <button class="chip active" data-co="all">All companies</button>
     <button class="chip" data-co="Covalent">Covalent</button>
     <button class="chip" data-co="Tronox">Tronox</button>
@@ -72,9 +80,9 @@
         <p class="hint">Booked shutdowns across all three sites. Shading encodes fill &mdash; darker means closer to the required headcount. Dashed outline = booked (not yet mobilised).</p>
       </div>
       <div class="gantt-legend">
-        <span><span class="sw" style="background:#1f77b4"></span>Covalent</span>
-        <span><span class="sw" style="background:#d6731b"></span>Tronox</span>
-        <span><span class="sw" style="background:#2ca02c"></span>CSBP</span>
+        <span><span class="sw co-covalent"></span>Covalent</span>
+        <span><span class="sw co-tronox"></span>Tronox</span>
+        <span><span class="sw co-csbp"></span>CSBP</span>
         <span class="sep">|</span>
         <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
         <span><span class="sw today-swatch"></span>Today</span>
@@ -92,7 +100,8 @@
   </main>
 
   <footer>
-    <small>Internal only &middot; reads <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
+    <div class="foot-rule"></div>
+    <small>SRG Global &middot; Internal use only &middot; reads <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
   </footer>
 </body>
 </html>

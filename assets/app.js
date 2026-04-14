@@ -35,8 +35,56 @@ const state = {
 function normaliseName(n) {
   return n.toLowerCase().trim().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ");
 }
+/** Identity key for retention + matrix matching. Deliberately name-only — a
+ * worker who changes role between shutdowns is still the same person. The
+ * "latest role" is tracked separately and displayed in the matrix. */
 function workerKey(w) {
-  return normaliseName(w.name) + "|" + w.role.toLowerCase().trim();
+  return normaliseName(w.name);
+}
+
+/** Convert whatever casing the source data carries into a consistent
+ * "Firstname [Middle] SURNAME" display form:
+ *   - Strips emoji / symbols / stray punctuation
+ *   - First + middle names → Title Case (preserves Mc- / Mac- prefixes)
+ *   - Surname (the trailing run of originally-uppercase tokens, or the last
+ *     single token as fallback) → UPPER CASE
+ * Examples:
+ *   "adam riley"              → "Adam RILEY"
+ *   "Julian VAN DER ZANDEN"   → "Julian VAN DER ZANDEN"
+ *   "Christopher McLennan"    → "Christopher MCLENNAN"
+ *   "Benjamin 🔷 CHOPPING"    → "Benjamin CHOPPING"
+ *   "OMKAR UTTAM DORUGADE"    → "Omkar Uttam DORUGADE"
+ */
+function standardiseName(raw) {
+  if (!raw) return "";
+  const cleaned = raw
+    .replace(/[^\p{L}\s'\-]/gu, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+  if (!cleaned) return "";
+  const parts = cleaned.split(" ");
+  if (parts.length === 1) return toTitleCase(parts[0]);
+
+  // Walk back through the tail collecting originally-uppercase tokens; that
+  // run is the surname. If nothing at the tail was uppercase, take the last
+  // single word as the surname.
+  let splitIdx = parts.length;
+  while (splitIdx > 1
+      && parts[splitIdx - 1].length >= 2
+      && parts[splitIdx - 1] === parts[splitIdx - 1].toUpperCase()) {
+    splitIdx--;
+  }
+  if (splitIdx === parts.length) splitIdx = parts.length - 1;
+
+  const firstNames = parts.slice(0, splitIdx).map(toTitleCase).join(" ");
+  const surname    = parts.slice(splitIdx).join(" ").toUpperCase();
+  return `${firstNames} ${surname}`.trim();
+}
+function toTitleCase(s) {
+  if (!s) return s;
+  if (/^mc/i.test(s) && s.length > 2) return "Mc" + s.charAt(2).toUpperCase() + s.slice(3).toLowerCase();
+  if (/^mac/i.test(s) && s.length > 3) return "Mac" + s.charAt(3).toUpperCase() + s.slice(4).toLowerCase();
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 }
 function fmtInt(n) { return n.toLocaleString(); }
 function fmtPct(n) { return (n * 100).toFixed(0) + "%"; }
@@ -79,11 +127,15 @@ async function load() {
       if (status === "completed" && s.end_date >= todayIso) {
         status = inferStatus(s.start_date, s.end_date);
       }
+      // Standardise every roster entry's display name up-front so matrix /
+      // retention table / summary cards all see the same canonical form.
+      const cleanRoster = s.roster.map(w => ({ ...w, name: standardiseName(w.name) }));
       state.shutdowns.push({
         ...s,
+        roster: cleanRoster,
         status,
         company: payload.company,
-        rosterKeys: new Set(s.roster.map(workerKey)),
+        rosterKeys: new Set(cleanRoster.map(workerKey)),
       });
     }
   }
@@ -811,21 +863,42 @@ function renderWorkerMatrix(viewShutdowns) {
   // switching filters doesn't hide the context needed to spot returners.
   const shutdowns = [...state.shutdowns].sort((a, b) => a.start_date.localeCompare(b.start_date));
 
-  // Build worker records: key -> { displayName, role, appearances: Set<shutdownId> }
+  // Build one record per unique worker (keyed by normalised name only, so a
+  // worker who changes role between shutdowns is still the same row). Track
+  // their role at every shutdown so we can display the LATEST as the "current
+  // role" while still exposing role history on hover.
   const workers = new Map();
   for (const s of shutdowns) {
     for (const w of s.roster) {
       const k = workerKey(w);
       if (!workers.has(k)) {
-        workers.set(k, { key: k, displayName: w.name, role: w.role, appearances: new Set() });
+        workers.set(k, {
+          key: k,
+          displayName: w.name,      // standardised at load
+          rolesByShutdown: {},      // shutdownId -> role
+          appearances: new Set(),
+        });
       }
-      workers.get(k).appearances.add(s.id);
+      const rec = workers.get(k);
+      rec.rolesByShutdown[s.id] = w.role;
+      rec.appearances.add(s.id);
+      // Keep the display name in sync if a later shutdown has a fuller form
+      // (e.g. standardised "Julian VAN DER ZANDEN" vs bare "Julian").
+      if (w.name.length > rec.displayName.length) rec.displayName = w.name;
     }
   }
-  const rows = [...workers.values()]
-    .map(w => ({ ...w, total: w.appearances.size }))
-    .sort((a, b) => b.total - a.total
-                  || a.displayName.localeCompare(b.displayName));
+  // Resolve each worker's "latest role" = role at their most recent shutdown.
+  const rows = [...workers.values()].map(w => {
+    const latest = shutdowns.filter(s => w.appearances.has(s.id)).slice(-1)[0];
+    const latestRole = latest ? w.rolesByShutdown[latest.id] : "";
+    const priorRoles = [...new Set(Object.values(w.rolesByShutdown))].filter(r => r !== latestRole);
+    return {
+      ...w,
+      total:       w.appearances.size,
+      role:        latestRole,
+      priorRoles,                       // non-empty only when the worker changed role
+    };
+  }).sort((a, b) => b.total - a.total || a.displayName.localeCompare(b.displayName));
 
   // Header — company dot + short name per shutdown.
   const thead = table.querySelector("thead");
@@ -841,14 +914,22 @@ function renderWorkerMatrix(viewShutdowns) {
   </tr>`;
 
   const tbody = table.querySelector("tbody");
-  const html = rows.map(w => `<tr data-key="${w.key}">
-    <td>${w.displayName}</td>
-    <td>${w.role}</td>
-    ${shutdowns.map(s => `<td class="num">${w.appearances.has(s.id)
-      ? '<span class="tick" aria-label="Present">&#10003;</span>'
-      : '<span class="tick-empty" aria-label="Absent">&middot;</span>'}</td>`).join("")}
-    <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
-  </tr>`).join("");
+  const html = rows.map(w => {
+    const roleCell = w.priorRoles.length
+      ? `<td title="Previously: ${w.priorRoles.join(", ")}">${w.role} <span class="role-shift" aria-hidden="true">↗</span></td>`
+      : `<td>${w.role}</td>`;
+    return `<tr data-key="${w.key}">
+      <td>${w.displayName}</td>
+      ${roleCell}
+      ${shutdowns.map(s => {
+        const r = w.rolesByShutdown[s.id];
+        return `<td class="num">${r
+          ? `<span class="tick" title="${r}" aria-label="${r}">&#10003;</span>`
+          : '<span class="tick-empty" aria-label="Absent">&middot;</span>'}</td>`;
+      }).join("")}
+      <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
+    </tr>`;
+  }).join("");
   tbody.innerHTML = html;
 
   // Count + search filter.

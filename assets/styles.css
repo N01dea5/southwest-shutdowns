@@ -836,6 +836,14 @@ td.num, th.num {
   color: var(--ok);
   font-weight: 800;
 }
+/* Small arrow next to the current role column when the worker has changed
+   role between shutdowns. Hover the cell to see the previous role(s). */
+#worker-matrix .role-shift {
+  color: var(--srg-grey-2);
+  font-size: 11px;
+  margin-left: 4px;
+  cursor: help;
+}
 
 /* ----------------- Disclosure (warnings) ----------------- */
 

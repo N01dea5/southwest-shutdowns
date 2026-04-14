@@ -63,16 +63,14 @@ ROSTER_MAP: dict[str, tuple] = {
     "Kleenheat Major March 2026":
         ("kleenheat", "Kleenheat", "Kwinana Major March 2026", "Kwinana"),
 
-    # Tianqi (Kwinana lithium hydroxide plant) — two parallel scopes running
-    # April-June 2026. Share the "tianqi" company_key so they roll up under
-    # one client, but carry explicit shutdown_ids so they don't collapse
-    # into one bucket (same YYYY-MM start).
+    # Tianqi (Kwinana lithium hydroxide plant) — the TLK-1596 construction
+    # ramp-up scope. A parallel Scaffold Shutdown roster was tracked briefly
+    # and then dropped; the shutdown_id_override machinery is kept in place
+    # (5th tuple element) so the Construction roster doesn't collapse into
+    # "tianqi-2026-04" if another April-starting scope gets added later.
     "Tianqi Construction Ramp Up Project":
         ("tianqi", "Tianqi", "Construction Ramp Up Project", "Kwinana",
          "tianqi-construction-2026-04"),
-    "Tianqi Scaffold Shutdown April 2026":
-        ("tianqi", "Tianqi", "Scaffold Shutdown April 2026", "Kwinana",
-         "tianqi-scaffold-2026-04"),
 }
 
 REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent

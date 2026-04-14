@@ -2,100 +2,6 @@
   "company": "Tianqi",
   "shutdowns": [
     {
-      "id": "tianqi-scaffold-2026-04",
-      "name": "Scaffold Shutdown April 2026",
-      "site": "Kwinana",
-      "start_date": "2026-04-11",
-      "end_date": "2026-06-07",
-      "status": "in_progress",
-      "required_by_role": {
-        "Advanced Scaffolder": 6,
-        "Supervisor - Scaffold": 1,
-        "Trade Assistant": 4
-      },
-      "filled_by_role": {
-        "Advanced Scaffolder": 6,
-        "Supervisor - Scaffold": 1,
-        "Trade Assistant": 4
-      },
-      "crew_split": {
-        "Day": 5,
-        "Night": 6
-      },
-      "mobilised_by_role": {
-        "Trade Assistant": 2,
-        "Advanced Scaffolder": 3
-      },
-      "labour_hire_split": {
-        "SRG - South West": 11
-      },
-      "roster": [
-        {
-          "name": "Willy FAVA",
-          "role": "Trade Assistant"
-        },
-        {
-          "name": "Lise MONNET",
-          "role": "Trade Assistant"
-        },
-        {
-          "name": "Michael TE  PUIA",
-          "role": "Advanced Scaffolder"
-        },
-        {
-          "name": "Jordan ENUA",
-          "role": "Advanced Scaffolder"
-        },
-        {
-          "name": "Peter POWER",
-          "role": "Advanced Scaffolder"
-        },
-        {
-          "name": "Vaughan CSERESZNYES",
-          "role": "Advanced Scaffolder"
-        },
-        {
-          "name": "David LEUCUS",
-          "role": "Advanced Scaffolder"
-        },
-        {
-          "name": "Bilal DAHOUM",
-          "role": "Advanced Scaffolder"
-        },
-        {
-          "name": "Killian MURPHY",
-          "role": "Supervisor - Scaffold"
-        },
-        {
-          "name": "Aaron SYKES",
-          "role": "Trade Assistant"
-        },
-        {
-          "name": "Jaime HERNANDEZ",
-          "role": "Trade Assistant"
-        }
-      ],
-      "_source": {
-        "rapid_crews_roster_id": "Tianqi Scaffold Shutdown April 2026",
-        "rapid_crews_export_file": "Tianqi Scaffold Shutdown April 2026.xlsx",
-        "source_format": "rapidcrews",
-        "required_target_source": "REAL_TARGET",
-        "rapid_crews_roster_size": 11,
-        "rapid_crews_filled_by_role": {
-          "Trade Assistant": 4,
-          "Advanced Scaffolder": 6,
-          "Supervisor - Scaffold": 1
-        },
-        "target_source": {
-          "dashboard": "rapid-crews-1365",
-          "project": "TIANQI - Y26S01 SHUT",
-          "total_planned": 11,
-          "total_confirmed": 11,
-          "total_tbc": 0
-        }
-      }
-    },
-    {
       "id": "tianqi-construction-2026-04",
       "name": "Construction Ramp Up Project",
       "site": "Kwinana",
@@ -103,17 +9,17 @@
       "end_date": "2026-06-07",
       "status": "in_progress",
       "required_by_role": {
-        "Coded Welder": 4,
-        "Boilermaker": 4,
-        "Trade Assistant": 4,
         "Advanced Rigger": 4,
+        "Boilermaker": 4,
+        "Coded Welder": 4,
+        "Trade Assistant": 4,
         "Supervisor - Mechanical": 2
       },
       "filled_by_role": {
-        "Coded Welder": 4,
-        "Boilermaker": 3,
-        "Trade Assistant": 4,
         "Advanced Rigger": 0,
+        "Boilermaker": 3,
+        "Coded Welder": 4,
+        "Trade Assistant": 4,
         "Supervisor - Mechanical": 2
       },
       "crew_split": {
@@ -232,5 +138,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-14T13:38:28Z"
+  "generated_at": "2026-04-14T13:39:52Z"
 }

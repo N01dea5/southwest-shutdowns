@@ -9,36 +9,36 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Lube Technician": 3,
-        "Mechanical Fitter": 24,
+        "Supervisor - Mechanical": 6,
+        "Electrician": 4,
+        "Advanced Rigger": 4,
         "Trade Assistant": 5,
         "Supervisor": 2,
-        "Coded Welder": 1,
-        "Advanced Rigger": 4,
         "Site Coordinator": 1,
-        "Telehandler Operator": 2,
-        "Superintendent": 1,
+        "Mechanical Fitter": 24,
         "Basic Rigger": 4,
-        "Supervisor - Mechanical": 6,
+        "Superintendent": 1,
         "HSE Advisor": 2,
+        "Coded Welder": 1,
         "Boilermaker": 4,
-        "Electrician": 4
+        "Telehandler Operator": 2,
+        "Lube Technician": 3
       },
       "filled_by_role": {
-        "Lube Technician": 3,
-        "Mechanical Fitter": 23,
+        "Supervisor - Mechanical": 6,
+        "Electrician": 4,
+        "Advanced Rigger": 4,
         "Trade Assistant": 5,
         "Supervisor": 1,
-        "Coded Welder": 1,
-        "Advanced Rigger": 4,
         "Site Coordinator": 1,
-        "Telehandler Operator": 2,
-        "Superintendent": 1,
+        "Mechanical Fitter": 23,
         "Basic Rigger": 4,
-        "Supervisor - Mechanical": 6,
+        "Superintendent": 1,
         "HSE Advisor": 2,
+        "Coded Welder": 1,
         "Boilermaker": 4,
-        "Electrician": 4
+        "Telehandler Operator": 2,
+        "Lube Technician": 3
       },
       "crew_split": {
         "Day": 32,
@@ -427,5 +427,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-15T00:03:27Z"
+  "generated_at": "2026-04-15T00:03:59Z"
 }

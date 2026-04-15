@@ -18,14 +18,14 @@
   "filled_by_role": {
     "Superintendent": 1,
     "Supervisor - Mechanical": 6,
+    "Supervisor": 2,
     "Site Coordinator": 1,
     "HSE Advisor": 2,
     "Boilermaker": 4,
     "Coded Welder": 1,
     "Electrician": 4,
-    "Mechanical Fitter": 23,
+    "Mechanical Fitter": 24,
     "Advanced Rigger": 4,
-    "Supervisor": 1,
     "Basic Rigger": 4,
     "Lube Technician": 3,
     "Trade Assistant": 5,
@@ -34,7 +34,7 @@
   "_source": {
     "dashboard": "N01dea5/Covalent-Mt-Holland---April-2026",
     "total_planned": 63,
-    "total_confirmed": 61,
-    "total_tbc": 2
+    "total_confirmed": 63,
+    "total_tbc": 0
   }
 }

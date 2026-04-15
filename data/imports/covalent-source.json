@@ -27,8 +27,8 @@
   },
   "summary": {
     "total_planned": 63,
-    "confirmed": 61,
-    "tbc": 2,
+    "confirmed": 63,
+    "tbc": 0,
     "by_role": {
       "Superintendent": 1,
       "Supervisor DS": 3,
@@ -53,13 +53,14 @@
     "by_role_confirmed": {
       "Superintendent": 1,
       "Supervisor DS": 3,
+      "Supervisor Elec": 1,
       "Supervisor NS": 3,
       "Coordinator": 1,
       "HSE": 2,
       "Boilermaker": 4,
       "Coded Welder": 1,
       "Electrician": 4,
-      "Fitter": 17,
+      "Fitter": 18,
       "Fitter - Conveyor Inspections": 4,
       "Fitter - Inspections": 2,
       "Rigger Advanced": 4,
@@ -126,12 +127,12 @@
     },
     {
       "id": 55,
-      "name": "TBC",
+      "name": "Idriz Turko",
       "role": "Supervisor Elec",
       "shift": "Day",
       "days": 7,
       "group": "Leadership",
-      "tbc": true
+      "tbc": false
     },
     {
       "id": 56,
@@ -333,12 +334,12 @@
     },
     {
       "id": 12,
-      "name": "TBC",
+      "name": "Hicham Bougazi",
       "role": "Fitter",
       "shift": "Day",
       "days": 4,
       "group": "Fitter",
-      "tbc": true
+      "tbc": false
     },
     {
       "id": 13,

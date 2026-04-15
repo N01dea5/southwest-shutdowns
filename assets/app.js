@@ -25,11 +25,14 @@ const COMPANIES = [
 const state = {
   raw: {},                 // company-name -> file payload
   shutdowns: [],           // flat, chronological list across all companies
+  tab: "dashboard",        // "dashboard" | "roster"
   filter: "all",           // "all" | company display name
   statusFilter: "all",     // "all" | "booked" | "in_progress" | "completed"
   charts: {},              // Chart.js handles, so we can destroy() on re-render
   matrixFilters: {},       // shutdownId -> "present" | "absent" (absent = blank)
   matrixSearch: "",        // live text filter for the matrix
+  opsSearch: "",           // live text filter for the ops-roster tab
+  opsOnsiteTodayOnly: false, // "on site today" checkbox state
 };
 
 // -------------------- helpers --------------------
@@ -144,6 +147,7 @@ async function load() {
   state.shutdowns.sort((a, b) => a.start_date.localeCompare(b.start_date));
 
   setupFilter();
+  setupTabs();
   render();
 }
 
@@ -161,6 +165,52 @@ function setupFilter() {
     if (btn.dataset.status) state.statusFilter = btn.dataset.status;
     render();
   });
+}
+
+/** Tab switching — also hides the Status filter group on the ops-roster tab,
+ * where "completed / booked" filtering doesn't make sense (a worker is either
+ * on site on a given day or they aren't). Company filter stays active on both. */
+function setupTabs() {
+  const tabbar       = document.getElementById("tabbar");
+  const panels       = document.querySelectorAll(".tab-panel");
+  const statusGroup  = document.getElementById("status-filter-group");
+  tabbar.addEventListener("click", e => {
+    const btn = e.target.closest(".tab");
+    if (!btn) return;
+    const tab = btn.dataset.tab;
+    if (tab === state.tab) return;
+    state.tab = tab;
+    tabbar.querySelectorAll(".tab").forEach(t => {
+      const active = t.dataset.tab === tab;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    panels.forEach(p => {
+      const active = p.id === `tab-${tab}`;
+      p.classList.toggle("active", active);
+      p.hidden = !active;
+    });
+    if (statusGroup) statusGroup.hidden = (tab === "roster");
+    // Gantt and ops roster both measure clientWidth on render — re-render
+    // when the tab becomes visible so widths are correct.
+    render();
+  });
+
+  // Ops-roster toolbar: search + "on site today" toggle.
+  const search = document.getElementById("roster-search");
+  if (search) {
+    search.addEventListener("input", e => {
+      state.opsSearch = e.target.value;
+      if (state.tab === "roster") renderOpsRoster(filtered());
+    });
+  }
+  const onsite = document.getElementById("roster-onsite-today");
+  if (onsite) {
+    onsite.addEventListener("change", e => {
+      state.opsOnsiteTodayOnly = e.target.checked;
+      if (state.tab === "roster") renderOpsRoster(filtered());
+    });
+  }
 }
 
 // -------------------- compute --------------------
@@ -343,6 +393,7 @@ function render() {
     ["retention chart",  () => renderRetentionChart(view)],
     ["retention table",  () => renderRetentionTable(view)],
     ["worker matrix",    () => renderWorkerMatrix(view)],
+    ["ops roster",       () => renderOpsRoster(view)],
     ["warnings",         () => renderWarnings()],
   ];
   for (const [name, fn] of steps) {
@@ -794,6 +845,266 @@ function statusLabel(st) {
 }
 
 /**
+ * Consolidated ops roster — the second tab. Each unique worker gets one row
+ * spanning the full time axis; their assignments render as coloured bars
+ * positioned by per-worker start/end dates (per-shutdown dates as fallback
+ * when a legacy file has no per-row dates). Answers questions like "is Joe
+ * on site next Tuesday?" and "who's available the week of 18 May?".
+ *
+ * Matches the Gantt's visual language (month + week axis, today line,
+ * container-width fitting with horizontal scroll fallback) so moving between
+ * the two tabs feels consistent.
+ */
+function renderOpsRoster(view) {
+  const host = document.getElementById("ops-roster");
+  if (!host) return;
+  host.innerHTML = "";
+
+  if (view.length === 0) {
+    host.textContent = "No shutdowns for this filter.";
+    return;
+  }
+
+  // -- 1. Collect workers + their assignments --
+  // Keyed by normalised name (role-independent) so a worker who changes role
+  // between shutdowns is one row, not two. Latest role/mobile wins for the
+  // row label, mirroring the matrix tab.
+  const workers = new Map();
+  for (const s of view) {
+    for (const w of s.roster) {
+      const key = workerKey(w);
+      if (!key) continue;
+      if (!workers.has(key)) {
+        workers.set(key, {
+          key, name: w.name, role: w.role, mobile: w.mobile || "",
+          companies: new Set(), assignments: [], _latestStart: null,
+        });
+      }
+      const rec = workers.get(key);
+      const start = w.start || s.start_date;
+      const end   = w.end   || s.end_date;
+      rec.companies.add(s.company);
+      rec.assignments.push({
+        start, end,
+        company: s.company, site: s.site,
+        shutdownId: s.id, shutdownName: s.name, role: w.role,
+        status: s.status,
+      });
+      if (!rec._latestStart || start > rec._latestStart) {
+        rec._latestStart = start;
+        rec.role = w.role;
+        if (w.mobile) rec.mobile = w.mobile;
+      }
+    }
+  }
+
+  // -- 2. Filter: search (name/role/mobile) + "on site today only" --
+  const todayIso   = new Date().toISOString().slice(0, 10);
+  const search     = state.opsSearch.trim().toLowerCase();
+  const onsiteOnly = state.opsOnsiteTodayOnly;
+  const rows = [...workers.values()].filter(rec => {
+    if (search) {
+      const hay = `${rec.name} ${rec.role} ${rec.mobile}`.toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    if (onsiteOnly) {
+      const onsite = rec.assignments.some(a => a.start <= todayIso && todayIso <= a.end);
+      if (!onsite) return false;
+    }
+    return true;
+  });
+
+  // Stable sort: primary company (canonical order) → name.
+  const coOrder = c => {
+    const i = COMPANIES.findIndex(x => x.key === c.toLowerCase());
+    return i < 0 ? 99 : i;
+  };
+  const primaryCompany = rec => {
+    const list = [...rec.companies];
+    list.sort((a, b) => coOrder(a) - coOrder(b));
+    return list[0];
+  };
+  rows.sort((a, b) => {
+    const ca = coOrder(primaryCompany(a));
+    const cb = coOrder(primaryCompany(b));
+    if (ca !== cb) return ca - cb;
+    return a.name.localeCompare(b.name);
+  });
+
+  // -- 3. Time axis (Monday-aligned, matches Gantt) --
+  const MIN_WEEK_PX  = 44;
+  const LANE_LABEL_W = 320;   // room for name + role + mobile
+  const mondayOf = (d) => {
+    const nd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+    const offset = (nd.getUTCDay() + 6) % 7;
+    nd.setUTCDate(nd.getUTCDate() - offset);
+    return nd;
+  };
+  const minStart  = view.reduce((m, s) => s.start_date < m ? s.start_date : m, view[0].start_date);
+  const maxEnd    = view.reduce((m, s) => s.end_date   > m ? s.end_date   : m, view[0].end_date);
+  const spanStart = mondayOf(new Date(minStart + "T00:00:00Z"));
+  const spanEnd   = mondayOf(new Date(maxEnd   + "T00:00:00Z"));
+  spanEnd.setUTCDate(spanEnd.getUTCDate() + 7);
+  const totalMs    = spanEnd - spanStart;
+  const totalWeeks = Math.round(totalMs / (7 * 86400 * 1000));
+  const containerW = host.clientWidth
+                  || host.parentElement?.clientWidth
+                  || 1200;
+  const fitWeekPx  = (containerW - LANE_LABEL_W) / totalWeeks;
+  const WEEK_PX    = Math.max(MIN_WEEK_PX, fitWeekPx);
+  const innerW     = Math.round(totalWeeks * WEEK_PX);
+  const px = (d) => ((d - spanStart) / totalMs) * innerW;
+
+  // -- 4. Header summary: #workers + #on site today --
+  const onsiteNow = rows.filter(rec =>
+    rec.assignments.some(a => a.start <= todayIso && todayIso <= a.end)).length;
+  const countEl = document.getElementById("roster-count");
+  if (countEl) {
+    countEl.textContent = onsiteOnly
+      ? `${rows.length} worker${rows.length === 1 ? "" : "s"} on site today`
+      : `${rows.length} worker${rows.length === 1 ? "" : "s"} · ${onsiteNow} on site today`;
+  }
+
+  // -- 5. Inner scroll container --
+  const inner = document.createElement("div");
+  inner.className = "ops-roster-inner";
+  inner.style.width = (LANE_LABEL_W + innerW) + "px";
+  inner.style.setProperty("--lane-label-w", LANE_LABEL_W + "px");
+
+  // -- 6. Axis (month + week tiers) --
+  const axis = document.createElement("div");
+  axis.className = "ops-roster-axis";
+
+  const months = document.createElement("div");
+  months.className = "ops-roster-months";
+  const mCursor = new Date(Date.UTC(spanStart.getUTCFullYear(), spanStart.getUTCMonth(), 1));
+  while (mCursor < spanEnd) {
+    const next  = new Date(Date.UTC(mCursor.getUTCFullYear(), mCursor.getUTCMonth() + 1, 1));
+    const left  = Math.max(0, px(mCursor));
+    const right = Math.min(innerW, px(next));
+    const width = right - left;
+    if (width > 0) {
+      const tick = document.createElement("div");
+      tick.className = "ops-roster-month-tick";
+      tick.style.left  = left + "px";
+      tick.style.width = width + "px";
+      const mo = mCursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
+      const yr = mCursor.getUTCMonth() === 0 ? " " + mCursor.getUTCFullYear() : "";
+      tick.innerHTML = `<span>${mo}${yr}</span>`;
+      months.appendChild(tick);
+    }
+    mCursor.setUTCMonth(mCursor.getUTCMonth() + 1);
+  }
+  axis.appendChild(months);
+
+  const weeks = document.createElement("div");
+  weeks.className = "ops-roster-weeks";
+  const wCursor = new Date(spanStart);
+  while (wCursor < spanEnd) {
+    const tick = document.createElement("div");
+    tick.className = "ops-roster-week-tick";
+    tick.style.left  = px(wCursor) + "px";
+    tick.style.width = WEEK_PX + "px";
+    const monthLetter = wCursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
+    const dom = wCursor.getUTCDate();
+    tick.innerHTML = `<span class="dom">${dom}</span><span class="mo">${monthLetter}</span>`;
+    weeks.appendChild(tick);
+    wCursor.setUTCDate(wCursor.getUTCDate() + 7);
+  }
+  axis.appendChild(weeks);
+  inner.appendChild(axis);
+
+  // -- 7. Body: one row per worker, grouped by primary company --
+  const body = document.createElement("div");
+  body.className = "ops-roster-body";
+
+  // Weekly gridlines + today marker (shared across all rows).
+  const grid = document.createElement("div");
+  grid.className = "ops-roster-grid";
+  const g = new Date(spanStart);
+  while (g < spanEnd) {
+    const line = document.createElement("div");
+    line.className = "ops-roster-gridline";
+    line.style.left = px(g) + "px";
+    grid.appendChild(line);
+    g.setUTCDate(g.getUTCDate() + 7);
+  }
+  const todayDate = new Date();
+  if (todayDate >= spanStart && todayDate <= spanEnd) {
+    const todayLine = document.createElement("div");
+    todayLine.className = "ops-roster-today";
+    todayLine.style.left = px(todayDate) + "px";
+    todayLine.title = "Today";
+    grid.appendChild(todayLine);
+  }
+  body.appendChild(grid);
+
+  let lastGroup = null;
+  for (const rec of rows) {
+    const co = primaryCompany(rec);
+    if (co !== lastGroup) {
+      const hdr = document.createElement("div");
+      hdr.className = "ops-roster-group";
+      hdr.innerHTML = `<span class="co-dot" style="background:${companyColor(co)}"></span>${co}`;
+      body.appendChild(hdr);
+      lastGroup = co;
+    }
+
+    const row = document.createElement("div");
+    row.className = "ops-roster-row";
+
+    const label = document.createElement("div");
+    label.className = "ops-roster-row-label";
+    const telHref = rec.mobile ? `tel:${rec.mobile.replace(/\s+/g, "")}` : null;
+    const mobileHtml = telHref
+      ? `<a class="mobile-link" href="${telHref}">${rec.mobile}</a>`
+      : `<span class="muted">—</span>`;
+    label.innerHTML = `
+      <div class="ops-roster-name">${rec.name}</div>
+      <div class="ops-roster-meta"><span class="ops-roster-role">${rec.role}</span> · ${mobileHtml}</div>`;
+    row.appendChild(label);
+
+    const track = document.createElement("div");
+    track.className = "ops-roster-track";
+
+    // Sort assignments by start so overlapping bars layer predictably.
+    const sortedAssignments = [...rec.assignments].sort((a, b) => a.start.localeCompare(b.start));
+    for (const a of sortedAssignments) {
+      const sd = new Date(a.start + "T00:00:00Z");
+      // End date is inclusive — stretch the bar to the end of its last day so
+      // a one-day assignment still shows as a visible block.
+      const ed = new Date(a.end   + "T00:00:00Z");
+      ed.setUTCDate(ed.getUTCDate() + 1);
+      const bar = document.createElement("div");
+      bar.className = "ops-roster-bar status-" + a.status + (a.status === "booked" ? " booked" : "");
+      bar.style.left  = px(sd) + "px";
+      bar.style.width = Math.max(6, px(ed) - px(sd)) + "px";
+      bar.style.setProperty("--co", companyColor(a.company));
+      bar.title = [
+        `${rec.name} — ${a.role}`,
+        `${a.company} · ${a.shutdownName}`,
+        `${fmtDate(a.start)} → ${fmtDate(a.end)}`,
+        `Status: ${statusLabel(a.status)}`,
+      ].join("\n");
+      bar.innerHTML = `<span>${a.company}</span>`;
+      track.appendChild(bar);
+    }
+    row.appendChild(track);
+    body.appendChild(row);
+  }
+
+  inner.appendChild(body);
+  host.appendChild(inner);
+
+  // Scroll to today (or earliest assignment) on first render, same pattern
+  // as the Gantt.
+  const focus = todayDate >= spanStart && todayDate <= spanEnd
+              ? px(todayDate) - 80
+              : px(new Date(view[0].start_date + "T00:00:00Z")) - 80;
+  host.scrollLeft = Math.max(0, focus);
+}
+
+/**
  * One summary card per shutdown. Mirrors the per-site dashboards' trade-group
  * table: for each role show required vs filled, the gap, and the per-role
  * fill rate. Over-fills (filled > required) render with a negative gap — this
@@ -1171,8 +1482,9 @@ let _resizeTimer = null;
 window.addEventListener("resize", () => {
   clearTimeout(_resizeTimer);
   _resizeTimer = setTimeout(() => {
-    if (state.shutdowns.length) {
-      try { renderGantt(filtered()); } catch (e) { console.error("[resize] gantt failed:", e); }
-    }
+    if (!state.shutdowns.length) return;
+    const v = filtered();
+    try { renderGantt(v); }      catch (e) { console.error("[resize] gantt failed:", e); }
+    try { renderOpsRoster(v); }  catch (e) { console.error("[resize] ops roster failed:", e); }
   }, 120);
 });

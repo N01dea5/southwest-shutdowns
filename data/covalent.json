@@ -9,36 +9,36 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Telehandler Operator": 2,
-        "Supervisor": 2,
-        "Supervisor - Mechanical": 6,
-        "Boilermaker": 4,
-        "Basic Rigger": 4,
-        "Lube Technician": 3,
-        "Trade Assistant": 5,
-        "Superintendent": 1,
-        "HSE Advisor": 2,
-        "Electrician": 4,
         "Site Coordinator": 1,
-        "Mechanical Fitter": 24,
+        "Lube Technician": 3,
+        "HSE Advisor": 2,
+        "Boilermaker": 4,
+        "Advanced Rigger": 4,
+        "Supervisor": 2,
+        "Trade Assistant": 5,
+        "Basic Rigger": 4,
         "Coded Welder": 1,
-        "Advanced Rigger": 4
+        "Mechanical Fitter": 24,
+        "Supervisor - Mechanical": 6,
+        "Superintendent": 1,
+        "Telehandler Operator": 2,
+        "Electrician": 4
       },
       "filled_by_role": {
-        "Telehandler Operator": 2,
-        "Supervisor": 2,
-        "Supervisor - Mechanical": 6,
-        "Boilermaker": 4,
-        "Basic Rigger": 4,
-        "Lube Technician": 3,
-        "Trade Assistant": 5,
-        "Superintendent": 1,
-        "HSE Advisor": 2,
-        "Electrician": 4,
         "Site Coordinator": 1,
-        "Mechanical Fitter": 24,
+        "Lube Technician": 3,
+        "HSE Advisor": 2,
+        "Boilermaker": 4,
+        "Advanced Rigger": 4,
+        "Supervisor": 2,
+        "Trade Assistant": 5,
+        "Basic Rigger": 4,
         "Coded Welder": 1,
-        "Advanced Rigger": 4
+        "Mechanical Fitter": 24,
+        "Supervisor - Mechanical": 6,
+        "Superintendent": 1,
+        "Telehandler Operator": 2,
+        "Electrician": 4
       },
       "crew_split": {
         "Day": 32,
@@ -62,337 +62,471 @@
         {
           "name": "Mathias MENDY",
           "role": "Boilermaker",
-          "mobile": "0493 038 522"
+          "mobile": "0493 038 522",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "Ben ATTACK",
           "role": "Boilermaker",
-          "mobile": "0489 067 448"
+          "mobile": "0489 067 448",
+          "start": "2026-04-21",
+          "end": "2026-05-01"
         },
         {
           "name": "Teufik (Teo) MEDANOVIC",
           "role": "Electrician",
-          "mobile": "0451 029 041"
+          "mobile": "0451 029 041",
+          "start": "2026-04-21",
+          "end": "2026-04-29"
         },
         {
           "name": "Benjamin \ud83d\udd37 CHOPPING",
           "role": "Electrician",
-          "mobile": "0422 011 648"
+          "mobile": "0422 011 648",
+          "start": "2026-04-21",
+          "end": "2026-04-29"
         },
         {
           "name": "King GARCIA",
           "role": "Basic Rigger",
-          "mobile": "0498 054 425"
+          "mobile": "0498 054 425",
+          "start": "2026-04-20",
+          "end": "2026-04-28"
         },
         {
           "name": "Henri MARTINS",
           "role": "Basic Rigger",
-          "mobile": "0439 185 083"
+          "mobile": "0439 185 083",
+          "start": "2026-04-21",
+          "end": "2026-04-28"
         },
         {
           "name": "Stefanos KARIKIS",
           "role": "Basic Rigger",
-          "mobile": "0403 267 784"
+          "mobile": "0403 267 784",
+          "start": "2026-04-20",
+          "end": "2026-04-28"
         },
         {
           "name": "Amit \ud83d\udd37 GUND",
           "role": "Mechanical Fitter",
-          "mobile": "0423 173 031"
+          "mobile": "0423 173 031",
+          "start": "2026-04-22",
+          "end": "2026-04-28"
         },
         {
           "name": "Timo \ud83d\udd37 GRONENBERG",
           "role": "Mechanical Fitter",
-          "mobile": "0457 325 980"
+          "mobile": "0457 325 980",
+          "start": "2026-04-22",
+          "end": "2026-04-28"
         },
         {
           "name": "Malcolm GRAINGER-ROUSSEAU",
           "role": "Mechanical Fitter",
-          "mobile": "0487 104 895"
+          "mobile": "0487 104 895",
+          "start": "2026-04-21",
+          "end": "2026-04-28"
         },
         {
           "name": "Edward GARDINER",
           "role": "Mechanical Fitter",
-          "mobile": "0457 470 330"
+          "mobile": "0457 470 330",
+          "start": "2026-04-21",
+          "end": "2026-04-28"
         },
         {
           "name": "Walid BOULAHDID",
           "role": "Mechanical Fitter",
-          "mobile": "0404 303 830"
+          "mobile": "0404 303 830",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Omkar Uttam DORUGADE",
           "role": "Mechanical Fitter",
-          "mobile": "0424 804 281"
+          "mobile": "0424 804 281",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Sebastian \ud83d\udd37 DJAFFER",
           "role": "Lube Technician",
-          "mobile": "0401 117 401"
+          "mobile": "0401 117 401",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Lewis NEWELL",
           "role": "Supervisor - Mechanical",
-          "mobile": "0434 841 251"
+          "mobile": "0434 841 251",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Mark \ud83d\udd37 SULLIVAN",
           "role": "Supervisor - Mechanical",
-          "mobile": "0473 108 682"
+          "mobile": "0473 108 682",
+          "start": "2026-04-09",
+          "end": "2026-04-15"
         },
         {
           "name": "Peter BURNS",
           "role": "Supervisor - Mechanical",
-          "mobile": "0437 183 009"
+          "mobile": "0437 183 009",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Mehdi \ud83d\udd37 MOKEDDEM",
           "role": "Lube Technician",
-          "mobile": "0433 410 707"
+          "mobile": "0433 410 707",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Sujin JEON",
           "role": "Telehandler Operator",
-          "mobile": "0474 828 152"
+          "mobile": "0474 828 152",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Christopher McLENNAN",
           "role": "Supervisor",
-          "mobile": "0427 164 636"
+          "mobile": "0427 164 636",
+          "start": "2026-04-20",
+          "end": "2026-04-28"
         },
         {
           "name": "Russell PHILLIPS",
           "role": "Mechanical Fitter",
-          "mobile": "0421 795 621"
+          "mobile": "0421 795 621",
+          "start": "2026-04-21",
+          "end": "2026-05-01"
         },
         {
           "name": "Mao LI",
           "role": "Mechanical Fitter",
-          "mobile": "0432 066 471"
+          "mobile": "0432 066 471",
+          "start": "2026-04-24",
+          "end": "2026-05-01"
         },
         {
           "name": "Jake GANGEMI",
           "role": "Mechanical Fitter",
-          "mobile": "0426 994 235"
+          "mobile": "0426 994 235",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "Darren JAMES",
           "role": "Mechanical Fitter",
-          "mobile": "0432 522 247"
+          "mobile": "0432 522 247",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "Darren TAYLOR",
           "role": "Advanced Rigger",
-          "mobile": "0430 499 997"
+          "mobile": "0430 499 997",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "Mehdi BENDANI",
           "role": "Trade Assistant",
-          "mobile": "0493 536 751"
+          "mobile": "0493 536 751",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "David \ud83d\udd37 BRYCE",
           "role": "Trade Assistant",
-          "mobile": "0437 130 303"
+          "mobile": "0437 130 303",
+          "start": "2026-04-20",
+          "end": "2026-04-30"
         },
         {
           "name": "Madeline JONES",
           "role": "Trade Assistant",
-          "mobile": "0489 067 447"
+          "mobile": "0489 067 447",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Adam RILEY",
           "role": "Superintendent",
-          "mobile": "0457 162 100"
+          "mobile": "0457 162 100",
+          "start": "2026-04-09",
+          "end": "2026-04-15"
         },
         {
           "name": "Adam RILEY",
           "role": "Superintendent",
-          "mobile": "0457 162 100"
+          "mobile": "0457 162 100",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Jacinta JEFFERY",
           "role": "HSE Advisor",
-          "mobile": "0428 238 866"
+          "mobile": "0428 238 866",
+          "start": "2026-04-20",
+          "end": "2026-04-30"
         },
         {
           "name": "Joe DACK",
           "role": "Intermediate Rigger",
-          "mobile": "0449 995 304"
+          "mobile": "0449 995 304",
+          "start": "2026-04-21",
+          "end": "2026-05-01"
         },
         {
           "name": "Ricky TRUSLOVE",
           "role": "Intermediate Rigger",
-          "mobile": "0436 111 460"
+          "mobile": "0436 111 460",
+          "start": "2026-04-23",
+          "end": "2026-04-30"
         },
         {
           "name": "Anthony SMITH",
           "role": "Site Coordinator",
-          "mobile": "0404 303 368"
+          "mobile": "0404 303 368",
+          "start": "2026-04-21",
+          "end": "2026-04-30"
         },
         {
           "name": "Chaeyoon KIM",
           "role": "Intermediate Rigger",
-          "mobile": "0419 549 708"
+          "mobile": "0419 549 708",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Polly TE NAHU",
           "role": "HSE Advisor",
-          "mobile": "0472 547 689"
+          "mobile": "0472 547 689",
+          "start": "2026-04-21",
+          "end": "2026-04-29"
         },
         {
           "name": "Lea MONDESIR",
           "role": "Trade Assistant",
-          "mobile": "0436 652 133"
+          "mobile": "0436 652 133",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Omar ANADIF",
           "role": "Mechanical Fitter",
-          "mobile": "0407 636 408"
+          "mobile": "0407 636 408",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Gerry \ud83d\udd37 UY",
           "role": "Mechanical Fitter",
-          "mobile": "0455 733 546"
+          "mobile": "0455 733 546",
+          "start": "2026-04-22",
+          "end": "2026-04-28"
         },
         {
           "name": "Selva \ud83d\udd37 LOORTHSMAY",
           "role": "Mechanical Fitter",
-          "mobile": "0467 302 917"
+          "mobile": "0467 302 917",
+          "start": "2026-04-23",
+          "end": "2026-04-30"
         },
         {
           "name": "Jordan KIRKBY",
           "role": "Supervisor - Mechanical",
-          "mobile": "0406 872 504"
+          "mobile": "0406 872 504",
+          "start": "2026-04-21",
+          "end": "2026-04-28"
         },
         {
           "name": "Mark \ud83d\udd37 SULLIVAN",
           "role": "Supervisor - Mechanical",
-          "mobile": "0473 108 682"
+          "mobile": "0473 108 682",
+          "start": "2026-04-21",
+          "end": "2026-04-30"
         },
         {
           "name": "Tsarina MCCOWAT",
           "role": "Supervisor - Mechanical",
-          "mobile": "0497 419 629"
+          "mobile": "0497 419 629",
+          "start": "2026-04-21",
+          "end": "2026-04-28"
         },
         {
           "name": "Shane \ud83d\udd37 COX",
           "role": "Telehandler Operator",
-          "mobile": "0458 323 009"
+          "mobile": "0458 323 009",
+          "start": "2026-04-21",
+          "end": "2026-04-30"
         },
         {
           "name": "Lakshman VASANTHAN",
           "role": "Lube Technician",
-          "mobile": "0452 220 105"
+          "mobile": "0452 220 105",
+          "start": "2026-04-22",
+          "end": "2026-04-28"
         },
         {
           "name": "William THOMPSON",
           "role": "Trade Assistant",
-          "mobile": "0429 331 817"
+          "mobile": "0429 331 817",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Samuel \ud83d\udd37 GUNN",
           "role": "Mechanical Fitter",
-          "mobile": "0435 728 441"
+          "mobile": "0435 728 441",
+          "start": "2026-04-22",
+          "end": "2026-04-28"
         },
         {
           "name": "Gurshwinder SINGH",
           "role": "Mechanical Fitter",
-          "mobile": "0431 100 007"
+          "mobile": "0431 100 007",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Abdikadir MOHAMED",
           "role": "Mechanical Fitter",
-          "mobile": "0478 161 027"
+          "mobile": "0478 161 027",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Wisdom MANDIZVIDA",
           "role": "Mechanical Fitter",
-          "mobile": "0488 401 076"
+          "mobile": "0488 401 076",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Kulvinder SINGH",
           "role": "Mechanical Fitter",
-          "mobile": "0411 406 465"
+          "mobile": "0411 406 465",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Clemens SCHAAF",
           "role": "Mechanical Fitter",
-          "mobile": "0493 890 500"
+          "mobile": "0493 890 500",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Alessio \ud83d\udd37 SAMMITO",
           "role": "Mechanical Fitter",
-          "mobile": "0404 864 325"
+          "mobile": "0404 864 325",
+          "start": "2026-04-23",
+          "end": "2026-04-30"
         },
         {
           "name": "Herbert MUKUNGA",
           "role": "Mechanical Fitter",
-          "mobile": "0459 183 602"
+          "mobile": "0459 183 602",
+          "start": "2026-04-24",
+          "end": "2026-04-30"
         },
         {
           "name": "Jamie ADAMS",
           "role": "Mechanical Fitter",
-          "mobile": "0436 486 524"
+          "mobile": "0436 486 524",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Aaron NAIRN",
           "role": "Boilermaker",
-          "mobile": "0415 575 297"
+          "mobile": "0415 575 297",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "William \ud83d\udd37 ROBINSON",
           "role": "Boilermaker",
-          "mobile": "0410 842 339"
+          "mobile": "0410 842 339",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Drew BRAND",
           "role": "Electrician",
-          "mobile": "0427 117 309"
+          "mobile": "0427 117 309",
+          "start": "2026-04-21",
+          "end": "2026-04-29"
         },
         {
           "name": "James MAHONEY",
           "role": "Electrician",
-          "mobile": "0444 536 537"
+          "mobile": "0444 536 537",
+          "start": "2026-04-21",
+          "end": "2026-04-29"
         },
         {
           "name": "Nitin NAHAMUNI",
           "role": "Coded Welder",
-          "mobile": "0419 263 350"
+          "mobile": "0419 263 350",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Sang Woo \ud83d\udd37 KIM",
           "role": "Trade Assistant",
-          "mobile": "0459 883 208"
+          "mobile": "0459 883 208",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Sven \ud83d\udd37 HOPLA",
           "role": "Advanced Rigger",
-          "mobile": "0447 103 566"
+          "mobile": "0447 103 566",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "Nathan \ud83d\udd37 ARBUCKLE",
           "role": "Advanced Rigger",
-          "mobile": "0427 546 026"
+          "mobile": "0427 546 026",
+          "start": "2026-04-20",
+          "end": "2026-05-01"
         },
         {
           "name": "Julia VAATAINEN",
           "role": "Trade Assistant",
-          "mobile": "0402 737 490"
+          "mobile": "0402 737 490",
+          "start": "2026-04-23",
+          "end": "2026-04-28"
         },
         {
           "name": "Rhys \ud83d\udd37 CORBETT",
           "role": "Advanced Rigger",
-          "mobile": "0487 853 435"
+          "mobile": "0487 853 435",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         },
         {
           "name": "Gary CAVERZASIO",
           "role": "Basic Rigger",
-          "mobile": "0499 098 280"
+          "mobile": "0499 098 280",
+          "start": "2026-04-20",
+          "end": "2026-04-28"
         },
         {
           "name": "Brendan \ud83d\udd37 HILLMAN",
           "role": "Boilermaker",
-          "mobile": "0424 616 763"
+          "mobile": "0424 616 763",
+          "start": "2026-04-23",
+          "end": "2026-05-01"
         }
       ],
       "_source": {
@@ -427,5 +561,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-15T01:22:42Z"
+  "generated_at": "2026-04-15T04:23:40Z"
 }

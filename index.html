@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260415-0122" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260415-ops-roster" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260415-0122" defer></script>
+  <script src="assets/app.js?v=20260415-ops-roster" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -28,6 +28,11 @@
     </div>
   </header>
 
+  <nav class="tabbar" id="tabbar" role="tablist" aria-label="Views">
+    <button class="tab active" role="tab" data-tab="dashboard" aria-selected="true">Dashboard</button>
+    <button class="tab" role="tab" data-tab="roster" aria-selected="false">Operations roster</button>
+  </nav>
+
   <nav class="filterbar" id="filterbar" aria-label="Filters">
     <div class="filter-group">
       <span class="filter-label">Company:</span>
@@ -37,7 +42,7 @@
       <button class="chip" data-co="Tronox">Tronox</button>
       <button class="chip" data-co="CSBP">CSBP</button>
     </div>
-    <div class="filter-group">
+    <div class="filter-group" id="status-filter-group">
       <span class="filter-label">Status:</span>
       <button class="chip chip-status active" data-status="all">All</button>
       <button class="chip chip-status" data-status="booked">Booked</button>
@@ -49,6 +54,7 @@
   <main>
     <div id="placeholder-banner" class="banner" hidden></div>
 
+    <section id="tab-dashboard" class="tab-panel active" role="tabpanel">
     <section class="kpis" id="kpis">
       <div class="kpi">
         <div class="kpi-value" id="kpi-positions">&mdash;</div>
@@ -150,6 +156,30 @@
         <div id="warnings"></div>
       </details>
     </section>
+    </section><!-- /#tab-dashboard -->
+
+    <section id="tab-roster" class="tab-panel" role="tabpanel" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2>Consolidated operations roster</h2>
+          <p class="hint">One row per worker showing <strong>where they are on any given day</strong> across the four sites. Coloured block = on site; hover for the shutdown and role. Grouped by primary company, sorted by name. Today is highlighted; horizontal scroll covers the full period.</p>
+        </div>
+        <div class="roster-toolbar">
+          <input type="search" id="roster-search" class="roster-search" placeholder="Filter by name or role&hellip;" autocomplete="off" />
+          <label class="roster-jump"><input type="checkbox" id="roster-onsite-today" /> On site today only</label>
+          <span class="roster-count" id="roster-count"></span>
+        </div>
+        <div class="roster-legend">
+          <span><span class="sw co-tianqi"></span>Tianqi</span>
+          <span><span class="sw co-covalent"></span>Covalent</span>
+          <span><span class="sw co-tronox"></span>Tronox</span>
+          <span><span class="sw co-csbp"></span>CSBP</span>
+          <span class="sep">|</span>
+          <span><span class="sw today-swatch"></span>Today</span>
+        </div>
+        <div id="ops-roster" class="ops-roster"></div>
+      </section>
+    </section><!-- /#tab-roster -->
   </main>
 
   <footer>

@@ -121,6 +121,40 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
   .topbar .wm-divider { display: none; }
 }
 
+/* ----------------- Tab bar ----------------- */
+
+.tabbar {
+  display: flex;
+  gap: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--srg-border);
+}
+.tab {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--srg-grey);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 14px 20px 11px;
+  cursor: pointer;
+  transition: color .12s ease, border-color .12s ease;
+  margin-bottom: -1px; /* overlap .filterbar's top border so active tab line is flush */
+}
+.tab:hover { color: var(--srg-red); }
+.tab.active {
+  color: var(--srg-dark);
+  border-bottom-color: var(--srg-red);
+}
+.tab-panel { display: none; flex-direction: column; gap: 20px; }
+.tab-panel.active { display: flex; }
+
 /* ----------------- Filter bar ----------------- */
 
 .filterbar {
@@ -592,6 +626,256 @@ td.num, th.num {
 }
 .gantt-bar:hover { filter: brightness(1.1); opacity: 1; }
 .gantt-bar > span { overflow: hidden; text-overflow: ellipsis; }
+
+/* ----------------- Consolidated ops roster (tab 2) -----------------
+   Mirrors the Gantt's structure (month + week axis, today line, sticky
+   left column) but with one row per worker instead of one lane per
+   company. Each row's coloured bars are their assignments across
+   shutdowns, positioned by per-worker start/end dates. */
+
+.roster-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.roster-search {
+  flex: 1 1 260px;
+  min-width: 240px;
+  padding: 8px 12px;
+  border: 1px solid var(--srg-border);
+  background: var(--surface);
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--srg-dark);
+  border-radius: 2px;
+}
+.roster-search:focus {
+  outline: none;
+  border-color: var(--srg-red);
+  box-shadow: 0 0 0 1px var(--srg-red);
+}
+.roster-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--srg-dark);
+  cursor: pointer;
+  user-select: none;
+}
+.roster-jump input { accent-color: var(--srg-red); cursor: pointer; }
+.roster-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--srg-grey);
+  font-weight: 600;
+}
+.roster-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--srg-grey);
+  flex-wrap: wrap;
+}
+.roster-legend .sep { opacity: 0.35; }
+.roster-legend .sw {
+  display: inline-block;
+  width: 16px; height: 10px;
+  margin-right: 6px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.roster-legend .co-tianqi    { background: var(--co-tianqi); }
+.roster-legend .co-covalent  { background: var(--co-covalent); }
+.roster-legend .co-tronox    { background: var(--co-tronox); }
+.roster-legend .co-csbp      { background: var(--co-csbp); }
+.roster-legend .today-swatch {
+  background: var(--srg-red);
+  width: 2px; height: 14px;
+}
+
+.ops-roster {
+  position: relative;
+  overflow: auto;
+  /* Tall enough to show ~15 worker rows by default; the rest scrolls. */
+  max-height: 680px;
+  border: 1px solid var(--srg-border);
+  background: var(--surface);
+}
+.ops-roster-inner { position: relative; }
+
+.ops-roster-axis {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--srg-border);
+  padding-left: var(--lane-label-w);
+}
+.ops-roster-months {
+  position: relative;
+  height: 22px;
+  border-bottom: 1px solid var(--srg-border);
+}
+.ops-roster-month-tick {
+  position: absolute;
+  top: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--srg-grey);
+  border-left: 1px solid var(--srg-border);
+}
+.ops-roster-month-tick:first-child { border-left: none; }
+.ops-roster-weeks {
+  position: relative;
+  height: 26px;
+}
+.ops-roster-week-tick {
+  position: absolute;
+  top: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 4px;
+  font-size: 10px;
+  color: var(--srg-grey);
+  border-left: 1px dashed var(--srg-border);
+  line-height: 1.1;
+}
+.ops-roster-week-tick .dom {
+  font-weight: 700;
+  color: var(--srg-dark);
+}
+.ops-roster-week-tick .mo {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ops-roster-body { position: relative; }
+.ops-roster-grid {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--lane-label-w);
+  right: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.ops-roster-gridline {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--srg-border);
+  opacity: 0.55;
+}
+.ops-roster-today {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: var(--srg-red);
+  z-index: 1;
+}
+
+.ops-roster-group {
+  /* Company separator row between groups of workers. Sticky-left so the
+     label stays visible while the timeline scrolls. */
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  padding: 8px 14px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--srg-border);
+  border-bottom: 1px solid var(--srg-border);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--srg-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ops-roster-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 42px;
+  border-bottom: 1px solid var(--srg-border);
+  position: relative;
+}
+.ops-roster-row:last-child { border-bottom: none; }
+.ops-roster-row-label {
+  flex: 0 0 var(--lane-label-w);
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  background: var(--surface);
+  border-right: 1px solid var(--srg-border);
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  box-shadow: 1px 0 0 var(--srg-border);
+}
+.ops-roster-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--srg-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ops-roster-meta {
+  font-size: 11px;
+  color: var(--srg-grey);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ops-roster-role { font-weight: 600; color: var(--srg-dark); }
+.ops-roster-meta .muted { color: var(--srg-grey); }
+.ops-roster-meta .mobile-link { font-size: 11px; }
+
+.ops-roster-track {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+.ops-roster-bar {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--co);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 2px;
+  cursor: default;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  transition: filter .12s ease;
+}
+.ops-roster-bar.booked {
+  border: 1.5px dashed rgba(0, 0, 0, 0.45);
+  opacity: 0.85;
+}
+.ops-roster-bar:hover { filter: brightness(1.12); }
+.ops-roster-bar > span { overflow: hidden; text-overflow: ellipsis; }
 
 /* ----------------- Per-shutdown summary cards ----------------- */
 

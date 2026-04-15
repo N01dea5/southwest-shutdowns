@@ -497,7 +497,13 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
         "roster": [
             {"name": r["name"],
              "role": r["role"],
-             **({"mobile": r["mobile"]} if r.get("mobile") else {})}
+             **({"mobile": r["mobile"]} if r.get("mobile") else {}),
+             # Per-worker start/end drive the consolidated ops roster (tab 2).
+             # They can differ from the shutdown's overall span when a worker
+             # only covers part of the window (e.g. a supervisor arrives early,
+             # a trade assistant demobs mid-shutdown).
+             **({"start": r["start"]} if r.get("start") else {}),
+             **({"end":   r["end"]}   if r.get("end")   else {})}
             for r in confirmed
         ],
         "_source": {

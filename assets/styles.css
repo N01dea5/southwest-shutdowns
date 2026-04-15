@@ -124,12 +124,13 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
 /* ----------------- Tab bar ----------------- */
 
 .tabbar {
-  display: flex;
+  display: flex !important;      /* defensive — never let another rule collapse the bar */
   gap: 0;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 32px;
-  background: var(--surface);
+  background: var(--surface-2);   /* light grey so the tabs read as a distinct strip below the white header */
+  border-top: 1px solid var(--srg-border);
   border-bottom: 1px solid var(--srg-border);
 }
 .tab {
@@ -137,20 +138,23 @@ h1, h2, h3 { font-family: var(--body); letter-spacing: 0; }
   background: transparent;
   border: none;
   border-bottom: 3px solid transparent;
-  color: var(--srg-grey);
+  color: var(--srg-dark);
   font-family: var(--body);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  padding: 14px 20px 11px;
+  padding: 16px 24px 13px;
   cursor: pointer;
-  transition: color .12s ease, border-color .12s ease;
+  transition: color .12s ease, border-color .12s ease, background .12s ease;
   margin-bottom: -1px; /* overlap .filterbar's top border so active tab line is flush */
+  opacity: 0.65;
 }
-.tab:hover { color: var(--srg-red); }
+.tab:hover { color: var(--srg-red); opacity: 1; background: rgba(255,255,255,0.6); }
 .tab.active {
   color: var(--srg-dark);
   border-bottom-color: var(--srg-red);
+  opacity: 1;
+  background: var(--surface);
 }
 .tab-panel { display: none; flex-direction: column; gap: 20px; }
 .tab-panel.active { display: flex; }

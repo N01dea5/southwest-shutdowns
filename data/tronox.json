@@ -10,21 +10,21 @@
       "status": "booked",
       "required_by_role": {
         "Trade Assistant": 20,
+        "Intermediate Rigger": 10,
         "Supervisor - Mechanical": 4,
+        "Boilermaker": 10,
         "Mechanical Fitter": 40,
         "Coded Welder": 10,
-        "Advanced Rigger": 10,
-        "Boilermaker": 10,
-        "Intermediate Rigger": 10
+        "Advanced Rigger": 10
       },
       "filled_by_role": {
         "Trade Assistant": 20,
+        "Intermediate Rigger": 4,
         "Supervisor - Mechanical": 1,
+        "Boilermaker": 1,
         "Mechanical Fitter": 16,
         "Coded Welder": 1,
-        "Advanced Rigger": 4,
-        "Boilermaker": 1,
-        "Intermediate Rigger": 4
+        "Advanced Rigger": 4
       },
       "crew_split": {
         "Night": 22,
@@ -295,5 +295,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-15T01:21:57Z"
+  "generated_at": "2026-04-15T01:22:42Z"
 }

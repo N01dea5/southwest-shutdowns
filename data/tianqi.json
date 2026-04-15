@@ -11,16 +11,16 @@
       "required_by_role": {
         "Trade Assistant": 4,
         "Supervisor - Mechanical": 2,
+        "Boilermaker": 4,
         "Coded Welder": 4,
-        "Advanced Rigger": 4,
-        "Boilermaker": 4
+        "Advanced Rigger": 4
       },
       "filled_by_role": {
         "Trade Assistant": 4,
         "Supervisor - Mechanical": 2,
+        "Boilermaker": 3,
         "Coded Welder": 4,
-        "Advanced Rigger": 0,
-        "Boilermaker": 3
+        "Advanced Rigger": 0
       },
       "crew_split": {
         "Day": 12,
@@ -158,5 +158,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-15T01:21:57Z"
+  "generated_at": "2026-04-15T01:22:42Z"
 }

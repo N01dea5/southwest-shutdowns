@@ -181,7 +181,7 @@
     },
     {
       "id": 27,
-      "name": "Pare Te Nahu",
+      "name": "Sean Smidt",
       "role": "HSE",
       "shift": "Night",
       "days": 7,
@@ -244,7 +244,7 @@
     },
     {
       "id": 23,
-      "name": "Benjamin Chopping",
+      "name": "TBC (Line 23)",
       "role": "Electrician",
       "shift": "Day",
       "days": 7,
@@ -280,7 +280,7 @@
     },
     {
       "id": 6,
-      "name": "Malcolm Grainger-Rousseau",
+      "name": "Brett Stone",
       "role": "Fitter",
       "shift": "Day",
       "days": 6,
@@ -334,7 +334,7 @@
     },
     {
       "id": 12,
-      "name": "Hicham Bougazi",
+      "name": "Brendan Hillman",
       "role": "Fitter",
       "shift": "Day",
       "days": 4,
@@ -433,7 +433,7 @@
     },
     {
       "id": 59,
-      "name": "Florian Chavot",
+      "name": "Ben Friedauer",
       "role": "Fitter - Conveyor Inspections",
       "shift": "Day",
       "days": 5,
@@ -451,7 +451,7 @@
     },
     {
       "id": 61,
-      "name": "Gerry Uy",
+      "name": "Bryan Messenger",
       "role": "Fitter - Conveyor Inspections",
       "shift": "Night",
       "days": 5,
@@ -640,7 +640,7 @@
     },
     {
       "id": 29,
-      "name": "Shane Cox",
+      "name": "Michael Kim",
       "role": "T.A. Telehandler",
       "shift": "Night",
       "days": 8,

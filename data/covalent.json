@@ -9,36 +9,36 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Mechanical Fitter": 24,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 6,
-        "Basic Rigger": 4,
-        "Supervisor": 2,
-        "Electrician": 4,
-        "HSE Advisor": 2,
-        "Boilermaker": 4,
-        "Trade Assistant": 5,
         "Advanced Rigger": 4,
-        "Site Coordinator": 1,
-        "Telehandler Operator": 2,
         "Lube Technician": 3,
-        "Superintendent": 1
+        "Site Coordinator": 1,
+        "HSE Advisor": 2,
+        "Superintendent": 1,
+        "Boilermaker": 4,
+        "Supervisor": 2,
+        "Basic Rigger": 4,
+        "Mechanical Fitter": 24,
+        "Supervisor - Mechanical": 6,
+        "Telehandler Operator": 2,
+        "Electrician": 4,
+        "Coded Welder": 1,
+        "Trade Assistant": 5
       },
       "filled_by_role": {
-        "Mechanical Fitter": 24,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 6,
-        "Basic Rigger": 4,
-        "Supervisor": 2,
-        "Electrician": 4,
-        "HSE Advisor": 2,
-        "Boilermaker": 4,
-        "Trade Assistant": 5,
         "Advanced Rigger": 4,
-        "Site Coordinator": 1,
-        "Telehandler Operator": 2,
         "Lube Technician": 3,
-        "Superintendent": 1
+        "Site Coordinator": 1,
+        "HSE Advisor": 2,
+        "Superintendent": 1,
+        "Boilermaker": 4,
+        "Supervisor": 2,
+        "Basic Rigger": 4,
+        "Mechanical Fitter": 24,
+        "Supervisor - Mechanical": 6,
+        "Telehandler Operator": 2,
+        "Electrician": 4,
+        "Coded Welder": 1,
+        "Trade Assistant": 5
       },
       "crew_split": {
         "Day": 32,
@@ -561,5 +561,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-15T04:23:50Z"
+  "generated_at": "2026-04-19T00:50:20Z"
 }

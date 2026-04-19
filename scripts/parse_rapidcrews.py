@@ -70,14 +70,11 @@ ROSTER_MAP: dict[str, tuple] = {
         ("csbp", "CSBP", "KPF LNG Major Shutdown March 2026 (Kleenheat)", "Kwinana",
          "kleenheat-2026-03"),
 
-    # Tianqi (Kwinana lithium hydroxide plant) — the TLK-1596 construction
-    # ramp-up scope. A parallel Scaffold Shutdown roster was tracked briefly
-    # and then dropped; the shutdown_id_override machinery is kept in place
-    # (5th tuple element) so the Construction roster doesn't collapse into
-    # "tianqi-2026-04" if another April-starting scope gets added later.
-    "Tianqi Construction Ramp Up Project":
-        ("tianqi", "Tianqi", "Construction Ramp Up Project", "Kwinana",
-         "tianqi-construction-2026-04"),
+    # Tianqi removed from active tracking at user's request (2026-04-15).
+    # XLSX is still in data/raw/ — re-add the entry below to reinstate.
+    # "Tianqi Construction Ramp Up Project":
+    #     ("tianqi", "Tianqi", "Construction Ramp Up Project", "Kwinana",
+    #      "tianqi-construction-2026-04"),
 }
 
 REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
@@ -616,7 +613,7 @@ def main() -> int:
 
     # -- 5. Backfill empty payloads for any client the dashboard lists but
     #       which got no rosters this run (prevents 404s on page load).
-    referenced = {"covalent", "tronox", "csbp", "tianqi"}
+    referenced = {"covalent", "tronox", "csbp"}
     for company_key in referenced - by_company.keys():
         path = DATA_DIR / f"{company_key}.json"
         if not path.exists():

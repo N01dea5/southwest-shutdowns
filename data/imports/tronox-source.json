@@ -23,31 +23,31 @@
     }
   },
   "summary": {
-    "total_planned": 104,
-    "confirmed": 47,
+    "total_planned": 105,
+    "confirmed": 48,
     "tbc": 57,
     "by_role": {
       "Supervisor - Mechanical": 4,
       "Boilermaker": 10,
-      "Coded Welder": 10,
+      "Coded Welder": 11,
       "Mechanical Fitter": 40,
       "Rigger - Advanced": 10,
       "Rigger - Intermediate": 10,
       "Trade Assistant": 20
     },
     "by_role_confirmed": {
-      "Supervisor - Mechanical": 1,
-      "Boilermaker": 1,
+      "Supervisor - Mechanical": 3,
+      "Boilermaker": 2,
       "Coded Welder": 1,
       "Mechanical Fitter": 16,
       "Rigger - Advanced": 4,
-      "Rigger - Intermediate": 4,
-      "Trade Assistant": 20
+      "Rigger - Intermediate": 3,
+      "Trade Assistant": 19
     },
     "by_group": {
       "Supervisor - Mechanical": 4,
       "Boilermaker": 10,
-      "Coded Welder": 10,
+      "Coded Welder": 11,
       "Mechanical Fitter": 40,
       "Rigger - Advanced": 10,
       "Rigger - Intermediate": 10,
@@ -55,7 +55,7 @@
     },
     "by_shift": {
       "Day": 59,
-      "Night": 45
+      "Night": 46
     }
   },
   "roster": [
@@ -69,19 +69,19 @@
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "RILEY, Adam",
       "role": "Supervisor - Mechanical",
       "shift": "Day",
-      "tbc": true,
+      "tbc": false,
       "id": 2,
       "group": "Supervisor - Mechanical",
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "SMITH, Anthony",
       "role": "Supervisor - Mechanical",
       "shift": "Day",
-      "tbc": true,
+      "tbc": false,
       "id": 3,
       "group": "Supervisor - Mechanical",
       "days": 5
@@ -96,10 +96,10 @@
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "MENDY, Mathias",
       "role": "Boilermaker",
       "shift": "Day",
-      "tbc": true,
+      "tbc": false,
       "id": 5,
       "group": "Boilermaker",
       "days": 5
@@ -186,10 +186,10 @@
       "days": 5
     },
     {
-      "name": "DUNN, Cameron",
+      "name": "TBC",
       "role": "Coded Welder",
       "shift": "Day",
-      "tbc": false,
+      "tbc": true,
       "id": 15,
       "group": "Coded Welder",
       "days": 5
@@ -276,16 +276,16 @@
       "days": 5
     },
     {
-      "name": "ABHINAV, Abhinav",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
+      "name": "RISCHIA, Mirko",
+      "role": "Coded Welder",
+      "shift": "Night",
       "tbc": false,
       "id": 25,
-      "group": "Mechanical Fitter",
+      "group": "Coded Welder",
       "days": 5
     },
     {
-      "name": "DOBBELAERE, Mitya",
+      "name": "ABHINAV, Abhinav",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -294,7 +294,7 @@
       "days": 5
     },
     {
-      "name": "DORUGADE, Omkar Uttam",
+      "name": "DOBBELAERE, Mitya",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -303,7 +303,7 @@
       "days": 5
     },
     {
-      "name": "FORREST, Wayne",
+      "name": "DORUGADE, Omkar Uttam",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -312,7 +312,7 @@
       "days": 5
     },
     {
-      "name": "GARDINER, Edward",
+      "name": "FORREST, Wayne",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -321,7 +321,7 @@
       "days": 5
     },
     {
-      "name": "GRAINGER-ROUSSEAU, Malcolm",
+      "name": "GARDINER, Edward",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -330,7 +330,7 @@
       "days": 5
     },
     {
-      "name": "JAMES, Darren",
+      "name": "GRAINGER-ROUSSEAU, Malcolm",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -339,7 +339,7 @@
       "days": 5
     },
     {
-      "name": "MOHAMED, Abdikadir",
+      "name": "HANCOCK, John",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -348,7 +348,7 @@
       "days": 5
     },
     {
-      "name": "THANGARASU, Prabhakaran",
+      "name": "JAMES, Darren",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "tbc": false,
@@ -357,19 +357,19 @@
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "MOHAMED, Abdikadir",
       "role": "Mechanical Fitter",
       "shift": "Day",
-      "tbc": true,
+      "tbc": false,
       "id": 34,
       "group": "Mechanical Fitter",
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "THANGARASU, Prabhakaran",
       "role": "Mechanical Fitter",
       "shift": "Day",
-      "tbc": true,
+      "tbc": false,
       "id": 35,
       "group": "Mechanical Fitter",
       "days": 5
@@ -456,10 +456,10 @@
       "days": 5
     },
     {
-      "name": "ADAMS, Jamie",
+      "name": "TBC",
       "role": "Mechanical Fitter",
-      "shift": "Night",
-      "tbc": false,
+      "shift": "Day",
+      "tbc": true,
       "id": 45,
       "group": "Mechanical Fitter",
       "days": 5
@@ -474,7 +474,7 @@
       "days": 5
     },
     {
-      "name": "MUKUNGA, Herbert",
+      "name": "GANGEMI, Jake",
       "role": "Mechanical Fitter",
       "shift": "Night",
       "tbc": false,
@@ -483,7 +483,7 @@
       "days": 5
     },
     {
-      "name": "SANCHEZ, Renan",
+      "name": "MUKUNGA, Herbert",
       "role": "Mechanical Fitter",
       "shift": "Night",
       "tbc": false,
@@ -636,16 +636,16 @@
       "days": 5
     },
     {
-      "name": "CHITTY, Russell",
-      "role": "Rigger - Advanced",
-      "shift": "Day",
-      "tbc": false,
+      "name": "TBC",
+      "role": "Mechanical Fitter",
+      "shift": "Night",
+      "tbc": true,
       "id": 65,
-      "group": "Rigger - Advanced",
+      "group": "Mechanical Fitter",
       "days": 5
     },
     {
-      "name": "DACK, Joe",
+      "name": "CHITTY, Russell",
       "role": "Rigger - Advanced",
       "shift": "Day",
       "tbc": false,
@@ -654,10 +654,10 @@
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "DACK, Joe",
       "role": "Rigger - Advanced",
       "shift": "Day",
-      "tbc": true,
+      "tbc": false,
       "id": 67,
       "group": "Rigger - Advanced",
       "days": 5
@@ -681,16 +681,16 @@
       "days": 5
     },
     {
-      "name": "FERNANDES, Luis",
+      "name": "TBC",
       "role": "Rigger - Advanced",
-      "shift": "Night",
-      "tbc": false,
+      "shift": "Day",
+      "tbc": true,
       "id": 70,
       "group": "Rigger - Advanced",
       "days": 5
     },
     {
-      "name": "RATAHI, Hemi",
+      "name": "FERNANDES, Luis",
       "role": "Rigger - Advanced",
       "shift": "Night",
       "tbc": false,
@@ -699,10 +699,10 @@
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "RATAHI, Hemi",
       "role": "Rigger - Advanced",
       "shift": "Night",
-      "tbc": true,
+      "tbc": false,
       "id": 72,
       "group": "Rigger - Advanced",
       "days": 5
@@ -726,12 +726,12 @@
       "days": 5
     },
     {
-      "name": "KIM, Chaeyoon",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "tbc": false,
+      "name": "TBC",
+      "role": "Rigger - Advanced",
+      "shift": "Night",
+      "tbc": true,
       "id": 75,
-      "group": "Rigger - Intermediate",
+      "group": "Rigger - Advanced",
       "days": 5
     },
     {
@@ -771,16 +771,16 @@
       "days": 5
     },
     {
-      "name": "SOSA, Lucrecia Celeste",
+      "name": "TBC",
       "role": "Rigger - Intermediate",
-      "shift": "Night",
-      "tbc": false,
+      "shift": "Day",
+      "tbc": true,
       "id": 80,
       "group": "Rigger - Intermediate",
       "days": 5
     },
     {
-      "name": "VAN DER ZANDEN, Julian",
+      "name": "SOSA, Lucrecia Celeste",
       "role": "Rigger - Intermediate",
       "shift": "Night",
       "tbc": false,
@@ -789,10 +789,10 @@
       "days": 5
     },
     {
-      "name": "TBC",
+      "name": "VAN DER ZANDEN, Julian",
       "role": "Rigger - Intermediate",
       "shift": "Night",
-      "tbc": true,
+      "tbc": false,
       "id": 82,
       "group": "Rigger - Intermediate",
       "days": 5
@@ -816,16 +816,16 @@
       "days": 5
     },
     {
-      "name": "FAVA, Willy",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "tbc": false,
+      "name": "TBC",
+      "role": "Rigger - Intermediate",
+      "shift": "Night",
+      "tbc": true,
       "id": 85,
-      "group": "Trade Assistant",
+      "group": "Rigger - Intermediate",
       "days": 5
     },
     {
-      "name": "FRONGILLO, Robert",
+      "name": "GILCHRIST, Sharon",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -834,7 +834,7 @@
       "days": 5
     },
     {
-      "name": "GILCHRIST, Sharon",
+      "name": "HERNANDEZ, Jaime",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -843,7 +843,7 @@
       "days": 5
     },
     {
-      "name": "HERNANDEZ, Jaime",
+      "name": "JEFFERY, Jacinta",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -852,7 +852,7 @@
       "days": 5
     },
     {
-      "name": "JEFFERY, Jacinta",
+      "name": "KARIKIS, Stefanos",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -861,7 +861,7 @@
       "days": 5
     },
     {
-      "name": "KARIKIS, Stefanos",
+      "name": "LYON, Barry",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -870,7 +870,7 @@
       "days": 5
     },
     {
-      "name": "LYON, Barry",
+      "name": "MENDIVIL, Jeremias",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -879,7 +879,7 @@
       "days": 5
     },
     {
-      "name": "MENDIVIL, Jeremias",
+      "name": "MONNET, Lise",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -888,7 +888,7 @@
       "days": 5
     },
     {
-      "name": "MONNET, Lise",
+      "name": "NDENGA, Naomi",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -897,7 +897,7 @@
       "days": 5
     },
     {
-      "name": "NDENGA, Naomi",
+      "name": "TRAORE, Eleonora",
       "role": "Trade Assistant",
       "shift": "Day",
       "tbc": false,
@@ -906,16 +906,16 @@
       "days": 5
     },
     {
-      "name": "BENDANI, Mehdi",
+      "name": "TBC",
       "role": "Trade Assistant",
-      "shift": "Night",
-      "tbc": false,
+      "shift": "Day",
+      "tbc": true,
       "id": 95,
       "group": "Trade Assistant",
       "days": 5
     },
     {
-      "name": "DILENA, Jessica",
+      "name": "BENDANI, Mehdi",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -924,7 +924,7 @@
       "days": 5
     },
     {
-      "name": "GARCIA, King",
+      "name": "DILENA, Jessica",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -933,7 +933,7 @@
       "days": 5
     },
     {
-      "name": "MONDESIR, Lea",
+      "name": "GARCIA, King",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -942,7 +942,7 @@
       "days": 5
     },
     {
-      "name": "NGUYEN, Gabriel",
+      "name": "MONDESIR, Lea",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -951,7 +951,7 @@
       "days": 5
     },
     {
-      "name": "RAFFAELE, Roberto",
+      "name": "NGUYEN, Gabriel",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -960,7 +960,7 @@
       "days": 5
     },
     {
-      "name": "REID, Issac",
+      "name": "RAFFAELE, Roberto",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -969,7 +969,7 @@
       "days": 5
     },
     {
-      "name": "SARTI, Federico",
+      "name": "REID, Issac",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -978,7 +978,7 @@
       "days": 5
     },
     {
-      "name": "THOMPSON, William",
+      "name": "SARTI, Federico",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
@@ -987,11 +987,20 @@
       "days": 5
     },
     {
-      "name": "WITHERS, Beau",
+      "name": "THOMPSON, William",
       "role": "Trade Assistant",
       "shift": "Night",
       "tbc": false,
       "id": 104,
+      "group": "Trade Assistant",
+      "days": 5
+    },
+    {
+      "name": "WITHERS, Beau",
+      "role": "Trade Assistant",
+      "shift": "Night",
+      "tbc": false,
+      "id": 105,
       "group": "Trade Assistant",
       "days": 5
     }

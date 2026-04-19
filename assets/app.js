@@ -16,7 +16,6 @@
 // outside the red family. Kleenheat is a historical client used here purely
 // to seed retention/carry-over stats.
 const COMPANIES = [
-  { key: "tianqi",    file: "data/tianqi.json",    color: "#6B4F9E" }, // muted purple
   { key: "covalent",  file: "data/covalent.json",  color: "#3A7849" }, // forest green
   { key: "tronox",    file: "data/tronox.json",    color: "#3D4250" }, // graphite slate
   { key: "csbp",      file: "data/csbp.json",      color: "#1F4E79" }, // navy blue — CSBP umbrella covers the NAAN2 + KPF LNG (Kleenheat) plants

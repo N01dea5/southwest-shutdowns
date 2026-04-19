@@ -11,18 +11,18 @@
   "start_date": "2026-05-25",
   "end_date": "2026-06-21",
   "contingency": {
-    "total": 0,
+    "total": 1,
     "by_group": {
       "Supervisor": 0,
       "Fitter": 0,
       "Rigger": 0,
-      "Trade Assistant": 0
+      "Trade Assistant": 1
     }
   },
   "summary": {
     "total_planned": 36,
-    "confirmed": 33,
-    "tbc": 3,
+    "confirmed": 36,
+    "tbc": 0,
     "by_role": {
       "Supervisor": 3,
       "Fitter": 13,
@@ -30,10 +30,10 @@
       "Trade Assistant": 16
     },
     "by_role_confirmed": {
-      "Supervisor": 1,
+      "Supervisor": 3,
       "Fitter": 13,
       "Rigger": 4,
-      "Trade Assistant": 15
+      "Trade Assistant": 16
     },
     "by_group": {
       "Supervisor": 3,
@@ -52,27 +52,27 @@
       "name": "Confirmed",
       "role": "Supervisor",
       "shift": "Day",
-      "days": 24,
+      "days": 26,
       "group": "Supervisor",
       "tbc": false
     },
     {
       "id": 2,
-      "name": "TBC",
+      "name": "Confirmed",
       "role": "Supervisor",
       "shift": "Day",
-      "days": 24,
+      "days": 26,
       "group": "Supervisor",
-      "tbc": true
+      "tbc": false
     },
     {
       "id": 3,
-      "name": "TBC",
+      "name": "Confirmed",
       "role": "Supervisor",
       "shift": "Night",
-      "days": 19,
+      "days": 21,
       "group": "Supervisor",
-      "tbc": true
+      "tbc": false
     },
     {
       "id": 4,
@@ -259,7 +259,7 @@
       "name": "Confirmed",
       "role": "Trade Assistant",
       "shift": "Day",
-      "days": 11,
+      "days": 14,
       "group": "Trade Assistant",
       "tbc": false
     },
@@ -319,12 +319,12 @@
     },
     {
       "id": 31,
-      "name": "TBC",
+      "name": "Confirmed",
       "role": "Trade Assistant",
       "shift": "Day",
       "days": 11,
       "group": "Trade Assistant",
-      "tbc": true
+      "tbc": false
     },
     {
       "id": 32,

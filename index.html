@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260415-tabs-visible" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260415-no-tianqi" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260415-tabs-visible" defer></script>
+  <script src="assets/app.js?v=20260415-no-tianqi" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -37,7 +37,6 @@
     <div class="filter-group">
       <span class="filter-label">Company:</span>
       <button class="chip active" data-co="all">All</button>
-      <button class="chip" data-co="Tianqi">Tianqi</button>
       <button class="chip" data-co="Covalent">Covalent</button>
       <button class="chip" data-co="Tronox">Tronox</button>
       <button class="chip" data-co="CSBP">CSBP</button>
@@ -102,7 +101,6 @@
         <p class="hint">All shutdowns across the sites, week-resolution. Shading encodes fill &mdash; darker means closer to target. Dashed outline = booked (not yet mobilised); solid = in progress or completed. Scrolls horizontally for long spans.</p>
       </div>
       <div class="gantt-legend">
-        <span><span class="sw co-tianqi"></span>Tianqi</span>
         <span><span class="sw co-covalent"></span>Covalent</span>
         <span><span class="sw co-tronox"></span>Tronox</span>
         <span><span class="sw co-csbp"></span>CSBP</span>
@@ -184,7 +182,7 @@
 
   <footer>
     <div class="foot-rule"></div>
-    <small>SRG Global &middot; Internal use only &middot; reads <code>data/tianqi.json</code>, <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
+    <small>SRG Global &middot; Internal use only &middot; reads <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
   </footer>
 </body>
 </html>

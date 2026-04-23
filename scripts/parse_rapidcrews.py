@@ -95,12 +95,15 @@ ROSTER_MAP: dict[str, tuple] = {
     #      "tianqi-construction-2026-04"),
 }
 
-REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
-RAW_DIR     = REPO_ROOT / "data" / "raw"
-DATA_DIR    = REPO_ROOT / "data"
-TARGETS_DIR = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
-HISTORY_DIR = DATA_DIR / "history"     # per-shutdown snapshot that persists
-                                       # after Rapid Crews' SQL view rolls over
+REPO_ROOT      = pathlib.Path(__file__).resolve().parent.parent
+RAW_DIR        = REPO_ROOT / "data" / "raw"
+DATA_DIR       = REPO_ROOT / "data"
+TARGETS_DIR    = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
+HISTORY_DIR    = DATA_DIR / "history"     # per-shutdown snapshot that persists
+                                          # after Rapid Crews' SQL view rolls over
+ENRICHMENT_DIR = DATA_DIR / "enrichment"  # per-company resume/annotation overlay
+                                          # (trade years, resume prose, newhire flags —
+                                          # fields not carried by the Rapid Crews feed)
 
 RAPIDCREWS_COLS = ["Company", "Name", "Surname", "Position", "Position On Project",
                    "Start Date", "End Date", "Confirmed", "Crew Type", "Mobilised"]
@@ -461,7 +464,71 @@ def _infer_status(start_day: dt.date, end_day: dt.date, today: dt.date) -> str:
     return "booked"
 
 
-def _emit_roster_entries(confirmed: list[dict]) -> list[dict]:
+def _norm_name(s) -> str:
+    """Lowercase, letters-only fingerprint for name matching. Drops spaces,
+    hyphens, apostrophes, diacritics so "O'Brien" collides with "OBrien"
+    and "Van Der Zanden" with "VANDERZANDEN"."""
+    return re.sub(r"[^a-z]+", "", (s or "").lower())
+
+
+def _load_enrichment(company_key: str) -> dict[str, dict]:
+    """Load data/enrichment/<company_key>.json (optional) and index every
+    record by multiple normalised-name keys (first+last, last+first,
+    sorted) so the feed's "Firstname SURNAME" collides with the
+    enrichment file's "SURNAME, Firstname"-ish entries.
+
+    The enrichment file carries fields the Rapid Crews feed doesn't —
+    trade years, shutdown years, resume prose, newhire flags, driver's
+    licence class, etc. parse_rapidcrews.py injects whatever's there
+    directly onto each roster entry so per-site dashboards can stay
+    thin and the consolidated feed remains single source of truth.
+
+    Shape: {records: [{name: ..., ...overlay_fields...}, ...]}
+    Returns {} when no file exists — roster is still emitted normally.
+    """
+    path = ENRICHMENT_DIR / f"{company_key}.json"
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text())
+    except json.JSONDecodeError as e:
+        print(f"  ! enrichment {path.name}: JSON parse error: {e}", file=sys.stderr)
+        return {}
+    out: dict[str, dict] = {}
+    for r in data.get("records", []):
+        name = r.get("name", "")
+        if not name:
+            continue
+        parts = [p for p in re.sub(r"[,]+", " ", name).split() if p]
+        norm = [_norm_name(p) for p in parts if _norm_name(p)]
+        if not norm:
+            continue
+        payload = {k: v for k, v in r.items() if k != "name"}
+        keys = {"".join(norm), "".join(sorted(norm))}
+        if len(norm) >= 2:
+            keys.update({norm[0] + norm[-1], norm[-1] + norm[0]})
+        for k in keys:
+            out.setdefault(k, payload)
+    return out
+
+
+def _enrichment_lookup(first: str, last: str,
+                       index: dict[str, dict]) -> dict | None:
+    """Return the enrichment payload for (first, last), or None."""
+    if not index:
+        return None
+    f = _norm_name(first)
+    l = _norm_name(last)
+    if not f or not l:
+        return None
+    for k in (f + l, l + f, "".join(sorted([f, l]))):
+        if k in index:
+            return index[k]
+    return None
+
+
+def _emit_roster_entries(confirmed: list[dict],
+                         enrichment: dict[str, dict] | None = None) -> list[dict]:
     """Turn confirmed roster rows into the final per-worker dicts the
     dashboard reads. Enriches each entry with:
       - shift:        from RosterCut/Kleenheat crew_type when known, so the
@@ -470,11 +537,19 @@ def _emit_roster_entries(confirmed: list[dict]) -> list[dict]:
       - tickets:      compliance dict from xll01 PersonnelCompetency — empty
                       {} when no match so consumers can still branch on
                       "did we have compliance data this run?" safely
+      - enrichment fields: any additional fields (ty / sy / sum / newhire /
+                      extras / drivers) from data/enrichment/<company>.json,
+                      matched by name. Reserved keys (name/role/shift/mobile/
+                      start/end/personnel_id/tickets) can't be clobbered.
     """
     try:
         import parse_macro_data as _pmd
     except Exception:                           # pragma: no cover — defensive
         _pmd = None
+
+    enr_idx  = enrichment or {}
+    reserved = {"name", "role", "shift", "mobile", "start", "end",
+                "personnel_id", "tickets"}
 
     out: list[dict] = []
     for r in confirmed:
@@ -495,11 +570,19 @@ def _emit_roster_entries(confirmed: list[dict]) -> list[dict]:
                 entry["tickets"]      = {}
         else:
             entry["tickets"] = {}
+        enr = _enrichment_lookup(r.get("first_name", ""),
+                                 r.get("last_name", ""),
+                                 enr_idx)
+        if enr:
+            for k, v in enr.items():
+                if k not in reserved:
+                    entry[k] = v
         out.append(entry)
     return out
 
 
-def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str) -> tuple[str, str, dict]:
+def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str,
+                   enrichment: dict[str, dict] | None = None) -> tuple[str, str, dict]:
     entry = ROSTER_MAP[file_key]
     company_key, client_name, project_label, site = entry[:4]
     shutdown_id_override = entry[4] if len(entry) > 4 else None
@@ -581,7 +664,7 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
         "crew_split":       crew_split,
         "mobilised_by_role": mobilised_by_role,
         "labour_hire_split": labour_hire_split,
-        "roster":           _emit_roster_entries(confirmed),
+        "roster":           _emit_roster_entries(confirmed, enrichment=enrichment),
         "_source": {
             "rapid_crews_roster_id":   file_key,
             "rapid_crews_export_file": xlsx.name,
@@ -774,10 +857,29 @@ def main() -> int:
               f"{stats['xref_ambiguous']} ambiguous · "
               f"{stats['unmatched']} unmatched")
 
-    # -- 3. Build per-shutdown payloads from RosterCut files.
+    # -- 3. Load per-company enrichment overlays (resume prose, hand-curated
+    #       annotations). Carries fields the Rapid Crews feed can't supply
+    #       — trade years, shutdown years, resume narrative, newhire flags,
+    #       driver's licence class. Per-site dashboards read these directly
+    #       off the roster entries so they can stay thin renderers.
+    enrichment_by_company: dict[str, dict[str, dict]] = {}
+    for company_key in ("tronox", "covalent", "csbp"):
+        enr = _load_enrichment(company_key)
+        if enr:
+            enrichment_by_company[company_key] = enr
+            # index holds up to 3 keys per record — divide out for a
+            # realistic record count when logging.
+            approx = max(1, len(enr) // 3)
+            print(f"  enrichment {company_key}: ~{approx} records "
+                  f"({ENRICHMENT_DIR.relative_to(REPO_ROOT)}/{company_key}.json)")
+
+    # -- 4. Build per-shutdown payloads from RosterCut files.
     rc_triples: list[tuple[str, str, dict]] = []
     for key, xlsx, fmt, rows in parsed:
-        company_key, client_name, shutdown = build_shutdown(key, xlsx, rows, fmt)
+        prelim_company_key = ROSTER_MAP[key][0]
+        company_key, client_name, shutdown = build_shutdown(
+            key, xlsx, rows, fmt,
+            enrichment=enrichment_by_company.get(prelim_company_key))
         rc_triples.append((company_key, client_name, shutdown))
         print(f"  {key:>10}  {client_name:<10} {shutdown['id']:<22} "
               f"roster={len(shutdown['roster']):>3}  "

@@ -532,6 +532,31 @@ def macro_filled_for(file_key: str,
     return {role: v["filled"] for role, v in per_role.items() if v["filled"] > 0}
 
 
+def macro_required_for(file_key: str,
+                       macro_data: dict[int, dict[str, dict[str, int]]]
+                       ) -> dict[str, int] | None:
+    """Return {role: required_count} for this shutdown from the SQL macro
+    workbook's JobPlanningView.Required column. Lets us source required
+    headcount from the scheduling DB directly rather than scraping the
+    per-site dashboard repos — important because those dashboards are now
+    CONSUMERS of this feed, not PRODUCERS, so scraping them yields nothing.
+
+    Same lookup rules as macro_filled_for: only applies to RosterCut
+    shutdowns (numeric file_key)."""
+    if not file_key.isdigit():
+        return None
+    job_no = int(file_key)
+    per_role = macro_data.get(job_no)
+    if not per_role:
+        return None
+    # Keep roles with required>0 OR filled>0 OR actual>0 — sometimes the
+    # scheduler enters an on-site headcount (Actual) against a role that
+    # was never formally "planned" (Required), and we still want to track
+    # it on the dashboard.
+    return {role: v["required"] for role, v in per_role.items()
+            if v["required"] > 0 or v["filled"] > 0 or v["actual"] > 0}
+
+
 # --------------------------------------------------------------------------- compliance (tickets)
 
 def _norm_name(s) -> str:
@@ -783,6 +808,24 @@ def build_shutdown(file_key: str,
     if macro_filled is not None:
         filled_final = macro_filled
 
+    # required_by_role precedence (lowest → highest):
+    #   1. derived from filled (legacy placeholder when no target file exists)
+    #   2. data/targets/<shutdown_id>.json override from sync_source_targets.py
+    #      — scraped from the per-site dashboard's planned roster
+    #   3. SQL-sourced Rapidcrews Macro Data "Required" column — applied here.
+    # The SQL source takes priority because the per-site dashboards are now
+    # consumers of this feed (they fetch /data/<company>.json), so scraping
+    # them back into required_by_role would be circular and can zero out the
+    # required counts when a dashboard is migrated to fetch-from-feed mode.
+    macro_required   = macro_required_for(file_key, macro_data or {})
+    required_pre_macro = dict(required)
+    if macro_required is not None:
+        # Replace entirely — the SQL workbook is the authoritative planner.
+        required = macro_required
+    required_source = ("rapidcrews_macro_data" if macro_required is not None
+                       else ("targets_file" if target_source_meta is not None
+                             else "roster_fallback"))
+
     today       = dt.date.today()
     status      = _infer_status(dt.date.fromisoformat(sd),
                                 dt.date.fromisoformat(ed), today)
@@ -846,13 +889,15 @@ def build_shutdown(file_key: str,
                 "REAL_TARGET" if target_exists else "PLACEHOLDER_FROM_ROSTER"
             ),
             "filled_source":           filled_source,
+            "required_source":         required_source,
             "rapid_crews_roster_size": len(confirmed),
             "rapid_crews_filled_by_role": filled_by_role,   # preserved for audit
             "target_source":           target_source_meta,  # None for Kleenheat
             # Kept alongside the live number so discrepancies between the
             # scheduling DB and the other sources are easy to spot in the
             # dashboard's data-quality panel.
-            "filled_by_role_pre_macro": filled_pre_macro if macro_filled is not None else None,
+            "filled_by_role_pre_macro":   filled_pre_macro   if macro_filled   is not None else None,
+            "required_by_role_pre_macro": required_pre_macro if macro_required is not None else None,
             "compliance_match": {
                 "matched":   n_matched,
                 "unmatched": n_unmatched,

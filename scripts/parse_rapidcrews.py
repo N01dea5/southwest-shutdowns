@@ -77,11 +77,12 @@ ROSTER_MAP: dict[str, tuple] = {
     #      "tianqi-construction-2026-04"),
 }
 
-REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
-RAW_DIR     = REPO_ROOT / "data" / "raw"
-DATA_DIR    = REPO_ROOT / "data"
-TARGETS_DIR = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
-MACRO_FILE  = RAW_DIR / "Rapidcrews Macro Data.xlsx"    # SQL-sourced export
+REPO_ROOT       = pathlib.Path(__file__).resolve().parent.parent
+RAW_DIR         = REPO_ROOT / "data" / "raw"
+DATA_DIR        = REPO_ROOT / "data"
+TARGETS_DIR     = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
+ENRICHMENT_DIR  = DATA_DIR / "enrichment"  # optional per-company resume/annotation overlay
+MACRO_FILE      = RAW_DIR / "Rapidcrews Macro Data.xlsx"    # SQL-sourced export
 
 RAPIDCREWS_COLS = ["Company", "Name", "Surname", "Position", "Position On Project",
                    "Start Date", "End Date", "Confirmed", "Crew Type", "Mobilised"]
@@ -698,6 +699,70 @@ def load_compliance_data(path: pathlib.Path
         wb.close()
 
 
+# --------------------------------------------------------------------------- enrichment (resumes / overlay)
+
+def load_enrichment(company_key: str) -> dict[str, dict]:
+    """Load the per-company enrichment file (resume prose, trade years,
+    hand-curated annotations) and return it as {normalised_name: record}.
+
+    File lives at data/enrichment/<company>.json with shape:
+      { "records": [ {"name": "Joe DACK", ...any extra fields...}, ... ] }
+
+    Carries the fields the SQL feed can't supply — resume summary, trade
+    years, newhire flags, etc. — without bloating the feed with repo-
+    private payload. parse_rapidcrews.py injects these onto each matching
+    roster entry so the per-site dashboards (which are thin renderers)
+    don't need their own local copies.
+
+    Returns {} if the file is missing, letting the pipeline run unchanged
+    for companies without an enrichment file yet (e.g. Kleenheat/CSBP).
+    """
+    path = ENRICHMENT_DIR / f"{company_key}.json"
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text())
+    except json.JSONDecodeError as e:
+        print(f"  ! enrichment {path.name}: JSON parse error: {e}", file=sys.stderr)
+        return {}
+    out: dict[str, dict] = {}
+    for r in data.get("records", []):
+        name = r.get("name", "")
+        if not name:
+            continue
+        # Index on every plausible name key so "Firstname SURNAME" in the
+        # feed collides with "SURNAME, Firstname" in the enrichment file.
+        parts = re.sub(r"[,]+", " ", name).split()
+        parts_norm = [_norm_name(p) for p in parts if _norm_name(p)]
+        if not parts_norm:
+            continue
+        keys = {"".join(parts_norm), "".join(sorted(parts_norm))}
+        if len(parts_norm) >= 2:
+            first, last = parts_norm[0], parts_norm[-1]
+            keys.update({first + last, last + first})
+        # Strip 'name' from the record — callers merge by key lookup.
+        payload = {k: v for k, v in r.items() if k != "name"}
+        for k in keys:
+            out.setdefault(k, payload)
+    return out
+
+
+def enrichment_lookup(first: str, last: str,
+                      index: dict[str, dict]) -> dict | None:
+    """Return the enrichment payload for a roster entry's (first, last)
+    pair, or None if no match."""
+    if not index:
+        return None
+    f = _norm_name(first)
+    l = _norm_name(last)
+    if not f or not l:
+        return None
+    for k in (f + l, l + f, "".join(sorted([f, l]))):
+        if k in index:
+            return index[k]
+    return None
+
+
 # --------------------------------------------------------------------------- targets
 
 def merge_targets(shutdown_id: str,
@@ -767,6 +832,7 @@ def build_shutdown(file_key: str,
                    macro_data: dict[int, dict[str, dict[str, int]]] | None = None,
                    personnel_index: dict[tuple[str, str], str] | None = None,
                    compliance: dict[str, dict[str, dict]] | None = None,
+                   enrichment: dict[str, dict] | None = None,
                    ) -> tuple[str, str, dict]:
     entry = ROSTER_MAP[file_key]
     company_key, client_name, project_label, site = entry[:4]
@@ -831,14 +897,17 @@ def build_shutdown(file_key: str,
                                 dt.date.fromisoformat(ed), today)
 
     # Enrich each confirmed-roster entry with its current (non-expired)
-    # tickets from the SQL compliance sheet. Matching is best-effort
-    # (see match_personnel); unmatched workers just get an empty dict so
-    # the per-site dashboards can render "details pending" without crashing.
+    # tickets from the SQL compliance sheet, plus any per-company resume/
+    # annotation overlay from data/enrichment/<company>.json. Matching is
+    # best-effort; unmatched workers just get empty dicts so the per-site
+    # dashboards can render "details pending" without crashing.
     pidx    = personnel_index or {}
     compmap = compliance or {}
+    enrmap  = enrichment or {}
     roster_out: list[dict] = []
     n_matched  = 0
     n_unmatched = 0
+    n_enriched = 0
     for r in confirmed:
         pid = match_personnel(r.get("first_name", ""),
                               r.get("last_name", ""),
@@ -848,6 +917,11 @@ def build_shutdown(file_key: str,
             n_matched += 1
         else:
             n_unmatched += 1
+        enr = enrichment_lookup(r.get("first_name", ""),
+                                r.get("last_name", ""),
+                                enrmap)
+        if enr:
+            n_enriched += 1
         entry = {"name": r["name"], "role": r["role"]}
         # Day vs Night — read straight from the RosterCut/Kleenheat
         # crew_type column so per-site dashboards can group/filter without
@@ -865,6 +939,16 @@ def build_shutdown(file_key: str,
         # Tickets always emitted (even as {}) so per-site dashboards can
         # branch on "did we have compliance data this run?" vs "no match".
         entry["tickets"] = tickets
+        # Resume / annotation overlay (from data/enrichment/<company>.json).
+        # Spread its fields onto the entry, but don't let it clobber anything
+        # the SQL feed already supplies (tickets, personnel_id, etc.) —
+        # we pre-filter reserved keys.
+        if enr:
+            reserved = {"name", "role", "shift", "mobile", "start", "end",
+                        "personnel_id", "tickets"}
+            for k, v in enr.items():
+                if k not in reserved:
+                    entry[k] = v
         roster_out.append(entry)
 
     target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
@@ -903,6 +987,11 @@ def build_shutdown(file_key: str,
                 "unmatched": n_unmatched,
                 "coverage":  round(n_matched / (n_matched + n_unmatched), 3) if (n_matched + n_unmatched) else 0.0,
             } if pidx else None,
+            "enrichment_match": {
+                "enriched": n_enriched,
+                "roster":   len(confirmed),
+                "coverage": round(n_enriched / len(confirmed), 3) if confirmed else 0.0,
+            } if enrmap else None,
         },
     }
     # Provenance for enriched rows — surfaced in data-quality warnings
@@ -1008,14 +1097,33 @@ def main() -> int:
     else:
         print(f"  personnel/compliance: not loaded — roster tickets will be empty")
 
+    # -- 3c. Load per-company enrichment overlays (resume prose, hand-
+    #        curated annotations). Migrated out of the per-site dashboard
+    #        HTML files so the consolidated feed is the single source of
+    #        truth — dashboards are thin renderers that just read what's
+    #        here. Missing file = no overlay (roster still emits normally).
+    enrichment_by_company: dict[str, dict[str, dict]] = {}
+    for company_key in ("tronox", "covalent", "csbp"):
+        enr = load_enrichment(company_key)
+        if enr:
+            enrichment_by_company[company_key] = enr
+            # Each name is indexed under up to 3 keys — divide out to report
+            # a realistic entry count.
+            print(f"  enrichment {company_key}: ~{len(enr) // 3} records "
+                  f"({ENRICHMENT_DIR.relative_to(REPO_ROOT)}/{company_key}.json)")
+
     # -- 4. Build per-shutdown payloads and group by company.
     by_company: dict[str, dict] = {}
     for key, xlsx, fmt, rows in parsed:
+        # company_key is entry[0] in ROSTER_MAP — grab it so we can pass the
+        # right enrichment overlay down to build_shutdown.
+        prelim_company_key = ROSTER_MAP[key][0]
         company_key, client_name, shutdown = build_shutdown(
             key, xlsx, rows, fmt,
             macro_data=macro_data,
             personnel_index=personnel_index,
-            compliance=compliance)
+            compliance=compliance,
+            enrichment=enrichment_by_company.get(prelim_company_key))
         by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
         by_company[company_key]["shutdowns"].append(shutdown)
         cm = shutdown["_source"].get("compliance_match")

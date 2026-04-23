@@ -1,0 +1,384 @@
+{
+  "_note": "Hand-maintained resume enrichment for the Covalent Mt Holland per-site dashboard. parse_rapidcrews.py name-matches roster entries against this file and injects ty/sy/sum onto each worker's record in data/covalent.json. Migrated from the per-site dashboard's inline E array so the consolidated feed is the single source of truth.",
+  "_source": "N01dea5/Covalent-Mt-Holland---April-2026 index.html — hand-authored Apr 2026",
+  "records": [
+    {
+      "name": "Adam Riley",
+      "ty": 15,
+      "sy": 10,
+      "sum": "Experienced shutdown superintendent with extensive Kwinana industrial leadership across chemical, refinery and processing environments. Proven capability managing large multi-discipline crews through complex shutdowns."
+    },
+    {
+      "name": "Lewis Newell",
+      "ty": 4,
+      "sy": 4,
+      "sum": "Shutdown trades support / rigging-qualified crew member with Monadelphous fixed plant shutdown experience. Intermediate rigger with confined space, working at heights, EWP and gas testing. Currently completing a Bachelor of Business."
+    },
+    {
+      "name": "Peter Burns",
+      "ty": 30,
+      "sy": 20,
+      "sum": "Dual-trade boilermaker / sheetmetal worker with 30 years in the trade and 10+ years as mechanical supervisor. Extensive Pilbara shutdown experience across BHP, FMG and Rio Tinto, plus CSBP sodium cyanide plant experience. HR licence holder."
+    },
+    {
+      "name": "Kapil Chaudhary",
+      "ty": 10,
+      "sy": 10,
+      "sum": "10+ year mechanical supervisor and superintendent across major WA sites. Section 26 and WHS SRMS qualified. Recent roles: Condition Monitoring Supervisor at BHP Jimblebar, Rio Yandi structural integrity via Kaefer, SMP Superintendent at Aerison (Tom Price 2M/2AM), SMP Supervisor at MRL Mount Marion extension, and Mechanical Superintendent/Shutdown Coordinator at Karara and Sino Cape Preston. Newcrest Telfer shutdown coordinator. HR-B, MSIC, HRWL, CSE, WAH, Basic Fire. Broad Kwinana and Pilbara coverage."
+    },
+    {
+      "name": "Idriz Turko",
+      "ty": 25,
+      "sy": 3,
+      "sum": "25-year A-Grade electrician (EW137712) and Electrical Contractor (EC7802). Recent FIFO construction across FMG Solomon, Downer Paraburdoo, Monadelphous Eliwana and North Star Junction 100MW BESS. MCC/VSD/switchboard termination, commissioning, earthing, motor terminations, cable termination and testing. EWP and First Aid current. BHP, Rio Tinto and FMG inducted."
+    },
+    {
+      "name": "Mark Sullivan",
+      "ty": 11,
+      "sy": 8,
+      "sum": "Trade-qualified mechanical fitter with 11 years experience. Shutdown supervisor and leading hand across BHP, FMG, Karara. Pump specialist background with National Pumps & Energy. Reliable nightshift leader."
+    },
+    {
+      "name": "Jordan Kirkby",
+      "ty": 9,
+      "sy": 5,
+      "sum": "Trade-qualified boilermaker/welder (Cert III Heavy Fabrication) with 9 years experience and 5 years in shutdowns. Supervisor experience at Programmed and Taylors Engineering managing crews of 10–50 during Tronox Kwinana shutdowns. Currently with SRG as boilermaker/welder and Level 2 Rope Access Technician. Strong ticket set including dogging, basic rigging, forklift, EWP, gas testing, IRATA L2 and first aid."
+    },
+    {
+      "name": "Tsarina McCowat",
+      "ty": 17,
+      "sy": 12,
+      "sum": "S26 Supervisor and Section 44 certified mechanical fitter with 15+ years across oil and gas, mining and construction. Shutdown supervisor roles at INPEX Darwin, Incitec Pivot Moranbah, Woodside Karratha and Karara. Level 3 Flange Management (Chevron VOC). HR-B licence, EWP, gas testing. Inducted across Chevron, BHP, Rio Tinto, FMG, Roy Hill, Woodside and Boddington."
+    },
+    {
+      "name": "Anthony Smith",
+      "ty": 10,
+      "sy": 5,
+      "sum": "Experienced shutdown coordinator with 10+ years across rigging, shutdowns and maintenance. Supervisor-qualified with leading hand and supervisor experience managing crews of up to 30 across BHP, Talison, Newcrest, Karara and Boddington. Basic rigger and dogger with CSE, WAH, EWP and first aid. Proven night shift leadership capability."
+    },
+    {
+      "name": "Jacinta Jeffery",
+      "ty": 5,
+      "sy": 5,
+      "sum": "HSE advisor with strong shutdown experience across Kwinana industrial sites. References from BHP, Programmed and SRG Global. Proven in high-hazard environments."
+    },
+    {
+      "name": "Sean Smidt",
+      "ty": 5,
+      "sy": 3,
+      "sum": "Cert IV Work Health & Safety plus Cert III Engineering Fabrication trade. 5+ years dual experience as IRATA Level 2 Rope Access Technician / Boilermaker. Currently with SRG Global (Jan 2023 – current) seconded across FMG Port, Roy Hill Port and inland sites — stackers/reclaimers/ship loaders, chute liner change-outs, deflector replacements, hard-skirt and training-plate replacements. Prior Metalock Australia metal-stitching technician (FLS primary crusher repairs, SAG mill Cape Preston, Westrac CAT casings). Forklift, WAH, CS, gas testing, MSIC. FMG/Rio/BHP/Sino inducted. Replaces Pare Te Nahu in 17 Apr roster."
+    },
+    {
+      "name": "Ben Attack",
+      "ty": 12,
+      "sy": 8,
+      "sum": "UK-qualified coded pipe welder with petrochemical, refinery and power station shutdown experience. Strong technical capability in pressure piping and structural steelwork."
+    },
+    {
+      "name": "Mathias Mendy",
+      "ty": 9,
+      "sy": 5,
+      "sum": "Boilermaker/welder (Cert III Heavy Fabrication) and Level 2 Rope Access Technician with SRG Group. Intermediate scaffolder with shutdown experience across FMG/Rio Tinto sites including Iron Bridge, Anderson Point, Cloudbreak and Cape Lambert. Basic rigging, dogging, forklift, EWP, gas testing and first aid. 6G welding certified (FCAW/SMAW/GMAW/GTAW)."
+    },
+    {
+      "name": "Arron Nairn",
+      "ty": 12,
+      "sy": 5,
+      "sum": "12-year boilermaker with Talison shutdown experience across chutes, conveyors, screens and wear plates. Forklift ticket and strong processing plant maintenance background."
+    },
+    {
+      "name": "William Robinson",
+      "ty": 12,
+      "sy": 3,
+      "sum": "12-year boilermaker with fabrication and shutdown experience across FMG, BHP, Roy Hill, MinRes and Karara. EWP certified."
+    },
+    {
+      "name": "Mirko Rischia",
+      "ty": 10,
+      "sy": 1,
+      "sum": "10+ year boilermaker/welder with 6G qualifications (EN ISO 9606-1) across TIG, MMA, MIG, FCAW. Current KCGM Tunderbox via Drive Personnel — heavy fabrication and fixed plant maintenance. IRATA Level 1 rope access. Italian-trained with strong metal fabrication and diagnostic background."
+    },
+    {
+      "name": "Teo Medanovic",
+      "ty": 7,
+      "sy": 5,
+      "sum": "A-Grade electrician and Electrical Contractor (EC14300) with 7+ years across mining, commercial and residential. Former SRG Global shutdown electrician on FMG. Current Downer Group FIFO at BHP Port Hedland — fixed plant, motors, conveyors, switchboards, SAP/PMAC. EWP, gas testing, LV rescue. BHP and FMG fully inducted. Returning SRG crew member."
+    },
+    {
+      "name": "TBC (Line 23)",
+      "ty": 0,
+      "sy": 0,
+      "sum": "Day shift electrician slot — Benjamin Chopping removed in 17 Apr roster; replacement name not yet assigned."
+    },
+    {
+      "name": "James Mahoney",
+      "ty": 1,
+      "sy": 0,
+      "sum": "Licensed electrician with Cert III Electrotechnology and apprenticeship experience on major WA projects. HV switching operations qualified."
+    },
+    {
+      "name": "Drew Brand",
+      "ty": 17,
+      "sy": 4,
+      "sum": "Licensed electrician with 17 years experience and strong industrial electrical background. Diagnostic testing, motor controls and compliance inspection capability."
+    },
+    {
+      "name": "Edward Gardiner",
+      "ty": 8,
+      "sy": 4,
+      "sum": "Cert III mechanical fitter with Cert IV Hydraulics & Pneumatics. 4 years at Linkforce as fitter and leading hand on shutdowns and projects — car dumpers, stackers, reclaimers, gearbox change-outs, pulleys, screens, liners, spools. Prior hydraulic specialist at Finer Hydraulics Melbourne on cylinder overhauls, lathe/milling and MIG/TIG/ARC welding. Strong hydraulics background uncommon among fitters."
+    },
+    {
+      "name": "Brett Stone",
+      "ty": 7,
+      "sy": 0,
+      "sum": "Cert IV Engineering Tradesperson (Mechanical). 7+ years WA shutdown experience across iron ore, gold (Telfer), oil & gas (Darwin) and lithium (Tianqi/Greenbushes). Strong fixed-plant fitter background via Warrikal/FMG, Rio Tinto Tom Price, Furnace Solutions, Techforce CSBP, Kwinana Cement, and IGO Cosmos Nickel. Pump rebuilds, crusher repairs, conveyor work, screens, chutes, pipework and valve replacements; also cross-trained in welding/fabrication. WAH, EWP, Forklift, CS and White Card. Placeholder replacing Malcolm Grainger-Rousseau in 17 Apr roster."
+    },
+    {
+      "name": "Russell Phillips",
+      "ty": 18,
+      "sy": 8,
+      "sum": "Trade-qualified mechanical fitter with extensive maintenance and shutdown experience across Linkforce, Monadelphous, Woodside Pluto LNG, Boddington and Rio operations. Strong background in conveyors, crushers, pumps, gearboxes, screens, stackers, reclaimers and flange management. Proven team lead capability. HR, EWP, forklift and advanced rigging / dogging tickets."
+    },
+    {
+      "name": "Darren James",
+      "ty": 10,
+      "sy": 1,
+      "sum": "10 years mechanical maintenance experience with strength in hydraulics, fault-finding and preventative maintenance."
+    },
+    {
+      "name": "Jake Gangemi",
+      "ty": 8,
+      "sy": 5,
+      "sum": "Mechanical fitter with Rio maintenance background and strong shutdown exposure across crushers, conveyors and pulleys. Forklift and dogging tickets."
+    },
+    {
+      "name": "Mao Li",
+      "ty": 3,
+      "sy": 3,
+      "sum": "Cert III mechanical fitter with Masters in Mechanical Engineering. Currently with Warrikal across FMG, PLS and BHP shutdowns. Pump rebuilds/alignment, conveyor skirts and chutes, jaw/cone crushers, apron feeders. Greenbushes shutdown experience. HR, forklift, EWP and gas testing tickets. Stone listed as labour hire contingent; Ben Friedauer SRG contingent removed in 17 Apr roster (now Line 58 primary)."
+    },
+    {
+      "name": "Walid Boulahdid",
+      "ty": 4,
+      "sy": 3,
+      "sum": "Mechanical fitter with shutdown experience across BHP, Rio, Roy Hill, FMG and South32. Basic rigging and broad processing plant exposure."
+    },
+    {
+      "name": "Brendan Hillman",
+      "ty": 0,
+      "sy": 0,
+      "sum": "Day shift fitter — newly added to the roster (19 Apr) replacing Hicham Bougazi. Resume and experience details to be confirmed. Mackauly Parker listed as SRG contingent."
+    },
+    {
+      "name": "Omkar Dorugade",
+      "ty": 12,
+      "sy": 1,
+      "sum": "12+ year maintenance fitter with strong preventative maintenance and precision assembly background."
+    },
+    {
+      "name": "Herbert Mukunga",
+      "ty": 6,
+      "sy": 5,
+      "sum": "Mechanical fitter with turbine and conveyor expertise and a strong ticket set including telehandler, EWP, HR and gas testing."
+    },
+    {
+      "name": "Selva Loorthsmay",
+      "ty": 9,
+      "sy": 0,
+      "sum": "Cert III Engineering (Fitter & Machinist) plus Cert II Hydraulics. 9+ years WA mining shutdown fitter with deep hydraulic specialisation — the only fitter on the crew with a dedicated hydraulic ticket. 2025–26 Aussie Fluid Power at Karara (hydraulic hose fault finding/repair, pressure testing, tube bending). 2019–25 Custom Fluid Power (HPUs, hydraulic brakes, conveyor/reclaimer hydraulics). Prior BHP Area C, Jimblebar, Whaleback, South Flank, Nelson Point and Finucane Island shutdowns 2018–22; Rio Nammuldi, Yandi, Hope Downs 4, West Angelas, Brockman 4 (2017–19); FMG Kings Valley, Firetail, Cloudbreak; CITIC Cape Preston; Telfer; Roy Hill and KCGM Kalgoorlie. Forklift, WAH, CS, GT, MSIC, Safety Committee. Valuable pick for night-shift plant run-up."
+    },
+    {
+      "name": "Alessio Sammito",
+      "ty": 14,
+      "sy": 0,
+      "sum": "Australian-Trade-Certified Mechanical Technician (Mechanical Trade III Fitting) with 14+ years heavy industrial experience across cement plants, marine projects, high-rise construction and hospitals. Oct 2019–May 2025 lead technician at S.I.E. SRL on Italian/international FIFO shutdowns — led dismantling, installation and modernisation of complex industrial systems with LOTO/permit-to-work processes, supervised and trained technicians. Strong diagnostics, fault finding, failure analysis and mechanical/electrical modifications. HR-B driver licence, WAH, CS, gas testing, permit acceptance, lift maintenance. Ronald Bennett listed as labour hire contingent."
+    },
+    {
+      "name": "Gurshwinder Singh",
+      "ty": 3,
+      "sy": 3,
+      "sum": "Mechanical fitter with Greenbushes shutdown experience, broad site exposure and forklift / EWP tickets."
+    },
+    {
+      "name": "Kulvinder Singh",
+      "ty": 2,
+      "sy": 2,
+      "sum": "Mechanical fitter with broad processing plant experience including reclaimers, crushers and apron feeders."
+    },
+    {
+      "name": "Abdikadir Mohamed",
+      "ty": 5,
+      "sy": 4,
+      "sum": "Mechanical fitter with solid shutdown maintenance experience across conveyors, crushers, rollers and valves."
+    },
+    {
+      "name": "Jamie Adams",
+      "ty": 7,
+      "sy": 5,
+      "sum": "HV mechanical fitter with strong technical precision and telehandler capability."
+    },
+    {
+      "name": "Omar Anadif",
+      "ty": 5,
+      "sy": 2,
+      "sum": "Mechanical tradesperson with exceptional ticket depth including forklift, EWP, telehandler, HR and gas testing."
+    },
+    {
+      "name": "Clemens Schaaf",
+      "ty": 5,
+      "sy": 1,
+      "sum": "German-trained mechatronics technician with mechanical trade qualification, dogging, basic rigging, EWP and forklift tickets."
+    },
+    {
+      "name": "Ben Friedauer",
+      "ty": 9,
+      "sy": 2,
+      "sum": "Trade-qualified Mechanical Fitter with 9+ years Kwinana/Pilbara shutdown experience. Most recent 2024–25 NES Fircroft at Tianqi Lithium Kwinana on tanks, gearboxes, centrifuges, pumps, screens, crushers and valve change-outs. Prior runs include Programmed at Tronox Kwinana and ALCOA Kwinana (Jan 2022–Jul 2023), Inline Engineering BHP Nelson Point shutdown (2023), SRG Global at ALCOA Kwinana (2020–22 — returning SRG crew member), and 2016–18 WorkPac shutdowns at BHP and Port Hedland. HRWL covering LF, EWP, Basic Rigging, dogging and gantry crane; WAH, CS, gas testing, fire training and BHP induction. Replaces Florian Chavot in 17 Apr roster."
+    },
+    {
+      "name": "Timo Gronenberg",
+      "ty": 7,
+      "sy": 1,
+      "sum": "German-qualified industrial mechanic with strong mechanical fundamentals and conveyor shutdown experience."
+    },
+    {
+      "name": "Bryan Messenger",
+      "ty": 20,
+      "sy": 0,
+      "sum": "Senior Boilermaker / Fabricator with 20+ years across mining, oil & gas and construction (rostered for conveyor inspections / skirt adjustments — note trade is BMKR, not fitter). 2022–24 DIAB Engineering at Talisman Lithium on fixed plant maintenance, conveyor rollers/skirts/impact beds, pump/valve/crusher rebuilds, exothermic cutting. 2020–22 Civmec conveyor maintenance (rollers, skirts, scrapers). Prior shutdown runs across iron ore, gold, lithium and nickel sites with KI Group, Primero Group on primary crusher upgrades, and Bradken workshop. Cert III Metal Fabrication, CN and CV crane tickets, basic rigging (RB), EWP, forklift (LF), WAH, CS and First Aid. Previously listed as LH contingent against Line 14. Replaces Gerry Uy in 17 Apr roster."
+    },
+    {
+      "name": "Samuel Gunn",
+      "ty": 3,
+      "sy": 1,
+      "sum": "Mechanical engineer with rotating machines specialisation and strong conveyor, pump and bearing diagnostics capability."
+    },
+    {
+      "name": "Amit Gund",
+      "ty": 3,
+      "sy": 2,
+      "sum": "Mechanical fitter with HPGR inspection and processing plant background plus dogging and forklift tickets."
+    },
+    {
+      "name": "Wisdom Mandizvidza",
+      "ty": 13,
+      "sy": 2,
+      "sum": "13-year mechanical fitter with Cert III Engineering and Level 3 IVQ Technician Diploma (City & Guilds). Currently with Linkforce on shutdowns — crushing and screening plants, conveyors, bearings, pulleys, chutes and liners. Prior Sino Iron shutdown experience on gearbox seals and E-crane hydraulics, plus 2.5 years at WAMMCO Katanning on fixed plant. Deep international background including Francis pump turbine specialist work in South Africa and smelter furnaces. Forklift, CSE, WAH."
+    },
+    {
+      "name": "Joe Dack",
+      "ty": 4,
+      "sy": 2,
+      "sum": "Intermediate rigger with IRATA L1 rope access, strong leadership background and dogging ticket."
+    },
+    {
+      "name": "Nathan Arbuckle",
+      "ty": 8,
+      "sy": 0,
+      "sum": "Advanced Rigger (RA) specialising in structural steel erection, heavy lifts and dual-crane operations. 2023 Simpec Cockburn Cement CCL KWUP plant upgrade — advanced rigging across complex heavy-lift crew work; also April–May 2023 Civmec on Covalent Lithium Plant construction with JLG 60/135 and Genie 60 EWP experience. Prior 8 years at Ausgroup (2008–16) on structural steel erection, dual-crane lifts, complex load transfers and tank/structure installs. Traffic management crew leader 2019–23 in between rigging runs. Tickets: RA, LF, EWP, WAH, CS, Traffic Management, First Aid & CPR. Corbett Rhys and Hopla Sven listed as labour hire contingents."
+    },
+    {
+      "name": "Ricky Truslove",
+      "ty": 4,
+      "sy": 4,
+      "sum": "Advanced scaffolder with intermediate rigging and dogging and consistent shutdown experience."
+    },
+    {
+      "name": "Chaeyoon Kim",
+      "ty": 4,
+      "sy": 3,
+      "sum": "Advanced rigger with shutdown exposure plus overhead crane, EWP, forklift and dogging. (Note: CV on file is out of date — client confirms RA ticket; separate person from Michael Kim on Line 29.) Hicham Kohi listed as labour hire contingent."
+    },
+    {
+      "name": "Christopher McLennan",
+      "ty": 18,
+      "sy": 15,
+      "sum": "Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience."
+    },
+    {
+      "name": "Stefanos Karikis",
+      "ty": 3,
+      "sy": 3,
+      "sum": "Trade assistant / serviceman with field logistics, rigging support, telehandler, forklift and overhead crane experience. Suited to roller crew support and materials handling."
+    },
+    {
+      "name": "King Garcia",
+      "ty": 5,
+      "sy": 3,
+      "sum": "Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket."
+    },
+    {
+      "name": "Jeremy Larock",
+      "ty": 3,
+      "sy": 3,
+      "sum": "Operator and trade assistant with strong ticket depth including HR, telehandler, EWP and forklift. Osama Kmar listed as SRG contingent (added 17 Apr); Gabose listed as labour hire contingent."
+    },
+    {
+      "name": "Henri Martins",
+      "ty": 2,
+      "sy": 1,
+      "sum": "Trade assistant and roller tech with developing experience and EWP ticket."
+    },
+    {
+      "name": "Sebastien Djaffer",
+      "ty": 1,
+      "sy": 1,
+      "sum": "Lube tech and trade assistant with strong site induction coverage and telehandler / forklift capability."
+    },
+    {
+      "name": "Mehdi Mokeddem",
+      "ty": 2,
+      "sy": 2,
+      "sum": "FIFO lube technician with shutdown experience, automatic grease systems, SAP and oil sampling background."
+    },
+    {
+      "name": "Lakshman Vasanthan",
+      "ty": 3,
+      "sy": 3,
+      "sum": "Lube tech supervisor with mechanical trade background and solid shutdown leadership capability."
+    },
+    {
+      "name": "Mehdi Bendani",
+      "ty": 1,
+      "sy": 1,
+      "sum": "Trade assistant with rigging support and IRATA L1 rope access. Capable of confined space hole watch and sentry duties."
+    },
+    {
+      "name": "Madeline Jones",
+      "ty": 1,
+      "sy": 1,
+      "sum": "Trade assistant with confined space hole watch experience. LF VOC confirmed per roster requirements."
+    },
+    {
+      "name": "William Thompson",
+      "ty": 2,
+      "sy": 1,
+      "sum": "Two-year FIFO trade assistant at Regis/Genesis Bandya Leonora and drillers offsider with Westralian Diamond Drillers and Impact Drilling. Hands-on with isolations, pre-starts, basic mechanical servicing and power tools. HR-B licence, gas testing and first aid."
+    },
+    {
+      "name": "Lea Mondesir",
+      "ty": 1,
+      "sy": 1,
+      "sum": "Trade assistant with SRG shutdown experience, utility background and HR licence."
+    },
+    {
+      "name": "Ellie Jeon",
+      "ty": 5,
+      "sy": 4,
+      "sum": "Experienced plant operator with telehandler, loader, excavator and dump truck capability plus HR licence."
+    },
+    {
+      "name": "Michael Kim",
+      "ty": 6,
+      "sy": 0,
+      "sum": "Replaces Shane Cox on Line 29 (19 Apr roster, Pre/Post Shut Crew). 6+ years across mining, construction and warehousing as Telehandler / HR Driver / Trade Assistant. Current Warrikal (BHP/FMG) and Civmec at Roy Hill on JCB 560/571 and MT-X730/1440 telehandlers, 5T/12T forklifts and HR trucks; prior CAT 777 dump truck operator. Tickets: HR-B licence, RIIMPO338E rigid haul truck, telehandler, forklift (LF), front end loader, excavator, skid steer, WAH, CS, GT, CCSE and fire fighting."
+    },
+    {
+      "name": "David Bryce",
+      "ty": 0,
+      "sy": 0,
+      "sum": "Bus driver — resume and experience details to be confirmed."
+    }
+  ]
+}

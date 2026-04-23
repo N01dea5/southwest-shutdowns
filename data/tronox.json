@@ -2554,26 +2554,26 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Superintendent": 1,
+        "Coded Welder": 20,
         "Supervisor - Mechanical": 10,
         "Site Coordinator": 1,
-        "Intermediate Rigger": 0,
         "Boilermaker": 10,
-        "Trade Assistant": 20,
         "Mechanical Fitter": 40,
-        "Advanced Rigger": 10,
-        "Coded Welder": 20
+        "Intermediate Rigger": 0,
+        "Trade Assistant": 20,
+        "Superintendent": 1,
+        "Advanced Rigger": 10
       },
       "filled_by_role": {
-        "Superintendent": 1,
+        "Coded Welder": 1,
         "Supervisor - Mechanical": 1,
         "Site Coordinator": 1,
-        "Intermediate Rigger": 0,
         "Boilermaker": 2,
-        "Trade Assistant": 20,
         "Mechanical Fitter": 16,
-        "Advanced Rigger": 5,
-        "Coded Welder": 1
+        "Intermediate Rigger": 0,
+        "Trade Assistant": 20,
+        "Superintendent": 1,
+        "Advanced Rigger": 5
       },
       "crew_split": {
         "Night": 22,
@@ -2639,7 +2639,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "Melvin TIAMSON",
@@ -2752,7 +2753,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "Herbert MUKUNGA",
@@ -2762,7 +2764,8 @@
           "start": "2026-05-18",
           "end": "2026-05-22",
           "personnel_id": "0E4AEBD5-0E7C-435D-897F-1E9B5E2E57FF",
-          "tickets": {}
+          "tickets": {},
+          "drivers": "HR"
         },
         {
           "name": "Renan SANCHEZ",
@@ -2839,7 +2842,9 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "newhire": true,
+          "drivers": "C"
         },
         {
           "name": "Hemi RATAHI",
@@ -2886,7 +2891,9 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "extras": "C0, C6, SB, SI",
+          "drivers": "HR"
         },
         {
           "name": "Luis FERNANDES",
@@ -2959,7 +2966,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "drivers": "HR"
         },
         {
           "name": "Jessica DILENA",
@@ -2990,7 +2998,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DILENA, Jessica - 0e7f7822-7754-40b8-82db-243046b10575/DILENA, Jessica - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C-A"
         },
         {
           "name": "Federico Sarti",
@@ -3021,7 +3030,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SARTI, Federico - 8c4283f1-eff6-49d5-9385-60bd2be0197f/SARTI, Federico - Gas Test Atmospheres.jpg",
               "status": "current"
             }
-          }
+          },
+          "drivers": "HR"
         },
         {
           "name": "Lea MONDESIR",
@@ -3073,7 +3083,9 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BENDANI, Mehdi - 19b92276-e4c9-4a1b-8f8d-7d052e85f3fd/BENDANI, Mehdi - Confined Spaces Entry.png",
               "status": "current"
             }
-          }
+          },
+          "newhire": true,
+          "drivers": "C"
         },
         {
           "name": "Beau WITHERS",
@@ -3182,7 +3194,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAFFAELE, Robert - 519a1b33-cd78-431a-a1d7-c432ba0a4c73/RAFFAELE, Robert - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "King GARCIA",
@@ -3265,7 +3278,9 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "newhire": true,
+          "drivers": "C"
         },
         {
           "name": "Julian VAN DER ZANDEN",
@@ -3307,7 +3322,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Confined Spaces Entry.png",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "Cameron DUNN",
@@ -3500,7 +3516,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KARIKIS, Stefanos - 9df04efa-4215-4129-b836-45dd9245183a/KARIKIS, Stefanos - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "Sharon GILCHRIST",
@@ -3541,7 +3558,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GILCHRIST, Sharon - c5b2056c-7cdf-4953-a4d1-92d4cb6fdc8d/GILCHRIST, Sharon - HRWL.jpg",
               "status": "current"
             }
-          }
+          },
+          "drivers": "HR"
         },
         {
           "name": "Jaime HERNANDEZ",
@@ -3691,7 +3709,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MENDIVIL, Jeremias - 081de93d-0ce7-407e-8187-abc4d6b23251/MENDIVIL, Jeremias - Gas Test Atmospheres.jpg",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "Robert FRONGILLO",
@@ -3879,7 +3898,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "drivers": "C"
         },
         {
           "name": "Abhinav ABHINAV",
@@ -3905,7 +3925,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABHINAV, Abhinav - a7561da7-f34f-44ca-a079-76aa961055be/ABHINAV, Abhinav - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "drivers": "HR"
         },
         {
           "name": "Edward GARDINER",
@@ -3962,7 +3983,9 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THANGARASU, Prabhakaran - 4a1e8272-87eb-4ca8-8141-b6dace776dd1/THANGARASU, Prabhakaran - Gas Test Atmospheres.pdf",
               "status": "current"
             }
-          }
+          },
+          "newhire": true,
+          "drivers": "C"
         },
         {
           "name": "Abdikadir MOHAMED",
@@ -3983,7 +4006,9 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHAMED, Abdikadir - 77027420-056c-4b3a-831f-c8fe1abe8c31/MOHAMED, Abdikadir - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "newhire": true,
+          "drivers": "C"
         },
         {
           "name": "Omkar Uttam DORUGADE",
@@ -4093,5 +4118,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T23:44:20Z"
+  "generated_at": "2026-04-23T23:49:43Z"
 }

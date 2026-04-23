@@ -464,7 +464,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARCIA , King - 178f800c-0ac1-4bd7-9ded-2990bf95b528/GARCIA, King - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 5,
+          "sy": 3,
+          "sum": "Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket."
         },
         {
           "name": "Thirugnanasampantham PERIASAMY",
@@ -650,7 +653,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 18,
+          "sy": 15,
+          "sum": "Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience."
         }
       ],
       "_source": {
@@ -685,40 +691,40 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Lube Technician": 3,
-        "Superintendent": 1,
+        "Coded Welder": 1,
+        "HSE Advisor": 2,
+        "Supervisor - Mechanical": 6,
         "Supervisor": 1,
+        "Intermediate Rigger": 3,
+        "Telehandler Operator": 2,
+        "Trade Assistant": 5,
+        "Superintendent": 1,
         "Basic Rigger": 4,
+        "Lube Technician": 3,
+        "Advanced Rigger": 1,
+        "Electrician": 4,
         "Site Coordinator": 1,
         "Boilermaker": 4,
-        "Telehandler Operator": 2,
         "Mechanical Fitter": 24,
-        "Supervisor - Electrical": 1,
-        "Advanced Rigger": 1,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 6,
-        "Electrician": 4,
-        "HSE Advisor": 2,
-        "Intermediate Rigger": 3,
-        "Trade Assistant": 5
+        "Supervisor - Electrical": 1
       },
       "filled_by_role": {
-        "Lube Technician": 3,
-        "Superintendent": 1,
+        "Coded Welder": 1,
+        "HSE Advisor": 2,
+        "Supervisor - Mechanical": 6,
         "Supervisor": 1,
+        "Intermediate Rigger": 2,
+        "Telehandler Operator": 1,
+        "Trade Assistant": 5,
+        "Superintendent": 1,
         "Basic Rigger": 4,
+        "Lube Technician": 3,
+        "Advanced Rigger": 1,
+        "Electrician": 3,
         "Site Coordinator": 1,
         "Boilermaker": 4,
-        "Telehandler Operator": 1,
         "Mechanical Fitter": 22,
-        "Supervisor - Electrical": 1,
-        "Advanced Rigger": 1,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 6,
-        "Electrician": 3,
-        "HSE Advisor": 2,
-        "Intermediate Rigger": 2,
-        "Trade Assistant": 5
+        "Supervisor - Electrical": 1
       },
       "crew_split": {
         "Day": 32,
@@ -794,7 +800,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MENDY , Mathias - 027304f6-8511-468a-ad6a-db0f0573e02d/MENDY, Mathias - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 9,
+          "sy": 5,
+          "sum": "Boilermaker/welder (Cert III Heavy Fabrication) and Level 2 Rope Access Technician with SRG Group. Intermediate scaffolder with shutdown experience across FMG/Rio Tinto sites including Iron Bridge, Anderson Point, Cloudbreak and Cape Lambert. Basic rigging, dogging, forklift, EWP, gas testing and first aid. 6G welding certified (FCAW/SMAW/GMAW/GTAW)."
         },
         {
           "name": "Ben ATTACK",
@@ -820,7 +829,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ATTACK, Ben - fd302d24-8676-4ad6-bd13-5a831f2bd2bc/ATTACK, Ben - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 12,
+          "sy": 8,
+          "sum": "UK-qualified coded pipe welder with petrochemical, refinery and power station shutdown experience. Strong technical capability in pressure piping and structural steelwork."
         },
         {
           "name": "Teufik (Teo) MEDANOVIC",
@@ -913,7 +925,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARCIA , King - 178f800c-0ac1-4bd7-9ded-2990bf95b528/GARCIA, King - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 5,
+          "sy": 3,
+          "sum": "Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket."
         },
         {
           "name": "Henri MARTINS",
@@ -949,7 +964,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARTINS, Henri - b6857b26-e4e5-4246-8b5b-0449e8d2fca1/MARTINS, Henri - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 2,
+          "sy": 1,
+          "sum": "Trade assistant and roller tech with developing experience and EWP ticket."
         },
         {
           "name": "Stefanos KARIKIS",
@@ -980,7 +998,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KARIKIS, Stefanos - 9df04efa-4215-4129-b836-45dd9245183a/KARIKIS, Stefanos - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "ty": 3,
+          "sy": 3,
+          "sum": "Trade assistant / serviceman with field logistics, rigging support, telehandler, forklift and overhead crane experience. Suited to roller crew support and materials handling."
         },
         {
           "name": "Amit \ud83d\udd37 GUND",
@@ -1001,7 +1022,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUND, Amit - 71b7b0cc-a4b2-493b-8a61-a4ad4b2eae04/GUND, Amit - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 3,
+          "sy": 2,
+          "sum": "Mechanical fitter with HPGR inspection and processing plant background plus dogging and forklift tickets."
         },
         {
           "name": "Timo \ud83d\udd37 GRONENBERG",
@@ -1022,7 +1046,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GRONENBERG, Timo - daf2090a-0a68-454e-a8d3-ce2d9243a996/GRONENBERG, Timo - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 7,
+          "sy": 1,
+          "sum": "German-qualified industrial mechanic with strong mechanical fundamentals and conveyor shutdown experience."
         },
         {
           "name": "Malcolm GRAINGER-ROUSSEAU",
@@ -1079,7 +1106,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Confined Spaces Entry.jpeg",
               "status": "current"
             }
-          }
+          },
+          "ty": 8,
+          "sy": 4,
+          "sum": "Cert III mechanical fitter with Cert IV Hydraulics & Pneumatics. 4 years at Linkforce as fitter and leading hand on shutdowns and projects \u2014 car dumpers, stackers, reclaimers, gearbox change-outs, pulleys, screens, liners, spools. Prior hydraulic specialist at Finer Hydraulics Melbourne on cylinder overhauls, lathe/milling and MIG/TIG/ARC welding. Strong hydraulics background uncommon among fitters."
         },
         {
           "name": "Walid BOULAHDID",
@@ -1105,7 +1135,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOULAHDID, Walid - f99e2489-f591-4f37-8e99-a97d912cfbf9/BOULAHDID, Walid - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 4,
+          "sy": 3,
+          "sum": "Mechanical fitter with shutdown experience across BHP, Rio, Roy Hill, FMG and South32. Basic rigging and broad processing plant exposure."
         },
         {
           "name": "Omkar Uttam DORUGADE",
@@ -1199,7 +1232,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NEWELL , Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 4,
+          "sy": 4,
+          "sum": "Shutdown trades support / rigging-qualified crew member with Monadelphous fixed plant shutdown experience. Intermediate rigger with confined space, working at heights, EWP and gas testing. Currently completing a Bachelor of Business."
         },
         {
           "name": "Mark \ud83d\udd37 SULLIVAN",
@@ -1225,7 +1261,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SULLIVAN, Mark - 6a5f0bf3-0fd1-43af-9c91-1ac6b5e9ee33/SULLIVAN, Mark - Gas Test Atmospheres.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 11,
+          "sy": 8,
+          "sum": "Trade-qualified mechanical fitter with 11 years experience. Shutdown supervisor and leading hand across BHP, FMG, Karara. Pump specialist background with National Pumps & Energy. Reliable nightshift leader."
         },
         {
           "name": "Peter BURNS",
@@ -1251,7 +1290,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - First Aid.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 30,
+          "sy": 20,
+          "sum": "Dual-trade boilermaker / sheetmetal worker with 30 years in the trade and 10+ years as mechanical supervisor. Extensive Pilbara shutdown experience across BHP, FMG and Rio Tinto, plus CSBP sodium cyanide plant experience. HR licence holder."
         },
         {
           "name": "Mehdi \ud83d\udd37 MOKEDDEM",
@@ -1292,7 +1334,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOKEDDEM, Mehdi - 47e90c13-c5f3-439c-8922-c7c0330552f1/MOKEDDEM, Mehdi - Gas Test Atmospheres.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 2,
+          "sy": 2,
+          "sum": "FIFO lube technician with shutdown experience, automatic grease systems, SAP and oil sampling background."
         },
         {
           "name": "Sujin JEON",
@@ -1369,7 +1414,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 18,
+          "sy": 15,
+          "sum": "Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience."
         },
         {
           "name": "Russell PHILLIPS",
@@ -1416,7 +1464,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PHILLIPS, Russell - dd2a1ab8-e3a2-4b81-95d3-762093242414/PHILLIPS, Russell - Confined Spaces Entry.jpeg",
               "status": "current"
             }
-          }
+          },
+          "ty": 18,
+          "sy": 8,
+          "sum": "Trade-qualified mechanical fitter with extensive maintenance and shutdown experience across Linkforce, Monadelphous, Woodside Pluto LNG, Boddington and Rio operations. Strong background in conveyors, crushers, pumps, gearboxes, screens, stackers, reclaimers and flange management. Proven team lead capability. HR, EWP, forklift and advanced rigging / dogging tickets."
         },
         {
           "name": "Mao LI",
@@ -1447,7 +1498,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LI, Jack - eba0088a-878a-4f99-b023-2827fc38134b/LI, Mao - HRWL.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 3,
+          "sy": 3,
+          "sum": "Cert III mechanical fitter with Masters in Mechanical Engineering. Currently with Warrikal across FMG, PLS and BHP shutdowns. Pump rebuilds/alignment, conveyor skirts and chutes, jaw/cone crushers, apron feeders. Greenbushes shutdown experience. HR, forklift, EWP and gas testing tickets. Stone listed as labour hire contingent; Ben Friedauer SRG contingent removed in 17 Apr roster (now Line 58 primary)."
         },
         {
           "name": "Jake GANGEMI",
@@ -1493,7 +1547,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GANGEMI, Jake - 43e1b4e2-91b7-4069-995d-3b50a9fc8f53/GANGEMI, Jake - Gas Test Atmospheres.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 8,
+          "sy": 5,
+          "sum": "Mechanical fitter with Rio maintenance background and strong shutdown exposure across crushers, conveyors and pulleys. Forklift and dogging tickets."
         },
         {
           "name": "Darren JAMES",
@@ -1519,7 +1576,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JAMES, Darren - 620ada5f-8586-4917-981d-7cef7f2e1c33/JAMES, Darren - Working at Heights.png",
               "status": "current"
             }
-          }
+          },
+          "ty": 10,
+          "sy": 1,
+          "sum": "10 years mechanical maintenance experience with strength in hydraulics, fault-finding and preventative maintenance."
         },
         {
           "name": "Darren TAYLOR",
@@ -1572,7 +1632,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BENDANI, Mehdi - 19b92276-e4c9-4a1b-8f8d-7d052e85f3fd/BENDANI, Mehdi - Confined Spaces Entry.png",
               "status": "current"
             }
-          }
+          },
+          "ty": 1,
+          "sy": 1,
+          "sum": "Trade assistant with rigging support and IRATA L1 rope access. Capable of confined space hole watch and sentry duties."
         },
         {
           "name": "David \ud83d\udd37 BRYCE",
@@ -1588,7 +1651,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BRYCE, David - 98036cdc-eaab-4edb-91fc-1140aaa535ab/BRYCE, David - Driver's Licence.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 0,
+          "sy": 0,
+          "sum": "Bus driver \u2014 resume and experience details to be confirmed."
         },
         {
           "name": "Madeline JONES",
@@ -1614,7 +1680,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JONES, Madeline - 857e8c18-3426-4cd7-9635-52f27e8850d2/JONES, Madeline - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 1,
+          "sy": 1,
+          "sum": "Trade assistant with confined space hole watch experience. LF VOC confirmed per roster requirements."
         },
         {
           "name": "Adam RILEY",
@@ -1624,7 +1693,10 @@
           "start": "2026-04-09",
           "end": "2026-04-15",
           "personnel_id": "BFD0643A-374F-41DC-B48B-AD03393D9B53",
-          "tickets": {}
+          "tickets": {},
+          "ty": 15,
+          "sy": 10,
+          "sum": "Experienced shutdown superintendent with extensive Kwinana industrial leadership across chemical, refinery and processing environments. Proven capability managing large multi-discipline crews through complex shutdowns."
         },
         {
           "name": "Adam RILEY",
@@ -1634,7 +1706,10 @@
           "start": "2026-04-20",
           "end": "2026-05-01",
           "personnel_id": "BFD0643A-374F-41DC-B48B-AD03393D9B53",
-          "tickets": {}
+          "tickets": {},
+          "ty": 15,
+          "sy": 10,
+          "sum": "Experienced shutdown superintendent with extensive Kwinana industrial leadership across chemical, refinery and processing environments. Proven capability managing large multi-discipline crews through complex shutdowns."
         },
         {
           "name": "Jacinta JEFFERY",
@@ -1665,7 +1740,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JEFFERY, Jacinta - 6af19c02-a3a3-4e63-8d86-0e6d1575f869/JEFFERY, Jacinta - Confined Spaces Entry.png",
               "status": "current"
             }
-          }
+          },
+          "ty": 5,
+          "sy": 5,
+          "sum": "HSE advisor with strong shutdown experience across Kwinana industrial sites. References from BHP, Programmed and SRG Global. Proven in high-hazard environments."
         },
         {
           "name": "Joe DACK",
@@ -1707,7 +1785,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Gas Test Atmospheres.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 4,
+          "sy": 2,
+          "sum": "Intermediate rigger with IRATA L1 rope access, strong leadership background and dogging ticket."
         },
         {
           "name": "Ricky TRUSLOVE",
@@ -1744,7 +1825,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TRUSLOVE , Ricky - 16695b58-69a4-44cc-9e39-908f0b1c0803/TRUSLOVE , Ricky - HRWL.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 4,
+          "sy": 4,
+          "sum": "Advanced scaffolder with intermediate rigging and dogging and consistent shutdown experience."
         },
         {
           "name": "Anthony SMITH",
@@ -1765,7 +1849,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SMITH, Anthony - c8ad4cf8-086e-4631-af87-677b9f0775c6/SMITH, Anthony - Working at Heights.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 10,
+          "sy": 5,
+          "sum": "Experienced shutdown coordinator with 10+ years across rigging, shutdowns and maintenance. Supervisor-qualified with leading hand and supervisor experience managing crews of up to 30 across BHP, Talison, Newcrest, Karara and Boddington. Basic rigger and dogger with CSE, WAH, EWP and first aid. Proven night shift leadership capability."
         },
         {
           "name": "Chaeyoon KIM",
@@ -1812,7 +1899,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - Confined Spaces Entry.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 4,
+          "sy": 3,
+          "sum": "Advanced rigger with shutdown exposure plus overhead crane, EWP, forklift and dogging. (Note: CV on file is out of date \u2014 client confirms RA ticket; separate person from Michael Kim on Line 29.) Hicham Kohi listed as labour hire contingent."
         },
         {
           "name": "Polly TE NAHU",
@@ -1848,7 +1938,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 1,
+          "sy": 1,
+          "sum": "Trade assistant with SRG shutdown experience, utility background and HR licence."
         },
         {
           "name": "Omar ANADIF",
@@ -1889,7 +1982,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "ty": 5,
+          "sy": 2,
+          "sum": "Mechanical tradesperson with exceptional ticket depth including forklift, EWP, telehandler, HR and gas testing."
         },
         {
           "name": "Gerry \ud83d\udd37 UY",
@@ -1951,7 +2047,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LOORTHSMAY, Selva - 6d9f62d6-e1af-480e-adb2-bcec0d9f7262/LOORTHSMAY, Selva - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 9,
+          "sy": 0,
+          "sum": "Cert III Engineering (Fitter & Machinist) plus Cert II Hydraulics. 9+ years WA mining shutdown fitter with deep hydraulic specialisation \u2014 the only fitter on the crew with a dedicated hydraulic ticket. 2025\u201326 Aussie Fluid Power at Karara (hydraulic hose fault finding/repair, pressure testing, tube bending). 2019\u201325 Custom Fluid Power (HPUs, hydraulic brakes, conveyor/reclaimer hydraulics). Prior BHP Area C, Jimblebar, Whaleback, South Flank, Nelson Point and Finucane Island shutdowns 2018\u201322; Rio Nammuldi, Yandi, Hope Downs 4, West Angelas, Brockman 4 (2017\u201319); FMG Kings Valley, Firetail, Cloudbreak; CITIC Cape Preston; Telfer; Roy Hill and KCGM Kalgoorlie. Forklift, WAH, CS, GT, MSIC, Safety Committee. Valuable pick for night-shift plant run-up."
         },
         {
           "name": "Jordan KIRKBY",
@@ -1982,7 +2081,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIRBY , Jordan - 282f0c80-9105-423b-96db-b0ee764b4372/KIRBY , Jordan - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 9,
+          "sy": 5,
+          "sum": "Trade-qualified boilermaker/welder (Cert III Heavy Fabrication) with 9 years experience and 5 years in shutdowns. Supervisor experience at Programmed and Taylors Engineering managing crews of 10\u201350 during Tronox Kwinana shutdowns. Currently with SRG as boilermaker/welder and Level 2 Rope Access Technician. Strong ticket set including dogging, basic rigging, forklift, EWP, gas testing, IRATA L2 and first aid."
         },
         {
           "name": "Mark \ud83d\udd37 SULLIVAN",
@@ -2008,7 +2110,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SULLIVAN, Mark - 6a5f0bf3-0fd1-43af-9c91-1ac6b5e9ee33/SULLIVAN, Mark - Gas Test Atmospheres.jpg",
               "status": "current"
             }
-          }
+          },
+          "ty": 11,
+          "sy": 8,
+          "sum": "Trade-qualified mechanical fitter with 11 years experience. Shutdown supervisor and leading hand across BHP, FMG, Karara. Pump specialist background with National Pumps & Energy. Reliable nightshift leader."
         },
         {
           "name": "Tsarina MCCOWAT",
@@ -2018,7 +2123,10 @@
           "start": "2026-04-21",
           "end": "2026-04-28",
           "personnel_id": "8825EF13-FD89-4027-94B4-D4A2CEBC684B",
-          "tickets": {}
+          "tickets": {},
+          "ty": 17,
+          "sy": 12,
+          "sum": "S26 Supervisor and Section 44 certified mechanical fitter with 15+ years across oil and gas, mining and construction. Shutdown supervisor roles at INPEX Darwin, Incitec Pivot Moranbah, Woodside Karratha and Karara. Level 3 Flange Management (Chevron VOC). HR-B licence, EWP, gas testing. Inducted across Chevron, BHP, Rio Tinto, FMG, Roy Hill, Woodside and Boddington."
         },
         {
           "name": "Shane \ud83d\udd37 COX",
@@ -2070,7 +2178,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VASANTHAN, Lakshman - ce26a64e-09f0-4f97-b84b-b9bc9b2c6ee9/VASANTHAN, Lakshman - Driver's Licence.png",
               "status": "current"
             }
-          }
+          },
+          "ty": 3,
+          "sy": 3,
+          "sum": "Lube tech supervisor with mechanical trade background and solid shutdown leadership capability."
         },
         {
           "name": "William THOMPSON",
@@ -2101,7 +2212,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 2,
+          "sy": 1,
+          "sum": "Two-year FIFO trade assistant at Regis/Genesis Bandya Leonora and drillers offsider with Westralian Diamond Drillers and Impact Drilling. Hands-on with isolations, pre-starts, basic mechanical servicing and power tools. HR-B licence, gas testing and first aid."
         },
         {
           "name": "Samuel \ud83d\udd37 GUNN",
@@ -2127,7 +2241,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUNN, Samuel - 0f3f49bd-5289-4bc6-bcd0-9e15e99e837c/GUNN, Samuel - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 3,
+          "sy": 1,
+          "sum": "Mechanical engineer with rotating machines specialisation and strong conveyor, pump and bearing diagnostics capability."
         },
         {
           "name": "Gurshwinder SINGH",
@@ -2168,7 +2285,10 @@
               "doc": null,
               "status": "current"
             }
-          }
+          },
+          "ty": 3,
+          "sy": 3,
+          "sum": "Mechanical fitter with Greenbushes shutdown experience, broad site exposure and forklift / EWP tickets."
         },
         {
           "name": "Abdikadir MOHAMED",
@@ -2189,7 +2309,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHAMED, Abdikadir - 77027420-056c-4b3a-831f-c8fe1abe8c31/MOHAMED, Abdikadir - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 5,
+          "sy": 4,
+          "sum": "Mechanical fitter with solid shutdown maintenance experience across conveyors, crushers, rollers and valves."
         },
         {
           "name": "Wisdom MANDIZVIDA",
@@ -2241,7 +2364,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Kulvinder - a8b68078-61e0-405b-8853-6b26022502a8/SINGH, Kulvinder - Driver's Licence.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 2,
+          "sy": 2,
+          "sum": "Mechanical fitter with broad processing plant experience including reclaimers, crushers and apron feeders."
         },
         {
           "name": "Clemens SCHAAF",
@@ -2277,7 +2403,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SCHAAF, Clemens - c7c57679-a54d-44be-9bd3-9523344126d4/SCHAAF, Clemens - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 5,
+          "sy": 1,
+          "sum": "German-trained mechatronics technician with mechanical trade qualification, dogging, basic rigging, EWP and forklift tickets."
         },
         {
           "name": "Alessio \ud83d\udd37 SAMMITO",
@@ -2293,7 +2422,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SAMMITO, Alessio - cf4c5332-db81-438d-9b1d-6b68be6a6040/SAMMITO, Alessio - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 14,
+          "sy": 0,
+          "sum": "Australian-Trade-Certified Mechanical Technician (Mechanical Trade III Fitting) with 14+ years heavy industrial experience across cement plants, marine projects, high-rise construction and hospitals. Oct 2019\u2013May 2025 lead technician at S.I.E. SRL on Italian/international FIFO shutdowns \u2014 led dismantling, installation and modernisation of complex industrial systems with LOTO/permit-to-work processes, supervised and trained technicians. Strong diagnostics, fault finding, failure analysis and mechanical/electrical modifications. HR-B driver licence, WAH, CS, gas testing, permit acceptance, lift maintenance. Ronald Bennett listed as labour hire contingent."
         },
         {
           "name": "Herbert MUKUNGA",
@@ -2303,7 +2435,10 @@
           "start": "2026-04-24",
           "end": "2026-04-30",
           "personnel_id": "0E4AEBD5-0E7C-435D-897F-1E9B5E2E57FF",
-          "tickets": {}
+          "tickets": {},
+          "ty": 6,
+          "sy": 5,
+          "sum": "Mechanical fitter with turbine and conveyor expertise and a strong ticket set including telehandler, EWP, HR and gas testing."
         },
         {
           "name": "Jamie ADAMS",
@@ -2329,7 +2464,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ADAMS, Jamie - d44c6217-f879-43dc-aa70-298edd14e204/ADAMS, Jamie - Confined Spaces Entry.png",
               "status": "current"
             }
-          }
+          },
+          "ty": 7,
+          "sy": 5,
+          "sum": "HV mechanical fitter with strong technical precision and telehandler capability."
         },
         {
           "name": "Aaron NAIRN",
@@ -2359,7 +2497,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ROBINSON, William - 18630a5c-b8f2-4905-8484-fbfd54fe28e9/ROBINSON, William - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 12,
+          "sy": 3,
+          "sum": "12-year boilermaker with fabrication and shutdown experience across FMG, BHP, Roy Hill, MinRes and Karara. EWP certified."
         },
         {
           "name": "Drew BRAND",
@@ -2385,7 +2526,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BRAND, Drew - 5e0b9a6b-796a-4f3c-8e02-bb953b5f403d/BRAND, Drew - First Aid.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 17,
+          "sy": 4,
+          "sum": "Licensed electrician with 17 years experience and strong industrial electrical background. Diagnostic testing, motor controls and compliance inspection capability."
         },
         {
           "name": "James MAHONEY",
@@ -2426,7 +2570,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAHONEY, James - f1be1792-0f2f-4dbe-a894-e845ca325108/MAHONEY, James - Gas Test Atmospheres.jpeg",
               "status": "current"
             }
-          }
+          },
+          "ty": 1,
+          "sy": 0,
+          "sum": "Licensed electrician with Cert III Electrotechnology and apprenticeship experience on major WA projects. HV switching operations qualified."
         },
         {
           "name": "Nitin NAHAMUNI",
@@ -2582,7 +2729,10 @@
               "doc": null,
               "status": "current"
             }
-          }
+          },
+          "ty": 8,
+          "sy": 0,
+          "sum": "Advanced Rigger (RA) specialising in structural steel erection, heavy lifts and dual-crane operations. 2023 Simpec Cockburn Cement CCL KWUP plant upgrade \u2014 advanced rigging across complex heavy-lift crew work; also April\u2013May 2023 Civmec on Covalent Lithium Plant construction with JLG 60/135 and Genie 60 EWP experience. Prior 8 years at Ausgroup (2008\u201316) on structural steel erection, dual-crane lifts, complex load transfers and tank/structure installs. Traffic management crew leader 2019\u201323 in between rigging runs. Tickets: RA, LF, EWP, WAH, CS, Traffic Management, First Aid & CPR. Corbett Rhys and Hopla Sven listed as labour hire contingents."
         },
         {
           "name": "Julia VAATAINEN",
@@ -2692,7 +2842,10 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HILLMAN, Brendan - 60beb23c-1d2b-4277-9072-83d3679e5a23/HILLMAN, Brendan - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "ty": 0,
+          "sy": 0,
+          "sum": "Day shift fitter \u2014 newly added to the roster (19 Apr) replacing Hicham Bougazi. Resume and experience details to be confirmed. Mackauly Parker listed as SRG contingent."
         }
       ],
       "_source": {
@@ -2727,5 +2880,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T23:44:20Z"
+  "generated_at": "2026-04-23T23:49:43Z"
 }

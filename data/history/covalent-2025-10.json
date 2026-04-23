@@ -1,7 +1,7 @@
 {
   "company_key": "covalent",
   "client_name": "Covalent",
-  "archived_at": "2026-04-23T23:44:20Z",
+  "archived_at": "2026-04-23T23:49:43Z",
   "shutdown": {
     "id": "covalent-2025-10",
     "name": "Mt Holland October 2025",
@@ -465,7 +465,10 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARCIA , King - 178f800c-0ac1-4bd7-9ded-2990bf95b528/GARCIA, King - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "ty": 5,
+        "sy": 3,
+        "sum": "Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket."
       },
       {
         "name": "Thirugnanasampantham PERIASAMY",
@@ -651,7 +654,10 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "ty": 18,
+        "sy": 15,
+        "sum": "Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience."
       }
     ],
     "_source": {

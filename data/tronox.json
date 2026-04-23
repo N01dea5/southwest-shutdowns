@@ -11,11 +11,11 @@
       "required_by_role": {
         "Trade Assistant": 20,
         "Supervisor - Mechanical": 4,
-        "Advanced Rigger": 10,
         "Coded Welder": 11,
+        "Boilermaker": 10,
+        "Advanced Rigger": 10,
         "Mechanical Fitter": 40,
-        "Intermediate Rigger": 10,
-        "Boilermaker": 10
+        "Intermediate Rigger": 10
       },
       "filled_by_role": {
         "Superintendent": 1,
@@ -391,14 +391,14 @@
         "filled_by_role_pre_macro": {
           "Trade Assistant": 19,
           "Supervisor - Mechanical": 3,
-          "Advanced Rigger": 4,
           "Coded Welder": 1,
+          "Boilermaker": 2,
+          "Advanced Rigger": 4,
           "Mechanical Fitter": 16,
-          "Intermediate Rigger": 3,
-          "Boilermaker": 2
+          "Intermediate Rigger": 3
         }
       }
     }
   ],
-  "generated_at": "2026-04-23T08:17:44Z"
+  "generated_at": "2026-04-23T08:42:31Z"
 }

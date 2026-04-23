@@ -1,10 +1,26 @@
 {
-  "required_by_role": {},
-  "filled_by_role": {},
+  "required_by_role": {
+    "Supervisor - Mechanical": 4,
+    "Boilermaker": 10,
+    "Coded Welder": 11,
+    "Mechanical Fitter": 40,
+    "Advanced Rigger": 10,
+    "Intermediate Rigger": 10,
+    "Trade Assistant": 20
+  },
+  "filled_by_role": {
+    "Supervisor - Mechanical": 3,
+    "Boilermaker": 2,
+    "Coded Welder": 1,
+    "Mechanical Fitter": 16,
+    "Advanced Rigger": 4,
+    "Intermediate Rigger": 3,
+    "Trade Assistant": 19
+  },
   "_source": {
     "dashboard": "N01dea5/tronox-major-shutdown-may-2026",
-    "total_planned": 0,
-    "total_confirmed": 0,
-    "total_tbc": 0
+    "total_planned": 105,
+    "total_confirmed": 48,
+    "total_tbc": 57
   }
 }

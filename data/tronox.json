@@ -9,21 +9,21 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
+        "Supervisor - Mechanical": 4,
+        "Boilermaker": 10,
         "Coded Welder": 11,
         "Intermediate Rigger": 10,
-        "Mechanical Fitter": 40,
-        "Supervisor - Mechanical": 4,
         "Advanced Rigger": 10,
-        "Boilermaker": 10,
+        "Mechanical Fitter": 40,
         "Trade Assistant": 20
       },
       "filled_by_role": {
+        "Supervisor - Mechanical": 3,
+        "Boilermaker": 2,
         "Coded Welder": 1,
         "Intermediate Rigger": 3,
-        "Mechanical Fitter": 16,
-        "Supervisor - Mechanical": 3,
         "Advanced Rigger": 4,
-        "Boilermaker": 2,
+        "Mechanical Fitter": 16,
         "Trade Assistant": 19
       },
       "crew_split": {
@@ -389,5 +389,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T07:48:42Z"
+  "generated_at": "2026-04-23T07:57:40Z"
 }

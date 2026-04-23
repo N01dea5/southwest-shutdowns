@@ -9,20 +9,20 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Lube Technician": 3,
-        "Telehandler Operator": 2,
-        "Trade Assistant": 5,
-        "Superintendent": 1,
-        "HSE Advisor": 2,
-        "Supervisor": 2,
-        "Supervisor - Mechanical": 6,
         "Mechanical Fitter": 24,
+        "Trade Assistant": 5,
+        "Lube Technician": 3,
         "Site Coordinator": 1,
+        "Superintendent": 1,
         "Advanced Rigger": 4,
-        "Boilermaker": 4,
-        "Electrician": 4,
         "Basic Rigger": 4,
-        "Coded Welder": 1
+        "Coded Welder": 1,
+        "Supervisor": 2,
+        "Electrician": 4,
+        "HSE Advisor": 2,
+        "Telehandler Operator": 2,
+        "Boilermaker": 4,
+        "Supervisor - Mechanical": 6
       },
       "filled_by_role": {
         "Superintendent": 1,
@@ -2048,20 +2048,20 @@
           "total_tbc": 0
         },
         "filled_by_role_pre_macro": {
-          "Lube Technician": 3,
-          "Telehandler Operator": 2,
-          "Trade Assistant": 5,
-          "Superintendent": 1,
-          "HSE Advisor": 2,
-          "Supervisor": 2,
-          "Supervisor - Mechanical": 6,
           "Mechanical Fitter": 24,
+          "Trade Assistant": 5,
+          "Lube Technician": 3,
           "Site Coordinator": 1,
+          "Superintendent": 1,
           "Advanced Rigger": 4,
-          "Boilermaker": 4,
-          "Electrician": 4,
           "Basic Rigger": 4,
-          "Coded Welder": 1
+          "Coded Welder": 1,
+          "Supervisor": 2,
+          "Electrician": 4,
+          "HSE Advisor": 2,
+          "Telehandler Operator": 2,
+          "Boilermaker": 4,
+          "Supervisor - Mechanical": 6
         },
         "compliance_match": {
           "matched": 66,
@@ -2071,5 +2071,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T11:47:21Z"
+  "generated_at": "2026-04-23T12:10:46Z"
 }

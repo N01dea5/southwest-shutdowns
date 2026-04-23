@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-23T23:01:42Z",
+  "archived_at": "2026-04-23T23:08:11Z",
   "shutdown": {
     "id": "csbp-2026-03",
     "name": "KPF LNG Kleenheat March 2026",
@@ -10,8 +10,8 @@
     "end_date": "2026-06-30",
     "status": "in_progress",
     "required_by_role": {
-      "Trade Assistant": 2,
-      "Sheet Metal Worker": 6
+      "Sheet Metal Worker": 6,
+      "Trade Assistant": 2
     },
     "filled_by_role": {
       "Sheet Metal Worker": 2,
@@ -64,7 +64,8 @@
       "target_source": {
         "source": "rapid_crews_job_planning_view",
         "job_no": 1374,
-        "total_required": 8
+        "total_required": 8,
+        "total_filled": 3
       }
     }
   }

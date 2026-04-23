@@ -279,13 +279,13 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
+        "Supervisor - Mechanical": 4,
         "Mechanical Fitter": 23,
         "Intermediate Rigger": 3,
         "Painter & Blaster": 2,
         "Scaffolder": 6,
-        "Advanced Rigger": 2,
         "Sheet Metal Worker": 3,
-        "Supervisor - Mechanical": 4,
+        "Advanced Rigger": 2,
         "Trade Assistant": 18
       },
       "filled_by_role": {
@@ -806,8 +806,8 @@
       "end_date": "2026-06-30",
       "status": "in_progress",
       "required_by_role": {
-        "Trade Assistant": 2,
-        "Sheet Metal Worker": 6
+        "Sheet Metal Worker": 6,
+        "Trade Assistant": 2
       },
       "filled_by_role": {
         "Sheet Metal Worker": 2,
@@ -860,7 +860,8 @@
         "target_source": {
           "source": "rapid_crews_job_planning_view",
           "job_no": 1374,
-          "total_required": 8
+          "total_required": 8,
+          "total_filled": 3
         }
       }
     },
@@ -872,19 +873,20 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
+        "Supervisor - Mechanical": 3,
         "Mechanical Fitter": 13,
         "Rigger - Advanced": 4,
-        "Intermediate Rigger": 0,
         "Advanced Rigger": 0,
-        "Supervisor - Mechanical": 3,
+        "Intermediate Rigger": 0,
         "Trade Assistant": 16
       },
       "filled_by_role": {
+        "Supervisor - Mechanical": 3,
         "Mechanical Fitter": 13,
-        "Advanced Rigger": 3,
-        "Supervisor - Mechanical": 1,
-        "Trade Assistant": 15,
-        "Intermediate Rigger": 1
+        "Rigger - Advanced": 3,
+        "Advanced Rigger": 0,
+        "Intermediate Rigger": 0,
+        "Trade Assistant": 16
       },
       "crew_split": {
         "Day": 20,
@@ -1143,10 +1145,11 @@
         "target_source": {
           "source": "rapid_crews_job_planning_view",
           "job_no": 1375,
-          "total_required": 36
+          "total_required": 36,
+          "total_filled": 35
         }
       }
     }
   ],
-  "generated_at": "2026-04-23T23:01:42Z"
+  "generated_at": "2026-04-23T23:08:11Z"
 }

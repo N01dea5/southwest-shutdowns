@@ -197,6 +197,25 @@ def planning_required_for_jobno(job_no: int) -> dict[str, int] | None:
     }
 
 
+def planning_filled_for_jobno(job_no: int) -> dict[str, int] | None:
+    """Return JobPlanningView-derived `{tradeName: filled}` for a JobNo.
+
+    This is the authoritative "slot filled" count — the same figure the
+    Rapid Crews website shows on its planning page. Paired with
+    `planning_required_for_jobno` so a live shutdown's headline numbers
+    match the website without anyone needing to re-export a RosterCut.
+    """
+    cache = _load_cache()
+    bucket = cache["planning_all"].get(int(job_no))
+    if bucket is None:
+        return None
+    return {
+        trade: cell["filled"]
+        for trade, cell in bucket.items()
+        if cell["required"] or cell["filled"]
+    }
+
+
 def active_shutdowns_jobnos() -> set[int] | None:
     """Return the set of JobNos from the ACTIVE_SHUTDOWNS control sheet.
 
@@ -436,16 +455,22 @@ def _build_one(job_no: int,
     sd, ed = min(all_starts), max(all_ends)
     shutdown_id = f"{company_key}-{sd.isoformat()[:7]}"
 
-    # JobPlanningView drives Required; PersonnelRosterView drives Filled.
-    # Rapid Crews is the source of truth — target files only fill gaps.
+    # JobPlanningView drives BOTH Required and Filled — those are the
+    # figures the Rapid Crews website shows. PersonnelRosterView's unique
+    # personnel count (the old "filled_by_role" Counter above) tends to
+    # drift above JobPlanningView.Filled because it counts anyone with a
+    # scheduled day, not just officially-filled slots. Rapid Crews is the
+    # source of truth; target files only apply when RC has nothing.
     planning_req = planning["required_by_role"]
-    if planning_req:
-        all_keys = set(filled_by_role) | set(planning_req)
+    planning_fil = planning["filled_by_role"]
+    if planning_req or any(planning_fil.values()):
+        all_keys = set(filled_by_role) | set(planning_req) | set(planning_fil)
         required     = {r: int(planning_req.get(r, 0)) for r in all_keys}
-        filled_final = dict(filled_by_role)
+        filled_final = {r: int(planning_fil.get(r, 0)) for r in all_keys}
         target_source_meta     = {"source": "rapid_crews_job_planning_view",
                                   "job_no": job_no,
-                                  "total_required": sum(planning_req.values())}
+                                  "total_required": sum(planning_req.values()),
+                                  "total_filled":   sum(planning_fil.values())}
         required_target_source = "RAPID_CREWS_JOB_PLANNING"
     else:
         required, filled_final, target_source_meta = rc.merge_targets(shutdown_id, filled_by_role)

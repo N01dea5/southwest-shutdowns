@@ -466,44 +466,58 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
     ends   = [r["end"]   for r in confirmed if r["end"]]
     sd, ed = min(starts), max(ends)
 
-    filled_by_role:    dict[str, int] = {}
+    # Aggregates from the RosterCut file — retained as fallback and for the
+    # auxiliary splits (crew/mobilised/labour-hire) that JobPlanningView
+    # doesn't carry.
+    rc_filled_by_role: dict[str, int] = {}
     crew_split:        dict[str, int] = {}
     mobilised_by_role: dict[str, int] = {}
     labour_hire_split: dict[str, int] = {}
 
     for r in confirmed:
-        filled_by_role[r["role"]]       = filled_by_role.get(r["role"], 0) + 1
-        crew_split[r["crew_type"]]      = crew_split.get(r["crew_type"], 0) + 1
+        rc_filled_by_role[r["role"]]   = rc_filled_by_role.get(r["role"], 0) + 1
+        crew_split[r["crew_type"]]     = crew_split.get(r["crew_type"], 0) + 1
         labour_hire_split[r["labour_hire"]] = labour_hire_split.get(r["labour_hire"], 0) + 1
         if r["mobilised"]:
             mobilised_by_role[r["role"]] = mobilised_by_role.get(r["role"], 0) + 1
 
     shutdown_id = shutdown_id_override or f"{company_key}-{sd[:7]}"
 
-    # Rapid Crews is the source of truth for required counts when the JobNo
-    # is still in the macro workbook's JobPlanningView — flip in ahead of
-    # any legacy target file so site-dashboard drift can't override reality.
+    # Rapid Crews is the source of truth for BOTH required and filled counts
+    # when the JobNo is still in the macro workbook's JobPlanningView — this
+    # keeps headline numbers in sync with the Rapid Crews website without
+    # anyone having to re-export the RosterCut. The RosterCut XLSX is used
+    # for the rich per-worker roster (Position-On-Project, Crew Type,
+    # Confirmed flag) but its aggregate counts are a stale snapshot.
     planning_required: dict[str, int] | None = None
+    planning_filled:   dict[str, int] | None = None
     if file_key.isdigit():
         try:
             import parse_macro_data as _pmd
             planning_required = _pmd.planning_required_for_jobno(int(file_key))
+            planning_filled   = _pmd.planning_filled_for_jobno(int(file_key))
         except Exception as e:           # pragma: no cover — defensive
             print(f"  warn: macro planning lookup failed for {file_key}: {e}")
-            planning_required = None
+            planning_required = planning_filled = None
 
     if planning_required:
-        # Roles the roster has but JobPlanningView doesn't are carried over
-        # at "0 required" so the table surfaces them as surplus.
-        all_keys = set(filled_by_role) | set(planning_required)
-        required = {r: int(planning_required.get(r, 0)) for r in all_keys}
-        filled_final = dict(filled_by_role)
+        # Both required + filled come from JobPlanningView. Keys that only
+        # appear in the RosterCut roster are carried over at "0 required,
+        # 0 filled" so the per-role table still surfaces them — RosterCut's
+        # Position-On-Project names can be finer-grained than JobPlanningView
+        # trades (e.g. "Fitter – Inspections" vs "Mechanical Fitter"), and
+        # dropping the extras silently would hide real assignments.
+        rc_only = set(rc_filled_by_role) - set(planning_required) - set(planning_filled or {})
+        all_keys = set(planning_required) | set(planning_filled or {}) | rc_only
+        required     = {r: int(planning_required.get(r, 0))           for r in all_keys}
+        filled_final = {r: int((planning_filled or {}).get(r, 0))     for r in all_keys}
         target_source_meta = {"source": "rapid_crews_job_planning_view",
                               "job_no": int(file_key),
-                              "total_required": sum(planning_required.values())}
+                              "total_required": sum(planning_required.values()),
+                              "total_filled":   sum((planning_filled or {}).values())}
         required_target_source = "RAPID_CREWS_JOB_PLANNING"
     else:
-        required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
+        required, filled_final, target_source_meta = merge_targets(shutdown_id, rc_filled_by_role)
         target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
         required_target_source = "TARGET_FILE" if target_exists else "PLACEHOLDER_FROM_ROSTER"
 
@@ -540,7 +554,7 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
             "source_format":           fmt,
             "required_target_source":  required_target_source,
             "rapid_crews_roster_size": len(confirmed),
-            "rapid_crews_filled_by_role": filled_by_role,   # preserved for audit
+            "rapid_crews_filled_by_role": rc_filled_by_role,   # RosterCut snapshot, preserved for audit
             "target_source":           target_source_meta,  # None for placeholder
         },
     }

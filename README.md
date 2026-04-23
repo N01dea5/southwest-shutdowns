@@ -41,8 +41,38 @@ Chart.js + Google Fonts (Barlow Condensed / Bebas Neue) are loaded via CDN; no b
 
 ## Updating data
 
-The current source of truth is **Rapid Crews**. Every refresh follows the same
-loop:
+### Adding or removing shutdowns (end users, no code required)
+
+Open `Rapidcrews Macro Data.xlsx` → go to the `ACTIVE_SHUTDOWNS` sheet → add
+or delete rows in the **JobNo** column. One JobNo per row = one shutdown on
+the dashboard. Save, and once the updated workbook lands in the repo the
+GitHub Action regenerates the JSONs and the dashboard refreshes on next
+page-load.
+
+Rules of thumb:
+
+- **Sheet missing or empty** — legacy behaviour: every RosterCut file in
+  `data/raw/` appears (backwards compatible).
+- **Sheet has rows** — it becomes an allow-list. Only shutdowns whose JobNo
+  is listed show up. Historical retention seeds (Kleenheat) always pass.
+- When a JobNo is in both a RosterCut file (`data/raw/`) and the macro
+  workbook's `PersonnelRosterView`, the RosterCut data wins on that
+  shutdown — it carries Position-On-Project, Confirmed flag, and Crew Type
+  which the macro export doesn't have.
+- For a brand-new shutdown that doesn't have a RosterCut file, the parser
+  builds it straight from `xpbi02 JobPlanningView` + `xpbi02 PersonnelRosterView`.
+  Per-worker `role` falls back to the employee's **Primary Role** from the
+  Personnel master — close but not identical to the shutdown-specific
+  Position-On-Project that RosterCut would give.
+- If a JobNo's client/site pair in `PersonnelRosterView` isn't one of
+  Covalent Lithium / Tronox / CSBP Kwinana, the parser skips it with a
+  warning — update `CLIENT_SITE_MAP` in `scripts/parse_macro_data.py` to
+  add a new client.
+
+### Full-fidelity workflow (maintainers — RosterCut exports)
+
+The current source of truth for the three live shutdowns is **Rapid Crews**.
+Every refresh follows the same loop:
 
 1. **Export** a roster from Rapid Crews → "RosterCut" → XLSX.
 2. **Drop** the file into `data/raw/`. The filename's leading numeric token is
@@ -50,7 +80,8 @@ loop:
 3. **Map** that roster id to a client + project + site by adding a line to
    `ROSTER_MAP` in `scripts/parse_rapidcrews.py`.
 4. **Run** `python3 scripts/parse_rapidcrews.py` — it regenerates
-   `data/<company>.json` from every roster in `data/raw/`.
+   `data/<company>.json` from every roster in `data/raw/` (and pulls in any
+   active macro-workbook shutdowns that aren't already covered).
 5. **Commit** the regenerated JSONs. The dashboard re-reads on every page load,
    so the next refresh picks the change up — no code deploy needed.
 

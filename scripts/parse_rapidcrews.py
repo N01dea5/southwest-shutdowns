@@ -18,6 +18,13 @@ Workflow
 3. Run `python3 scripts/parse_rapidcrews.py`.
 4. Commit the regenerated `data/<company>.json` files.
 
+End-user workflow (no code / no git)
+------------------------------------
+Edit the `ACTIVE_SHUTDOWNS` sheet inside `Rapidcrews Macro Data.xlsx` — add
+or remove JobNo rows to control which shutdowns the dashboard shows. The
+macro-data loader (`scripts/parse_macro_data.py`) is called from `main()`
+below; see that module's docstring for full detail.
+
 Data NOT in the Rapid Crews export
 ----------------------------------
 - **Required headcount per role** (the original target on the request). The
@@ -589,16 +596,55 @@ def main() -> int:
               f"{stats['xref_ambiguous']} ambiguous · "
               f"{stats['unmatched']} unmatched")
 
-    # -- 3. Build per-shutdown payloads and group by company.
-    by_company: dict[str, dict] = {}
+    # -- 3. Build per-shutdown payloads from RosterCut files.
+    rc_triples: list[tuple[str, str, dict]] = []
     for key, xlsx, fmt, rows in parsed:
         company_key, client_name, shutdown = build_shutdown(key, xlsx, rows, fmt)
-        by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
-        by_company[company_key]["shutdowns"].append(shutdown)
+        rc_triples.append((company_key, client_name, shutdown))
         print(f"  {key:>10}  {client_name:<10} {shutdown['id']:<22} "
               f"roster={len(shutdown['roster']):>3}  "
               f"{shutdown['start_date']} → {shutdown['end_date']}  "
               f"[{shutdown['status']}]")
+
+    # -- 3b. Pull shutdowns from Rapidcrews Macro Data.xlsx (ACTIVE_SHUTDOWNS
+    #        sheet). RosterCut wins on shutdown-id collisions — richer
+    #        per-worker data (Position-On-Project, Confirmed, Crew Type).
+    import parse_macro_data
+    macro_triples   = parse_macro_data.shutdowns_from_macro_data()
+    active_jobnos   = parse_macro_data.active_shutdowns_jobnos()
+    rc_ids          = {s["id"] for _, _, s in rc_triples}
+    combined: list[tuple[str, str, dict]] = list(rc_triples)
+    for company_key, client_name, shutdown in macro_triples:
+        if shutdown["id"] in rc_ids:
+            print(f"  macro: JobNo {shutdown['_source']['macro_data_job_no']} "
+                  f"-> {shutdown['id']} already covered by RosterCut, skipping")
+            continue
+        combined.append((company_key, client_name, shutdown))
+
+    # -- 3c. If the ACTIVE_SHUTDOWNS sheet is present, it's an allow-list:
+    #        RosterCut shutdowns whose numeric roster_id isn't listed drop
+    #        out. Non-numeric rosters (Kleenheat / Pegasus historicals)
+    #        always pass — they're retention seeds, not JobNo-driven.
+    if active_jobnos is not None:
+        kept: list[tuple[str, str, dict]] = []
+        for company_key, client_name, shutdown in combined:
+            src = shutdown.get("_source", {})
+            job_no = src.get("macro_data_job_no")
+            if job_no is None:
+                rid = src.get("rapid_crews_roster_id") or ""
+                if str(rid).isdigit():
+                    job_no = int(rid)
+            if job_no is None or job_no in active_jobnos:
+                kept.append((company_key, client_name, shutdown))
+            else:
+                print(f"  filter: {shutdown['id']} (JobNo {job_no}) "
+                      f"not in ACTIVE_SHUTDOWNS — dropping")
+        combined = kept
+
+    by_company: dict[str, dict] = {}
+    for company_key, client_name, shutdown in combined:
+        by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
+        by_company[company_key]["shutdowns"].append(shutdown)
 
     # -- 4. Write per-company JSON files.
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")

@@ -23,6 +23,7 @@ on:
       - 'data/targets/**'
       - 'data/imports/**'
       - 'scripts/**'
+      - 'Rapidcrews Macro Data.xlsx'
   workflow_dispatch:
   # NOTE: nightly schedule disabled until SharePoint pull is wired up.
   # Re-enable by uncommenting the schedule block below.

@@ -563,24 +563,32 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
 
 # --------------------------------------------------------------------------- view exports
 
-def _iter_rows_by_header(xlsx_path: pathlib.Path):
-    """Yield dicts keyed by header name. openpyxl in read-only mode keeps
-    memory flat even on multi-thousand-row roster views."""
-    wb = openpyxl.load_workbook(xlsx_path, data_only=True, read_only=True)
-    ws = wb.active
-    rows_iter = ws.iter_rows(values_only=True)
-    headers = [h for h in next(rows_iter)]
-    for raw in rows_iter:
+def _iter_sheet_rows(ws):
+    """Yield dicts keyed by header name for every non-empty row of a
+    worksheet. The header is the first row; blank rows are skipped."""
+    rows = ws.iter_rows(values_only=True)
+    headers = list(next(rows, ()))
+    if not headers:
+        return
+    for raw in rows:
         if not any(v is not None and v != "" for v in raw):
             continue
         yield dict(zip(headers, raw))
-    wb.close()
 
 
-def load_trades_lookup(xlsx_path: pathlib.Path) -> dict[str, dict]:
+def _sheet_headers(ws) -> list:
+    """First-row values of a worksheet (without consuming the iterator used
+    by _iter_sheet_rows — this is a separate pass via `ws[1]`)."""
+    try:
+        return [c.value for c in ws[1]]
+    except (IndexError, StopIteration):
+        return []
+
+
+def load_trades_lookup(rows_iter) -> dict[str, dict]:
     """TradeId (GUID, lowercased) -> {trade: str, discipline: str}."""
     out: dict[str, dict] = {}
-    for row in _iter_rows_by_header(xlsx_path):
+    for row in rows_iter:
         tid = row.get("TradeId")
         trade = row.get("Trade")
         if not tid or not trade:
@@ -592,12 +600,12 @@ def load_trades_lookup(xlsx_path: pathlib.Path) -> dict[str, dict]:
     return out
 
 
-def load_personnel_lookup(xlsx_path: pathlib.Path) -> dict[str, dict]:
+def load_personnel_lookup(rows_iter) -> dict[str, dict]:
     """Personnel Id (GUID, lowercased) -> {name fields, primary_role, status,
     hire_company}. 'Given Names' rather than 'First Name' mirrors the sheet;
     the worker's actual first name for display comes from the Roster view."""
     out: dict[str, dict] = {}
-    for row in _iter_rows_by_header(xlsx_path):
+    for row in rows_iter:
         pid = row.get("Personnel Id")
         if not pid:
             continue
@@ -612,24 +620,26 @@ def load_personnel_lookup(xlsx_path: pathlib.Path) -> dict[str, dict]:
     return out
 
 
-def parse_jobplanning(xlsx_path: pathlib.Path) -> dict:
+def parse_jobplanning(rows_iter) -> dict:
     """Returns {job_no: {"start": iso, "end": iso, "roles": {competency_id: {...}}}}.
-    One shutdown per file in the common case, but the shape supports multiple.
+    One shutdown per sheet in the common case, but the shape supports multiple.
     """
     jobs: dict[str, dict] = {}
-    for row in _iter_rows_by_header(xlsx_path):
+    for row in rows_iter:
         jobno = row.get("JobNo")
         comp  = row.get("CompetencyId")
         if jobno is None or not comp:
             continue
         key = str(jobno).strip()
+        # Strip a trailing ".0" that openpyxl sometimes leaves on integer
+        # JobNos pulled from a Power Query / SharePoint-linked workbook.
+        if key.endswith(".0"):
+            key = key[:-2]
         job = jobs.setdefault(key, {
             "start": to_iso(row.get("StartDate")),
             "end":   to_iso(row.get("EndDate")),
             "roles": {},
         })
-        # All rows for the same JobNo should carry identical dates; keep the
-        # earliest start / latest end if any drift sneaks in.
         s, e = to_iso(row.get("StartDate")), to_iso(row.get("EndDate"))
         if s and (not job["start"] or s < job["start"]):
             job["start"] = s
@@ -643,7 +653,7 @@ def parse_jobplanning(xlsx_path: pathlib.Path) -> dict:
     return jobs
 
 
-def parse_rosterview(xlsx_path: pathlib.Path) -> dict[str, list[dict]]:
+def parse_rosterview(rows_iter) -> dict[str, list[dict]]:
     """Returns {job_no: [{personnel_id, name fields, crew, start, end, ...}]}.
 
     The raw sheet has one row per (worker × scheduled day). We dedupe to one
@@ -651,12 +661,14 @@ def parse_rosterview(xlsx_path: pathlib.Path) -> dict[str, list[dict]]:
     each worker's on-site window.
     """
     by_job: dict[str, dict[str, dict]] = {}
-    for row in _iter_rows_by_header(xlsx_path):
+    for row in rows_iter:
         jobno = row.get("Job No")
         pid   = row.get("Personnel Id")
         if jobno is None or not pid:
             continue
         jkey = str(jobno).strip()
+        if jkey.endswith(".0"):
+            jkey = jkey[:-2]
         pkey = str(pid).strip().lower()
         workers = by_job.setdefault(jkey, {})
         sched = to_iso(row.get("Schedule Date"))
@@ -806,13 +818,61 @@ def _file_key(xlsx: pathlib.Path) -> str:
     return xlsx.stem.strip()
 
 
-def _sniff_format(xlsx_path: pathlib.Path) -> str:
+def _sniff_legacy_format(xlsx_path: pathlib.Path) -> str:
+    """Legacy single-sheet formats sit on the active (first) sheet."""
     wb = openpyxl.load_workbook(xlsx_path, data_only=True, read_only=True)
     ws = wb.active
-    headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+    headers = list(next(ws.iter_rows(max_row=1, values_only=True), ()))
     fmt = _detect_format(headers)
     wb.close()
     return fmt
+
+
+def _dispatch_view_sheets(xlsx_path: pathlib.Path,
+                          trades_lookup: dict,
+                          personnel_lookup: dict,
+                          jobplanning_by_key: dict,
+                          rosterview_by_key: dict) -> bool:
+    """Iterate every worksheet in the file and dispatch view-shaped sheets
+    (trades / personnel / jobplanning / rosterview) to their parser.
+    Returns True when at least one view sheet was processed — caller then
+    skips the legacy path for this file."""
+    wb = openpyxl.load_workbook(xlsx_path, data_only=True, read_only=True)
+    found = False
+    try:
+        for ws in wb.worksheets:
+            headers = _sheet_headers(ws)
+            if not headers:
+                continue
+            fmt = _detect_format(headers)
+            if fmt == "trades":
+                added = load_trades_lookup(_iter_sheet_rows(ws))
+                trades_lookup.update(added)
+                print(f"  {xlsx_path.name} [{ws.title}]: trades ({len(added)} rows)")
+                found = True
+            elif fmt == "personnel":
+                added = load_personnel_lookup(_iter_sheet_rows(ws))
+                personnel_lookup.update(added)
+                print(f"  {xlsx_path.name} [{ws.title}]: personnel ({len(added)} rows)")
+                found = True
+            elif fmt == "jobplanning":
+                jobs = parse_jobplanning(_iter_sheet_rows(ws))
+                for k, job in jobs.items():
+                    jobplanning_by_key[k] = job
+                print(f"  {xlsx_path.name} [{ws.title}]: jobplanning "
+                      f"({len(jobs)} job(s): {sorted(jobs)})")
+                found = True
+            elif fmt == "rosterview":
+                per_job = parse_rosterview(_iter_sheet_rows(ws))
+                for k, workers in per_job.items():
+                    rosterview_by_key.setdefault(k, []).extend(workers)
+                print(f"  {xlsx_path.name} [{ws.title}]: rosterview "
+                      f"({sum(len(v) for v in per_job.values())} workers "
+                      f"across {sorted(per_job)})")
+                found = True
+    finally:
+        wb.close()
+    return found
 
 
 def main() -> int:
@@ -820,8 +880,13 @@ def main() -> int:
         print(f"No raw dir at {RAW_DIR}", file=sys.stderr)
         return 1
 
-    # -- 0. Partition raw files by format. Global lookups (trades, personnel)
-    #       are single-file; per-shutdown views are grouped by JobNo.
+    # -- 0. Partition raw files by format. The view flow supports a single
+    #       multi-sheet workbook (e.g. rapidcrews_export.xlsx containing
+    #       JobPlanning + Roster + Trades + Personnel sheets) OR one file
+    #       per sheet — both land in the same four buckets below. Legacy
+    #       single-sheet files (RosterCut / Kleenheat / Pegasus) go through
+    #       the original path so their ROSTER_MAP lookup by filename still
+    #       works.
     trades_lookup:    dict[str, dict]          = {}
     personnel_lookup: dict[str, dict]          = {}
     jobplanning_by_key: dict[str, dict]        = {}
@@ -829,29 +894,17 @@ def main() -> int:
     legacy_files: list[pathlib.Path]           = []
 
     for xlsx in sorted(RAW_DIR.glob("*.xlsx")):
-        fmt = _sniff_format(xlsx)
-        if fmt == "trades":
-            trades_lookup.update(load_trades_lookup(xlsx))
-            print(f"  trades lookup: {xlsx.name} ({len(trades_lookup)} trades)")
+        found_view = _dispatch_view_sheets(
+            xlsx, trades_lookup, personnel_lookup,
+            jobplanning_by_key, rosterview_by_key,
+        )
+        if found_view:
             continue
-        if fmt == "personnel":
-            personnel_lookup.update(load_personnel_lookup(xlsx))
-            print(f"  personnel lookup: {xlsx.name} ({len(personnel_lookup)} people)")
-            continue
-        if fmt == "jobplanning":
-            for k, job in parse_jobplanning(xlsx).items():
-                jobplanning_by_key[k] = job
-            print(f"  jobplanning: {xlsx.name} ({len(jobplanning_by_key)} jobs mapped)")
-            continue
-        if fmt == "rosterview":
-            for k, workers in parse_rosterview(xlsx).items():
-                rosterview_by_key.setdefault(k, []).extend(workers)
-            print(f"  rosterview: {xlsx.name} ({sum(len(v) for v in rosterview_by_key.values())} worker rows)")
-            continue
+        fmt = _sniff_legacy_format(xlsx)
         if fmt in ("rapidcrews", "kleenheat", "pegasus"):
             legacy_files.append(xlsx)
-            continue
-        print(f"  skip unrecognised XLSX: {xlsx.name}")
+        else:
+            print(f"  skip unrecognised XLSX: {xlsx.name}")
 
     # -- 1. Parse every mapped legacy file first, so the Kleenheat enrichment
     #       step can cross-reference first-name + role against the other

@@ -418,24 +418,28 @@ it's in; the legacy RosterCut path keeps working untouched.
 
 ### What to export from Rapid Crews
 
-Per shutdown:
+One workbook, four sheets — matches the layout Rapid Crews produces out of
+the box:
 
-| File name convention | View | Minimum columns |
+| Sheet name (example) | Detected as | Minimum columns |
 |---|---|---|
-| `<JobNo> (JobPlanning) <ts>.xlsx` | Job Planning | `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `Actual` |
-| `<JobNo> (Roster) <ts>.xlsx` | Personnel Roster | `Personnel Id`, `First Name`, `Surname`, `Job No`, `Schedule Date`, `Site`, `Crew`, `Schedule Type` |
+| `xpbi02 JobPlanningView` | `jobplanning` | `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `Actual` |
+| `xpbi02 PersonnelRosterView` | `rosterview` | `Personnel Id`, `First Name`, `Surname`, `Job No`, `Schedule Date`, `Site`, `Crew`, `Schedule Type` |
+| `xpbi02 DisciplineTrade` | `trades` | `TradeId`, `Trade` (optional `Discipline`) |
+| `xll01 Personnel` | `personnel` | `Personnel Id`, `Given Names`, `Surname`, `Primary Role` (optional `Employee Number`, `Status`, `Hire Company`) |
 
-One-off (re-export when Rapid Crews adds trades / personnel):
+Sheet and workbook names don't matter — the parser detects each sheet's
+role from its column headers. You can keep everything in one workbook
+(simpler) or split each sheet into its own `.xlsx` (also fine). Routing
+between shutdowns is driven by the **`JobNo` column inside the data** on
+JobPlanning / Roster sheets, not by filename — so one workbook can cover
+all three live shutdowns at once.
 
-| File name | View | Minimum columns |
-|---|---|---|
-| `trades.xlsx` | Trades | `TradeId`, `Trade` (optional `Discipline`) |
-| `personnel.xlsx` | Personnel | `Personnel Id`, `Given Names`, `Surname`, `Primary Role` (optional `Employee Number`, `Status`, `Hire Company`) |
-
-Filename matters only for the two per-shutdown files: the leading numeric
-token must be the Rapid Crews `JobNo`, so the parser can route the shutdown
-through `ROSTER_MAP`. The global lookups are detected from their column
-headers — name them whatever you like.
+The JobNo values must exist in `ROSTER_MAP` at the top of
+`scripts/parse_rapidcrews.py` (currently `1353` → Tronox, `1359` →
+Covalent, `1375` → CSBP). Re-exports of the Trades / Personnel sheets
+aren't per-shutdown — the parser treats them as global lookups that apply
+to every JobNo in the same run.
 
 ### How the columns map to the dashboard
 

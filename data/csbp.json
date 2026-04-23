@@ -9,14 +9,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Advanced Rigger": 2,
-        "Sheet Metal Worker": 3,
-        "Mechanical Fitter": 23,
-        "Painter & Blaster": 2,
-        "Intermediate Rigger": 3,
         "Supervisor - Mechanical": 4,
+        "Trade Assistant": 18,
+        "Intermediate Rigger": 3,
+        "Mechanical Fitter": 23,
+        "Sheet Metal Worker": 3,
         "Scaffolder": 6,
-        "Trade Assistant": 18
+        "Painter & Blaster": 2,
+        "Advanced Rigger": 2
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -529,6 +529,68 @@
       }
     },
     {
+      "id": "csbp-2026-03",
+      "name": "KPF LNG Kleenheat March 2026",
+      "site": "Kwinana",
+      "start_date": "2026-03-30",
+      "end_date": "2026-06-30",
+      "status": "in_progress",
+      "required_by_role": {
+        "Trade Assistant": 2,
+        "Sheet Metal Worker": 6
+      },
+      "filled_by_role": {
+        "Trade Assistant": 1,
+        "Sheet Metal Worker": 2
+      },
+      "crew_split": {
+        "Day": 3
+      },
+      "mobilised_by_role": {
+        "Sheet Metal Worker": 2,
+        "Trade Assistant": 1
+      },
+      "labour_hire_split": {
+        "SRG - South West": 3
+      },
+      "roster": [
+        {
+          "name": "Beau WITHERS",
+          "role": "Trade Assistant",
+          "start": "2026-04-02",
+          "end": "2026-06-30",
+          "mobile": "0435 441 418"
+        },
+        {
+          "name": "Daniel JONES",
+          "role": "Sheet Metal Worker",
+          "start": "2026-03-30",
+          "end": "2026-06-30",
+          "mobile": "0457 632 156"
+        },
+        {
+          "name": "David STITZ",
+          "role": "Sheet Metal Worker",
+          "start": "2026-03-30",
+          "end": "2026-06-30",
+          "mobile": "0408 939 455"
+        }
+      ],
+      "_source": {
+        "macro_data_job_no": 1374,
+        "macro_data_client": "SOUTH WEST",
+        "macro_data_site": "Kleenheat",
+        "source_format": "macro_data",
+        "required_target_source": "JOB_PLANNING_VIEW",
+        "macro_data_roster_size": 3,
+        "macro_data_filled_by_role": {
+          "Sheet Metal Worker": 2,
+          "Trade Assistant": 1
+        },
+        "target_source": null
+      }
+    },
+    {
       "id": "csbp-2026-05",
       "name": "NAAN2 June 2026",
       "site": "Kwinana",
@@ -536,18 +598,18 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
-        "Advanced Rigger": 3,
-        "Mechanical Fitter": 13,
-        "Intermediate Rigger": 1,
         "Supervisor - Mechanical": 3,
-        "Trade Assistant": 16
+        "Trade Assistant": 16,
+        "Intermediate Rigger": 1,
+        "Mechanical Fitter": 13,
+        "Advanced Rigger": 3
       },
       "filled_by_role": {
-        "Advanced Rigger": 3,
-        "Mechanical Fitter": 13,
-        "Intermediate Rigger": 1,
         "Supervisor - Mechanical": 3,
-        "Trade Assistant": 16
+        "Trade Assistant": 16,
+        "Intermediate Rigger": 1,
+        "Mechanical Fitter": 13,
+        "Advanced Rigger": 3
       },
       "crew_split": {
         "Day": 20,
@@ -812,5 +874,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-19T00:50:20Z"
+  "generated_at": "2026-04-23T12:04:02Z"
 }

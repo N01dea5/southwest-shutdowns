@@ -58,6 +58,10 @@ CLIENT_SITE_MAP: dict[tuple[str, str], tuple[str, str, str, str]] = {
     ("SOUTH WEST", "Covalent Lithium"): ("covalent", "Covalent", "Mt Holland", "Mt Holland"),
     ("SOUTH WEST", "Tronox"):            ("tronox",   "Tronox",   "Kwinana",    "Major Shutdown"),
     ("CSBP",       "CSBP Kwinana"):      ("csbp",     "CSBP",     "Kwinana",    "CSBP Kwinana"),
+    # Kleenheat rolls up under CSBP (WesCEF umbrella — see ROSTER_MAP note
+    # in parse_rapidcrews.py). Dashboard_site stays "Kwinana" so the tile
+    # lines up with the historical KPF LNG March 2026 entry.
+    ("SOUTH WEST", "Kleenheat"):         ("csbp",     "CSBP",     "Kwinana",    "KPF LNG Kleenheat"),
 }
 
 # Schedule Types that count as "on the job" for start/end + crew_split

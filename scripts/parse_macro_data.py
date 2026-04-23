@@ -38,7 +38,7 @@ import parse_rapidcrews as rc
 
 
 REPO_ROOT    = pathlib.Path(__file__).resolve().parent.parent
-MACRO_FILE   = REPO_ROOT / "Rapidcrews Macro Data.xlsx"
+MACRO_FILE   = REPO_ROOT / "data" / "raw" / "Rapidcrews Macro Data.xlsx"
 RESUMES_FILE = REPO_ROOT / "Resumes.xlsx"   # standalone so end users can own
                                             # it on SharePoint without touching
                                             # the Rapid Crews SQL export
@@ -48,6 +48,53 @@ JOB_PLANNING_SHEET = "xpbi02 JobPlanningView"
 ROSTER_VIEW_SHEET  = "xpbi02 PersonnelRosterView"
 TRADE_SHEET        = "xpbi02 DisciplineTrade"
 PERSONNEL_SHEET    = "xll01 Personnel"
+COMPLIANCE_SHEET   = "xll01 PersonnelCompetency"
+
+# The SQL DisciplineTrade table uses "Rigger - Advanced/Intermediate/Basic"
+# but the RosterCut Position-On-Project (and every downstream key — target
+# files, dashboard role chips, filled_by_role aggregates) uses the flipped
+# "Advanced Rigger" / "Intermediate Rigger" / "Basic Rigger". Normalise SQL
+# trade names into the canonical vocabulary so macro-derived filled counts
+# merge cleanly with existing required_by_role keys.
+MACRO_ROLE_RENAME = {
+    "Rigger - Advanced":     "Advanced Rigger",
+    "Rigger - Intermediate": "Intermediate Rigger",
+    "Rigger - Basic":        "Basic Rigger",
+}
+
+# Compliance sheet (xll01 PersonnelCompetency) -> per-site dashboard short
+# keys. Each per-site dashboard renders ticket columns using these short
+# names; translating them here lets the ticket data drop straight into the
+# dashboards' existing render code without mapping every consumer.
+TICKET_MAP = {
+    "Confined Spaces Entry":                              "cse",
+    "Working at Heights":                                 "wah",
+    "EWP":                                                "ewp",
+    "CA-EBS - Compressed Air Emergency Breathing System": "ba",
+    "LF - Forklift Truck":                                "fork",
+    # HR Class = Heavy Rigid driver's licence. HRWL = High Risk Work Licence
+    # (the legal register). Two different tickets — the dashboards label them
+    # separately so conflating them under one key would hide which is held.
+    "HR Class":                                           "hr",
+    "HRWL":                                               "hrwl",
+    "DG - Dogging":                                       "dog",
+    "Gas Test Atmospheres":                               "gta",
+    "First Aid":                                          "fa",
+}
+# Rigging is special: per-site dashboards expect a single `rig` field whose
+# value is the level string ("Advanced" / "Intermediate" / "Basic"), not a
+# boolean. Accept both the "RA/RI/RB -" shorthand and the "Rigger -" long form
+# and collapse to the highest level held.
+RIG_COMPS = {
+    "RA - Advanced Rigging":     "Advanced",
+    "Rigger - Advanced":         "Advanced",
+    "RI - Intermediate Rigging": "Intermediate",
+    "Rigger - Intermediate":     "Intermediate",
+    "RB - Basic Rigging":        "Basic",
+    "Rigger - Basic":            "Basic",
+}
+RIG_PRIORITY = {"Advanced": 3, "Intermediate": 2, "Basic": 1}
+EXPIRING_SOON_DAYS = 30
 
 # Module-level cache so the workbook only gets opened once per run, even when
 # both parse_rapidcrews.build_shutdown() (to look up JobPlanningView required
@@ -110,23 +157,28 @@ def _load_cache() -> dict:
         return _CACHE
     if not MACRO_FILE.exists():
         _CACHE = {"active_jobnos": None, "trades": {}, "personnel": {},
-                  "planning_all": {}, "resumes": None}
+                  "personnel_name_index": {}, "planning_all": {},
+                  "compliance": {}, "resumes": None}
         return _CACHE
     wb = _open()
     try:
-        active_jobnos = _read_active_shutdowns(wb)
-        trades        = _load_trade_names(wb)
-        personnel     = _load_personnel(wb)
-        planning_all  = _load_planning_all(wb, trades)
+        active_jobnos          = _read_active_shutdowns(wb)
+        trades                 = _load_trade_names(wb)
+        personnel              = _load_personnel(wb)
+        personnel_name_index   = _load_personnel_name_index(wb)
+        planning_all           = _load_planning_all(wb, trades)
+        compliance             = _load_compliance(wb)
     finally:
         wb.close()
     resumes = _load_resumes_file(personnel) if RESUMES_FILE.exists() else None
     _CACHE = {
-        "active_jobnos": active_jobnos,
-        "trades":        trades,
-        "personnel":     personnel,
-        "planning_all":  planning_all,
-        "resumes":       resumes,
+        "active_jobnos":        active_jobnos,
+        "trades":               trades,
+        "personnel":            personnel,
+        "personnel_name_index": personnel_name_index,
+        "planning_all":         planning_all,
+        "compliance":           compliance,
+        "resumes":              resumes,
     }
     return _CACHE
 
@@ -227,7 +279,11 @@ def active_shutdowns_jobnos() -> set[int] | None:
 
 
 def _load_trade_names(wb: openpyxl.Workbook) -> dict[str, str]:
-    """TradeId GUID -> Trade display name (from DisciplineTrade)."""
+    """TradeId GUID -> Trade display name (from DisciplineTrade).
+
+    Trade names pass through MACRO_ROLE_RENAME so SQL's "Rigger - Advanced"
+    becomes the "Advanced Rigger" key the rest of the pipeline uses.
+    """
     ws = wb[TRADE_SHEET]
     headers = [c.value for c in next(ws.iter_rows(max_row=1))]
     idx = {h: i for i, h in enumerate(headers)}
@@ -238,7 +294,7 @@ def _load_trade_names(wb: openpyxl.Workbook) -> dict[str, str]:
         tid = row[idx["TradeId"]]
         name = (row[idx["Trade"]] or "").strip() or "Unknown"
         if tid:
-            out[tid] = name
+            out[tid] = MACRO_ROLE_RENAME.get(name, name)
     return out
 
 
@@ -263,6 +319,137 @@ def _load_personnel(wb: openpyxl.Workbook) -> dict[str, dict]:
             "hire_company": (row[idx["Hire Company"]] or "").strip(),
         }
     return out
+
+
+# --------------------------------------------------------------------------- compliance (tickets)
+
+def _norm_name_part(s) -> str:
+    """Aggressive first/last-name normalisation: lowercase, letters only.
+    Drops spaces, hyphens, apostrophes so "O'Brien"/"OBrien" collide,
+    "Van Der Zanden"/"VANDERZANDEN" too."""
+    import re as _re
+    return _re.sub(r"[^a-z]+", "", (s or "").lower())
+
+
+def _load_personnel_name_index(wb: openpyxl.Workbook) -> dict[tuple[str, str], str]:
+    """Build {(norm_first, norm_last): personnel_id} from xll01 Personnel.
+
+    Personnel can have multiple rows (re-hires, profile duplicates). Later
+    rows overwrite earlier under the same key; the compliance loader
+    aggregates tickets across all of a person's IDs when matched.
+    """
+    if PERSONNEL_SHEET not in wb.sheetnames:
+        return {}
+    ws = wb[PERSONNEL_SHEET]
+    headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+    idx = {h: n for n, h in enumerate(headers) if h}
+    out: dict[tuple[str, str], str] = {}
+    for r in ws.iter_rows(min_row=2, values_only=True):
+        pid = r[idx["Personnel Id"]]
+        if not pid:
+            continue
+        f = _norm_name_part(r[idx["Given Names"]])
+        l = _norm_name_part(r[idx["Surname"]])
+        if f and l:
+            out[(f, l)] = pid
+    return out
+
+
+def _load_compliance(wb: openpyxl.Workbook) -> dict[str, dict[str, dict]]:
+    """Read xll01 PersonnelCompetency -> {pid: {ticket_key: record}}.
+
+    Record shape: {"expiry": iso|None, "doc": url|None,
+                   "status": "current"|"expiring_soon",
+                   "level": str (rig only)}
+
+    Filtering: skip Archived rows (superseded) and expired rows (Expiry ≤
+    today). Rows with no Expiry are kept as permanent certs.
+
+    Collisions:
+      - Non-rig: keep the record with the LATEST expiry (permanent > dated).
+      - Rig:     keep the HIGHEST level held (Advanced > Intermediate > Basic).
+    """
+    if COMPLIANCE_SHEET not in wb.sheetnames:
+        return {}
+    ws = wb[COMPLIANCE_SHEET]
+    headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+    idx = {h: n for n, h in enumerate(headers) if h}
+    today = dt.date.today()
+    soon  = today + dt.timedelta(days=EXPIRING_SOON_DAYS)
+    out: dict[str, dict[str, dict]] = {}
+    for r in ws.iter_rows(min_row=2, values_only=True):
+        if r[idx["Archived"]]:
+            continue
+        comp = r[idx["Competency"]]
+        pid  = r[idx["Personnel Id"]]
+        if not comp or not pid:
+            continue
+        is_rig = comp in RIG_COMPS
+        key    = "rig" if is_rig else TICKET_MAP.get(comp)
+        if key is None:
+            continue
+        exp = r[idx["Expiry"]]
+        exp_date: dt.date | None = None
+        if exp:
+            exp_date = exp.date() if isinstance(exp, dt.datetime) else exp
+            if not isinstance(exp_date, dt.date):
+                exp_date = None
+            elif exp_date <= today:
+                continue
+        record = {
+            "expiry": exp_date.isoformat() if exp_date else None,
+            "doc":    r[idx["Document Location"]] or None,
+            "status": "expiring_soon" if exp_date and exp_date <= soon else "current",
+        }
+        if is_rig:
+            record["level"] = RIG_COMPS[comp]
+            existing = out.setdefault(pid, {}).get(key)
+            if existing is None or RIG_PRIORITY[record["level"]] > RIG_PRIORITY[existing["level"]]:
+                out[pid][key] = record
+        else:
+            existing = out.setdefault(pid, {}).get(key)
+            if existing is None:
+                out[pid][key] = record
+            else:
+                e_exp = existing["expiry"]
+                if record["expiry"] is None and e_exp is not None:
+                    out[pid][key] = record
+                elif record["expiry"] is not None and e_exp is not None and record["expiry"] > e_exp:
+                    out[pid][key] = record
+    return out
+
+
+def match_personnel_id(first: str, last: str) -> str | None:
+    """Resolve a (first, last) name pair to a Personnel Id via three passes:
+    exact normalised match, prefix-on-first-name-with-same-surname (handles
+    "Lucrecia" vs "Lucrecia Celeste"), then surname-unique fallback.
+    Returns None when no personnel master data is loaded."""
+    cache = _load_cache()
+    index = cache.get("personnel_name_index") or {}
+    f = _norm_name_part(first)
+    l = _norm_name_part(last)
+    if not f or not l:
+        return None
+    if (f, l) in index:
+        return index[(f, l)]
+    same_surname = [(if_, pid) for (if_, il_), pid in index.items() if il_ == l]
+    for if_, pid in same_surname:
+        if if_.startswith(f) or f.startswith(if_):
+            return pid
+    if len(same_surname) == 1:
+        return same_surname[0][1]
+    return None
+
+
+def tickets_for_person(first: str, last: str) -> dict:
+    """Return the tickets dict for a worker, or {} when no match / no data.
+    Safe to call even when the macro workbook or compliance sheet is
+    missing — returns empty."""
+    pid = match_personnel_id(first, last)
+    if not pid:
+        return {}
+    cache = _load_cache()
+    return (cache.get("compliance") or {}).get(pid, {})
 
 
 def _load_resumes_file(personnel: dict[str, dict]) -> list[dict]:
@@ -430,10 +617,15 @@ def _build_one(job_no: int,
         crew_label = CREW_LABEL.get(dom_sched, dom_sched)
 
         entry = {
-            "name":  person["name"],
-            "role":  role,
-            "start": start.isoformat(),
-            "end":   end.isoformat(),
+            "name":         person["name"],
+            "role":         role,
+            "shift":        crew_label,
+            "start":        start.isoformat(),
+            "end":          end.isoformat(),
+            "personnel_id": pid,
+            # Tickets are free here — we already have the Personnel Id from
+            # PersonnelRosterView. No name-matching pass needed.
+            "tickets":      (_load_cache().get("compliance") or {}).get(pid, {}),
         }
         if mobile:
             entry["mobile"] = mobile

@@ -40,12 +40,17 @@ GRAPH_ROOT = "https://graph.microsoft.com/v1.0"
 REPO_ROOT  = pathlib.Path(__file__).resolve().parent.parent
 RAW_DIR    = REPO_ROOT / "data" / "raw"
 
-# Filenames that SharePoint owns end-to-end and that live at the repo root
-# rather than under data/raw/. Filename -> destination path (relative to repo
-# root). Anything else in the watched SharePoint folder lands in data/raw/.
+# Filenames that SharePoint owns but don't live in data/raw/ — routed to
+# their specific destinations. Anything else in the watched SharePoint
+# folder defaults to data/raw/.
+#   - Rapidcrews Macro Data.xlsx:  the SQL-exported workbook. Lives in
+#     data/raw/ alongside the RosterCut files (that's where every Rapid
+#     Crews artefact lands — parse_rapidcrews.py reads the whole dir).
+#   - Resumes.xlsx: standalone ops-owned workbook, kept at the repo root
+#     because it isn't Rapid Crews data.
 ROOT_FILES = {
-    "Rapidcrews Macro Data.xlsx": REPO_ROOT / "Rapidcrews Macro Data.xlsx",
-    "Resumes.xlsx":               REPO_ROOT / "Resumes.xlsx",
+    "Rapidcrews Macro Data.xlsx": RAW_DIR    / "Rapidcrews Macro Data.xlsx",
+    "Resumes.xlsx":               REPO_ROOT  / "Resumes.xlsx",
 }
 
 

@@ -185,7 +185,9 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
     for raw in ws.iter_rows(min_row=2, values_only=True):
         if not any(raw):
             continue
-        name = f"{raw[idx['Name']] or ''} {raw[idx['Surname']] or ''}".strip()
+        first = str(raw[idx["Name"]]    or "").strip()
+        last  = str(raw[idx["Surname"]] or "").strip()
+        name  = f"{first} {last}".strip()
         if not name:
             continue
         role = raw[idx["Position On Project"]] or raw[idx["Position"]] or "Unknown"
@@ -193,6 +195,8 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
         rows.append({
             "labour_hire": (raw[idx["Company"]] or "").strip(),
             "name":        name,
+            "first_name":  first,
+            "last_name":   last,
             "role":        str(role).strip(),
             "mobile":      mobile,
             "start":       to_iso(raw[idx["Start Date"]]),
@@ -280,6 +284,7 @@ def parse_kleenheat_roster(xlsx_path: pathlib.Path) -> list[dict]:
             "labour_hire":       (raw[idx["Company"]] or "").strip(),
             "name":              name,
             "first_name":        first,
+            "last_name":         surname,
             "role":              role,
             "mobile":            mobile,
             "start":             to_iso(raw[idx["On Site"]]),
@@ -318,6 +323,8 @@ def parse_pegasus_roster(xlsx_path: pathlib.Path) -> list[dict]:
         rows.append({
             "labour_hire":      (raw[idx["Company"]] or "").strip(),
             "name":             name,
+            "first_name":       first,
+            "last_name":        last,
             "role":             role,
             "mobile":           mobile,
             "start":            to_iso(raw[idx["Date In"]]),
@@ -454,6 +461,44 @@ def _infer_status(start_day: dt.date, end_day: dt.date, today: dt.date) -> str:
     return "booked"
 
 
+def _emit_roster_entries(confirmed: list[dict]) -> list[dict]:
+    """Turn confirmed roster rows into the final per-worker dicts the
+    dashboard reads. Enriches each entry with:
+      - shift:        from RosterCut/Kleenheat crew_type when known, so the
+                      per-site dashboards can group/filter without guessing
+      - personnel_id: best-effort match against xll01 Personnel
+      - tickets:      compliance dict from xll01 PersonnelCompetency — empty
+                      {} when no match so consumers can still branch on
+                      "did we have compliance data this run?" safely
+    """
+    try:
+        import parse_macro_data as _pmd
+    except Exception:                           # pragma: no cover — defensive
+        _pmd = None
+
+    out: list[dict] = []
+    for r in confirmed:
+        entry: dict = {"name": r["name"], "role": r["role"]}
+        if r.get("crew_type") and r["crew_type"] != "Unknown":
+            entry["shift"] = r["crew_type"]
+        if r.get("mobile"): entry["mobile"] = r["mobile"]
+        if r.get("start"):  entry["start"]  = r["start"]
+        if r.get("end"):    entry["end"]    = r["end"]
+        if _pmd:
+            pid = _pmd.match_personnel_id(r.get("first_name", ""),
+                                          r.get("last_name", ""))
+            if pid:
+                entry["personnel_id"] = pid
+                entry["tickets"]      = _pmd.tickets_for_person(
+                    r.get("first_name", ""), r.get("last_name", ""))
+            else:
+                entry["tickets"]      = {}
+        else:
+            entry["tickets"] = {}
+        out.append(entry)
+    return out
+
+
 def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str) -> tuple[str, str, dict]:
     entry = ROSTER_MAP[file_key]
     company_key, client_name, project_label, site = entry[:4]
@@ -536,18 +581,7 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
         "crew_split":       crew_split,
         "mobilised_by_role": mobilised_by_role,
         "labour_hire_split": labour_hire_split,
-        "roster": [
-            {"name": r["name"],
-             "role": r["role"],
-             **({"mobile": r["mobile"]} if r.get("mobile") else {}),
-             # Per-worker start/end drive the consolidated ops roster (tab 2).
-             # They can differ from the shutdown's overall span when a worker
-             # only covers part of the window (e.g. a supervisor arrives early,
-             # a trade assistant demobs mid-shutdown).
-             **({"start": r["start"]} if r.get("start") else {}),
-             **({"end":   r["end"]}   if r.get("end")   else {})}
-            for r in confirmed
-        ],
+        "roster":           _emit_roster_entries(confirmed),
         "_source": {
             "rapid_crews_roster_id":   file_key,
             "rapid_crews_export_file": xlsx.name,
@@ -706,7 +740,13 @@ def main() -> int:
     #       can cross-reference first-name + role against the other rosters.
     parsed: list[tuple[str, pathlib.Path, str, list[dict]]] = []
     rows_by_company: dict[str, list[dict]] = {}
+    macro_path = RAW_DIR / "Rapidcrews Macro Data.xlsx"
     for xlsx in sorted(RAW_DIR.glob("*.xlsx")):
+        # The SQL macro workbook lives in data/raw/ alongside RosterCut files;
+        # parse_macro_data reads it separately, so it shouldn't be sniffed as
+        # a RosterCut export (it isn't one, and the "unmapped" log is noise).
+        if xlsx.resolve() == macro_path.resolve():
+            continue
         key = _file_key(xlsx)
         if key not in ROSTER_MAP:
             print(f"  skip unmapped roster {key}: {xlsx.name}")

@@ -9,19 +9,19 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
+        "Coded Welder": 1,
         "Supervisor - Mechanical": 6,
+        "HSE Advisor": 2,
+        "Trade Assistant": 5,
+        "Superintendent": 1,
+        "Mechanical Fitter": 24,
+        "Supervisor": 2,
+        "Electrician": 4,
         "Boilermaker": 4,
+        "Lube Technician": 3,
         "Site Coordinator": 1,
         "Basic Rigger": 4,
-        "Trade Assistant": 5,
         "Advanced Rigger": 4,
-        "Coded Welder": 1,
-        "Electrician": 4,
-        "Mechanical Fitter": 24,
-        "Superintendent": 1,
-        "Supervisor": 2,
-        "Lube Technician": 3,
-        "HSE Advisor": 2,
         "Telehandler Operator": 2
       },
       "filled_by_role": {
@@ -2048,19 +2048,19 @@
           "total_tbc": 0
         },
         "filled_by_role_pre_macro": {
+          "Coded Welder": 1,
           "Supervisor - Mechanical": 6,
+          "HSE Advisor": 2,
+          "Trade Assistant": 5,
+          "Superintendent": 1,
+          "Mechanical Fitter": 24,
+          "Supervisor": 2,
+          "Electrician": 4,
           "Boilermaker": 4,
+          "Lube Technician": 3,
           "Site Coordinator": 1,
           "Basic Rigger": 4,
-          "Trade Assistant": 5,
           "Advanced Rigger": 4,
-          "Coded Welder": 1,
-          "Electrician": 4,
-          "Mechanical Fitter": 24,
-          "Superintendent": 1,
-          "Supervisor": 2,
-          "Lube Technician": 3,
-          "HSE Advisor": 2,
           "Telehandler Operator": 2
         },
         "compliance_match": {
@@ -2071,5 +2071,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T12:35:31Z"
+  "generated_at": "2026-04-23T12:37:17Z"
 }

@@ -9,20 +9,20 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Supervisor - Mechanical": 6,
-        "Site Coordinator": 1,
-        "Lube Technician": 3,
-        "Superintendent": 1,
-        "Electrician": 4,
-        "Advanced Rigger": 4,
-        "Basic Rigger": 4,
-        "Supervisor": 2,
-        "Boilermaker": 4,
-        "Trade Assistant": 5,
-        "Coded Welder": 1,
-        "HSE Advisor": 2,
         "Mechanical Fitter": 24,
-        "Telehandler Operator": 2
+        "Trade Assistant": 5,
+        "Supervisor": 2,
+        "Basic Rigger": 4,
+        "Supervisor - Mechanical": 6,
+        "HSE Advisor": 2,
+        "Lube Technician": 3,
+        "Boilermaker": 4,
+        "Telehandler Operator": 2,
+        "Advanced Rigger": 4,
+        "Site Coordinator": 1,
+        "Superintendent": 1,
+        "Coded Welder": 1,
+        "Electrician": 4
       },
       "filled_by_role": {
         "Superintendent": 1,
@@ -562,23 +562,23 @@
           "total_tbc": 0
         },
         "filled_by_role_pre_macro": {
-          "Supervisor - Mechanical": 6,
-          "Site Coordinator": 1,
-          "Lube Technician": 3,
-          "Superintendent": 1,
-          "Electrician": 4,
-          "Advanced Rigger": 4,
-          "Basic Rigger": 4,
-          "Supervisor": 2,
-          "Boilermaker": 4,
-          "Trade Assistant": 5,
-          "Coded Welder": 1,
-          "HSE Advisor": 2,
           "Mechanical Fitter": 24,
-          "Telehandler Operator": 2
+          "Trade Assistant": 5,
+          "Supervisor": 2,
+          "Basic Rigger": 4,
+          "Supervisor - Mechanical": 6,
+          "HSE Advisor": 2,
+          "Lube Technician": 3,
+          "Boilermaker": 4,
+          "Telehandler Operator": 2,
+          "Advanced Rigger": 4,
+          "Site Coordinator": 1,
+          "Superintendent": 1,
+          "Coded Welder": 1,
+          "Electrician": 4
         }
       }
     }
   ],
-  "generated_at": "2026-04-23T09:01:16Z"
+  "generated_at": "2026-04-23T09:02:06Z"
 }

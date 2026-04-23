@@ -101,6 +101,38 @@ MACRO_ROLE_RENAME = {
     "Rigger - Basic":        "Basic Rigger",
 }
 
+# Compliance sheet (xll01 PersonnelCompetency) -> per-site dashboard short keys.
+# Per-site dashboards (Covalent, Tronox, CSBP) render ticket columns using
+# short keys (cse, wah, ewp, ba, fork, hr, dog, gta, fa, plus a string "rig"
+# level). Translate the SQL competency vocabulary into those keys so the
+# ticket data can drop straight into each dashboard's existing render code.
+TICKET_MAP = {
+    "Confined Spaces Entry":                              "cse",
+    "Working at Heights":                                 "wah",
+    "EWP":                                                "ewp",
+    "CA-EBS - Compressed Air Emergency Breathing System": "ba",
+    "LF - Forklift Truck":                                "fork",
+    "HRWL":                                               "hr",
+    "DG - Dogging":                                       "dog",
+    "Gas Test Atmospheres":                               "gta",
+    "First Aid":                                          "fa",
+}
+# Rigging is special: the dashboards expect a single `rig` field whose value
+# is the level string ("Advanced" / "Intermediate" / "Basic"), not a boolean.
+# Several naming conventions coexist in the competency table (the "RA/RI/RB -
+# …" shorthand on newer imports, and the older "Rigger - …" long form), so
+# accept both and collapse to the highest level held.
+RIG_COMPS = {
+    "RA - Advanced Rigging":     "Advanced",
+    "Rigger - Advanced":         "Advanced",
+    "RI - Intermediate Rigging": "Intermediate",
+    "Rigger - Intermediate":     "Intermediate",
+    "RB - Basic Rigging":        "Basic",
+    "Rigger - Basic":            "Basic",
+}
+RIG_PRIORITY = {"Advanced": 3, "Intermediate": 2, "Basic": 1}
+EXPIRING_SOON_DAYS = 30   # tickets expiring within this window tagged amber
+
 
 # --------------------------------------------------------------------------- helpers
 
@@ -178,7 +210,9 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
     for raw in ws.iter_rows(min_row=2, values_only=True):
         if not any(raw):
             continue
-        name = f"{raw[idx['Name']] or ''} {raw[idx['Surname']] or ''}".strip()
+        first = str(raw[idx["Name"]] or "").strip()
+        last  = str(raw[idx["Surname"]] or "").strip()
+        name  = f"{first} {last}".strip()
         if not name:
             continue
         role = raw[idx["Position On Project"]] or raw[idx["Position"]] or "Unknown"
@@ -186,6 +220,8 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
         rows.append({
             "labour_hire": (raw[idx["Company"]] or "").strip(),
             "name":        name,
+            "first_name":  first,
+            "last_name":   last,
             "role":        str(role).strip(),
             "mobile":      mobile,
             "start":       to_iso(raw[idx["Start Date"]]),
@@ -273,6 +309,7 @@ def parse_kleenheat_roster(xlsx_path: pathlib.Path) -> list[dict]:
             "labour_hire":       (raw[idx["Company"]] or "").strip(),
             "name":              name,
             "first_name":        first,
+            "last_name":         surname,
             "role":              role,
             "mobile":            mobile,
             "start":             to_iso(raw[idx["On Site"]]),
@@ -311,6 +348,8 @@ def parse_pegasus_roster(xlsx_path: pathlib.Path) -> list[dict]:
         rows.append({
             "labour_hire":      (raw[idx["Company"]] or "").strip(),
             "name":             name,
+            "first_name":       first,
+            "last_name":        last,
             "role":             role,
             "mobile":           mobile,
             "start":            to_iso(raw[idx["Date In"]]),
@@ -488,6 +527,147 @@ def macro_filled_for(file_key: str,
     return {role: v["filled"] for role, v in per_role.items() if v["filled"] > 0}
 
 
+# --------------------------------------------------------------------------- compliance (tickets)
+
+def _norm_name(s) -> str:
+    """Aggressive name-part normalisation: lowercase, letters only. Drops
+    spaces, hyphens, apostrophes, diacritic-ish characters so "O'Brien" and
+    "OBrien" collide, and so does "Van Der Zanden" vs "VANDERZANDEN"."""
+    return re.sub(r"[^a-z]+", "", (s or "").lower())
+
+
+def load_personnel_index(path: pathlib.Path) -> dict[tuple[str, str], str]:
+    """Build {(norm_first, norm_last): personnel_id} from xll01 Personnel.
+
+    Personnel can have multiple rows (re-hires, profile duplicates). Later
+    rows overwrite earlier ones under the same key; the compliance loader
+    then aggregates tickets across ALL of a person's IDs when we match.
+
+    Returns {} if the workbook or sheet is missing — the pipeline must
+    continue to work without tickets available.
+    """
+    if not path.exists():
+        return {}
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    try:
+        if "xll01 Personnel" not in wb.sheetnames:
+            return {}
+        ws = wb["xll01 Personnel"]
+        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+        ix = {h: n for n, h in enumerate(headers) if h}
+        out: dict[tuple[str, str], str] = {}
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            pid = r[ix["Personnel Id"]]
+            if not pid:
+                continue
+            f = _norm_name(r[ix["Given Names"]])
+            l = _norm_name(r[ix["Surname"]])
+            if f and l:
+                out[(f, l)] = pid
+        return out
+    finally:
+        wb.close()
+
+
+def match_personnel(first: str, last: str,
+                    index: dict[tuple[str, str], str]) -> str | None:
+    """Match a roster (first, last) pair to a Personnel Id with three forgiving
+    passes — exact normalised match, then prefix-on-first-name collisions on
+    the same surname (handles "Lucrecia Celeste" vs "Lucrecia" and similar
+    middle-name variants), then surname-unique fallback."""
+    f = _norm_name(first)
+    l = _norm_name(last)
+    if not f or not l:
+        return None
+    if (f, l) in index:
+        return index[(f, l)]
+    same_surname = [(if_, pid) for (if_, il_), pid in index.items() if il_ == l]
+    for if_, pid in same_surname:
+        if if_.startswith(f) or f.startswith(if_):
+            return pid
+    # Last resort: unique surname match (Kleenheat surnames are all-caps and
+    # somewhat rare, so this catches typos in the given-name column).
+    if len(same_surname) == 1:
+        return same_surname[0][1]
+    return None
+
+
+def load_compliance_data(path: pathlib.Path
+                         ) -> dict[str, dict[str, dict]]:
+    """Read xll01 PersonnelCompetency and return current tickets per person.
+
+    Shape: {personnel_id: {ticket_key: {"expiry": iso|None,
+                                        "doc": url|None,
+                                        "status": "current"|"expiring_soon",
+                                        "level": str (rig only)}}}
+
+    Filtering: skip rows where Archived is set (superseded records) or where
+    Expiry is set AND ≤ today (expired). Rows with no expiry are treated as
+    permanent certs (passports, White Card, certification welds) and kept.
+
+    Collision rules:
+      - For non-rigging tickets, keep the record with the LATEST expiry
+        (preferring permanent/no-expiry over any dated one).
+      - For rigging, keep the HIGHEST level the person currently holds —
+        "Advanced" beats "Intermediate" beats "Basic".
+    """
+    if not path.exists():
+        return {}
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    today = dt.date.today()
+    soon  = today + dt.timedelta(days=EXPIRING_SOON_DAYS)
+    try:
+        if "xll01 PersonnelCompetency" not in wb.sheetnames:
+            return {}
+        ws = wb["xll01 PersonnelCompetency"]
+        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+        ix = {h: n for n, h in enumerate(headers) if h}
+        out: dict[str, dict[str, dict]] = {}
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            if r[ix["Archived"]]:
+                continue
+            comp = r[ix["Competency"]]
+            pid  = r[ix["Personnel Id"]]
+            if not comp or not pid:
+                continue
+            is_rig = comp in RIG_COMPS
+            key    = "rig" if is_rig else TICKET_MAP.get(comp)
+            if key is None:
+                continue
+            exp = r[ix["Expiry"]]
+            exp_date: dt.date | None = None
+            if exp:
+                exp_date = exp.date() if isinstance(exp, dt.datetime) else exp
+                if not isinstance(exp_date, dt.date):
+                    exp_date = None
+                elif exp_date <= today:
+                    continue    # expired
+            record = {
+                "expiry": exp_date.isoformat() if exp_date else None,
+                "doc":    r[ix["Document Location"]] or None,
+                "status": "expiring_soon" if exp_date and exp_date <= soon else "current",
+            }
+            if is_rig:
+                record["level"] = RIG_COMPS[comp]
+                existing = out.setdefault(pid, {}).get(key)
+                if existing is None or RIG_PRIORITY[record["level"]] > RIG_PRIORITY[existing["level"]]:
+                    out[pid][key] = record
+            else:
+                existing = out.setdefault(pid, {}).get(key)
+                if existing is None:
+                    out[pid][key] = record
+                else:
+                    # Prefer permanent over dated; else prefer later expiry.
+                    e_exp = existing["expiry"]
+                    if record["expiry"] is None and e_exp is not None:
+                        out[pid][key] = record
+                    elif record["expiry"] is not None and e_exp is not None and record["expiry"] > e_exp:
+                        out[pid][key] = record
+        return out
+    finally:
+        wb.close()
+
+
 # --------------------------------------------------------------------------- targets
 
 def merge_targets(shutdown_id: str,
@@ -555,6 +735,8 @@ def build_shutdown(file_key: str,
                    rows: list[dict],
                    fmt: str,
                    macro_data: dict[int, dict[str, dict[str, int]]] | None = None,
+                   personnel_index: dict[tuple[str, str], str] | None = None,
+                   compliance: dict[str, dict[str, dict]] | None = None,
                    ) -> tuple[str, str, dict]:
     entry = ROSTER_MAP[file_key]
     company_key, client_name, project_label, site = entry[:4]
@@ -600,6 +782,38 @@ def build_shutdown(file_key: str,
     status      = _infer_status(dt.date.fromisoformat(sd),
                                 dt.date.fromisoformat(ed), today)
 
+    # Enrich each confirmed-roster entry with its current (non-expired)
+    # tickets from the SQL compliance sheet. Matching is best-effort
+    # (see match_personnel); unmatched workers just get an empty dict so
+    # the per-site dashboards can render "details pending" without crashing.
+    pidx    = personnel_index or {}
+    compmap = compliance or {}
+    roster_out: list[dict] = []
+    n_matched  = 0
+    n_unmatched = 0
+    for r in confirmed:
+        pid = match_personnel(r.get("first_name", ""),
+                              r.get("last_name", ""),
+                              pidx) if pidx else None
+        tickets = compmap.get(pid, {}) if pid else {}
+        if pid:
+            n_matched += 1
+        else:
+            n_unmatched += 1
+        entry = {"name": r["name"], "role": r["role"]}
+        if r.get("mobile"): entry["mobile"] = r["mobile"]
+        # Per-worker start/end drive the consolidated ops roster (tab 2).
+        # They can differ from the shutdown's overall span when a worker
+        # only covers part of the window (e.g. a supervisor arrives early,
+        # a trade assistant demobs mid-shutdown).
+        if r.get("start"):  entry["start"]  = r["start"]
+        if r.get("end"):    entry["end"]    = r["end"]
+        if pid:             entry["personnel_id"] = pid
+        # Tickets always emitted (even as {}) so per-site dashboards can
+        # branch on "did we have compliance data this run?" vs "no match".
+        entry["tickets"] = tickets
+        roster_out.append(entry)
+
     target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
     shutdown = {
         "id":               shutdown_id,
@@ -613,18 +827,7 @@ def build_shutdown(file_key: str,
         "crew_split":       crew_split,
         "mobilised_by_role": mobilised_by_role,
         "labour_hire_split": labour_hire_split,
-        "roster": [
-            {"name": r["name"],
-             "role": r["role"],
-             **({"mobile": r["mobile"]} if r.get("mobile") else {}),
-             # Per-worker start/end drive the consolidated ops roster (tab 2).
-             # They can differ from the shutdown's overall span when a worker
-             # only covers part of the window (e.g. a supervisor arrives early,
-             # a trade assistant demobs mid-shutdown).
-             **({"start": r["start"]} if r.get("start") else {}),
-             **({"end":   r["end"]}   if r.get("end")   else {})}
-            for r in confirmed
-        ],
+        "roster":            roster_out,
         "_source": {
             "rapid_crews_roster_id":   file_key,
             "rapid_crews_export_file": xlsx.name,
@@ -640,6 +843,11 @@ def build_shutdown(file_key: str,
             # scheduling DB and the other sources are easy to spot in the
             # dashboard's data-quality panel.
             "filled_by_role_pre_macro": filled_pre_macro if macro_filled is not None else None,
+            "compliance_match": {
+                "matched":   n_matched,
+                "unmatched": n_unmatched,
+                "coverage":  round(n_matched / (n_matched + n_unmatched), 3) if (n_matched + n_unmatched) else 0.0,
+            } if pidx else None,
         },
     }
     # Provenance for enriched rows — surfaced in data-quality warnings
@@ -733,18 +941,36 @@ def main() -> int:
         print(f"  macro data: {MACRO_FILE.name} not found — "
               f"falling back to roster-derived filled counts")
 
+    # -- 3b. Load compliance (tickets) + personnel index. These feed the
+    #        per-worker `tickets` field on each roster entry, which replaces
+    #        the "resume not supplied" placeholder on the per-site dashboards.
+    personnel_index = load_personnel_index(MACRO_FILE)
+    compliance      = load_compliance_data(MACRO_FILE)
+    if personnel_index:
+        print(f"  personnel: {len(personnel_index)} name->id entries; "
+              f"compliance: {sum(len(v) for v in compliance.values())} current tickets "
+              f"across {len(compliance)} people")
+    else:
+        print(f"  personnel/compliance: not loaded — roster tickets will be empty")
+
     # -- 4. Build per-shutdown payloads and group by company.
     by_company: dict[str, dict] = {}
     for key, xlsx, fmt, rows in parsed:
         company_key, client_name, shutdown = build_shutdown(
-            key, xlsx, rows, fmt, macro_data=macro_data)
+            key, xlsx, rows, fmt,
+            macro_data=macro_data,
+            personnel_index=personnel_index,
+            compliance=compliance)
         by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
         by_company[company_key]["shutdowns"].append(shutdown)
+        cm = shutdown["_source"].get("compliance_match")
+        cm_note = f"  match={cm['matched']}/{cm['matched']+cm['unmatched']}" if cm else ""
         print(f"  {key:>10}  {client_name:<10} {shutdown['id']:<22} "
               f"roster={len(shutdown['roster']):>3}  "
               f"{shutdown['start_date']} → {shutdown['end_date']}  "
               f"[{shutdown['status']}]  "
-              f"filled_src={shutdown['_source']['filled_source']}")
+              f"filled_src={shutdown['_source']['filled_source']}"
+              f"{cm_note}")
 
     # -- 5. Write per-company JSON files.
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")

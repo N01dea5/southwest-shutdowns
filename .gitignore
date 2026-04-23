@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+# Atomic-save artefacts from the in-place XML edit pattern used on the
+# macro workbook (see scripts/parse_macro_data.py comments).
+*.xlsx.tmp

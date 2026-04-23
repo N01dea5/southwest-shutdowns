@@ -38,7 +38,6 @@
   --callout-line:  #23B1A5;
 
   /* --- Company identity (stays clear of the brand red) --- */
-  --co-tianqi:     #6B4F9E;   /* muted purple — lithium hydroxide plant */
   --co-covalent:   #3A7849;   /* forest green */
   --co-tronox:     #3D4250;   /* graphite slate */
   --co-csbp:       #1F4E79;   /* navy blue — umbrella for NAAN2 + KPF LNG (Kleenheat) */
@@ -300,7 +299,22 @@ main {
   font-weight: 500;
 }
 .kpi-value.positive { color: var(--ok); }
-.kpi-value.negative { color: var(--srg-red); }
+/* Surplus pill on the "Requested / Confirmed" KPI — appears only when the
+   overall confirmed roster exceeds the requested plan. Kept visually subtle
+   (smaller than the main number) so the split stays readable; the green
+   tone matches the .positive colour used on the fill-rate KPI. */
+.kpi-surplus {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ok);
+  background: var(--ok-soft);
+  border-radius: 3px;
+  vertical-align: 8px;
+  letter-spacing: 0;
+}
 
 /* "Next shutdown" tile styled like the 'Upgraded FY26 Guidance' callout on
    the Executive Summary slide: soft aqua background + dashed brand-green
@@ -393,6 +407,10 @@ main {
 
 .chart-wrap { position: relative; height: 260px; }
 .chart-wrap.tall { height: 340px; }
+/* Retention chart is horizontal + one bar per shutdown — grow the height as
+   shutdowns accrue so bars stay readable instead of squashing. Capped so a
+   dashboard with 15+ historics doesn't push the other cards off-screen. */
+.chart-wrap.retention { height: clamp(280px, calc(60px + var(--retention-rows, 8) * 36px), 640px); }
 .chart-offline {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -470,7 +488,6 @@ td.num, th.num {
   vertical-align: middle;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
-.gantt-legend .co-tianqi    { background: var(--co-tianqi); }
 .gantt-legend .co-covalent  { background: var(--co-covalent); }
 .gantt-legend .co-tronox    { background: var(--co-tronox); }
 .gantt-legend .co-csbp      { background: var(--co-csbp); }
@@ -692,7 +709,6 @@ td.num, th.num {
   border-radius: 2px;
   vertical-align: middle;
 }
-.roster-legend .co-tianqi    { background: var(--co-tianqi); }
 .roster-legend .co-covalent  { background: var(--co-covalent); }
 .roster-legend .co-tronox    { background: var(--co-tronox); }
 .roster-legend .co-csbp      { background: var(--co-csbp); }
@@ -1006,6 +1022,35 @@ td.num, th.num {
 .sd-status.status-in_progress  { background: var(--warn); color: #fff; }
 .sd-status.status-completed    { background: var(--ok); }
 
+/* "Over plan" pill shown on the shutdown header when the confirmed roster
+   exceeds the requested plan. Green outline + soft fill so it reads as a
+   positive variance (the team mobilised more people than required) and
+   never clashes with the .status-in_progress amber chip next to it. */
+.sd-over-pill, .sd-archive-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  cursor: help;
+}
+.sd-over-pill {
+  color: var(--ok);
+  background: var(--ok-soft);
+  border: 1px solid var(--ok);
+}
+/* "Archived" pill: shutdown has rolled off Rapid Crews' live SQL view and is
+   being served from data/history/. Grey so it reads as "stale / last-known"
+   without alarming users — the data is still useful, just frozen. */
+.sd-archive-pill {
+  color: var(--srg-grey);
+  background: var(--srg-light);
+  border: 1px solid var(--srg-grey-2);
+}
+
 .sd-kpis {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1158,6 +1203,33 @@ td.num, th.num {
   margin-left: 4px;
   cursor: help;
 }
+/* Compact "CV" pill that opens the worker's resume (typically a SharePoint
+   share link) in a new tab. Rendered inline next to the name in both the
+   matrix and the ops roster. Outline by default so it doesn't out-shout
+   the name, fills brand-red on hover for affordance. Only rendered when
+   Resumes.xlsx has a URL on file — absent = no pill, zero layout shift. */
+.resume-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-family: var(--body);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--srg-red);
+  border: 1px solid var(--srg-red);
+  border-radius: 2px;
+  background: var(--surface);
+  text-decoration: none;
+  vertical-align: 1px;
+  transition: all .12s ease;
+}
+.resume-badge:hover {
+  background: var(--srg-red);
+  color: #fff;
+}
+
 /* Click-to-call mobile numbers in the matrix. tel: hrefs hand off to the
    device dialer on iOS / Android; on desktop they open the default handler. */
 .mobile-link {

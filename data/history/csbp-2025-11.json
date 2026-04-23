@@ -1,0 +1,275 @@
+{
+  "company_key": "csbp",
+  "client_name": "CSBP",
+  "archived_at": "2026-04-23T23:01:42Z",
+  "shutdown": {
+    "id": "csbp-2025-11",
+    "name": "NAAN3 November 2025",
+    "site": "Kwinana",
+    "start_date": "2025-11-11",
+    "end_date": "2025-11-17",
+    "status": "completed",
+    "required_by_role": {
+      "Sheet Metal Worker": 4,
+      "Intermediate Rigger": 4,
+      "Supervisor - Mechanical": 4,
+      "Mechanical Fitter": 10,
+      "Trade Assistant": 8
+    },
+    "filled_by_role": {
+      "Sheet Metal Worker": 4,
+      "Intermediate Rigger": 4,
+      "Supervisor - Mechanical": 4,
+      "Mechanical Fitter": 10,
+      "Trade Assistant": 8
+    },
+    "crew_split": {
+      "Day": 23,
+      "Night": 7
+    },
+    "mobilised_by_role": {
+      "Sheet Metal Worker": 4,
+      "Intermediate Rigger": 4,
+      "Supervisor - Mechanical": 4,
+      "Mechanical Fitter": 10,
+      "Trade Assistant": 8
+    },
+    "labour_hire_split": {
+      "SRG Global Integrated Services": 30
+    },
+    "roster": [
+      {
+        "name": "Craig ALLEN",
+        "role": "Sheet Metal Worker",
+        "mobile": "0420 513 425",
+        "start": "2025-11-11",
+        "end": "2025-11-11"
+      },
+      {
+        "name": "Kristina WATTS",
+        "role": "Sheet Metal Worker",
+        "mobile": "0458 643 602",
+        "start": "2025-11-11",
+        "end": "2025-11-11"
+      },
+      {
+        "name": "Max McCORMICK \ud83d\udd37",
+        "role": "Intermediate Rigger",
+        "mobile": "0415 372 252",
+        "start": "2025-11-12",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Dale ROBERTS",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0430 911 958",
+        "start": "2025-11-12",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Brett STONE \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0410 436 761",
+        "start": "2025-11-13",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Russell CHITTY",
+        "role": "Intermediate Rigger",
+        "mobile": "0435 052 151",
+        "start": "2025-11-12",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Richard McKENZIE \ud83d\udd37",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0473 613 365",
+        "start": "2025-11-12",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Kevin GARTY \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0420 359 303",
+        "start": "2025-11-12",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Paula SAFFIGNA",
+        "role": "Trade Assistant",
+        "mobile": "0458 617 638",
+        "start": "2025-11-12",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Bayram PRUFER \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0472 646 383",
+        "start": "2025-11-12",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Sharaine HOWSON \ud83d\udd37",
+        "role": "Intermediate Rigger",
+        "mobile": "0400 035 694",
+        "start": "2025-11-12",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Stacey-Lee BOOTHMAN \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0407 218 724",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "John BEBEK \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0437 031 659",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Ryan MERIKHI \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0493 911 607",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Kyoodong KIM",
+        "role": "Intermediate Rigger",
+        "mobile": "0437 888 251",
+        "start": "2025-11-11",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Josh TOTH",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0414 940 421",
+        "start": "2025-11-15",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Michael DAWSON",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0411 097 139",
+        "start": "2025-11-11",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Keron KAPPET",
+        "role": "Trade Assistant",
+        "mobile": "0437 976 484",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Dragonlee MANAIA",
+        "role": "Trade Assistant",
+        "mobile": "0450 921 358",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Willy FAVA",
+        "role": "Trade Assistant",
+        "mobile": "0481 092 939",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Ko THAT \ud83d\udd37",
+        "role": "Trade Assistant",
+        "mobile": "0452 607 533",
+        "start": "2025-11-14",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Jacinta JEFFERY",
+        "role": "Trade Assistant",
+        "mobile": "0428 238 866",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Paul BESTWICK",
+        "role": "Mechanical Fitter",
+        "mobile": "0406 613 783",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Colin FORD \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0413 371 184",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Roberto RAFFAELE",
+        "role": "Trade Assistant",
+        "mobile": "0419 949 242",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Sebastian LUEBKEN",
+        "role": "Mechanical Fitter",
+        "mobile": "0428 923 142",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Barry LYON",
+        "role": "Trade Assistant",
+        "mobile": "0438 555 069",
+        "start": "2025-11-12",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Ivan RAYNOV",
+        "role": "Mechanical Fitter",
+        "mobile": "0401 749 106",
+        "start": "2025-11-11",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Craig ALLEN",
+        "role": "Sheet Metal Worker",
+        "mobile": "0420 513 425",
+        "start": "2025-11-17",
+        "end": "2025-11-17"
+      },
+      {
+        "name": "Kristina WATTS",
+        "role": "Sheet Metal Worker",
+        "mobile": "0458 643 602",
+        "start": "2025-11-17",
+        "end": "2025-11-17"
+      }
+    ],
+    "_source": {
+      "rapid_crews_roster_id": "1147",
+      "rapid_crews_export_file": "1147 CSBP Naan3.xlsx",
+      "source_format": "pegasus",
+      "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+      "rapid_crews_roster_size": 30,
+      "rapid_crews_filled_by_role": {
+        "Sheet Metal Worker": 4,
+        "Intermediate Rigger": 4,
+        "Supervisor - Mechanical": 4,
+        "Mechanical Fitter": 10,
+        "Trade Assistant": 8
+      },
+      "target_source": null,
+      "name_resolution": {
+        "explicit_column": 30,
+        "email_heuristic": 0,
+        "xref_exact": 0,
+        "unmatched": 0,
+        "ambiguous_samples": []
+      }
+    }
+  }
+}

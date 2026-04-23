@@ -1,0 +1,722 @@
+{
+  "company_key": "tronox",
+  "client_name": "Tronox",
+  "archived_at": "2026-04-23T23:01:42Z",
+  "shutdown": {
+    "id": "tronox-2025-11",
+    "name": "Major Shutdown November 2025",
+    "site": "Kwinana",
+    "start_date": "2025-11-03",
+    "end_date": "2025-11-16",
+    "status": "completed",
+    "required_by_role": {
+      "Trade Assistant": 20,
+      "Rope Access - Level 3": 1,
+      "Mechanical Fitter": 18,
+      "Coded Welder": 4,
+      "Scaffolder": 11,
+      "Advanced Rigger": 3,
+      "Boilermaker": 5,
+      "Superintendent": 2,
+      "Supervisor - Mechanical": 7,
+      "Supervisor - Scaffold": 2,
+      "Intermediate Rigger": 7,
+      "Rope Access - Superintendent": 1,
+      "NDT": 1,
+      "Sheet Metal Worker": 1,
+      "Painter & Blaster": 1,
+      "Rope Access - Trade Assistant": 2,
+      "Fibre Glasser": 1
+    },
+    "filled_by_role": {
+      "Trade Assistant": 20,
+      "Rope Access - Level 3": 1,
+      "Mechanical Fitter": 18,
+      "Coded Welder": 4,
+      "Scaffolder": 11,
+      "Advanced Rigger": 3,
+      "Boilermaker": 5,
+      "Superintendent": 2,
+      "Supervisor - Mechanical": 7,
+      "Supervisor - Scaffold": 2,
+      "Intermediate Rigger": 7,
+      "Rope Access - Superintendent": 1,
+      "NDT": 1,
+      "Sheet Metal Worker": 1,
+      "Painter & Blaster": 1,
+      "Rope Access - Trade Assistant": 2,
+      "Fibre Glasser": 1
+    },
+    "crew_split": {
+      "Day": 48,
+      "Night": 39
+    },
+    "mobilised_by_role": {
+      "Trade Assistant": 20,
+      "Rope Access - Level 3": 1,
+      "Mechanical Fitter": 18,
+      "Coded Welder": 4,
+      "Scaffolder": 11,
+      "Advanced Rigger": 3,
+      "Boilermaker": 5,
+      "Superintendent": 2,
+      "Supervisor - Mechanical": 7,
+      "Supervisor - Scaffold": 2,
+      "Intermediate Rigger": 7,
+      "Rope Access - Superintendent": 1,
+      "NDT": 1,
+      "Sheet Metal Worker": 1,
+      "Painter & Blaster": 1,
+      "Rope Access - Trade Assistant": 2,
+      "Fibre Glasser": 1
+    },
+    "labour_hire_split": {
+      "SRG Global Integrated Services": 87
+    },
+    "roster": [
+      {
+        "name": "Jon DORRONSORO",
+        "role": "Trade Assistant",
+        "mobile": "0480 734 929",
+        "start": "2025-11-05",
+        "end": "2025-11-07"
+      },
+      {
+        "name": "Gary DELANEY \ud83d\udd37",
+        "role": "Rope Access - Level 3",
+        "mobile": "0499 084 946",
+        "start": "2025-11-10",
+        "end": "2025-11-11"
+      },
+      {
+        "name": "Louisito CUSTODIO \ud83d\udd39",
+        "role": "Mechanical Fitter",
+        "mobile": "0433 515 002",
+        "start": "2025-11-10",
+        "end": "2025-11-13"
+      },
+      {
+        "name": "Aidan EDWARDS",
+        "role": "Mechanical Fitter",
+        "mobile": "0421 998 847",
+        "start": "2025-11-10",
+        "end": "2025-11-13"
+      },
+      {
+        "name": "John HILL",
+        "role": "Coded Welder",
+        "mobile": "0487 251 137",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Qi WANG \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0430 179 158",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "John HANCOCK",
+        "role": "Mechanical Fitter",
+        "mobile": "0409 998 059",
+        "start": "2025-11-04",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Khan MATENGA",
+        "role": "Scaffolder",
+        "mobile": "0411 927 711",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Luis FERNANDES",
+        "role": "Advanced Rigger",
+        "mobile": "0424 476 507",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Renan SANCHEZ",
+        "role": "Mechanical Fitter",
+        "mobile": "0431 951 293",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Jordan ENUA",
+        "role": "Scaffolder",
+        "mobile": "0424 974 571",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Neva TEOFILO",
+        "role": "Scaffolder",
+        "mobile": "0455 312 701",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Gabriel NGUYEN",
+        "role": "Trade Assistant",
+        "mobile": "0448 737 990",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Parnera TITOKO \ud83d\udd37",
+        "role": "Boilermaker",
+        "mobile": "0408 943 518",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Luke McNAMARA",
+        "role": "Superintendent",
+        "mobile": "0474 058 989",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Ricky WHITE",
+        "role": "Scaffolder",
+        "mobile": "0484 658 726",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Steven TREEN",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0498 493 782",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Matt LODGE",
+        "role": "Supervisor - Scaffold",
+        "mobile": "0418 953 354",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Charlie FLUX \ud83d\udd37",
+        "role": "Intermediate Rigger",
+        "mobile": "0422 238 900",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Agnes KONOKONO",
+        "role": "Scaffolder",
+        "mobile": "0420 496 157",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Alexio NYAMAKAZI",
+        "role": "Boilermaker",
+        "mobile": "0450 968 872",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "John KAONZA",
+        "role": "Mechanical Fitter",
+        "mobile": "0406 082 127",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Adrien PLUNIAN",
+        "role": "Scaffolder",
+        "mobile": "0404 655 007",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Oliver KYLE \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0473 004 701",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Stjepan BOSNJAK",
+        "role": "Mechanical Fitter",
+        "mobile": "0413 377 068",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Fungai KAREMBA",
+        "role": "Mechanical Fitter",
+        "mobile": "0447 956 642",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Michael WILLIAMS \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0448 035 944",
+        "start": "2025-11-11",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Victor JOVENEAU",
+        "role": "Trade Assistant",
+        "mobile": "0458 498 626",
+        "start": "2025-11-05",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Grant SLATER",
+        "role": "Mechanical Fitter",
+        "mobile": "0431 949 178",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Brodie ANDERSON",
+        "role": "Mechanical Fitter",
+        "mobile": "0427 833 385",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Jack SUTTON \ud83d\udd37",
+        "role": "Mechanical Fitter",
+        "mobile": "0477 421 468",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "mobile": "0435 441 418",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Nathan CHITEPO",
+        "role": "Mechanical Fitter",
+        "mobile": "0413 907 418",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Joe DACK",
+        "role": "Intermediate Rigger",
+        "mobile": "0449 995 304",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Paul BERRY",
+        "role": "Superintendent",
+        "mobile": "0455 599 800",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Christopher McLENNAN",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0427 164 636",
+        "start": "2025-11-04",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Clifford LEMON",
+        "role": "Advanced Rigger",
+        "mobile": "0438 800 692",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "James ARNOULD",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0426 856 352",
+        "start": "2025-11-03",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Daniel PRICE",
+        "role": "Scaffolder",
+        "mobile": "0417 919 978",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Michael TE PUIA (JNR)",
+        "role": "Scaffolder",
+        "mobile": "0434 720 078",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Adam PARANZEE",
+        "role": "Trade Assistant",
+        "mobile": "0439 229 028",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Brendon WYATT",
+        "role": "Rope Access - Superintendent",
+        "mobile": "0451 773 731",
+        "start": "2025-11-13",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Leeroy SIMON",
+        "role": "NDT",
+        "mobile": "0416 708 404",
+        "start": "2025-11-12",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Riley BAKER",
+        "role": "Mechanical Fitter",
+        "mobile": "0408 984 898",
+        "start": "2025-11-05",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Thomas HOLMES",
+        "role": "Supervisor - Scaffold",
+        "mobile": "0434 259 436",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Liam DODD",
+        "role": "Scaffolder",
+        "mobile": "0421 943 208",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Craig MARTIN",
+        "role": "Coded Welder",
+        "mobile": "0410 477 394",
+        "start": "2025-11-04",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Neil EVINA \ud83d\udd37",
+        "role": "Boilermaker",
+        "mobile": "0428 000 435",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "David STITZ",
+        "role": "Sheet Metal Worker",
+        "mobile": "0408 939 455",
+        "start": "2025-11-04",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Jackson POWELL",
+        "role": "Intermediate Rigger",
+        "mobile": "0493 334 531",
+        "start": "2025-11-10",
+        "end": "2025-11-14"
+      },
+      {
+        "name": "Vu NGHIEM \ud83d\udd37",
+        "role": "Intermediate Rigger",
+        "mobile": "0411 829 656",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Melvin TIAMSON",
+        "role": "Coded Welder",
+        "mobile": "0429 525 137",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Abdirizak ABDIKARIM ISSA",
+        "role": "Trade Assistant",
+        "mobile": "0412 848 672",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Vincenzo MARGOTTA",
+        "role": "Advanced Rigger",
+        "mobile": "0411 462 357",
+        "start": "2025-11-05",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Aden Pakau",
+        "role": "Painter & Blaster",
+        "mobile": "0408 757 774",
+        "start": "2025-11-13",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Cameron DUNN",
+        "role": "Boilermaker",
+        "mobile": "0499 485 946",
+        "start": "2025-11-06",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Aurele HUGUET",
+        "role": "Rope Access - Trade Assistant",
+        "mobile": "0429 626 492",
+        "start": "2025-11-07",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Max LUTTENAUER \ud83d\udd37",
+        "role": "Boilermaker",
+        "mobile": "0494 413 258",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Lea MONDESIR",
+        "role": "Trade Assistant",
+        "mobile": "0436 652 133",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Peter BURNS",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0437 183 009",
+        "start": "2025-11-03",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Hunia HATI",
+        "role": "Scaffolder",
+        "mobile": "0426 776 433",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Jaime HERNANDEZ",
+        "role": "Trade Assistant",
+        "mobile": "0499 422 603",
+        "start": "2025-11-05",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Joey CANTOS",
+        "role": "Scaffolder",
+        "mobile": "0448 566 252",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Chaeyoon KIM",
+        "role": "Intermediate Rigger",
+        "mobile": "0419 549 708",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Patrick DALY",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0420 397 028",
+        "start": "2025-11-07",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Karunakar DEVIREDDY",
+        "role": "Mechanical Fitter",
+        "mobile": "0434 848 554",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Andre VAN DER MERWE",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0448 014 946",
+        "start": "2025-11-03",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Lewis NEWELL",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0434 841 251",
+        "start": "2025-11-03",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Edward GARDINER",
+        "role": "Mechanical Fitter",
+        "mobile": "0457 470 330",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Robert HARRIS",
+        "role": "Trade Assistant",
+        "mobile": "0405 745 828",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Naing WIN",
+        "role": "Coded Welder",
+        "mobile": "0432 253 416",
+        "start": "2025-11-05",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Dian PRATAMA",
+        "role": "Rope Access - Trade Assistant",
+        "mobile": "0404 495 276",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Joe BROOKS",
+        "role": "Trade Assistant",
+        "mobile": "0421 411 263",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Lise MONNET",
+        "role": "Trade Assistant",
+        "mobile": "0427 753 796",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Lauryn REDUIT",
+        "role": "Trade Assistant",
+        "mobile": "0409 543 555",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Paula TEIXEIRA",
+        "role": "Trade Assistant",
+        "mobile": "0460 882 590",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "mobile": "0472 586 919",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Hannah SULTAN",
+        "role": "Trade Assistant",
+        "mobile": "0476 050 686",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Sam RICHDALE",
+        "role": "Trade Assistant",
+        "mobile": "0474 342 326",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Fabien ONOLFO",
+        "role": "Trade Assistant",
+        "mobile": "0498 459 340",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Trevor POWELL",
+        "role": "Trade Assistant",
+        "mobile": "0419 907 031",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Malcolm BROWN",
+        "role": "Fibre Glasser",
+        "mobile": "0400 398 056",
+        "start": "2025-11-14",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "John RAMOS",
+        "role": "Trade Assistant",
+        "mobile": "0424 723 918",
+        "start": "2025-11-10",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Adrian WILLIAMS",
+        "role": "Trade Assistant",
+        "mobile": "0428 421 338",
+        "start": "2025-11-03",
+        "end": "2025-11-16"
+      },
+      {
+        "name": "Irwin ISSAC",
+        "role": "Mechanical Fitter",
+        "mobile": "0487 700 914",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Daniel SILLIS",
+        "role": "Intermediate Rigger",
+        "mobile": "0449 125 720",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      },
+      {
+        "name": "Damien CAILLEUX",
+        "role": "Intermediate Rigger",
+        "mobile": "0488 182 943",
+        "start": "2025-11-10",
+        "end": "2025-11-15"
+      }
+    ],
+    "_source": {
+      "rapid_crews_roster_id": "1116",
+      "rapid_crews_export_file": "1116 Tronox.xlsx",
+      "source_format": "pegasus",
+      "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+      "rapid_crews_roster_size": 87,
+      "rapid_crews_filled_by_role": {
+        "Trade Assistant": 20,
+        "Rope Access - Level 3": 1,
+        "Mechanical Fitter": 18,
+        "Coded Welder": 4,
+        "Scaffolder": 11,
+        "Advanced Rigger": 3,
+        "Boilermaker": 5,
+        "Superintendent": 2,
+        "Supervisor - Mechanical": 7,
+        "Supervisor - Scaffold": 2,
+        "Intermediate Rigger": 7,
+        "Rope Access - Superintendent": 1,
+        "NDT": 1,
+        "Sheet Metal Worker": 1,
+        "Painter & Blaster": 1,
+        "Rope Access - Trade Assistant": 2,
+        "Fibre Glasser": 1
+      },
+      "target_source": null,
+      "name_resolution": {
+        "explicit_column": 87,
+        "email_heuristic": 0,
+        "xref_exact": 0,
+        "unmatched": 0,
+        "ambiguous_samples": []
+      }
+    }
+  }
+}

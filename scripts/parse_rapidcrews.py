@@ -66,6 +66,17 @@ ROSTER_MAP: dict[str, tuple] = {
     "1359": ("covalent", "Covalent", "Mt Holland April 2026",   "Mt Holland"),
     "1375": ("csbp",     "CSBP",     "NAAN2 June 2026",         "Kwinana"),
 
+    # Historic Pegasus-format rosters — kept in data/raw/ so the retention
+    # matrix still has pre-2026 shutdowns even after Rapid Crews' live SQL
+    # view rolls these JobNos off. Dates come from the roster rows themselves
+    # (Date In / Date Out). See parse_pegasus_roster().
+    "1110": ("covalent", "Covalent", "Mt Holland October 2025",  "Mt Holland",
+             "covalent-2025-10"),
+    "1116": ("tronox",   "Tronox",   "Major Shutdown November 2025", "Kwinana",
+             "tronox-2025-11"),
+    "1147": ("csbp",     "CSBP",     "NAAN3 November 2025",       "Kwinana",
+             "csbp-2025-11"),
+
     # CSBP is the umbrella WesCEF client — their Kwinana estate covers the
     # KPF LNG (Kleenheat-branded) plant and the NAAN2 fertiliser unit. Both
     # roll up under the same company_key so the unified dashboard treats
@@ -88,6 +99,8 @@ REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
 RAW_DIR     = REPO_ROOT / "data" / "raw"
 DATA_DIR    = REPO_ROOT / "data"
 TARGETS_DIR = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
+HISTORY_DIR = DATA_DIR / "history"     # per-shutdown snapshot that persists
+                                       # after Rapid Crews' SQL view rolls over
 
 RAPIDCREWS_COLS = ["Company", "Name", "Surname", "Position", "Position On Project",
                    "Start Date", "End Date", "Confirmed", "Crew Type", "Mobilised"]
@@ -398,50 +411,36 @@ def enrich_kleenheat_names(rows: list[dict], lookup: dict) -> dict[str, int]:
 def merge_targets(shutdown_id: str,
                   filled_by_role: dict[str, int]
                   ) -> tuple[dict[str, int], dict[str, int], dict | None]:
-    """Read optional overrides from data/targets/<shutdown_id>.json and merge
-    them onto the Rapid Crews-derived counts.
+    """Read optional overrides from data/targets/<shutdown_id>.json.
 
-    Two file shapes are supported:
-
-    - Flat dict `{role: int}` — legacy / Kleenheat style — treated as the
-      required-by-role override. `filled_by_role` is left as derived.
-    - Nested `{"required_by_role": {...}, "filled_by_role": {...}, "_source": {...}}`
-      produced by `scripts/sync_source_targets.py`. Both required AND filled
-      are replaced by the per-site dashboard counts (the Rapid Crews roster
-      diverges from the site dashboard's own named list; trust the site).
+    Rapid Crews is the source of truth for filled_by_role — callers hand us
+    the RC-derived counts and we always return them unchanged. The target
+    file only contributes `required_by_role` when RC has nothing to say
+    (no JobPlanningView row for this JobNo — historic Pegasus rosters, the
+    Kleenheat carry-over). Any role present in the RC roster but missing
+    from the target file is filled in as required = filled, so the table
+    shows "0 gap" rather than an empty cell.
 
     Returns (required_by_role, filled_by_role, source_meta | None).
     """
     path = TARGETS_DIR / f"{shutdown_id}.json"
     if not path.exists():
+        # No override: required defaults to the RC filled count (placeholder).
         return dict(filled_by_role), dict(filled_by_role), None
     data: dict = json.loads(path.read_text())
 
     if "required_by_role" in data:
-        required_override: dict[str, int] = data["required_by_role"]
-        filled_override:   dict[str, int] | None = data.get("filled_by_role")
-        source_meta = data.get("_source")
+        required_override = dict(data["required_by_role"])
+        source_meta       = data.get("_source")
     else:
         # Legacy flat shape — all keys are required-by-role overrides.
-        required_override = data
-        filled_override   = None
+        required_override = dict(data)
         source_meta       = None
 
-    if filled_override is not None:
-        # Full override from the per-site dashboard — trust it completely.
-        # Don't mix in roles the Rapid Crews roster has but the site doesn't,
-        # or the totals diverge from what the site shows.
-        all_keys = set(required_override) | set(filled_override)
-        required = {r: int(required_override.get(r, 0)) for r in all_keys}
-        filled   = {r: int(filled_override.get(r, 0))   for r in all_keys}
-    else:
-        # Legacy / Kleenheat: target covers required only; filled stays as
-        # the RC-derived count (with required defaulting to filled for any
-        # role the target file didn't mention — the placeholder behaviour).
-        all_keys = set(filled_by_role) | set(required_override)
-        required = {r: int(required_override.get(r, filled_by_role.get(r, 0)))
-                    for r in all_keys}
-        filled   = dict(filled_by_role)
+    all_keys = set(filled_by_role) | set(required_override)
+    required = {r: int(required_override.get(r, filled_by_role.get(r, 0)))
+                for r in all_keys}
+    filled   = dict(filled_by_role)
     return required, filled, source_meta
 
 
@@ -480,12 +479,37 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
             mobilised_by_role[r["role"]] = mobilised_by_role.get(r["role"], 0) + 1
 
     shutdown_id = shutdown_id_override or f"{company_key}-{sd[:7]}"
-    required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
+
+    # Rapid Crews is the source of truth for required counts when the JobNo
+    # is still in the macro workbook's JobPlanningView — flip in ahead of
+    # any legacy target file so site-dashboard drift can't override reality.
+    planning_required: dict[str, int] | None = None
+    if file_key.isdigit():
+        try:
+            import parse_macro_data as _pmd
+            planning_required = _pmd.planning_required_for_jobno(int(file_key))
+        except Exception as e:           # pragma: no cover — defensive
+            print(f"  warn: macro planning lookup failed for {file_key}: {e}")
+            planning_required = None
+
+    if planning_required:
+        # Roles the roster has but JobPlanningView doesn't are carried over
+        # at "0 required" so the table surfaces them as surplus.
+        all_keys = set(filled_by_role) | set(planning_required)
+        required = {r: int(planning_required.get(r, 0)) for r in all_keys}
+        filled_final = dict(filled_by_role)
+        target_source_meta = {"source": "rapid_crews_job_planning_view",
+                              "job_no": int(file_key),
+                              "total_required": sum(planning_required.values())}
+        required_target_source = "RAPID_CREWS_JOB_PLANNING"
+    else:
+        required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
+        target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
+        required_target_source = "TARGET_FILE" if target_exists else "PLACEHOLDER_FROM_ROSTER"
+
     today       = dt.date.today()
     status      = _infer_status(dt.date.fromisoformat(sd),
                                 dt.date.fromisoformat(ed), today)
-
-    target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
     shutdown = {
         "id":               shutdown_id,
         "name":             project_label,
@@ -514,12 +538,10 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
             "rapid_crews_roster_id":   file_key,
             "rapid_crews_export_file": xlsx.name,
             "source_format":           fmt,
-            "required_target_source": (
-                "REAL_TARGET" if target_exists else "PLACEHOLDER_FROM_ROSTER"
-            ),
+            "required_target_source":  required_target_source,
             "rapid_crews_roster_size": len(confirmed),
             "rapid_crews_filled_by_role": filled_by_role,   # preserved for audit
-            "target_source":           target_source_meta,  # None for Kleenheat
+            "target_source":           target_source_meta,  # None for placeholder
         },
     }
     # Provenance for enriched rows — surfaced in data-quality warnings
@@ -544,6 +566,108 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
 
 
 # --------------------------------------------------------------------------- main
+
+def _write_history_snapshots(triples: list[tuple[str, str, dict]]) -> None:
+    """Persist one JSON snapshot per shutdown under data/history/<id>.json.
+
+    These files are the safety net when Rapid Crews rolls a JobNo off the
+    live SQL view: the next `parse_rapidcrews.py` run will see the snapshot,
+    flag the shutdown as "archived", and re-hydrate it onto the dashboard.
+    Files are overwritten only when the current run has something for that
+    shutdown, so restored-from-archive shutdowns don't overwrite themselves
+    with the same data every run.
+    """
+    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
+    now_iso = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    for company_key, client_name, shutdown in triples:
+        src = shutdown.get("_source", {})
+        # Don't snapshot shutdowns that were themselves restored from archive
+        # on this run — their data didn't freshen, so the file is already up
+        # to date. `restored_from_archive` is stamped in _restore_from_history.
+        if src.get("restored_from_archive"):
+            continue
+        snap = {
+            "company_key":  company_key,
+            "client_name":  client_name,
+            "archived_at":  now_iso,
+            "shutdown":     shutdown,
+        }
+        path = HISTORY_DIR / f"{shutdown['id']}.json"
+        path.write_text(json.dumps(snap, indent=2))
+
+
+def _restore_from_history(triples: list[tuple[str, str, dict]],
+                          active_jobnos: set[int] | None
+                          ) -> list[tuple[str, str, dict]]:
+    """Fill in any ACTIVE_SHUTDOWNS JobNo that's missing from this run's output
+    by reading the last-known snapshot from data/history/.
+
+    Returns the list of restored triples (possibly empty). The caller is
+    responsible for merging them into `combined`. Restored shutdowns get
+    `status = "completed"` if their end_date is in the past, and their
+    `_source.restored_from_archive = True` so the dashboard can flag them.
+    """
+    if not HISTORY_DIR.exists():
+        return []
+    present_jobnos: set[int] = set()
+    for _, _, s in triples:
+        src = s.get("_source", {})
+        for key in ("rapid_crews_roster_id", "macro_data_job_no"):
+            v = src.get(key)
+            if v is None:
+                continue
+            try:
+                present_jobnos.add(int(v))
+            except (TypeError, ValueError):
+                pass
+
+    want = active_jobnos or set()
+    missing = sorted(j for j in want if j not in present_jobnos)
+    restored: list[tuple[str, str, dict]] = []
+    today = dt.date.today()
+    for job in missing:
+        # Find the snapshot by JobNo — we don't know the shutdown_id upfront
+        # since the file is named after the id, not the JobNo.
+        snap_path = None
+        for p in HISTORY_DIR.glob("*.json"):
+            try:
+                doc = json.loads(p.read_text())
+            except (OSError, json.JSONDecodeError):
+                continue
+            src = doc.get("shutdown", {}).get("_source", {})
+            for key in ("rapid_crews_roster_id", "macro_data_job_no"):
+                v = src.get(key)
+                try:
+                    if v is not None and int(v) == job:
+                        snap_path = p
+                        break
+                except (TypeError, ValueError):
+                    pass
+            if snap_path is not None:
+                break
+        if snap_path is None:
+            print(f"  archive: JobNo {job} missing from this run and no snapshot "
+                  f"in data/history/ — dashboard will show a gap")
+            continue
+        doc = json.loads(snap_path.read_text())
+        shutdown = doc["shutdown"]
+        # Re-infer status from the frozen dates, in case time has passed since
+        # the snapshot was taken.
+        try:
+            sd = dt.date.fromisoformat(shutdown["start_date"])
+            ed = dt.date.fromisoformat(shutdown["end_date"])
+            shutdown["status"] = _infer_status(sd, ed, today)
+        except (KeyError, ValueError):
+            pass
+        shutdown.setdefault("_source", {})
+        shutdown["_source"]["restored_from_archive"] = True
+        shutdown["_source"]["archive_path"]          = str(snap_path.relative_to(REPO_ROOT))
+        shutdown["_source"]["archived_at"]           = doc.get("archived_at", "")
+        restored.append((doc["company_key"], doc["client_name"], shutdown))
+        print(f"  archive: JobNo {job:>4} -> restored from {snap_path.name} "
+              f"({shutdown['id']} · roster={len(shutdown.get('roster', []))})")
+    return restored
+
 
 def _file_key(xlsx: pathlib.Path) -> str:
     """Lookup key into ROSTER_MAP.
@@ -641,10 +765,26 @@ def main() -> int:
                       f"not in ACTIVE_SHUTDOWNS — dropping")
         combined = kept
 
+    # -- 3d. Historical retention: for any ACTIVE_SHUTDOWNS JobNo that produced
+    #        no shutdown this run AND has no matching raw XLSX, try restoring
+    #        the last-known snapshot from data/history/. This keeps the tile
+    #        on the dashboard after Rapid Crews' live SQL view rolls the
+    #        JobNo off (it's time-windowed to roughly the next 12 months), so
+    #        the ops team doesn't suddenly lose visibility on a shutdown
+    #        that's still operationally relevant.
+    restored = _restore_from_history(combined, active_jobnos)
+    for triple in restored:
+        combined.append(triple)
+
     by_company: dict[str, dict] = {}
     for company_key, client_name, shutdown in combined:
         by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
         by_company[company_key]["shutdowns"].append(shutdown)
+
+    # -- 3e. Snapshot every shutdown we just built into data/history/. Files
+    #        are committed alongside data/*.json so they're safe across
+    #        branches and in the repo's audit trail.
+    _write_history_snapshots(combined)
 
     # -- 4. Write per-company JSON files.
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -656,6 +796,23 @@ def main() -> int:
         total = sum(len(s["roster"]) for s in payload["shutdowns"])
         print(f"Wrote {out.relative_to(REPO_ROOT)}: "
               f"{len(payload['shutdowns'])} shutdown(s), {total} confirmed heads")
+
+    # -- 4b. Write consolidated resumes JSON. Kept separate from the per-
+    #        company payloads so the dashboard can fetch it once and
+    #        decorate workers in every tab (matrix, ops roster).
+    try:
+        import parse_macro_data as _pmd
+        resumes = _pmd.resumes_from_macro_data()
+    except Exception as e:
+        print(f"  warn: resumes lookup failed: {e}")
+        resumes = []
+    resumes_doc = {
+        "generated_at": now,
+        "source_file":  "Resumes.xlsx",
+        "resumes":      resumes,
+    }
+    (DATA_DIR / "resumes.json").write_text(json.dumps(resumes_doc, indent=2))
+    print(f"Wrote data/resumes.json: {len(resumes)} resume link(s)")
 
     # -- 5. Backfill empty payloads for any client the dashboard lists but
     #       which got no rosters this run (prevents 404s on page load).

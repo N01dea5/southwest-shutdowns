@@ -1,0 +1,288 @@
+{
+  "company_key": "csbp",
+  "client_name": "CSBP",
+  "archived_at": "2026-04-23T23:01:42Z",
+  "shutdown": {
+    "id": "csbp-2026-05",
+    "name": "NAAN2 June 2026",
+    "site": "Kwinana",
+    "start_date": "2026-05-25",
+    "end_date": "2026-06-21",
+    "status": "booked",
+    "required_by_role": {
+      "Mechanical Fitter": 13,
+      "Rigger - Advanced": 4,
+      "Intermediate Rigger": 0,
+      "Advanced Rigger": 0,
+      "Supervisor - Mechanical": 3,
+      "Trade Assistant": 16
+    },
+    "filled_by_role": {
+      "Mechanical Fitter": 13,
+      "Advanced Rigger": 3,
+      "Supervisor - Mechanical": 1,
+      "Trade Assistant": 15,
+      "Intermediate Rigger": 1
+    },
+    "crew_split": {
+      "Day": 20,
+      "Night": 13
+    },
+    "mobilised_by_role": {},
+    "labour_hire_split": {
+      "SRG - South West": 33
+    },
+    "roster": [
+      {
+        "name": "Tabani CHIPIRI",
+        "role": "Mechanical Fitter",
+        "mobile": "0497 594 673",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Joe DACK",
+        "role": "Advanced Rigger",
+        "mobile": "0449 995 304",
+        "start": "2026-06-04",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Peter BURNS",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0437 183 009",
+        "start": "2026-05-25",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Mao LI",
+        "role": "Mechanical Fitter",
+        "mobile": "0432 066 471",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Mitya DOBBELAERE",
+        "role": "Mechanical Fitter",
+        "mobile": "0447 582 473",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Wayne FORREST",
+        "role": "Mechanical Fitter",
+        "mobile": "0438 101 966",
+        "start": "2026-06-06",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Paul BESTWICK",
+        "role": "Mechanical Fitter",
+        "mobile": "0406 613 783",
+        "start": "2026-06-04",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Jake GANGEMI",
+        "role": "Mechanical Fitter",
+        "mobile": "0426 994 235",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Malcolm GRAINGER-ROUSSEAU",
+        "role": "Mechanical Fitter",
+        "mobile": "0487 104 895",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Robert HARRIS",
+        "role": "Trade Assistant",
+        "mobile": "0405 745 828",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Mehdi BENDANI",
+        "role": "Trade Assistant",
+        "mobile": "0493 536 751",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Robert FRONGILLO",
+        "role": "Trade Assistant",
+        "mobile": "0404 632 455",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Eileen HIELSCHER",
+        "role": "Advanced Rigger",
+        "mobile": "0448 678 573",
+        "start": "2026-06-04",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Roberto RAFFAELE",
+        "role": "Trade Assistant",
+        "mobile": "0419 949 242",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Fabien ONOLFO",
+        "role": "Trade Assistant",
+        "mobile": "0498 459 340",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "mobile": "0472 586 919",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Lea MONDESIR",
+        "role": "Trade Assistant",
+        "mobile": "0436 652 133",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Stefanos KARIKIS",
+        "role": "Trade Assistant",
+        "mobile": "0403 267 784",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "King GARCIA",
+        "role": "Trade Assistant",
+        "mobile": "0498 054 425",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Jessica DILENA",
+        "role": "Trade Assistant",
+        "mobile": "0477 841 414",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Julian VAN DER ZANDEN",
+        "role": "Intermediate Rigger",
+        "mobile": "0433 449 381",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Joe BROOKS",
+        "role": "Trade Assistant",
+        "mobile": "0421 411 263",
+        "start": "2026-06-07",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "William THOMPSON",
+        "role": "Trade Assistant",
+        "mobile": "0429 331 817",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Sharon GILCHRIST",
+        "role": "Trade Assistant",
+        "mobile": "0417 096 745",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Gabriel NGUYEN",
+        "role": "Trade Assistant",
+        "mobile": "0448 737 990",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Federico Sarti",
+        "role": "Trade Assistant",
+        "mobile": "0493 955 585",
+        "start": "2026-06-06",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Ganesh MOHITE",
+        "role": "Mechanical Fitter",
+        "mobile": "0469 591 660",
+        "start": "2026-06-06",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Abdikadir MOHAMED",
+        "role": "Mechanical Fitter",
+        "mobile": "0478 161 027",
+        "start": "2026-06-06",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Renan SANCHEZ",
+        "role": "Mechanical Fitter",
+        "mobile": "0431 951 293",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Clifford LEMON",
+        "role": "Advanced Rigger",
+        "mobile": "0438 800 692",
+        "start": "2026-06-06",
+        "end": "2026-06-21"
+      },
+      {
+        "name": "Herbert MUKUNGA",
+        "role": "Mechanical Fitter",
+        "mobile": "0459 183 602",
+        "start": "2026-06-07",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Jonathan MUTEMBO",
+        "role": "Mechanical Fitter",
+        "mobile": "0420 268 896",
+        "start": "2026-06-07",
+        "end": "2026-06-18"
+      },
+      {
+        "name": "Cormac NAGLE",
+        "role": "Mechanical Fitter",
+        "mobile": "0449 552 403",
+        "start": "2026-06-08",
+        "end": "2026-06-18"
+      }
+    ],
+    "_source": {
+      "rapid_crews_roster_id": "1375",
+      "rapid_crews_export_file": "1375 (RosterCut) 2026-04-14_15-18-44.xlsx",
+      "source_format": "rapidcrews",
+      "required_target_source": "RAPID_CREWS_JOB_PLANNING",
+      "rapid_crews_roster_size": 33,
+      "rapid_crews_filled_by_role": {
+        "Mechanical Fitter": 13,
+        "Advanced Rigger": 3,
+        "Supervisor - Mechanical": 1,
+        "Trade Assistant": 15,
+        "Intermediate Rigger": 1
+      },
+      "target_source": {
+        "source": "rapid_crews_job_planning_view",
+        "job_no": 1375,
+        "total_required": 36
+      }
+    }
+  }
+}

@@ -2,6 +2,224 @@
   "company": "Covalent",
   "shutdowns": [
     {
+      "id": "covalent-2025-10",
+      "name": "Mt Holland October 2025",
+      "site": "Mt Holland",
+      "start_date": "2025-10-13",
+      "end_date": "2025-10-21",
+      "status": "completed",
+      "required_by_role": {
+        "Mechanical Fitter": 9,
+        "Intermediate Rigger": 2,
+        "Lube Technician": 3,
+        "Trade Assistant": 4,
+        "Supervisor - Mechanical": 3,
+        "Superintendent": 1
+      },
+      "filled_by_role": {
+        "Mechanical Fitter": 9,
+        "Intermediate Rigger": 2,
+        "Lube Technician": 3,
+        "Trade Assistant": 4,
+        "Supervisor - Mechanical": 3,
+        "Superintendent": 1
+      },
+      "crew_split": {
+        "Day": 14,
+        "Night": 8
+      },
+      "mobilised_by_role": {
+        "Mechanical Fitter": 9,
+        "Intermediate Rigger": 2,
+        "Lube Technician": 3,
+        "Trade Assistant": 4,
+        "Supervisor - Mechanical": 3,
+        "Superintendent": 1
+      },
+      "labour_hire_split": {
+        "SRG Global Integrated Services": 22
+      },
+      "roster": [
+        {
+          "name": "Yanis BELHADJ",
+          "role": "Mechanical Fitter",
+          "mobile": "0490 930 033",
+          "start": "2025-10-14",
+          "end": "2025-10-18"
+        },
+        {
+          "name": "Malcolm GRAINGER-ROUSSEAU",
+          "role": "Mechanical Fitter",
+          "mobile": "0487 104 895",
+          "start": "2025-10-14",
+          "end": "2025-10-20"
+        },
+        {
+          "name": "Lia LAGNARINI",
+          "role": "Intermediate Rigger",
+          "mobile": "0413 648 553",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Viet NGUYEN",
+          "role": "Lube Technician",
+          "mobile": "0434 326 455",
+          "start": "2025-10-15",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Beau WITHERS",
+          "role": "Trade Assistant",
+          "mobile": "0435 441 418",
+          "start": "2025-10-16",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Lauryn REDUIT",
+          "role": "Trade Assistant",
+          "mobile": "0409 543 555",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Robert McCAULEY",
+          "role": "Intermediate Rigger",
+          "mobile": "0480 668 620",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Josh SMITH \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "mobile": "0459 348 781",
+          "start": "2025-10-17",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Aidan EDWARDS",
+          "role": "Mechanical Fitter",
+          "mobile": "0421 998 847",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Julian JENNY",
+          "role": "Lube Technician",
+          "mobile": "0493 389 131",
+          "start": "2025-10-15",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Pramod CHANDRASKHAR",
+          "role": "Lube Technician",
+          "mobile": "0494 037 814",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "James ARNOULD",
+          "role": "Supervisor - Mechanical",
+          "mobile": "0426 856 352",
+          "start": "2025-10-13",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Ross McCALLUM",
+          "role": "Supervisor - Mechanical",
+          "mobile": "0421 407 427",
+          "start": "2025-10-13",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Marcel LAMICQ ZUMBADO",
+          "role": "Mechanical Fitter",
+          "mobile": "0457 843 977",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "King GARCIA",
+          "role": "Trade Assistant",
+          "mobile": "0498 054 425",
+          "start": "2025-10-13",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Thirugnanasampantham PERIASAMY",
+          "role": "Mechanical Fitter",
+          "mobile": "0420 807 179",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Gregory HAUWAERT",
+          "role": "Trade Assistant",
+          "mobile": "0484 919 373",
+          "start": "2025-10-13",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Paganini Jr URSUA",
+          "role": "Mechanical Fitter",
+          "mobile": "0404 879 610",
+          "start": "2025-10-15",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Zacarria DAIR",
+          "role": "Mechanical Fitter",
+          "mobile": "0450 484 624",
+          "start": "2025-10-14",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Paul BERRY",
+          "role": "Superintendent",
+          "mobile": "0455 599 800",
+          "start": "2025-10-13",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Max FOELSCHE \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "mobile": "0497 548 098",
+          "start": "2025-10-17",
+          "end": "2025-10-21"
+        },
+        {
+          "name": "Christopher McLENNAN",
+          "role": "Supervisor - Mechanical",
+          "mobile": "0427 164 636",
+          "start": "2025-10-13",
+          "end": "2025-10-21"
+        }
+      ],
+      "_source": {
+        "rapid_crews_roster_id": "1110",
+        "rapid_crews_export_file": "1110 Mt Holland.xlsx",
+        "source_format": "pegasus",
+        "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+        "rapid_crews_roster_size": 22,
+        "rapid_crews_filled_by_role": {
+          "Mechanical Fitter": 9,
+          "Intermediate Rigger": 2,
+          "Lube Technician": 3,
+          "Trade Assistant": 4,
+          "Supervisor - Mechanical": 3,
+          "Superintendent": 1
+        },
+        "target_source": null,
+        "name_resolution": {
+          "explicit_column": 22,
+          "email_heuristic": 0,
+          "xref_exact": 0,
+          "unmatched": 0,
+          "ambiguous_samples": []
+        }
+      }
+    },
+    {
       "id": "covalent-2026-04",
       "name": "Mt Holland April 2026",
       "site": "Mt Holland",
@@ -9,36 +227,42 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Supervisor - Mechanical": 6,
-        "Mechanical Fitter": 24,
-        "Supervisor": 2,
+        "Supervisor - Electrical": 1,
+        "Rigger - Advanced": 1,
         "HSE Advisor": 2,
-        "Advanced Rigger": 4,
-        "Coded Welder": 1,
-        "Trade Assistant": 5,
-        "Superintendent": 1,
-        "Electrician": 4,
-        "Boilermaker": 4,
-        "Telehandler Operator": 2,
-        "Basic Rigger": 4,
+        "Intermediate Rigger": 0,
         "Site Coordinator": 1,
-        "Lube Technician": 3
+        "Advanced Rigger": 0,
+        "Boilermaker": 4,
+        "Mechanical Fitter": 24,
+        "Telehandler Operator": 2,
+        "Supervisor": 1,
+        "Lube Technician": 3,
+        "Rigger - Basic": 4,
+        "Superintendent": 1,
+        "Basic Rigger": 0,
+        "Rigger - Intermediate": 3,
+        "Coded Welder": 1,
+        "Electrician": 4,
+        "Supervisor - Mechanical": 6,
+        "Trade Assistant": 5
       },
       "filled_by_role": {
-        "Supervisor - Mechanical": 6,
-        "Mechanical Fitter": 24,
-        "Supervisor": 2,
-        "HSE Advisor": 2,
-        "Advanced Rigger": 4,
-        "Coded Welder": 1,
-        "Trade Assistant": 5,
-        "Superintendent": 1,
+        "Boilermaker": 5,
         "Electrician": 4,
-        "Boilermaker": 4,
-        "Telehandler Operator": 2,
         "Basic Rigger": 4,
+        "Mechanical Fitter": 22,
+        "Lube Technician": 3,
+        "Supervisor - Mechanical": 6,
+        "Telehandler Operator": 2,
+        "Supervisor": 1,
+        "Advanced Rigger": 4,
+        "Trade Assistant": 7,
+        "Superintendent": 2,
+        "HSE Advisor": 2,
+        "Intermediate Rigger": 3,
         "Site Coordinator": 1,
-        "Lube Technician": 3
+        "Coded Welder": 1
       },
       "crew_split": {
         "Day": 32,
@@ -533,7 +757,7 @@
         "rapid_crews_roster_id": "1359",
         "rapid_crews_export_file": "1359 (RosterCut) 2026-04-14_15-11-34.xlsx",
         "source_format": "rapidcrews",
-        "required_target_source": "REAL_TARGET",
+        "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "rapid_crews_roster_size": 67,
         "rapid_crews_filled_by_role": {
           "Boilermaker": 5,
@@ -553,13 +777,12 @@
           "Coded Welder": 1
         },
         "target_source": {
-          "dashboard": "N01dea5/Covalent-Mt-Holland---April-2026",
-          "total_planned": 63,
-          "total_confirmed": 63,
-          "total_tbc": 0
+          "source": "rapid_crews_job_planning_view",
+          "job_no": 1359,
+          "total_required": 63
         }
       }
     }
   ],
-  "generated_at": "2026-04-23T12:04:02Z"
+  "generated_at": "2026-04-23T23:01:42Z"
 }

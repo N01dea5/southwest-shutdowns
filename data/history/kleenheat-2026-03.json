@@ -1,0 +1,532 @@
+{
+  "company_key": "csbp",
+  "client_name": "CSBP",
+  "archived_at": "2026-04-23T23:01:42Z",
+  "shutdown": {
+    "id": "kleenheat-2026-03",
+    "name": "KPF LNG Major Shutdown March 2026 (Kleenheat)",
+    "site": "Kwinana",
+    "start_date": "2026-03-04",
+    "end_date": "2026-03-22",
+    "status": "completed",
+    "required_by_role": {
+      "Mechanical Fitter": 23,
+      "Intermediate Rigger": 3,
+      "Painter & Blaster": 2,
+      "Scaffolder": 6,
+      "Advanced Rigger": 2,
+      "Sheet Metal Worker": 3,
+      "Supervisor - Mechanical": 4,
+      "Trade Assistant": 18
+    },
+    "filled_by_role": {
+      "Supervisor - Mechanical": 4,
+      "Trade Assistant": 18,
+      "Sheet Metal Worker": 3,
+      "Advanced Rigger": 2,
+      "Intermediate Rigger": 5,
+      "Mechanical Fitter": 25,
+      "Scaffolder": 6,
+      "Painter & Blaster": 2
+    },
+    "crew_split": {
+      "Day": 49,
+      "Night": 16
+    },
+    "mobilised_by_role": {
+      "Supervisor - Mechanical": 4,
+      "Trade Assistant": 18,
+      "Sheet Metal Worker": 3,
+      "Advanced Rigger": 2,
+      "Intermediate Rigger": 5,
+      "Mechanical Fitter": 25,
+      "Scaffolder": 6,
+      "Painter & Blaster": 2
+    },
+    "labour_hire_split": {
+      "SRG Global Integrated Services": 65
+    },
+    "roster": [
+      {
+        "name": "Patrick DALY",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0420 397 028",
+        "start": "2026-03-04",
+        "end": "2026-03-22"
+      },
+      {
+        "name": "Wayne CARTER",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0414 774 682",
+        "start": "2026-03-10",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Jordan KIRKBY",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0406 872 504",
+        "start": "2026-03-04",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Lewis NEWELL",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0434 841 251",
+        "start": "2026-03-04",
+        "end": "2026-03-22"
+      },
+      {
+        "name": "Willy FAVA",
+        "role": "Trade Assistant",
+        "mobile": "0481 092 939",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Sharon GILCHRIST",
+        "role": "Trade Assistant",
+        "mobile": "0417 096 745",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Jessica DILENA",
+        "role": "Trade Assistant",
+        "mobile": "0477 841 414",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "King GARCIA",
+        "role": "Trade Assistant",
+        "mobile": "0498 054 425",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Robert HARRIS",
+        "role": "Trade Assistant",
+        "mobile": "0405 745 828",
+        "start": "2026-03-17",
+        "end": "2026-03-22"
+      },
+      {
+        "name": "Jacinta JEFFERY",
+        "role": "Trade Assistant",
+        "mobile": "0428 238 866",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "mobile": "0435 441 418",
+        "start": "2026-03-15",
+        "end": "2026-03-22"
+      },
+      {
+        "name": "Adrian WILLIAMS",
+        "role": "Trade Assistant",
+        "mobile": "0428 421 338",
+        "start": "2026-03-12",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Lise MONNET",
+        "role": "Trade Assistant",
+        "mobile": "0427 753 796",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Jeremias MENDIVIL",
+        "role": "Trade Assistant",
+        "mobile": "0433 197 500",
+        "start": "2026-03-18",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Keron KAPPET",
+        "role": "Trade Assistant",
+        "mobile": "0437 976 484",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Lea MONDESIR",
+        "role": "Trade Assistant",
+        "mobile": "0436 652 133",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Jaime HERNANDEZ",
+        "role": "Trade Assistant",
+        "mobile": "0499 422 603",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Federico Sarti",
+        "role": "Trade Assistant",
+        "mobile": "0493 955 585",
+        "start": "2026-03-16",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "mobile": "0472 586 919",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Stefanos KARIKIS",
+        "role": "Trade Assistant",
+        "mobile": "0403 267 784",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Issac REID",
+        "role": "Trade Assistant",
+        "mobile": "0428 969 952",
+        "start": "2026-03-16",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "William THOMPSON",
+        "role": "Trade Assistant",
+        "mobile": "0429 331 817",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Samsul FATA",
+        "role": "Sheet Metal Worker",
+        "mobile": "0490 804 999",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Daniel JONES",
+        "role": "Sheet Metal Worker",
+        "mobile": "0457 632 156",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "David STITZ",
+        "role": "Sheet Metal Worker",
+        "mobile": "0408 939 455",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Eileen HIELSCHER",
+        "role": "Advanced Rigger",
+        "mobile": "0448 678 573",
+        "start": "2026-03-16",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Hemi RATAHI",
+        "role": "Advanced Rigger",
+        "mobile": "0457 420 744",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Daniel SILLIS",
+        "role": "Intermediate Rigger",
+        "mobile": "0449 125 720",
+        "start": "2026-03-12",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Julian VAN DER ZANDEN",
+        "role": "Intermediate Rigger",
+        "mobile": "0433 449 381",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Chaeyoon KIM",
+        "role": "Intermediate Rigger",
+        "mobile": "0419 549 708",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Julian VAN DER ZANDEN",
+        "role": "Intermediate Rigger",
+        "mobile": "0433 449 381",
+        "start": "2026-03-12",
+        "end": "2026-03-13"
+      },
+      {
+        "name": "Joe DACK",
+        "role": "Intermediate Rigger",
+        "mobile": "0449 995 304",
+        "start": "2026-03-15",
+        "end": "2026-03-15"
+      },
+      {
+        "name": "Pramod CHANDRASKHAR",
+        "role": "Mechanical Fitter",
+        "mobile": "0494 037 814",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Jack MONTEBELLO",
+        "role": "Mechanical Fitter",
+        "mobile": "0437 264 211",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Gurshwinder SINGH",
+        "role": "Mechanical Fitter",
+        "mobile": "0431 100 007",
+        "start": "2026-03-18",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Tabani CHIPIRI",
+        "role": "Mechanical Fitter",
+        "mobile": "0497 594 673",
+        "start": "2026-03-16",
+        "end": "2026-03-18"
+      },
+      {
+        "name": "Darren JAMES",
+        "role": "Mechanical Fitter",
+        "mobile": "0432 522 247",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Mitya DOBBELAERE",
+        "role": "Mechanical Fitter",
+        "mobile": "0447 582 473",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Daniel GOVHONGO",
+        "role": "Mechanical Fitter",
+        "mobile": "0484 563 607",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Harrison ELLIOT",
+        "role": "Mechanical Fitter",
+        "mobile": "0447 156 618",
+        "start": "2026-03-12",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Gerry \ud83d\udd37 UY",
+        "role": "Mechanical Fitter",
+        "mobile": "0455 733 546",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Senthil DHANAPAL",
+        "role": "Mechanical Fitter",
+        "mobile": "0433 394 685",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Jonathan MUTEMBO",
+        "role": "Mechanical Fitter",
+        "mobile": "0420 268 896",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Walid BOULAHDID",
+        "role": "Mechanical Fitter",
+        "mobile": "0404 303 830",
+        "start": "2026-03-19",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Teneesha TRUSCOTT",
+        "role": "Mechanical Fitter",
+        "mobile": "0447 711 925",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Amit \ud83d\udd37 GUND",
+        "role": "Mechanical Fitter",
+        "mobile": "0423 173 031",
+        "start": "2026-03-16",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "James GARDINER",
+        "role": "Mechanical Fitter",
+        "mobile": "0458 420 731",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Mark \ud83d\udd37 SULLIVAN",
+        "role": "Mechanical Fitter",
+        "mobile": "0473 108 682",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Russell PHILLIPS",
+        "role": "Mechanical Fitter",
+        "mobile": "0421 795 621",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Edward GARDINER",
+        "role": "Mechanical Fitter",
+        "mobile": "0457 470 330",
+        "start": "2026-03-12",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Kulvinder SINGH",
+        "role": "Mechanical Fitter",
+        "mobile": "0411 406 465",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Ngoni USORE",
+        "role": "Mechanical Fitter",
+        "mobile": "0401 500 098",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Viet NGUYEN",
+        "role": "Mechanical Fitter",
+        "mobile": "0434 326 455",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Manish TOMAR",
+        "role": "Mechanical Fitter",
+        "mobile": "0488 751 209",
+        "start": "2026-03-16",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Abhinav ABHINAV",
+        "role": "Mechanical Fitter",
+        "mobile": "0424 848 290",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Mao LI",
+        "role": "Mechanical Fitter",
+        "mobile": "0432 066 471",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Loyid JOSEPH",
+        "role": "Mechanical Fitter",
+        "mobile": "0450 060 007",
+        "start": "2026-03-15",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Santana PAYNE",
+        "role": "Scaffolder",
+        "mobile": "0434 734 382",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Francis AH KIAU",
+        "role": "Scaffolder",
+        "mobile": "0434 580 355",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Dylan DIXON",
+        "role": "Scaffolder",
+        "mobile": "0481 845 862",
+        "start": "2026-03-16",
+        "end": "2026-03-21"
+      },
+      {
+        "name": "Zachary GARDINER",
+        "role": "Scaffolder",
+        "mobile": "0499 756 868",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Wahib NADI",
+        "role": "Scaffolder",
+        "mobile": "0421 543 441",
+        "start": "2026-03-15",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Margaux VERGEZ",
+        "role": "Scaffolder",
+        "mobile": "0435 319 380",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Samuel BRYANT",
+        "role": "Painter & Blaster",
+        "mobile": "0408 500 677",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      },
+      {
+        "name": "Jordan ATITOA-BRYANT",
+        "role": "Painter & Blaster",
+        "mobile": "0414 579 891",
+        "start": "2026-03-16",
+        "end": "2026-03-20"
+      }
+    ],
+    "_source": {
+      "rapid_crews_roster_id": "Kleenheat Major March 2026",
+      "rapid_crews_export_file": "Kleenheat Major March 2026.xlsx",
+      "source_format": "pegasus",
+      "required_target_source": "TARGET_FILE",
+      "rapid_crews_roster_size": 65,
+      "rapid_crews_filled_by_role": {
+        "Supervisor - Mechanical": 4,
+        "Trade Assistant": 18,
+        "Sheet Metal Worker": 3,
+        "Advanced Rigger": 2,
+        "Intermediate Rigger": 5,
+        "Mechanical Fitter": 25,
+        "Scaffolder": 6,
+        "Painter & Blaster": 2
+      },
+      "target_source": null,
+      "name_resolution": {
+        "explicit_column": 65,
+        "email_heuristic": 0,
+        "xref_exact": 0,
+        "unmatched": 0,
+        "ambiguous_samples": []
+      }
+    }
+  }
+}

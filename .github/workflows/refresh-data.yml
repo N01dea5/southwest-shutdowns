@@ -24,6 +24,7 @@ on:
       - 'data/imports/**'
       - 'scripts/**'
       - 'Rapidcrews Macro Data.xlsx'
+      - 'Resumes.xlsx'               # resumes consolidation (SharePoint-owned)
   workflow_dispatch:
   # NOTE: nightly schedule disabled until SharePoint pull is wired up.
   # Re-enable by uncommenting the schedule block below.
@@ -73,10 +74,15 @@ jobs:
           SHAREPOINT_FOLDER:        ${{ secrets.SHAREPOINT_FOLDER }}
         run: python3 scripts/sync_sharepoint.py
 
-      - name: Sync targets + fill counts from per-site dashboards
-        run: python3 scripts/sync_source_targets.py
+      # Rapid Crews is now the source of truth for required/filled/roles —
+      # sync_source_targets.py is kept for manual overrides but no longer
+      # runs automatically, so the per-site dashboards can't race the macro
+      # workbook. Re-enable the step below only if you need to snapshot a
+      # site dashboard's count into data/targets/ as a deliberate override.
+      # - name: Sync targets + fill counts from per-site dashboards
+      #   run: python3 scripts/sync_source_targets.py
 
-      - name: Parse Rapid Crews rosters and merge targets
+      - name: Parse Rapid Crews rosters, archive history, emit resumes
         run: python3 scripts/parse_rapidcrews.py
 
       - name: Detect data changes

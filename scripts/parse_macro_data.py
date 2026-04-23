@@ -37,14 +37,23 @@ import openpyxl
 import parse_rapidcrews as rc
 
 
-REPO_ROOT  = pathlib.Path(__file__).resolve().parent.parent
-MACRO_FILE = REPO_ROOT / "Rapidcrews Macro Data.xlsx"
+REPO_ROOT    = pathlib.Path(__file__).resolve().parent.parent
+MACRO_FILE   = REPO_ROOT / "Rapidcrews Macro Data.xlsx"
+RESUMES_FILE = REPO_ROOT / "Resumes.xlsx"   # standalone so end users can own
+                                            # it on SharePoint without touching
+                                            # the Rapid Crews SQL export
 
 CONTROL_SHEET      = "ACTIVE_SHUTDOWNS"
 JOB_PLANNING_SHEET = "xpbi02 JobPlanningView"
 ROSTER_VIEW_SHEET  = "xpbi02 PersonnelRosterView"
 TRADE_SHEET        = "xpbi02 DisciplineTrade"
 PERSONNEL_SHEET    = "xll01 Personnel"
+
+# Module-level cache so the workbook only gets opened once per run, even when
+# both parse_rapidcrews.build_shutdown() (to look up JobPlanningView required
+# counts for RosterCut files) and shutdowns_from_macro_data() (to synthesise
+# macro-only shutdowns) touch the same sheets.
+_CACHE: dict | None = None
 
 # (Client string, Site string from PersonnelRosterView) ->
 #     (company_key, client_display_name, dashboard_site, project_label_base)
@@ -80,6 +89,114 @@ def _open() -> openpyxl.Workbook:
     return openpyxl.load_workbook(MACRO_FILE, data_only=True, read_only=True)
 
 
+def _load_cache() -> dict:
+    """Open the macro workbook once per run and cache every sheet we touch.
+
+    Returned structure:
+        {
+          "active_jobnos":   set[int] | None,     # from ACTIVE_SHUTDOWNS; None if sheet missing
+          "trades":          {tradeId -> displayName},
+          "personnel":       {personnelId -> {name, role, mobile, hire_company}},
+          "planning_all":    {jobNo -> {tradeName -> {"required": n, "filled": m}}},
+          "resumes":         list[dict] | None,   # from RESUMES; None if sheet missing
+        }
+
+    `planning_all` covers EVERY JobNo in JobPlanningView (not just the ones in
+    ACTIVE_SHUTDOWNS) so parse_rapidcrews.build_shutdown() can look up required
+    counts for any RosterCut JobNo that happens to be in the live SQL view.
+    """
+    global _CACHE
+    if _CACHE is not None:
+        return _CACHE
+    if not MACRO_FILE.exists():
+        _CACHE = {"active_jobnos": None, "trades": {}, "personnel": {},
+                  "planning_all": {}, "resumes": None}
+        return _CACHE
+    wb = _open()
+    try:
+        active_jobnos = _read_active_shutdowns(wb)
+        trades        = _load_trade_names(wb)
+        personnel     = _load_personnel(wb)
+        planning_all  = _load_planning_all(wb, trades)
+    finally:
+        wb.close()
+    resumes = _load_resumes_file(personnel) if RESUMES_FILE.exists() else None
+    _CACHE = {
+        "active_jobnos": active_jobnos,
+        "trades":        trades,
+        "personnel":     personnel,
+        "planning_all":  planning_all,
+        "resumes":       resumes,
+    }
+    return _CACHE
+
+
+def _read_active_shutdowns(wb: openpyxl.Workbook) -> set[int] | None:
+    if CONTROL_SHEET not in wb.sheetnames:
+        return None
+    ws = wb[CONTROL_SHEET]
+    rows = ws.iter_rows(values_only=True)
+    try:
+        header = next(rows)
+    except StopIteration:
+        return set()
+    try:
+        jobno_col = [h for h in header if h].index("JobNo")
+    except ValueError:
+        print(f"  warn: {CONTROL_SHEET} sheet is missing 'JobNo' header")
+        return set()
+    jobnos: set[int] = set()
+    for row in rows:
+        if not row or row[jobno_col] is None:
+            continue
+        try:
+            jobnos.add(int(row[jobno_col]))
+        except (TypeError, ValueError):
+            print(f"  warn: {CONTROL_SHEET} ignoring non-numeric JobNo {row[jobno_col]!r}")
+    return jobnos
+
+
+def _load_planning_all(wb: openpyxl.Workbook,
+                       trade_names: dict[str, str]
+                       ) -> dict[int, dict[str, dict[str, int]]]:
+    """JobNo -> {tradeName -> {"required": n, "filled": m}} for every JobNo."""
+    ws = wb[JOB_PLANNING_SHEET]
+    headers = [c.value for c in next(ws.iter_rows(max_row=1))]
+    idx = {h: i for i, h in enumerate(headers) if h}
+    out: dict[int, dict[str, dict[str, int]]] = {}
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        if not any(row):
+            continue
+        job = row[idx["JobNo"]]
+        if job is None:
+            continue
+        trade = trade_names.get(row[idx["CompetencyId"]], "Unknown")
+        bucket = out.setdefault(int(job), {})
+        cell   = bucket.setdefault(trade, {"required": 0, "filled": 0})
+        cell["required"] += int(row[idx["Required"]] or 0)
+        cell["filled"]   += int(row[idx["Filled"]]   or 0)
+    return out
+
+
+def planning_required_for_jobno(job_no: int) -> dict[str, int] | None:
+    """Return JobPlanningView-derived `{tradeName: required}` for a JobNo.
+
+    None means either the macro file doesn't exist OR the JobNo isn't in the
+    live SQL view (dropped because the date range rolled over). Empty dict
+    means the JobNo exists but all Required columns are zero.
+    """
+    cache = _load_cache()
+    bucket = cache["planning_all"].get(int(job_no))
+    if bucket is None:
+        return None
+    # Drop trades with 0 required AND 0 filled — stale placeholder rows.
+    return {
+        trade: cell["required"]
+        for trade, cell in bucket.items()
+        if cell["required"] or cell["filled"]
+    }
+
+
 def active_shutdowns_jobnos() -> set[int] | None:
     """Return the set of JobNos from the ACTIVE_SHUTDOWNS control sheet.
 
@@ -87,34 +204,7 @@ def active_shutdowns_jobnos() -> set[int] | None:
     RosterCut file in data/raw/ passes through). Returns a set (possibly
     empty) when the sheet is present, signalling the allow-list is active.
     """
-    if not MACRO_FILE.exists():
-        return None
-    wb = _open()
-    try:
-        if CONTROL_SHEET not in wb.sheetnames:
-            return None
-        ws = wb[CONTROL_SHEET]
-        rows = ws.iter_rows(values_only=True)
-        try:
-            header = next(rows)
-        except StopIteration:
-            return set()
-        try:
-            jobno_col = [h for h in header if h].index("JobNo")
-        except ValueError:
-            print(f"  warn: {CONTROL_SHEET} sheet is missing 'JobNo' header")
-            return set()
-        jobnos: set[int] = set()
-        for row in rows:
-            if not row or row[jobno_col] is None:
-                continue
-            try:
-                jobnos.add(int(row[jobno_col]))
-            except (TypeError, ValueError):
-                print(f"  warn: {CONTROL_SHEET} ignoring non-numeric JobNo {row[jobno_col]!r}")
-        return jobnos
-    finally:
-        wb.close()
+    return _load_cache()["active_jobnos"]
 
 
 def _load_trade_names(wb: openpyxl.Workbook) -> dict[str, str]:
@@ -156,36 +246,79 @@ def _load_personnel(wb: openpyxl.Workbook) -> dict[str, dict]:
     return out
 
 
-def _load_job_planning(wb: openpyxl.Workbook,
-                       jobnos: set[int],
-                       trade_names: dict[str, str]
-                       ) -> dict[int, dict]:
-    """JobNo -> {required_by_role, filled_by_role} aggregated from
-    JobPlanningView (one row per CompetencyId -> Trade name)."""
-    ws = wb[JOB_PLANNING_SHEET]
-    headers = [c.value for c in next(ws.iter_rows(max_row=1))]
-    idx = {h: i for i, h in enumerate(headers)}
-    out: dict[int, dict] = {
-        j: {"required_by_role": defaultdict(int),
-            "filled_by_role":   defaultdict(int)}
-        for j in jobnos
-    }
-    for row in ws.iter_rows(min_row=2, values_only=True):
-        if not any(row):
-            continue
-        job = row[idx["JobNo"]]
-        if job not in out:
-            continue
-        trade = trade_names.get(row[idx["CompetencyId"]], "Unknown")
-        out[job]["required_by_role"][trade] += int(row[idx["Required"]] or 0)
-        out[job]["filled_by_role"]  [trade] += int(row[idx["Filled"]]   or 0)
-    # Collapse defaultdicts + strip zero-both rows (stale placeholders).
-    for job, d in out.items():
-        req = {k: v for k, v in d["required_by_role"].items() if v or d["filled_by_role"].get(k)}
-        fil = {k: v for k, v in d["filled_by_role"].items()   if v or d["required_by_role"].get(k)}
-        d["required_by_role"] = req
-        d["filled_by_role"]   = fil
-    return out
+def _load_resumes_file(personnel: dict[str, dict]) -> list[dict]:
+    """Read the standalone Resumes.xlsx file into a flat list of dicts.
+
+    End-user schema (all columns optional except Name OR Personnel Id):
+        Name | Personnel Id | Role | Mobile | Resume URL | Updated | Notes
+
+    Resume URL is typically a SharePoint share link. If Personnel Id is set
+    we merge in mobile/role from xll01 Personnel where the sheet leaves them
+    blank, so the handover form stays minimal ("just paste the link").
+
+    Kept in its own xlsx rather than as a sheet inside the macro workbook
+    because: (a) ops owns it and shouldn't have to touch the Rapid Crews SQL
+    export, (b) SharePoint sync pulls are lighter when resume updates don't
+    require re-uploading a 15MB workbook.
+    """
+    wb = openpyxl.load_workbook(RESUMES_FILE, data_only=True, read_only=True)
+    try:
+        ws = wb.active
+        rows = ws.iter_rows(values_only=True)
+        try:
+            header = next(rows)
+        except StopIteration:
+            return []
+        hdr = [(h or "").strip() for h in header]
+        # Accept both "Resume URL" and "Resume Link" — humans type either.
+        def col(*names):
+            for n in names:
+                if n in hdr:
+                    return hdr.index(n)
+            return None
+        c_name   = col("Name", "Worker")
+        c_pid    = col("Personnel Id", "PersonnelId", "Employee ID")
+        c_role   = col("Role", "Primary Role", "Trade")
+        c_mobile = col("Mobile", "Phone", "Contact")
+        c_url    = col("Resume URL", "Resume Link", "URL", "Link")
+        c_upd    = col("Updated", "Updated Date", "Last Updated", "Date")
+        c_notes  = col("Notes", "Comment")
+        out: list[dict] = []
+        for row in rows:
+            if not row or not any(row):
+                continue
+            pid  = (row[c_pid]  if c_pid  is not None else None) or ""
+            name = (row[c_name] if c_name is not None else None) or ""
+            p    = personnel.get(pid) if pid else None
+            def pick(col_idx, fallback):
+                v = row[col_idx] if col_idx is not None else None
+                s = str(v).strip() if v is not None else ""
+                return s or (fallback or "")
+            # Name: sheet wins, else look up from personnel master by GUID.
+            disp_name = str(name).strip() or (p["name"] if p else "")
+            if not disp_name:
+                continue
+            out.append({
+                "name":         disp_name,
+                "personnel_id": str(pid).strip() or None,
+                "role":         pick(c_role, p["role"] if p else ""),
+                "mobile":       rc._standardise_mobile(
+                                    row[c_mobile] if c_mobile is not None else None
+                                ) or (p["mobile"] if p else ""),
+                "resume_url":   pick(c_url, ""),
+                "updated":      pick(c_upd, ""),
+                "notes":        pick(c_notes, ""),
+            })
+        return out
+    finally:
+        wb.close()
+
+
+def resumes_from_macro_data() -> list[dict]:
+    """Public entry point — returns parsed rows from Resumes.xlsx (or empty
+    list when the file is absent). Dashboard cross-references `resume_url`
+    by normalised name to decorate worker rows with a link."""
+    return _load_cache()["resumes"] or []
 
 
 def _load_roster(wb: openpyxl.Workbook,
@@ -303,20 +436,23 @@ def _build_one(job_no: int,
     sd, ed = min(all_starts), max(all_ends)
     shutdown_id = f"{company_key}-{sd.isoformat()[:7]}"
 
-    # JobPlanningView aggregates — authoritative for Required; prefer its
-    # Filled when non-zero, otherwise fall back to the roster-derived count.
+    # JobPlanningView drives Required; PersonnelRosterView drives Filled.
+    # Rapid Crews is the source of truth — target files only fill gaps.
     planning_req = planning["required_by_role"]
-    planning_fil = planning["filled_by_role"]
-    required_seed: dict[str, int] = dict(planning_req) if planning_req else dict(filled_by_role)
-    filled_seed:   dict[str, int] = dict(planning_fil) if any(planning_fil.values()) else dict(filled_by_role)
-
-    required, filled_final, target_source_meta = rc.merge_targets(shutdown_id, filled_seed)
-    # merge_targets falls back to filled_seed for required when no target
-    # file exists — override with JobPlanningView's required when we have
-    # real values and no target file has been written.
-    target_exists = (rc.TARGETS_DIR / f"{shutdown_id}.json").exists()
-    if not target_exists and required_seed:
-        required = dict(required_seed)
+    if planning_req:
+        all_keys = set(filled_by_role) | set(planning_req)
+        required     = {r: int(planning_req.get(r, 0)) for r in all_keys}
+        filled_final = dict(filled_by_role)
+        target_source_meta     = {"source": "rapid_crews_job_planning_view",
+                                  "job_no": job_no,
+                                  "total_required": sum(planning_req.values())}
+        required_target_source = "RAPID_CREWS_JOB_PLANNING"
+    else:
+        required, filled_final, target_source_meta = rc.merge_targets(shutdown_id, filled_by_role)
+        required_target_source = (
+            "TARGET_FILE" if (rc.TARGETS_DIR / f"{shutdown_id}.json").exists()
+            else "PLACEHOLDER_FROM_ROSTER"
+        )
 
     status = rc._infer_status(sd, ed, dt.date.today())
 
@@ -338,9 +474,7 @@ def _build_one(job_no: int,
             "macro_data_client":          client,
             "macro_data_site":            site,
             "source_format":              "macro_data",
-            "required_target_source":     "REAL_TARGET" if target_exists else (
-                "JOB_PLANNING_VIEW" if required_seed else "PLACEHOLDER_FROM_ROSTER"
-            ),
+            "required_target_source":     required_target_source,
             "macro_data_roster_size":     len(roster_entries),
             "macro_data_filled_by_role":  dict(filled_by_role),
             "target_source":              target_source_meta,
@@ -375,28 +509,41 @@ def shutdowns_from_macro_data() -> list[tuple[str, str, dict]]:
     mapped client/site + non-empty roster."""
     if not MACRO_FILE.exists():
         return []
-    jobnos = active_shutdowns_jobnos()
+    cache = _load_cache()
+    jobnos = cache["active_jobnos"]
     if not jobnos:
         return []
     print(f"  macro: ACTIVE_SHUTDOWNS lists {len(jobnos)} JobNo(s): "
           f"{sorted(jobnos)}")
 
+    # PersonnelRosterView is the only sheet scoped to ACTIVE_SHUTDOWNS (the
+    # others are already fully loaded into the cache).
     wb = _open()
     try:
-        trades    = _load_trade_names(wb)
-        personnel = _load_personnel(wb)
-        planning  = _load_job_planning(wb, jobnos, trades)
-        roster    = _load_roster(wb, jobnos)
+        roster = _load_roster(wb, jobnos)
     finally:
         wb.close()
+
+    # Re-shape the cached planning rows into the legacy {required_by_role,
+    # filled_by_role} shape _build_one expects.
+    planning: dict[int, dict] = {}
+    for job in jobnos:
+        bucket = cache["planning_all"].get(int(job), {})
+        planning[job] = {
+            "required_by_role": {t: c["required"] for t, c in bucket.items()
+                                 if c["required"] or c["filled"]},
+            "filled_by_role":   {t: c["filled"]   for t, c in bucket.items()
+                                 if c["required"] or c["filled"]},
+        }
 
     out: list[tuple[str, str, dict]] = []
     for job in sorted(jobnos):
         if job not in roster or not roster[job]["workers"]:
             print(f"  warn: JobNo {job} has no roster rows in macro data — skipping")
             continue
-        result = _build_one(job, planning.get(job, {"required_by_role": {}, "filled_by_role": {}}),
-                            roster[job], personnel)
+        result = _build_one(job,
+                            planning.get(job, {"required_by_role": {}, "filled_by_role": {}}),
+                            roster[job], cache["personnel"])
         if result is not None:
             out.append(result)
             _, client_name, shutdown = result

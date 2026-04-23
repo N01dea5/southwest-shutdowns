@@ -1,0 +1,394 @@
+{
+  "company_key": "tronox",
+  "client_name": "Tronox",
+  "archived_at": "2026-04-23T23:01:42Z",
+  "shutdown": {
+    "id": "tronox-2026-05",
+    "name": "Major Shutdown May 2026",
+    "site": "Kwinana",
+    "start_date": "2026-05-18",
+    "end_date": "2026-05-22",
+    "status": "booked",
+    "required_by_role": {
+      "Boilermaker": 10,
+      "Mechanical Fitter": 40,
+      "Rigger - Advanced": 10,
+      "Intermediate Rigger": 0,
+      "Superintendent": 1,
+      "Site Coordinator": 1,
+      "Advanced Rigger": 0,
+      "Coded Welder": 20,
+      "Supervisor - Mechanical": 10,
+      "Trade Assistant": 20
+    },
+    "filled_by_role": {
+      "Mechanical Fitter": 16,
+      "Boilermaker": 1,
+      "Advanced Rigger": 4,
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 4,
+      "Coded Welder": 1,
+      "Supervisor - Mechanical": 1
+    },
+    "crew_split": {
+      "Night": 22,
+      "Day": 25
+    },
+    "mobilised_by_role": {},
+    "labour_hire_split": {
+      "SRG - South West": 47
+    },
+    "roster": [
+      {
+        "name": "Jamie ADAMS",
+        "role": "Mechanical Fitter",
+        "mobile": "0436 486 524",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Graham WANGLER",
+        "role": "Mechanical Fitter",
+        "mobile": "0476 247 673",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Melvin TIAMSON",
+        "role": "Boilermaker",
+        "mobile": "0429 525 137",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Gurshwinder SINGH",
+        "role": "Mechanical Fitter",
+        "mobile": "0431 100 007",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Ngoni USORE",
+        "role": "Mechanical Fitter",
+        "mobile": "0401 500 098",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Herbert MUKUNGA",
+        "role": "Mechanical Fitter",
+        "mobile": "0459 183 602",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Renan SANCHEZ",
+        "role": "Mechanical Fitter",
+        "mobile": "0431 951 293",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Omar ANADIF",
+        "role": "Mechanical Fitter",
+        "mobile": "0407 636 408",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Hemi RATAHI",
+        "role": "Advanced Rigger",
+        "mobile": "0457 420 744",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Luis FERNANDES",
+        "role": "Advanced Rigger",
+        "mobile": "0424 476 507",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "William THOMPSON",
+        "role": "Trade Assistant",
+        "mobile": "0429 331 817",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Jessica DILENA",
+        "role": "Trade Assistant",
+        "mobile": "0477 841 414",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Federico Sarti",
+        "role": "Trade Assistant",
+        "mobile": "0493 955 585",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Lea MONDESIR",
+        "role": "Trade Assistant",
+        "mobile": "0436 652 133",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Mehdi BENDANI",
+        "role": "Trade Assistant",
+        "mobile": "0493 536 751",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "mobile": "0435 441 418",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Issac REID",
+        "role": "Trade Assistant",
+        "mobile": "0428 969 952",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Gabriel NGUYEN",
+        "role": "Trade Assistant",
+        "mobile": "0448 737 990",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Roberto RAFFAELE",
+        "role": "Trade Assistant",
+        "mobile": "0419 949 242",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "King GARCIA",
+        "role": "Trade Assistant",
+        "mobile": "0498 054 425",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Lucrecia Celeste SOSA",
+        "role": "Intermediate Rigger",
+        "mobile": "0401 023 205",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Julian VAN DER ZANDEN",
+        "role": "Intermediate Rigger",
+        "mobile": "0433 449 381",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Cameron DUNN",
+        "role": "Coded Welder",
+        "mobile": "0499 485 946",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Daniel SILLIS",
+        "role": "Intermediate Rigger",
+        "mobile": "0449 125 720",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Chaeyoon KIM",
+        "role": "Intermediate Rigger",
+        "mobile": "0419 549 708",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Willy FAVA",
+        "role": "Trade Assistant",
+        "mobile": "0481 092 939",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "mobile": "0472 586 919",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Stefanos KARIKIS",
+        "role": "Trade Assistant",
+        "mobile": "0403 267 784",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Sharon GILCHRIST",
+        "role": "Trade Assistant",
+        "mobile": "0417 096 745",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Jaime HERNANDEZ",
+        "role": "Trade Assistant",
+        "mobile": "0499 422 603",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Lise MONNET",
+        "role": "Trade Assistant",
+        "mobile": "0427 753 796",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Barry LYON",
+        "role": "Trade Assistant",
+        "mobile": "0438 555 069",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Jacinta JEFFERY",
+        "role": "Trade Assistant",
+        "mobile": "0428 238 866",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Jeremias MENDIVIL",
+        "role": "Trade Assistant",
+        "mobile": "0433 197 500",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Robert FRONGILLO",
+        "role": "Trade Assistant",
+        "mobile": "0404 632 455",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Russell CHITTY",
+        "role": "Advanced Rigger",
+        "mobile": "0435 052 151",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Joe DACK",
+        "role": "Advanced Rigger",
+        "mobile": "0449 995 304",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Peter BURNS",
+        "role": "Supervisor - Mechanical",
+        "mobile": "0437 183 009",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Malcolm GRAINGER-ROUSSEAU",
+        "role": "Mechanical Fitter",
+        "mobile": "0487 104 895",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Mitya DOBBELAERE",
+        "role": "Mechanical Fitter",
+        "mobile": "0447 582 473",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Abhinav ABHINAV",
+        "role": "Mechanical Fitter",
+        "mobile": "0424 848 290",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Edward GARDINER",
+        "role": "Mechanical Fitter",
+        "mobile": "0457 470 330",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Prabhakaran THANGARASU",
+        "role": "Mechanical Fitter",
+        "mobile": "0434 916 762",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Abdikadir MOHAMED",
+        "role": "Mechanical Fitter",
+        "mobile": "0478 161 027",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Omkar Uttam DORUGADE",
+        "role": "Mechanical Fitter",
+        "mobile": "0424 804 281",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Wayne FORREST",
+        "role": "Mechanical Fitter",
+        "mobile": "0438 101 966",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      },
+      {
+        "name": "Darren JAMES",
+        "role": "Mechanical Fitter",
+        "mobile": "0432 522 247",
+        "start": "2026-05-18",
+        "end": "2026-05-22"
+      }
+    ],
+    "_source": {
+      "rapid_crews_roster_id": "1353",
+      "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
+      "source_format": "rapidcrews",
+      "required_target_source": "RAPID_CREWS_JOB_PLANNING",
+      "rapid_crews_roster_size": 47,
+      "rapid_crews_filled_by_role": {
+        "Mechanical Fitter": 16,
+        "Boilermaker": 1,
+        "Advanced Rigger": 4,
+        "Trade Assistant": 20,
+        "Intermediate Rigger": 4,
+        "Coded Welder": 1,
+        "Supervisor - Mechanical": 1
+      },
+      "target_source": {
+        "source": "rapid_crews_job_planning_view",
+        "job_no": 1353,
+        "total_required": 112
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "company_key": "csbp",
+  "client_name": "CSBP",
+  "archived_at": "2026-04-23T23:01:42Z",
+  "shutdown": {
+    "id": "csbp-2026-03",
+    "name": "KPF LNG Kleenheat March 2026",
+    "site": "Kwinana",
+    "start_date": "2026-03-30",
+    "end_date": "2026-06-30",
+    "status": "in_progress",
+    "required_by_role": {
+      "Trade Assistant": 2,
+      "Sheet Metal Worker": 6
+    },
+    "filled_by_role": {
+      "Sheet Metal Worker": 2,
+      "Trade Assistant": 1
+    },
+    "crew_split": {
+      "Day": 3
+    },
+    "mobilised_by_role": {
+      "Sheet Metal Worker": 2,
+      "Trade Assistant": 1
+    },
+    "labour_hire_split": {
+      "SRG - South West": 3
+    },
+    "roster": [
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "start": "2026-04-02",
+        "end": "2026-06-30",
+        "mobile": "0435 441 418"
+      },
+      {
+        "name": "Daniel JONES",
+        "role": "Sheet Metal Worker",
+        "start": "2026-03-30",
+        "end": "2026-06-30",
+        "mobile": "0457 632 156"
+      },
+      {
+        "name": "David STITZ",
+        "role": "Sheet Metal Worker",
+        "start": "2026-03-30",
+        "end": "2026-06-30",
+        "mobile": "0408 939 455"
+      }
+    ],
+    "_source": {
+      "macro_data_job_no": 1374,
+      "macro_data_client": "SOUTH WEST",
+      "macro_data_site": "Kleenheat",
+      "source_format": "macro_data",
+      "required_target_source": "RAPID_CREWS_JOB_PLANNING",
+      "macro_data_roster_size": 3,
+      "macro_data_filled_by_role": {
+        "Sheet Metal Worker": 2,
+        "Trade Assistant": 1
+      },
+      "target_source": {
+        "source": "rapid_crews_job_planning_view",
+        "job_no": 1374,
+        "total_required": 8
+      }
+    }
+  }
+}

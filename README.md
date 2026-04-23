@@ -315,6 +315,94 @@ No secrets set → the SharePoint step logs `SharePoint sync skipped — no
 secrets configured` and the workflow continues as normal. Safe to enable
 later without touching the workflow file.
 
+## Connecting the Rapid Crews SQL database
+
+The XLSX drop-zone is convenient but is always one export behind what's in
+Rapid Crews. Reading directly from the Azure SQL database backing Rapid
+Crews removes that lag — `required_by_role` and `filled_by_role` become
+whatever the DB says, refreshed every time the workflow runs.
+
+- **Server**: `rapidcrews-srg.database.windows.net`
+- **Database**: `rapidcrews-srg`
+
+The glue is `scripts/sync_sql.py`, which runs AFTER `parse_rapidcrews.py`
+in `refresh-data.yml` and overwrites each shutdown's headcount + roster
+with the SQL values when auth is configured. Without the secrets set, it
+no-ops and the XLSX pipeline keeps working untouched.
+
+### Auth — MFA is a dead end for CI
+
+Rapid Crews is locked behind Entra ID with MFA, which is great for humans
+and useless for a cron. GitHub Actions can't type a 6-digit code. Two
+viable automation paths:
+
+| Path | Setup | Trade-off |
+|---|---|---|
+| **Service principal** (recommended) | Entra app registration → client id + secret → DB user | One rotating secret to manage |
+| **OIDC federated credential** | Entra app registration → federation for `N01dea5/southwest-shutdowns` | No secret, but more Azure config |
+
+For the service principal path:
+
+1. **Entra ID → App registrations → New registration**. Name it something
+   like `southwest-shutdowns-sql-reader`.
+2. **Certificates & secrets → New client secret** — copy the value once.
+3. In the Azure SQL DB (run as a tenant admin or the existing DB owner):
+   ```sql
+   CREATE USER [southwest-shutdowns-sql-reader] FROM EXTERNAL PROVIDER;
+   ALTER ROLE db_datareader ADD MEMBER [southwest-shutdowns-sql-reader];
+   ```
+4. **Azure SQL Server → Networking** → allow the GitHub Actions egress
+   range, or tick "Allow Azure services and resources to access this
+   server" if that's acceptable.
+5. **GitHub repo → Settings → Secrets and variables → Actions** — add:
+   | Secret | Value |
+   |---|---|
+   | `AZURE_CLIENT_ID` | app registration's Application (client) ID |
+   | `AZURE_CLIENT_SECRET` | client secret value from step 2 |
+   | `AZURE_TENANT_ID` | Directory (tenant) ID |
+
+Once those three are set the next scheduled or manual run picks them up;
+`sync_sql.py` logs `connecting to …` instead of `no Azure SQL auth
+configured`.
+
+### Discovering the table shape
+
+We don't know which tables Rapid Crews uses for rosters/targets until
+someone with DB access looks. Use the inspection tool for that —
+locally, where MFA works:
+
+```sh
+pip install pyodbc
+# Install ODBC Driver 18 for SQL Server:
+#   macOS:  brew install msodbcsql18
+#   Ubuntu: https://learn.microsoft.com/sql/connect/odbc/linux-mac/
+export AZURE_UPN="firstname.lastname@srgglobal.com.au"
+python3 scripts/inspect_sql.py                  # every table, columns + 3 rows
+python3 scripts/inspect_sql.py --table dbo.Foo  # deep-dive one table
+```
+
+Once you've found the right tables, fill in `TARGETS_SQL` and `ROSTER_SQL`
+at the top of `scripts/sync_sql.py` (each has a commented example of what
+the query should look like) and update `SHUTDOWN_MAP` so each live
+shutdown's Rapid Crews id maps to its dashboard id.
+
+### What `sync_sql.py` overwrites
+
+For each entry in `SHUTDOWN_MAP`, it replaces the shutdown's:
+
+- `required_by_role` — from `TARGETS_SQL` (or leaves the XLSX placeholder
+  if that query isn't configured yet)
+- `filled_by_role` — aggregated from rows in `ROSTER_SQL` where
+  `confirmed = 1`
+- `mobilised_by_role` — aggregated from rows where `mobilised = 1`
+- `roster` — the full `[{name, role}, …]` list of confirmed workers
+
+It **preserves** `start_date`, `end_date`, `status`, `site`, and anything
+else `parse_rapidcrews.py` wrote. Dates still come from the XLSX. If the
+XLSX drop-zone is ever retired, extend `TARGETS_SQL` / `ROSTER_SQL` to
+return `start_date` / `end_date` and update `_merge_into_company_json` to
+write them.
+
 ## Retention semantics
 
 No stable employee IDs exist in the source data, so matching is on a normalised `name + role` key (lowercased, punctuation stripped, whitespace collapsed). Two retention views are shown side-by-side:

@@ -1392,6 +1392,11 @@
 
     const DATA_URL = "https://raw.githubusercontent.com/N01dea5/southwest-shutdowns/main/data/tronox.json";
 
+    // This per-site dashboard is specifically for the May 2026 Major shutdown.
+    // Pin to that shutdown id so historical or future Tronox jobs in the
+    // feed don't accidentally take over the dashboard.
+    const SHUTDOWN_ID = "tronox-2026-05";
+
     function __normName(s) {
       return (s || "").toLowerCase().replace(/[^a-z]+/g, "");
     }
@@ -1452,7 +1457,10 @@
     }
 
     function buildFromJson(data) {
-      const sd = (data.shutdowns || [])[0];
+      const shutdowns = data.shutdowns || [];
+      let sd = shutdowns.find(s => s.id === SHUTDOWN_ID)
+            || shutdowns.find(s => s.status === "in_progress")
+            || shutdowns[0];
       if (!sd) throw new Error("No shutdowns in data feed");
       const required  = sd.required_by_role || {};
       const rosterRaw = sd.roster || [];
@@ -1521,43 +1529,42 @@
         });
       }
 
-      // TBC padding to hit required_by_role. Preserve shift split from the
-      // inline CREW's TBC allocations where possible (Tronox CREW already
-      // splits day/night, e.g. 4 TBC Day Boilermakers + 4 TBC Night).
+      // ---- TBC + "Confirmed (name pending)" padding -------------------
+      // Three buckets for each role:
+      //   named in roster  -> existing merged entries above
+      //   filled - named   -> "Confirmed (name pending)": SQL says it's
+      //                        filled but the RosterCut export doesn't
+      //                        carry a name yet (scheduler lag). Shown so
+      //                        the per-site count matches the consolidated
+      //                        dashboard's source-of-truth filled figures.
+      //   required - filled-> TBC: positions genuinely unfilled.
+      const filled_by_role = sd.filled_by_role || {};
       const crewTbcByRoleShift = {};
       for (const [name, role, shift] of CREW) {
         if (name !== "TBC") continue;
         const k = role + "|" + shift;
         crewTbcByRoleShift[k] = (crewTbcByRoleShift[k] || 0) + 1;
       }
-      const feedRoleShift = {};
-      for (const r of rosterRaw) {
-        const k = r.role + "|" + (r.shift || "Day");
-        feedRoleShift[k] = (feedRoleShift[k] || 0) + 1;
-      }
-      for (const role of Object.keys(required)) {
-        const req = required[role] || 0;
-        const have = rosterRaw.filter(x => x.role === role).length;
-        const gap = req - have;
-        if (gap <= 0) continue;
-        // Distribute TBC according to the CREW planned split if we can,
-        // otherwise fall back to all-Day.
+      function distribute(role, n, kind) {
+        // Day/night split: honour inline CREW planning when available, else
+        // biased toward Day.
         const planDay   = crewTbcByRoleShift[role + "|Day"]   || 0;
         const planNight = crewTbcByRoleShift[role + "|Night"] || 0;
         const planTotal = planDay + planNight;
-        let addDay   = 0;
-        let addNight = 0;
+        let addDay = 0, addNight = 0;
         if (planTotal > 0) {
-          addDay   = Math.round(gap * (planDay   / planTotal));
-          addNight = gap - addDay;
+          addDay   = Math.round(n * (planDay / planTotal));
+          addNight = n - addDay;
         } else {
-          addDay = gap;
+          addDay = n;
         }
         for (let i = 0; i < addDay + addNight; i++) {
           const shift = i < addDay ? "Day" : "Night";
+          const isPending = kind === "pending";
           merged.push({
             id: merged.length + 1,
-            name: "TBC", role, shift,
+            name: isPending ? "Confirmed (name pending)" : "TBC",
+            role, shift,
             days: DATES.length || 5,
             group: role,
             ty: 0, sy: 0,
@@ -1566,9 +1573,22 @@
             newhire:false, drivers:"", extras:"",
             mobile: "", personnel_id: null,
             _tickets: {}, _ticketCount: 0, _overlay: {}, _expiringSoon: false,
-            sum: `Unfilled ${role} — ${shift} shift. Source personnel and confirm ticket compliance before mobilisation.`,
+            _pending: isPending,
+            sum: isPending
+              ? `${role} confirmed by Rapid Crews planner; name not yet in RosterCut export. Awaiting scheduler update.`
+              : `Unfilled ${role} — ${shift} shift. Source personnel and confirm ticket compliance before mobilisation.`,
           });
         }
+      }
+      const rolesToPad = new Set(Object.keys(required).concat(Object.keys(filled_by_role)));
+      for (const role of rolesToPad) {
+        const req    = required[role] || 0;
+        const filled = filled_by_role[role] || 0;
+        const named  = rosterRaw.filter(x => x.role === role).length;
+        const pending = Math.max(0, filled - named);
+        const tbc     = Math.max(0, req - Math.max(filled, named));
+        if (pending > 0) distribute(role, pending, "pending");
+        if (tbc     > 0) distribute(role, tbc,     "tbc");
       }
 
       // Sort: by role order from GROUP_ORDER, then Day first, then named first, alpha.

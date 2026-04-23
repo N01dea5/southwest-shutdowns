@@ -88,6 +88,18 @@ KLEENHEAT_COLS  = ["Name", "Trade", "Company", "On Site", "Off Site", "Crew"]
 PEGASUS_COLS    = ["Company", "Date In", "Date Out", "Shift", "Surname", "First Name",
                    "Pegasus Job Role"]
 
+# Rapid Crews view exports — the three-file drop pattern:
+#   <jobno> (JobPlanning) <ts>.xlsx   per-trade Required/Filled/Actual
+#   <jobno> (Roster) <ts>.xlsx        per worker per scheduled day
+#   trades.xlsx                       global TradeId -> Trade name lookup
+#   personnel.xlsx                    global Personnel Id -> Primary Role
+JOBPLANNING_COLS = ["JobNo", "StartDate", "EndDate", "CompetencyId",
+                    "Required", "Filled", "Actual"]
+ROSTERVIEW_COLS  = ["Personnel Id", "First Name", "Surname", "Job No",
+                    "Schedule Date", "Site"]
+TRADES_COLS      = ["TradeId", "Trade"]
+PERSONNEL_COLS   = ["Personnel Id", "Given Names", "Surname", "Primary Role"]
+
 
 # --------------------------------------------------------------------------- helpers
 
@@ -143,7 +155,12 @@ def _standardise_mobile(raw) -> str:
 # --------------------------------------------------------------------------- roster parsers
 
 def _detect_format(headers: list) -> str:
-    """Detect which of our three supported roster schemas the XLSX is using."""
+    """Detect which XLSX schema this file is using.
+
+    Roster-per-worker shapes build a shutdown on their own; view shapes
+    (jobplanning / rosterview) need to be paired by JobNo and joined to
+    the two global lookups (trades / personnel).
+    """
     hs = {h for h in headers if h}
     if set(RAPIDCREWS_COLS).issubset(hs):
         return "rapidcrews"
@@ -151,6 +168,14 @@ def _detect_format(headers: list) -> str:
         return "pegasus"
     if set(KLEENHEAT_COLS).issubset(hs):
         return "kleenheat"
+    if set(JOBPLANNING_COLS).issubset(hs):
+        return "jobplanning"
+    if set(ROSTERVIEW_COLS).issubset(hs):
+        return "rosterview"
+    if set(TRADES_COLS).issubset(hs):
+        return "trades"
+    if set(PERSONNEL_COLS).issubset(hs):
+        return "personnel"
     return "unknown"
 
 
@@ -536,6 +561,235 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
     return company_key, client_name, shutdown
 
 
+# --------------------------------------------------------------------------- view exports
+
+def _iter_rows_by_header(xlsx_path: pathlib.Path):
+    """Yield dicts keyed by header name. openpyxl in read-only mode keeps
+    memory flat even on multi-thousand-row roster views."""
+    wb = openpyxl.load_workbook(xlsx_path, data_only=True, read_only=True)
+    ws = wb.active
+    rows_iter = ws.iter_rows(values_only=True)
+    headers = [h for h in next(rows_iter)]
+    for raw in rows_iter:
+        if not any(v is not None and v != "" for v in raw):
+            continue
+        yield dict(zip(headers, raw))
+    wb.close()
+
+
+def load_trades_lookup(xlsx_path: pathlib.Path) -> dict[str, dict]:
+    """TradeId (GUID, lowercased) -> {trade: str, discipline: str}."""
+    out: dict[str, dict] = {}
+    for row in _iter_rows_by_header(xlsx_path):
+        tid = row.get("TradeId")
+        trade = row.get("Trade")
+        if not tid or not trade:
+            continue
+        out[str(tid).strip().lower()] = {
+            "trade":      str(trade).strip(),
+            "discipline": str(row.get("Discipline") or "").strip(),
+        }
+    return out
+
+
+def load_personnel_lookup(xlsx_path: pathlib.Path) -> dict[str, dict]:
+    """Personnel Id (GUID, lowercased) -> {name fields, primary_role, status,
+    hire_company}. 'Given Names' rather than 'First Name' mirrors the sheet;
+    the worker's actual first name for display comes from the Roster view."""
+    out: dict[str, dict] = {}
+    for row in _iter_rows_by_header(xlsx_path):
+        pid = row.get("Personnel Id")
+        if not pid:
+            continue
+        out[str(pid).strip().lower()] = {
+            "given_names":  str(row.get("Given Names") or "").strip(),
+            "surname":      str(row.get("Surname") or "").strip(),
+            "primary_role": str(row.get("Primary Role") or "").strip(),
+            "status":       str(row.get("Status") or "").strip(),
+            "hire_company": str(row.get("Hire Company") or "").strip(),
+            "emp_no":       str(row.get("Employee Number") or "").strip(),
+        }
+    return out
+
+
+def parse_jobplanning(xlsx_path: pathlib.Path) -> dict:
+    """Returns {job_no: {"start": iso, "end": iso, "roles": {competency_id: {...}}}}.
+    One shutdown per file in the common case, but the shape supports multiple.
+    """
+    jobs: dict[str, dict] = {}
+    for row in _iter_rows_by_header(xlsx_path):
+        jobno = row.get("JobNo")
+        comp  = row.get("CompetencyId")
+        if jobno is None or not comp:
+            continue
+        key = str(jobno).strip()
+        job = jobs.setdefault(key, {
+            "start": to_iso(row.get("StartDate")),
+            "end":   to_iso(row.get("EndDate")),
+            "roles": {},
+        })
+        # All rows for the same JobNo should carry identical dates; keep the
+        # earliest start / latest end if any drift sneaks in.
+        s, e = to_iso(row.get("StartDate")), to_iso(row.get("EndDate"))
+        if s and (not job["start"] or s < job["start"]):
+            job["start"] = s
+        if e and (not job["end"] or e > job["end"]):
+            job["end"] = e
+        job["roles"][str(comp).strip().lower()] = {
+            "required": int(row.get("Required") or 0),
+            "filled":   int(row.get("Filled")   or 0),
+            "actual":   int(row.get("Actual")   or 0),
+        }
+    return jobs
+
+
+def parse_rosterview(xlsx_path: pathlib.Path) -> dict[str, list[dict]]:
+    """Returns {job_no: [{personnel_id, name fields, crew, start, end, ...}]}.
+
+    The raw sheet has one row per (worker × scheduled day). We dedupe to one
+    row per (job_no, personnel_id) and keep the min/max Schedule Date to show
+    each worker's on-site window.
+    """
+    by_job: dict[str, dict[str, dict]] = {}
+    for row in _iter_rows_by_header(xlsx_path):
+        jobno = row.get("Job No")
+        pid   = row.get("Personnel Id")
+        if jobno is None or not pid:
+            continue
+        jkey = str(jobno).strip()
+        pkey = str(pid).strip().lower()
+        workers = by_job.setdefault(jkey, {})
+        sched = to_iso(row.get("Schedule Date"))
+        w = workers.get(pkey)
+        if w is None:
+            w = workers[pkey] = {
+                "personnel_id": pkey,
+                "first":        str(row.get("First Name") or "").strip(),
+                "surname":      str(row.get("Surname") or "").strip(),
+                "crew":         str(row.get("Crew") or "").strip() or "Unknown",
+                "shift":        str(row.get("Schedule Type") or "").strip(),
+                "site":         str(row.get("Site") or "").strip(),
+                "start":        sched,
+                "end":          sched,
+                "days":         0,
+            }
+        w["days"] += 1
+        if sched:
+            if not w["start"] or sched < w["start"]:
+                w["start"] = sched
+            if not w["end"] or sched > w["end"]:
+                w["end"] = sched
+    return {j: list(workers.values()) for j, workers in by_job.items()}
+
+
+def build_shutdown_from_views(
+    file_key: str,
+    job: dict,
+    roster: list[dict],
+    personnel: dict[str, dict],
+    trades: dict[str, dict],
+) -> tuple[str, str, dict]:
+    """Compose a dashboard shutdown payload from the JobPlanning + Roster
+    views joined against the two global lookups. Produces the same schema
+    as build_shutdown() so app.js doesn't need to know the difference.
+
+    Semantics of the three Job Planning headcount columns:
+      - Required → required_by_role   (the plan)
+      - Actual   → filled_by_role     (bodies on site, includes substitutes
+                                        slotted against other trades)
+      - Filled   → mobilised_by_role  (strict planned-role-matches-filled-role)
+    """
+    if file_key not in ROSTER_MAP:
+        raise KeyError(f"{file_key} not in ROSTER_MAP — add an entry to route "
+                       f"this shutdown to a company")
+    entry = ROSTER_MAP[file_key]
+    company_key, client_name, project_label, site = entry[:4]
+    shutdown_id_override = entry[4] if len(entry) > 4 else None
+
+    # ---- Translate the per-competency headcounts to per-role names.
+    required_by_role:  dict[str, int] = {}
+    filled_by_role:    dict[str, int] = {}   # Actual (subs included)
+    mobilised_by_role: dict[str, int] = {}   # Filled (strict)
+    unknown_competencies: list[str] = []
+    for cid, counts in job["roles"].items():
+        trade = trades.get(cid, {}).get("trade")
+        if not trade:
+            unknown_competencies.append(cid)
+            trade = f"Unknown ({cid[:8]})"
+        if counts["required"]:
+            required_by_role[trade] = required_by_role.get(trade, 0) + counts["required"]
+        if counts["actual"]:
+            filled_by_role[trade]   = filled_by_role.get(trade, 0) + counts["actual"]
+        if counts["filled"]:
+            mobilised_by_role[trade] = mobilised_by_role.get(trade, 0) + counts["filled"]
+
+    # ---- Per-worker roster, joined to Personnel for the primary role.
+    roster_out: list[dict] = []
+    crew_split: dict[str, int] = {}
+    labour_hire_split: dict[str, int] = {}
+    unknown_personnel = 0
+    for w in roster:
+        p = personnel.get(w["personnel_id"], {})
+        if not p:
+            unknown_personnel += 1
+        role = p.get("primary_role") or "Unknown"
+        full_name = f"{w['first']} {w['surname']}".strip()
+        crew_split[w["crew"]] = crew_split.get(w["crew"], 0) + 1
+        if p.get("hire_company"):
+            labour_hire_split[p["hire_company"]] = \
+                labour_hire_split.get(p["hire_company"], 0) + 1
+        entry_row = {"name": full_name, "role": role}
+        if w.get("start"):
+            entry_row["start"] = w["start"]
+        if w.get("end"):
+            entry_row["end"] = w["end"]
+        if p.get("emp_no"):
+            entry_row["emp_no"] = p["emp_no"]
+        roster_out.append(entry_row)
+
+    sd, ed = job.get("start"), job.get("end")
+    # Fall back to min/max Schedule Date if JobPlanning didn't carry dates.
+    if (not sd or not ed) and roster:
+        starts = [w["start"] for w in roster if w.get("start")]
+        ends   = [w["end"]   for w in roster if w.get("end")]
+        if starts and ends:
+            sd, ed = sd or min(starts), ed or max(ends)
+    if not sd or not ed:
+        raise ValueError(f"{file_key}: can't determine shutdown dates "
+                         f"(no JobPlanning dates, no roster days)")
+
+    shutdown_id = shutdown_id_override or f"{company_key}-{sd[:7]}"
+    today       = dt.date.today()
+    status      = _infer_status(dt.date.fromisoformat(sd),
+                                dt.date.fromisoformat(ed), today)
+
+    # Preserve the audit detail that RosterCut-derived shutdowns keep under
+    # _source, but record the three-view provenance here.
+    shutdown = {
+        "id":               shutdown_id,
+        "name":             project_label,
+        "site":             site,
+        "start_date":       sd,
+        "end_date":         ed,
+        "status":           status,
+        "required_by_role": required_by_role,
+        "filled_by_role":   filled_by_role,
+        "mobilised_by_role": mobilised_by_role,
+        "crew_split":       crew_split,
+        "labour_hire_split": labour_hire_split,
+        "roster":           roster_out,
+        "_source": {
+            "rapid_crews_job_no":      file_key,
+            "source_format":           "jobplanning+rosterview",
+            "required_target_source":  "REAL_TARGET",
+            "rapid_crews_roster_size": len(roster_out),
+            "unknown_competencies":    unknown_competencies,
+            "unknown_personnel_count": unknown_personnel,
+        },
+    }
+    return company_key, client_name, shutdown
+
+
 # --------------------------------------------------------------------------- main
 
 def _file_key(xlsx: pathlib.Path) -> str:
@@ -552,26 +806,74 @@ def _file_key(xlsx: pathlib.Path) -> str:
     return xlsx.stem.strip()
 
 
+def _sniff_format(xlsx_path: pathlib.Path) -> str:
+    wb = openpyxl.load_workbook(xlsx_path, data_only=True, read_only=True)
+    ws = wb.active
+    headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+    fmt = _detect_format(headers)
+    wb.close()
+    return fmt
+
+
 def main() -> int:
     if not RAW_DIR.exists():
         print(f"No raw dir at {RAW_DIR}", file=sys.stderr)
         return 1
 
-    # -- 1. Parse every mapped file first, so the Kleenheat enrichment step
-    #       can cross-reference first-name + role against the other rosters.
+    # -- 0. Partition raw files by format. Global lookups (trades, personnel)
+    #       are single-file; per-shutdown views are grouped by JobNo.
+    trades_lookup:    dict[str, dict]          = {}
+    personnel_lookup: dict[str, dict]          = {}
+    jobplanning_by_key: dict[str, dict]        = {}
+    rosterview_by_key:  dict[str, list[dict]]  = {}
+    legacy_files: list[pathlib.Path]           = []
+
+    for xlsx in sorted(RAW_DIR.glob("*.xlsx")):
+        fmt = _sniff_format(xlsx)
+        if fmt == "trades":
+            trades_lookup.update(load_trades_lookup(xlsx))
+            print(f"  trades lookup: {xlsx.name} ({len(trades_lookup)} trades)")
+            continue
+        if fmt == "personnel":
+            personnel_lookup.update(load_personnel_lookup(xlsx))
+            print(f"  personnel lookup: {xlsx.name} ({len(personnel_lookup)} people)")
+            continue
+        if fmt == "jobplanning":
+            for k, job in parse_jobplanning(xlsx).items():
+                jobplanning_by_key[k] = job
+            print(f"  jobplanning: {xlsx.name} ({len(jobplanning_by_key)} jobs mapped)")
+            continue
+        if fmt == "rosterview":
+            for k, workers in parse_rosterview(xlsx).items():
+                rosterview_by_key.setdefault(k, []).extend(workers)
+            print(f"  rosterview: {xlsx.name} ({sum(len(v) for v in rosterview_by_key.values())} worker rows)")
+            continue
+        if fmt in ("rapidcrews", "kleenheat", "pegasus"):
+            legacy_files.append(xlsx)
+            continue
+        print(f"  skip unrecognised XLSX: {xlsx.name}")
+
+    # -- 1. Parse every mapped legacy file first, so the Kleenheat enrichment
+    #       step can cross-reference first-name + role against the other
+    #       rosters. View-derived shutdowns bypass this (they have a proper
+    #       Personnel Id join already).
     parsed: list[tuple[str, pathlib.Path, str, list[dict]]] = []
     rows_by_company: dict[str, list[dict]] = {}
-    for xlsx in sorted(RAW_DIR.glob("*.xlsx")):
+    view_keys = set(jobplanning_by_key) | set(rosterview_by_key)
+    for xlsx in legacy_files:
         key = _file_key(xlsx)
         if key not in ROSTER_MAP:
             print(f"  skip unmapped roster {key}: {xlsx.name}")
+            continue
+        if key in view_keys:
+            print(f"  prefer views over legacy for {key}: skipping {xlsx.name}")
             continue
         fmt, rows = parse_roster(xlsx)
         company_key = ROSTER_MAP[key][0]
         parsed.append((key, xlsx, fmt, rows))
         rows_by_company.setdefault(company_key, []).extend(rows)
 
-    if not parsed:
+    if not parsed and not view_keys:
         print("No mapped roster files processed.", file=sys.stderr)
         return 1
 
@@ -599,6 +901,34 @@ def main() -> int:
               f"roster={len(shutdown['roster']):>3}  "
               f"{shutdown['start_date']} → {shutdown['end_date']}  "
               f"[{shutdown['status']}]")
+
+    # -- 3b. View-derived shutdowns (JobPlanning + Roster). These win over the
+    #        legacy RosterCut path when both are supplied for the same JobNo.
+    for key in sorted(view_keys):
+        if key not in ROSTER_MAP:
+            print(f"  skip view shutdown {key}: not in ROSTER_MAP")
+            continue
+        job = jobplanning_by_key.get(key)
+        roster = rosterview_by_key.get(key, [])
+        if not job:
+            # Roster without JobPlanning — fall back to a RosterCut-style
+            # placeholder (required_by_role = headcount from roster).
+            print(f"  {key}: roster view present but no JobPlanning — "
+                  f"skipping for now (need JobPlanning for Required/Actual).")
+            continue
+        company_key, client_name, shutdown = build_shutdown_from_views(
+            key, job, roster, personnel_lookup, trades_lookup,
+        )
+        by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
+        # If the legacy path also produced a shutdown with the same id, the
+        # view-derived payload replaces it.
+        existing = [s for s in by_company[company_key]["shutdowns"]
+                    if s["id"] != shutdown["id"]]
+        by_company[company_key]["shutdowns"] = existing + [shutdown]
+        print(f"  {key:>10}  {client_name:<10} {shutdown['id']:<22} "
+              f"roster={len(shutdown['roster']):>3}  "
+              f"{shutdown['start_date']} → {shutdown['end_date']}  "
+              f"[{shutdown['status']}]  (views)")
 
     # -- 4. Write per-company JSON files.
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")

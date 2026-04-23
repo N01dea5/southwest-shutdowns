@@ -403,6 +403,66 @@ XLSX drop-zone is ever retired, extend `TARGETS_SQL` / `ROSTER_SQL` to
 return `start_date` / `end_date` and update `_merge_into_company_json` to
 write them.
 
+## Rapid Crews view exports (three-file drop)
+
+An alternative to the RosterCut XLSX — and the recommended flow going
+forward. Rapid Crews exposes three standard views that together give the
+dashboard everything it needs: **Job Planning** (Required / Filled / Actual
+by trade), **Personnel Roster** (per worker per scheduled day), and two
+global lookups (**Trades** and **Personnel**).
+
+Drop these XLSXs into `data/raw/` and the existing
+`scripts/parse_rapidcrews.py` picks them up — no new script, no workflow
+change. The parser sniffs each file's column headers to decide which flow
+it's in; the legacy RosterCut path keeps working untouched.
+
+### What to export from Rapid Crews
+
+Per shutdown:
+
+| File name convention | View | Minimum columns |
+|---|---|---|
+| `<JobNo> (JobPlanning) <ts>.xlsx` | Job Planning | `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `Actual` |
+| `<JobNo> (Roster) <ts>.xlsx` | Personnel Roster | `Personnel Id`, `First Name`, `Surname`, `Job No`, `Schedule Date`, `Site`, `Crew`, `Schedule Type` |
+
+One-off (re-export when Rapid Crews adds trades / personnel):
+
+| File name | View | Minimum columns |
+|---|---|---|
+| `trades.xlsx` | Trades | `TradeId`, `Trade` (optional `Discipline`) |
+| `personnel.xlsx` | Personnel | `Personnel Id`, `Given Names`, `Surname`, `Primary Role` (optional `Employee Number`, `Status`, `Hire Company`) |
+
+Filename matters only for the two per-shutdown files: the leading numeric
+token must be the Rapid Crews `JobNo`, so the parser can route the shutdown
+through `ROSTER_MAP`. The global lookups are detected from their column
+headers — name them whatever you like.
+
+### How the columns map to the dashboard
+
+| Rapid Crews column | Dashboard field | Why |
+|---|---|---|
+| `Required` (Job Planning) | `required_by_role` | The plan |
+| `Actual` (Job Planning) | `filled_by_role` | Bodies on site — **includes substitutes** (an Intermediate Rigger in an Advanced Rigger slot still counts toward the topline fill) |
+| `Filled` (Job Planning) | `mobilised_by_role` | Strict "planned-role = supplied-role" count, kept for audit |
+| `CompetencyId` | — joined via `trades.xlsx` → `Trade` | Dashboard displays the human-readable trade name |
+| Roster `Personnel Id` | — joined via `personnel.xlsx` → `Primary Role` | Each worker's role in the `roster` list comes from their Primary Role |
+| Roster `Schedule Date` | `roster[].start` / `.end` | Deduped to one entry per worker with min/max scheduled days |
+
+When a worker is subbed into a trade they don't normally hold (Intermediate
+Rigger in an Advanced Rigger slot), they show up in `filled_by_role` under
+**their own Primary Role** — the substitution stays visible, but they
+still count toward the overall fill rate. See
+`scripts/parse_rapidcrews.py::build_shutdown_from_views` for the exact
+aggregation.
+
+### Precedence when both flows are present
+
+If the same `JobNo` has **both** a RosterCut XLSX and a JobPlanning+Roster
+pair in `data/raw/`, the views win. The legacy file is skipped with a
+`prefer views over legacy for <key>: skipping …` log line. Delete the
+stale RosterCut file once you're confident the view flow is producing the
+numbers you expect.
+
 ## Retention semantics
 
 No stable employee IDs exist in the source data, so matching is on a normalised `name + role` key (lowercased, punctuation stripped, whitespace collapsed). Two retention views are shown side-by-side:

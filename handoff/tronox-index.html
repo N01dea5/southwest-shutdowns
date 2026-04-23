@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRG Global — Tronox Major Shutdown Workforce Dashboard</title>
+  <link rel="icon" href="./srg_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.1.16/Recharts.js"></script>
+
+  <script>
+    window.addEventListener("error", function (e) {
+      if (e.target && e.target.tagName && ["IMG","SCRIPT","LINK","SOURCE"].indexOf(e.target.tagName) !== -1) return;
+      if (!e.message) return;
+      var root = document.getElementById("root");
+      if (!root) return;
+      if (root.children.length > 0) { console.error("Non-fatal error after render:", e.message); return; }
+      root.innerHTML =
+        '<div style="padding:40px;font-family:monospace;background:#FEE;color:#900;border:2px solid #C00;margin:20px;border-radius:8px;">' +
+        "<h2>Script Error</h2>" +
+        "<p><strong>Message:</strong> " + (e.message || "Unknown") + "</p>" +
+        "<p><strong>Source:</strong> " + (e.filename || "inline") + "</p>" +
+        "<p><strong>Line:</strong> " + (e.lineno || "?") + "</p>" +
+        "<p>Loaded: React=" + typeof React + ", ReactDOM=" + typeof ReactDOM + ", Recharts=" + typeof Recharts + "</p></div>";
+    });
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #F5F5F5;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar { height: 8px; width: 8px; }
+    ::-webkit-scrollbar-thumb { background: #B0B0B0; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #888; }
+    ::-webkit-scrollbar-track { background: #E8E8E8; }
+    button { font-family: inherit; }
+    select { font-family: inherit; }
+    table { font-family: inherit; }
+
+    @media print {
+      body { background: white !important; }
+      button { display: none !important; }
+      #root { width: 100%; }
+    }
+
+    .ticket-chip {
+      display: inline-block;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 2px;
+      text-decoration: none;
+    }
+    .ticket-chip:hover { filter: brightness(0.92); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    /* ===================================================================
+       Tronox Workforce Dashboard
+       Data source: southwest-shutdowns/data/tronox.json
+       Regenerated whenever the SQL workbook (Rapidcrews Macro Data.xlsx)
+       hits main. This page fetches the JSON on load; named roster and
+       ticket status come straight from the scheduling DB + compliance sheet.
+       =================================================================== */
+
+    const DATA_URL = "https://raw.githubusercontent.com/N01dea5/southwest-shutdowns/main/data/tronox.json";
+
+    const { useState, useMemo } = React;
+    const {
+      BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+      PieChart, Pie, Cell, ResponsiveContainer, Legend
+    } = Recharts;
+
+    const SRG_RED    = "#E30613";
+    const SRG_DARK   = "#1A1A1A";
+    const SRG_GREY   = "#595959";
+    const SRG_LIGHT  = "#F5F5F5";
+    const SRG_BORDER = "#E5E5E5";
+    const RH = "#DC2626";  // High-risk red
+    const RM = "#F59E0B";  // Medium-risk amber — also used for "expiring soon" tickets
+    const RL = "#16A34A";  // Low-risk green — also used for current tickets
+
+    // Populated by buildFromJson() before App is rendered.
+    let E            = [];
+    let ROSTER       = [];
+    let DATES        = [];
+    let DOW          = [];
+    let CONTINGENCY  = { total: 0, byGroup: {} };
+    let GROUP_ORDER  = [];
+    let META         = { name: "", site: "", start_date: "", end_date: "", generated_at: null, roster_size: 0 };
+
+    const TC = [
+      { key: "cse",  label: "CSE"  },
+      { key: "wah",  label: "WAH"  },
+      { key: "ewp",  label: "EWP"  },
+      { key: "ba",   label: "BA"   },
+      { key: "fork", label: "Fork" },
+      { key: "hr",   label: "HR"   },
+      { key: "dog",  label: "Dog"  },
+      { key: "rig",  label: "Rig"  },
+      { key: "gta",  label: "GTA"  },
+      { key: "fa",   label: "FA"   },
+    ];
+
+    /* -------------------------------------------------------------------
+       JSON -> dashboard-shaped E / ROSTER / GROUP_ORDER etc.
+       ------------------------------------------------------------------- */
+    function buildFromJson(data) {
+      const sd = (data.shutdowns || [])[0];
+      if (!sd) throw new Error("No shutdowns in data feed");
+
+      const required  = sd.required_by_role || {};
+      const rosterRaw = sd.roster || {};
+
+      GROUP_ORDER = Object.keys(required).sort((a, b) => required[b] - required[a]);
+
+      // Day-by-day columns for the Roster tab. Built from the shutdown span.
+      DATES = [];
+      DOW   = [];
+      const start = new Date(sd.start_date + "T00:00:00");
+      const end   = new Date(sd.end_date   + "T00:00:00");
+      const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      const dowNames   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        DATES.push(String(d.getDate()).padStart(2, "0") + " " + monthNames[d.getMonth()]);
+        DOW.push(dowNames[d.getDay()]);
+      }
+
+      // CREW = named roster entries + TBC padding to hit required_by_role.
+      // We distribute TBC across the shifts already seen in the named
+      // roster (proportional split); if the role has no named people yet
+      // we default to Day.
+      const filledByRoleShift = {};
+      for (const r of rosterRaw) {
+        const role  = r.role;
+        const shift = r.shift || "Day";
+        filledByRoleShift[role] = filledByRoleShift[role] || { Day: 0, Night: 0 };
+        filledByRoleShift[role][shift === "Night" ? "Night" : "Day"]++;
+      }
+
+      const CREW = [];
+      for (const role of GROUP_ORDER) {
+        const req  = required[role] || 0;
+        const have = rosterRaw.filter(x => x.role === role);
+        for (const r of have) CREW.push(r);
+        const gap = req - have.length;
+        if (gap <= 0) continue;
+        const split = filledByRoleShift[role] || { Day: 0, Night: 0 };
+        // Alternate Day/Night for the TBC pad, biased toward whichever
+        // shift is currently less covered vs its implied target. Good
+        // enough — the dashboard's main use of shift is filtering.
+        let dayDebt = Math.max(0, Math.ceil(req / 2) - split.Day);
+        for (let i = 0; i < gap; i++) {
+          const shift = dayDebt > 0 ? "Day" : "Night";
+          if (shift === "Day") dayDebt--;
+          CREW.push({ name: "TBC", role, shift, tickets: {} });
+        }
+      }
+
+      // E — what the render code reads. One record per CREW entry, flattened
+      // for direct table lookups. `_tickets` preserves the full expiry/doc
+      // objects so the ticket cells can render tooltips + doc links.
+      const ticketKeys = ["cse","wah","ewp","ba","fork","hr","dog","gta","fa"];
+      E = CREW.map((r, i) => {
+        const t = r.tickets || {};
+        const isTBC = r.name === "TBC";
+        const ticketCount = ticketKeys.filter(k => !!t[k]).length + (t.rig ? 1 : 0);
+        const hasAnyExp = ticketKeys.some(k => t[k] && t[k].status === "expiring_soon")
+                       || (t.rig && t.rig.status === "expiring_soon");
+        const roleLower = r.role ? r.role.toLowerCase() : "position";
+        const sum = isTBC
+          ? `Unfilled ${r.role} position — ${r.shift || "shift TBC"}. Source personnel and confirm ticket compliance before mobilisation.`
+          : ticketCount > 0
+            ? `${r.shift || ""} shift ${roleLower} — ${ticketCount} current ticket${ticketCount === 1 ? "" : "s"} in Rapid Crews compliance.${hasAnyExp ? " One or more tickets expiring within 30 days — review before mobilisation." : ""}`
+            : `${r.shift || ""} shift ${roleLower} — ticket details awaiting compliance entry.`;
+        return {
+          id:    i + 1,
+          name:  r.name,
+          role:  r.role,
+          shift: r.shift || "Day",
+          days:  DATES.length || 5,
+          group: r.role,
+          // Trade/shutdown years are no longer tracked (resumes replaced by
+          // the SQL compliance sheet). Leave as 0 so the UI shows "–".
+          ty: 0,
+          sy: 0,
+          cse:  !!t.cse,
+          wah:  !!t.wah,
+          ewp:  !!t.ewp,
+          ba:   !!t.ba,
+          fork: !!t.fork,
+          hr:   !!t.hr,
+          dog:  !!t.dog,
+          rig:  (t.rig && t.rig.level) || "",
+          gta:  !!t.gta,
+          fa:   !!t.fa,
+          // Telehandler competency doesn't exist as a separate cert in WA —
+          // operators use the Forklift Truck ticket, so reuse that flag.
+          tele: !!t.fork,
+          mobile: r.mobile || "",
+          personnel_id: r.personnel_id || null,
+          _tickets: t,   // preserved for expiry tooltips + doc links
+          _ticketCount: ticketCount,
+          sum: sum,
+        };
+      });
+
+      // Stable display order: group by role (GROUP_ORDER), then Day before
+      // Night, then named before TBC, then alpha.
+      E.sort((a, b) => {
+        const ga = GROUP_ORDER.indexOf(a.group);
+        const gb = GROUP_ORDER.indexOf(b.group);
+        if (ga !== gb) return ga - gb;
+        if (a.shift !== b.shift) return a.shift === "Day" ? -1 : 1;
+        const aT = a.name === "TBC";
+        const bT = b.name === "TBC";
+        if (aT !== bT) return aT ? 1 : -1;
+        return a.name.localeCompare(b.name);
+      });
+      E.forEach((e, i) => { e.id = i + 1; });
+
+      // ROSTER — shift-code grid for the roster tab. Named only; TBC left
+      // off to keep the grid scannable.
+      ROSTER = E.filter(e => e.name !== "TBC").map(e => ({
+        name:  e.name,
+        role:  e.role,
+        notes: `${e.shift} shift · ${DATES.length} days`,
+        codes: (e.shift === "Night"
+                 ? new Array(DATES.length).fill("NS")
+                 : new Array(DATES.length).fill("DS")),
+      }));
+
+      CONTINGENCY = { total: 0, byGroup: Object.fromEntries(GROUP_ORDER.map(g => [g, 0])) };
+
+      META = {
+        name:         sd.name || "",
+        site:         sd.site || "",
+        start_date:   sd.start_date || "",
+        end_date:     sd.end_date   || "",
+        generated_at: data.generated_at || null,
+        roster_size:  rosterRaw.length,
+      };
+    }
+
+    /* -------------------------------------------------------------------
+       Small presentational helpers, shared across tabs.
+       ------------------------------------------------------------------- */
+    const h = React.createElement;
+
+    function fmtDate(iso) {
+      if (!iso) return "";
+      const d = new Date(iso);
+      if (isNaN(d)) return iso;
+      return d.toLocaleDateString("en-AU", { day: "2-digit", month: "short", year: "numeric" });
+    }
+
+    function SC({ label, value, sub }) {
+      return h("div", {
+        style: {
+          background: "white",
+          borderLeft: `3px solid ${SRG_RED}`,
+          padding: "18px 22px",
+          boxShadow: "0 1px 2px rgba(0,0,0,0.04)"
+        }
+      },
+        h("div", { style: { fontSize: 30, fontWeight: 800, color: SRG_DARK, lineHeight: 1.1 } }, value),
+        h("div", { style: { fontSize: 12, fontWeight: 600, color: SRG_GREY, marginTop: 4, textTransform: "uppercase", letterSpacing: 0.5 } }, label),
+        sub && h("div", { style: { fontSize: 11, color: "#8C8C8C", marginTop: 3 } }, sub)
+      );
+    }
+
+    function RB({ level }) {
+      return h("span", {
+        style: {
+          display: "inline-block", padding: "3px 10px", fontSize: 10, fontWeight: 700,
+          color: "white",
+          background: level === "HIGH" ? RH : level === "MED" ? RM : RL,
+          letterSpacing: 0.5
+        }
+      }, level);
+    }
+
+    function ReadinessPill({ text, color }) {
+      return h("span", {
+        style: {
+          display: "inline-block", padding: "3px 10px", fontSize: 10, fontWeight: 700,
+          color: "white", background: color,
+          letterSpacing: 0.4, textTransform: "uppercase"
+        }
+      }, text);
+    }
+
+    /* Ticket cell: renders either a checkmark (or rigging level string) with
+       colour-coded expiry status. A hover tooltip shows expiry date; a
+       document-location link (if present) turns the chip into a hyperlink
+       straight to the evidence PDF in SharePoint. */
+    function TicketCell({ e, tkey }) {
+      const isRig = tkey === "rig";
+      const held  = isRig ? !!e.rig : !!e[tkey];
+      if (!held) return h("td", {
+        style: { padding: "9px 4px", textAlign: "center", fontSize: 13, color: "#D4D4D4" }
+      }, "");
+      const t = (e._tickets || {})[tkey] || {};
+      const status = t.status || "current";
+      const expires = t.expiry ? fmtDate(t.expiry) : "no expiry";
+      const color = status === "expiring_soon" ? RM : SRG_DARK;
+      const bg    = status === "expiring_soon" ? "#FEF3C7" : "transparent";
+      const label = isRig ? (e.rig || "") : "✓";
+      const title = `${tkey.toUpperCase()}${isRig ? ": " + (e.rig || "") : ""} · ${expires}${t.doc ? " · click to open" : ""}`;
+      const content = t.doc
+        ? h("a", {
+            href: t.doc, target: "_blank", rel: "noopener",
+            className: "ticket-chip",
+            style: { color, background: bg, border: `1px solid ${bg === "transparent" ? "transparent" : color}` },
+            title: title
+          }, label)
+        : h("span", {
+            className: "ticket-chip",
+            style: { color, background: bg, border: `1px solid ${bg === "transparent" ? "transparent" : color}` },
+            title: title
+          }, label);
+      return h("td", {
+        style: { padding: "9px 4px", textAlign: "center", fontSize: isRig ? 9 : 12, fontWeight: isRig ? 700 : 400 }
+      }, content);
+    }
+
+    /* -------------------------------------------------------------------
+       Root component. Reads from the module-level E / ROSTER / META vars
+       that buildFromJson() populated.
+       ------------------------------------------------------------------- */
+    function App() {
+      const [tab, setTab]         = useState("profile");
+      const [fG, sfG]             = useState("All");
+      const [fS, sfS]             = useState("All");
+      const [fT, sfT]             = useState([]);
+      const [rShift, setRShift]   = useState("All");
+      const [rRole, setRRole]     = useState("All");
+
+      const toggle = k => sfT(p => p.includes(k) ? p.filter(x => x !== k) : [...p, k]);
+
+      const filtered = useMemo(() => E.filter(e => {
+        if (fG !== "All" && e.group !== fG) return false;
+        if (fS !== "All" && e.shift !== fS) return false;
+        if (fT.length > 0) {
+          for (const t of fT) {
+            if (t === "rig") { if (!e.rig) return false; }
+            else             { if (!e[t])  return false; }
+          }
+        }
+        return true;
+      }), [fG, fS, fT]);
+
+      const groups = [...new Set(E.map(e => e.group))];
+      const tN = E.filter(e => e.name !== "TBC").length;
+      const tT = E.filter(e => e.name === "TBC").length;
+
+      // New compliance-driven KPIs replacing the old trade/shutdown year
+      // averages, which were manually maintained and aren't available
+      // from the Rapid Crews compliance sheet.
+      const named       = E.filter(e => e.name !== "TBC");
+      const totalTix    = named.reduce((s, e) => s + (e._ticketCount || 0), 0);
+      const avgTix      = named.length ? (totalTix / named.length).toFixed(1) : "0";
+      let expiringSoon  = 0;
+      named.forEach(e => {
+        for (const k of Object.keys(e._tickets || {})) {
+          if ((e._tickets[k] || {}).status === "expiring_soon") expiringSoon++;
+        }
+      });
+
+      const tc = {};
+      TC.forEach(t => {
+        tc[t.label] = E.filter(e => t.key === "rig" ? !!e.rig : !!e[t.key]).length;
+      });
+
+      const rgd = GROUP_ORDER.filter(g => E.some(e => e.group === g) || (CONTINGENCY.byGroup[g] || 0) > 0).map(g => ({
+        name: g,
+        filled: E.filter(e => e.group === g && e.name !== "TBC").length,
+        tbc:    E.filter(e => e.group === g && e.name === "TBC").length,
+        contingency: CONTINGENCY.byGroup[g] || 0
+      }));
+
+      const sd = [
+        { name: "Day Shift",   value: E.filter(e => e.shift === "Day").length },
+        { name: "Night Shift", value: E.filter(e => e.shift === "Night").length }
+      ];
+
+      const tradeSummary = useMemo(() => {
+        return GROUP_ORDER.filter(g => E.some(e => e.group === g) || (CONTINGENCY.byGroup[g] || 0) > 0).map(g => {
+          const planned     = E.filter(e => e.group === g).length;
+          const confirmed   = E.filter(e => e.group === g && e.name !== "TBC").length;
+          const gap         = E.filter(e => e.group === g && e.name === "TBC").length;
+          const contingency = CONTINGENCY.byGroup[g] || 0;
+          let readiness      = "Covered";
+          let readinessColor = RM;
+          if (gap > 0)            { readiness = "Gap";   readinessColor = RH; }
+          else if (contingency > 0) { readiness = "Ready"; readinessColor = RL; }
+          return { group: g, planned, confirmed, gap, contingency, readiness, readinessColor };
+        });
+      }, []);
+
+      const risks = useMemo(() => {
+        const r = [];
+        groups.forEach(g => {
+          ["Day", "Night"].forEach(s => {
+            const crew = E.filter(e => e.group === g && e.shift === s);
+            if (!crew.length) return;
+            const namedGrp = crew.filter(e => e.name !== "TBC");
+            const tbcGrp   = crew.filter(e => e.name === "TBC");
+            if (tbcGrp.length) {
+              r.push({ group: g, shift: s, level: "HIGH",
+                issue: `${tbcGrp.length} unfilled position(s)`,
+                action: "Source and confirm personnel before shutdown mobilisation." });
+            }
+            // Flag anyone with no tickets at all — compliance gap
+            namedGrp.forEach(e => {
+              if ((e._ticketCount || 0) === 0) {
+                r.push({ group: g, shift: s, level: "MED",
+                  issue: `${e.name} — no current tickets in compliance system`,
+                  action: "Verify and enter ticket evidence before mobilisation." });
+              }
+            });
+            // Flag tickets expiring within 30 days
+            namedGrp.forEach(e => {
+              const keys = Object.keys(e._tickets || {});
+              for (const k of keys) {
+                if ((e._tickets[k] || {}).status === "expiring_soon") {
+                  r.push({ group: g, shift: s, level: "MED",
+                    issue: `${e.name} — ${k.toUpperCase()} expiring ${fmtDate(e._tickets[k].expiry)}`,
+                    action: "Schedule refresher / renewal before shutdown mobilisation." });
+                  break;   // one flag per person, don't spam
+                }
+              }
+            });
+            if (["Mechanical Fitter","Trade Assistant","Boilermaker"].includes(g) && !namedGrp.some(e => e.tele) && namedGrp.length > 0) {
+              r.push({ group: g, shift: s, level: "LOW",
+                issue: "No telehandler ticket holder in group",
+                action: "Confirm telehandler access from adjacent crew or source ticket holder." });
+            }
+            if (!namedGrp.some(e => e.gta) && namedGrp.length > 2 && ["Mechanical Fitter","Boilermaker","Coded Welder"].includes(g)) {
+              r.push({ group: g, shift: s, level: "LOW",
+                issue: "No gas testing ticket holder in group",
+                action: "Confirm GTA coverage from HSE or adjacent crew for confined space/hot work entries." });
+            }
+          });
+        });
+        return r.sort((a, b) => ({ HIGH: 0, MED: 1, LOW: 2 })[a.level] - ({ HIGH: 0, MED: 1, LOW: 2 })[b.level]);
+      }, []);
+
+      const criticalRoles = useMemo(() => {
+        const wanted = ["Supervisor - Mechanical"];
+        return wanted.map(role => {
+          const matching = E.filter(e => e.role === role);
+          return {
+            role,
+            planned:   matching.length,
+            confirmed: matching.filter(e => e.name !== "TBC").length,
+            gap:       matching.filter(e => e.name === "TBC").length
+          };
+        }).filter(x => x.planned > 0);
+      }, []);
+
+      const printRisks = useMemo(() => risks.slice(0, 8), [risks]);
+
+      // Experience ranking by trade replaced with "ticket coverage" ranking —
+      // more current tickets = higher on the list. Same visual affordance,
+      // different (and now keepable-up-to-date) input.
+      const ranked = useMemo(() => {
+        const r = {};
+        groups.forEach(g => {
+          r[g] = E.filter(e => e.group === g && e.name !== "TBC")
+                  .sort((a, b) => (b._ticketCount || 0) - (a._ticketCount || 0));
+        });
+        return r;
+      }, []);
+
+      const rosterRoles = [...new Set(ROSTER.map(r => r.role))].sort();
+
+      const filteredRoster = useMemo(() => {
+        return ROSTER.filter(r => {
+          if (rShift === "Day"   && !r.codes.includes("DS")) return false;
+          if (rShift === "Night" && !r.codes.includes("NS")) return false;
+          if (rRole !== "All" && r.role !== rRole) return false;
+          return true;
+        });
+      }, [rShift, rRole]);
+
+      const TabBtn = ({ id, label }) =>
+        h("button", {
+          onClick: () => setTab(id),
+          style: {
+            padding: "12px 24px", border: "none",
+            borderBottom: tab === id ? `3px solid ${SRG_RED}` : "3px solid transparent",
+            background: "transparent", cursor: "pointer",
+            fontWeight: tab === id ? 700 : 600, fontSize: 13,
+            color: tab === id ? SRG_DARK : SRG_GREY,
+            textTransform: "uppercase", letterSpacing: 0.8,
+            transition: "all .15s"
+          }
+        }, label);
+
+      const dateRange = (META.start_date && META.end_date)
+        ? `${fmtDate(META.start_date)} – ${fmtDate(META.end_date)}`
+        : "";
+      const subtitle = `${META.site ? META.site + " · " : ""}${META.name || "Tronox Shutdown"} · ${E.length} positions`;
+      const freshness = META.generated_at
+        ? `Data refreshed ${new Date(META.generated_at).toLocaleString("en-AU")}`
+        : "Data refreshed timestamp unavailable";
+
+      return h("div", {
+        style: { fontFamily: "'Source Sans 3','Segoe UI',system-ui,sans-serif", background: SRG_LIGHT, minHeight: "100vh", color: SRG_DARK }
+      },
+        h("div", {
+          style: { background: "white", borderBottom: `1px solid ${SRG_BORDER}`, boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }
+        },
+          h("div", {
+            style: { maxWidth: 1440, margin: "0 auto", padding: "20px 32px", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }
+          },
+            h("img", { src: "./srg_logo.png", alt: "SRG Global", style: { height: 44, width: "auto", flexShrink: 0 } }),
+            h("div", { style: { width: 1, height: 40, background: SRG_BORDER, flexShrink: 0 } }),
+            h("div", { style: { flex: 1, minWidth: 280 } },
+              h("div", { style: { fontSize: 10, fontWeight: 700, color: SRG_RED, letterSpacing: 1.5, textTransform: "uppercase" } }, "Asset Maintenance · Integrated Services"),
+              h("div", { style: { fontSize: 22, fontWeight: 800, color: SRG_DARK, marginTop: 2, lineHeight: 1.2 } }, "Tronox — Major Shutdown Workforce Dashboard"),
+              h("div", { style: { fontSize: 12, color: SRG_GREY, marginTop: 2 } }, subtitle + (dateRange ? " · " + dateRange : "")),
+              h("div", { style: { fontSize: 10, color: "#B0B0B0", marginTop: 2, fontStyle: "italic" } }, freshness)
+            )
+          ),
+          h("div", {
+            style: { maxWidth: 1440, margin: "0 auto", padding: "0 32px", display: "flex", gap: 4, borderTop: `1px solid ${SRG_BORDER}` }
+          },
+            h(TabBtn, { id: "profile", label: "Workforce Profile" }),
+            h(TabBtn, { id: "risk",    label: "Risk Assessment"   }),
+            h(TabBtn, { id: "roster",  label: "Shutdown Roster"   }),
+            h(TabBtn, { id: "print",   label: "Print Summary"     })
+          )
+        ),
+
+        h("div", { style: { maxWidth: 1440, margin: "0 auto", padding: "24px 32px" } },
+          tab === "profile" && h(React.Fragment, null,
+
+            h("div", {
+              style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginBottom: 24 }
+            },
+              h(SC, { label: "Planned Workforce",   value: E.length,     sub: "Planned positions" }),
+              h(SC, { label: "Confirmed Workforce", value: tN,           sub: "Named personnel" }),
+              h(SC, { label: "Open Positions",      value: tT,           sub: "Still to be confirmed" }),
+              h(SC, { label: "Avg Tickets / Person", value: avgTix,      sub: "Named personnel only" }),
+              h(SC, { label: "Expiring Within 30d", value: expiringSoon, sub: "Across all named personnel" }),
+              h(SC, { label: "Contingency Depth",   value: CONTINGENCY.total, sub: "Separate backup workforce" })
+            ),
+
+            h("div", {
+              style: { marginTop: -8, marginBottom: 24, fontSize: 11, color: SRG_GREY, fontStyle: "italic" }
+            }, `${META.name || "Tronox Shutdown"} — ${META.site ? META.site + " · " : ""}${DATES.length}-day shutdown, ${fmtDate(META.start_date)} – ${fmtDate(META.end_date)}. Ticket data sourced from the Rapid Crews compliance sheet (xll01 PersonnelCompetency); current-only view, archived and expired records excluded.`),
+
+            h("div", {
+              style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto", marginBottom: 24 }
+            },
+              h("div", { style: { padding: "18px 24px", borderBottom: `2px solid ${SRG_RED}`, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, color: SRG_DARK } }, "By-Trade Workforce Summary"),
+              h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 12 } },
+                h("thead", null,
+                  h("tr", { style: { background: "#FAFAFA", borderBottom: `1px solid ${SRG_BORDER}` } },
+                    h("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Trade Group"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Planned"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Confirmed"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Gap"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Contingency"),
+                    h("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Readiness")
+                  )
+                ),
+                h("tbody", null,
+                  tradeSummary.map((r, i) =>
+                    h("tr", { key: r.group, style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" } },
+                      h("td", { style: { padding: "10px 12px", fontWeight: 700, color: SRG_DARK } }, r.group),
+                      h("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700 } }, r.planned),
+                      h("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700 } }, r.confirmed),
+                      h("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700, color: r.gap > 0 ? RH : SRG_DARK } }, r.gap),
+                      h("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700, color: r.contingency > 0 ? SRG_DARK : "#B0B0B0" } }, r.contingency || "–"),
+                      h("td", { style: { padding: "10px 12px" } }, h(ReadinessPill, { text: r.readiness, color: r.readinessColor }))
+                    )
+                  )
+                )
+              )
+            ),
+
+            h("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 } },
+              h("div", { style: { background: "white", padding: 24, boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}` } },
+                h("div", { style: { fontSize: 11, fontWeight: 700, marginBottom: 16, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1 } }, "Manning by Trade Group"),
+                h(ResponsiveContainer, { width: "100%", height: 260 },
+                  h(BarChart, { data: rgd, margin: { top: 5, right: 5, left: -15, bottom: 50 } },
+                    h(CartesianGrid, { strokeDasharray: "3 3", stroke: "#EEE", vertical: false }),
+                    h(XAxis, { dataKey: "name", tick: { fontSize: 10, fill: SRG_GREY }, angle: -35, textAnchor: "end", height: 70, interval: 0 }),
+                    h(YAxis, { tick: { fontSize: 10, fill: SRG_GREY }, allowDecimals: false }),
+                    h(Tooltip, { cursor: { fill: "#F5F5F5" } }),
+                    h(Bar, { dataKey: "filled", name: "Confirmed", fill: SRG_DARK, stackId: "a" }),
+                    h(Bar, { dataKey: "tbc",    name: "TBC",       fill: SRG_RED,  stackId: "a" }),
+                    h(Bar, { dataKey: "contingency", name: "Contingency", fill: "#9CA3AF", stackId: "b" }),
+                    h(Legend, { wrapperStyle: { fontSize: 11, paddingTop: 8 } })
+                  )
+                )
+              ),
+              h("div", { style: { background: "white", padding: 24, boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}` } },
+                h("div", { style: { fontSize: 11, fontWeight: 700, marginBottom: 16, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1 } }, "Shift Distribution & Ticket Coverage"),
+                h("div", { style: { display: "flex", gap: 16, alignItems: "center" } },
+                  h("div", { style: { width: "42%", display: "flex", flexDirection: "column", alignItems: "center" } },
+                    h(ResponsiveContainer, { width: "100%", height: 170 },
+                      h(PieChart, null,
+                        h(Pie, { data: sd, cx: "50%", cy: "50%", innerRadius: 45, outerRadius: 72, dataKey: "value", label: false, labelLine: false },
+                          sd.map((_, i) => h(Cell, { key: i, fill: i === 0 ? SRG_DARK : SRG_RED }))
+                        )
+                      )
+                    ),
+                    h("div", { style: { display: "flex", gap: 12, marginTop: 8, fontSize: 11 } },
+                      sd.map((s, i) => h("div", { key: i, style: { display: "flex", alignItems: "center", gap: 5 } },
+                        h("div", { style: { width: 10, height: 10, background: i === 0 ? SRG_DARK : SRG_RED } }),
+                        h("span", { style: { color: SRG_GREY, fontWeight: 600 } }, `${s.name}: ${s.value}`)
+                      ))
+                    )
+                  ),
+                  h("div", { style: { flex: 1 } },
+                    Object.entries(tc).map(([k, v]) =>
+                      h("div", { key: k, style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 6 } },
+                        h("div", { style: { width: 32, fontSize: 10, fontWeight: 600, color: SRG_GREY } }, k),
+                        h("div", { style: { flex: 1, height: 10, background: "#EEE", overflow: "hidden" } },
+                          h("div", { style: { height: "100%", width: `${E.length ? v / E.length * 100 : 0}%`,
+                                              background: v / (E.length || 1) > 0.5 ? SRG_DARK : v / (E.length || 1) > 0.25 ? RM : SRG_RED } })
+                        ),
+                        h("div", { style: { fontSize: 10, fontWeight: 700, width: 28, textAlign: "right", color: SRG_DARK } }, `${E.length ? Math.round(v / E.length * 100) : 0}%`)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+
+            h("div", { style: { display: "flex", gap: 12, marginBottom: 10, flexWrap: "wrap", alignItems: "center" } },
+              h("span", { style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8 } }, "Filter:"),
+              h("select", {
+                value: fG, onChange: e => sfG(e.target.value),
+                style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 12, background: "white", color: SRG_DARK }
+              },
+                h("option", { value: "All" }, "All Groups"),
+                groups.map(g => h("option", { key: g, value: g }, g))
+              ),
+              h("select", {
+                value: fS, onChange: e => sfS(e.target.value),
+                style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 12, background: "white", color: SRG_DARK }
+              },
+                h("option", { value: "All" }, "All Shifts"),
+                h("option", { value: "Day" }, "Day Shift"),
+                h("option", { value: "Night" }, "Night Shift")
+              ),
+              fT.length > 0 && h("button", {
+                onClick: () => sfT([]),
+                style: { padding: "6px 12px", border: `1px solid ${SRG_RED}`, fontSize: 11, cursor: "pointer", background: "white", color: SRG_RED, fontWeight: 600 }
+              }, "Clear tickets ✕"),
+              h("span", { style: { fontSize: 11, color: SRG_GREY, marginLeft: "auto", fontWeight: 600 } }, `${filtered.length} personnel shown`)
+            ),
+
+            h("div", { style: { display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap", alignItems: "center" } },
+              h("span", { style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, marginRight: 4, textTransform: "uppercase", letterSpacing: 0.8 } }, "Tickets:"),
+              [
+                { key: "cse",  label: "CSE"               },
+                { key: "wah",  label: "WAH"               },
+                { key: "ewp",  label: "EWP"               },
+                { key: "ba",   label: "Breathing Apparatus" },
+                { key: "fork", label: "Forklift"          },
+                { key: "hr",   label: "HR Licence"        },
+                { key: "dog",  label: "Dogging"           },
+                { key: "rig",  label: "Rigging"           },
+                { key: "gta",  label: "Gas Test"          },
+                { key: "fa",   label: "First Aid"         }
+              ].map(t => {
+                const a = fT.includes(t.key);
+                return h("button", {
+                  key: t.key, onClick: () => toggle(t.key),
+                  style: { padding: "5px 12px", border: a ? `2px solid ${SRG_RED}` : `1px solid ${SRG_BORDER}`, cursor: "pointer", fontSize: 11, fontWeight: a ? 700 : 500, background: a ? SRG_RED : "white", color: a ? "white" : SRG_DARK }
+                }, t.label + (a ? ` (${filtered.length})` : ""));
+              })
+            ),
+
+            h("div", { style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto" } },
+              h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 11 } },
+                h("thead", null,
+                  h("tr", { style: { background: SRG_DARK, color: "white" } },
+                    h("th", { style: { padding: "12px 12px", textAlign: "left", fontWeight: 700, position: "sticky", left: 0, background: SRG_DARK, zIndex: 1, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Name"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Role"),
+                    h("th", { style: { padding: "12px 6px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Shift"),
+                    h("th", { style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" } }, "Days"),
+                    h("th", { style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" } }, "Tix"),
+                    TC.map(t => h("th", { key: t.key, style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" } }, t.label)),
+                    h("th", { style: { padding: "12px 12px", textAlign: "left", fontWeight: 700, minWidth: 240, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Summary")
+                  )
+                ),
+                h("tbody", null,
+                  filtered.map((e, i) => {
+                    const isTBC = e.name === "TBC";
+                    const bg = isTBC ? "#FFF9E6" : i % 2 === 0 ? "#FAFAFA" : "white";
+                    return h("tr", { key: e.id, style: { background: bg, borderBottom: `1px solid ${SRG_BORDER}` } },
+                      h("td", { style: { padding: "9px 12px", fontWeight: 700, color: isTBC ? RM : SRG_DARK, whiteSpace: "nowrap", position: "sticky", left: 0, background: bg, zIndex: 1 } }, e.name),
+                      h("td", { style: { padding: "9px 8px", color: SRG_GREY, whiteSpace: "nowrap" } }, e.role),
+                      h("td", { style: { padding: "9px 6px", textAlign: "center" } },
+                        h("span", { style: { padding: "3px 8px", fontSize: 9, fontWeight: 700, background: e.shift === "Day" ? "#E8F0FE" : SRG_DARK, color: e.shift === "Day" ? "#1E40AF" : "white", textTransform: "uppercase", letterSpacing: 0.3 } }, e.shift)
+                      ),
+                      h("td", { style: { padding: "9px 4px", textAlign: "center", fontWeight: 700 } }, e.days),
+                      h("td", { style: { padding: "9px 4px", textAlign: "center", fontWeight: 700, color: (e._ticketCount || 0) >= 4 ? RL : (e._ticketCount || 0) >= 1 ? SRG_DARK : "#B0B0B0" } }, e._ticketCount || "–"),
+                      TC.map(t => h(TicketCell, { key: t.key, e: e, tkey: t.key })),
+                      h("td", { style: { padding: "9px 12px", fontSize: 11, color: SRG_GREY, lineHeight: 1.5 } }, e.sum)
+                    );
+                  })
+                )
+              )
+            )
+          ),
+          tab === "risk" && h(React.Fragment, null,
+
+            h("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginBottom: 24 } },
+              h(SC, { label: "Total Risks Identified", value: risks.length }),
+              h(SC, { label: "High Risk",   value: risks.filter(r => r.level === "HIGH").length, sub: "Unfilled positions" }),
+              h(SC, { label: "Medium Risk", value: risks.filter(r => r.level === "MED").length,  sub: "Compliance gaps / expiring tickets" }),
+              h(SC, { label: "Low Risk",    value: risks.filter(r => r.level === "LOW").length,  sub: "Ticket coverage gaps" })
+            ),
+
+            h("div", { style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto", marginBottom: 24 } },
+              h("div", { style: { padding: "18px 24px", borderBottom: `2px solid ${SRG_RED}`, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, color: SRG_DARK } }, "Risk Register"),
+              h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 12 } },
+                h("thead", null,
+                  h("tr", { style: { background: "#FAFAFA", borderBottom: `1px solid ${SRG_BORDER}` } },
+                    h("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, width: 75, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Level"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "left", fontWeight: 700, width: 130, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Trade Group"),
+                    h("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, width: 70, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Shift"),
+                    h("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Issue"),
+                    h("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Recommended Action")
+                  )
+                ),
+                h("tbody", null,
+                  risks.map((r, i) =>
+                    h("tr", { key: i, style: { borderBottom: `1px solid ${SRG_BORDER}`, background: r.level === "HIGH" ? "#FEF2F2" : i % 2 === 0 ? "white" : "#FAFAFA" } },
+                      h("td", { style: { padding: "10px 12px" } }, h(RB, { level: r.level })),
+                      h("td", { style: { padding: "10px 8px", fontWeight: 700, color: SRG_DARK } }, r.group),
+                      h("td", { style: { padding: "10px 8px", textAlign: "center" } },
+                        h("span", { style: { padding: "3px 8px", fontSize: 10, fontWeight: 700, background: r.shift === "Day" ? "#E8F0FE" : SRG_DARK, color: r.shift === "Day" ? "#1E40AF" : "white", textTransform: "uppercase" } }, r.shift)
+                      ),
+                      h("td", { style: { padding: "10px 12px", color: SRG_DARK } }, r.issue),
+                      h("td", { style: { padding: "10px 12px", color: SRG_GREY, fontSize: 11 } }, r.action)
+                    )
+                  )
+                )
+              )
+            ),
+
+            h("div", { style: { fontWeight: 700, fontSize: 12, marginBottom: 12, textTransform: "uppercase", letterSpacing: 1, color: SRG_GREY } }, "Ticket-Coverage Ranking by Trade Group"),
+
+            h("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(360px,1fr))", gap: 16 } },
+              GROUP_ORDER.filter(g => ranked[g] && ranked[g].length > 0).map(g =>
+                h("div", { key: g, style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "hidden" } },
+                  h("div", { style: { padding: "14px 18px", background: SRG_DARK, color: "white", fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 0.8, borderBottom: `3px solid ${SRG_RED}` } }, `${g} (${ranked[g].length})`),
+                  ranked[g].map((e, i) => {
+                    const n = e._ticketCount || 0;
+                    const tier = i === 0 ? "Lead" : n >= 6 ? "Senior" : n >= 3 ? "Competent" : "Developing";
+                    const tcl  = tier === "Lead" ? RL : tier === "Senior" ? "#0891B2" : tier === "Competent" ? SRG_GREY : RM;
+                    return h("div", { key: e.id, style: { padding: "10px 18px", borderBottom: `1px solid ${SRG_BORDER}`, display: "flex", alignItems: "center", gap: 12 } },
+                      h("div", { style: { width: 24, height: 24, background: SRG_DARK, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 } }, i + 1),
+                      h("div", { style: { flex: 1, minWidth: 0 } },
+                        h("div", { style: { fontSize: 12, fontWeight: 700, color: SRG_DARK, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } }, e.name),
+                        h("div", { style: { fontSize: 10, color: SRG_GREY, marginTop: 1 } }, `${e.role} · ${e.shift} · ${n} current ticket${n === 1 ? "" : "s"}`)
+                      ),
+                      h("span", { style: { padding: "3px 9px", fontSize: 9, fontWeight: 700, color: "white", background: tcl, flexShrink: 0, textTransform: "uppercase", letterSpacing: 0.3 } }, tier)
+                    );
+                  })
+                )
+              )
+            )
+          ),
+          tab === "roster" && h(React.Fragment, null,
+
+            h("div", { style: { marginBottom: 16, display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" } },
+              h("div", null,
+                h("div", { style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1 } }, "Shutdown Roster"),
+                h("div", { style: { fontSize: 13, color: SRG_DARK, marginTop: 2 } }, `${fmtDate(META.start_date)} – ${fmtDate(META.end_date)} (${DATES.length} days) · ${filteredRoster.length} rows shown`)
+              ),
+              h("div", { style: { display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" } },
+                h("span", { style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8 } }, "Filter:"),
+                ["All", "Day", "Night"].map(s =>
+                  h("button", {
+                    key: s, onClick: () => setRShift(s),
+                    style: { padding: "6px 12px", border: rShift === s ? `2px solid ${SRG_RED}` : `1px solid ${SRG_BORDER}`, background: rShift === s ? SRG_RED : "white", color: rShift === s ? "white" : SRG_DARK, cursor: "pointer", fontSize: 11, fontWeight: 700 }
+                  }, s === "All" ? "All Shifts" : s + " Shift")
+                ),
+                h("select", {
+                  value: rRole, onChange: e => setRRole(e.target.value),
+                  style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 11, background: "white", color: SRG_DARK, minWidth: 180 }
+                },
+                  h("option", { value: "All" }, "All Positions"),
+                  rosterRoles.map(role => h("option", { key: role, value: role }, role))
+                )
+              ),
+              h("div", { style: { display: "flex", gap: 12, fontSize: 10, flexWrap: "wrap" } },
+                [
+                  { code: "DS", label: "Day Shift",   bg: "#E8F0FE", fg: "#1E40AF" },
+                  { code: "NS", label: "Night Shift", bg: SRG_DARK,  fg: "white"   }
+                ].map(l =>
+                  h("div", { key: l.code, style: { display: "flex", alignItems: "center", gap: 4 } },
+                    h("span", { style: { padding: "2px 6px", fontSize: 9, fontWeight: 700, background: l.bg, color: l.fg } }, l.code),
+                    h("span", { style: { color: SRG_GREY } }, l.label)
+                  )
+                )
+              )
+            ),
+
+            h("div", { style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto" } },
+              h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 10 } },
+                h("thead", null,
+                  h("tr", { style: { background: SRG_DARK, color: "white" } },
+                    h("th", { style: { padding: "10px 12px", textAlign: "left", fontWeight: 700, position: "sticky", left: 0, background: SRG_DARK, zIndex: 2, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, minWidth: 150 } }, "Name"),
+                    h("th", { style: { padding: "10px 8px",  textAlign: "left", fontWeight: 700, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, minWidth: 130 } }, "Role"),
+                    h("th", { style: { padding: "10px 8px",  textAlign: "left", fontWeight: 700, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, minWidth: 100 } }, "Notes"),
+                    DATES.map((d, i) => h("th", { key: i, style: { padding: "8px 2px", textAlign: "center", fontWeight: 700, fontSize: 9, borderLeft: "1px solid #2D2D2D", minWidth: 38 } },
+                      h("div", { style: { fontSize: 8, opacity: 0.6, fontWeight: 500 } }, DOW[i]),
+                      h("div", null, d)
+                    ))
+                  )
+                ),
+                h("tbody", null,
+                  filteredRoster.map((r, ri) => {
+                    const isTBC = r.name === "TBC";
+                    const bg = isTBC ? "#FFF9E6" : ri % 2 === 0 ? "#FAFAFA" : "white";
+                    return h("tr", { key: ri, style: { background: bg, borderBottom: `1px solid ${SRG_BORDER}` } },
+                      h("td", { style: { padding: "8px 12px", fontWeight: 700, color: isTBC ? RM : SRG_DARK, whiteSpace: "nowrap", position: "sticky", left: 0, background: bg, zIndex: 1, fontSize: 11 } }, r.name),
+                      h("td", { style: { padding: "8px", color: SRG_GREY, whiteSpace: "nowrap", fontSize: 10 } }, r.role),
+                      h("td", { style: { padding: "8px", color: SRG_GREY, fontSize: 9, fontStyle: "italic" } }, r.notes),
+                      r.codes.map((c, ci) => {
+                        let bgC = "transparent", fgC = SRG_GREY;
+                        if (c === "DS") { bgC = "#E8F0FE"; fgC = "#1E40AF"; }
+                        else if (c === "NS") { bgC = SRG_DARK; fgC = "white"; }
+                        return h("td", { key: ci, style: { padding: "6px 2px", textAlign: "center", borderLeft: `1px solid ${SRG_BORDER}`, background: bgC, color: fgC, fontWeight: 700, fontSize: 9 } }, c);
+                      })
+                    );
+                  })
+                )
+              )
+            ),
+
+            h("div", { style: { marginTop: 16, padding: 14, background: "white", borderLeft: `3px solid ${SRG_RED}`, fontSize: 11, color: SRG_GREY, border: `1px solid ${SRG_BORDER}` } },
+              h("span", { style: { fontWeight: 700, color: SRG_DARK } }, "Shift Codes: "),
+              `DS = Day Shift, NS = Night Shift. ${META.name || "Shutdown"} — ${DATES.length} days (${fmtDate(META.start_date)} – ${fmtDate(META.end_date)}). Source: Rapid Crews planner via southwest-shutdowns feed.`
+            )
+          ),
+          tab === "print" && h(React.Fragment, null,
+
+            h("div", { style: { background: "white", border: `1px solid ${SRG_BORDER}`, boxShadow: "0 1px 2px rgba(0,0,0,0.04)", padding: 28 } },
+
+              h("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, marginBottom: 24, flexWrap: "wrap" } },
+                h("div", null,
+                  h("div", { style: { fontSize: 11, fontWeight: 700, color: SRG_RED, letterSpacing: 1.2, textTransform: "uppercase" } }, "Client Summary"),
+                  h("div", { style: { fontSize: 26, fontWeight: 800, color: SRG_DARK, lineHeight: 1.15, marginTop: 4 } }, `Tronox — ${META.name || "Shutdown"} Workforce Summary`),
+                  h("div", { style: { fontSize: 13, color: SRG_GREY, marginTop: 4 } }, `${META.site ? META.site + " · " : ""}${fmtDate(META.start_date)} – ${fmtDate(META.end_date)}`),
+                  h("div", { style: { fontSize: 10, color: "#B0B0B0", marginTop: 2, fontStyle: "italic" } }, freshness)
+                ),
+                h("button", {
+                  onClick: () => window.print(),
+                  style: { padding: "10px 16px", border: `1px solid ${SRG_DARK}`, background: "white", color: SRG_DARK, fontWeight: 700, fontSize: 12, cursor: "pointer", textTransform: "uppercase", letterSpacing: 0.6 }
+                }, "Print / Save PDF")
+              ),
+
+              h("div", { style: { display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 12, marginBottom: 24 } },
+                h(SC, { label: "Planned Workforce",   value: E.length }),
+                h(SC, { label: "Confirmed Workforce", value: tN      }),
+                h(SC, { label: "Open Positions",      value: tT      }),
+                h(SC, { label: "Expiring ≤30d",       value: expiringSoon })
+              ),
+
+              h("div", { style: { display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 20, marginBottom: 24 } },
+                h("div", { style: { border: `1px solid ${SRG_BORDER}`, padding: 18 } },
+                  h("div", { style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 } }, "By-Trade Summary"),
+                  h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 11 } },
+                    h("thead", null,
+                      h("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                        h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Trade"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Planned"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Confirmed"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Gap"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Cont."),
+                        h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Readiness")
+                      )
+                    ),
+                    h("tbody", null,
+                      tradeSummary.map((r, i) =>
+                        h("tr", { key: r.group, style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" } },
+                          h("td", { style: { padding: "8px 6px", fontWeight: 700 } }, r.group),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.planned),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.confirmed),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center", color: r.gap > 0 ? RH : SRG_DARK, fontWeight: 700 } }, r.gap),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.contingency || "–"),
+                          h("td", { style: { padding: "8px 6px" } }, h(ReadinessPill, { text: r.readiness, color: r.readinessColor }))
+                        )
+                      )
+                    )
+                  )
+                ),
+                h("div", { style: { border: `1px solid ${SRG_BORDER}`, padding: 18 } },
+                  h("div", { style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 } }, "Critical Roles"),
+                  h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 11 } },
+                    h("thead", null,
+                      h("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                        h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Role"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Planned"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Confirmed"),
+                        h("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Gap")
+                      )
+                    ),
+                    h("tbody", null,
+                      criticalRoles.map((r, i) =>
+                        h("tr", { key: r.role, style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" } },
+                          h("td", { style: { padding: "8px 6px", fontWeight: 700 } }, r.role),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.planned),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.confirmed),
+                          h("td", { style: { padding: "8px 6px", textAlign: "center", color: r.gap > 0 ? RH : SRG_DARK, fontWeight: 700 } }, r.gap)
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+
+              h("div", { style: { border: `1px solid ${SRG_BORDER}`, padding: 18, marginBottom: 20 } },
+                h("div", { style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 } }, "Key Risks & Mitigations"),
+                h("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 11 } },
+                  h("thead", null,
+                    h("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                      h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 70 } }, "Level"),
+                      h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 140 } }, "Trade Group"),
+                      h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Issue"),
+                      h("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Mitigation")
+                    )
+                  ),
+                  h("tbody", null,
+                    printRisks.map((r, i) =>
+                      h("tr", { key: i, style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" } },
+                        h("td", { style: { padding: "8px 6px" } }, h(RB, { level: r.level })),
+                        h("td", { style: { padding: "8px 6px", fontWeight: 700 } }, r.group),
+                        h("td", { style: { padding: "8px 6px" } }, r.issue),
+                        h("td", { style: { padding: "8px 6px", color: SRG_GREY } }, r.action)
+                      )
+                    )
+                  )
+                )
+              ),
+
+              h("div", { style: { border: `1px solid ${SRG_BORDER}`, padding: 18, fontSize: 11, color: SRG_GREY, lineHeight: 1.5 } },
+                h("div", { style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 } }, "Summary Notes"),
+                h("div", null,
+                  `${META.name || "Tronox Shutdown"} — ${META.site || "Kwinana"}, ${fmtDate(META.start_date)} – ${fmtDate(META.end_date)} (${DATES.length} days). ${tN} named personnel confirmed, ${tT} positions TBC across ${GROUP_ORDER.length} trade groups. ${expiringSoon} ticket(s) expiring within the next 30 days — schedule renewals before mobilisation. Ticket evidence is linked directly to the Rapid Crews SharePoint library; click any ticket chip on the Profile tab to open the PDF.`
+                )
+              )
+            )
+          ),
+
+          h("div", {
+            style: { marginTop: 40, padding: "20px 0", borderTop: `1px solid ${SRG_BORDER}`,
+                     display: "flex", justifyContent: "space-between",
+                     fontSize: 10, color: "#B0B0B0", textTransform: "uppercase", letterSpacing: 0.5, flexWrap: "wrap", gap: 8 }
+          },
+            h("span", null, "SRG Global Integrated Services Pty Ltd · ABN 86 604 010 639"),
+            h("span", null, `Generated ${new Date().toLocaleDateString("en-AU")} · ${META.name || "Tronox Shutdown"}`)
+          )
+        )
+      );
+    }
+
+    /* -------------------------------------------------------------------
+       Boot: fetch the JSON, populate the module-level vars, then render.
+       Renders a lightweight loading / error state in the meantime so the
+       page never looks like it's hung.
+       ------------------------------------------------------------------- */
+    function renderStatus(kind, message, detail) {
+      const root = document.getElementById("root");
+      const color = kind === "error" ? "#900" : SRG_GREY;
+      const border = kind === "error" ? "#C00" : SRG_BORDER;
+      const bg = kind === "error" ? "#FEF2F2" : "white";
+      root.innerHTML =
+        '<div style="max-width:520px;margin:80px auto;padding:32px;font-family:Source Sans 3,Segoe UI,system-ui,sans-serif;' +
+           'background:' + bg + ';border:1px solid ' + border + ';color:' + color + ';box-shadow:0 1px 3px rgba(0,0,0,.05);">' +
+          '<div style="font-size:11px;font-weight:700;color:' + SRG_RED + ';letter-spacing:1.5px;text-transform:uppercase;">Tronox Dashboard</div>' +
+          '<div style="font-size:18px;font-weight:700;margin-top:8px;color:' + SRG_DARK + ';">' + message + '</div>' +
+          (detail ? '<div style="font-size:12px;color:#888;margin-top:10px;font-family:monospace;">' + detail + '</div>' : '') +
+          (kind === "error" ? '<div style="font-size:12px;color:#666;margin-top:16px;">Try reloading. If the problem persists, the data feed (southwest-shutdowns) may be offline — contact Asset Services.</div>' : '') +
+        '</div>';
+    }
+
+    (async function boot() {
+      renderStatus("loading", "Loading workforce data…");
+      let data;
+      try {
+        const resp = await fetch(DATA_URL, { cache: "no-cache" });
+        if (!resp.ok) throw new Error("HTTP " + resp.status + " from " + DATA_URL);
+        data = await resp.json();
+      } catch (err) {
+        renderStatus("error", "Failed to load data feed", String(err.message || err));
+        return;
+      }
+      try {
+        buildFromJson(data);
+      } catch (err) {
+        renderStatus("error", "Data feed format error", String(err.message || err));
+        return;
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    })();
+  </script>
+</body>
+</html>

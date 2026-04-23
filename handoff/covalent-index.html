@@ -95,7 +95,79 @@
       }
     };
 
-    let E = [];  // populated by buildFromJson() from southwest-shutdowns feed
+    /* Hand-authored resume cache — 64 records of trade experience,
+       shutdown experience, certifications, and professional summary
+       prose. Kept inline (not in the feed) because the southwest-
+       shutdowns JSON carries ticket evidence but not resume narrative.
+       buildFromJson() uses this as an enrichment lookup, name-matched
+       against the live rostered crew from the feed. */
+    const RESUME_DB = [
+      {id:1,name:"Adam Riley",role:"Superintendent",shift:"Day",days:10,group:"Leadership",ty:15,sy:10,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"Experienced shutdown superintendent with extensive Kwinana industrial leadership across chemical, refinery and processing environments. Proven capability managing large multi-discipline crews through complex shutdowns."},
+      {id:2,name:"Lewis Newell",role:"Supervisor DS",shift:"Day",days:10,group:"Leadership",ty:4,sy:4,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"Int",gta:false,fa:true,sum:"Shutdown trades support / rigging-qualified crew member with Monadelphous fixed plant shutdown experience. Intermediate rigger with confined space, working at heights, EWP and gas testing. Currently completing a Bachelor of Business."},
+      {id:3,name:"Peter Burns",role:"Supervisor DS",shift:"Day",days:10,group:"Leadership",ty:30,sy:20,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:true,dog:false,rig:"",gta:false,fa:true,sum:"Dual-trade boilermaker / sheetmetal worker with 30 years in the trade and 10+ years as mechanical supervisor. Extensive Pilbara shutdown experience across BHP, FMG and Rio Tinto, plus CSBP sodium cyanide plant experience. HR licence holder."},
+      {id:4,name:"Kapil Chaudhary",role:"Supervisor DS",shift:"Day",days:7,group:"Leadership",ty:10,sy:10,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:true,dog:false,rig:"",gta:false,fa:false,sum:"10+ year mechanical supervisor and superintendent across major WA sites. Section 26 and WHS SRMS qualified. Recent roles: Condition Monitoring Supervisor at BHP Jimblebar, Rio Yandi structural integrity via Kaefer, SMP Superintendent at Aerison (Tom Price 2M/2AM), SMP Supervisor at MRL Mount Marion extension, and Mechanical Superintendent/Shutdown Coordinator at Karara and Sino Cape Preston. Newcrest Telfer shutdown coordinator. HR-B, MSIC, HRWL, CSE, WAH, Basic Fire. Broad Kwinana and Pilbara coverage."},
+      {id:55,name:"Idriz Turko",role:"Supervisor Elec",shift:"Day",days:7,group:"Leadership",ty:25,sy:3,cse:false,wah:false,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"25-year A-Grade electrician (EW137712) and Electrical Contractor (EC7802). Recent FIFO construction across FMG Solomon, Downer Paraburdoo, Monadelphous Eliwana and North Star Junction 100MW BESS. MCC/VSD/switchboard termination, commissioning, earthing, motor terminations, cable termination and testing. EWP and First Aid current. BHP, Rio Tinto and FMG inducted."},
+      {id:56,name:"Mark Sullivan",role:"Supervisor NS",shift:"Night",days:8,group:"Leadership",ty:11,sy:8,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"Trade-qualified mechanical fitter with 11 years experience. Shutdown supervisor and leading hand across BHP, FMG, Karara. Pump specialist background with National Pumps & Energy. Reliable nightshift leader."},
+      {id:57,name:"Jordan Kirkby",role:"Supervisor NS",shift:"Night",days:6,group:"Leadership",ty:9,sy:5,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:true,rig:"Bas + IRATA L2",gta:true,fa:true,sum:"Trade-qualified boilermaker/welder (Cert III Heavy Fabrication) with 9 years experience and 5 years in shutdowns. Supervisor experience at Programmed and Taylors Engineering managing crews of 10–50 during Tronox Kwinana shutdowns. Currently with SRG as boilermaker/welder and Level 2 Rope Access Technician. Strong ticket set including dogging, basic rigging, forklift, EWP, gas testing, IRATA L2 and first aid."},
+      {id:58,name:"Tsarina McCowat",role:"Supervisor NS",shift:"Night",days:6,group:"Leadership",ty:17,sy:12,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:true,dog:false,rig:"",gta:true,fa:true,sum:"S26 Supervisor and Section 44 certified mechanical fitter with 15+ years across oil and gas, mining and construction. Shutdown supervisor roles at INPEX Darwin, Incitec Pivot Moranbah, Woodside Karratha and Karara. Level 3 Flange Management (Chevron VOC). HR-B licence, EWP, gas testing. Inducted across Chevron, BHP, Rio Tinto, FMG, Roy Hill, Woodside and Boddington."},
+      {id:31,name:"Anthony Smith",role:"Coordinator",shift:"Night",days:8,group:"Leadership",ty:10,sy:5,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:true,rig:"Bas",gta:false,fa:true,sum:"Experienced shutdown coordinator with 10+ years across rigging, shutdowns and maintenance. Supervisor-qualified with leading hand and supervisor experience managing crews of up to 30 across BHP, Talison, Newcrest, Karara and Boddington. Basic rigger and dogger with CSE, WAH, EWP and first aid. Proven night shift leadership capability."},
+      {id:26,name:"Jacinta Jeffery",role:"HSE",shift:"Day",days:9,group:"HSE",ty:5,sy:5,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"HSE advisor with strong shutdown experience across Kwinana industrial sites. References from BHP, Programmed and SRG Global. Proven in high-hazard environments."},
+      {id:27,name:"Sean Smidt",role:"HSE",shift:"Night",days:7,group:"HSE",ty:5,sy:3,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:false,rig:"IRATA L2",gta:true,fa:false,sum:"Cert IV Work Health & Safety plus Cert III Engineering Fabrication trade. 5+ years dual experience as IRATA Level 2 Rope Access Technician / Boilermaker. Currently with SRG Global (Jan 2023 – current) seconded across FMG Port, Roy Hill Port and inland sites — stackers/reclaimers/ship loaders, chute liner change-outs, deflector replacements, hard-skirt and training-plate replacements. Prior Metalock Australia metal-stitching technician (FLS primary crusher repairs, SAG mill Cape Preston, Westrac CAT casings). Forklift, WAH, CS, gas testing, MSIC. FMG/Rio/BHP/Sino inducted. Replaces Pare Te Nahu in 17 Apr roster."},
+      {id:14,name:"Ben Attack",role:"Boilermaker",shift:"Day",days:9,group:"Boilermaker",ty:12,sy:8,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"UK-qualified coded pipe welder with petrochemical, refinery and power station shutdown experience. Strong technical capability in pressure piping and structural steelwork."},
+      {id:15,name:"Mathias Mendy",role:"Boilermaker",shift:"Day",days:7,group:"Boilermaker",ty:9,sy:5,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:true,rig:"Bas + IRATA L2",gta:true,fa:true,sum:"Boilermaker/welder (Cert III Heavy Fabrication) and Level 2 Rope Access Technician with SRG Group. Intermediate scaffolder with shutdown experience across FMG/Rio Tinto sites including Iron Bridge, Anderson Point, Cloudbreak and Cape Lambert. Basic rigging, dogging, forklift, EWP, gas testing and first aid. 6G welding certified (FCAW/SMAW/GMAW/GTAW)."},
+      {id:44,name:"Arron Nairn",role:"Boilermaker",shift:"Night",days:4,group:"Boilermaker",ty:12,sy:5,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"12-year boilermaker with Talison shutdown experience across chutes, conveyors, screens and wear plates. Forklift ticket and strong processing plant maintenance background."},
+      {id:45,name:"William Robinson",role:"Boilermaker",shift:"Night",days:4,group:"Boilermaker",ty:12,sy:3,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"12-year boilermaker with fabrication and shutdown experience across FMG, BHP, Roy Hill, MinRes and Karara. EWP certified."},
+      {id:16,name:"Mirko Rischia",role:"Coded Welder",shift:"Day",days:4,group:"Boilermaker",ty:10,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:false,rig:"IRATA L1",gta:true,fa:false,sum:"10+ year boilermaker/welder with 6G qualifications (EN ISO 9606-1) across TIG, MMA, MIG, FCAW. Current KCGM Tunderbox via Drive Personnel — heavy fabrication and fixed plant maintenance. IRATA Level 1 rope access. Italian-trained with strong metal fabrication and diagnostic background."},
+      {id:22,name:"Teo Medanovic",role:"Electrician",shift:"Day",days:7,group:"Electrical",ty:7,sy:5,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:true,fa:true,sum:"A-Grade electrician and Electrical Contractor (EC14300) with 7+ years across mining, commercial and residential. Former SRG Global shutdown electrician on FMG. Current Downer Group FIFO at BHP Port Hedland — fixed plant, motors, conveyors, switchboards, SAP/PMAC. EWP, gas testing, LV rescue. BHP and FMG fully inducted. Returning SRG crew member."},
+      {id:23,name:"TBC (Line 23)",role:"Electrician",shift:"Day",days:7,group:"Electrical",ty:0,sy:0,cse:false,wah:false,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Day shift electrician slot — Benjamin Chopping removed in 17 Apr roster; replacement name not yet assigned."},
+      {id:24,name:"James Mahoney",role:"Electrician",shift:"Night",days:7,group:"Electrical",ty:1,sy:0,cse:false,wah:false,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"Licensed electrician with Cert III Electrotechnology and apprenticeship experience on major WA projects. HV switching operations qualified."},
+      {id:25,name:"Drew Brand",role:"Electrician",shift:"Night",days:7,group:"Electrical",ty:17,sy:4,cse:false,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"Licensed electrician with 17 years experience and strong industrial electrical background. Diagnostic testing, motor controls and compliance inspection capability."},
+      {id:5,name:"Edward Gardiner",role:"Fitter",shift:"Day",days:6,group:"Fitter",ty:8,sy:4,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Cert III mechanical fitter with Cert IV Hydraulics & Pneumatics. 4 years at Linkforce as fitter and leading hand on shutdowns and projects — car dumpers, stackers, reclaimers, gearbox change-outs, pulleys, screens, liners, spools. Prior hydraulic specialist at Finer Hydraulics Melbourne on cylinder overhauls, lathe/milling and MIG/TIG/ARC welding. Strong hydraulics background uncommon among fitters."},
+      {id:6,name:"Brett Stone",role:"Fitter",shift:"Day",days:6,group:"Fitter",ty:7,sy:0,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Cert IV Engineering Tradesperson (Mechanical). 7+ years WA shutdown experience across iron ore, gold (Telfer), oil & gas (Darwin) and lithium (Tianqi/Greenbushes). Strong fixed-plant fitter background via Warrikal/FMG, Rio Tinto Tom Price, Furnace Solutions, Techforce CSBP, Kwinana Cement, and IGO Cosmos Nickel. Pump rebuilds, crusher repairs, conveyor work, screens, chutes, pipework and valve replacements; also cross-trained in welding/fabrication. WAH, EWP, Forklift, CS and White Card. Placeholder replacing Malcolm Grainger-Rousseau in 17 Apr roster."},
+      {id:7,name:"Russell Phillips",role:"Fitter",shift:"Day",days:9,group:"Fitter",ty:18,sy:8,cse:false,wah:false,ewp:true,tele:false,fork:true,hr:true,dog:true,rig:"Adv",gta:false,fa:false,sum:"Trade-qualified mechanical fitter with extensive maintenance and shutdown experience across Linkforce, Monadelphous, Woodside Pluto LNG, Boddington and Rio operations. Strong background in conveyors, crushers, pumps, gearboxes, screens, stackers, reclaimers and flange management. Proven team lead capability. HR, EWP, forklift and advanced rigging / dogging tickets."},
+      {id:8,name:"Darren James",role:"Fitter",shift:"Day",days:7,group:"Fitter",ty:10,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"10 years mechanical maintenance experience with strength in hydraulics, fault-finding and preventative maintenance."},
+      {id:9,name:"Jake Gangemi",role:"Fitter",shift:"Day",days:7,group:"Fitter",ty:8,sy:5,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:true,rig:"",gta:false,fa:true,sum:"Mechanical fitter with Rio maintenance background and strong shutdown exposure across crushers, conveyors and pulleys. Forklift and dogging tickets."},
+      {id:10,name:"Mao Li",role:"Fitter",shift:"Day",days:4,group:"Fitter",ty:3,sy:3,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:true,dog:false,rig:"",gta:true,fa:false,sum:"Cert III mechanical fitter with Masters in Mechanical Engineering. Currently with Warrikal across FMG, PLS and BHP shutdowns. Pump rebuilds/alignment, conveyor skirts and chutes, jaw/cone crushers, apron feeders. Greenbushes shutdown experience. HR, forklift, EWP and gas testing tickets. Stone listed as labour hire contingent; Ben Friedauer SRG contingent removed in 17 Apr roster (now Line 58 primary)."},
+      {id:11,name:"Walid Boulahdid",role:"Fitter",shift:"Day",days:4,group:"Fitter",ty:4,sy:3,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"Bas",gta:false,fa:false,sum:"Mechanical fitter with shutdown experience across BHP, Rio, Roy Hill, FMG and South32. Basic rigging and broad processing plant exposure."},
+      {id:12,name:"Brendan Hillman",role:"Fitter",shift:"Day",days:4,group:"Fitter",ty:0,sy:0,cse:false,wah:false,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Day shift fitter — newly added to the roster (19 Apr) replacing Hicham Bougazi. Resume and experience details to be confirmed. Mackauly Parker listed as SRG contingent."},
+      {id:13,name:"Omkar Dorugade",role:"Fitter",shift:"Day",days:4,group:"Fitter",ty:12,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"12+ year maintenance fitter with strong preventative maintenance and precision assembly background."},
+      {id:35,name:"Herbert Mukunga",role:"Fitter",shift:"Night",days:6,group:"Fitter",ty:6,sy:5,cse:true,wah:true,ewp:true,tele:true,fork:false,hr:true,dog:false,rig:"",gta:true,fa:true,sum:"Mechanical fitter with turbine and conveyor expertise and a strong ticket set including telehandler, EWP, HR and gas testing."},
+      {id:36,name:"Selva Loorthsmay",role:"Fitter",shift:"Night",days:6,group:"Fitter",ty:9,sy:0,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:false,rig:"",gta:true,fa:false,sum:"Cert III Engineering (Fitter & Machinist) plus Cert II Hydraulics. 9+ years WA mining shutdown fitter with deep hydraulic specialisation — the only fitter on the crew with a dedicated hydraulic ticket. 2025–26 Aussie Fluid Power at Karara (hydraulic hose fault finding/repair, pressure testing, tube bending). 2019–25 Custom Fluid Power (HPUs, hydraulic brakes, conveyor/reclaimer hydraulics). Prior BHP Area C, Jimblebar, Whaleback, South Flank, Nelson Point and Finucane Island shutdowns 2018–22; Rio Nammuldi, Yandi, Hope Downs 4, West Angelas, Brockman 4 (2017–19); FMG Kings Valley, Firetail, Cloudbreak; CITIC Cape Preston; Telfer; Roy Hill and KCGM Kalgoorlie. Forklift, WAH, CS, GT, MSIC, Safety Committee. Valuable pick for night-shift plant run-up."},
+      {id:37,name:"Alessio Sammito",role:"Fitter",shift:"Night",days:6,group:"Fitter",ty:14,sy:0,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:true,dog:false,rig:"",gta:true,fa:false,sum:"Australian-Trade-Certified Mechanical Technician (Mechanical Trade III Fitting) with 14+ years heavy industrial experience across cement plants, marine projects, high-rise construction and hospitals. Oct 2019–May 2025 lead technician at S.I.E. SRL on Italian/international FIFO shutdowns — led dismantling, installation and modernisation of complex industrial systems with LOTO/permit-to-work processes, supervised and trained technicians. Strong diagnostics, fault finding, failure analysis and mechanical/electrical modifications. HR-B driver licence, WAH, CS, gas testing, permit acceptance, lift maintenance. Ronald Bennett listed as labour hire contingent."},
+      {id:38,name:"Gurshwinder Singh",role:"Fitter",shift:"Night",days:4,group:"Fitter",ty:3,sy:3,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Mechanical fitter with Greenbushes shutdown experience, broad site exposure and forklift / EWP tickets."},
+      {id:39,name:"Kulvinder Singh",role:"Fitter",shift:"Night",days:4,group:"Fitter",ty:2,sy:2,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Mechanical fitter with broad processing plant experience including reclaimers, crushers and apron feeders."},
+      {id:40,name:"Abdikadir Mohamed",role:"Fitter",shift:"Night",days:4,group:"Fitter",ty:5,sy:4,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Mechanical fitter with solid shutdown maintenance experience across conveyors, crushers, rollers and valves."},
+      {id:41,name:"Jamie Adams",role:"Fitter",shift:"Night",days:4,group:"Fitter",ty:7,sy:5,cse:true,wah:true,ewp:false,tele:true,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"HV mechanical fitter with strong technical precision and telehandler capability."},
+      {id:42,name:"Omar Anadif",role:"Fitter",shift:"Night",days:4,group:"Fitter",ty:5,sy:2,cse:true,wah:true,ewp:true,tele:true,fork:true,hr:true,dog:false,rig:"",gta:true,fa:true,sum:"Mechanical tradesperson with exceptional ticket depth including forklift, EWP, telehandler, HR and gas testing."},
+      {id:43,name:"Clemens Schaaf",role:"Fitter",shift:"Night",days:4,group:"Fitter",ty:5,sy:1,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:true,rig:"Bas",gta:false,fa:false,sum:"German-trained mechatronics technician with mechanical trade qualification, dogging, basic rigging, EWP and forklift tickets."},
+      {id:59,name:"Ben Friedauer",role:"Fitter - Conveyor Inspections",shift:"Day",days:5,group:"Inspections",ty:9,sy:2,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:true,rig:"Bas",gta:true,fa:false,sum:"Trade-qualified Mechanical Fitter with 9+ years Kwinana/Pilbara shutdown experience. Most recent 2024–25 NES Fircroft at Tianqi Lithium Kwinana on tanks, gearboxes, centrifuges, pumps, screens, crushers and valve change-outs. Prior runs include Programmed at Tronox Kwinana and ALCOA Kwinana (Jan 2022–Jul 2023), Inline Engineering BHP Nelson Point shutdown (2023), SRG Global at ALCOA Kwinana (2020–22 — returning SRG crew member), and 2016–18 WorkPac shutdowns at BHP and Port Hedland. HRWL covering LF, EWP, Basic Rigging, dogging and gantry crane; WAH, CS, gas testing, fire training and BHP induction. Replaces Florian Chavot in 17 Apr roster."},
+      {id:60,name:"Timo Gronenberg",role:"Fitter - Conveyor Inspections",shift:"Day",days:5,group:"Inspections",ty:7,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"German-qualified industrial mechanic with strong mechanical fundamentals and conveyor shutdown experience."},
+      {id:61,name:"Bryan Messenger",role:"Fitter - Conveyor Inspections",shift:"Night",days:5,group:"Inspections",ty:20,sy:0,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"Bas",gta:false,fa:true,sum:"Senior Boilermaker / Fabricator with 20+ years across mining, oil & gas and construction (rostered for conveyor inspections / skirt adjustments — note trade is BMKR, not fitter). 2022–24 DIAB Engineering at Talisman Lithium on fixed plant maintenance, conveyor rollers/skirts/impact beds, pump/valve/crusher rebuilds, exothermic cutting. 2020–22 Civmec conveyor maintenance (rollers, skirts, scrapers). Prior shutdown runs across iron ore, gold, lithium and nickel sites with KI Group, Primero Group on primary crusher upgrades, and Bradken workshop. Cert III Metal Fabrication, CN and CV crane tickets, basic rigging (RB), EWP, forklift (LF), WAH, CS and First Aid. Previously listed as LH contingent against Line 14. Replaces Gerry Uy in 17 Apr roster."},
+      {id:62,name:"Samuel Gunn",role:"Fitter - Conveyor Inspections",shift:"Night",days:5,group:"Inspections",ty:3,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Mechanical engineer with rotating machines specialisation and strong conveyor, pump and bearing diagnostics capability."},
+      {id:63,name:"Amit Gund",role:"Fitter - Inspections",shift:"Day",days:5,group:"Inspections",ty:3,sy:2,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:true,rig:"",gta:false,fa:false,sum:"Mechanical fitter with HPGR inspection and processing plant background plus dogging and forklift tickets."},
+      {id:64,name:"Wisdom Mandizvidza",role:"Fitter - Inspections",shift:"Night",days:5,group:"Inspections",ty:13,sy:2,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"13-year mechanical fitter with Cert III Engineering and Level 3 IVQ Technician Diploma (City & Guilds). Currently with Linkforce on shutdowns — crushing and screening plants, conveyors, bearings, pulleys, chutes and liners. Prior Sino Iron shutdown experience on gearbox seals and E-crane hydraulics, plus 2.5 years at WAMMCO Katanning on fixed plant. Deep international background including Francis pump turbine specialist work in South Africa and smelter furnaces. Forklift, CSE, WAH."},
+      {id:17,name:"Joe Dack",role:"Rigger Advanced",shift:"Day",days:9,group:"Rigger",ty:4,sy:2,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:true,rig:"Int + IRATA L1",gta:false,fa:true,sum:"Intermediate rigger with IRATA L1 rope access, strong leadership background and dogging ticket."},
+      {id:18,name:"Nathan Arbuckle",role:"Rigger Advanced",shift:"Day",days:7,group:"Rigger",ty:8,sy:0,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"Adv",gta:false,fa:true,sum:"Advanced Rigger (RA) specialising in structural steel erection, heavy lifts and dual-crane operations. 2023 Simpec Cockburn Cement CCL KWUP plant upgrade — advanced rigging across complex heavy-lift crew work; also April–May 2023 Civmec on Covalent Lithium Plant construction with JLG 60/135 and Genie 60 EWP experience. Prior 8 years at Ausgroup (2008–16) on structural steel erection, dual-crane lifts, complex load transfers and tank/structure installs. Traffic management crew leader 2019–23 in between rigging runs. Tickets: RA, LF, EWP, WAH, CS, Traffic Management, First Aid & CPR. Corbett Rhys and Hopla Sven listed as labour hire contingents."},
+      {id:46,name:"Ricky Truslove",role:"Rigger Advanced",shift:"Night",days:6,group:"Rigger",ty:4,sy:4,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:true,rig:"Int",gta:false,fa:false,sum:"Advanced scaffolder with intermediate rigging and dogging and consistent shutdown experience."},
+      {id:47,name:"Chaeyoon Kim",role:"Rigger Advanced",shift:"Night",days:4,group:"Rigger",ty:4,sy:3,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:true,rig:"Adv",gta:false,fa:false,sum:"Advanced rigger with shutdown exposure plus overhead crane, EWP, forklift and dogging. (Note: CV on file is out of date — client confirms RA ticket; separate person from Michael Kim on Line 29.) Hicham Kohi listed as labour hire contingent."},
+      {id:53,name:"Christopher McLennan",role:"Roller Crew Supervisor",shift:"Day",days:7,group:"Roller Crew",ty:18,sy:15,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"",gta:true,fa:false,sum:"Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience."},
+      {id:54,name:"Stefanos Karikis",role:"Roller Tech",shift:"Day",days:7,group:"Roller Crew",ty:3,sy:3,cse:true,wah:true,ewp:false,tele:true,fork:true,hr:false,dog:true,rig:"Bas",gta:false,fa:false,sum:"Trade assistant / serviceman with field logistics, rigging support, telehandler, forklift and overhead crane experience. Suited to roller crew support and materials handling."},
+      {id:551,name:"King Garcia",role:"Roller Tech",shift:"Day",days:7,group:"Roller Crew",ty:5,sy:3,cse:true,wah:true,ewp:false,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket."},
+      {id:561,name:"Jeremy Larock",role:"Roller Tech",shift:"Day",days:6,group:"Roller Crew",ty:3,sy:3,cse:true,wah:true,ewp:true,tele:true,fork:true,hr:true,dog:false,rig:"",gta:false,fa:true,sum:"Operator and trade assistant with strong ticket depth including HR, telehandler, EWP and forklift. Osama Kmar listed as SRG contingent (added 17 Apr); Gabose listed as labour hire contingent."},
+      {id:571,name:"Henri Martins",role:"Roller Tech",shift:"Day",days:6,group:"Roller Crew",ty:2,sy:1,cse:true,wah:true,ewp:true,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Trade assistant and roller tech with developing experience and EWP ticket."},
+      {id:50,name:"Sebastien Djaffer",role:"Lube Tech T/A",shift:"Day",days:4,group:"Lube Tech",ty:1,sy:1,cse:true,wah:true,ewp:true,tele:true,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Lube tech and trade assistant with strong site induction coverage and telehandler / forklift capability."},
+      {id:51,name:"Mehdi Mokeddem",role:"Lube Tech T/A",shift:"Day",days:4,group:"Lube Tech",ty:2,sy:2,cse:true,wah:true,ewp:true,tele:false,fork:true,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"FIFO lube technician with shutdown experience, automatic grease systems, SAP and oil sampling background."},
+      {id:52,name:"Lakshman Vasanthan",role:"Lube Tech T/A",shift:"Night",days:5,group:"Lube Tech",ty:3,sy:3,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Lube tech supervisor with mechanical trade background and solid shutdown leadership capability."},
+      {id:19,name:"Mehdi Bendani",role:"T.A. (Sentry)",shift:"Day",days:7,group:"Trade Assistant",ty:1,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"IRATA L1",gta:false,fa:false,sum:"Trade assistant with rigging support and IRATA L1 rope access. Capable of confined space hole watch and sentry duties."},
+      {id:20,name:"Madeline Jones",role:"T.A. (Sentry)",shift:"Day",days:10,group:"Trade Assistant",ty:1,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:true,sum:"Trade assistant with confined space hole watch experience. LF VOC confirmed per roster requirements."},
+      {id:48,name:"William Thompson",role:"T.A. (Sentry)",shift:"Night",days:4,group:"Trade Assistant",ty:2,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:true,dog:false,rig:"",gta:true,fa:true,sum:"Two-year FIFO trade assistant at Regis/Genesis Bandya Leonora and drillers offsider with Westralian Diamond Drillers and Impact Drilling. Hands-on with isolations, pre-starts, basic mechanical servicing and power tools. HR-B licence, gas testing and first aid."},
+      {id:49,name:"Lea Mondesir",role:"T.A. (Sentry)",shift:"Night",days:4,group:"Trade Assistant",ty:1,sy:1,cse:true,wah:true,ewp:false,tele:false,fork:false,hr:true,dog:false,rig:"",gta:false,fa:false,sum:"Trade assistant with SRG shutdown experience, utility background and HR licence."},
+      {id:28,name:"Ellie Jeon",role:"T.A. Telehandler",shift:"Day",days:10,group:"Trade Assistant",ty:5,sy:4,cse:true,wah:true,ewp:true,tele:true,fork:true,hr:true,dog:false,rig:"",gta:false,fa:true,sum:"Experienced plant operator with telehandler, loader, excavator and dump truck capability plus HR licence."},
+      {id:29,name:"Michael Kim",role:"T.A. Telehandler",shift:"Night",days:8,group:"Trade Assistant",ty:6,sy:0,cse:true,wah:true,ewp:true,tele:true,fork:true,hr:true,dog:false,rig:"",gta:false,fa:false,sum:"Replaces Shane Cox on Line 29 (19 Apr roster, Pre/Post Shut Crew). 6+ years across mining, construction and warehousing as Telehandler / HR Driver / Trade Assistant. Current Warrikal (BHP/FMG) and Civmec at Roy Hill on JCB 560/571 and MT-X730/1440 telehandlers, 5T/12T forklifts and HR trucks; prior CAT 777 dump truck operator. Tickets: HR-B licence, RIIMPO338E rigid haul truck, telehandler, forklift (LF), front end loader, excavator, skid steer, WAH, CS, GT, CCSE and fire fighting."},
+      {id:30,name:"David Bryce",role:"Bus Driver",shift:"Day",days:9,group:"Trade Assistant",ty:0,sy:0,cse:false,wah:false,ewp:false,tele:false,fork:false,hr:false,dog:false,rig:"",gta:false,fa:false,sum:"Bus driver — resume and experience details to be confirmed."}
+    ];
+
+    let E = [];  // populated by buildFromJson() by merging RESUME_DB + fetched roster + tickets
 
     let DATES = [];   // derived from shutdown start/end in buildFromJson()
     let DOW = [];     // derived from shutdown start/end in buildFromJson()
@@ -2103,20 +2175,25 @@
     }
 
     /* -------------------------------------------------------------------
-       Data feed integration — fetches the SQL-sourced roster + tickets
-       from the southwest-shutdowns repo on load, then hands control to
-       the existing App(). Added 2026-04 to replace the hand-maintained
-       E + ROSTER constants with a live view of the Rapid Crews scheduler.
+       Data feed integration — fetches the live roster + current ticket
+       compliance from southwest-shutdowns on load, then name-matches each
+       worker against RESUME_DB (above) to layer on the curated resume
+       intel the SQL compliance sheet doesn't carry.
+
+       Priority of fields on each final E[] record:
+         - role / shift / days / group   : live feed wins (shutdown planner)
+         - cse / wah / ewp / ba / fork
+           / hr / dog / rig / gta / fa   : SQL compliance wins (authoritative)
+         - ty / sy / sum                 : RESUME_DB wins when matched
+                                           (resume narrative + trade years)
+         - mobile                        : live feed if present, else RESUME_DB
        ------------------------------------------------------------------- */
 
     const DATA_URL = "https://raw.githubusercontent.com/N01dea5/southwest-shutdowns/main/data/covalent.json";
 
-    // Covalent's dashboard groups rows into a small set of trade categories
-    // (Leadership / HSE / Boilermaker / Electrical / Fitter / Inspections /
-    // Rigger / Roller Crew / Lube Tech / Trade Assistant). The upstream JSON
-    // uses the Rapid Crews role vocabulary — map each RC role onto Covalent's
-    // local category so the By-Trade Summary / Ranking / Risk views keep
-    // working. Unknown roles fall back to "Trade Assistant".
+    // RC role vocabulary -> Covalent's local category taxonomy. The
+    // dashboard's By-Trade tables, charts and rankings all pivot on
+    // `group`, so this map is what keeps those views populated.
     const ROLE_TO_GROUP = {
       "Superintendent":          "Leadership",
       "Site Coordinator":        "Leadership",
@@ -2136,6 +2213,19 @@
       "Telehandler Operator":    "Trade Assistant",
     };
 
+    // Aggressive-but-forgiving name normaliser for the resume lookup.
+    // Case-insensitive, strips whitespace / hyphens / apostrophes / middle
+    // names ("Lucrecia Celeste SOSA" and "Lucrecia Sosa" collide).
+    function __normName(s) {
+      return (s || "").toLowerCase().replace(/[^a-z]+/g, "");
+    }
+    function __firstLast(s) {
+      const parts = (s || "").trim().split(/\s+/);
+      return parts.length
+        ? __normName(parts[0]) + __normName(parts[parts.length - 1])
+        : "";
+    }
+
     function buildFromJson(data) {
       const sd = (data.shutdowns || [])[0];
       if (!sd) throw new Error("No shutdowns in data feed");
@@ -2143,7 +2233,7 @@
       const required  = sd.required_by_role || {};
       const rosterRaw = sd.roster || [];
 
-      // Build DATES / DOW columns from the shutdown window.
+      // ---- Date columns ------------------------------------------------
       DATES = [];
       DOW   = [];
       const start = new Date(sd.start_date + "T00:00:00");
@@ -2155,54 +2245,50 @@
         DOW.push(dowNames[d.getDay()]);
       }
 
-      // Build CREW = named roster + TBC padding to hit required_by_role.
-      const filledByRoleShift = {};
-      for (const r of rosterRaw) {
-        const role  = r.role;
-        const shift = r.shift || "Day";
-        filledByRoleShift[role] = filledByRoleShift[role] || { Day: 0, Night: 0 };
-        filledByRoleShift[role][shift === "Night" ? "Night" : "Day"]++;
+      // ---- Build resume lookup on multiple keys so near-matches still hit
+      const resumeByKey = new Map();
+      for (const r of RESUME_DB) {
+        const full = __normName(r.name);
+        const fl   = __firstLast(r.name);
+        if (full && !resumeByKey.has(full)) resumeByKey.set(full, r);
+        if (fl   && !resumeByKey.has(fl))   resumeByKey.set(fl, r);
       }
-      const ORDER = Object.keys(required).sort((a, b) => required[b] - required[a]);
-      const CREW = [];
-      for (const role of ORDER) {
-        const req  = required[role] || 0;
-        const have = rosterRaw.filter(x => x.role === role);
-        for (const r of have) CREW.push(r);
-        const gap = req - have.length;
-        if (gap <= 0) continue;
-        const split = filledByRoleShift[role] || { Day: 0, Night: 0 };
-        let dayDebt = Math.max(0, Math.ceil(req / 2) - split.Day);
-        for (let i = 0; i < gap; i++) {
-          const shift = dayDebt > 0 ? "Day" : "Night";
-          if (shift === "Day") dayDebt--;
-          CREW.push({ name: "TBC", role, shift, tickets: {} });
-        }
+      function lookupResume(name) {
+        const full = __normName(name);
+        if (resumeByKey.has(full)) return resumeByKey.get(full);
+        const fl = __firstLast(name);
+        if (resumeByKey.has(fl)) return resumeByKey.get(fl);
+        return null;
       }
 
+      // ---- Merge each rostered worker with their resume + tickets -----
       const ticketKeys = ["cse","wah","ewp","ba","fork","hr","dog","gta","fa"];
-      E = CREW.map((r, i) => {
-        const t = r.tickets || {};
-        const isTBC = r.name === "TBC";
-        const ticketCount = ticketKeys.filter(k => !!t[k]).length + (t.rig ? 1 : 0);
-        const hasAnyExp = ticketKeys.some(k => t[k] && t[k].status === "expiring_soon")
-                       || (t.rig && t.rig.status === "expiring_soon");
-        const roleLower = r.role ? r.role.toLowerCase() : "position";
-        const sum = isTBC
-          ? `Unfilled ${r.role} position — ${r.shift || "shift TBC"}. Source personnel and confirm ticket compliance before mobilisation.`
-          : ticketCount > 0
-            ? `${r.shift || ""} shift ${roleLower} — ${ticketCount} current ticket${ticketCount === 1 ? "" : "s"} in Rapid Crews compliance.${hasAnyExp ? " Ticket(s) expiring within 30 days — review before mobilisation." : ""}`
-            : `${r.shift || ""} shift ${roleLower} — ticket details awaiting compliance entry.`;
-        return {
-          id:    i + 1,
-          name:  r.name,
-          role:  r.role,
-          shift: r.shift || "Day",
-          days:  DATES.length || 18,
-          group: ROLE_TO_GROUP[r.role] || "Trade Assistant",
-          // Trade-years / shutdown-years are no longer tracked; the resume
-          // data field is replaced by live compliance ticket coverage.
-          ty: 0, sy: 0,
+      const merged = [];
+      let matched = 0, unmatched = 0;
+
+      for (const r of rosterRaw) {
+        const t       = r.tickets || {};
+        const resume  = lookupResume(r.name);
+        if (resume) matched++; else unmatched++;
+        const tCount  = ticketKeys.filter(k => !!t[k]).length + (t.rig ? 1 : 0);
+        const hasExp  = ticketKeys.some(k => t[k] && t[k].status === "expiring_soon")
+                     || (t.rig && t.rig.status === "expiring_soon");
+        const roleLc  = (r.role || "position").toLowerCase();
+        const shift   = r.shift || "Day";
+        // Start from the resume (rich fields); selectively override with
+        // live-feed + compliance truth.
+        const base = resume ? Object.assign({}, resume) : {
+          ty: 0, sy: 0, sum: `${shift} shift ${roleLc} — resume pending. Tickets live from Rapid Crews compliance.`
+        };
+        merged.push(Object.assign({}, base, {
+          id:    merged.length + 1,
+          name:  r.name,                                  // live feed wins
+          role:  r.role,                                  // live feed wins
+          shift: shift,                                   // live feed wins
+          days:  DATES.length || base.days || 10,
+          group: ROLE_TO_GROUP[r.role] || (base.group || "Trade Assistant"),
+          // SQL compliance wins for the ticket booleans — these are
+          // recomputed every run from the workbook's PersonnelCompetency sheet.
           cse:  !!t.cse,
           wah:  !!t.wah,
           ewp:  !!t.ewp,
@@ -2213,20 +2299,51 @@
           rig:  (t.rig && t.rig.level) || "",
           gta:  !!t.gta,
           fa:   !!t.fa,
-          // Telehandler: reuse forklift flag (no separate WA competency).
-          tele: !!t.fork,
-          mobile: r.mobile || "",
+          tele: !!t.fork,                                 // WA: telehandler via forklift ticket
+          mobile: r.mobile || (resume && resume.mobile) || "",
           personnel_id: r.personnel_id || null,
-          _tickets: t,
-          _ticketCount: ticketCount,
-          sum,
-        };
-      });
+          _tickets:      t,
+          _ticketCount:  tCount,
+          _resumeMatched: !!resume,
+          _expiringSoon:  hasExp,
+        }));
+      }
 
-      // Stable sort: group (per GROUP_ORDER), Day before Night, named before TBC, alpha.
+      // ---- TBC padding: per-role shortfall against required_by_role ----
+      const filledByRoleShift = {};
+      for (const r of rosterRaw) {
+        filledByRoleShift[r.role] = filledByRoleShift[r.role] || { Day: 0, Night: 0 };
+        filledByRoleShift[r.role][r.shift === "Night" ? "Night" : "Day"]++;
+      }
+      for (const role of Object.keys(required)) {
+        const req  = required[role] || 0;
+        const have = rosterRaw.filter(x => x.role === role).length;
+        const gap  = req - have;
+        if (gap <= 0) continue;
+        const split = filledByRoleShift[role] || { Day: 0, Night: 0 };
+        let dayDebt = Math.max(0, Math.ceil(req / 2) - split.Day);
+        for (let i = 0; i < gap; i++) {
+          const shift = dayDebt > 0 ? "Day" : "Night";
+          if (shift === "Day") dayDebt--;
+          merged.push({
+            id: merged.length + 1,
+            name: "TBC", role, shift,
+            days: DATES.length || 10,
+            group: ROLE_TO_GROUP[role] || "Trade Assistant",
+            ty: 0, sy: 0,
+            cse:false, wah:false, ewp:false, ba:false, fork:false, hr:false,
+            dog:false, rig:"", gta:false, fa:false, tele:false,
+            mobile: "", personnel_id: null,
+            _tickets: {}, _ticketCount: 0, _resumeMatched: false, _expiringSoon: false,
+            sum: `Unfilled ${role} — ${shift} shift. Source personnel and confirm ticket compliance before mobilisation.`,
+          });
+        }
+      }
+
+      // ---- Stable sort for display -------------------------------------
       const groupRank = {};
-      (window.__COVALENT_GROUP_ORDER__ || GROUP_ORDER).forEach((g, i) => { groupRank[g] = i; });
-      E.sort((a, b) => {
+      GROUP_ORDER.forEach((g, i) => { groupRank[g] = i; });
+      merged.sort((a, b) => {
         const ga = groupRank[a.group] ?? 99;
         const gb = groupRank[b.group] ?? 99;
         if (ga !== gb) return ga - gb;
@@ -2236,26 +2353,37 @@
         if (aT !== bT) return aT ? 1 : -1;
         return a.name.localeCompare(b.name);
       });
-      E.forEach((e, i) => { e.id = i + 1; });
+      merged.forEach((e, i) => { e.id = i + 1; });
 
-      // ROSTER: shift-code grid (named only; TBC left off so grid stays scannable).
+      E = merged;
+
+      // ROSTER: shift-code grid (named only; TBC left off to keep it scannable).
       ROSTER = E.filter(e => e.name !== "TBC").map(e => ({
-        name:  e.name,
-        role:  e.role,
+        name: e.name, role: e.role,
         notes: `${e.shift} shift · ${DATES.length} days`,
         codes: (e.shift === "Night"
                  ? new Array(DATES.length).fill("NS")
                  : new Array(DATES.length).fill("DS")),
       }));
 
-      // Stash meta for the header/freshness banner.
       window.__COVALENT_META__ = {
         name:         sd.name || "",
         site:         sd.site || "",
         start_date:   sd.start_date,
         end_date:     sd.end_date,
         generated_at: data.generated_at || null,
+        resume_match: { matched, unmatched, resume_db_size: RESUME_DB.length },
       };
+
+      if (console && console.info) {
+        console.info("[covalent] roster=%d (named=%d tbc=%d), resume match %d/%d, tickets=%d, expiring soon=%d",
+          E.length,
+          E.filter(e => e.name !== "TBC").length,
+          E.filter(e => e.name === "TBC").length,
+          matched, matched + unmatched,
+          E.reduce((s, e) => s + (e._ticketCount || 0), 0),
+          E.filter(e => e._expiringSoon).length);
+      }
     }
 
     function renderStatus(kind, message, detail) {

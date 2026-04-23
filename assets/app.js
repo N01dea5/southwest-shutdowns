@@ -235,7 +235,14 @@ function fulfillmentRollup(shutdowns) {
     }
     for (const [role, n] of Object.entries(s.filled_by_role)) {
       filled += n;
+      // filled_by_role can list roles that required_by_role doesn't — the
+      // SQL-sourced filled counts sometimes include on-site workers in roles
+      // (Superintendent, Site Coordinator, …) that the per-site dashboard's
+      // required-headcount view doesn't plan for. Init the slots defensively
+      // so these unplanned roles show up in the rollups as required=0.
+      byCompany[s.company] = byCompany[s.company] || { required: 0, filled: 0 };
       byCompany[s.company].filled += n;
+      byRole[role] = byRole[role] || { required: 0, filled: 0 };
       byRole[role].filled += n;
     }
   }

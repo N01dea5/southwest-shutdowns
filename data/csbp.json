@@ -12,10 +12,10 @@
         "Supervisor - Mechanical": 4,
         "Sheet Metal Worker": 3,
         "Trade Assistant": 18,
+        "Painter & Blaster": 2,
         "Advanced Rigger": 2,
         "Scaffolder": 6,
         "Mechanical Fitter": 23,
-        "Painter & Blaster": 2,
         "Intermediate Rigger": 3
       },
       "filled_by_role": {
@@ -821,5 +821,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T08:58:27Z"
+  "generated_at": "2026-04-23T08:59:10Z"
 }

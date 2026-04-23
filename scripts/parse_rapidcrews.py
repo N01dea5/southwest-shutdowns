@@ -112,7 +112,12 @@ TICKET_MAP = {
     "EWP":                                                "ewp",
     "CA-EBS - Compressed Air Emergency Breathing System": "ba",
     "LF - Forklift Truck":                                "fork",
-    "HRWL":                                               "hr",
+    # HR Class is the Heavy Rigid driver's licence (truck), which the
+    # per-site dashboards currently label as "HR". HRWL is the separate
+    # High Risk Work Licence — record both under distinct keys so a
+    # dashboard can show whichever is relevant without conflating them.
+    "HR Class":                                           "hr",
+    "HRWL":                                               "hrwl",
     "DG - Dogging":                                       "dog",
     "Gas Test Atmospheres":                               "gta",
     "First Aid":                                          "fa",
@@ -801,6 +806,11 @@ def build_shutdown(file_key: str,
         else:
             n_unmatched += 1
         entry = {"name": r["name"], "role": r["role"]}
+        # Day vs Night — read straight from the RosterCut/Kleenheat
+        # crew_type column so per-site dashboards can group/filter without
+        # guessing at the split.
+        if r.get("crew_type") and r["crew_type"] != "Unknown":
+            entry["shift"] = r["crew_type"]
         if r.get("mobile"): entry["mobile"] = r["mobile"]
         # Per-worker start/end drive the consolidated ops roster (tab 2).
         # They can differ from the shutdown's overall span when a worker

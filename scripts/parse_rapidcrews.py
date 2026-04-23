@@ -81,12 +81,25 @@ REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
 RAW_DIR     = REPO_ROOT / "data" / "raw"
 DATA_DIR    = REPO_ROOT / "data"
 TARGETS_DIR = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
+MACRO_FILE  = RAW_DIR / "Rapidcrews Macro Data.xlsx"    # SQL-sourced export
 
 RAPIDCREWS_COLS = ["Company", "Name", "Surname", "Position", "Position On Project",
                    "Start Date", "End Date", "Confirmed", "Crew Type", "Mobilised"]
 KLEENHEAT_COLS  = ["Name", "Trade", "Company", "On Site", "Off Site", "Crew"]
 PEGASUS_COLS    = ["Company", "Date In", "Date Out", "Shift", "Surname", "First Name",
                    "Pegasus Job Role"]
+
+# The SQL DisciplineTrade table uses "Rigger - Advanced/Intermediate/Basic"
+# where the RosterCut "Position On Project" (and therefore the rest of the
+# pipeline: filled_by_role keys, target files, dashboard role chips) uses
+# "Advanced Rigger" / "Intermediate Rigger" / "Basic Rigger". Normalise SQL
+# trade names into the canonical roster-cut vocabulary so the macro-derived
+# filled counts line up with the existing required_by_role keys.
+MACRO_ROLE_RENAME = {
+    "Rigger - Advanced":     "Advanced Rigger",
+    "Rigger - Intermediate": "Intermediate Rigger",
+    "Rigger - Basic":        "Basic Rigger",
+}
 
 
 # --------------------------------------------------------------------------- helpers
@@ -386,6 +399,95 @@ def enrich_kleenheat_names(rows: list[dict], lookup: dict) -> dict[str, int]:
     return stats
 
 
+# --------------------------------------------------------------------------- SQL-sourced macro data
+
+def load_macro_data(path: pathlib.Path) -> dict[int, dict[str, dict[str, int]]]:
+    """Read the Rapidcrews Macro Data workbook (SQL export from the Rapid
+    Crews scheduling DB) and return per-Job headcount counts keyed by role.
+
+    Returns {job_no: {role: {"required": N, "filled": M, "actual": K, "to_fill": L}}}
+    where `job_no` is the integer JobNo used across Rapid Crews. This matches
+    the first filename token of the RosterCut exports (e.g. 1353/1359/1375),
+    so the macro-data lookup keys line up with ROSTER_MAP's numeric entries.
+
+    Reads three sheets:
+      - `xpbi02 DisciplineTrade`: TradeId -> Trade name (== CompetencyId on
+        JobPlanningView)
+      - `xpbi02 PersonnelRosterView`: JobId -> JobNo (many rows, first wins)
+      - `xpbi02 JobPlanningView`: one row per (JobId, CompetencyId) with
+        Required / Filled / ToFill / Actual
+
+    Returns {} if the file is missing — callers must tolerate that (lets this
+    pipeline keep working on branches that haven't received the workbook yet).
+    """
+    if not path.exists():
+        return {}
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    try:
+        # 1. Trade lookup
+        ws = wb["xpbi02 DisciplineTrade"]
+        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+        ix = {h: n for n, h in enumerate(headers) if h}
+        trade_by_id: dict[str, str] = {}
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            tid = r[ix["TradeId"]]
+            trade = str(r[ix["Trade"]] or "").strip()
+            if tid and trade:
+                trade_by_id[tid] = MACRO_ROLE_RENAME.get(trade, trade)
+
+        # 2. JobId -> JobNo (first occurrence wins; JobNo is stable per Job)
+        ws = wb["xpbi02 PersonnelRosterView"]
+        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+        ix = {h: n for n, h in enumerate(headers) if h}
+        job_no_by_id: dict[str, int] = {}
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            jid, jno = r[ix["Job Id"]], r[ix["Job No"]]
+            if jid and jno and jid not in job_no_by_id:
+                job_no_by_id[jid] = int(jno)
+
+        # 3. Aggregate planning rows per (JobNo, trade). There's typically
+        #    exactly one planning row per (JobId, CompetencyId), but we sum
+        #    defensively in case the SQL export ever surfaces duplicates.
+        ws = wb["xpbi02 JobPlanningView"]
+        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
+        ix = {h: n for n, h in enumerate(headers) if h}
+        out: dict[int, dict[str, dict[str, int]]] = {}
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            jid = r[ix["JobId"]]
+            jno = job_no_by_id.get(jid)
+            if jno is None:
+                continue
+            role = trade_by_id.get(r[ix["CompetencyId"]], "Unknown")
+            bucket = out.setdefault(jno, {}).setdefault(
+                role, {"required": 0, "filled": 0, "actual": 0, "to_fill": 0})
+            bucket["required"] += int(r[ix["Required"]] or 0)
+            bucket["filled"]   += int(r[ix["Filled"]]   or 0)
+            bucket["actual"]   += int(r[ix["Actual"]]   or 0)
+            bucket["to_fill"]  += int(r[ix["ToFill"]]   or 0)
+        return out
+    finally:
+        wb.close()
+
+
+def macro_filled_for(file_key: str,
+                     macro_data: dict[int, dict[str, dict[str, int]]]
+                     ) -> dict[str, int] | None:
+    """Return {role: filled_count} for this shutdown if the macro data covers
+    it, else None. The lookup key is the integer JobNo, which matches the
+    numeric file_key convention used by RosterCut exports (1353/1359/1375).
+    Non-numeric keys (Kleenheat, Pegasus historical imports) are never in the
+    SQL export, so they always fall through to the existing behaviour."""
+    if not file_key.isdigit():
+        return None
+    job_no = int(file_key)
+    per_role = macro_data.get(job_no)
+    if not per_role:
+        return None
+    # Drop zero-filled roles so the dashboard doesn't render empty chips; the
+    # required_by_role side keeps them if they're planned-but-unfilled.
+    return {role: v["filled"] for role, v in per_role.items() if v["filled"] > 0}
+
+
 # --------------------------------------------------------------------------- targets
 
 def merge_targets(shutdown_id: str,
@@ -448,7 +550,12 @@ def _infer_status(start_day: dt.date, end_day: dt.date, today: dt.date) -> str:
     return "booked"
 
 
-def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str) -> tuple[str, str, dict]:
+def build_shutdown(file_key: str,
+                   xlsx: pathlib.Path,
+                   rows: list[dict],
+                   fmt: str,
+                   macro_data: dict[int, dict[str, dict[str, int]]] | None = None,
+                   ) -> tuple[str, str, dict]:
     entry = ROSTER_MAP[file_key]
     company_key, client_name, project_label, site = entry[:4]
     shutdown_id_override = entry[4] if len(entry) > 4 else None
@@ -474,6 +581,21 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
 
     shutdown_id = shutdown_id_override or f"{company_key}-{sd[:7]}"
     required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
+
+    # filled_by_role precedence (lowest → highest):
+    #   1. roster-derived count of confirmed rows (filled_by_role above)
+    #   2. data/targets/<shutdown_id>.json filled_by_role override
+    #      (applied inside merge_targets)
+    #   3. SQL-sourced Rapidcrews Macro Data "Filled" column — the scheduling
+    #      DB is the ultimate source of truth for how many heads are
+    #      actually committed per role. Applied here.
+    macro_filled   = macro_filled_for(file_key, macro_data or {})
+    filled_source  = "rapidcrews_macro_data" if macro_filled is not None else \
+                     ("targets_file" if target_source_meta is not None else "roster_count")
+    filled_pre_macro = dict(filled_final)
+    if macro_filled is not None:
+        filled_final = macro_filled
+
     today       = dt.date.today()
     status      = _infer_status(dt.date.fromisoformat(sd),
                                 dt.date.fromisoformat(ed), today)
@@ -510,9 +632,14 @@ def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str
             "required_target_source": (
                 "REAL_TARGET" if target_exists else "PLACEHOLDER_FROM_ROSTER"
             ),
+            "filled_source":           filled_source,
             "rapid_crews_roster_size": len(confirmed),
             "rapid_crews_filled_by_role": filled_by_role,   # preserved for audit
             "target_source":           target_source_meta,  # None for Kleenheat
+            # Kept alongside the live number so discrepancies between the
+            # scheduling DB and the other sources are easy to spot in the
+            # dashboard's data-quality panel.
+            "filled_by_role_pre_macro": filled_pre_macro if macro_filled is not None else None,
         },
     }
     # Provenance for enriched rows — surfaced in data-quality warnings
@@ -562,6 +689,11 @@ def main() -> int:
     parsed: list[tuple[str, pathlib.Path, str, list[dict]]] = []
     rows_by_company: dict[str, list[dict]] = {}
     for xlsx in sorted(RAW_DIR.glob("*.xlsx")):
+        # The macro workbook is read separately by load_macro_data() — don't
+        # try to sniff it as a RosterCut export (it isn't one, and the
+        # "unmapped" log line is just noise).
+        if xlsx.resolve() == MACRO_FILE.resolve():
+            continue
         key = _file_key(xlsx)
         if key not in ROSTER_MAP:
             print(f"  skip unmapped roster {key}: {xlsx.name}")
@@ -589,18 +721,32 @@ def main() -> int:
               f"{stats['xref_ambiguous']} ambiguous · "
               f"{stats['unmatched']} unmatched")
 
-    # -- 3. Build per-shutdown payloads and group by company.
+    # -- 3. Load the SQL-sourced macro data once (if present). Supplies the
+    #       authoritative filled_by_role for any RosterCut shutdown whose
+    #       numeric file_key (== JobNo) appears in the macro workbook.
+    macro_data = load_macro_data(MACRO_FILE)
+    if macro_data:
+        print(f"  macro data: loaded {len(macro_data)} job(s) from "
+              f"{MACRO_FILE.relative_to(REPO_ROOT)} "
+              f"(jobs: {sorted(macro_data)})")
+    else:
+        print(f"  macro data: {MACRO_FILE.name} not found — "
+              f"falling back to roster-derived filled counts")
+
+    # -- 4. Build per-shutdown payloads and group by company.
     by_company: dict[str, dict] = {}
     for key, xlsx, fmt, rows in parsed:
-        company_key, client_name, shutdown = build_shutdown(key, xlsx, rows, fmt)
+        company_key, client_name, shutdown = build_shutdown(
+            key, xlsx, rows, fmt, macro_data=macro_data)
         by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
         by_company[company_key]["shutdowns"].append(shutdown)
         print(f"  {key:>10}  {client_name:<10} {shutdown['id']:<22} "
               f"roster={len(shutdown['roster']):>3}  "
               f"{shutdown['start_date']} → {shutdown['end_date']}  "
-              f"[{shutdown['status']}]")
+              f"[{shutdown['status']}]  "
+              f"filled_src={shutdown['_source']['filled_source']}")
 
-    # -- 4. Write per-company JSON files.
+    # -- 5. Write per-company JSON files.
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     for company_key, payload in by_company.items():
         payload["generated_at"] = now
@@ -611,7 +757,7 @@ def main() -> int:
         print(f"Wrote {out.relative_to(REPO_ROOT)}: "
               f"{len(payload['shutdowns'])} shutdown(s), {total} confirmed heads")
 
-    # -- 5. Backfill empty payloads for any client the dashboard lists but
+    # -- 6. Backfill empty payloads for any client the dashboard lists but
     #       which got no rosters this run (prevents 404s on page load).
     referenced = {"covalent", "tronox", "csbp"}
     for company_key in referenced - by_company.keys():

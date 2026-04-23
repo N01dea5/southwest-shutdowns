@@ -9,21 +9,22 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
+        "Boilermaker": 10,
+        "Advanced Rigger": 10,
+        "Mechanical Fitter": 40,
+        "Coded Welder": 11,
         "Trade Assistant": 20,
         "Intermediate Rigger": 10,
-        "Supervisor - Mechanical": 4,
-        "Mechanical Fitter": 40,
-        "Advanced Rigger": 10,
-        "Coded Welder": 11,
-        "Boilermaker": 10
+        "Supervisor - Mechanical": 4
       },
       "filled_by_role": {
-        "Trade Assistant": 19,
-        "Intermediate Rigger": 3,
-        "Supervisor - Mechanical": 3,
-        "Mechanical Fitter": 16,
-        "Advanced Rigger": 4,
+        "Superintendent": 1,
         "Coded Welder": 1,
+        "Site Coordinator": 1,
+        "Trade Assistant": 20,
+        "Advanced Rigger": 5,
+        "Supervisor - Mechanical": 1,
+        "Mechanical Fitter": 16,
         "Boilermaker": 2
       },
       "crew_split": {
@@ -370,6 +371,7 @@
         "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
         "source_format": "rapidcrews",
         "required_target_source": "REAL_TARGET",
+        "filled_source": "rapidcrews_macro_data",
         "rapid_crews_roster_size": 47,
         "rapid_crews_filled_by_role": {
           "Mechanical Fitter": 16,
@@ -385,9 +387,18 @@
           "total_planned": 105,
           "total_confirmed": 48,
           "total_tbc": 57
+        },
+        "filled_by_role_pre_macro": {
+          "Boilermaker": 2,
+          "Advanced Rigger": 4,
+          "Mechanical Fitter": 16,
+          "Coded Welder": 1,
+          "Trade Assistant": 19,
+          "Intermediate Rigger": 3,
+          "Supervisor - Mechanical": 3
         }
       }
     }
   ],
-  "generated_at": "2026-04-23T08:12:52Z"
+  "generated_at": "2026-04-23T08:17:11Z"
 }

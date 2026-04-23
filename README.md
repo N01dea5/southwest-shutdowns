@@ -1,13 +1,29 @@
 # Southwest Shutdowns — Unified Dashboard
 
-Internal-only roll-up of the four live site dashboards (Tianqi, Covalent, Tronox, CSBP). The CSBP umbrella covers both the NAAN2 fertiliser shutdown and the KPF LNG (Kleenheat-branded) March 2026 shutdown — both run by WesCEF. Shows:
+Internal-only roll-up of every shutdown SRG Global runs for the three
+Southwest clients (Covalent, Tronox, CSBP). The CSBP umbrella covers both
+the NAAN2 fertiliser shutdown and the KPF LNG (Kleenheat-branded) March
+2026 shutdown — both run by WesCEF. Shows:
 
-- **Fulfillment** — positions required vs. filled, overall and by trade, for completed shutdowns.
-- **Booked positions** — aggregate confirmed-vs-target headcount for upcoming shutdowns.
-- **Retention / carry-over** — how many workers return on the next shutdown, both at the **same company** and **across any of the three companies**.
-- **Gantt schedule** — swimlane view of every shutdown (completed and booked) with a "today" marker and fill shading.
+- **Fulfillment** — positions required vs. filled, overall and by trade.
+  Overstaffing (confirmed > required) is flagged explicitly on the KPI
+  tile and the per-shutdown cards rather than clamped to 100%.
+- **Retention / carry-over** — for each shutdown, how much of the roster
+  is workers returning from the **same company**, workers returning from
+  **a different client in the SRG pool**, and **new hires**.
+- **Gantt schedule** — swimlane view of every shutdown (completed and
+  booked) with a "today" marker and fill shading.
+- **Operations roster** — per-worker timeline across every site, with
+  click-to-call mobiles and (when configured) click-to-open resumes.
 
-Static site, no server. Each source dashboard pushes its canonical data into this repo as JSON; this page re-reads on load.
+**Source of truth is Rapid Crews.** `Rapidcrews Macro Data.xlsx` at the
+repo root drives required, filled, roster and position titles.
+`data/targets/` is fallback-only for shutdowns Rapid Crews doesn't cover
+(e.g. historical Pegasus rosters). Shutdowns that roll off the live SQL
+view are re-hydrated from `data/history/` automatically.
+
+Static site, no server. Each source dashboard pushes its canonical data
+into this repo as JSON; this page re-reads on load.
 
 ## Layout
 
@@ -15,19 +31,37 @@ Static site, no server. Each source dashboard pushes its canonical data into thi
 index.html                       unified dashboard
 assets/app.js                    load → normalise → compute → render
 assets/styles.css
+Rapidcrews Macro Data.xlsx       Rapid Crews SQL export (authoritative)
+                                 sheets: xpbi02 JobPlanningView,
+                                         xpbi02 PersonnelRosterView,
+                                         xpbi02 DisciplineTrade,
+                                         xll01 Personnel,
+                                         ACTIVE_SHUTDOWNS (control sheet)
+Resumes.xlsx                     standalone resume link index
+                                 columns: Name | Personnel Id | Role |
+                                          Mobile | Resume URL | Updated | Notes
 data/
-  kleenheat.json                 historical shutdown (retention seed only)
-  covalent.json                  source-of-truth data per client
+  covalent.json                  per-company dashboard payload (generated)
   tronox.json
   csbp.json
+  resumes.json                   consolidated {name: resume_url} (generated)
   schema.md                      JSON contract documented
-  raw/                           Rapid Crews "RosterCut" XLSX exports (one per shutdown)
-  targets/                       per-shutdown {role: required_headcount} overrides
-                                 (synced from each site's source dashboard repo)
-  imports/                       raw planned-roster extracts from each site dashboard
-                                 (full names, roles, groups, shifts, TBC flags, contingency)
+  raw/                           Rapid Crews "RosterCut" XLSX exports +
+                                 historic Pegasus rosters
+  targets/                       optional {role: required} overrides (only
+                                 consulted when Rapid Crews has nothing)
+  imports/                       full planned roster snapshots from each
+                                 site dashboard (provenance only)
+  history/                       per-shutdown snapshots that outlive the
+                                 live SQL view — restored automatically
+                                 when a JobNo rolls off Rapid Crews
 scripts/
-  parse_rapidcrews.py            converts data/raw/*.xlsx → data/<company>.json
+  parse_rapidcrews.py            full pipeline: raw/*.xlsx + macro data
+                                 + history restore → data/*.json + resumes.json
+  parse_macro_data.py            Rapid Crews macro-workbook reader (shared)
+  sync_source_targets.py         OPTIONAL: pull per-site dashboard targets
+                                 (no longer in the default workflow)
+  sync_sharepoint.py             OPTIONAL: pull fresh XLSX drops from SharePoint
 ```
 
 ## Run locally
@@ -41,8 +75,38 @@ Chart.js + Google Fonts (Barlow Condensed / Bebas Neue) are loaded via CDN; no b
 
 ## Updating data
 
-The current source of truth is **Rapid Crews**. Every refresh follows the same
-loop:
+### Adding or removing shutdowns (end users, no code required)
+
+Open `Rapidcrews Macro Data.xlsx` → go to the `ACTIVE_SHUTDOWNS` sheet → add
+or delete rows in the **JobNo** column. One JobNo per row = one shutdown on
+the dashboard. Save, and once the updated workbook lands in the repo the
+GitHub Action regenerates the JSONs and the dashboard refreshes on next
+page-load.
+
+Rules of thumb:
+
+- **Sheet missing or empty** — legacy behaviour: every RosterCut file in
+  `data/raw/` appears (backwards compatible).
+- **Sheet has rows** — it becomes an allow-list. Only shutdowns whose JobNo
+  is listed show up. Historical retention seeds (Kleenheat) always pass.
+- When a JobNo is in both a RosterCut file (`data/raw/`) and the macro
+  workbook's `PersonnelRosterView`, the RosterCut data wins on that
+  shutdown — it carries Position-On-Project, Confirmed flag, and Crew Type
+  which the macro export doesn't have.
+- For a brand-new shutdown that doesn't have a RosterCut file, the parser
+  builds it straight from `xpbi02 JobPlanningView` + `xpbi02 PersonnelRosterView`.
+  Per-worker `role` falls back to the employee's **Primary Role** from the
+  Personnel master — close but not identical to the shutdown-specific
+  Position-On-Project that RosterCut would give.
+- If a JobNo's client/site pair in `PersonnelRosterView` isn't one of
+  Covalent Lithium / Tronox / CSBP Kwinana, the parser skips it with a
+  warning — update `CLIENT_SITE_MAP` in `scripts/parse_macro_data.py` to
+  add a new client.
+
+### Full-fidelity workflow (maintainers — RosterCut exports)
+
+The current source of truth for the three live shutdowns is **Rapid Crews**.
+Every refresh follows the same loop:
 
 1. **Export** a roster from Rapid Crews → "RosterCut" → XLSX.
 2. **Drop** the file into `data/raw/`. The filename's leading numeric token is
@@ -50,7 +114,8 @@ loop:
 3. **Map** that roster id to a client + project + site by adding a line to
    `ROSTER_MAP` in `scripts/parse_rapidcrews.py`.
 4. **Run** `python3 scripts/parse_rapidcrews.py` — it regenerates
-   `data/<company>.json` from every roster in `data/raw/`.
+   `data/<company>.json` from every roster in `data/raw/` (and pulls in any
+   active macro-workbook shutdowns that aren't already covered).
 5. **Commit** the regenerated JSONs. The dashboard re-reads on every page load,
    so the next refresh picks the change up — no code deploy needed.
 
@@ -71,40 +136,30 @@ Each row is tagged with its `_name_resolution` (`explicit_column` /
 `email_heuristic` / `xref_exact` / `xref_ambiguous` / `unmatched`) and a
 roll-up lands in `_source.name_resolution` for ops review.
 
-### Real headcount targets
+### Required headcount (Required vs Filled)
 
-The Rapid Crews roster export only carries *confirmed* heads, not the
-*requested* target. If a shutdown has no target file, the dashboard runs with
-`required_by_role = filled_by_role` (so fill rate trivially reads 100%) and
-shows a banner saying as much.
+Rapid Crews drives `required_by_role` from `xpbi02 JobPlanningView.Required`
+and `filled_by_role` from the roster count (either RosterCut rows or
+`xpbi02 PersonnelRosterView` unique personnel). Each shutdown's
+`_source.required_target_source` records where its number came from:
 
-Targets for the three current shutdowns are now synced from each site's own
-SRG Global dashboard repo:
+| Value                       | Meaning |
+|-----------------------------|---------|
+| `RAPID_CREWS_JOB_PLANNING`  | Required pulled from Rapid Crews JobPlanningView (preferred) |
+| `TARGET_FILE`               | Required pulled from `data/targets/<id>.json` — RC had no row |
+| `PLACEHOLDER_FROM_ROSTER`   | RC roster only, required defaulted to filled — banner shown |
 
-- `data/targets/covalent-2026-04.json` — from
-  [N01dea5/Covalent-Mt-Holland---April-2026][covalent-src] (63 planned)
-- `data/targets/tronox-2026-05.json` — from
-  [N01dea5/tronox-major-shutdown-may-2026][tronox-src] (104 planned)
-- `data/targets/csbp-2026-05.json` — from
-  [N01dea5/csbp-naan2-shutdown-workforce-dashboard][csbp-src] (36 planned)
-
-[covalent-src]: https://github.com/N01dea5/Covalent-Mt-Holland---April-2026
-[tronox-src]:   https://github.com/N01dea5/tronox-major-shutdown-may-2026
-[csbp-src]:     https://github.com/N01dea5/csbp-naan2-shutdown-workforce-dashboard
-
-Each target file is `{role: required_headcount}` keyed by the role names the
-Rapid Crews roster uses (e.g. `"Mechanical Fitter"`, `"Advanced Rigger"`,
-`"Supervisor - Mechanical"`). The parser merges these on top of the counts
-derived from the Rapid Crews XLSX, flips the shutdown's
-`required_target_source` to `"REAL_TARGET"`, and the dashboard's placeholder
-banner clears.
+When filled exceeds required (the team mobilised more people than the plan
+requested), the KPI tile shows a green **+N** surplus pill, the overall fill
+rate reads above 100%, and the affected shutdowns get an **"Over plan +N"**
+header pill. No clamping — the delta matters.
 
 The full planned roster from each source dashboard — names, shifts, trade
 groups, shift-days, TBC flags and contingency workforce — is archived raw in
 `data/imports/<company>-source.json`. Those files are provenance, not inputs
-to the parser. When a source dashboard changes (new headcount, slot added),
-re-run `scripts/sync_source_targets.py` (see below) to regenerate both
-`data/imports/` and `data/targets/`.
+to the parser. Since Rapid Crews is now authoritative, `sync_source_targets.py`
+is no longer in the default workflow — run it manually when you need to
+snapshot a per-site dashboard's planned roster to `data/imports/`.
 
 Override per-shutdown by editing the file at:
 
@@ -129,15 +184,54 @@ Example (`data/targets/tronox-2026-05.json`):
 Re-run the parser. The banner disappears for that shutdown and fill-rate
 reflects the gap to target.
 
-### Refreshing from the source dashboards
+### Refreshing from the source dashboards (manual only)
 
 `scripts/sync_source_targets.py` fetches each source dashboard's `index.html`,
-extracts its planned roster, writes `data/imports/<company>-source.json`, and
-rewrites `data/targets/<shutdown_id>.json` using a per-company role map from
-the source vocabulary (e.g. Covalent's "Fitter - Inspections", Tronox's
-"Rigger - Advanced") into the Rapid Crews vocabulary the parser reads. Run it
-any time a site dashboard ships new targets, then re-run
-`scripts/parse_rapidcrews.py`.
+extracts its planned roster, and writes `data/imports/<company>-source.json`
+plus `data/targets/<shutdown_id>.json`. It's no longer wired into the default
+GitHub Actions workflow — Rapid Crews wins for live shutdowns, so those
+target files would never apply. Run it manually when you want to take a
+provenance snapshot of a per-site dashboard's plan, or to seed a target
+file for a shutdown that Rapid Crews doesn't cover.
+
+### Resume handover (SharePoint workflow)
+
+`Resumes.xlsx` at the repo root is a standalone workbook owned by ops, not
+Rapid Crews. The schema is one row per worker:
+
+| Name | Personnel Id | Role | Mobile | Resume URL | Updated | Notes |
+
+`Resume URL` is typically a SharePoint share link to the candidate's CV
+PDF. End-user update flow:
+
+1. Save the latest CV PDF into the SharePoint resume library.
+2. Right-click → **Copy link** → share scope is whatever the library is set
+   to (ops-only is sensible).
+3. Open `Resumes.xlsx`, add a new row (or update an existing one), paste
+   the link into `Resume URL`, set `Updated` to today's date. Save.
+4. Commit + push the workbook (or rely on the SharePoint → GitHub Power
+   Automate flow if that's configured).
+
+The parser ingests `Resumes.xlsx` on the next run and writes
+`data/resumes.json`. The dashboard decorates every worker whose name has a
+URL on file with a small red **CV** badge in the matrix + ops roster —
+click-through opens the PDF in a new tab.
+
+### Historical retention (SQL roll-over safety)
+
+Every parser run snapshots each shutdown to `data/history/<id>.json`. When
+Rapid Crews' live SQL view eventually rolls a JobNo off (the view is
+time-windowed to ~12 months), the next parser run:
+
+1. Sees the JobNo is in `ACTIVE_SHUTDOWNS` but missing from the live data
+   and `data/raw/`.
+2. Loads the last-known snapshot from `data/history/`.
+3. Re-inserts the shutdown into the output JSON with
+   `_source.restored_from_archive = true`.
+
+The dashboard shows an **"Archived"** pill on those tiles so users know
+the numbers are frozen, not live. Delete the snapshot from `data/history/`
+to retire a shutdown permanently.
 
 ## Automation — GitHub Actions
 
@@ -153,11 +247,11 @@ manual invocation of the scripts. Three triggers:
 Each run:
 
 1. `pip install openpyxl`
-2. `python3 scripts/sync_source_targets.py` — pulls planned + confirmed counts
-   from each per-site dashboard (`Covalent-Mt-Holland---April-2026`,
-   `tronox-major-shutdown-may-2026`, `csbp-naan2-shutdown-workforce-dashboard`)
-3. `python3 scripts/parse_rapidcrews.py` — parses every XLSX in `data/raw/`
-   and merges the target overrides
+2. `python3 scripts/sync_sharepoint.py` — no-op unless the five SHAREPOINT_*
+   secrets are configured. When set, pulls fresh rosters into `data/raw/`.
+3. `python3 scripts/parse_rapidcrews.py` — parses every XLSX in `data/raw/`,
+   consults `Rapidcrews Macro Data.xlsx` (active shutdowns + required
+   counts), snapshots history, and emits `data/*.json` + `data/resumes.json`.
 4. If any file under `data/` changed, the workflow bumps the `?v=…`
    cache-buster on `index.html` (so iOS Safari refetches the CSS/JS after GH
    Pages redeploys) and commits the lot back with

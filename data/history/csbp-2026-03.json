@@ -1,0 +1,109 @@
+{
+  "company_key": "csbp",
+  "client_name": "CSBP",
+  "archived_at": "2026-04-23T23:22:49Z",
+  "shutdown": {
+    "id": "csbp-2026-03",
+    "name": "KPF LNG Kleenheat March 2026",
+    "site": "Kwinana",
+    "start_date": "2026-03-30",
+    "end_date": "2026-06-30",
+    "status": "in_progress",
+    "required_by_role": {
+      "Trade Assistant": 2,
+      "Sheet Metal Worker": 6
+    },
+    "filled_by_role": {
+      "Trade Assistant": 1,
+      "Sheet Metal Worker": 2
+    },
+    "crew_split": {
+      "Day": 3
+    },
+    "mobilised_by_role": {
+      "Sheet Metal Worker": 2,
+      "Trade Assistant": 1
+    },
+    "labour_hire_split": {
+      "SRG - South West": 3
+    },
+    "roster": [
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-04-02",
+        "end": "2026-06-30",
+        "personnel_id": "9A74E591-2483-4936-97C6-F42ADB08778F",
+        "tickets": {
+          "wah": {
+            "expiry": "2028-04-10",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS, Beau - Working at Heights.jpg",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2026-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS , Beau - Confined Spaces.pdf",
+            "status": "expiring_soon"
+          }
+        },
+        "mobile": "0435 441 418"
+      },
+      {
+        "name": "Daniel JONES",
+        "role": "Sheet Metal Worker",
+        "shift": "Day",
+        "start": "2026-03-30",
+        "end": "2026-06-30",
+        "personnel_id": "67D89284-F8DE-405C-8C05-EA4FA0C3ED5E",
+        "tickets": {
+          "hrwl": {
+            "expiry": "2029-08-16",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JONES, Daniel - 67d89284-f8de-405c-8c05-ea4fa0c3ed5e/JONES, Daniel - HRWL.jpeg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2029-08-16",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JONES, Daniel - 67d89284-f8de-405c-8c05-ea4fa0c3ed5e/JONES, Daniel - HRWL.jpeg",
+            "status": "current"
+          }
+        },
+        "mobile": "0457 632 156"
+      },
+      {
+        "name": "David STITZ",
+        "role": "Sheet Metal Worker",
+        "shift": "Day",
+        "start": "2026-03-30",
+        "end": "2026-06-30",
+        "personnel_id": "1A79A55C-DEB3-4C16-96A5-8CDE24FD107F",
+        "tickets": {
+          "wah": {
+            "expiry": "2026-11-19",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STITZ, David - 1a79a55c-deb3-4c16-96a5-8cde24fd107f/STITZ, David - Working at Heights.png",
+            "status": "current"
+          }
+        },
+        "mobile": "0408 939 455"
+      }
+    ],
+    "_source": {
+      "macro_data_job_no": 1374,
+      "macro_data_client": "SOUTH WEST",
+      "macro_data_site": "Kleenheat",
+      "source_format": "macro_data",
+      "required_target_source": "RAPID_CREWS_JOB_PLANNING",
+      "macro_data_roster_size": 3,
+      "macro_data_filled_by_role": {
+        "Sheet Metal Worker": 2,
+        "Trade Assistant": 1
+      },
+      "target_source": {
+        "source": "rapid_crews_job_planning_view",
+        "job_no": 1374,
+        "total_required": 8,
+        "total_filled": 3
+      }
+    }
+  }
+}

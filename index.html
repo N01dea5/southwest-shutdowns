@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
   <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
        refetch after every deploy. Bump this on each material change. -->
-  <link rel="stylesheet" href="assets/styles.css?v=20260415-no-tianqi" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260423-2344" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="assets/app.js?v=20260415-no-tianqi" defer></script>
+  <script src="assets/app.js?v=20260423-2344" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -76,9 +76,9 @@
     <section class="card">
       <div class="card-head">
         <h2>Retention &amp; carry-over</h2>
-        <p class="hint">Side-by-side: workers returning at the <strong>same company</strong> (loyalty) vs. workers who appeared at <strong>any of the three companies</strong> before (regional stickiness). Matched on normalised name + role &mdash; there are no stable employee IDs in the source data.</p>
+        <p class="hint">Each bar is one shutdown&rsquo;s roster, split into: workers returning from the <strong>same company</strong> (loyalty), workers returning from a <strong>different SRG client</strong> in the pool (regional stickiness), and <strong>new hires</strong>. Matched on normalised name &mdash; there are no stable employee IDs in the source data.</p>
       </div>
-      <div class="chart-wrap tall"><canvas id="chart-retention"></canvas></div>
+      <div class="chart-wrap retention"><canvas id="chart-retention"></canvas></div>
       <div class="table-wrap">
         <table id="retention-table">
           <thead>
@@ -168,7 +168,6 @@
           <span class="roster-count" id="roster-count"></span>
         </div>
         <div class="roster-legend">
-          <span><span class="sw co-tianqi"></span>Tianqi</span>
           <span><span class="sw co-covalent"></span>Covalent</span>
           <span><span class="sw co-tronox"></span>Tronox</span>
           <span><span class="sw co-csbp"></span>CSBP</span>

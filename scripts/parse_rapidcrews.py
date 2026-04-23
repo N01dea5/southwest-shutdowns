@@ -18,6 +18,13 @@ Workflow
 3. Run `python3 scripts/parse_rapidcrews.py`.
 4. Commit the regenerated `data/<company>.json` files.
 
+End-user workflow (no code / no git)
+------------------------------------
+Edit the `ACTIVE_SHUTDOWNS` sheet inside `Rapidcrews Macro Data.xlsx` — add
+or remove JobNo rows to control which shutdowns the dashboard shows. The
+macro-data loader (`scripts/parse_macro_data.py`) is called from `main()`
+below; see that module's docstring for full detail.
+
 Data NOT in the Rapid Crews export
 ----------------------------------
 - **Required headcount per role** (the original target on the request). The
@@ -59,6 +66,17 @@ ROSTER_MAP: dict[str, tuple] = {
     "1359": ("covalent", "Covalent", "Mt Holland April 2026",   "Mt Holland"),
     "1375": ("csbp",     "CSBP",     "NAAN2 June 2026",         "Kwinana"),
 
+    # Historic Pegasus-format rosters — kept in data/raw/ so the retention
+    # matrix still has pre-2026 shutdowns even after Rapid Crews' live SQL
+    # view rolls these JobNos off. Dates come from the roster rows themselves
+    # (Date In / Date Out). See parse_pegasus_roster().
+    "1110": ("covalent", "Covalent", "Mt Holland October 2025",  "Mt Holland",
+             "covalent-2025-10"),
+    "1116": ("tronox",   "Tronox",   "Major Shutdown November 2025", "Kwinana",
+             "tronox-2025-11"),
+    "1147": ("csbp",     "CSBP",     "NAAN3 November 2025",       "Kwinana",
+             "csbp-2025-11"),
+
     # CSBP is the umbrella WesCEF client — their Kwinana estate covers the
     # KPF LNG (Kleenheat-branded) plant and the NAAN2 fertiliser unit. Both
     # roll up under the same company_key so the unified dashboard treats
@@ -77,67 +95,18 @@ ROSTER_MAP: dict[str, tuple] = {
     #      "tianqi-construction-2026-04"),
 }
 
-REPO_ROOT       = pathlib.Path(__file__).resolve().parent.parent
-RAW_DIR         = REPO_ROOT / "data" / "raw"
-DATA_DIR        = REPO_ROOT / "data"
-TARGETS_DIR     = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
-ENRICHMENT_DIR  = DATA_DIR / "enrichment"  # optional per-company resume/annotation overlay
-MACRO_FILE      = RAW_DIR / "Rapidcrews Macro Data.xlsx"    # SQL-sourced export
+REPO_ROOT   = pathlib.Path(__file__).resolve().parent.parent
+RAW_DIR     = REPO_ROOT / "data" / "raw"
+DATA_DIR    = REPO_ROOT / "data"
+TARGETS_DIR = DATA_DIR / "targets"     # optional override: targets/<shutdown_id>.json
+HISTORY_DIR = DATA_DIR / "history"     # per-shutdown snapshot that persists
+                                       # after Rapid Crews' SQL view rolls over
 
 RAPIDCREWS_COLS = ["Company", "Name", "Surname", "Position", "Position On Project",
                    "Start Date", "End Date", "Confirmed", "Crew Type", "Mobilised"]
 KLEENHEAT_COLS  = ["Name", "Trade", "Company", "On Site", "Off Site", "Crew"]
 PEGASUS_COLS    = ["Company", "Date In", "Date Out", "Shift", "Surname", "First Name",
                    "Pegasus Job Role"]
-
-# The SQL DisciplineTrade table uses "Rigger - Advanced/Intermediate/Basic"
-# where the RosterCut "Position On Project" (and therefore the rest of the
-# pipeline: filled_by_role keys, target files, dashboard role chips) uses
-# "Advanced Rigger" / "Intermediate Rigger" / "Basic Rigger". Normalise SQL
-# trade names into the canonical roster-cut vocabulary so the macro-derived
-# filled counts line up with the existing required_by_role keys.
-MACRO_ROLE_RENAME = {
-    "Rigger - Advanced":     "Advanced Rigger",
-    "Rigger - Intermediate": "Intermediate Rigger",
-    "Rigger - Basic":        "Basic Rigger",
-}
-
-# Compliance sheet (xll01 PersonnelCompetency) -> per-site dashboard short keys.
-# Per-site dashboards (Covalent, Tronox, CSBP) render ticket columns using
-# short keys (cse, wah, ewp, ba, fork, hr, dog, gta, fa, plus a string "rig"
-# level). Translate the SQL competency vocabulary into those keys so the
-# ticket data can drop straight into each dashboard's existing render code.
-TICKET_MAP = {
-    "Confined Spaces Entry":                              "cse",
-    "Working at Heights":                                 "wah",
-    "EWP":                                                "ewp",
-    "CA-EBS - Compressed Air Emergency Breathing System": "ba",
-    "LF - Forklift Truck":                                "fork",
-    # HR Class is the Heavy Rigid driver's licence (truck), which the
-    # per-site dashboards currently label as "HR". HRWL is the separate
-    # High Risk Work Licence — record both under distinct keys so a
-    # dashboard can show whichever is relevant without conflating them.
-    "HR Class":                                           "hr",
-    "HRWL":                                               "hrwl",
-    "DG - Dogging":                                       "dog",
-    "Gas Test Atmospheres":                               "gta",
-    "First Aid":                                          "fa",
-}
-# Rigging is special: the dashboards expect a single `rig` field whose value
-# is the level string ("Advanced" / "Intermediate" / "Basic"), not a boolean.
-# Several naming conventions coexist in the competency table (the "RA/RI/RB -
-# …" shorthand on newer imports, and the older "Rigger - …" long form), so
-# accept both and collapse to the highest level held.
-RIG_COMPS = {
-    "RA - Advanced Rigging":     "Advanced",
-    "Rigger - Advanced":         "Advanced",
-    "RI - Intermediate Rigging": "Intermediate",
-    "Rigger - Intermediate":     "Intermediate",
-    "RB - Basic Rigging":        "Basic",
-    "Rigger - Basic":            "Basic",
-}
-RIG_PRIORITY = {"Advanced": 3, "Intermediate": 2, "Basic": 1}
-EXPIRING_SOON_DAYS = 30   # tickets expiring within this window tagged amber
 
 
 # --------------------------------------------------------------------------- helpers
@@ -216,7 +185,7 @@ def parse_rapidcrews_roster(xlsx_path: pathlib.Path) -> list[dict]:
     for raw in ws.iter_rows(min_row=2, values_only=True):
         if not any(raw):
             continue
-        first = str(raw[idx["Name"]] or "").strip()
+        first = str(raw[idx["Name"]]    or "").strip()
         last  = str(raw[idx["Surname"]] or "").strip()
         name  = f"{first} {last}".strip()
         if not name:
@@ -444,374 +413,41 @@ def enrich_kleenheat_names(rows: list[dict], lookup: dict) -> dict[str, int]:
     return stats
 
 
-# --------------------------------------------------------------------------- SQL-sourced macro data
-
-def load_macro_data(path: pathlib.Path) -> dict[int, dict[str, dict[str, int]]]:
-    """Read the Rapidcrews Macro Data workbook (SQL export from the Rapid
-    Crews scheduling DB) and return per-Job headcount counts keyed by role.
-
-    Returns {job_no: {role: {"required": N, "filled": M, "actual": K, "to_fill": L}}}
-    where `job_no` is the integer JobNo used across Rapid Crews. This matches
-    the first filename token of the RosterCut exports (e.g. 1353/1359/1375),
-    so the macro-data lookup keys line up with ROSTER_MAP's numeric entries.
-
-    Reads three sheets:
-      - `xpbi02 DisciplineTrade`: TradeId -> Trade name (== CompetencyId on
-        JobPlanningView)
-      - `xpbi02 PersonnelRosterView`: JobId -> JobNo (many rows, first wins)
-      - `xpbi02 JobPlanningView`: one row per (JobId, CompetencyId) with
-        Required / Filled / ToFill / Actual
-
-    Returns {} if the file is missing — callers must tolerate that (lets this
-    pipeline keep working on branches that haven't received the workbook yet).
-    """
-    if not path.exists():
-        return {}
-    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
-    try:
-        # 1. Trade lookup
-        ws = wb["xpbi02 DisciplineTrade"]
-        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
-        ix = {h: n for n, h in enumerate(headers) if h}
-        trade_by_id: dict[str, str] = {}
-        for r in ws.iter_rows(min_row=2, values_only=True):
-            tid = r[ix["TradeId"]]
-            trade = str(r[ix["Trade"]] or "").strip()
-            if tid and trade:
-                trade_by_id[tid] = MACRO_ROLE_RENAME.get(trade, trade)
-
-        # 2. JobId -> JobNo (first occurrence wins; JobNo is stable per Job)
-        ws = wb["xpbi02 PersonnelRosterView"]
-        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
-        ix = {h: n for n, h in enumerate(headers) if h}
-        job_no_by_id: dict[str, int] = {}
-        for r in ws.iter_rows(min_row=2, values_only=True):
-            jid, jno = r[ix["Job Id"]], r[ix["Job No"]]
-            if jid and jno and jid not in job_no_by_id:
-                job_no_by_id[jid] = int(jno)
-
-        # 3. Aggregate planning rows per (JobNo, trade). There's typically
-        #    exactly one planning row per (JobId, CompetencyId), but we sum
-        #    defensively in case the SQL export ever surfaces duplicates.
-        ws = wb["xpbi02 JobPlanningView"]
-        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
-        ix = {h: n for n, h in enumerate(headers) if h}
-        out: dict[int, dict[str, dict[str, int]]] = {}
-        for r in ws.iter_rows(min_row=2, values_only=True):
-            jid = r[ix["JobId"]]
-            jno = job_no_by_id.get(jid)
-            if jno is None:
-                continue
-            role = trade_by_id.get(r[ix["CompetencyId"]], "Unknown")
-            bucket = out.setdefault(jno, {}).setdefault(
-                role, {"required": 0, "filled": 0, "actual": 0, "to_fill": 0})
-            bucket["required"] += int(r[ix["Required"]] or 0)
-            bucket["filled"]   += int(r[ix["Filled"]]   or 0)
-            bucket["actual"]   += int(r[ix["Actual"]]   or 0)
-            bucket["to_fill"]  += int(r[ix["ToFill"]]   or 0)
-        return out
-    finally:
-        wb.close()
-
-
-def macro_filled_for(file_key: str,
-                     macro_data: dict[int, dict[str, dict[str, int]]]
-                     ) -> dict[str, int] | None:
-    """Return {role: filled_count} for this shutdown if the macro data covers
-    it, else None. The lookup key is the integer JobNo, which matches the
-    numeric file_key convention used by RosterCut exports (1353/1359/1375).
-    Non-numeric keys (Kleenheat, Pegasus historical imports) are never in the
-    SQL export, so they always fall through to the existing behaviour."""
-    if not file_key.isdigit():
-        return None
-    job_no = int(file_key)
-    per_role = macro_data.get(job_no)
-    if not per_role:
-        return None
-    # Drop zero-filled roles so the dashboard doesn't render empty chips; the
-    # required_by_role side keeps them if they're planned-but-unfilled.
-    return {role: v["filled"] for role, v in per_role.items() if v["filled"] > 0}
-
-
-def macro_required_for(file_key: str,
-                       macro_data: dict[int, dict[str, dict[str, int]]]
-                       ) -> dict[str, int] | None:
-    """Return {role: required_count} for this shutdown from the SQL macro
-    workbook's JobPlanningView.Required column. Lets us source required
-    headcount from the scheduling DB directly rather than scraping the
-    per-site dashboard repos — important because those dashboards are now
-    CONSUMERS of this feed, not PRODUCERS, so scraping them yields nothing.
-
-    Same lookup rules as macro_filled_for: only applies to RosterCut
-    shutdowns (numeric file_key)."""
-    if not file_key.isdigit():
-        return None
-    job_no = int(file_key)
-    per_role = macro_data.get(job_no)
-    if not per_role:
-        return None
-    # Keep roles with required>0 OR filled>0 OR actual>0 — sometimes the
-    # scheduler enters an on-site headcount (Actual) against a role that
-    # was never formally "planned" (Required), and we still want to track
-    # it on the dashboard.
-    return {role: v["required"] for role, v in per_role.items()
-            if v["required"] > 0 or v["filled"] > 0 or v["actual"] > 0}
-
-
-# --------------------------------------------------------------------------- compliance (tickets)
-
-def _norm_name(s) -> str:
-    """Aggressive name-part normalisation: lowercase, letters only. Drops
-    spaces, hyphens, apostrophes, diacritic-ish characters so "O'Brien" and
-    "OBrien" collide, and so does "Van Der Zanden" vs "VANDERZANDEN"."""
-    return re.sub(r"[^a-z]+", "", (s or "").lower())
-
-
-def load_personnel_index(path: pathlib.Path) -> dict[tuple[str, str], str]:
-    """Build {(norm_first, norm_last): personnel_id} from xll01 Personnel.
-
-    Personnel can have multiple rows (re-hires, profile duplicates). Later
-    rows overwrite earlier ones under the same key; the compliance loader
-    then aggregates tickets across ALL of a person's IDs when we match.
-
-    Returns {} if the workbook or sheet is missing — the pipeline must
-    continue to work without tickets available.
-    """
-    if not path.exists():
-        return {}
-    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
-    try:
-        if "xll01 Personnel" not in wb.sheetnames:
-            return {}
-        ws = wb["xll01 Personnel"]
-        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
-        ix = {h: n for n, h in enumerate(headers) if h}
-        out: dict[tuple[str, str], str] = {}
-        for r in ws.iter_rows(min_row=2, values_only=True):
-            pid = r[ix["Personnel Id"]]
-            if not pid:
-                continue
-            f = _norm_name(r[ix["Given Names"]])
-            l = _norm_name(r[ix["Surname"]])
-            if f and l:
-                out[(f, l)] = pid
-        return out
-    finally:
-        wb.close()
-
-
-def match_personnel(first: str, last: str,
-                    index: dict[tuple[str, str], str]) -> str | None:
-    """Match a roster (first, last) pair to a Personnel Id with three forgiving
-    passes — exact normalised match, then prefix-on-first-name collisions on
-    the same surname (handles "Lucrecia Celeste" vs "Lucrecia" and similar
-    middle-name variants), then surname-unique fallback."""
-    f = _norm_name(first)
-    l = _norm_name(last)
-    if not f or not l:
-        return None
-    if (f, l) in index:
-        return index[(f, l)]
-    same_surname = [(if_, pid) for (if_, il_), pid in index.items() if il_ == l]
-    for if_, pid in same_surname:
-        if if_.startswith(f) or f.startswith(if_):
-            return pid
-    # Last resort: unique surname match (Kleenheat surnames are all-caps and
-    # somewhat rare, so this catches typos in the given-name column).
-    if len(same_surname) == 1:
-        return same_surname[0][1]
-    return None
-
-
-def load_compliance_data(path: pathlib.Path
-                         ) -> dict[str, dict[str, dict]]:
-    """Read xll01 PersonnelCompetency and return current tickets per person.
-
-    Shape: {personnel_id: {ticket_key: {"expiry": iso|None,
-                                        "doc": url|None,
-                                        "status": "current"|"expiring_soon",
-                                        "level": str (rig only)}}}
-
-    Filtering: skip rows where Archived is set (superseded records) or where
-    Expiry is set AND ≤ today (expired). Rows with no expiry are treated as
-    permanent certs (passports, White Card, certification welds) and kept.
-
-    Collision rules:
-      - For non-rigging tickets, keep the record with the LATEST expiry
-        (preferring permanent/no-expiry over any dated one).
-      - For rigging, keep the HIGHEST level the person currently holds —
-        "Advanced" beats "Intermediate" beats "Basic".
-    """
-    if not path.exists():
-        return {}
-    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
-    today = dt.date.today()
-    soon  = today + dt.timedelta(days=EXPIRING_SOON_DAYS)
-    try:
-        if "xll01 PersonnelCompetency" not in wb.sheetnames:
-            return {}
-        ws = wb["xll01 PersonnelCompetency"]
-        headers = list(next(ws.iter_rows(max_row=1, values_only=True)))
-        ix = {h: n for n, h in enumerate(headers) if h}
-        out: dict[str, dict[str, dict]] = {}
-        for r in ws.iter_rows(min_row=2, values_only=True):
-            if r[ix["Archived"]]:
-                continue
-            comp = r[ix["Competency"]]
-            pid  = r[ix["Personnel Id"]]
-            if not comp or not pid:
-                continue
-            is_rig = comp in RIG_COMPS
-            key    = "rig" if is_rig else TICKET_MAP.get(comp)
-            if key is None:
-                continue
-            exp = r[ix["Expiry"]]
-            exp_date: dt.date | None = None
-            if exp:
-                exp_date = exp.date() if isinstance(exp, dt.datetime) else exp
-                if not isinstance(exp_date, dt.date):
-                    exp_date = None
-                elif exp_date <= today:
-                    continue    # expired
-            record = {
-                "expiry": exp_date.isoformat() if exp_date else None,
-                "doc":    r[ix["Document Location"]] or None,
-                "status": "expiring_soon" if exp_date and exp_date <= soon else "current",
-            }
-            if is_rig:
-                record["level"] = RIG_COMPS[comp]
-                existing = out.setdefault(pid, {}).get(key)
-                if existing is None or RIG_PRIORITY[record["level"]] > RIG_PRIORITY[existing["level"]]:
-                    out[pid][key] = record
-            else:
-                existing = out.setdefault(pid, {}).get(key)
-                if existing is None:
-                    out[pid][key] = record
-                else:
-                    # Prefer permanent over dated; else prefer later expiry.
-                    e_exp = existing["expiry"]
-                    if record["expiry"] is None and e_exp is not None:
-                        out[pid][key] = record
-                    elif record["expiry"] is not None and e_exp is not None and record["expiry"] > e_exp:
-                        out[pid][key] = record
-        return out
-    finally:
-        wb.close()
-
-
-# --------------------------------------------------------------------------- enrichment (resumes / overlay)
-
-def load_enrichment(company_key: str) -> dict[str, dict]:
-    """Load the per-company enrichment file (resume prose, trade years,
-    hand-curated annotations) and return it as {normalised_name: record}.
-
-    File lives at data/enrichment/<company>.json with shape:
-      { "records": [ {"name": "Joe DACK", ...any extra fields...}, ... ] }
-
-    Carries the fields the SQL feed can't supply — resume summary, trade
-    years, newhire flags, etc. — without bloating the feed with repo-
-    private payload. parse_rapidcrews.py injects these onto each matching
-    roster entry so the per-site dashboards (which are thin renderers)
-    don't need their own local copies.
-
-    Returns {} if the file is missing, letting the pipeline run unchanged
-    for companies without an enrichment file yet (e.g. Kleenheat/CSBP).
-    """
-    path = ENRICHMENT_DIR / f"{company_key}.json"
-    if not path.exists():
-        return {}
-    try:
-        data = json.loads(path.read_text())
-    except json.JSONDecodeError as e:
-        print(f"  ! enrichment {path.name}: JSON parse error: {e}", file=sys.stderr)
-        return {}
-    out: dict[str, dict] = {}
-    for r in data.get("records", []):
-        name = r.get("name", "")
-        if not name:
-            continue
-        # Index on every plausible name key so "Firstname SURNAME" in the
-        # feed collides with "SURNAME, Firstname" in the enrichment file.
-        parts = re.sub(r"[,]+", " ", name).split()
-        parts_norm = [_norm_name(p) for p in parts if _norm_name(p)]
-        if not parts_norm:
-            continue
-        keys = {"".join(parts_norm), "".join(sorted(parts_norm))}
-        if len(parts_norm) >= 2:
-            first, last = parts_norm[0], parts_norm[-1]
-            keys.update({first + last, last + first})
-        # Strip 'name' from the record — callers merge by key lookup.
-        payload = {k: v for k, v in r.items() if k != "name"}
-        for k in keys:
-            out.setdefault(k, payload)
-    return out
-
-
-def enrichment_lookup(first: str, last: str,
-                      index: dict[str, dict]) -> dict | None:
-    """Return the enrichment payload for a roster entry's (first, last)
-    pair, or None if no match."""
-    if not index:
-        return None
-    f = _norm_name(first)
-    l = _norm_name(last)
-    if not f or not l:
-        return None
-    for k in (f + l, l + f, "".join(sorted([f, l]))):
-        if k in index:
-            return index[k]
-    return None
-
-
 # --------------------------------------------------------------------------- targets
 
 def merge_targets(shutdown_id: str,
                   filled_by_role: dict[str, int]
                   ) -> tuple[dict[str, int], dict[str, int], dict | None]:
-    """Read optional overrides from data/targets/<shutdown_id>.json and merge
-    them onto the Rapid Crews-derived counts.
+    """Read optional overrides from data/targets/<shutdown_id>.json.
 
-    Two file shapes are supported:
-
-    - Flat dict `{role: int}` — legacy / Kleenheat style — treated as the
-      required-by-role override. `filled_by_role` is left as derived.
-    - Nested `{"required_by_role": {...}, "filled_by_role": {...}, "_source": {...}}`
-      produced by `scripts/sync_source_targets.py`. Both required AND filled
-      are replaced by the per-site dashboard counts (the Rapid Crews roster
-      diverges from the site dashboard's own named list; trust the site).
+    Rapid Crews is the source of truth for filled_by_role — callers hand us
+    the RC-derived counts and we always return them unchanged. The target
+    file only contributes `required_by_role` when RC has nothing to say
+    (no JobPlanningView row for this JobNo — historic Pegasus rosters, the
+    Kleenheat carry-over). Any role present in the RC roster but missing
+    from the target file is filled in as required = filled, so the table
+    shows "0 gap" rather than an empty cell.
 
     Returns (required_by_role, filled_by_role, source_meta | None).
     """
     path = TARGETS_DIR / f"{shutdown_id}.json"
     if not path.exists():
+        # No override: required defaults to the RC filled count (placeholder).
         return dict(filled_by_role), dict(filled_by_role), None
     data: dict = json.loads(path.read_text())
 
     if "required_by_role" in data:
-        required_override: dict[str, int] = data["required_by_role"]
-        filled_override:   dict[str, int] | None = data.get("filled_by_role")
-        source_meta = data.get("_source")
+        required_override = dict(data["required_by_role"])
+        source_meta       = data.get("_source")
     else:
         # Legacy flat shape — all keys are required-by-role overrides.
-        required_override = data
-        filled_override   = None
+        required_override = dict(data)
         source_meta       = None
 
-    if filled_override is not None:
-        # Full override from the per-site dashboard — trust it completely.
-        # Don't mix in roles the Rapid Crews roster has but the site doesn't,
-        # or the totals diverge from what the site shows.
-        all_keys = set(required_override) | set(filled_override)
-        required = {r: int(required_override.get(r, 0)) for r in all_keys}
-        filled   = {r: int(filled_override.get(r, 0))   for r in all_keys}
-    else:
-        # Legacy / Kleenheat: target covers required only; filled stays as
-        # the RC-derived count (with required defaulting to filled for any
-        # role the target file didn't mention — the placeholder behaviour).
-        all_keys = set(filled_by_role) | set(required_override)
-        required = {r: int(required_override.get(r, filled_by_role.get(r, 0)))
-                    for r in all_keys}
-        filled   = dict(filled_by_role)
+    all_keys = set(filled_by_role) | set(required_override)
+    required = {r: int(required_override.get(r, filled_by_role.get(r, 0)))
+                for r in all_keys}
+    filled   = dict(filled_by_role)
     return required, filled, source_meta
 
 
@@ -825,15 +461,45 @@ def _infer_status(start_day: dt.date, end_day: dt.date, today: dt.date) -> str:
     return "booked"
 
 
-def build_shutdown(file_key: str,
-                   xlsx: pathlib.Path,
-                   rows: list[dict],
-                   fmt: str,
-                   macro_data: dict[int, dict[str, dict[str, int]]] | None = None,
-                   personnel_index: dict[tuple[str, str], str] | None = None,
-                   compliance: dict[str, dict[str, dict]] | None = None,
-                   enrichment: dict[str, dict] | None = None,
-                   ) -> tuple[str, str, dict]:
+def _emit_roster_entries(confirmed: list[dict]) -> list[dict]:
+    """Turn confirmed roster rows into the final per-worker dicts the
+    dashboard reads. Enriches each entry with:
+      - shift:        from RosterCut/Kleenheat crew_type when known, so the
+                      per-site dashboards can group/filter without guessing
+      - personnel_id: best-effort match against xll01 Personnel
+      - tickets:      compliance dict from xll01 PersonnelCompetency — empty
+                      {} when no match so consumers can still branch on
+                      "did we have compliance data this run?" safely
+    """
+    try:
+        import parse_macro_data as _pmd
+    except Exception:                           # pragma: no cover — defensive
+        _pmd = None
+
+    out: list[dict] = []
+    for r in confirmed:
+        entry: dict = {"name": r["name"], "role": r["role"]}
+        if r.get("crew_type") and r["crew_type"] != "Unknown":
+            entry["shift"] = r["crew_type"]
+        if r.get("mobile"): entry["mobile"] = r["mobile"]
+        if r.get("start"):  entry["start"]  = r["start"]
+        if r.get("end"):    entry["end"]    = r["end"]
+        if _pmd:
+            pid = _pmd.match_personnel_id(r.get("first_name", ""),
+                                          r.get("last_name", ""))
+            if pid:
+                entry["personnel_id"] = pid
+                entry["tickets"]      = _pmd.tickets_for_person(
+                    r.get("first_name", ""), r.get("last_name", ""))
+            else:
+                entry["tickets"]      = {}
+        else:
+            entry["tickets"] = {}
+        out.append(entry)
+    return out
+
+
+def build_shutdown(file_key: str, xlsx: pathlib.Path, rows: list[dict], fmt: str) -> tuple[str, str, dict]:
     entry = ROSTER_MAP[file_key]
     company_key, client_name, project_label, site = entry[:4]
     shutdown_id_override = entry[4] if len(entry) > 4 else None
@@ -845,113 +511,64 @@ def build_shutdown(file_key: str,
     ends   = [r["end"]   for r in confirmed if r["end"]]
     sd, ed = min(starts), max(ends)
 
-    filled_by_role:    dict[str, int] = {}
+    # Aggregates from the RosterCut file — retained as fallback and for the
+    # auxiliary splits (crew/mobilised/labour-hire) that JobPlanningView
+    # doesn't carry.
+    rc_filled_by_role: dict[str, int] = {}
     crew_split:        dict[str, int] = {}
     mobilised_by_role: dict[str, int] = {}
     labour_hire_split: dict[str, int] = {}
 
     for r in confirmed:
-        filled_by_role[r["role"]]       = filled_by_role.get(r["role"], 0) + 1
-        crew_split[r["crew_type"]]      = crew_split.get(r["crew_type"], 0) + 1
+        rc_filled_by_role[r["role"]]   = rc_filled_by_role.get(r["role"], 0) + 1
+        crew_split[r["crew_type"]]     = crew_split.get(r["crew_type"], 0) + 1
         labour_hire_split[r["labour_hire"]] = labour_hire_split.get(r["labour_hire"], 0) + 1
         if r["mobilised"]:
             mobilised_by_role[r["role"]] = mobilised_by_role.get(r["role"], 0) + 1
 
     shutdown_id = shutdown_id_override or f"{company_key}-{sd[:7]}"
-    required, filled_final, target_source_meta = merge_targets(shutdown_id, filled_by_role)
 
-    # filled_by_role precedence (lowest → highest):
-    #   1. roster-derived count of confirmed rows (filled_by_role above)
-    #   2. data/targets/<shutdown_id>.json filled_by_role override
-    #      (applied inside merge_targets)
-    #   3. SQL-sourced Rapidcrews Macro Data "Filled" column — the scheduling
-    #      DB is the ultimate source of truth for how many heads are
-    #      actually committed per role. Applied here.
-    macro_filled   = macro_filled_for(file_key, macro_data or {})
-    filled_source  = "rapidcrews_macro_data" if macro_filled is not None else \
-                     ("targets_file" if target_source_meta is not None else "roster_count")
-    filled_pre_macro = dict(filled_final)
-    if macro_filled is not None:
-        filled_final = macro_filled
+    # Rapid Crews is the source of truth for BOTH required and filled counts
+    # when the JobNo is still in the macro workbook's JobPlanningView — this
+    # keeps headline numbers in sync with the Rapid Crews website without
+    # anyone having to re-export the RosterCut. The RosterCut XLSX is used
+    # for the rich per-worker roster (Position-On-Project, Crew Type,
+    # Confirmed flag) but its aggregate counts are a stale snapshot.
+    planning_required: dict[str, int] | None = None
+    planning_filled:   dict[str, int] | None = None
+    if file_key.isdigit():
+        try:
+            import parse_macro_data as _pmd
+            planning_required = _pmd.planning_required_for_jobno(int(file_key))
+            planning_filled   = _pmd.planning_filled_for_jobno(int(file_key))
+        except Exception as e:           # pragma: no cover — defensive
+            print(f"  warn: macro planning lookup failed for {file_key}: {e}")
+            planning_required = planning_filled = None
 
-    # required_by_role precedence (lowest → highest):
-    #   1. derived from filled (legacy placeholder when no target file exists)
-    #   2. data/targets/<shutdown_id>.json override from sync_source_targets.py
-    #      — scraped from the per-site dashboard's planned roster
-    #   3. SQL-sourced Rapidcrews Macro Data "Required" column — applied here.
-    # The SQL source takes priority because the per-site dashboards are now
-    # consumers of this feed (they fetch /data/<company>.json), so scraping
-    # them back into required_by_role would be circular and can zero out the
-    # required counts when a dashboard is migrated to fetch-from-feed mode.
-    macro_required   = macro_required_for(file_key, macro_data or {})
-    required_pre_macro = dict(required)
-    if macro_required is not None:
-        # Replace entirely — the SQL workbook is the authoritative planner.
-        required = macro_required
-    required_source = ("rapidcrews_macro_data" if macro_required is not None
-                       else ("targets_file" if target_source_meta is not None
-                             else "roster_fallback"))
+    if planning_required:
+        # Both required + filled come from JobPlanningView. Keys that only
+        # appear in the RosterCut roster are carried over at "0 required,
+        # 0 filled" so the per-role table still surfaces them — RosterCut's
+        # Position-On-Project names can be finer-grained than JobPlanningView
+        # trades (e.g. "Fitter – Inspections" vs "Mechanical Fitter"), and
+        # dropping the extras silently would hide real assignments.
+        rc_only = set(rc_filled_by_role) - set(planning_required) - set(planning_filled or {})
+        all_keys = set(planning_required) | set(planning_filled or {}) | rc_only
+        required     = {r: int(planning_required.get(r, 0))           for r in all_keys}
+        filled_final = {r: int((planning_filled or {}).get(r, 0))     for r in all_keys}
+        target_source_meta = {"source": "rapid_crews_job_planning_view",
+                              "job_no": int(file_key),
+                              "total_required": sum(planning_required.values()),
+                              "total_filled":   sum((planning_filled or {}).values())}
+        required_target_source = "RAPID_CREWS_JOB_PLANNING"
+    else:
+        required, filled_final, target_source_meta = merge_targets(shutdown_id, rc_filled_by_role)
+        target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
+        required_target_source = "TARGET_FILE" if target_exists else "PLACEHOLDER_FROM_ROSTER"
 
     today       = dt.date.today()
     status      = _infer_status(dt.date.fromisoformat(sd),
                                 dt.date.fromisoformat(ed), today)
-
-    # Enrich each confirmed-roster entry with its current (non-expired)
-    # tickets from the SQL compliance sheet, plus any per-company resume/
-    # annotation overlay from data/enrichment/<company>.json. Matching is
-    # best-effort; unmatched workers just get empty dicts so the per-site
-    # dashboards can render "details pending" without crashing.
-    pidx    = personnel_index or {}
-    compmap = compliance or {}
-    enrmap  = enrichment or {}
-    roster_out: list[dict] = []
-    n_matched  = 0
-    n_unmatched = 0
-    n_enriched = 0
-    for r in confirmed:
-        pid = match_personnel(r.get("first_name", ""),
-                              r.get("last_name", ""),
-                              pidx) if pidx else None
-        tickets = compmap.get(pid, {}) if pid else {}
-        if pid:
-            n_matched += 1
-        else:
-            n_unmatched += 1
-        enr = enrichment_lookup(r.get("first_name", ""),
-                                r.get("last_name", ""),
-                                enrmap)
-        if enr:
-            n_enriched += 1
-        entry = {"name": r["name"], "role": r["role"]}
-        # Day vs Night — read straight from the RosterCut/Kleenheat
-        # crew_type column so per-site dashboards can group/filter without
-        # guessing at the split.
-        if r.get("crew_type") and r["crew_type"] != "Unknown":
-            entry["shift"] = r["crew_type"]
-        if r.get("mobile"): entry["mobile"] = r["mobile"]
-        # Per-worker start/end drive the consolidated ops roster (tab 2).
-        # They can differ from the shutdown's overall span when a worker
-        # only covers part of the window (e.g. a supervisor arrives early,
-        # a trade assistant demobs mid-shutdown).
-        if r.get("start"):  entry["start"]  = r["start"]
-        if r.get("end"):    entry["end"]    = r["end"]
-        if pid:             entry["personnel_id"] = pid
-        # Tickets always emitted (even as {}) so per-site dashboards can
-        # branch on "did we have compliance data this run?" vs "no match".
-        entry["tickets"] = tickets
-        # Resume / annotation overlay (from data/enrichment/<company>.json).
-        # Spread its fields onto the entry, but don't let it clobber anything
-        # the SQL feed already supplies (tickets, personnel_id, etc.) —
-        # we pre-filter reserved keys.
-        if enr:
-            reserved = {"name", "role", "shift", "mobile", "start", "end",
-                        "personnel_id", "tickets"}
-            for k, v in enr.items():
-                if k not in reserved:
-                    entry[k] = v
-        roster_out.append(entry)
-
-    target_exists = (TARGETS_DIR / f"{shutdown_id}.json").exists()
     shutdown = {
         "id":               shutdown_id,
         "name":             project_label,
@@ -964,34 +581,15 @@ def build_shutdown(file_key: str,
         "crew_split":       crew_split,
         "mobilised_by_role": mobilised_by_role,
         "labour_hire_split": labour_hire_split,
-        "roster":            roster_out,
+        "roster":           _emit_roster_entries(confirmed),
         "_source": {
             "rapid_crews_roster_id":   file_key,
             "rapid_crews_export_file": xlsx.name,
             "source_format":           fmt,
-            "required_target_source": (
-                "REAL_TARGET" if target_exists else "PLACEHOLDER_FROM_ROSTER"
-            ),
-            "filled_source":           filled_source,
-            "required_source":         required_source,
+            "required_target_source":  required_target_source,
             "rapid_crews_roster_size": len(confirmed),
-            "rapid_crews_filled_by_role": filled_by_role,   # preserved for audit
-            "target_source":           target_source_meta,  # None for Kleenheat
-            # Kept alongside the live number so discrepancies between the
-            # scheduling DB and the other sources are easy to spot in the
-            # dashboard's data-quality panel.
-            "filled_by_role_pre_macro":   filled_pre_macro   if macro_filled   is not None else None,
-            "required_by_role_pre_macro": required_pre_macro if macro_required is not None else None,
-            "compliance_match": {
-                "matched":   n_matched,
-                "unmatched": n_unmatched,
-                "coverage":  round(n_matched / (n_matched + n_unmatched), 3) if (n_matched + n_unmatched) else 0.0,
-            } if pidx else None,
-            "enrichment_match": {
-                "enriched": n_enriched,
-                "roster":   len(confirmed),
-                "coverage": round(n_enriched / len(confirmed), 3) if confirmed else 0.0,
-            } if enrmap else None,
+            "rapid_crews_filled_by_role": rc_filled_by_role,   # RosterCut snapshot, preserved for audit
+            "target_source":           target_source_meta,  # None for placeholder
         },
     }
     # Provenance for enriched rows — surfaced in data-quality warnings
@@ -1017,6 +615,108 @@ def build_shutdown(file_key: str,
 
 # --------------------------------------------------------------------------- main
 
+def _write_history_snapshots(triples: list[tuple[str, str, dict]]) -> None:
+    """Persist one JSON snapshot per shutdown under data/history/<id>.json.
+
+    These files are the safety net when Rapid Crews rolls a JobNo off the
+    live SQL view: the next `parse_rapidcrews.py` run will see the snapshot,
+    flag the shutdown as "archived", and re-hydrate it onto the dashboard.
+    Files are overwritten only when the current run has something for that
+    shutdown, so restored-from-archive shutdowns don't overwrite themselves
+    with the same data every run.
+    """
+    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
+    now_iso = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    for company_key, client_name, shutdown in triples:
+        src = shutdown.get("_source", {})
+        # Don't snapshot shutdowns that were themselves restored from archive
+        # on this run — their data didn't freshen, so the file is already up
+        # to date. `restored_from_archive` is stamped in _restore_from_history.
+        if src.get("restored_from_archive"):
+            continue
+        snap = {
+            "company_key":  company_key,
+            "client_name":  client_name,
+            "archived_at":  now_iso,
+            "shutdown":     shutdown,
+        }
+        path = HISTORY_DIR / f"{shutdown['id']}.json"
+        path.write_text(json.dumps(snap, indent=2))
+
+
+def _restore_from_history(triples: list[tuple[str, str, dict]],
+                          active_jobnos: set[int] | None
+                          ) -> list[tuple[str, str, dict]]:
+    """Fill in any ACTIVE_SHUTDOWNS JobNo that's missing from this run's output
+    by reading the last-known snapshot from data/history/.
+
+    Returns the list of restored triples (possibly empty). The caller is
+    responsible for merging them into `combined`. Restored shutdowns get
+    `status = "completed"` if their end_date is in the past, and their
+    `_source.restored_from_archive = True` so the dashboard can flag them.
+    """
+    if not HISTORY_DIR.exists():
+        return []
+    present_jobnos: set[int] = set()
+    for _, _, s in triples:
+        src = s.get("_source", {})
+        for key in ("rapid_crews_roster_id", "macro_data_job_no"):
+            v = src.get(key)
+            if v is None:
+                continue
+            try:
+                present_jobnos.add(int(v))
+            except (TypeError, ValueError):
+                pass
+
+    want = active_jobnos or set()
+    missing = sorted(j for j in want if j not in present_jobnos)
+    restored: list[tuple[str, str, dict]] = []
+    today = dt.date.today()
+    for job in missing:
+        # Find the snapshot by JobNo — we don't know the shutdown_id upfront
+        # since the file is named after the id, not the JobNo.
+        snap_path = None
+        for p in HISTORY_DIR.glob("*.json"):
+            try:
+                doc = json.loads(p.read_text())
+            except (OSError, json.JSONDecodeError):
+                continue
+            src = doc.get("shutdown", {}).get("_source", {})
+            for key in ("rapid_crews_roster_id", "macro_data_job_no"):
+                v = src.get(key)
+                try:
+                    if v is not None and int(v) == job:
+                        snap_path = p
+                        break
+                except (TypeError, ValueError):
+                    pass
+            if snap_path is not None:
+                break
+        if snap_path is None:
+            print(f"  archive: JobNo {job} missing from this run and no snapshot "
+                  f"in data/history/ — dashboard will show a gap")
+            continue
+        doc = json.loads(snap_path.read_text())
+        shutdown = doc["shutdown"]
+        # Re-infer status from the frozen dates, in case time has passed since
+        # the snapshot was taken.
+        try:
+            sd = dt.date.fromisoformat(shutdown["start_date"])
+            ed = dt.date.fromisoformat(shutdown["end_date"])
+            shutdown["status"] = _infer_status(sd, ed, today)
+        except (KeyError, ValueError):
+            pass
+        shutdown.setdefault("_source", {})
+        shutdown["_source"]["restored_from_archive"] = True
+        shutdown["_source"]["archive_path"]          = str(snap_path.relative_to(REPO_ROOT))
+        shutdown["_source"]["archived_at"]           = doc.get("archived_at", "")
+        restored.append((doc["company_key"], doc["client_name"], shutdown))
+        print(f"  archive: JobNo {job:>4} -> restored from {snap_path.name} "
+              f"({shutdown['id']} · roster={len(shutdown.get('roster', []))})")
+    return restored
+
+
 def _file_key(xlsx: pathlib.Path) -> str:
     """Lookup key into ROSTER_MAP.
       - Numeric leading token (Rapid Crews RosterCut) -> roster_id (e.g. "1353")
@@ -1040,11 +740,12 @@ def main() -> int:
     #       can cross-reference first-name + role against the other rosters.
     parsed: list[tuple[str, pathlib.Path, str, list[dict]]] = []
     rows_by_company: dict[str, list[dict]] = {}
+    macro_path = RAW_DIR / "Rapidcrews Macro Data.xlsx"
     for xlsx in sorted(RAW_DIR.glob("*.xlsx")):
-        # The macro workbook is read separately by load_macro_data() — don't
-        # try to sniff it as a RosterCut export (it isn't one, and the
-        # "unmapped" log line is just noise).
-        if xlsx.resolve() == MACRO_FILE.resolve():
+        # The SQL macro workbook lives in data/raw/ alongside RosterCut files;
+        # parse_macro_data reads it separately, so it shouldn't be sniffed as
+        # a RosterCut export (it isn't one, and the "unmapped" log is noise).
+        if xlsx.resolve() == macro_path.resolve():
             continue
         key = _file_key(xlsx)
         if key not in ROSTER_MAP:
@@ -1073,69 +774,73 @@ def main() -> int:
               f"{stats['xref_ambiguous']} ambiguous · "
               f"{stats['unmatched']} unmatched")
 
-    # -- 3. Load the SQL-sourced macro data once (if present). Supplies the
-    #       authoritative filled_by_role for any RosterCut shutdown whose
-    #       numeric file_key (== JobNo) appears in the macro workbook.
-    macro_data = load_macro_data(MACRO_FILE)
-    if macro_data:
-        print(f"  macro data: loaded {len(macro_data)} job(s) from "
-              f"{MACRO_FILE.relative_to(REPO_ROOT)} "
-              f"(jobs: {sorted(macro_data)})")
-    else:
-        print(f"  macro data: {MACRO_FILE.name} not found — "
-              f"falling back to roster-derived filled counts")
-
-    # -- 3b. Load compliance (tickets) + personnel index. These feed the
-    #        per-worker `tickets` field on each roster entry, which replaces
-    #        the "resume not supplied" placeholder on the per-site dashboards.
-    personnel_index = load_personnel_index(MACRO_FILE)
-    compliance      = load_compliance_data(MACRO_FILE)
-    if personnel_index:
-        print(f"  personnel: {len(personnel_index)} name->id entries; "
-              f"compliance: {sum(len(v) for v in compliance.values())} current tickets "
-              f"across {len(compliance)} people")
-    else:
-        print(f"  personnel/compliance: not loaded — roster tickets will be empty")
-
-    # -- 3c. Load per-company enrichment overlays (resume prose, hand-
-    #        curated annotations). Migrated out of the per-site dashboard
-    #        HTML files so the consolidated feed is the single source of
-    #        truth — dashboards are thin renderers that just read what's
-    #        here. Missing file = no overlay (roster still emits normally).
-    enrichment_by_company: dict[str, dict[str, dict]] = {}
-    for company_key in ("tronox", "covalent", "csbp"):
-        enr = load_enrichment(company_key)
-        if enr:
-            enrichment_by_company[company_key] = enr
-            # Each name is indexed under up to 3 keys — divide out to report
-            # a realistic entry count.
-            print(f"  enrichment {company_key}: ~{len(enr) // 3} records "
-                  f"({ENRICHMENT_DIR.relative_to(REPO_ROOT)}/{company_key}.json)")
-
-    # -- 4. Build per-shutdown payloads and group by company.
-    by_company: dict[str, dict] = {}
+    # -- 3. Build per-shutdown payloads from RosterCut files.
+    rc_triples: list[tuple[str, str, dict]] = []
     for key, xlsx, fmt, rows in parsed:
-        # company_key is entry[0] in ROSTER_MAP — grab it so we can pass the
-        # right enrichment overlay down to build_shutdown.
-        prelim_company_key = ROSTER_MAP[key][0]
-        company_key, client_name, shutdown = build_shutdown(
-            key, xlsx, rows, fmt,
-            macro_data=macro_data,
-            personnel_index=personnel_index,
-            compliance=compliance,
-            enrichment=enrichment_by_company.get(prelim_company_key))
-        by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
-        by_company[company_key]["shutdowns"].append(shutdown)
-        cm = shutdown["_source"].get("compliance_match")
-        cm_note = f"  match={cm['matched']}/{cm['matched']+cm['unmatched']}" if cm else ""
+        company_key, client_name, shutdown = build_shutdown(key, xlsx, rows, fmt)
+        rc_triples.append((company_key, client_name, shutdown))
         print(f"  {key:>10}  {client_name:<10} {shutdown['id']:<22} "
               f"roster={len(shutdown['roster']):>3}  "
               f"{shutdown['start_date']} → {shutdown['end_date']}  "
-              f"[{shutdown['status']}]  "
-              f"filled_src={shutdown['_source']['filled_source']}"
-              f"{cm_note}")
+              f"[{shutdown['status']}]")
 
-    # -- 5. Write per-company JSON files.
+    # -- 3b. Pull shutdowns from Rapidcrews Macro Data.xlsx (ACTIVE_SHUTDOWNS
+    #        sheet). RosterCut wins on shutdown-id collisions — richer
+    #        per-worker data (Position-On-Project, Confirmed, Crew Type).
+    import parse_macro_data
+    macro_triples   = parse_macro_data.shutdowns_from_macro_data()
+    active_jobnos   = parse_macro_data.active_shutdowns_jobnos()
+    rc_ids          = {s["id"] for _, _, s in rc_triples}
+    combined: list[tuple[str, str, dict]] = list(rc_triples)
+    for company_key, client_name, shutdown in macro_triples:
+        if shutdown["id"] in rc_ids:
+            print(f"  macro: JobNo {shutdown['_source']['macro_data_job_no']} "
+                  f"-> {shutdown['id']} already covered by RosterCut, skipping")
+            continue
+        combined.append((company_key, client_name, shutdown))
+
+    # -- 3c. If the ACTIVE_SHUTDOWNS sheet is present, it's an allow-list:
+    #        RosterCut shutdowns whose numeric roster_id isn't listed drop
+    #        out. Non-numeric rosters (Kleenheat / Pegasus historicals)
+    #        always pass — they're retention seeds, not JobNo-driven.
+    if active_jobnos is not None:
+        kept: list[tuple[str, str, dict]] = []
+        for company_key, client_name, shutdown in combined:
+            src = shutdown.get("_source", {})
+            job_no = src.get("macro_data_job_no")
+            if job_no is None:
+                rid = src.get("rapid_crews_roster_id") or ""
+                if str(rid).isdigit():
+                    job_no = int(rid)
+            if job_no is None or job_no in active_jobnos:
+                kept.append((company_key, client_name, shutdown))
+            else:
+                print(f"  filter: {shutdown['id']} (JobNo {job_no}) "
+                      f"not in ACTIVE_SHUTDOWNS — dropping")
+        combined = kept
+
+    # -- 3d. Historical retention: for any ACTIVE_SHUTDOWNS JobNo that produced
+    #        no shutdown this run AND has no matching raw XLSX, try restoring
+    #        the last-known snapshot from data/history/. This keeps the tile
+    #        on the dashboard after Rapid Crews' live SQL view rolls the
+    #        JobNo off (it's time-windowed to roughly the next 12 months), so
+    #        the ops team doesn't suddenly lose visibility on a shutdown
+    #        that's still operationally relevant.
+    restored = _restore_from_history(combined, active_jobnos)
+    for triple in restored:
+        combined.append(triple)
+
+    by_company: dict[str, dict] = {}
+    for company_key, client_name, shutdown in combined:
+        by_company.setdefault(company_key, {"company": client_name, "shutdowns": []})
+        by_company[company_key]["shutdowns"].append(shutdown)
+
+    # -- 3e. Snapshot every shutdown we just built into data/history/. Files
+    #        are committed alongside data/*.json so they're safe across
+    #        branches and in the repo's audit trail.
+    _write_history_snapshots(combined)
+
+    # -- 4. Write per-company JSON files.
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     for company_key, payload in by_company.items():
         payload["generated_at"] = now
@@ -1146,7 +851,24 @@ def main() -> int:
         print(f"Wrote {out.relative_to(REPO_ROOT)}: "
               f"{len(payload['shutdowns'])} shutdown(s), {total} confirmed heads")
 
-    # -- 6. Backfill empty payloads for any client the dashboard lists but
+    # -- 4b. Write consolidated resumes JSON. Kept separate from the per-
+    #        company payloads so the dashboard can fetch it once and
+    #        decorate workers in every tab (matrix, ops roster).
+    try:
+        import parse_macro_data as _pmd
+        resumes = _pmd.resumes_from_macro_data()
+    except Exception as e:
+        print(f"  warn: resumes lookup failed: {e}")
+        resumes = []
+    resumes_doc = {
+        "generated_at": now,
+        "source_file":  "Resumes.xlsx",
+        "resumes":      resumes,
+    }
+    (DATA_DIR / "resumes.json").write_text(json.dumps(resumes_doc, indent=2))
+    print(f"Wrote data/resumes.json: {len(resumes)} resume link(s)")
+
+    # -- 5. Backfill empty payloads for any client the dashboard lists but
     #       which got no rosters this run (prevents 404s on page load).
     referenced = {"covalent", "tronox", "csbp"}
     for company_key in referenced - by_company.keys():

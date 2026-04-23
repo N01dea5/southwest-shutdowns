@@ -9,13 +9,13 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Mechanical Fitter": 40,
         "Trade Assistant": 20,
-        "Coded Welder": 11,
         "Supervisor - Mechanical": 4,
-        "Advanced Rigger": 10,
+        "Mechanical Fitter": 40,
+        "Coded Welder": 11,
         "Intermediate Rigger": 10,
-        "Boilermaker": 10
+        "Boilermaker": 10,
+        "Advanced Rigger": 10
       },
       "filled_by_role": {
         "Superintendent": 1,
@@ -1472,13 +1472,13 @@
           "total_tbc": 57
         },
         "filled_by_role_pre_macro": {
-          "Mechanical Fitter": 16,
           "Trade Assistant": 19,
-          "Coded Welder": 1,
           "Supervisor - Mechanical": 3,
-          "Advanced Rigger": 4,
+          "Mechanical Fitter": 16,
+          "Coded Welder": 1,
           "Intermediate Rigger": 3,
-          "Boilermaker": 2
+          "Boilermaker": 2,
+          "Advanced Rigger": 4
         },
         "compliance_match": {
           "matched": 47,
@@ -1488,5 +1488,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T11:03:18Z"
+  "generated_at": "2026-04-23T11:04:07Z"
 }

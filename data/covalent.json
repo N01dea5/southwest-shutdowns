@@ -9,20 +9,20 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Superintendent": 1,
-        "Mechanical Fitter": 24,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 6,
-        "Electrician": 4,
         "Basic Rigger": 4,
-        "Site Coordinator": 1,
-        "Boilermaker": 4,
-        "Lube Technician": 3,
-        "Telehandler Operator": 2,
         "Trade Assistant": 5,
-        "HSE Advisor": 2,
         "Supervisor": 2,
-        "Advanced Rigger": 4
+        "Superintendent": 1,
+        "Coded Welder": 1,
+        "Telehandler Operator": 2,
+        "Supervisor - Mechanical": 6,
+        "Mechanical Fitter": 24,
+        "Site Coordinator": 1,
+        "HSE Advisor": 2,
+        "Boilermaker": 4,
+        "Advanced Rigger": 4,
+        "Lube Technician": 3,
+        "Electrician": 4
       },
       "filled_by_role": {
         "Superintendent": 1,
@@ -1935,20 +1935,20 @@
           "total_tbc": 0
         },
         "filled_by_role_pre_macro": {
-          "Superintendent": 1,
-          "Mechanical Fitter": 24,
-          "Coded Welder": 1,
-          "Supervisor - Mechanical": 6,
-          "Electrician": 4,
           "Basic Rigger": 4,
-          "Site Coordinator": 1,
-          "Boilermaker": 4,
-          "Lube Technician": 3,
-          "Telehandler Operator": 2,
           "Trade Assistant": 5,
-          "HSE Advisor": 2,
           "Supervisor": 2,
-          "Advanced Rigger": 4
+          "Superintendent": 1,
+          "Coded Welder": 1,
+          "Telehandler Operator": 2,
+          "Supervisor - Mechanical": 6,
+          "Mechanical Fitter": 24,
+          "Site Coordinator": 1,
+          "HSE Advisor": 2,
+          "Boilermaker": 4,
+          "Advanced Rigger": 4,
+          "Lube Technician": 3,
+          "Electrician": 4
         },
         "compliance_match": {
           "matched": 66,
@@ -1958,5 +1958,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T11:03:18Z"
+  "generated_at": "2026-04-23T11:04:07Z"
 }

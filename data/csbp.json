@@ -9,14 +9,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Trade Assistant": 18,
-        "Supervisor - Mechanical": 4,
         "Advanced Rigger": 2,
         "Sheet Metal Worker": 3,
+        "Scaffolder": 6,
+        "Mechanical Fitter": 23,
+        "Trade Assistant": 18,
         "Painter & Blaster": 2,
         "Intermediate Rigger": 3,
-        "Scaffolder": 6,
-        "Mechanical Fitter": 23
+        "Supervisor - Mechanical": 4
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -2144,11 +2144,11 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
-        "Trade Assistant": 16,
-        "Supervisor - Mechanical": 3,
         "Advanced Rigger": 3,
+        "Mechanical Fitter": 13,
+        "Trade Assistant": 16,
         "Intermediate Rigger": 1,
-        "Mechanical Fitter": 13
+        "Supervisor - Mechanical": 3
       },
       "filled_by_role": {
         "Trade Assistant": 16,
@@ -3215,11 +3215,11 @@
           "total_tbc": 0
         },
         "filled_by_role_pre_macro": {
-          "Trade Assistant": 16,
-          "Supervisor - Mechanical": 3,
           "Advanced Rigger": 3,
+          "Mechanical Fitter": 13,
+          "Trade Assistant": 16,
           "Intermediate Rigger": 1,
-          "Mechanical Fitter": 13
+          "Supervisor - Mechanical": 3
         },
         "compliance_match": {
           "matched": 33,
@@ -3229,5 +3229,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-23T11:35:52Z"
+  "generated_at": "2026-04-23T11:38:17Z"
 }

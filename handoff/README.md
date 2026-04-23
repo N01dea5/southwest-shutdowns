@@ -20,3 +20,15 @@ tooltips + SharePoint links), risk register, ticket-coverage ranking.
 3. Select all contents, paste in the new file, commit to `main` with
    message: "Fetch roster + ticket data from southwest-shutdowns feed".
 4. GitHub Pages rebuilds within ~60s. Hard-refresh the dashboard.
+
+## covalent-index.html
+
+Replaces `index.html` in [`N01dea5/Covalent-Mt-Holland---April-2026`](https://github.com/N01dea5/Covalent-Mt-Holland---April-2026).
+
+Preserves the full Covalent dashboard — Workforce Profile, Risk Assessment,
+Shutdown Roster, Gantt scheduling, Print Summary. The GANTT_TASKS work-order
+data stays inline (it's engineering data, not workforce data) but the `E`
+and `ROSTER` constants now fetch from `data/covalent.json` at page load.
+
+Ticket cells link straight to the SharePoint evidence PDFs; tickets expiring
+within 30 days get amber highlighting.

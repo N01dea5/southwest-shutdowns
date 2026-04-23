@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRG Global — Covalent Shutdown Workforce Dashboard</title>
+  <link rel="icon" href="./srg-global-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.1.16/Recharts.js"></script>
+
+  <script>
+    window.addEventListener("error", function (e) {
+      var root = document.getElementById("root");
+      if (!root) return;
+      root.innerHTML =
+        '<div style="padding:40px;font-family:monospace;background:#FEE;color:#900;border:2px solid #C00;margin:20px;border-radius:8px;">' +
+        "<h2>Script Error</h2>" +
+        "<p><strong>Message:</strong> " + (e.message || "Unknown") + "</p>" +
+        "<p><strong>Source:</strong> " + (e.filename || "inline") + "</p>" +
+        "<p><strong>Line:</strong> " + (e.lineno || "?") + "</p>" +
+        "<p>Loaded: React=" + typeof React +
+        ", ReactDOM=" + typeof ReactDOM +
+        ", Recharts=" + typeof Recharts +
+        "</p></div>";
+    });
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #F5F5F5;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar { height: 8px; width: 8px; }
+    ::-webkit-scrollbar-thumb { background: #B0B0B0; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #888; }
+    ::-webkit-scrollbar-track { background: #E8E8E8; }
+    button { font-family: inherit; }
+    select { font-family: inherit; }
+    table { font-family: inherit; }
+
+    @media print {
+      body {
+        background: white !important;
+      }
+      button {
+        display: none !important;
+      }
+      #root {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const { useState, useMemo, useEffect } = React;
+    const {
+      BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+      PieChart, Pie, Cell, ResponsiveContainer, Legend
+    } = Recharts;
+
+    const SRG_RED = "#E30613";
+    const SRG_DARK = "#1A1A1A";
+    const SRG_GREY = "#595959";
+    const SRG_LIGHT = "#F5F5F5";
+    const SRG_BORDER = "#E5E5E5";
+    const RH = "#DC2626";
+    const RM = "#F59E0B";
+    const RL = "#16A34A";
+
+    const CONTINGENCY = {
+      total: 29,
+      byGroup: {
+        "Leadership": 0,
+        "HSE": 0,
+        "Boilermaker": 3,
+        "Electrical": 0,
+        "Fitter": 8,
+        "Inspections": 2,
+        "Rigger": 3,
+        "Roller Crew": 5,
+        "Lube Tech": 0,
+        "Trade Assistant": 8
+      }
+    };
+
+    let E = [];  // populated by buildFromJson() from southwest-shutdowns feed
+
+    let DATES = [];   // derived from shutdown start/end in buildFromJson()
+    let DOW = [];     // derived from shutdown start/end in buildFromJson()
+
+    let ROSTER = [];  // populated by buildFromJson() from southwest-shutdowns feed
+
+    const TC = [
+      { key: "cse", label: "CSE" },
+      { key: "wah", label: "WAH" },
+      { key: "ewp", label: "EWP" },
+      { key: "tele", label: "Tele" },
+      { key: "fork", label: "Fork" },
+      { key: "hr", label: "HR" },
+      { key: "dog", label: "Dog" },
+      { key: "rig", label: "Rig" },
+      { key: "gta", label: "GTA" },
+      { key: "fa", label: "FA" }
+    ];
+
+    const GROUP_ORDER = ["Leadership","HSE","Boilermaker","Electrical","Fitter","Inspections","Rigger","Roller Crew","Lube Tech","Trade Assistant"];
+
+    // Shutdown Gantt — work-order level tasks across all SRG crews, extracted from MTHS2603 SRG ROLLER CREW ALL WORK (Apr 17 Full)
+    const GANTT_START = new Date("2026-04-21T00:00");
+    const GANTT_END = new Date("2026-05-05T00:00");
+    const GANTT_AREAS = [
+      { id: "120-121", name: "Area 120-121 Crushing (Dry Plant)" },
+      { id: "120-122", name: "Area 120-122 Feed Prep & Tertiary Crushing (Wet Plant)" },
+      { id: "120-123", name: "Area 120-123 Grinding & Classification" },
+      { id: "120-124", name: "Area 120-124 Mag Separation & Flotation" },
+      { id: "120-125", name: "Area 120-125 Concentrator Thickening & Filtration" },
+      { id: "120-126", name: "Area 120-126 Tailings Storage Facility" }
+    ];
+    const STANDARD_ROLLER_SUBTASKS = ["Inspect/Replace Carry Rollers","Inspect/Replace Impact Rollers","Inspect/Replace Return Rollers"];
+    const GANTT_TASKS = [
+      { id:"4074701", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-SC-005", wo:"4074701", name:"SC-005 Replace Feedbox End Beam Pre", start:"2026-04-21T06:00", finish:"2026-04-25T20:00", duration:110.0, crew:"Fit T08 (Fitx4)", subtasks:["*DONE*pre-shut Rubber line the beam","Install temporary supports","Remove feed chute","Remove the Existing Feed End Beam","Install the New Feed End Beam","Remove temporary supports","Install feed chute","Commission screen"] },
+      { id:"4053126", shift:"Day", discipline:"Fitter", area:"120-123", floc:"120-123-ML-001", wo:"4053126", name:"Prepare/build up Spare Trommel", start:"2026-04-21T06:00", finish:"2026-04-22T06:00", duration:24.0, crew:"Fit T07 (Fitx4)", subtasks:["Prepare/build up Spare Trommel"] },
+      { id:"4077484", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-001", wo:"4077484", name:"8W Mech OFF Insp Rollers 121-CV-001", start:"2026-04-22T06:15", finish:"2026-04-22T09:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077486", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-001", wo:"4077486", name:"8W Mech OFF Insp Skirts 121-CV-001", start:"2026-04-22T06:15", finish:"2026-04-22T14:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077483", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-001", wo:"4077483", name:"8W Mech OFF Insp Conv 121-CV-001", start:"2026-04-22T06:15", finish:"2026-04-22T07:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4071134", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-FE-003", wo:"4071134", name:"24W Mech OFF Reline Feeder FE-003", start:"2026-04-22T06:15", finish:"2026-04-25T02:15", duration:68.0, crew:"Fit T07 (Fitx4)", subtasks:["JHA and Permit","Remove Discharge End of Feeder","Remove Old & Drill Out Holes","Reline Feeder","Refit Discharge End of Feeder"] },
+      { id:"4073013", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-FE-008", wo:"4073013", name:"Repl Mech Hungry Boards OFF", start:"2026-04-22T06:15", finish:"2026-04-22T12:15", duration:6.0, crew:"Fit T08 (Fitx4)", subtasks:["Repl Mech Hungry Boards OFF"] },
+      { id:"4077532", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-FE-008", wo:"4077532", name:"8W Mech OFF Insp Conv 121-FE-008", start:"2026-04-22T06:15", finish:"2026-04-22T07:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4084747", shift:"Day", discipline:"Lube", area:"120-121", floc:"120-121-MA-003", wo:"4084747", name:"Mag 3 Blocked Line NDE", start:"2026-04-22T06:15", finish:"2026-04-22T12:15", duration:6.0, crew:"Lubey T01 (Lubyx1)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Remove Damaged Grease Line","Cut New Line to Correct Lenth","Install Line","Replace Guards","Demob and Lock Off"] },
+      { id:"4082938", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-MA-003", wo:"4082938", name:"Damaged Grease line NE side", start:"2026-04-22T06:15", finish:"2026-04-22T11:15", duration:5.0, crew:"Fit T01 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Remove Broken Grease Line","Install New Grease Line","Install Guards","Demob and Lock Off"] },
+      { id:"4077488", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-002", wo:"4077488", name:"8W Mech OFF Insp Conv 121-CV-002", start:"2026-04-22T07:15", finish:"2026-04-22T08:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077493", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-003", wo:"4077493", name:"8W Mech OFF Insp Conv 121-CV-003", start:"2026-04-22T08:15", finish:"2026-04-22T09:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077489", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-002", wo:"4077489", name:"8W Mech OFF Insp Rollers 121-CV-002", start:"2026-04-22T09:15", finish:"2026-04-22T12:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077498", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-004", wo:"4077498", name:"8W Mech OFF Insp Conv 121-CV-004", start:"2026-04-22T09:15", finish:"2026-04-22T10:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077503", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-005", wo:"4077503", name:"8W Mech OFF Insp Conv 121-CV-005", start:"2026-04-22T10:15", finish:"2026-04-22T11:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077508", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-006", wo:"4077508", name:"8W Mech OFF Insp Conv 121-CV-006", start:"2026-04-22T11:15", finish:"2026-04-22T12:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4078377", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-003", wo:"4078377", name:"Replace Impact rollers 121-CV-003", start:"2026-04-22T12:15", finish:"2026-04-22T18:15", duration:6.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077528", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-024", wo:"4077528", name:"8W Mech OFF Insp Conv 121-CV-024", start:"2026-04-22T12:15", finish:"2026-04-22T13:15", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077491", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-002", wo:"4077491", name:"8W Mech OFF Insp Skirts 121-CV-002", start:"2026-04-22T14:15", finish:"2026-04-22T22:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077496", shift:"Night", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-003", wo:"4077496", name:"8W Mech OFF Insp Skirts 121-CV-003", start:"2026-04-22T22:15", finish:"2026-04-23T06:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077494", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-003", wo:"4077494", name:"8W Mech OFF Insp Rollers 121-CV-003", start:"2026-04-23T06:15", finish:"2026-04-23T09:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077501", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-004", wo:"4077501", name:"8W Mech OFF Insp Skirts 121-CV-004", start:"2026-04-23T06:15", finish:"2026-04-23T14:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4075579", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-FE-002", wo:"4075579", name:"Repl Mech Feeder Pan OFF", start:"2026-04-23T06:15", finish:"2026-04-24T06:15", duration:24.0, crew:"Fit T07 (Fitx4)", subtasks:["Repl Mech Feeder Pan OFF"] },
+      { id:"4078451", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-004", wo:"4078451", name:"Change Impact Rollers", start:"2026-04-23T09:15", finish:"2026-04-23T15:15", duration:6.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4072480", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-FE-008", wo:"4072480", name:"Raise hard Skirts", start:"2026-04-23T10:15", finish:"2026-04-27T07:00", duration:92.8, crew:"Fit Fitter (External)", subtasks:["Raise hard Skirts","Reinstate return roller frames","Reinstate tracking return roller"] },
+      { id:"4077506", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-005", wo:"4077506", name:"8W Mech OFF Insp Skirts 121-CV-005", start:"2026-04-23T14:15", finish:"2026-04-23T22:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077499", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-004", wo:"4077499", name:"8W Mech OFF Insp Rollers 121-CV-004", start:"2026-04-23T15:15", finish:"2026-04-23T18:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077511", shift:"Night", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-006", wo:"4077511", name:"8W Mech OFF Insp Skirts 121-CV-006", start:"2026-04-23T22:15", finish:"2026-04-24T06:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4079923", shift:"Day", discipline:"Boilermaker", area:"120-121", floc:"120-121-BN-004", wo:"4079923", name:"BN-004 Replace Lower Liners", start:"2026-04-24T06:00", finish:"2026-04-27T05:00", duration:71.0, crew:"BMKR T01 (BMKRx2)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Remove Worn Out Liners","Install New Liners (Weld Liners In)","Install Guards","Demobe And Lock Off","CSE Spotter Required"] },
+      { id:"4082141", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-CH-039", wo:"4082141", name:"CH-039 Replace Liners", start:"2026-04-24T06:00", finish:"2026-04-25T02:00", duration:20.0, crew:"Fit T02 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Repair Parent Metal","Remove Liners","Install New Liners","Demob and Lock Off","CSE Spotter Required"] },
+      { id:"4071393", shift:"Day", discipline:"Lube", area:"120-122", floc:"120-122", wo:"4071393", name:"12W Mech OFF Svce Lube DMS", start:"2026-04-24T06:00", finish:"2026-04-25T07:00", duration:25.0, crew:"Lubey T01 (Lubyx2)", subtasks:["Svce Mech Lube DMS OFF"] },
+      { id:"4078068", shift:"Day", discipline:"Fitter", area:"120-125", floc:"120-125-FL-008", wo:"4078068", name:"FL-008 Shim Belt Support Roller Frames", start:"2026-04-24T06:00", finish:"2026-04-24T14:00", duration:8.0, crew:"Fit Fitter (External)", subtasks:["Fab Shim Belt Support Roller Frames-","Install Shim Pack under roller frames"] },
+      { id:"4078070", shift:"Day", discipline:"Fitter", area:"120-125", floc:"120-125-FL-008", wo:"4078070", name:"FL-008 Repair Discharge Scraper Frame", start:"2026-04-24T06:00", finish:"2026-04-24T15:00", duration:9.0, crew:"FIT Fit Fitter (External)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Remove Discharge Scraper Frame","Straighten Discharge Scraper Frame","Install Discharge Scraper Frame","Install Guards","Demob and Lock Off"] },
+      { id:"4077504", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-005", wo:"4077504", name:"8W Mech OFF Insp Rollers 121-CV-005", start:"2026-04-24T06:15", finish:"2026-04-24T09:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077535", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-FE-008", wo:"4077535", name:"8W Mech OFF Insp Skirts 121-FE-008", start:"2026-04-24T06:15", finish:"2026-04-24T14:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4074307", shift:"Day", discipline:"Fitter", area:"120-121", floc:"120-121-CR-004", wo:"4074307", name:"121-DV-001 Replace Cooling Fan", start:"2026-04-24T08:00", finish:"2026-04-24T12:00", duration:4.0, crew:"Fit T05 (Fitx2)", subtasks:["JHA and Permit","121-DV-001 Replace Cooling Fan"] },
+      { id:"4070776", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-022", wo:"4070776", name:"PP-022 Replace Valve Seal Kit", start:"2026-04-24T08:00", finish:"2026-04-24T17:00", duration:9.0, crew:"Fit T03 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Install Valve","Demob & Lock Off"] },
+      { id:"4075282", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-044", wo:"4075282", name:"PP-044 Replace Valve", start:"2026-04-24T08:00", finish:"2026-04-24T13:30", duration:5.5, crew:"Fit T06 (Fitx2)", subtasks:["JHA and Permit","Replace Inner Sleeve in valve"] },
+      { id:"4070824", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-253", wo:"4070824", name:"PP-253 Replace Valve Seal Kit", start:"2026-04-24T08:00", finish:"2026-04-24T15:00", duration:7.0, crew:"Fit T10 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Replace Valve","Demob & Lock Off"] },
+      { id:"4083091", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-SC-017", wo:"4083091", name:"SC-017 Replace Underflow Spool", start:"2026-04-24T08:00", finish:"2026-04-25T02:00", duration:18.0, crew:"Fit T09 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Spool","Install New Spool","Demob and Lock Off"] },
+      { id:"4077572", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-ST-001", wo:"4077572", name:"8W Mech OFF Insp Conv 122-ST-001", start:"2026-04-24T08:00", finish:"2026-04-24T09:00", duration:1.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect Stacker"] },
+      { id:"4077575", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-ST-001", wo:"4077575", name:"8W Mech OFF Insp Skirts 122-ST-001", start:"2026-04-24T08:00", finish:"2026-04-24T16:00", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077756", shift:"Day", discipline:"Lube", area:"120-122", floc:"120-122-ST-001", wo:"4077756", name:"ST-001 Change Conveyor Gearbox Oil", start:"2026-04-24T08:00", finish:"2026-04-24T11:30", duration:3.5, crew:"Lubey T01 (Lubyx1)", subtasks:["Inform OPS for Isolations","Stop & Assess for Risks & Hazards","Change Out Oil ST-001 CV Gearbox","Inform OPS for De-isolations"] },
+      { id:"4077577", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-ST-002", wo:"4077577", name:"8W Mech OFF Insp Conv 122-ST-002", start:"2026-04-24T08:00", finish:"2026-04-24T09:00", duration:1.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect Stacker"] },
+      { id:"4085017", shift:"Day", discipline:"Fitter", area:"120-123", floc:"120-123-PP-063", wo:"4085017", name:"BI - Replace Suction & Discharge Valves", start:"2026-04-24T08:00", finish:"2026-04-24T10:00", duration:2.0, crew:"Fit T11 (Fitx2)", subtasks:["BI -Suction and Discharge Valves Passing"] },
+      { id:"4059002", shift:"Day", discipline:"Fitter", area:"120-123", floc:"120-123-SA-004", wo:"4059002", name:"SA-004 Replace Sampler", start:"2026-04-24T08:00", finish:"2026-04-24T16:00", duration:8.0, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA's, Permits & Lock On","Remove Sample Pipe Line","Remove Sampler Unit","Install Sampler Unit","Install sample Pipe Line","Demob and Lock Off"] },
+      { id:"4077509", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-006", wo:"4077509", name:"8W Mech OFF Insp Rollers 121-CV-006", start:"2026-04-24T09:15", finish:"2026-04-24T12:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4082032", shift:"Day", discipline:"Boilermaker", area:"120-121", floc:"120-121-CH-032", wo:"4082032", name:"CH-032 Replace Liners", start:"2026-04-24T10:00", finish:"2026-04-24T22:00", duration:12.0, crew:"BMKR T01 (BMKRx2)", subtasks:["Remove, Replace Liners","CSE Spotter Required"] },
+      { id:"4077513", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-010", wo:"4077513", name:"8W Mech OFF Insp Conv 121-CV-010", start:"2026-04-24T10:00", finish:"2026-04-24T11:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4076131", shift:"Day", discipline:"Trade Assistant", area:"120-122", floc:"120-122-BW-007", wo:"4076131", name:"BW-007 Replace Weightometer Roller", start:"2026-04-24T10:00", finish:"2026-04-24T14:00", duration:4.0, crew:"TA T02 (TAx1)", subtasks:["BW-007 Replace Weightometer Roller"] },
+      { id:"4078780", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-CV-013", wo:"4078780", name:"CV-013 Replace Bend Pulleys", start:"2026-04-24T10:00", finish:"2026-04-25T17:00", duration:31.0, crew:"Fit T04 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Detention Belt","Pull Envelope (Slag) at The Bend Pulleys","Remove Pulley No.1","Install New Bend Pulley","Alling Pulley","Remove Pulley No.2","Replace Guards","Demob and Lock Off"] },
+      { id:"4068240", shift:"Day", discipline:"Lube", area:"120-122", floc:"120-122-CV-014", wo:"4068240", name:"Replace Grease lines Bends & T/U", start:"2026-04-24T10:00", finish:"2026-04-24T18:00", duration:8.0, crew:"Lubey T01 (Lubyx1)", subtasks:["Replace Grease lines Bends & T/U"] },
+      { id:"4068113", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-021", wo:"4068113", name:"CV-021 Soft Skirts Need Lowering", start:"2026-04-24T10:00", finish:"2026-04-24T14:00", duration:4.0, crew:"Conv T01 (Fitx3)", subtasks:["Re Adjust Soft Skirts CV-021"] },
+      { id:"4075585", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-CY-005", wo:"4075585", name:"Repl Mech Cyclone OFF", start:"2026-04-24T10:00", finish:"2026-04-24T22:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4079910", shift:"Day", discipline:"Fitter", area:"120-123", floc:"120-123-ML-001", wo:"4079910", name:"12W Mech OFF 3D Scan Mill 123-ML-001 Pre", start:"2026-04-24T10:00", finish:"2026-04-27T17:00", duration:79.0, crew:"Fit T08 (Fitx4)", subtasks:["Pull Feed Chute","Confined Space Sentry","Reinstall Feed Chute"] },
+      { id:"4077518", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-011", wo:"4077518", name:"8W Mech OFF Insp Conv 121-CV-011", start:"2026-04-24T11:00", finish:"2026-04-24T12:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077523", shift:"Day", discipline:"Inspector", area:"120-121", floc:"120-121-CV-012", wo:"4077523", name:"8W Mech OFF Insp Conv 121-CV-012", start:"2026-04-24T12:00", finish:"2026-04-24T13:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077529", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-024", wo:"4077529", name:"8W Mech OFF Insp Rollers 121-CV-024", start:"2026-04-24T12:15", finish:"2026-04-24T15:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077537", shift:"Day", discipline:"Inspector", area:"120-122", floc:"120-122-CV-013", wo:"4077537", name:"8W Mech OFF Insp Conv 122-CV-013", start:"2026-04-24T13:00", finish:"2026-04-24T14:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4075597", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-044", wo:"4075597", name:"12W Mech OFF Repl Pump 122-PP-044", start:"2026-04-24T13:30", finish:"2026-04-25T06:30", duration:17.0, crew:"Fit T06 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4076210", shift:"Day", discipline:"Trade Assistant", area:"120-122", floc:"120-122-BW-009", wo:"4076210", name:"BW-009 Replace Weightometer Roller", start:"2026-04-24T14:00", finish:"2026-04-24T18:00", duration:4.0, crew:"TA T02 (TAx1)", subtasks:["BW-009 Replace Weightometer Roller"] },
+      { id:"4077542", shift:"Day", discipline:"Inspector", area:"120-122", floc:"120-122-CV-014", wo:"4077542", name:"8W Mech OFF Insp Conv 122-CV-014", start:"2026-04-24T14:00", finish:"2026-04-24T15:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077516", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-010", wo:"4077516", name:"8W Mech OFF Insp Skirts 121-CV-010", start:"2026-04-24T14:15", finish:"2026-04-24T22:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4075603", shift:"Day", discipline:"Lube", area:"120-124", floc:"120-124", wo:"4075603", name:"12W Mech OFF Svce Lube MS & Flot", start:"2026-04-24T14:30", finish:"2026-04-25T02:00", duration:11.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Svce Mech Lube MS & Flot OFF"] },
+      { id:"4070645", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-AG-001", wo:"4070645", name:"Replace Agitator blades", start:"2026-04-24T14:30", finish:"2026-04-25T07:30", duration:17.0, crew:"Fit T05 (Fitx2)", subtasks:["Replace Agitator blades","Review JHA, SWI & Lock On","Remove Upper Blades","Remove lower Blades","Install Upper Blades","Install Lower Blades","Demob and Lock Off","CSE Spotter Required"] },
+      { id:"4069166", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-080", wo:"4069166", name:"PP-080 Changeout Spools at Flowmeter", start:"2026-04-24T14:30", finish:"2026-04-25T23:30", duration:33.0, crew:"Fit T01 (Fitx2)", subtasks:["Prep JHA and Permit Pack","Remove spools from lower deck","Remove spools from upper deck","Install new Spools to upper deck","Install spools to lower deck"] },
+      { id:"4085530", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-124", wo:"4085530", name:"BI-Replace Discharge valve", start:"2026-04-24T14:30", finish:"2026-04-25T01:30", duration:11.0, crew:"Fit T04 (Fitx2)", subtasks:["JHA and Permit","BI - Replace Valve"] },
+      { id:"4077547", shift:"Day", discipline:"Inspector", area:"120-122", floc:"120-122-CV-015", wo:"4077547", name:"8W Mech OFF Insp Conv 122-CV-015", start:"2026-04-24T15:00", finish:"2026-04-24T16:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4070823", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-254", wo:"4070823", name:"PP-254 Replace Valve Seal Kit", start:"2026-04-24T15:00", finish:"2026-04-24T23:00", duration:8.0, crew:"Fit T10 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Replace Valve","Demob & Lock Off"] },
+      { id:"4077533", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-FE-008", wo:"4077533", name:"8W Mech OFF Insp Rollers 121-FE-008", start:"2026-04-24T15:15", finish:"2026-04-24T18:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4071742", shift:"Day", discipline:"Fitter", area:"120-126", floc:"120-126-PP-158", wo:"4071742", name:"PP-158 Replace Valve Seal Kit", start:"2026-04-24T15:30", finish:"2026-04-24T22:30", duration:7.0, crew:"Fit T08 (Fitx4)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Replace Valve","Demob & Lock Off"] },
+      { id:"4077552", shift:"Day", discipline:"Inspector", area:"120-122", floc:"120-122-CV-018", wo:"4077552", name:"8W Mech OFF Insp Conv 122-CV-018", start:"2026-04-24T16:00", finish:"2026-04-24T17:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077580", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-ST-002", wo:"4077580", name:"8W Mech OFF Insp Skirts 122-ST-002", start:"2026-04-24T16:00", finish:"2026-04-25T00:00", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077557", shift:"Day", discipline:"Inspector", area:"120-122", floc:"120-122-CV-019", wo:"4077557", name:"8W Mech OFF Insp Conv 122-CV-019", start:"2026-04-24T17:00", finish:"2026-04-24T18:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4068199", shift:"Night", discipline:"Lube", area:"120-122", floc:"120-122-CV-015", wo:"4068199", name:"Replace Grease lines, Bends & T/U", start:"2026-04-24T18:00", finish:"2026-04-25T02:00", duration:8.0, crew:"Lubey T01 (Lubyx1)", subtasks:["Replace Grease lines, Bends & T/U"] },
+      { id:"4077562", shift:"Night", discipline:"Inspector", area:"120-122", floc:"120-122-CV-020", wo:"4077562", name:"8W Mech OFF Insp Conv 122-CV-020", start:"2026-04-24T18:00", finish:"2026-04-24T19:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4070775", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-023", wo:"4070775", name:"PP-023 Replace Valve Seal Kit", start:"2026-04-24T18:00", finish:"2026-04-25T03:00", duration:9.0, crew:"Fit T03 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Install Valve","Demob & Lock Off"] },
+      { id:"4055066", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-038", wo:"4055066", name:"PP-038 Replace Scuttle Valve", start:"2026-04-24T18:00", finish:"2026-04-25T00:00", duration:6.0, crew:"Fit T01 (Fitx2)", subtasks:["Replace Scuttle Valve XV-3193"] },
+      { id:"4077567", shift:"Night", discipline:"Inspector", area:"120-122", floc:"120-122-CV-021", wo:"4077567", name:"8W Mech OFF Insp Conv 122-CV-021", start:"2026-04-24T19:00", finish:"2026-04-24T20:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077582", shift:"Night", discipline:"Inspector", area:"120-123", floc:"120-123-CV-022", wo:"4077582", name:"8W Mech OFF Insp Conv 123-CV-022", start:"2026-04-24T20:00", finish:"2026-04-24T21:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4077585", shift:"Night", discipline:"Conveyor", area:"120-123", floc:"120-123-CV-022", wo:"4077585", name:"8W Mech OFF Insp Skirts 123-CV-022", start:"2026-04-24T21:00", finish:"2026-04-25T05:00", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4075586", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-CY-006", wo:"4075586", name:"Repl Mech Cyclone OFF", start:"2026-04-24T22:00", finish:"2026-04-25T10:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4076543", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-CY-024", wo:"4076543", name:"XV-4467 Replace Valve or Seal", start:"2026-04-24T22:00", finish:"2026-04-25T06:00", duration:8.0, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install New Valve","Demob and Lock Off"] },
+      { id:"4077521", shift:"Night", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-011", wo:"4077521", name:"8W Mech OFF Insp Skirts 121-CV-011", start:"2026-04-24T22:15", finish:"2026-04-25T06:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4063271", shift:"Night", discipline:"Fitter", area:"120-126", floc:"120-126-PP-162", wo:"4063271", name:"126-XV-7629 Replace Valve", start:"2026-04-24T22:30", finish:"2026-04-25T04:30", duration:6.0, crew:"Fit T08 (Fitx4)", subtasks:["JHA and Permit","Replace Valve XV-7629","Inform Ops For De-Isolation"] },
+      { id:"4083066", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-254", wo:"4083066", name:"PP-254 Replace Drain Valve", start:"2026-04-24T23:00", finish:"2026-04-25T03:30", duration:4.5, crew:"Fit T10 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Drain Pipe","Remove Valve","Install New Vale","Install Drain Pipe","Demob and Lock Off"] },
+      { id:"4074309", shift:"Night", discipline:"Conveyor", area:"120-122", floc:"120-122-ST-002", wo:"4074309", name:"ST-002 Adjust Soft Skirts", start:"2026-04-25T00:00", finish:"2026-04-25T03:00", duration:3.0, crew:"Conv T01 (Fitx3)", subtasks:["JHA and Permit","Replace and Adjust Soft Skirts"] },
+      { id:"4077862", shift:"Night", discipline:"Lube", area:"120-122", floc:"120-122-CV-019-DRIV", wo:"4077862", name:"JHA and Permit", start:"2026-04-25T02:00", finish:"2026-04-25T07:00", duration:5.0, crew:"Lubey T01 (Lubyx1)", subtasks:["JHA and Permit","C/O Gearbox Oil"] },
+      { id:"4078341", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-HP-050", wo:"4078341", name:"HP-050 fines cyclone overflow feed box", start:"2026-04-25T02:00", finish:"2026-04-26T10:00", duration:32.0, crew:"Fit T02 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Setup Rigging Equipment","Install Splash Guards","Rubber Line Hopper Bend Pipe","Remove Rigging Equipment","Demob and Lock Off"] },
+      { id:"4071386", shift:"Night", discipline:"Fitter", area:"120-121", floc:"120-121-FE-005", wo:"4071386", name:"Repl Mech Feeder Pan OFF", start:"2026-04-25T02:15", finish:"2026-04-26T02:15", duration:24.0, crew:"Fit T07 (Fitx4)", subtasks:["Repl Mech Feeder Pan OFF"] },
+      { id:"4077590", shift:"Night", discipline:"Conveyor", area:"120-125", floc:"120-125-CV-023", wo:"4077590", name:"8W Mech OFF Insp Skirts 125-CV-023", start:"2026-04-25T03:00", finish:"2026-04-25T11:00", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4070777", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-255", wo:"4070777", name:"PP-255 Replace Valve Seal Kit", start:"2026-04-25T03:30", finish:"2026-04-25T12:30", duration:9.0, crew:"Fit T10 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Install Valve","Demob & Lock Off"] },
+      { id:"4083081", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-025", wo:"4083081", name:"Hole in suction spool", start:"2026-04-25T04:00", finish:"2026-04-25T10:00", duration:6.0, crew:"Fit T03 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Repair Hole in Spool","Re-Install Valve","Demob and Lock Off"] },
+      { id:"4077587", shift:"Night", discipline:"Inspector", area:"120-125", floc:"120-125-CV-023", wo:"4077587", name:"8W Mech OFF Insp Conv 125-CV-023", start:"2026-04-25T05:00", finish:"2026-04-25T06:00", duration:1.0, crew:"Insp T01 (Fitx1)", subtasks:["Inspect Conveyor"] },
+      { id:"4076350", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-FC-028", wo:"4076350", name:"FC-028 Repl Drain Valv on HydrofloatCell", start:"2026-04-25T06:00", finish:"2026-04-25T10:30", duration:4.5, crew:"Fit T11 (Fitx2)", subtasks:["Inform OPS for Isolations if Req","Stop & Assess for Risks & Hazards","Bypass Hydro float Cell","Replace Drain Valve","Inform OPS for De-isolations"] },
+      { id:"4077514", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-010", wo:"4077514", name:"8W Mech OFF Insp Rollers 121-CV-010", start:"2026-04-25T06:15", finish:"2026-04-25T09:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077526", shift:"Day", discipline:"Conveyor", area:"120-121", floc:"120-121-CV-012", wo:"4077526", name:"8W Mech OFF Insp Skirts 121-CV-012", start:"2026-04-25T06:15", finish:"2026-04-25T14:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4070675", shift:"Day", discipline:"Lube", area:"120-122", floc:"120-122-SC-021", wo:"4070675", name:"SC-021 C/O NDE Exciter Oil", start:"2026-04-25T07:00", finish:"2026-04-25T09:00", duration:2.0, crew:"Lubey T01 (Lubyx1)", subtasks:["Change Out NDE Exciter Oil"] },
+      { id:"4074869", shift:"Day", discipline:"Lube", area:"120-123", floc:"120-123-LU-004", wo:"4074869", name:"Insp Mech Mill Lube OFF", start:"2026-04-25T07:00", finish:"2026-04-25T09:30", duration:2.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Insp Mech Mill Lube OFF"] },
+      { id:"4077519", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-011", wo:"4077519", name:"8W Mech OFF Insp Rollers 121-CV-011", start:"2026-04-25T09:15", finish:"2026-04-25T12:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4074870", shift:"Day", discipline:"Lube", area:"120-123", floc:"120-123-LU-007", wo:"4074870", name:"Insp Mech Mill Lube OFF", start:"2026-04-25T09:30", finish:"2026-04-25T12:00", duration:2.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Insp Mech Mill Lube OFF"] },
+      { id:"4075587", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-CY-007", wo:"4075587", name:"Repl Mech Cyclone OFF", start:"2026-04-25T10:00", finish:"2026-04-25T22:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4076227", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-025", wo:"4076227", name:"PP-025 Install Repaired Pipe Spool", start:"2026-04-25T10:00", finish:"2026-04-25T15:30", duration:5.5, crew:"Fit T03 (Fitx2)", subtasks:["JHA and Permit","Install Repaired Pipe Spool."] },
+      { id:"4064387", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-069", wo:"4064387", name:"JHA and Permit", start:"2026-04-25T10:30", finish:"2026-04-25T16:00", duration:5.5, crew:"Fit T11 (Fitx2)", subtasks:["JHA and Permit","Replace Discharge Valve XV4432"] },
+      { id:"4075598", shift:"Day", discipline:"Lube", area:"120-123", floc:"120-123", wo:"4075598", name:"24W Mech OFF Svce Lube Grin&Clas", start:"2026-04-25T12:00", finish:"2026-04-25T12:30", duration:0.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Svce Mech Lube Grin&Clas OFF"] },
+      { id:"4071402", shift:"Day", discipline:"Lube", area:"120-123", floc:"120-123-ML-001", wo:"4071402", name:"6W Mech OFF Insp Lube Grin&Clas", start:"2026-04-25T12:00", finish:"2026-04-25T15:00", duration:3.0, crew:"Lubey T01 (Lubyx2)", subtasks:["Insp Mech Lube Grin&Clas OFF"] },
+      { id:"4077524", shift:"Day", discipline:"Roller Crew", area:"120-121", floc:"120-121-CV-012", wo:"4077524", name:"8W Mech OFF Insp Rollers 121-CV-012", start:"2026-04-25T12:15", finish:"2026-04-25T15:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077540", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-013", wo:"4077540", name:"8W Mech OFF Insp Skirts 122-CV-013", start:"2026-04-25T12:15", finish:"2026-04-25T20:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4083195", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-255", wo:"4083195", name:"replace drain valve MV-291", start:"2026-04-25T13:30", finish:"2026-04-25T18:00", duration:4.5, crew:"Fit T10 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Drain Pipe","Remove Valve","Install New Vale","Install Drain Pipe","Demob and Lock Off"] },
+      { id:"4079565", shift:"Day", discipline:"Lube", area:"120-123", floc:"120-123-CV-022-DRIV", wo:"4079565", name:"Inform OPS for Isolations", start:"2026-04-25T15:00", finish:"2026-04-25T18:30", duration:3.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Inform OPS for Isolations","Stop & Assess for Risks & Hazards","Change Out Oil CV-022 Drive","Inform OPS for De-isolations"] },
+      { id:"4077538", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-013", wo:"4077538", name:"8W Mech OFF Insp Rollers 122-CV-013", start:"2026-04-25T15:15", finish:"2026-04-25T18:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4071743", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-033", wo:"4071743", name:"PP-033 Replace Valve Seal Kit", start:"2026-04-25T15:30", finish:"2026-04-25T22:30", duration:7.0, crew:"Fit T03 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Replace Valve","Demob & Lock Off"] },
+      { id:"4083099", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-073", wo:"4083099", name:"PP-073 Replace Leaking Valve", start:"2026-04-25T16:00", finish:"2026-04-26T01:30", duration:9.5, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Suction Line","Remove Suction Valve","Install New Vale","Install Suction Line","Demob and Lock Off"] },
+      { id:"4072027", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-049", wo:"4072027", name:"12W Mech OFF Repl Pump PP049", start:"2026-04-25T17:00", finish:"2026-04-26T06:00", duration:13.0, crew:"Fit T04 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4083382", shift:"Night", discipline:"Lube", area:"120-124", floc:"120-124-SN-007", wo:"4083382", name:"SN-007 Install Permalube - Ring DRV", start:"2026-04-25T18:30", finish:"2026-04-26T03:30", duration:9.0, crew:"Lubey T01 (Lubyx2)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Locate Position to Install Perma Lubes","Install Permalube Ring DRV","Re-install Guards","Demob and Lock Off"] },
+      { id:"4063651", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-AG-003", wo:"4063651", name:"Review JHA, SWI & Lock On", start:"2026-04-25T19:30", finish:"2026-04-26T08:30", duration:13.0, crew:"Fit T05 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Upper Blades","Remove lower Blades","Install Upper Blades","Install Lower Blades","Demob and Lock Off","CSE Spotter Required"] },
+      { id:"4049198", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-258", wo:"4049198", name:"PP-258 Replace Discharge Pipework", start:"2026-04-25T20:00", finish:"2026-04-26T06:00", duration:10.0, crew:"Fit T08 (Fitx4)", subtasks:["Replace Discharge Pipework"] },
+      { id:"4076600", shift:"Night", discipline:"Fitter", area:"120-125", floc:"120-125-FL-008", wo:"4076600", name:"FL-008 Repair Feed Distributor Rubber", start:"2026-04-25T20:00", finish:"2026-04-26T14:00", duration:18.0, crew:"Fit Fitter (External)", subtasks:["Review JHA, SWI & Lock On","Remove Feed Pipe Assembly","Remove Feed box Cover Lid","Install Cover Lid","Install Feed Pipe Assembly","Demob and Lock Off"] },
+      { id:"4077545", shift:"Night", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-014", wo:"4077545", name:"8W Mech OFF Insp Skirts 122-CV-014", start:"2026-04-25T20:15", finish:"2026-04-26T04:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4075588", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-CY-008", wo:"4075588", name:"Repl Mech Cyclone OFF", start:"2026-04-25T22:00", finish:"2026-04-26T10:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4078480", shift:"Night", discipline:"Trade Assistant", area:"120-122", floc:"120-122-FE-011", wo:"4078480", name:"Parent Metal Repair and Reline FE011", start:"2026-04-25T22:00", finish:"2026-04-26T04:00", duration:6.0, crew:"TA T03 (TAx1)", subtasks:["Spotter Required For Duration"] },
+      { id:"4071395", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-036", wo:"4071395", name:"12W Mech OFF Svce Cent Pump PP036", start:"2026-04-25T22:30", finish:"2026-04-26T02:30", duration:4.0, crew:"Fit T03 (Fitx2)", subtasks:["Mechanical Service Pump Offline","Cov Mech Fitter - Task SME"] },
+      { id:"4070772", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-104", wo:"4070772", name:"PP-104 Replace Valve", start:"2026-04-25T23:30", finish:"2026-04-26T07:30", duration:8.0, crew:"Fit T01 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install New Valve","Demob & Lock Off"] },
+      { id:"4070646", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-AG-004", wo:"4070646", name:"Review JHA, SWI & Lock On", start:"2026-04-26T01:30", finish:"2026-04-26T14:30", duration:13.0, crew:"Fit T05 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Upper Blades","Remove lower Blades","Install Upper Blades","Install Lower Blades","Demob and Lock Off","CSE Spotter Required"] },
+      { id:"4083222", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-074", wo:"4083222", name:"PP-074 Replace Leaking Valve", start:"2026-04-26T01:30", finish:"2026-04-26T11:00", duration:9.5, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Suction Line","Remove Valve","Install New Vale","Install Suction Line","Demob and Lock Off"] },
+      { id:"4071387", shift:"Night", discipline:"Fitter", area:"120-121", floc:"120-121-FE-006", wo:"4071387", name:"Repl Mech Feeder Pan OFF", start:"2026-04-26T02:15", finish:"2026-04-27T02:15", duration:24.0, crew:"Fit T07 (Fitx4)", subtasks:["Repl Mech Feeder Pan OFF"] },
+      { id:"4067747", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-037", wo:"4067747", name:"24W Mech OFF C/O Pump PP037", start:"2026-04-26T02:30", finish:"2026-04-26T10:30", duration:8.0, crew:"Fit T03 (Fitx2)", subtasks:["Overhaul Wet End Mech OFF"] },
+      { id:"4083383", shift:"Night", discipline:"Lube", area:"120-124", floc:"120-124-SN-008", wo:"4083383", name:"SN-008 Install Permalube - Ring DRV", start:"2026-04-26T03:30", finish:"2026-04-26T12:30", duration:9.0, crew:"Lubey T01 (Lubyx2)", subtasks:["Review JHA, SWI & Lock On","Remove Guards","Locate Position to Install Perma Lubes","Install Permalube Ring DRV","Re-install Guards","Demob and Lock Off"] },
+      { id:"4077550", shift:"Night", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-015", wo:"4077550", name:"8W Mech OFF Insp Skirts 122-CV-015", start:"2026-04-26T04:15", finish:"2026-04-26T12:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4075594", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-041", wo:"4075594", name:"12W Mech OFF Repl Pump 122-PP-041", start:"2026-04-26T06:00", finish:"2026-04-26T12:00", duration:6.0, crew:"Fit T03 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4071400", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-050", wo:"4071400", name:"12W Mech OFF Repl Pump PP050", start:"2026-04-26T06:00", finish:"2026-04-26T23:00", duration:17.0, crew:"Fit T04 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4063759", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-SC-015", wo:"4063759", name:"SC-015 Replace Motor", start:"2026-04-26T06:00", finish:"2026-04-26T13:00", duration:7.0, crew:"Fit T10 (Fitx2)", subtasks:["Remove Guards","Remove Motor","Install Motor","Install Guards"] },
+      { id:"4073829", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-SA-044", wo:"4073829", name:"SA-044 Replace Sampler Spool", start:"2026-04-26T06:00", finish:"2026-04-26T19:00", duration:13.0, crew:"Fit T08 (Fitx4)", subtasks:["JHA and Permit","Replace Sampler spool"] },
+      { id:"4077543", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-014", wo:"4077543", name:"8W Mech OFF Insp Rollers 122-CV-014", start:"2026-04-26T06:15", finish:"2026-04-26T09:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077873", shift:"Day", discipline:"Fitter", area:"120-126", floc:"120-126-PP-144", wo:"4077873", name:"PP-144 Replace Leaking Valve", start:"2026-04-26T07:30", finish:"2026-04-26T15:00", duration:7.5, crew:"Fit T01 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install New Valve","Demob and Lock Off"] },
+      { id:"4077548", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-015", wo:"4077548", name:"8W Mech OFF Insp Rollers 122-CV-015", start:"2026-04-26T09:15", finish:"2026-04-26T12:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4075589", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-CY-013", wo:"4075589", name:"Repl Mech Cyclone OFF", start:"2026-04-26T10:00", finish:"2026-04-26T22:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4075595", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-042", wo:"4075595", name:"12W Mech OFF Repl Pump 122-PP-042", start:"2026-04-26T10:30", finish:"2026-04-26T23:30", duration:13.0, crew:"Fit T03 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4082027", shift:"Day", discipline:"Boilermaker", area:"120-121", floc:"120-121-CH-029", wo:"4082027", name:"CH-029 Replace Liners", start:"2026-04-26T11:00", finish:"2026-04-27T00:00", duration:13.0, crew:"BMKR T02 (BMKRx2)", subtasks:["JHA and Permit","Replace liners"] },
+      { id:"4072221", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-075", wo:"4072221", name:"XV-4443 Replace Suction Valve", start:"2026-04-26T11:00", finish:"2026-04-26T21:00", duration:10.0, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Discharge Line","Remove Valve XV 4443","Install New Valve","Re-Connect Discharge Line","Demob & Lock Off"] },
+      { id:"4077553", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-018", wo:"4077553", name:"8W Mech OFF Insp Rollers 122-CV-018", start:"2026-04-26T12:15", finish:"2026-04-26T15:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4074310", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-018", wo:"4074310", name:"Replace Soft skirts", start:"2026-04-26T12:15", finish:"2026-04-27T00:15", duration:12.0, crew:"Conv T01 (Fitx3)", subtasks:["JHA and Permit","Soft skirts require replacement"] },
+      { id:"4075605", shift:"Day", discipline:"Lube", area:"120-125", floc:"120-125", wo:"4075605", name:"12W Mech OFF Svce Lube Conc Filt", start:"2026-04-26T12:30", finish:"2026-04-26T15:00", duration:2.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Svce Mech Lube Conc Filt OFF"] },
+      { id:"4072489", shift:"Day", discipline:"Fitter", area:"120-126", floc:"120-126-TH-002", wo:"4072489", name:"24W Mech OFF Insp Thick 126-TH-002", start:"2026-04-26T14:00", finish:"2026-04-26T15:00", duration:1.0, crew:"Fit T08 (Fitx4)", subtasks:["Insp Mech Thick OFF"] },
+      { id:"4077555", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-018", wo:"4077555", name:"8W Mech OFF Insp Skirts 122-CV-018", start:"2026-04-26T14:15", finish:"2026-04-26T22:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4081126", shift:"Day", discipline:"Lube", area:"120-125", floc:"120-125", wo:"4081126", name:"12W Lube OFF Insp Oil Smpl Conc Filt", start:"2026-04-26T15:00", finish:"2026-04-26T17:00", duration:2.0, crew:"Lubey T01 (Lubyx2)", subtasks:["Insp Lube Oil Smpl Conc Filt ON"] },
+      { id:"4083365", shift:"Day", discipline:"Lube", area:"120-125", floc:"120-125-CV-023", wo:"4083365", name:"CV-023 Gearbox oil C/O", start:"2026-04-26T15:00", finish:"2026-04-26T19:30", duration:4.5, crew:"Lubey T01 (Lubyx2)", subtasks:["Review JHA, SWI & Lock On","Drain Old Oil","Fill Up G-Box With New Oil to Level","Clean Up Any Oil Spills","Demob and Lock Off"] },
+      { id:"4072987", shift:"Day", discipline:"Fitter", area:"120-126", floc:"120-126-TH-003", wo:"4072987", name:"48W Mech OFF Insp Thick 126-TH-003", start:"2026-04-26T15:00", finish:"2026-04-26T21:30", duration:6.5, crew:"Fit T08 (Fitx4)", subtasks:["Insp Mech Thick OFF"] },
+      { id:"4077558", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-019", wo:"4077558", name:"8W Mech OFF Insp Rollers 122-CV-019", start:"2026-04-26T15:15", finish:"2026-04-26T18:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4063654", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-AG-005", wo:"4063654", name:"Review JHA, SWI & Lock On", start:"2026-04-26T16:30", finish:"2026-04-26T23:30", duration:7.0, crew:"Fit T05 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Open Access Door to Access the Blade","Remove Blades","Install Blades","Close Access Door","Demob and Lock Off","Confined Space Spotter required"] },
+      { id:"4071744", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-039", wo:"4071744", name:"PP-039 Replace Valve Seal Kit", start:"2026-04-26T19:30", finish:"2026-04-27T02:30", duration:7.0, crew:"Fit T02 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Replace Valve","Demob & Lock Off"] },
+      { id:"4075613", shift:"Night", discipline:"Lube", area:"120-126", floc:"120-126", wo:"4075613", name:"12W Mech OFF Svce Lube Tails", start:"2026-04-26T19:30", finish:"2026-04-26T21:30", duration:2.0, crew:"Lubey T01 (Lubyx2)", subtasks:["Svce Mech Lube Tails OFF"] },
+      { id:"4070774", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-077", wo:"4070774", name:"PP-077 Replace Valve Seal Kit", start:"2026-04-26T21:00", finish:"2026-04-27T06:00", duration:9.0, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Install Valve","Demob & Lock Off"] },
+      { id:"4075590", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-CY-014", wo:"4075590", name:"Repl Mech Cyclone OFF", start:"2026-04-26T22:00", finish:"2026-04-27T10:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4071401", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-051", wo:"4071401", name:"12W Mech OFF Repl Pump PP051", start:"2026-04-26T23:00", finish:"2026-04-27T12:00", duration:13.0, crew:"Fit T04 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4075596", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-043", wo:"4075596", name:"12W Mech OFF Repl Pump 122-PP-043", start:"2026-04-26T23:30", finish:"2026-04-27T12:30", duration:13.0, crew:"Fit T03 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4077560", shift:"Night", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-019", wo:"4077560", name:"8W Mech OFF Insp Skirts 122-CV-019", start:"2026-04-27T00:15", finish:"2026-04-27T08:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4077595", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-SC-016", wo:"4077595", name:"Unbolt T-Piece Flange To Access Insert", start:"2026-04-27T00:15", finish:"2026-04-27T02:45", duration:2.5, crew:"Fit T01 (Fitx2)", subtasks:["Unbolt T-Piece Flange To Access Insert","Reassemble Flange"] },
+      { id:"4063655", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-AG-006", wo:"4063655", name:"Review JHA, SWI & Lock On", start:"2026-04-27T01:30", finish:"2026-04-27T08:30", duration:7.0, crew:"Fit T05 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Open Access Door to Access the Blade","Remove Blades","Install Blades","Close Access Door","Demob and Lock Off","Confined Space Spotter required"] },
+      { id:"4071388", shift:"Night", discipline:"Fitter", area:"120-121", floc:"120-121-FE-007", wo:"4071388", name:"Repl Mech Feeder Pan OFF", start:"2026-04-27T02:15", finish:"2026-04-28T02:15", duration:24.0, crew:"Fit T07 (Fitx4)", subtasks:["Repl Mech Feeder Pan OFF"] },
+      { id:"4075263", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-039", wo:"4075263", name:"48W Mech OFF Repl Pump PP039", start:"2026-04-27T02:30", finish:"2026-04-27T15:30", duration:13.0, crew:"Fit T02 (Fitx2)", subtasks:["JHA and Permit","Remove suction and discharge spool","Replace Pump","Replace suction and discharge spool"] },
+      { id:"4077596", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-SC-020", wo:"4077596", name:"Unbolt T-Piece Flange To Access Insert", start:"2026-04-27T02:45", finish:"2026-04-27T05:15", duration:2.5, crew:"Fit T01 (Fitx2)", subtasks:["Unbolt T-Piece Flange To Access Insert","Reassemble Flange"] },
+      { id:"4077597", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-SC-021", wo:"4077597", name:"Unbolt T-Piece Flange To Access Insert", start:"2026-04-27T05:15", finish:"2026-04-27T07:45", duration:2.5, crew:"Fit T01 (Fitx2)", subtasks:["Unbolt T-Piece Flange To Access Insert","Reassemble Flange"] },
+      { id:"4072294", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-079", wo:"4072294", name:"XV-5004 Replace Discharge Valve Seals", start:"2026-04-27T06:00", finish:"2026-04-27T14:00", duration:8.0, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Discharge Line","Remove Valve XV5004","Install New Valve","Re-Connect Discharge Line","Demob & Lock Off"] },
+      { id:"4077563", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-020", wo:"4077563", name:"8W Mech OFF Insp Rollers 122-CV-020", start:"2026-04-27T06:15", finish:"2026-04-27T09:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4076545", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-088", wo:"4076545", name:"PP-088 Replace Gland Water Valve", start:"2026-04-27T07:45", finish:"2026-04-27T14:45", duration:7.0, crew:"Fit T01 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Stored Energy","Remove Valve","Install New Valve","Demob and Lock Off"] },
+      { id:"4077565", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-020", wo:"4077565", name:"8W Mech OFF Insp Skirts 122-CV-020", start:"2026-04-27T08:15", finish:"2026-04-27T16:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4063656", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-AG-018", wo:"4063656", name:"Review JHA, SWI & Lock On", start:"2026-04-27T08:30", finish:"2026-04-28T03:30", duration:19.0, crew:"Fit T05 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Upper Blades","Remove lower Blades","Install Lower Blades","Install Upper Blades","Demob and Lock Off","Confined Space Spotter required"] },
+      { id:"4077568", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-021", wo:"4077568", name:"8W Mech OFF Insp Rollers 122-CV-021", start:"2026-04-27T09:15", finish:"2026-04-27T12:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4075591", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-CY-015", wo:"4075591", name:"Repl Mech Cyclone OFF", start:"2026-04-27T10:00", finish:"2026-04-27T22:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4083897", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-CV-021", wo:"4083897", name:"BI - REPLACE IMPACT ROLLERS", start:"2026-04-27T12:15", finish:"2026-04-27T16:15", duration:4.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4078466", shift:"Day", discipline:"Fitter", area:"120-122", floc:"120-122-PP-051", wo:"4078466", name:"XV-3350 suction valve need replacing", start:"2026-04-27T13:00", finish:"2026-04-27T18:00", duration:5.0, crew:"Fit T04 (Fitx2)", subtasks:["Replace XV-3350 suction valve"] },
+      { id:"4077570", shift:"Day", discipline:"Conveyor", area:"120-122", floc:"120-122-CV-021", wo:"4077570", name:"8W Mech OFF Insp Skirts 122-CV-021", start:"2026-04-27T14:15", finish:"2026-04-27T22:15", duration:8.0, crew:"Conv T01 (Fitx3)", subtasks:["Inspect/Adjust Hard Skirts","Inspect Soft Skirts"] },
+      { id:"4070434", shift:"Day", discipline:"Fitter", area:"120-125", floc:"120-125-HU-006", wo:"4070434", name:"Insp Mech Thick HPU OFF", start:"2026-04-27T14:45", finish:"2026-04-27T15:45", duration:1.0, crew:"Fit T01 (Fitx2)", subtasks:["Insp Mech Thick HPU OFF"] },
+      { id:"4070433", shift:"Day", discipline:"Fitter", area:"120-125", floc:"120-125-XM-016", wo:"4070433", name:"48W Mech OFF Insp Tripper 125-XM-016", start:"2026-04-27T15:45", finish:"2026-04-27T19:45", duration:4.0, crew:"Fit T01 (Fitx2)", subtasks:["Insp Mech Tripper OFF"] },
+      { id:"4077573", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-ST-001", wo:"4077573", name:"8W Mech OFF Insp Rollers 122-ST-001", start:"2026-04-27T16:15", finish:"2026-04-27T19:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4083380", shift:"Day", discipline:"Fitter", area:"120-124", floc:"120-124-PP-080", wo:"4083380", name:"PP-080 Replace Hose", start:"2026-04-27T17:00", finish:"2026-04-28T03:00", duration:10.0, crew:"Fit T11 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","","Replace Hose if Required","Demob and Lock Off"] },
+      { id:"4070778", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-PP-252", wo:"4070778", name:"PP-252 Replace Valve Seal Kit", start:"2026-04-27T18:00", finish:"2026-04-28T01:00", duration:7.0, crew:"Fit T04 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Replace Valve","Demob & Lock Off"] },
+      { id:"4075592", shift:"Night", discipline:"Fitter", area:"120-122", floc:"120-122-CY-016", wo:"4075592", name:"Repl Mech Cyclone OFF", start:"2026-04-27T22:00", finish:"2026-04-28T10:00", duration:12.0, crew:"Fit T09 (Fitx2)", subtasks:["Repl Mech Cyclone OFF"] },
+      { id:"4074887", shift:"Night", discipline:"Fitter", area:"120-126", floc:"120-126-HU-007", wo:"4074887", name:"Insp Mech Thick HPU OFF", start:"2026-04-27T23:15", finish:"2026-04-28T00:15", duration:1.0, crew:"Fit T01 (Fitx2)", subtasks:["Insp Mech Thick HPU OFF"] },
+      { id:"4083363", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-125", wo:"4083363", name:"HP-40 Clear Blockage", start:"2026-04-28T00:00", finish:"2026-04-28T05:00", duration:5.0, crew:"Fit T04 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Break Line to Clear Blockage","Re-install Line","Demob and Lock Off"] },
+      { id:"4074888", shift:"Night", discipline:"Fitter", area:"120-126", floc:"120-126-HU-008", wo:"4074888", name:"Insp Mech Thick HPU OFF", start:"2026-04-28T00:15", finish:"2026-04-28T01:15", duration:1.0, crew:"Fit T01 (Fitx2)", subtasks:["Insp Mech Thick HPU OFF"] },
+      { id:"4046952", shift:"Night", discipline:"Fitter", area:"120-126", floc:"120-126-TH-003", wo:"4046952", name:"TH-003 RESET GUIDE SHIMS", start:"2026-04-28T01:15", finish:"2026-04-28T04:15", duration:3.0, crew:"Fit T01 (Fitx2)", subtasks:["JHA and Permit","Inspect And Reset Guide Shims & Grease"] },
+      { id:"4054181", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-SA-020", wo:"4054181", name:"SA-020 Saunders Valve Cant Be Shut", start:"2026-04-28T03:00", finish:"2026-04-28T06:00", duration:3.0, crew:"Fit T11 (Fitx2)", subtasks:["Inspect/Replace U/S Saunders Valve"] },
+      { id:"4070838", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-086", wo:"4070838", name:"PP-086 Replace Valve Seal Kit", start:"2026-04-28T03:30", finish:"2026-04-28T12:30", duration:9.0, crew:"Fit T02 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Install Valve","Demob & Lock Off"] },
+      { id:"4070840", shift:"Night", discipline:"Fitter", area:"120-124", floc:"120-124-PP-067", wo:"4070840", name:"PP-067 Replace Valve Seal Kit", start:"2026-04-28T04:15", finish:"2026-04-28T13:15", duration:9.0, crew:"Fit T01 (Fitx2)", subtasks:["Review JHA, SWI & Lock On","Remove Valve","Install new Seal Kit","Install Valve","Demob & Lock Off"] },
+      { id:"4077578", shift:"Day", discipline:"Roller Crew", area:"120-122", floc:"120-122-ST-002", wo:"4077578", name:"8W Mech OFF Insp Rollers 122-ST-002", start:"2026-04-28T07:15", finish:"2026-04-28T10:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077583", shift:"Day", discipline:"Roller Crew", area:"120-123", floc:"120-123-CV-022", wo:"4077583", name:"8W Mech OFF Insp Rollers 123-CV-022", start:"2026-04-28T10:15", finish:"2026-04-28T13:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+      { id:"4077588", shift:"Day", discipline:"Roller Crew", area:"120-125", floc:"120-125-CV-023", wo:"4077588", name:"8W Mech OFF Insp Rollers 125-CV-023", start:"2026-04-28T13:15", finish:"2026-04-28T16:15", duration:3.0, crew:"Roller Crew T01 (Fitx4)", subtasks:STANDARD_ROLLER_SUBTASKS },
+    ];
+    const TASK_STATUSES = [
+      { key:"not-started", label:"Not Started", color:"#9CA3AF" },
+      { key:"in-progress", label:"In Progress", color:"#2563EB" },
+      { key:"blocked", label:"Blocked", color:"#F59E0B" },
+      { key:"delayed", label:"Delayed", color:"#DC2626" },
+      { key:"complete", label:"Complete", color:"#16A34A" }
+    ];
+
+    function App() {
+      const [tab, setTab] = useState("profile");
+      const [fG, sfG] = useState("All");
+      const [fS, sfS] = useState("All");
+      const [fT, sfT] = useState([]);
+      const [rShift, setRShift] = useState("All");
+      const [rRole, setRRole] = useState("All");
+      const [taskStatus, setTaskStatus] = useState(() => {
+        try { return JSON.parse(localStorage.getItem("srg_gantt_status") || "{}"); }
+        catch { return {}; }
+      });
+      const [selectedTaskId, setSelectedTaskId] = useState(null);
+      const [gAreaFilter, setGAreaFilter] = useState("All");
+      const [gStatusFilter, setGStatusFilter] = useState("All");
+      const [gDateFilter, setGDateFilter] = useState(null);
+      const [syncState, setSyncState] = useState({ status: "idle", lastSync: null, error: null });
+
+      const SHAREPOINT_JSON_URL = "https://raw.githubusercontent.com/N01dea5/Covalent-Mt-Holland---April-2026/main/gantt-status.json";
+
+      // Unwrap SharePoint/Power Automate field shapes:
+      //   choice cols → { Value: "..." }, people cols → { DisplayName: "..." },
+      //   plain strings/numbers pass through unchanged.
+      const unwrap = (v) => {
+        if (v === null || v === undefined) return "";
+        if (typeof v === "object") return v.Value || v.DisplayName || v.value || "";
+        return v;
+      };
+
+      const normalizeStatus = (s) => {
+        const raw = unwrap(s);
+        if (!raw) return "not-started";
+        const str = String(raw);
+        const map = {
+          "Not Started": "not-started", "not started": "not-started",
+          "In Progress": "in-progress", "in progress": "in-progress",
+          "Blocked": "blocked",
+          "Delayed": "delayed",
+          "Complete": "complete", "Completed": "complete"
+        };
+        return map[str] || str.toLowerCase().replace(/\s+/g, "-");
+      };
+
+      const syncFromSharePoint = () => {
+        setSyncState({ status: "syncing", lastSync: syncState.lastSync, error: null });
+        fetch(SHAREPOINT_JSON_URL + "?t=" + Date.now())
+          .then(r => {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+          })
+          .then(data => {
+            const items = Array.isArray(data) ? data : (data.tasks || data.value || []);
+            const next = {};
+            items.forEach(item => {
+              const id = unwrap(item.id || item.Title || item.title);
+              if (!id) return;
+              const src = item.state || item;
+              next[id] = {
+                status: normalizeStatus(src.status || src.Status),
+                percent: parseInt(unwrap(src.percent || src.PercentComplete || src["Percent Complete"]) || 0, 10),
+                notes: unwrap(src.notes || src.Notes) || "",
+                delayReason: unwrap(src.delayReason || src.DelayReason || src["Delay Reason"]) || "",
+                updatedBy: unwrap(src.updatedBy || src.UpdatedBy || src["Updated By"] || src.Editor) || "",
+                actualHours: unwrap(src.actualHours || src.ActualHours || src["Actual Hours"]) || "",
+                actualStart: unwrap(src.actualStart || src.ActualStart || src["Actual Start"]) || "",
+                actualFinish: unwrap(src.actualFinish || src.ActualFinish || src["Actual Finish"]) || "",
+                pictureUrl: unwrap(src.pictureUrl || src.Picture) || "",
+                assignedWorkers: src.assignedWorkers || [],
+                lastUpdated: unwrap(src.lastUpdated || src.Modified) || new Date().toISOString()
+              };
+            });
+            setTaskStatus(next);
+            try { localStorage.setItem("srg_gantt_status", JSON.stringify(next)); } catch {}
+            setSyncState({ status: "ok", lastSync: new Date().toISOString(), error: null });
+          })
+          .catch(err => {
+            setSyncState({ status: "error", lastSync: syncState.lastSync, error: err.message });
+          });
+      };
+
+      useEffect(() => {
+        syncFromSharePoint();
+        const interval = setInterval(syncFromSharePoint, 5 * 60 * 1000);
+        return () => clearInterval(interval);
+      }, []);
+
+      const toggle = k => sfT(p => p.includes(k) ? p.filter(x => x !== k) : [...p, k]);
+
+      const getTaskState = id => taskStatus[id] || { status: "not-started", percent: 0, notes: "", delayReason: "" };
+
+      const filtered = useMemo(() => E.filter(e => {
+        if (fG !== "All" && e.group !== fG) return false;
+        if (fS !== "All" && e.shift !== fS) return false;
+        if (fT.length > 0) {
+          for (const t of fT) {
+            if (t === "rig") {
+              if (!e.rig) return false;
+            } else {
+              if (!e[t]) return false;
+            }
+          }
+        }
+        return true;
+      }), [fG, fS, fT]);
+
+      const groups = [...new Set(E.map(e => e.group))];
+      const tN = E.filter(e => !e.name.startsWith("TBC")).length;
+      const tT = E.filter(e => e.name.startsWith("TBC")).length;
+      const aT = (E.filter(e => e.ty > 0).reduce((s, e) => s + e.ty, 0) / (E.filter(e => e.ty > 0).length || 1)).toFixed(1);
+      const aS = (E.filter(e => e.sy > 0).reduce((s, e) => s + e.sy, 0) / (E.filter(e => e.sy > 0).length || 1)).toFixed(1);
+
+      const tc = {};
+      TC.forEach(t => {
+        tc[t.label] = E.filter(e => t.key === "rig" ? !!e[t.key] : e[t.key]).length;
+      });
+
+      const rgd = GROUP_ORDER.filter(g => E.some(e => e.group === g) || (CONTINGENCY.byGroup[g] || 0) > 0).map(g => ({
+        name: g,
+        filled: E.filter(e => e.group === g && !e.name.startsWith("TBC")).length,
+        tbc: E.filter(e => e.group === g && e.name.startsWith("TBC")).length,
+        contingency: CONTINGENCY.byGroup[g] || 0
+      }));
+
+      const sd = [
+        { name: "Day Shift", value: E.filter(e => e.shift === "Day").length },
+        { name: "Night Shift", value: E.filter(e => e.shift === "Night").length }
+      ];
+
+      const tradeSummary = useMemo(() => {
+        return GROUP_ORDER.filter(g => E.some(e => e.group === g) || (CONTINGENCY.byGroup[g] || 0) > 0).map(g => {
+          const planned = E.filter(e => e.group === g).length;
+          const confirmed = E.filter(e => e.group === g && !e.name.startsWith("TBC")).length;
+          const gap = E.filter(e => e.group === g && e.name.startsWith("TBC")).length;
+          const contingency = CONTINGENCY.byGroup[g] || 0;
+
+          let readiness = "Covered";
+          let readinessColor = RM;
+
+          if (gap > 0) {
+            readiness = "Gap";
+            readinessColor = RH;
+          } else if (contingency > 0) {
+            readiness = "Ready";
+            readinessColor = RL;
+          }
+
+          return { group: g, planned, confirmed, gap, contingency, readiness, readinessColor };
+        });
+      }, []);
+
+      const risks = useMemo(() => {
+        const r = [];
+
+        // Per-group/shift checks: unfilled positions, GTA coverage
+        groups.forEach(g => {
+          ["Day", "Night"].forEach(s => {
+            const crew = E.filter(e => e.group === g && e.shift === s);
+            if (!crew.length) return;
+
+            const named = crew.filter(e => !e.name.startsWith("TBC"));
+            const tbc = crew.filter(e => e.name.startsWith("TBC"));
+
+            if (tbc.length) {
+              r.push({ group: g, shift: s, level: "HIGH", issue: `${tbc.length} unfilled position(s)`, action: "Source and confirm personnel before shutdown mobilisation." });
+            }
+
+            if (!named.some(e => e.gta) && named.length > 2 && ["Fitter", "Boilermaker"].includes(g)) {
+              r.push({ group: g, shift: s, level: "LOW", issue: "No gas testing ticket holder in group", action: "Confirm GTA coverage from HSE or adjacent crew for confined space/hot work entries." });
+            }
+
+            named.forEach(e => {
+              if (/resume.*(to be provided|pending|to be confirmed)/i.test(e.sum)) {
+                r.push({ group: g, shift: s, level: "MED", issue: `${e.name} — resume not yet received`, action: "Obtain and review resume before mobilisation to verify competency." });
+              }
+            });
+          });
+        });
+
+        // Grouped check: all crew members with <1 year shutdown experience (roll-up)
+        const lowExp = E.filter(e => !e.name.startsWith("TBC") && e.sy < 1 && e.ty > 0);
+        if (lowExp.length) {
+          const list = lowExp.map(e => `${e.name} (${e.group}, ${e.shift})`).join("; ");
+          r.push({
+            group: "Crew-wide",
+            shift: "All",
+            level: "MED",
+            issue: `${lowExp.length} crew member(s) with <1 year shutdown experience`,
+            action: `Pair each with an experienced worker for initial shifts; avoid isolated or critical-path tasks without direct oversight. Affected: ${list}.`
+          });
+        }
+
+        // Telehandler ticket check removed — dedicated Tele drivers rostered on each shift.
+
+        return r.sort((a, b) => ({ HIGH: 0, MED: 1, LOW: 2 })[a.level] - ({ HIGH: 0, MED: 1, LOW: 2 })[b.level]);
+      }, []);
+
+      const criticalRoles = useMemo(() => {
+        const wanted = [
+          "Superintendent",
+          "Supervisor DS",
+          "Supervisor NS",
+          "Supervisor Elec",
+          "HSE",
+          "Roller Crew Supervisor"
+        ];
+
+        return wanted.map(role => {
+          const matching = E.filter(e => e.role === role);
+          return {
+            role,
+            planned: matching.length,
+            confirmed: matching.filter(e => !e.name.startsWith("TBC")).length,
+            gap: matching.filter(e => e.name.startsWith("TBC")).length
+          };
+        }).filter(x => x.planned > 0);
+      }, []);
+
+      const printRisks = useMemo(() => risks.slice(0, 8), [risks]);
+
+      const progressSummary = useMemo(() => {
+        const statusCounts = TASK_STATUSES.reduce((acc, s) => {
+          acc[s.key] = GANTT_TASKS.filter(t => (taskStatus[t.id]?.status || "not-started") === s.key).length;
+          return acc;
+        }, {});
+        const overallPct = GANTT_TASKS.length
+          ? Math.round(GANTT_TASKS.reduce((s, t) => s + (parseFloat(taskStatus[t.id]?.percent) || 0), 0) / GANTT_TASKS.length)
+          : 0;
+        const areaRows = GANTT_AREAS.map(a => {
+          const tasks = GANTT_TASKS.filter(t => t.area === a.id);
+          if (!tasks.length) return null;
+          const complete = tasks.filter(t => (taskStatus[t.id]?.status) === "complete").length;
+          const inProgress = tasks.filter(t => (taskStatus[t.id]?.status) === "in-progress").length;
+          const delayed = tasks.filter(t => (taskStatus[t.id]?.status) === "delayed").length;
+          const blocked = tasks.filter(t => (taskStatus[t.id]?.status) === "blocked").length;
+          const pct = Math.round(tasks.reduce((s, t) => s + (parseFloat(taskStatus[t.id]?.percent) || 0), 0) / tasks.length);
+          return { id: a.id, name: a.name, total: tasks.length, complete, inProgress, delayed, blocked, pct };
+        }).filter(Boolean);
+        const attention = GANTT_TASKS
+          .map(t => ({ t, s: taskStatus[t.id] || {} }))
+          .filter(x => ["delayed", "blocked"].includes(x.s.status))
+          .sort((a, b) => (a.s.status === "delayed" ? -1 : 1) - (b.s.status === "delayed" ? -1 : 1))
+          .slice(0, 10);
+        return { statusCounts, overallPct, areaRows, attention };
+      }, [taskStatus]);
+
+      const ranked = useMemo(() => {
+        const r = {};
+        groups.forEach(g => {
+          r[g] = E.filter(e => e.group === g && !e.name.startsWith("TBC"))
+            .sort((a, b) => (b.ty + b.sy * 2) - (a.ty + a.sy * 2));
+        });
+        return r;
+      }, []);
+
+      const rosterRoles = [...new Set(ROSTER.map(r => r.role))].sort();
+
+      const filteredRoster = useMemo(() => {
+        return ROSTER.filter(r => {
+          if (rShift === "Day" && !r.codes.includes("DS")) return false;
+          if (rShift === "Night" && !r.codes.includes("NS")) return false;
+          if (rRole !== "All" && r.role !== rRole) return false;
+          return true;
+        });
+      }, [rShift, rRole]);
+
+      const SC = ({ label, value, sub }) =>
+        React.createElement("div", {
+          style: {
+            background: "white",
+            borderLeft: `3px solid ${SRG_RED}`,
+            padding: "18px 22px",
+            boxShadow: "0 1px 2px rgba(0,0,0,0.04)"
+          }
+        },
+          React.createElement("div", { style: { fontSize: 30, fontWeight: 800, color: SRG_DARK, lineHeight: 1.1 } }, value),
+          React.createElement("div", { style: { fontSize: 12, fontWeight: 600, color: SRG_GREY, marginTop: 4, textTransform: "uppercase", letterSpacing: 0.5 } }, label),
+          sub && React.createElement("div", { style: { fontSize: 11, color: "#8C8C8C", marginTop: 3 } }, sub)
+        );
+
+      const RB = ({ level }) =>
+        React.createElement("span", {
+          style: {
+            display: "inline-block",
+            padding: "3px 10px",
+            fontSize: 10,
+            fontWeight: 700,
+            color: "white",
+            background: level === "HIGH" ? RH : level === "MED" ? RM : RL,
+            letterSpacing: 0.5
+          }
+        }, level);
+
+      const ReadinessPill = ({ text, color }) =>
+        React.createElement("span", {
+          style: {
+            display: "inline-block",
+            padding: "3px 10px",
+            fontSize: 10,
+            fontWeight: 700,
+            color: "white",
+            background: color,
+            letterSpacing: 0.4,
+            textTransform: "uppercase"
+          }
+        }, text);
+
+      const TabBtn = ({ id, label }) =>
+        React.createElement("button", {
+          onClick: () => setTab(id),
+          style: {
+            padding: "12px 24px",
+            border: "none",
+            borderBottom: tab === id ? `3px solid ${SRG_RED}` : "3px solid transparent",
+            background: "transparent",
+            cursor: "pointer",
+            fontWeight: tab === id ? 700 : 600,
+            fontSize: 13,
+            color: tab === id ? SRG_DARK : SRG_GREY,
+            textTransform: "uppercase",
+            letterSpacing: 0.8,
+            transition: "all .15s"
+          }
+        }, label);
+
+      const SITE_LEADS = [
+        { name: "Adam Riley", role: "Shutdown Superintendent (Dayshift)", contact: "0457 162 100 · adam.riley@srgglobal.com.au" }
+      ];
+
+      const OFFSITE_ESCALATION = [
+        { name: "Nick Margetic", role: "General Manager — Strategy & Growth", contact: "0487 332 815 · nick.margetic@srgglobal.com.au" },
+        { name: "Josh Toth", role: "Operations Manager", contact: "0414 940 421 · joshua.toth@srgglobal.com.au" },
+        { name: "Haydyn Nissen", role: "HSE Superintendent — Asset Maintenance", contact: "0497 073 441 · haydyn.nissen@srgglobal.com.au" },
+        { name: "Mobilisation Support", role: "South West Mobilisation", contact: "southwestmobilisation@srgglobal.com.au" }
+      ];
+
+      const contactCard = (c, i, accent) => React.createElement("div", {
+        key: i,
+        style: {
+          padding: "12px 14px",
+          background: accent === "red" ? "#FFF5F5" : "#FAFAFA",
+          borderLeft: `3px solid ${accent === "red" ? SRG_RED : SRG_DARK}`
+        }
+      },
+        React.createElement("div", { style: { fontSize: 13, fontWeight: 800, color: SRG_DARK, lineHeight: 1.2 } }, c.name),
+        React.createElement("div", { style: { fontSize: 11, color: SRG_GREY, marginTop: 3, fontWeight: 600 } }, c.role),
+        React.createElement("div", { style: { fontSize: 11, color: SRG_RED, marginTop: 5, fontWeight: 700, wordBreak: "break-word" } }, c.contact)
+      );
+
+      const subHeader = (text) => React.createElement("div", {
+        style: {
+          fontSize: 10,
+          fontWeight: 700,
+          color: SRG_DARK,
+          textTransform: "uppercase",
+          letterSpacing: 0.8,
+          marginBottom: 8,
+          paddingBottom: 4,
+          borderBottom: `1px solid ${SRG_BORDER}`
+        }
+      }, text);
+
+      const renderKeyContacts = () => React.createElement("div", {
+        style: {
+          background: "white",
+          border: `1px solid ${SRG_BORDER}`,
+          borderTop: `3px solid ${SRG_RED}`,
+          boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
+          marginBottom: 24,
+          padding: "18px 24px"
+        }
+      },
+        React.createElement("div", {
+          style: {
+            fontSize: 11,
+            fontWeight: 700,
+            color: SRG_RED,
+            textTransform: "uppercase",
+            letterSpacing: 1.2,
+            marginBottom: 14
+          }
+        }, "Key Contacts"),
+        subHeader("Site Leads"),
+        React.createElement("div", {
+          style: {
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 12,
+            marginBottom: 18
+          }
+        },
+          SITE_LEADS.map((c, i) => contactCard(c, i, "red"))
+        ),
+        subHeader("Offsite Escalation"),
+        React.createElement("div", {
+          style: {
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: 12
+          }
+        },
+          OFFSITE_ESCALATION.map((c, i) => contactCard(c, i, "dark"))
+        )
+      );
+
+      return React.createElement("div", {
+        style: {
+          fontFamily: "'Source Sans 3','Segoe UI',system-ui,sans-serif",
+          background: SRG_LIGHT,
+          minHeight: "100vh",
+          color: SRG_DARK
+        }
+      },
+        React.createElement("div", {
+          style: {
+            background: "white",
+            borderBottom: `1px solid ${SRG_BORDER}`,
+            boxShadow: "0 1px 3px rgba(0,0,0,0.04)"
+          }
+        },
+          React.createElement("div", {
+            style: {
+              maxWidth: 1440,
+              margin: "0 auto",
+              padding: "20px 32px",
+              display: "flex",
+              alignItems: "center",
+              gap: 24,
+              flexWrap: "wrap"
+            }
+          },
+            React.createElement("img", {
+              src: "./srg-global-logo.png",
+              alt: "SRG Global",
+              style: { height: 44, width: "auto", flexShrink: 0 }
+            }),
+            React.createElement("div", { style: { width: 1, height: 40, background: SRG_BORDER, flexShrink: 0 } }),
+            React.createElement("div", { style: { flex: 1, minWidth: 280 } },
+              React.createElement("div", {
+                style: {
+                  fontSize: 10,
+                  fontWeight: 700,
+                  color: SRG_RED,
+                  letterSpacing: 1.5,
+                  textTransform: "uppercase"
+                }
+              }, "Asset Maintenance · Integrated Services"),
+              React.createElement("div", {
+                style: { fontSize: 22, fontWeight: 800, color: SRG_DARK, marginTop: 2, lineHeight: 1.2 }
+              }, "Covalent Lithium — Workforce Dashboard"),
+              React.createElement("div", {
+                style: { fontSize: 12, color: SRG_GREY, marginTop: 2 }
+              }, `Mt Holland · April–May 2026 · ${E.length} Positions`)
+            )
+          ),
+          React.createElement("div", {
+            style: {
+              maxWidth: 1440,
+              margin: "0 auto",
+              padding: "0 32px",
+              display: "flex",
+              gap: 4,
+              borderTop: `1px solid ${SRG_BORDER}`
+            }
+          },
+            React.createElement(TabBtn, { id: "profile", label: "Workforce Profile" }),
+            React.createElement(TabBtn, { id: "risk", label: "Risk Assessment" }),
+            React.createElement(TabBtn, { id: "roster", label: "Shutdown Roster" }),
+            React.createElement(TabBtn, { id: "gantt", label: "Gantt" }),
+            React.createElement(TabBtn, { id: "print", label: "Print Summary" })
+          )
+        ),
+
+        React.createElement("div", { style: { maxWidth: 1440, margin: "0 auto", padding: "24px 32px" } },
+
+          tab === "profile" && React.createElement(React.Fragment, null,
+
+            React.createElement("div", {
+              style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginBottom: 24 }
+            },
+              React.createElement(SC, { label: "Planned Workforce", value: E.length, sub: "Core planned positions" }),
+              React.createElement(SC, { label: "Confirmed Workforce", value: tN, sub: "Named personnel only" }),
+              React.createElement(SC, { label: "Open Positions", value: tT, sub: "Still to be confirmed" }),
+              React.createElement(SC, { label: "Contingency Depth", value: CONTINGENCY.total, sub: "Separate backup workforce" }),
+              React.createElement(SC, { label: "Avg Trade Experience", value: `${aT} yrs`, sub: "Named personnel only" }),
+              React.createElement(SC, { label: "Avg Shutdown Experience", value: `${aS} yrs`, sub: "Named personnel only" })
+            ),
+
+            React.createElement("div", {
+              style: { marginTop: -8, marginBottom: 24, fontSize: 11, color: SRG_GREY, fontStyle: "italic" }
+            }, "Contingency is shown separately in headcount summary and trade-group manning only. It is excluded from planned workforce, fulfilment and risk calculations."),
+
+            renderKeyContacts(),
+
+            React.createElement("div", {
+              style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto", marginBottom: 24 }
+            },
+              React.createElement("div", {
+                style: { padding: "18px 24px", borderBottom: `2px solid ${SRG_RED}`, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, color: SRG_DARK }
+              }, "By-Trade Workforce Summary"),
+              React.createElement("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 12 } },
+                React.createElement("thead", null,
+                  React.createElement("tr", { style: { background: "#FAFAFA", borderBottom: `1px solid ${SRG_BORDER}` } },
+                    React.createElement("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Trade Group"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Planned"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Confirmed"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Gap"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Contingency"),
+                    React.createElement("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Readiness")
+                  )
+                ),
+                React.createElement("tbody", null,
+                  tradeSummary.map((r, i) =>
+                    React.createElement("tr", {
+                      key: r.group,
+                      style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" }
+                    },
+                      React.createElement("td", { style: { padding: "10px 12px", fontWeight: 700, color: SRG_DARK } }, r.group),
+                      React.createElement("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700 } }, r.planned),
+                      React.createElement("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700 } }, r.confirmed),
+                      React.createElement("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700, color: r.gap > 0 ? RH : SRG_DARK } }, r.gap),
+                      React.createElement("td", { style: { padding: "10px 8px", textAlign: "center", fontWeight: 700, color: r.contingency > 0 ? SRG_DARK : "#B0B0B0" } }, r.contingency || "–"),
+                      React.createElement("td", { style: { padding: "10px 12px" } }, React.createElement(ReadinessPill, { text: r.readiness, color: r.readinessColor }))
+                    )
+                  )
+                )
+              )
+            ),
+
+            React.createElement("div", {
+              style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }
+            },
+              React.createElement("div", {
+                style: { background: "white", padding: 24, boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}` }
+              },
+                React.createElement("div", {
+                  style: { fontSize: 11, fontWeight: 700, marginBottom: 16, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1 }
+                }, "Manning by Trade Group"),
+                React.createElement(ResponsiveContainer, { width: "100%", height: 260 },
+                  React.createElement(BarChart, { data: rgd, margin: { top: 5, right: 5, left: -15, bottom: 50 } },
+                    React.createElement(CartesianGrid, { strokeDasharray: "3 3", stroke: "#EEE", vertical: false }),
+                    React.createElement(XAxis, {
+                      dataKey: "name",
+                      tick: { fontSize: 10, fill: SRG_GREY },
+                      angle: -35,
+                      textAnchor: "end",
+                      height: 70,
+                      interval: 0
+                    }),
+                    React.createElement(YAxis, { tick: { fontSize: 10, fill: SRG_GREY }, allowDecimals: false }),
+                    React.createElement(Tooltip, { cursor: { fill: "#F5F5F5" } }),
+                    React.createElement(Bar, { dataKey: "filled", name: "Confirmed", fill: SRG_DARK, stackId: "a" }),
+                    React.createElement(Bar, { dataKey: "tbc", name: "TBC", fill: SRG_RED, stackId: "a" }),
+                    React.createElement(Bar, { dataKey: "contingency", name: "Contingency", fill: "#9CA3AF", stackId: "b" }),
+                    React.createElement(Legend, { wrapperStyle: { fontSize: 11, paddingTop: 8 } })
+                  )
+                )
+              ),
+              React.createElement("div", {
+                style: { background: "white", padding: 24, boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}` }
+              },
+                React.createElement("div", {
+                  style: { fontSize: 11, fontWeight: 700, marginBottom: 16, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1 }
+                }, "Shift Distribution & Ticket Coverage"),
+                React.createElement("div", { style: { display: "flex", gap: 16, alignItems: "center" } },
+                  React.createElement("div", { style: { width: "42%", display: "flex", flexDirection: "column", alignItems: "center" } },
+                    React.createElement(ResponsiveContainer, { width: "100%", height: 170 },
+                      React.createElement(PieChart, null,
+                        React.createElement(Pie, {
+                          data: sd,
+                          cx: "50%",
+                          cy: "50%",
+                          innerRadius: 45,
+                          outerRadius: 72,
+                          dataKey: "value",
+                          label: false,
+                          labelLine: false
+                        },
+                          sd.map((_, i) => React.createElement(Cell, { key: i, fill: i === 0 ? SRG_DARK : SRG_RED }))
+                        )
+                      )
+                    ),
+                    React.createElement("div", { style: { display: "flex", gap: 12, marginTop: 8, fontSize: 11 } },
+                      sd.map((s, i) => React.createElement("div", {
+                        key: i,
+                        style: { display: "flex", alignItems: "center", gap: 5 }
+                      },
+                        React.createElement("div", {
+                          style: { width: 10, height: 10, background: i === 0 ? SRG_DARK : SRG_RED }
+                        }),
+                        React.createElement("span", { style: { color: SRG_GREY, fontWeight: 600 } }, `${s.name}: ${s.value}`)
+                      ))
+                    )
+                  ),
+                  React.createElement("div", { style: { flex: 1 } },
+                    Object.entries(tc).map(([k, v]) =>
+                      React.createElement("div", {
+                        key: k,
+                        style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }
+                      },
+                        React.createElement("div", {
+                          style: { width: 32, fontSize: 10, fontWeight: 600, color: SRG_GREY }
+                        }, k),
+                        React.createElement("div", {
+                          style: { flex: 1, height: 10, background: "#EEE", overflow: "hidden" }
+                        },
+                          React.createElement("div", {
+                            style: {
+                              height: "100%",
+                              width: `${v / E.length * 100}%`,
+                              background: v / E.length > 0.5 ? SRG_DARK : v / E.length > 0.25 ? RM : SRG_RED
+                            }
+                          })
+                        ),
+                        React.createElement("div", {
+                          style: { fontSize: 10, fontWeight: 700, width: 28, textAlign: "right", color: SRG_DARK }
+                        }, `${Math.round(v / E.length * 100)}%`)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+
+            React.createElement("div", {
+              style: { display: "flex", gap: 12, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }
+            },
+              React.createElement("span", {
+                style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8 }
+              }, "Filter:"),
+              React.createElement("select", {
+                value: fG,
+                onChange: e => sfG(e.target.value),
+                style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 12, background: "white", color: SRG_DARK }
+              },
+                React.createElement("option", { value: "All" }, "All Groups"),
+                groups.map(g => React.createElement("option", { key: g, value: g }, g))
+              ),
+              React.createElement("select", {
+                value: fS,
+                onChange: e => sfS(e.target.value),
+                style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 12, background: "white", color: SRG_DARK }
+              },
+                React.createElement("option", { value: "All" }, "All Shifts"),
+                React.createElement("option", { value: "Day" }, "Day Shift"),
+                React.createElement("option", { value: "Night" }, "Night Shift")
+              ),
+              fT.length > 0 && React.createElement("button", {
+                onClick: () => sfT([]),
+                style: {
+                  padding: "6px 12px",
+                  border: `1px solid ${SRG_RED}`,
+                  fontSize: 11,
+                  cursor: "pointer",
+                  background: "white",
+                  color: SRG_RED,
+                  fontWeight: 600
+                }
+              }, "Clear tickets ✕"),
+              React.createElement("span", {
+                style: { fontSize: 11, color: SRG_GREY, marginLeft: "auto", fontWeight: 600 }
+              }, `${filtered.length} personnel shown`)
+            ),
+
+            React.createElement("div", {
+              style: { display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }
+            },
+              React.createElement("span", {
+                style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, marginRight: 4, textTransform: "uppercase", letterSpacing: 0.8 }
+              }, "Tickets:"),
+              [
+                { key: "cse", label: "CSE" },
+                { key: "wah", label: "WAH" },
+                { key: "ewp", label: "EWP" },
+                { key: "tele", label: "Telehandler" },
+                { key: "fork", label: "Forklift" },
+                { key: "hr", label: "HR Licence" },
+                { key: "dog", label: "Dogging" },
+                { key: "rig", label: "Rigging" },
+                { key: "gta", label: "Gas Test" },
+                { key: "fa", label: "First Aid" }
+              ].map(t => {
+                const a = fT.includes(t.key);
+                return React.createElement("button", {
+                  key: t.key,
+                  onClick: () => toggle(t.key),
+                  style: {
+                    padding: "5px 12px",
+                    border: a ? `2px solid ${SRG_RED}` : `1px solid ${SRG_BORDER}`,
+                    cursor: "pointer",
+                    fontSize: 11,
+                    fontWeight: a ? 700 : 500,
+                    background: a ? SRG_RED : "white",
+                    color: a ? "white" : SRG_DARK
+                  }
+                }, t.label + (a ? ` (${filtered.length})` : ""));
+              })
+            ),
+
+            React.createElement("div", {
+              style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto" }
+            },
+              React.createElement("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 11 } },
+                React.createElement("thead", null,
+                  React.createElement("tr", { style: { background: SRG_DARK, color: "white" } },
+                    React.createElement("th", { style: { padding: "12px 12px", textAlign: "left", fontWeight: 700, position: "sticky", left: 0, background: SRG_DARK, zIndex: 1, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Name"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Role"),
+                    React.createElement("th", { style: { padding: "12px 6px", textAlign: "center", fontWeight: 700, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Shift"),
+                    React.createElement("th", { style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" } }, "Days"),
+                    React.createElement("th", { style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" } }, React.createElement(React.Fragment, null, "Trade", React.createElement("br"), "Yrs")),
+                    React.createElement("th", { style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" } }, React.createElement(React.Fragment, null, "S/D", React.createElement("br"), "Yrs")),
+                    TC.map(t => React.createElement("th", {
+                      key: t.key,
+                      style: { padding: "12px 4px", textAlign: "center", fontWeight: 700, fontSize: 9, textTransform: "uppercase" }
+                    }, t.label)),
+                    React.createElement("th", { style: { padding: "12px 12px", textAlign: "left", fontWeight: 700, minWidth: 240, textTransform: "uppercase", fontSize: 10, letterSpacing: 0.5 } }, "Summary")
+                  )
+                ),
+                React.createElement("tbody", null,
+                  filtered.map((e, i) => {
+                    const isTBC = e.name.startsWith("TBC");
+                    const bg = isTBC ? "#FFF9E6" : i % 2 === 0 ? "#FAFAFA" : "white";
+                    return React.createElement("tr", {
+                      key: e.id,
+                      style: { background: bg, borderBottom: `1px solid ${SRG_BORDER}` }
+                    },
+                      React.createElement("td", {
+                        style: { padding: "9px 12px", fontWeight: 700, color: isTBC ? RM : SRG_DARK, whiteSpace: "nowrap", position: "sticky", left: 0, background: bg, zIndex: 1 }
+                      }, e.name),
+                      React.createElement("td", { style: { padding: "9px 8px", color: SRG_GREY, whiteSpace: "nowrap" } }, e.role),
+                      React.createElement("td", { style: { padding: "9px 6px", textAlign: "center" } },
+                        React.createElement("span", {
+                          style: {
+                            padding: "3px 8px",
+                            fontSize: 9,
+                            fontWeight: 700,
+                            background: e.shift === "Day" ? "#E8F0FE" : SRG_DARK,
+                            color: e.shift === "Day" ? "#1E40AF" : "white",
+                            textTransform: "uppercase",
+                            letterSpacing: 0.3
+                          }
+                        }, e.shift)
+                      ),
+                      React.createElement("td", { style: { padding: "9px 4px", textAlign: "center", fontWeight: 700 } }, e.days),
+                      React.createElement("td", {
+                        style: { padding: "9px 4px", textAlign: "center", fontWeight: 700, color: e.ty >= 10 ? RL : e.ty >= 3 ? SRG_DARK : "#B0B0B0" }
+                      }, e.ty || "–"),
+                      React.createElement("td", {
+                        style: { padding: "9px 4px", textAlign: "center", fontWeight: 700, color: e.sy >= 5 ? RL : e.sy >= 2 ? SRG_DARK : "#B0B0B0" }
+                      }, e.sy || "–"),
+                      TC.map(t => {
+                        const v = e[t.key];
+                        return React.createElement("td", {
+                          key: t.key,
+                          style: { padding: "9px 4px", textAlign: "center", fontSize: t.key === "rig" ? 8 : 13, color: t.key === "rig" ? SRG_GREY : SRG_RED, fontWeight: t.key === "rig" ? 600 : 400 }
+                        }, t.key === "rig" ? (v || "") : (v ? "✓" : ""));
+                      }),
+                      React.createElement("td", { style: { padding: "9px 12px", fontSize: 11, color: SRG_GREY, lineHeight: 1.5 } }, e.sum)
+                    );
+                  })
+                )
+              )
+            )
+          ),
+
+          tab === "risk" && React.createElement(React.Fragment, null,
+
+            React.createElement("div", {
+              style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginBottom: 24 }
+            },
+              React.createElement(SC, { label: "Total Risks Identified", value: risks.length }),
+              React.createElement(SC, { label: "High Risk", value: risks.filter(r => r.level === "HIGH").length, sub: "Unfilled positions" }),
+              React.createElement(SC, { label: "Medium Risk", value: risks.filter(r => r.level === "MED").length, sub: "Experience / documentation gaps" }),
+              React.createElement(SC, { label: "Low Risk", value: risks.filter(r => r.level === "LOW").length, sub: "Ticket coverage gaps" })
+            ),
+
+            React.createElement("div", {
+              style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto", marginBottom: 24 }
+            },
+              React.createElement("div", {
+                style: { padding: "18px 24px", borderBottom: `2px solid ${SRG_RED}`, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, color: SRG_DARK }
+              }, "Risk Register"),
+              React.createElement("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 12 } },
+                React.createElement("thead", null,
+                  React.createElement("tr", { style: { background: "#FAFAFA", borderBottom: `1px solid ${SRG_BORDER}` } },
+                    React.createElement("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, width: 75, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Level"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "left", fontWeight: 700, width: 130, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Trade Group"),
+                    React.createElement("th", { style: { padding: "12px 8px", textAlign: "center", fontWeight: 700, width: 70, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Shift"),
+                    React.createElement("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Issue"),
+                    React.createElement("th", { style: { padding: "12px", textAlign: "left", fontWeight: 700, textTransform: "uppercase", fontSize: 10, color: SRG_GREY, letterSpacing: 0.5 } }, "Recommended Action")
+                  )
+                ),
+                React.createElement("tbody", null,
+                  risks.map((r, i) =>
+                    React.createElement("tr", {
+                      key: i,
+                      style: {
+                        borderBottom: `1px solid ${SRG_BORDER}`,
+                        background: r.level === "HIGH" ? "#FEF2F2" : i % 2 === 0 ? "white" : "#FAFAFA"
+                      }
+                    },
+                      React.createElement("td", { style: { padding: "10px 12px" } }, React.createElement(RB, { level: r.level })),
+                      React.createElement("td", { style: { padding: "10px 8px", fontWeight: 700, color: SRG_DARK } }, r.group),
+                      React.createElement("td", { style: { padding: "10px 8px", textAlign: "center" } },
+                        React.createElement("span", {
+                          style: {
+                            padding: "3px 8px",
+                            fontSize: 10,
+                            fontWeight: 700,
+                            background: r.shift === "Day" ? "#E8F0FE" : SRG_DARK,
+                            color: r.shift === "Day" ? "#1E40AF" : "white",
+                            textTransform: "uppercase"
+                          }
+                        }, r.shift)
+                      ),
+                      React.createElement("td", { style: { padding: "10px 12px", color: SRG_DARK } }, r.issue),
+                      React.createElement("td", { style: { padding: "10px 12px", color: SRG_GREY, fontSize: 11 } }, r.action)
+                    )
+                  )
+                )
+              )
+            ),
+
+            React.createElement("div", {
+              style: { fontWeight: 700, fontSize: 12, marginBottom: 12, textTransform: "uppercase", letterSpacing: 1, color: SRG_GREY }
+            }, "Experience Ranking by Trade Group"),
+
+            React.createElement("div", {
+              style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(360px,1fr))", gap: 16 }
+            },
+              GROUP_ORDER.filter(g => ranked[g] && ranked[g].length > 0).map(g =>
+                React.createElement("div", {
+                  key: g,
+                  style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "hidden" }
+                },
+                  React.createElement("div", {
+                    style: { padding: "14px 18px", background: SRG_DARK, color: "white", fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 0.8, borderBottom: `3px solid ${SRG_RED}` }
+                  }, `${g} (${ranked[g].length})`),
+                  ranked[g].map((e, i) => {
+                    const sc = e.ty + e.sy * 2;
+                    const tier = i === 0 ? "Lead" : sc >= 15 ? "Senior" : sc >= 6 ? "Competent" : "Developing";
+                    const tcl = tier === "Lead" ? RL : tier === "Senior" ? "#0891B2" : tier === "Competent" ? SRG_GREY : RM;
+                    return React.createElement("div", {
+                      key: e.id,
+                      style: {
+                        padding: "10px 18px",
+                        borderBottom: `1px solid ${SRG_BORDER}`,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12
+                      }
+                    },
+                      React.createElement("div", {
+                        style: { width: 24, height: 24, background: SRG_DARK, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }
+                      }, i + 1),
+                      React.createElement("div", { style: { flex: 1, minWidth: 0 } },
+                        React.createElement("div", {
+                          style: { fontSize: 12, fontWeight: 700, color: SRG_DARK, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }
+                        }, e.name),
+                        React.createElement("div", { style: { fontSize: 10, color: SRG_GREY, marginTop: 1 } }, `${e.role} · ${e.shift} · ${e.ty}yr trade · ${e.sy}yr shutdown`)
+                      ),
+                      React.createElement("span", {
+                        style: { padding: "3px 9px", fontSize: 9, fontWeight: 700, color: "white", background: tcl, flexShrink: 0, textTransform: "uppercase", letterSpacing: 0.3 }
+                      }, tier)
+                    );
+                  })
+                )
+              )
+            )
+          ),
+
+          tab === "roster" && React.createElement(React.Fragment, null,
+
+            React.createElement("div", {
+              style: { marginBottom: 16, display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }
+            },
+              React.createElement("div", null,
+                React.createElement("div", {
+                  style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 1 }
+                }, "Shutdown Roster"),
+                React.createElement("div", {
+                  style: { fontSize: 13, color: SRG_DARK, marginTop: 2 }
+                }, `17 April — 04 May 2026 (18 days) · ${filteredRoster.length} rows shown`)
+              ),
+
+              React.createElement("div", {
+                style: { display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }
+              },
+                React.createElement("span", {
+                  style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8 }
+                }, "Filter:"),
+
+                React.createElement("button", {
+                  onClick: () => setRShift("All"),
+                  style: {
+                    padding: "6px 12px",
+                    border: rShift === "All" ? `2px solid ${SRG_RED}` : `1px solid ${SRG_BORDER}`,
+                    background: rShift === "All" ? SRG_RED : "white",
+                    color: rShift === "All" ? "white" : SRG_DARK,
+                    cursor: "pointer",
+                    fontSize: 11,
+                    fontWeight: 700
+                  }
+                }, "All Shifts"),
+
+                React.createElement("button", {
+                  onClick: () => setRShift("Day"),
+                  style: {
+                    padding: "6px 12px",
+                    border: rShift === "Day" ? `2px solid ${SRG_RED}` : `1px solid ${SRG_BORDER}`,
+                    background: rShift === "Day" ? SRG_RED : "white",
+                    color: rShift === "Day" ? "white" : SRG_DARK,
+                    cursor: "pointer",
+                    fontSize: 11,
+                    fontWeight: 700
+                  }
+                }, "Day Shift"),
+
+                React.createElement("button", {
+                  onClick: () => setRShift("Night"),
+                  style: {
+                    padding: "6px 12px",
+                    border: rShift === "Night" ? `2px solid ${SRG_RED}` : `1px solid ${SRG_BORDER}`,
+                    background: rShift === "Night" ? SRG_RED : "white",
+                    color: rShift === "Night" ? "white" : SRG_DARK,
+                    cursor: "pointer",
+                    fontSize: 11,
+                    fontWeight: 700
+                  }
+                }, "Night Shift"),
+
+                React.createElement("select", {
+                  value: rRole,
+                  onChange: e => setRRole(e.target.value),
+                  style: {
+                    padding: "7px 12px",
+                    border: `1px solid ${SRG_BORDER}`,
+                    fontSize: 11,
+                    background: "white",
+                    color: SRG_DARK,
+                    minWidth: 180
+                  }
+                },
+                  React.createElement("option", { value: "All" }, "All Positions"),
+                  rosterRoles.map(role => React.createElement("option", { key: role, value: role }, role))
+                )
+              ),
+
+              React.createElement("div", { style: { display: "flex", gap: 12, fontSize: 10, flexWrap: "wrap" } },
+                [
+                  { code: "DS", label: "Day Shift", bg: "#E8F0FE", fg: "#1E40AF" },
+                  { code: "NS", label: "Night Shift", bg: SRG_DARK, fg: "white" },
+                  { code: "FIA", label: "Fly In AM", bg: "#DCFCE7", fg: "#166534" },
+                  { code: "FOP", label: "Fly Out PM", bg: "#FEF3C7", fg: "#92400E" },
+                  { code: "FOA", label: "Fly Out AM", bg: "#FEF3C7", fg: "#92400E" },
+                  { code: "DIP", label: "Drive In PM", bg: "#DCFCE7", fg: "#166534" },
+                  { code: "DOP", label: "Drive Out PM", bg: "#FEF3C7", fg: "#92400E" }
+                ].map(l =>
+                  React.createElement("div", { key: l.code, style: { display: "flex", alignItems: "center", gap: 4 } },
+                    React.createElement("span", {
+                      style: { padding: "2px 6px", fontSize: 9, fontWeight: 700, background: l.bg, color: l.fg }
+                    }, l.code),
+                    React.createElement("span", { style: { color: SRG_GREY } }, l.label)
+                  )
+                )
+              )
+            ),
+
+            React.createElement("div", {
+              style: { background: "white", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: `1px solid ${SRG_BORDER}`, overflow: "auto" }
+            },
+              React.createElement("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: 10 } },
+                React.createElement("thead", null,
+                  React.createElement("tr", { style: { background: SRG_DARK, color: "white" } },
+                    React.createElement("th", {
+                      style: { padding: "10px 12px", textAlign: "left", fontWeight: 700, position: "sticky", left: 0, background: SRG_DARK, zIndex: 2, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, minWidth: 150 }
+                    }, "Name"),
+                    React.createElement("th", {
+                      style: { padding: "10px 8px", textAlign: "left", fontWeight: 700, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, minWidth: 130 }
+                    }, "Role"),
+                    React.createElement("th", {
+                      style: { padding: "10px 8px", textAlign: "left", fontWeight: 700, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, minWidth: 100 }
+                    }, "Notes"),
+                    DATES.map((d, i) => React.createElement("th", {
+                      key: i,
+                      style: { padding: "8px 2px", textAlign: "center", fontWeight: 700, fontSize: 9, borderLeft: "1px solid #2D2D2D", minWidth: 38 }
+                    },
+                      React.createElement("div", { style: { fontSize: 8, opacity: 0.6, fontWeight: 500 } }, DOW[i]),
+                      React.createElement("div", null, d)
+                    ))
+                  )
+                ),
+                React.createElement("tbody", null,
+                  filteredRoster.map((r, ri) => {
+                    const isTBC = r.name === "TBC";
+                    const bg = isTBC ? "#FFF9E6" : ri % 2 === 0 ? "#FAFAFA" : "white";
+                    return React.createElement("tr", {
+                      key: ri,
+                      style: { background: bg, borderBottom: `1px solid ${SRG_BORDER}` }
+                    },
+                      React.createElement("td", {
+                        style: { padding: "8px 12px", fontWeight: 700, color: isTBC ? RM : SRG_DARK, whiteSpace: "nowrap", position: "sticky", left: 0, background: bg, zIndex: 1, fontSize: 11 }
+                      }, r.name),
+                      React.createElement("td", { style: { padding: "8px", color: SRG_GREY, whiteSpace: "nowrap", fontSize: 10 } }, r.role),
+                      React.createElement("td", { style: { padding: "8px", color: SRG_GREY, fontSize: 9, fontStyle: "italic" } }, r.notes),
+                      r.codes.map((c, ci) => {
+                        let bgC = "transparent", fgC = SRG_GREY;
+                        if (c === "DS") { bgC = "#E8F0FE"; fgC = "#1E40AF"; }
+                        else if (c === "NS") { bgC = SRG_DARK; fgC = "white"; }
+                        else if (c === "FIA" || c === "DIP") { bgC = "#DCFCE7"; fgC = "#166534"; }
+                        else if (c === "FOP" || c === "FOA" || c === "DOP") { bgC = "#FEF3C7"; fgC = "#92400E"; }
+                        return React.createElement("td", {
+                          key: ci,
+                          style: {
+                            padding: "6px 2px",
+                            textAlign: "center",
+                            borderLeft: `1px solid ${SRG_BORDER}`,
+                            background: bgC,
+                            color: fgC,
+                            fontWeight: 700,
+                            fontSize: 9
+                          }
+                        }, c);
+                      })
+                    );
+                  })
+                )
+              )
+            ),
+
+            React.createElement("div", {
+              style: { marginTop: 16, padding: 14, background: "white", borderLeft: `3px solid ${SRG_RED}`, fontSize: 11, color: SRG_GREY, border: `1px solid ${SRG_BORDER}` }
+            },
+              React.createElement("span", { style: { fontWeight: 700, color: SRG_DARK } }, "Shift Codes: "),
+              "DS = Day Shift, NS = Night Shift, FIA = Fly In AM, FOP = Fly Out PM, FOA = Fly Out AM, DIP = Drive In PM, DOP = Drive Out PM. Roster as supplied by Covalent shutdown team. Source of truth: Covalent Shutdown Roster.xlsx."
+            )
+          ),
+
+          tab === "gantt" && (() => {
+            const totalMs = GANTT_END - GANTT_START;
+            const msToPct = d => Math.max(0, Math.min(100, ((new Date(d) - GANTT_START) / totalMs) * 100));
+            const filteredTasks = GANTT_TASKS.filter(t => {
+              if (gAreaFilter !== "All" && t.area !== gAreaFilter) return false;
+              if (gStatusFilter !== "All") {
+                const s = getTaskState(t.id).status;
+                if (s !== gStatusFilter) return false;
+              }
+              if (gDateFilter) {
+                const dayStart = new Date(gDateFilter); dayStart.setHours(0,0,0,0);
+                const dayEnd = new Date(dayStart); dayEnd.setDate(dayEnd.getDate() + 1);
+                const ts = new Date(t.start), tf = new Date(t.finish);
+                if (tf <= dayStart || ts >= dayEnd) return false;
+              }
+              return true;
+            });
+            const statusCounts = TASK_STATUSES.reduce((acc, s) => {
+              acc[s.key] = GANTT_TASKS.filter(t => getTaskState(t.id).status === s.key).length;
+              return acc;
+            }, {});
+            const overallPct = Math.round(GANTT_TASKS.reduce((s, t) => s + (getTaskState(t.id).percent || 0), 0) / GANTT_TASKS.length);
+            const days = [];
+            for (let d = new Date(GANTT_START); d < GANTT_END; d.setDate(d.getDate() + 1)) {
+              days.push(new Date(d));
+            }
+            const selectedTask = GANTT_TASKS.find(t => t.id === selectedTaskId);
+            const selectedState = selectedTask ? getTaskState(selectedTask.id) : null;
+
+            const renderEditPanel = (task, state) => {
+              const actual = state.actualHours;
+              const actualNum = parseFloat(actual);
+              const hasActual = !isNaN(actualNum);
+              const variance = hasActual ? actualNum - task.duration : 0;
+              const varColor = !hasActual ? SRG_GREY : variance > 0 ? "#DC2626" : variance < 0 ? "#16A34A" : SRG_DARK;
+              const varLabel = !hasActual ? "—" : (variance > 0 ? "+" : "") + variance.toFixed(1) + "hr";
+              const statusMeta = TASK_STATUSES.find(s => s.key === (state.status || "not-started")) || TASK_STATUSES[0];
+              const assigned = state.assignedWorkers || [];
+              const assignedNames = assigned.map(a => {
+                if (typeof a === "string") {
+                  const w = E.find(x => x.id === a);
+                  return w ? w.name : a;
+                }
+                if (a && typeof a === "object") return a.DisplayName || a.displayName || a.name || "";
+                return "";
+              }).filter(Boolean);
+              const fieldLabel = { display: "block", fontSize: 10, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 };
+              const fieldValue = { fontSize: 13, color: SRG_DARK, fontWeight: 600, padding: "6px 0", minHeight: 20 };
+              return React.createElement("div", {
+                key: "edit-" + task.id,
+                style: { background: "white", border: `1px solid ${SRG_BORDER}`, borderLeft: `4px solid ${SRG_RED}`, borderTop: "none", padding: 18, marginBottom: 0 }
+              },
+                React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14, flexWrap: "wrap", gap: 8 } },
+                  React.createElement("div", null,
+                    React.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: SRG_RED, textTransform: "uppercase", letterSpacing: 1 } }, "Work Order Details"),
+                    React.createElement("div", { style: { fontSize: 11, color: "#8C8C8C", marginTop: 2 } },
+                      "Scheduled: " + new Date(task.start).toLocaleString("en-AU") + " → " + new Date(task.finish).toLocaleString("en-AU")
+                    ),
+                    React.createElement("div", { style: { fontSize: 10, color: "#8C8C8C", marginTop: 2, fontStyle: "italic" } },
+                      "Read-only view. Updates are made in Power Apps / SharePoint and appear here on the next sync."
+                    )
+                  ),
+                  React.createElement("button", {
+                    onClick: () => setSelectedTaskId(null),
+                    style: { border: `1px solid ${SRG_BORDER}`, background: "white", color: SRG_GREY, padding: "4px 10px", cursor: "pointer", fontSize: 14, fontWeight: 700 }
+                  }, "✕ Close")
+                ),
+                React.createElement("div", {
+                  style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 14, marginBottom: 14 }
+                },
+                  React.createElement("div", null,
+                    React.createElement("div", { style: fieldLabel }, "Status"),
+                    React.createElement("div", { style: { display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 10px", background: "white", border: `1px solid ${SRG_BORDER}`, borderLeft: `4px solid ${statusMeta.color}`, fontSize: 13, fontWeight: 700, color: SRG_DARK } },
+                      statusMeta.label
+                    )
+                  ),
+                  React.createElement("div", null,
+                    React.createElement("div", { style: fieldLabel }, "% Complete"),
+                    React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10 } },
+                      React.createElement("div", { style: { flex: 1, height: 8, background: "#F3F4F6", border: `1px solid ${SRG_BORDER}`, position: "relative", overflow: "hidden" } },
+                        React.createElement("div", { style: { width: (state.percent || 0) + "%", height: "100%", background: statusMeta.color, transition: "width .2s" } })
+                      ),
+                      React.createElement("div", { style: { fontSize: 14, fontWeight: 700, color: SRG_DARK, minWidth: 44, textAlign: "right" } }, (state.percent || 0) + "%")
+                    )
+                  ),
+                  React.createElement("div", null,
+                    React.createElement("div", { style: fieldLabel }, "Updated By"),
+                    React.createElement("div", { style: fieldValue }, state.updatedBy || "—")
+                  )
+                ),
+                React.createElement("div", {
+                  style: { background: "#FAFAFA", border: `1px solid ${SRG_BORDER}`, padding: 12, marginBottom: 14 }
+                },
+                  React.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 } }, "Time Confirmation"),
+                  React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: 12, alignItems: "end" } },
+                    React.createElement("div", null,
+                      React.createElement("div", { style: { fontSize: 9, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 4 } }, "Planned Hours"),
+                      React.createElement("div", { style: { fontSize: 22, fontWeight: 800, color: SRG_DARK, lineHeight: 1 } }, task.duration + " hr")
+                    ),
+                    React.createElement("div", null,
+                      React.createElement("div", { style: { fontSize: 9, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 4 } }, "Actual Hours"),
+                      React.createElement("div", { style: { fontSize: 22, fontWeight: 800, color: SRG_DARK, lineHeight: 1 } }, hasActual ? actualNum.toFixed(2) + " hr" : "—")
+                    ),
+                    React.createElement("div", null,
+                      React.createElement("div", { style: { fontSize: 9, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 4 } }, "Variance"),
+                      React.createElement("div", { style: { fontSize: 22, fontWeight: 800, color: varColor, lineHeight: 1 } }, varLabel),
+                      hasActual && variance !== 0 && React.createElement("div", { style: { fontSize: 9, color: varColor, marginTop: 2, fontWeight: 600 } }, variance > 0 ? "Over schedule" : "Under schedule")
+                    )
+                  )
+                ),
+                (state.status === "delayed" || state.status === "blocked") && React.createElement("div", { style: { marginBottom: 14 } },
+                  React.createElement("div", { style: fieldLabel }, "Delay / Blocker Reason"),
+                  React.createElement("div", { style: { padding: "8px 10px", background: "#FFF5F5", border: `1px solid ${SRG_BORDER}`, fontSize: 13, color: SRG_DARK, whiteSpace: "pre-wrap" } },
+                    state.delayReason || "—"
+                  )
+                ),
+                React.createElement("div", { style: { marginBottom: 14 } },
+                  React.createElement("div", { style: fieldLabel }, `Assigned Workers · ${task.shift} Shift · ${assignedNames.length} assigned`),
+                  assignedNames.length === 0
+                    ? React.createElement("div", { style: { fontSize: 12, color: SRG_GREY, fontStyle: "italic", padding: "4px 0" } }, "None assigned")
+                    : React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", padding: "8px 10px", background: "#FFF5F5", border: `1px solid ${SRG_BORDER}` } },
+                        assignedNames.map((name, i) => React.createElement("span", {
+                          key: i,
+                          style: { padding: "3px 8px", fontSize: 11, fontWeight: 700, color: "white", background: SRG_RED }
+                        }, name))
+                      )
+                ),
+                React.createElement("div", { style: { marginBottom: 12 } },
+                  React.createElement("div", { style: fieldLabel }, "Notes"),
+                  React.createElement("div", { style: { padding: "8px 10px", background: "#FAFAFA", border: `1px solid ${SRG_BORDER}`, fontSize: 13, color: SRG_DARK, minHeight: 40, whiteSpace: "pre-wrap" } },
+                    state.notes || React.createElement("span", { style: { color: SRG_GREY, fontStyle: "italic" } }, "No notes")
+                  )
+                ),
+                React.createElement("div", { style: { marginTop: 8 } },
+                  React.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 } }, "Sub-tasks / Work Steps"),
+                  React.createElement("ul", { style: { listStyle: "none", padding: 0, margin: 0 } },
+                    task.subtasks.map((st, i) => React.createElement("li", {
+                      key: i,
+                      style: { padding: "6px 10px", background: "#FAFAFA", borderLeft: `3px solid ${SRG_DARK}`, marginBottom: 4, fontSize: 12, color: SRG_DARK }
+                    }, st))
+                  )
+                ),
+                state.lastUpdated && React.createElement("div", {
+                  style: { marginTop: 12, fontSize: 10, color: "#8C8C8C", fontStyle: "italic" }
+                }, "Last updated: " + new Date(state.lastUpdated).toLocaleString("en-AU") + (state.updatedBy ? ` by ${state.updatedBy}` : ""))
+              );
+            };
+
+            return React.createElement(React.Fragment, null,
+
+              React.createElement("div", {
+                style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 12, marginBottom: 16 }
+              },
+                React.createElement(SC, { label: "Total Work Orders", value: GANTT_TASKS.length, sub: "Roller crew scope" }),
+                React.createElement(SC, { label: "Overall Progress", value: `${overallPct}%`, sub: "Weighted by task" }),
+                ...TASK_STATUSES.map(s => React.createElement("div", {
+                  key: s.key,
+                  style: { background: "white", borderLeft: `3px solid ${s.color}`, padding: "14px 18px", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }
+                },
+                  React.createElement("div", { style: { fontSize: 22, fontWeight: 800, color: SRG_DARK, lineHeight: 1.1 } }, statusCounts[s.key]),
+                  React.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: SRG_GREY, marginTop: 3, textTransform: "uppercase", letterSpacing: 0.5 } }, s.label)
+                ))
+              ),
+
+              React.createElement("div", {
+                style: { display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }
+              },
+                React.createElement("span", {
+                  style: { fontSize: 11, fontWeight: 700, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.8 }
+                }, "Filter:"),
+                React.createElement("select", {
+                  value: gAreaFilter,
+                  onChange: e => setGAreaFilter(e.target.value),
+                  style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 12, background: "white", color: SRG_DARK }
+                },
+                  React.createElement("option", { value: "All" }, "All Areas"),
+                  GANTT_AREAS.map(a => React.createElement("option", { key: a.id, value: a.id }, a.name))
+                ),
+                React.createElement("select", {
+                  value: gStatusFilter,
+                  onChange: e => setGStatusFilter(e.target.value),
+                  style: { padding: "7px 12px", border: `1px solid ${SRG_BORDER}`, fontSize: 12, background: "white", color: SRG_DARK }
+                },
+                  React.createElement("option", { value: "All" }, "All Statuses"),
+                  TASK_STATUSES.map(s => React.createElement("option", { key: s.key, value: s.key }, s.label))
+                ),
+                gDateFilter && React.createElement("button", {
+                  onClick: () => setGDateFilter(null),
+                  style: { padding: "6px 10px", border: `1px solid ${SRG_RED}`, background: SRG_RED, color: "white", fontWeight: 700, fontSize: 11, cursor: "pointer" }
+                }, `${new Date(gDateFilter).toLocaleDateString("en-AU", { weekday: "short", day: "2-digit", month: "short" })}  ✕`),
+                React.createElement("span", {
+                  style: { fontSize: 11, color: SRG_GREY, fontWeight: 600 }
+                }, `${filteredTasks.length} of ${GANTT_TASKS.length} work orders`),
+                React.createElement("div", { style: { marginLeft: "auto", display: "flex", gap: 8, alignItems: "center" } },
+                  React.createElement("span", {
+                    style: {
+                      fontSize: 10,
+                      fontWeight: 700,
+                      color: syncState.status === "error" ? "#DC2626" : syncState.status === "syncing" ? "#F59E0B" : syncState.status === "ok" ? "#16A34A" : SRG_GREY,
+                      textTransform: "uppercase",
+                      letterSpacing: 0.5
+                    },
+                    title: syncState.error || (syncState.lastSync ? "Last synced: " + new Date(syncState.lastSync).toLocaleString("en-AU") : "")
+                  },
+                    syncState.status === "syncing" ? "● Syncing…" :
+                    syncState.status === "error" ? "● Sync error" :
+                    syncState.status === "ok" && syncState.lastSync ? `● Synced ${new Date(syncState.lastSync).toLocaleTimeString("en-AU", { hour: "2-digit", minute: "2-digit" })}` :
+                    "● Not synced"
+                  ),
+                  React.createElement("button", {
+                    onClick: syncFromSharePoint,
+                    disabled: syncState.status === "syncing",
+                    style: { padding: "6px 12px", border: `1px solid ${SRG_RED}`, background: SRG_RED, color: "white", fontWeight: 700, fontSize: 11, cursor: syncState.status === "syncing" ? "not-allowed" : "pointer", textTransform: "uppercase", letterSpacing: 0.5, opacity: syncState.status === "syncing" ? 0.6 : 1 }
+                  }, "↻ Refresh")
+                )
+              ),
+
+              React.createElement("div", {
+                style: { background: "white", border: `1px solid ${SRG_BORDER}`, boxShadow: "0 1px 2px rgba(0,0,0,0.04)", marginBottom: 16, overflow: "hidden" }
+              },
+                React.createElement("div", {
+                  style: { display: "grid", gridTemplateColumns: "280px 80px 1fr", borderBottom: `2px solid ${SRG_DARK}`, background: SRG_DARK, color: "white" }
+                },
+                  React.createElement("div", { style: { padding: "10px 12px", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 } }, "Work Order"),
+                  React.createElement("div", { style: { padding: "10px 6px", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, textAlign: "center" } }, "Status"),
+                  React.createElement("div", {
+                    style: { display: "grid", gridTemplateColumns: `repeat(${days.length}, 1fr)`, borderLeft: "1px solid #2D2D2D" }
+                  },
+                    days.map((d, i) => {
+                      const isSel = gDateFilter && new Date(gDateFilter).toDateString() === d.toDateString();
+                      return React.createElement("div", {
+                        key: i,
+                        onClick: () => setGDateFilter(isSel ? null : d.toISOString()),
+                        title: isSel ? "Click to clear date filter" : "Click to filter by this day",
+                        style: { padding: "4px 2px", fontSize: 9, fontWeight: 700, textAlign: "center", borderLeft: i > 0 ? "1px solid #2D2D2D" : "none", cursor: "pointer", background: isSel ? SRG_RED : "transparent", transition: "background .15s" }
+                      },
+                        React.createElement("div", { style: { opacity: isSel ? 0.9 : 0.6, fontWeight: 500 } }, d.toLocaleDateString("en-AU", { weekday: "short" })),
+                        React.createElement("div", null, (d.getDate() + "").padStart(2, "0") + "/" + ((d.getMonth() + 1) + "").padStart(2, "0"))
+                      );
+                    })
+                  )
+                ),
+                filteredTasks.length === 0 && React.createElement("div", {
+                  style: { padding: "24px", textAlign: "center", color: SRG_GREY, fontSize: 12, fontStyle: "italic" }
+                }, "No work orders match the current filters."),
+                (() => {
+                  const grouped = {};
+                  filteredTasks.forEach(t => {
+                    const s = t.shift || "Day";
+                    const d = t.discipline || "Other";
+                    if (!grouped[s]) grouped[s] = {};
+                    if (!grouped[s][d]) grouped[s][d] = [];
+                    grouped[s][d].push(t);
+                  });
+                  const shiftOrder = ["Day", "Night"];
+                  const rows = [];
+                  let rowIdx = 0;
+                  shiftOrder.forEach(shift => {
+                    if (!grouped[shift]) return;
+                    const shiftCount = Object.values(grouped[shift]).reduce((s, arr) => s + arr.length, 0);
+                    const shiftColor = shift === "Day" ? "#1E40AF" : SRG_DARK;
+                    const shiftBg = shift === "Day" ? "#E8F0FE" : "#1A1A1A";
+                    const shiftFg = shift === "Day" ? "#1E40AF" : "white";
+                    rows.push(React.createElement("div", {
+                      key: `shift-${shift}`,
+                      style: { gridColumn: "1 / -1", background: shiftBg, color: shiftFg, padding: "8px 16px", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, borderTop: `1px solid ${SRG_BORDER}`, borderBottom: `1px solid ${SRG_BORDER}` }
+                    }, `${shift} Shift · ${shiftCount} work order${shiftCount === 1 ? "" : "s"}`));
+                    Object.keys(grouped[shift]).sort().forEach(discipline => {
+                      const tasks = grouped[shift][discipline];
+                      rows.push(React.createElement("div", {
+                        key: `disc-${shift}-${discipline}`,
+                        style: { gridColumn: "1 / -1", background: "#F5F5F5", padding: "6px 16px 6px 24px", fontSize: 10, fontWeight: 700, color: SRG_DARK, textTransform: "uppercase", letterSpacing: 0.8, borderBottom: `1px solid ${SRG_BORDER}` }
+                      }, `${discipline} · ${tasks.length} task${tasks.length === 1 ? "" : "s"}`));
+                      tasks.forEach(t => {
+                        const state = getTaskState(t.id);
+                        const statusMeta = TASK_STATUSES.find(s => s.key === state.status) || TASK_STATUSES[0];
+                        const leftPct = msToPct(t.start);
+                        const rightPct = msToPct(t.finish);
+                        const widthPct = Math.max(1, rightPct - leftPct);
+                        const bgRow = rowIdx % 2 === 0 ? "white" : "#FAFAFA";
+                        rowIdx++;
+                        const isSel = selectedTaskId === t.id;
+                        const assignedCount = (state.assignedWorkers || []).length;
+                        rows.push(React.createElement("div", {
+                          key: t.id,
+                          onClick: () => setSelectedTaskId(t.id),
+                          style: { display: "grid", gridTemplateColumns: "280px 80px 1fr", gridColumn: "1 / -1", borderBottom: `1px solid ${SRG_BORDER}`, background: isSel ? "#FFF5F5" : bgRow, cursor: "pointer" }
+                        },
+                          React.createElement("div", { style: { padding: "10px 12px", borderRight: `1px solid ${SRG_BORDER}` } },
+                            React.createElement("div", { style: { fontSize: 12, fontWeight: 700, color: SRG_DARK, lineHeight: 1.2 } }, t.floc),
+                            React.createElement("div", { style: { fontSize: 10, color: SRG_GREY, marginTop: 2 } }, `${t.name} · ${t.duration}hr`),
+                            React.createElement("div", { style: { fontSize: 9, color: "#8C8C8C", marginTop: 2 } }, `WO ${t.wo} · ${assignedCount > 0 ? `${assignedCount} assigned` : "Unassigned"}`)
+                          ),
+                          React.createElement("div", { style: { padding: "10px 6px", borderRight: `1px solid ${SRG_BORDER}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 3 } },
+                            React.createElement("span", {
+                              style: { padding: "2px 6px", fontSize: 8, fontWeight: 700, color: "white", background: statusMeta.color, textTransform: "uppercase", letterSpacing: 0.3, whiteSpace: "nowrap" }
+                            }, statusMeta.label),
+                            React.createElement("span", { style: { fontSize: 11, fontWeight: 800, color: SRG_DARK } }, `${state.percent || 0}%`)
+                          ),
+                          React.createElement("div", {
+                            style: { position: "relative", padding: "14px 0", minHeight: 44, background: `repeating-linear-gradient(90deg, transparent, transparent calc(${100/days.length}% - 1px), #F0F0F0 calc(${100/days.length}% - 1px), #F0F0F0 ${100/days.length}%)` }
+                          },
+                            React.createElement("div", {
+                              style: { position: "absolute", left: `${leftPct}%`, width: `${widthPct}%`, top: 10, height: 22, background: statusMeta.color, borderRadius: 2, opacity: 0.35, minWidth: 4 }
+                            }),
+                            React.createElement("div", {
+                              style: { position: "absolute", left: `${leftPct}%`, width: `${widthPct * (state.percent || 0) / 100}%`, top: 10, height: 22, background: statusMeta.color, borderRadius: 2, minWidth: (state.percent || 0) > 0 ? 4 : 0 }
+                            })
+                          )
+                        ));
+                        if (selectedTaskId === t.id) {
+                          rows.push(renderEditPanel(t, state));
+                        }
+                      });
+                    });
+                  });
+                  return rows;
+                })()
+              ),
+
+              React.createElement("div", {
+                style: { padding: 14, background: "white", borderLeft: `3px solid ${SRG_RED}`, fontSize: 11, color: SRG_GREY, border: `1px solid ${SRG_BORDER}`, lineHeight: 1.5 }
+              },
+                React.createElement("div", { style: { fontWeight: 700, color: SRG_DARK, marginBottom: 4 } }, "Live sync"),
+                "Dashboard auto-syncs from SharePoint every 5 minutes (via Power Automate → ",
+                React.createElement("code", { style: { fontFamily: "monospace", fontSize: 10 } }, "gantt-status.json"),
+                "). Field supervisors update tasks via Power Apps; their changes appear here on the next sync. Click ",
+                React.createElement("b", null, "↻ Refresh"),
+                " for an instant pull."
+              )
+            );
+          })(),
+
+          tab === "print" && React.createElement(React.Fragment, null,
+
+            React.createElement("div", {
+              style: {
+                background: "white",
+                border: `1px solid ${SRG_BORDER}`,
+                boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
+                padding: 28
+              }
+            },
+
+              React.createElement("div", {
+                style: {
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  gap: 24,
+                  marginBottom: 24,
+                  flexWrap: "wrap"
+                }
+              },
+                React.createElement("div", null,
+                  React.createElement("div", {
+                    style: {
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: SRG_RED,
+                      letterSpacing: 1.2,
+                      textTransform: "uppercase"
+                    }
+                  }, "Client Summary"),
+                  React.createElement("div", {
+                    style: {
+                      fontSize: 26,
+                      fontWeight: 800,
+                      color: SRG_DARK,
+                      lineHeight: 1.15,
+                      marginTop: 4
+                    }
+                  }, "Covalent Lithium — Shutdown Workforce Summary"),
+                  React.createElement("div", {
+                    style: {
+                      fontSize: 13,
+                      color: SRG_GREY,
+                      marginTop: 4
+                    }
+                  }, "Mt Holland · April–May 2026")
+                ),
+
+                React.createElement("button", {
+                  onClick: () => window.print(),
+                  style: {
+                    padding: "10px 16px",
+                    border: `1px solid ${SRG_DARK}`,
+                    background: "white",
+                    color: SRG_DARK,
+                    fontWeight: 700,
+                    fontSize: 12,
+                    cursor: "pointer",
+                    textTransform: "uppercase",
+                    letterSpacing: 0.6
+                  }
+                }, "Print / Save PDF")
+              ),
+
+              React.createElement("div", {
+                style: {
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gap: 12,
+                  marginBottom: 24
+                }
+              },
+                React.createElement(SC, { label: "Planned Workforce", value: E.length, sub: "Core planned positions" }),
+                React.createElement(SC, { label: "Confirmed Workforce", value: tN, sub: "Named personnel only" }),
+                React.createElement(SC, { label: "Open Positions", value: tT, sub: "Still to be confirmed" }),
+                React.createElement(SC, { label: "Contingency Depth", value: CONTINGENCY.total, sub: "Separate backup workforce" })
+              ),
+
+              React.createElement("div", {
+                style: {
+                  display: "grid",
+                  gridTemplateColumns: "1.1fr 0.9fr",
+                  gap: 20,
+                  marginBottom: 24
+                }
+              },
+
+                React.createElement("div", {
+                  style: {
+                    border: `1px solid ${SRG_BORDER}`,
+                    padding: 18
+                  }
+                },
+                  React.createElement("div", {
+                    style: {
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: SRG_GREY,
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      marginBottom: 12
+                    }
+                  }, "By-Trade Summary"),
+                  React.createElement("table", {
+                    style: { width: "100%", borderCollapse: "collapse", fontSize: 11 }
+                  },
+                    React.createElement("thead", null,
+                      React.createElement("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Trade"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Planned"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Confirmed"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Gap"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Cont."),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Readiness")
+                      )
+                    ),
+                    React.createElement("tbody", null,
+                      tradeSummary.map((r, i) =>
+                        React.createElement("tr", {
+                          key: r.group,
+                          style: {
+                            borderBottom: `1px solid ${SRG_BORDER}`,
+                            background: i % 2 === 0 ? "white" : "#FAFAFA"
+                          }
+                        },
+                          React.createElement("td", { style: { padding: "8px 6px", fontWeight: 700 } }, r.group),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.planned),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.confirmed),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", color: r.gap > 0 ? RH : SRG_DARK, fontWeight: 700 } }, r.gap),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.contingency || "–"),
+                          React.createElement("td", { style: { padding: "8px 6px" } }, React.createElement(ReadinessPill, { text: r.readiness, color: r.readinessColor }))
+                        )
+                      )
+                    )
+                  )
+                ),
+
+                React.createElement("div", {
+                  style: {
+                    border: `1px solid ${SRG_BORDER}`,
+                    padding: 18
+                  }
+                },
+                  React.createElement("div", {
+                    style: {
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: SRG_GREY,
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      marginBottom: 12
+                    }
+                  }, "Critical Roles"),
+                  React.createElement("table", {
+                    style: { width: "100%", borderCollapse: "collapse", fontSize: 11 }
+                  },
+                    React.createElement("thead", null,
+                      React.createElement("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Role"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Planned"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Confirmed"),
+                        React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, "Gap")
+                      )
+                    ),
+                    React.createElement("tbody", null,
+                      criticalRoles.map((r, i) =>
+                        React.createElement("tr", {
+                          key: r.role,
+                          style: {
+                            borderBottom: `1px solid ${SRG_BORDER}`,
+                            background: i % 2 === 0 ? "white" : "#FAFAFA"
+                          }
+                        },
+                          React.createElement("td", { style: { padding: "8px 6px", fontWeight: 700 } }, r.role),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.planned),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center" } }, r.confirmed),
+                          React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", color: r.gap > 0 ? RH : SRG_DARK, fontWeight: 700 } }, r.gap)
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+
+              React.createElement("div", {
+                style: {
+                  border: `1px solid ${SRG_BORDER}`,
+                  padding: 18,
+                  marginBottom: 20
+                }
+              },
+                React.createElement("div", {
+                  style: {
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: SRG_GREY,
+                    textTransform: "uppercase",
+                    letterSpacing: 1,
+                    marginBottom: 12
+                  }
+                }, "Key Risks & Mitigations"),
+                React.createElement("table", {
+                  style: { width: "100%", borderCollapse: "collapse", fontSize: 11 }
+                },
+                  React.createElement("thead", null,
+                    React.createElement("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 70 } }, "Level"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 140 } }, "Trade Group"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Issue"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Mitigation")
+                    )
+                  ),
+                  React.createElement("tbody", null,
+                    printRisks.map((r, i) =>
+                      React.createElement("tr", {
+                        key: i,
+                        style: {
+                          borderBottom: `1px solid ${SRG_BORDER}`,
+                          background: i % 2 === 0 ? "white" : "#FAFAFA"
+                        }
+                      },
+                        React.createElement("td", { style: { padding: "8px 6px" } }, React.createElement(RB, { level: r.level })),
+                        React.createElement("td", { style: { padding: "8px 6px", fontWeight: 700 } }, r.group),
+                        React.createElement("td", { style: { padding: "8px 6px" } }, r.issue),
+                        React.createElement("td", { style: { padding: "8px 6px", color: SRG_GREY } }, r.action)
+                      )
+                    )
+                  )
+                )
+              ),
+
+              React.createElement("div", {
+                style: {
+                  border: `1px solid ${SRG_BORDER}`,
+                  padding: 18,
+                  marginBottom: 20,
+                  pageBreakInside: "avoid"
+                }
+              },
+                React.createElement("div", {
+                  style: {
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: SRG_GREY,
+                    textTransform: "uppercase",
+                    letterSpacing: 1,
+                    marginBottom: 12
+                  }
+                }, "Shutdown Progress — by Area"),
+                React.createElement("div", {
+                  style: { display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, marginBottom: 14 }
+                },
+                  React.createElement("div", { style: { border: `1px solid ${SRG_BORDER}`, padding: 10 } },
+                    React.createElement("div", { style: { fontSize: 10, color: SRG_GREY, textTransform: "uppercase", letterSpacing: 0.5 } }, "Overall"),
+                    React.createElement("div", { style: { fontSize: 22, fontWeight: 800, color: SRG_DARK } }, `${progressSummary.overallPct}%`),
+                    React.createElement("div", { style: { fontSize: 10, color: SRG_GREY } }, `${GANTT_TASKS.length} work orders`)
+                  ),
+                  ...TASK_STATUSES.map(s => React.createElement("div", {
+                    key: s.key,
+                    style: { border: `1px solid ${SRG_BORDER}`, padding: 10 }
+                  },
+                    React.createElement("div", { style: { fontSize: 10, color: s.color, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 } }, s.label),
+                    React.createElement("div", { style: { fontSize: 22, fontWeight: 800, color: SRG_DARK } }, progressSummary.statusCounts[s.key]),
+                    React.createElement("div", { style: { fontSize: 10, color: SRG_GREY } }, "work orders")
+                  ))
+                ),
+                React.createElement("table", {
+                  style: { width: "100%", borderCollapse: "collapse", fontSize: 11 }
+                },
+                  React.createElement("thead", null,
+                    React.createElement("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Area"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700, width: 55 } }, "WOs"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700, width: 70 } }, "Complete"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700, width: 80 } }, "In Progress"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700, width: 65 } }, "Delayed"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700, width: 60 } }, "Blocked"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Progress")
+                    )
+                  ),
+                  React.createElement("tbody", null,
+                    progressSummary.areaRows.map((a, i) =>
+                      React.createElement("tr", {
+                        key: a.id,
+                        style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" }
+                      },
+                        React.createElement("td", { style: { padding: "8px 6px", fontWeight: 700 } }, a.name),
+                        React.createElement("td", { style: { padding: "8px 6px", textAlign: "center" } }, a.total),
+                        React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", color: "#16A34A", fontWeight: 700 } }, a.complete),
+                        React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", color: "#2563EB", fontWeight: 700 } }, a.inProgress),
+                        React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", color: a.delayed > 0 ? "#DC2626" : SRG_DARK, fontWeight: 700 } }, a.delayed),
+                        React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", color: a.blocked > 0 ? "#F59E0B" : SRG_DARK, fontWeight: 700 } }, a.blocked),
+                        React.createElement("td", { style: { padding: "8px 6px" } },
+                          React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } },
+                            React.createElement("div", { style: { flex: 1, height: 8, background: "#E5E5E5", position: "relative", minWidth: 60 } },
+                              React.createElement("div", { style: { position: "absolute", left: 0, top: 0, height: "100%", width: `${a.pct}%`, background: SRG_RED } })
+                            ),
+                            React.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: SRG_DARK, minWidth: 35, textAlign: "right" } }, `${a.pct}%`)
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+
+              progressSummary.attention.length > 0 && React.createElement("div", {
+                style: {
+                  border: `1px solid ${SRG_BORDER}`,
+                  padding: 18,
+                  marginBottom: 20,
+                  pageBreakInside: "avoid"
+                }
+              },
+                React.createElement("div", {
+                  style: {
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: SRG_GREY,
+                    textTransform: "uppercase",
+                    letterSpacing: 1,
+                    marginBottom: 12
+                  }
+                }, "Work Orders Requiring Attention"),
+                React.createElement("table", {
+                  style: { width: "100%", borderCollapse: "collapse", fontSize: 11 }
+                },
+                  React.createElement("thead", null,
+                    React.createElement("tr", { style: { borderBottom: `1px solid ${SRG_BORDER}` } },
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 70 } }, "WO"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 95 } }, "FLOC"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Task"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700, width: 80 } }, "Status"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700, width: 45 } }, "%"),
+                      React.createElement("th", { style: { padding: "8px 6px", textAlign: "left", fontWeight: 700 } }, "Notes / Reason")
+                    )
+                  ),
+                  React.createElement("tbody", null,
+                    progressSummary.attention.map((x, i) => {
+                      const sm = TASK_STATUSES.find(s => s.key === x.s.status) || TASK_STATUSES[0];
+                      return React.createElement("tr", {
+                        key: x.t.id,
+                        style: { borderBottom: `1px solid ${SRG_BORDER}`, background: i % 2 === 0 ? "white" : "#FAFAFA" }
+                      },
+                        React.createElement("td", { style: { padding: "8px 6px", fontFamily: "monospace", fontSize: 10 } }, x.t.wo),
+                        React.createElement("td", { style: { padding: "8px 6px", fontFamily: "monospace", fontSize: 10 } }, x.t.floc),
+                        React.createElement("td", { style: { padding: "8px 6px" } }, x.t.name),
+                        React.createElement("td", { style: { padding: "8px 6px", color: sm.color, fontWeight: 700 } }, sm.label),
+                        React.createElement("td", { style: { padding: "8px 6px", textAlign: "center", fontWeight: 700 } }, `${x.s.percent || 0}%`),
+                        React.createElement("td", { style: { padding: "8px 6px", color: SRG_GREY } }, x.s.delayReason || x.s.notes || "—")
+                      );
+                    })
+                  )
+                )
+              ),
+
+              React.createElement("div", {
+                style: {
+                  border: `1px solid ${SRG_BORDER}`,
+                  padding: 18,
+                  fontSize: 11,
+                  color: SRG_GREY,
+                  lineHeight: 1.5
+                }
+              },
+                React.createElement("div", {
+                  style: {
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: SRG_GREY,
+                    textTransform: "uppercase",
+                    letterSpacing: 1,
+                    marginBottom: 10
+                  }
+                }, "Summary Notes"),
+                React.createElement("div", null,
+                  "This summary separates planned workforce from contingency depth. Contingency is shown for delivery confidence but excluded from confirmed workforce, fulfilment and risk logic. Readiness is assessed by trade based on confirmed personnel, open gaps and backup depth. Shutdown progress figures are sourced live from the SharePoint list via Power Automate and reflect the latest gantt-status.json at print time."
+                )
+              )
+            )
+          ),
+
+          React.createElement("div", {
+            style: {
+              marginTop: 40,
+              padding: "20px 0",
+              borderTop: `1px solid ${SRG_BORDER}`,
+              display: "flex",
+              justifyContent: "space-between",
+              fontSize: 10,
+              color: "#B0B0B0",
+              textTransform: "uppercase",
+              letterSpacing: 0.5,
+              flexWrap: "wrap",
+              gap: 8
+            }
+          },
+            React.createElement("span", null, "SRG Global Integrated Services Pty Ltd · ABN 86 604 010 639"),
+            React.createElement("span", null, `Generated ${new Date().toLocaleDateString("en-AU")} · Covalent Lithium Shutdown Apr–May 2026`)
+          )
+        )
+      );
+    }
+
+    /* -------------------------------------------------------------------
+       Data feed integration — fetches the SQL-sourced roster + tickets
+       from the southwest-shutdowns repo on load, then hands control to
+       the existing App(). Added 2026-04 to replace the hand-maintained
+       E + ROSTER constants with a live view of the Rapid Crews scheduler.
+       ------------------------------------------------------------------- */
+
+    const DATA_URL = "https://raw.githubusercontent.com/N01dea5/southwest-shutdowns/main/data/covalent.json";
+
+    // Covalent's dashboard groups rows into a small set of trade categories
+    // (Leadership / HSE / Boilermaker / Electrical / Fitter / Inspections /
+    // Rigger / Roller Crew / Lube Tech / Trade Assistant). The upstream JSON
+    // uses the Rapid Crews role vocabulary — map each RC role onto Covalent's
+    // local category so the By-Trade Summary / Ranking / Risk views keep
+    // working. Unknown roles fall back to "Trade Assistant".
+    const ROLE_TO_GROUP = {
+      "Superintendent":          "Leadership",
+      "Site Coordinator":        "Leadership",
+      "Supervisor":              "Leadership",
+      "Supervisor - Mechanical": "Leadership",
+      "Supervisor - Electrical": "Leadership",
+      "HSE Advisor":             "HSE",
+      "Boilermaker":             "Boilermaker",
+      "Coded Welder":            "Boilermaker",
+      "Electrician":             "Electrical",
+      "Mechanical Fitter":       "Fitter",
+      "Advanced Rigger":         "Rigger",
+      "Intermediate Rigger":     "Rigger",
+      "Basic Rigger":            "Roller Crew",
+      "Lube Technician":         "Lube Tech",
+      "Trade Assistant":         "Trade Assistant",
+      "Telehandler Operator":    "Trade Assistant",
+    };
+
+    function buildFromJson(data) {
+      const sd = (data.shutdowns || [])[0];
+      if (!sd) throw new Error("No shutdowns in data feed");
+
+      const required  = sd.required_by_role || {};
+      const rosterRaw = sd.roster || [];
+
+      // Build DATES / DOW columns from the shutdown window.
+      DATES = [];
+      DOW   = [];
+      const start = new Date(sd.start_date + "T00:00:00");
+      const end   = new Date(sd.end_date   + "T00:00:00");
+      const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      const dowNames   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        DATES.push(String(d.getDate()).padStart(2, "0") + " " + monthNames[d.getMonth()]);
+        DOW.push(dowNames[d.getDay()]);
+      }
+
+      // Build CREW = named roster + TBC padding to hit required_by_role.
+      const filledByRoleShift = {};
+      for (const r of rosterRaw) {
+        const role  = r.role;
+        const shift = r.shift || "Day";
+        filledByRoleShift[role] = filledByRoleShift[role] || { Day: 0, Night: 0 };
+        filledByRoleShift[role][shift === "Night" ? "Night" : "Day"]++;
+      }
+      const ORDER = Object.keys(required).sort((a, b) => required[b] - required[a]);
+      const CREW = [];
+      for (const role of ORDER) {
+        const req  = required[role] || 0;
+        const have = rosterRaw.filter(x => x.role === role);
+        for (const r of have) CREW.push(r);
+        const gap = req - have.length;
+        if (gap <= 0) continue;
+        const split = filledByRoleShift[role] || { Day: 0, Night: 0 };
+        let dayDebt = Math.max(0, Math.ceil(req / 2) - split.Day);
+        for (let i = 0; i < gap; i++) {
+          const shift = dayDebt > 0 ? "Day" : "Night";
+          if (shift === "Day") dayDebt--;
+          CREW.push({ name: "TBC", role, shift, tickets: {} });
+        }
+      }
+
+      const ticketKeys = ["cse","wah","ewp","ba","fork","hr","dog","gta","fa"];
+      E = CREW.map((r, i) => {
+        const t = r.tickets || {};
+        const isTBC = r.name === "TBC";
+        const ticketCount = ticketKeys.filter(k => !!t[k]).length + (t.rig ? 1 : 0);
+        const hasAnyExp = ticketKeys.some(k => t[k] && t[k].status === "expiring_soon")
+                       || (t.rig && t.rig.status === "expiring_soon");
+        const roleLower = r.role ? r.role.toLowerCase() : "position";
+        const sum = isTBC
+          ? `Unfilled ${r.role} position — ${r.shift || "shift TBC"}. Source personnel and confirm ticket compliance before mobilisation.`
+          : ticketCount > 0
+            ? `${r.shift || ""} shift ${roleLower} — ${ticketCount} current ticket${ticketCount === 1 ? "" : "s"} in Rapid Crews compliance.${hasAnyExp ? " Ticket(s) expiring within 30 days — review before mobilisation." : ""}`
+            : `${r.shift || ""} shift ${roleLower} — ticket details awaiting compliance entry.`;
+        return {
+          id:    i + 1,
+          name:  r.name,
+          role:  r.role,
+          shift: r.shift || "Day",
+          days:  DATES.length || 18,
+          group: ROLE_TO_GROUP[r.role] || "Trade Assistant",
+          // Trade-years / shutdown-years are no longer tracked; the resume
+          // data field is replaced by live compliance ticket coverage.
+          ty: 0, sy: 0,
+          cse:  !!t.cse,
+          wah:  !!t.wah,
+          ewp:  !!t.ewp,
+          ba:   !!t.ba,
+          fork: !!t.fork,
+          hr:   !!t.hr,
+          dog:  !!t.dog,
+          rig:  (t.rig && t.rig.level) || "",
+          gta:  !!t.gta,
+          fa:   !!t.fa,
+          // Telehandler: reuse forklift flag (no separate WA competency).
+          tele: !!t.fork,
+          mobile: r.mobile || "",
+          personnel_id: r.personnel_id || null,
+          _tickets: t,
+          _ticketCount: ticketCount,
+          sum,
+        };
+      });
+
+      // Stable sort: group (per GROUP_ORDER), Day before Night, named before TBC, alpha.
+      const groupRank = {};
+      (window.__COVALENT_GROUP_ORDER__ || GROUP_ORDER).forEach((g, i) => { groupRank[g] = i; });
+      E.sort((a, b) => {
+        const ga = groupRank[a.group] ?? 99;
+        const gb = groupRank[b.group] ?? 99;
+        if (ga !== gb) return ga - gb;
+        if (a.shift !== b.shift) return a.shift === "Day" ? -1 : 1;
+        const aT = a.name === "TBC";
+        const bT = b.name === "TBC";
+        if (aT !== bT) return aT ? 1 : -1;
+        return a.name.localeCompare(b.name);
+      });
+      E.forEach((e, i) => { e.id = i + 1; });
+
+      // ROSTER: shift-code grid (named only; TBC left off so grid stays scannable).
+      ROSTER = E.filter(e => e.name !== "TBC").map(e => ({
+        name:  e.name,
+        role:  e.role,
+        notes: `${e.shift} shift · ${DATES.length} days`,
+        codes: (e.shift === "Night"
+                 ? new Array(DATES.length).fill("NS")
+                 : new Array(DATES.length).fill("DS")),
+      }));
+
+      // Stash meta for the header/freshness banner.
+      window.__COVALENT_META__ = {
+        name:         sd.name || "",
+        site:         sd.site || "",
+        start_date:   sd.start_date,
+        end_date:     sd.end_date,
+        generated_at: data.generated_at || null,
+      };
+    }
+
+    function renderStatus(kind, message, detail) {
+      const root = document.getElementById("root");
+      const color  = kind === "error" ? "#900" : SRG_GREY;
+      const border = kind === "error" ? "#C00" : SRG_BORDER;
+      const bg     = kind === "error" ? "#FEF2F2" : "white";
+      root.innerHTML =
+        '<div style="max-width:520px;margin:80px auto;padding:32px;font-family:Source Sans 3,Segoe UI,system-ui,sans-serif;' +
+           'background:' + bg + ';border:1px solid ' + border + ';color:' + color + ';box-shadow:0 1px 3px rgba(0,0,0,.05);">' +
+          '<div style="font-size:11px;font-weight:700;color:' + SRG_RED + ';letter-spacing:1.5px;text-transform:uppercase;">Covalent Mt Holland Dashboard</div>' +
+          '<div style="font-size:18px;font-weight:700;margin-top:8px;color:' + SRG_DARK + ';">' + message + '</div>' +
+          (detail ? '<div style="font-size:12px;color:#888;margin-top:10px;font-family:monospace;">' + detail + '</div>' : '') +
+          (kind === "error" ? '<div style="font-size:12px;color:#666;margin-top:16px;">Try reloading. If the problem persists, the data feed (southwest-shutdowns) may be offline — contact Asset Services.</div>' : '') +
+        '</div>';
+    }
+
+    (async function boot() {
+      renderStatus("loading", "Loading workforce data…");
+      let data;
+      try {
+        const resp = await fetch(DATA_URL, { cache: "no-cache" });
+        if (!resp.ok) throw new Error("HTTP " + resp.status + " from " + DATA_URL);
+        data = await resp.json();
+      } catch (err) {
+        renderStatus("error", "Failed to load data feed", String(err && err.message || err));
+        return;
+      }
+      try {
+        buildFromJson(data);
+      } catch (err) {
+        renderStatus("error", "Data feed format error", String(err && err.message || err));
+        return;
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    })();
+  </script>
+</body>
+</html>

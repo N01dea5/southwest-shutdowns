@@ -2,7 +2,7 @@
  *
  * Rebuilds #retention-table after the base app renders it. This keeps app.js
  * stable while presenting retention as an operational signal table:
- *   Shutdown | Client | Start | Roster | Carry-over | Same-client | New hires | Signal
+ *   Shutdown | Client | Start | Roster | Same client | SRG carry-over | New | Signal
  */
 (function () {
   'use strict';
@@ -36,11 +36,11 @@
     return d.toLocaleDateString(undefined, { day: '2-digit', month: 'short', year: 'numeric' });
   }
 
-  function signalFor(carryPct, newHirePct) {
-    if (newHirePct >= 50) return { label: 'High new-hire load', tone: 'warn' };
-    if (carryPct >= 70) return { label: 'Strong carry-over', tone: 'good' };
-    if (carryPct >= 50) return { label: 'Healthy', tone: 'ok' };
-    if (carryPct < 35) return { label: 'Low retention', tone: 'bad' };
+  function signalFor(srgPct, newPct) {
+    if (newPct >= 50) return { label: 'High new load', tone: 'warn' };
+    if (srgPct >= 70) return { label: 'Strong SRG carry-over', tone: 'good' };
+    if (srgPct >= 50) return { label: 'Healthy SRG carry-over', tone: 'ok' };
+    if (srgPct < 35) return { label: 'Low SRG carry-over', tone: 'bad' };
     return { label: 'Watch', tone: 'watch' };
   }
 
@@ -98,11 +98,11 @@
       const start = cells[2] || indexed.start_date || '';
       const roster = parseCount(cells[3]) || indexed.roster || 0;
       const same = parseCount(cells[4]);
-      const carry = parseCount(cells[5]);
-      const newHires = parseCount(cells[6]);
-      const carryPct = pct(carry, roster);
-      const newHirePct = pct(newHires, roster);
-      return { shutdown, company, start, roster, same, carry, newHires, carryPct, newHirePct };
+      const srgCarry = parseCount(cells[5]);
+      const fresh = parseCount(cells[6]);
+      const srgPct = pct(srgCarry, roster);
+      const freshPct = pct(fresh, roster);
+      return { shutdown, company, start, roster, same, srgCarry, fresh, srgPct, freshPct };
     });
 
     table.classList.add('retention-executive-table');
@@ -112,22 +112,22 @@
       <th>Client</th>
       <th>Start</th>
       <th class="num">Roster</th>
-      <th>Carry-over</th>
-      <th>Same-client</th>
-      <th>New hires</th>
+      <th>Same client</th>
+      <th>SRG carry-over</th>
+      <th>New</th>
       <th>Signal</th>
     </tr>`;
 
     table.tBodies[0].innerHTML = rows.map(row => {
-      const signal = signalFor(row.carryPct, row.newHirePct);
+      const signal = signalFor(row.srgPct, row.freshPct);
       return `<tr>
         <td class="ret-shutdown"><strong>${row.shutdown}</strong></td>
         <td><span class="client-pill">${row.company}</span></td>
         <td class="ret-date">${fmtDate(row.start)}</td>
         <td class="num ret-roster">${row.roster}</td>
-        <td>${metricHTML(row.carry, row.roster, true)}</td>
         <td>${metricHTML(row.same, row.roster, false)}</td>
-        <td><div class="new-hire-load"><strong>${row.newHires}</strong><span>${row.newHirePct}%</span></div></td>
+        <td>${metricHTML(row.srgCarry, row.roster, true)}</td>
+        <td><div class="new-hire-load"><strong>${row.fresh}</strong><span>${row.freshPct}%</span></div></td>
         <td><span class="signal-pill signal-${signal.tone}">${signal.label}</span></td>
       </tr>`;
     }).join('');

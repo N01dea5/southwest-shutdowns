@@ -302,6 +302,18 @@ tbody tr:nth-child(even) td {
   overflow-wrap: normal;
 }
 
+#worker-matrix td.availability-conflict {
+  color: #b50510 !important;
+  background: #fdecee !important;
+  font-weight: 900;
+  font-size: 16px;
+  text-align: center;
+}
+
+#worker-matrix td.availability-conflict:hover {
+  background: #f8d9de !important;
+}
+
 .roster-toolbar {
   border-top: 1px solid var(--srg-border);
   border-bottom: 1px solid var(--srg-border);

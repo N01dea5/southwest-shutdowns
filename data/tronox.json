@@ -2638,28 +2638,28 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Supervisor - Mechanical": 10,
+        "Superintendent": 1,
         "Mechanical Fitter": 40,
         "Coded Welder": 20,
         "Boilermaker": 10,
-        "Advanced Rigger": 10,
         "Rigger - Advanced": 0,
+        "Supervisor - Mechanical": 10,
+        "Trade Assistant": 20,
         "Rigger - Intermediate": 0,
-        "Site Coordinator": 1,
-        "Superintendent": 1,
-        "Trade Assistant": 20
+        "Advanced Rigger": 10,
+        "Site Coordinator": 1
       },
       "filled_by_role": {
-        "Supervisor - Mechanical": 1,
+        "Superintendent": 1,
         "Mechanical Fitter": 17,
         "Coded Welder": 1,
         "Boilermaker": 2,
-        "Advanced Rigger": 5,
         "Rigger - Advanced": 0,
+        "Supervisor - Mechanical": 1,
+        "Trade Assistant": 20,
         "Rigger - Intermediate": 0,
-        "Site Coordinator": 1,
-        "Superintendent": 1,
-        "Trade Assistant": 20
+        "Advanced Rigger": 5,
+        "Site Coordinator": 1
       },
       "crew_split": {
         "Day": 31,
@@ -4737,5 +4737,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-24T04:48:08Z"
+  "generated_at": "2026-04-24T05:44:39Z"
 }

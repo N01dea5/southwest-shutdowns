@@ -1,18 +1,131 @@
-/* Lightweight presentation polish loaded after assets/styles.css. */
+/* Visible presentation polish loaded after assets/styles.css. */
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(227, 6, 19, 0.06), transparent 260px),
+    linear-gradient(180deg, #ffffff 0, #f5f5f5 220px, #f5f5f5 100%);
+}
+
+.topbar {
+  margin-top: 18px;
+  border: 1px solid var(--srg-border);
+  border-left: 5px solid var(--srg-red);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.brand .eyebrow {
+  display: inline-flex;
+  padding: 3px 8px;
+  background: var(--srg-red-soft);
+  border-radius: 999px;
+}
+
+.brand h1 {
+  margin-top: 6px;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+}
 
 .refresh-status {
-  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border: 1px solid var(--srg-border);
+  border-radius: 999px;
+  background: var(--surface-2);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--srg-grey);
 }
 
-.card-head {
-  display: block;
+.refresh-status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+.tabbar {
+  border-left: 1px solid var(--srg-border);
+  border-right: 1px solid var(--srg-border);
+}
+
+.filterbar {
+  border-left: 1px solid var(--srg-border);
+  border-right: 1px solid var(--srg-border);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.045);
+}
+
+main {
+  gap: 24px;
+}
+
+.kpis {
+  gap: 18px;
+}
+
+.kpi {
+  border-left-width: 5px;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
+}
+
+.kpi-value {
+  font-size: 48px;
+}
+
+.kpi-label {
+  line-height: 1.25;
+  color: var(--srg-dark);
+}
+
+.kpi.kpi-next {
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--callout-fill), #ffffff);
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 9px 22px rgba(0, 0, 0, 0.065);
+}
+
+.card h2 {
+  position: relative;
+  padding: 16px 22px 14px;
+  border-bottom: 1px solid var(--srg-border);
+  font-size: 14px;
+  letter-spacing: 0.09em;
+}
+
+.card h2::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  bottom: -1px;
+  width: 72px;
+  height: 3px;
+  background: var(--srg-red);
+  border-radius: 999px;
+}
+
+.card > details > summary h2 {
+  width: 100%;
 }
 
 .method-note {
-  padding: 10px 20px 0;
+  padding: 10px 22px 0;
   color: var(--srg-grey);
   font-size: 12px;
 }
@@ -22,26 +135,49 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding: 4px 9px;
+  border: 1px solid var(--srg-border);
+  border-radius: 999px;
+  background: var(--surface-2);
   color: var(--srg-red);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 10px;
 }
 
 .method-note p {
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   max-width: 980px;
   line-height: 1.45;
 }
 
-.card > .card-head + .method-note,
-.card .card-head .method-note {
-  padding-top: 8px;
+.gantt-legend,
+.roster-legend {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--srg-border);
 }
 
-.kpi-label {
-  line-height: 1.25;
+.matrix-toolbar,
+.roster-toolbar {
+  border-top: 1px solid var(--srg-border);
+  border-bottom: 1px solid var(--srg-border);
+  background: var(--surface-2);
+}
+
+.table-wrap {
+  border-radius: 8px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f1f1f1;
+}
+
+tbody tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.012);
 }
 
 #worker-matrix th[data-hiring-company-col="true"],
@@ -51,26 +187,27 @@
   white-space: nowrap;
 }
 
-.matrix-toolbar,
-.roster-toolbar {
-  border-top: 1px solid var(--srg-border);
-  background: var(--surface-2);
-}
-
 .table-wrap.matrix-wrap {
   max-height: 680px;
   overflow: auto;
 }
 
-#worker-matrix thead th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
+.shutdown-summary details {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+footer {
+  opacity: 0.8;
 }
 
 @media (max-width: 720px) {
+  .topbar {
+    margin-top: 0;
+    border-radius: 0;
+  }
   .brand h1 {
-    font-size: 18px;
+    font-size: 19px;
   }
   .refresh-status {
     font-size: 11px;
@@ -83,5 +220,8 @@
   .topbar {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  .kpi-value {
+    font-size: 36px;
   }
 }

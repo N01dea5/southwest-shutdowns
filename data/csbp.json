@@ -885,14 +885,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Advanced Rigger": 2,
-        "Mechanical Fitter": 23,
-        "Supervisor - Mechanical": 4,
-        "Intermediate Rigger": 3,
-        "Painter & Blaster": 2,
-        "Sheet Metal Worker": 3,
         "Scaffolder": 6,
-        "Trade Assistant": 18
+        "Intermediate Rigger": 3,
+        "Advanced Rigger": 2,
+        "Painter & Blaster": 2,
+        "Trade Assistant": 18,
+        "Mechanical Fitter": 23,
+        "Sheet Metal Worker": 3,
+        "Supervisor - Mechanical": 4
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -2386,49 +2386,7 @@
           "start": "2026-03-16",
           "end": "2026-03-20",
           "personnel_id": "BBB642D5-7397-48D0-8A3F-BD6536634D32",
-          "tickets": {
-            "hr": {
-              "expiry": "2028-03-01",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, James - bbb642d5-7397-48d0-8a3f-bd6536634d32/GARDINER, James - Driver's Licence.pdf",
-              "status": "current"
-            },
-            "hrwl": {
-              "expiry": "2026-10-31",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, James - bbb642d5-7397-48d0-8a3f-bd6536634d32/GARDINER, James - HRWL.pdf",
-              "status": "current"
-            },
-            "ewp": {
-              "expiry": "2026-10-31",
-              "doc": null,
-              "status": "current"
-            },
-            "cse": {
-              "expiry": "2027-07-16",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, James - bbb642d5-7397-48d0-8a3f-bd6536634d32/GARDINER, James - Confined Spaces Entry.pdf",
-              "status": "current"
-            },
-            "dog": {
-              "expiry": "2026-10-31",
-              "doc": null,
-              "status": "current"
-            },
-            "wah": {
-              "expiry": "2027-07-15",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, James - bbb642d5-7397-48d0-8a3f-bd6536634d32/GARDINER, James - Working at Heights.pdf",
-              "status": "current"
-            },
-            "rig": {
-              "expiry": "2026-10-31",
-              "doc": null,
-              "status": "current",
-              "level": "Basic"
-            },
-            "fork": {
-              "expiry": "2026-10-31",
-              "doc": null,
-              "status": "current"
-            }
-          },
+          "tickets": {},
           "hire_company": "SRG - South West"
         },
         {
@@ -3376,24 +3334,24 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
+        "Site Coordinator": 0,
         "Rigger - Advanced": 0,
+        "Rigger - Intermediate": 0,
         "Mechanical Fitter": 13,
         "Superintendent": 0,
-        "Trade Assistant": 16,
         "Supervisor - Mechanical": 3,
-        "Site Coordinator": 0,
-        "Advanced Rigger": 4,
-        "Rigger - Intermediate": 0
+        "Trade Assistant": 16,
+        "Advanced Rigger": 4
       },
       "filled_by_role": {
+        "Site Coordinator": 0,
         "Rigger - Advanced": 0,
+        "Rigger - Intermediate": 0,
         "Mechanical Fitter": 13,
         "Superintendent": 0,
-        "Trade Assistant": 16,
         "Supervisor - Mechanical": 3,
-        "Site Coordinator": 0,
-        "Advanced Rigger": 3,
-        "Rigger - Intermediate": 0
+        "Trade Assistant": 16,
+        "Advanced Rigger": 3
       },
       "crew_split": {
         "Day": 22,
@@ -4578,5 +4536,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-24T08:44:30Z"
+  "generated_at": "2026-04-24T08:48:51Z"
 }

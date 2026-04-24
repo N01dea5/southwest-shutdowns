@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-24T08:44:48Z",
+  "generated_at": "2026-04-24T08:49:10Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -22,8 +22,8 @@
     "new_hires": 8,
     "buddy_required": 8,
     "shift_split": {
-      "Day": 36,
-      "Night": 24
+      "Day": 35,
+      "Night": 25
     },
     "role_shift_split": {
       "Advanced Rigger": {
@@ -43,8 +43,8 @@
         "Night": 2
       },
       "Mechanical Fitter": {
-        "Day": 12,
-        "Night": 8
+        "Day": 11,
+        "Night": 9
       },
       "Rigger - Advanced": {
         "Day": 1
@@ -1593,7 +1593,7 @@
     {
       "name": "Ben FRIEDAUER",
       "role": "Mechanical Fitter",
-      "shift": "Day",
+      "shift": "Night",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,

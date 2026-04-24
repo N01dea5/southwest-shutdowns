@@ -2638,32 +2638,32 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Rigger - Advanced": 0,
+        "Coded Welder": 20,
+        "Site Coordinator": 1,
+        "Boilermaker": 10,
+        "Rigger - Intermediate": 0,
+        "Supervisor - Mechanical": 10,
         "Mechanical Fitter": 40,
         "Superintendent": 1,
+        "Rigger - Advanced": 0,
         "Trade Assistant": 20,
-        "Boilermaker": 10,
-        "Coded Welder": 20,
-        "Supervisor - Mechanical": 10,
-        "Site Coordinator": 1,
-        "Advanced Rigger": 10,
-        "Rigger - Intermediate": 0
+        "Advanced Rigger": 10
       },
       "filled_by_role": {
-        "Rigger - Advanced": 0,
+        "Coded Welder": 1,
+        "Site Coordinator": 1,
+        "Boilermaker": 2,
+        "Rigger - Intermediate": 0,
+        "Supervisor - Mechanical": 1,
         "Mechanical Fitter": 17,
         "Superintendent": 1,
+        "Rigger - Advanced": 0,
         "Trade Assistant": 20,
-        "Boilermaker": 2,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 1,
-        "Site Coordinator": 1,
-        "Advanced Rigger": 5,
-        "Rigger - Intermediate": 0
+        "Advanced Rigger": 5
       },
       "crew_split": {
-        "Day": 31,
-        "Night": 21
+        "Day": 30,
+        "Night": 22
       },
       "mobilised_by_role": {
         "Mechanical Fitter": 17,
@@ -4297,7 +4297,7 @@
         {
           "name": "Ben FRIEDAUER",
           "role": "Mechanical Fitter",
-          "shift": "Day",
+          "shift": "Night",
           "start": "2026-05-18",
           "end": "2026-05-22",
           "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
@@ -4737,5 +4737,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-24T08:44:22Z"
+  "generated_at": "2026-04-24T08:48:43Z"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-24T09:41:00Z",
+  "generated_at": "2026-04-24T13:30:34Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -17,13 +17,13 @@
     "required_total": 112,
     "confirmed_total": 48,
     "gap_total": 64,
-    "same_client_retention": 18,
-    "srg_carry_over": 37,
-    "new_hires": 8,
-    "buddy_required": 8,
+    "same_client_retention": 15,
+    "srg_carry_over": 29,
+    "new_hires": 6,
+    "buddy_required": 6,
     "shift_split": {
-      "Day": 35,
-      "Night": 25
+      "Day": 25,
+      "Night": 22
     },
     "role_shift_split": {
       "Advanced Rigger": {
@@ -31,38 +31,24 @@
         "Night": 2
       },
       "Boilermaker": {
-        "Day": 1,
         "Night": 1
       },
       "Coded Welder": {
-        "Day": 1,
-        "Night": 1
+        "Day": 1
       },
       "Intermediate Rigger": {
         "Day": 2,
         "Night": 2
       },
       "Mechanical Fitter": {
-        "Day": 11,
-        "Night": 9
-      },
-      "Rigger - Advanced": {
-        "Day": 1
-      },
-      "Rigger - Intermediate": {
-        "Day": 1
-      },
-      "Site Coordinator": {
-        "Day": 1
-      },
-      "Superintendent": {
-        "Day": 1
+        "Day": 9,
+        "Night": 7
       },
       "Supervisor - Mechanical": {
         "Day": 1
       },
       "Trade Assistant": {
-        "Day": 13,
+        "Day": 10,
         "Night": 10
       }
     }
@@ -87,22 +73,16 @@
       "gap": 19
     },
     {
+      "role": "Intermediate Rigger",
+      "required": 0,
+      "confirmed": 0,
+      "gap": 0
+    },
+    {
       "role": "Mechanical Fitter",
       "required": 40,
       "confirmed": 17,
       "gap": 23
-    },
-    {
-      "role": "Rigger - Advanced",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Rigger - Intermediate",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
     },
     {
       "role": "Site Coordinator",
@@ -299,28 +279,7 @@
       "srg_carry_over": true,
       "new_hire": false,
       "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-12"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-12"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-01-31"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2026-10-15"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-01-31"
-        }
-      },
+      "tickets": {},
       "drivers": "HR"
     },
     {
@@ -463,8 +422,8 @@
         },
         "rig": {
           "status": "current",
-          "expiry": null,
-          "level": "Advanced"
+          "expiry": "2029-11-08",
+          "level": "Intermediate"
         },
         "gta": {
           "status": "current",
@@ -821,11 +780,6 @@
           "status": "current",
           "expiry": "2028-07-13"
         },
-        "rig": {
-          "status": "current",
-          "expiry": null,
-          "level": "Intermediate"
-        },
         "gta": {
           "status": "current",
           "expiry": "2028-03-03"
@@ -887,7 +841,7 @@
         },
         "rig": {
           "status": "current",
-          "expiry": null,
+          "expiry": "2029-04-09",
           "level": "Intermediate"
         },
         "hrwl": {
@@ -1282,8 +1236,8 @@
         },
         "rig": {
           "status": "current",
-          "expiry": null,
-          "level": "Advanced"
+          "expiry": "2030-05-13",
+          "level": "Intermediate"
         },
         "gta": {
           "status": "current",
@@ -1554,418 +1508,6 @@
         "gta": {
           "status": "current",
           "expiry": "2028-02-25"
-        }
-      }
-    },
-    {
-      "name": "Adam RILEY",
-      "role": "Superintendent",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
-    },
-    {
-      "name": "Anthony SMITH",
-      "role": "Site Coordinator",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-04-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-17"
-        }
-      }
-    },
-    {
-      "name": "Ben FRIEDAUER",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-04-13"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-13"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2026-08-04"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2026-08-04"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2026-08-04"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2026-08-04",
-          "level": "Basic"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-04-13"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2026-08-04"
-        }
-      }
-    },
-    {
-      "name": "Darren TAYLOR",
-      "role": "Rigger - Advanced",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "dog": {
-          "status": "current",
-          "expiry": "2030-10-06"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": null,
-          "level": "Advanced"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-10-06"
-        }
-      }
-    },
-    {
-      "name": "Eleonora TRAORE",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-12-14"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-12-14"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-10-12"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-10-12"
-        }
-      }
-    },
-    {
-      "name": "Jake GANGEMI",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-04-10"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-10"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-05-10"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2029-05-10"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2029-05-10"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-04-10"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-05-10"
-        }
-      }
-    },
-    {
-      "name": "John HANCOCK",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-11-01"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-11-01"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2031-04-07"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2031-04-07"
-        }
-      }
-    },
-    {
-      "name": "Malo AYMARD",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-11-19"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-11-13"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-05-12"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-05-12"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-05-12"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": null,
-          "level": "Intermediate"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-11-19"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-05-12"
-        }
-      }
-    },
-    {
-      "name": "Mathias MENDY",
-      "role": "Boilermaker",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-24"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-02-13"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2029-02-13"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2029-02-13"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-02-13",
-          "level": "Basic"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-11-24"
-        },
-        "fa": {
-          "status": "current",
-          "expiry": "2027-06-14"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-02-13"
-        }
-      }
-    },
-    {
-      "name": "Mirko RISCHIA",
-      "role": "Coded Welder",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-21"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-10-21"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-10-21"
-        }
-      }
-    },
-    {
-      "name": "Stjepan BOSNJAK",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-04-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-04-24"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-04-24"
-        }
-      }
-    },
-    {
-      "name": "Teresita MATILLA",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-04-14"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-14"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-04-14"
-        }
-      }
-    },
-    {
-      "name": "Trevor POWELL",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-12-20"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-12-20"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-08-11"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-08-11"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-12-20"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-08-11"
         }
       }
     }

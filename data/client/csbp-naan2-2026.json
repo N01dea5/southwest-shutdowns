@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-24T09:41:00Z",
+  "generated_at": "2026-04-24T13:30:34Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/history/csbp-2026-05.json",
   "client": "CSBP",
   "dashboard": "CSBP NAAN2 Shutdown Workforce Dashboard",
@@ -17,12 +17,12 @@
     "required_total": 36,
     "confirmed_total": 35,
     "gap_total": 1,
-    "same_client_retention": 25,
-    "srg_carry_over": 10,
+    "same_client_retention": 24,
+    "srg_carry_over": 8,
     "new_hires": 1,
     "buddy_required": 1,
     "shift_split": {
-      "Day": 23,
+      "Day": 20,
       "Night": 13
     },
     "role_shift_split": {
@@ -34,17 +34,11 @@
         "Day": 2,
         "Night": 2
       },
-      "Site Coordinator": {
-        "Day": 1
-      },
-      "Superintendent": {
-        "Day": 1
-      },
       "Supervisor": {
         "Day": 1
       },
       "Trade Assistant": {
-        "Day": 11,
+        "Day": 10,
         "Night": 5
       }
     }
@@ -61,30 +55,6 @@
       "required": 4,
       "confirmed": 3,
       "gap": 1
-    },
-    {
-      "role": "Rigger - Advanced",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Rigger - Intermediate",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Site Coordinator",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Superintendent",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
     },
     {
       "role": "Supervisor",
@@ -155,8 +125,8 @@
         },
         "rig": {
           "status": "current",
-          "expiry": null,
-          "level": "Advanced"
+          "expiry": "2030-05-13",
+          "level": "Intermediate"
         },
         "gta": {
           "status": "current",
@@ -689,11 +659,6 @@
           "status": "current",
           "expiry": "2028-07-13"
         },
-        "rig": {
-          "status": "current",
-          "expiry": null,
-          "level": "Intermediate"
-        },
         "gta": {
           "status": "current",
           "expiry": "2028-03-03"
@@ -988,28 +953,7 @@
       "srg_carry_over": false,
       "new_hire": false,
       "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-12"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-12"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-01-31"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2026-10-15"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-01-31"
-        }
-      }
+      "tickets": {}
     },
     {
       "name": "Jonathan MUTEMBO",
@@ -1080,60 +1024,6 @@
         "hrwl": {
           "status": "current",
           "expiry": "2031-04-28"
-        }
-      }
-    },
-    {
-      "name": "Adam RILEY",
-      "role": "Superintendent",
-      "shift": "Day",
-      "start": "2026-05-25",
-      "end": "2026-06-21",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
-    },
-    {
-      "name": "Anthony SMITH",
-      "role": "Site Coordinator",
-      "shift": "Day",
-      "start": "2026-05-25",
-      "end": "2026-06-21",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-04-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-17"
-        }
-      }
-    },
-    {
-      "name": "Beau WITHERS",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-06-08",
-      "end": "2026-06-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-08"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-10"
         }
       }
     }

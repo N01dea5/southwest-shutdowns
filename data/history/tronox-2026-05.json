@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-24T09:40:35Z",
+  "archived_at": "2026-04-24T13:30:29Z",
   "shutdown": {
     "id": "tronox-2026-05",
     "name": "1353 \u2013 Tronox Major Shutdown May 2026",
@@ -10,26 +10,26 @@
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
-      "Coded Welder": 20,
       "Advanced Rigger": 10,
-      "Supervisor - Mechanical": 10,
-      "Trade Assistant": 20,
-      "Intermediate Rigger": 0,
       "Superintendent": 1,
-      "Boilermaker": 10,
       "Site Coordinator": 1,
-      "Mechanical Fitter": 40
+      "Supervisor - Mechanical": 10,
+      "Coded Welder": 20,
+      "Mechanical Fitter": 40,
+      "Boilermaker": 10,
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 0
     },
     "filled_by_role": {
-      "Coded Welder": 1,
       "Advanced Rigger": 5,
-      "Supervisor - Mechanical": 1,
-      "Trade Assistant": 20,
-      "Intermediate Rigger": 0,
       "Superintendent": 1,
-      "Boilermaker": 2,
       "Site Coordinator": 1,
-      "Mechanical Fitter": 17
+      "Supervisor - Mechanical": 1,
+      "Coded Welder": 1,
+      "Mechanical Fitter": 17,
+      "Boilermaker": 2,
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 0
     },
     "crew_split": {
       "Night": 22,
@@ -380,10 +380,10 @@
             "status": "current"
           },
           "rig": {
-            "expiry": null,
-            "doc": null,
+            "expiry": "2029-11-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
             "status": "current",
-            "level": "Advanced"
+            "level": "Intermediate"
           },
           "gta": {
             "expiry": "2026-09-22",
@@ -768,12 +768,6 @@
         "end": "2026-05-22",
         "personnel_id": "F93AB05D-D842-44A0-840C-8F3B76FC4C33",
         "tickets": {
-          "rig": {
-            "expiry": null,
-            "doc": null,
-            "status": "current",
-            "level": "Intermediate"
-          },
           "gta": {
             "expiry": "2028-03-03",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Gas Test Atmospheres.png",
@@ -850,8 +844,8 @@
             "status": "current"
           },
           "rig": {
-            "expiry": null,
-            "doc": null,
+            "expiry": "2029-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
             "status": "current",
             "level": "Intermediate"
           },
@@ -1282,10 +1276,10 @@
             "status": "current"
           },
           "rig": {
-            "expiry": null,
-            "doc": null,
+            "expiry": "2030-05-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
             "status": "current",
-            "level": "Advanced"
+            "level": "Intermediate"
           },
           "dog": {
             "expiry": "2030-05-13",

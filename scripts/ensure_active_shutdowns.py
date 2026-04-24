@@ -44,6 +44,9 @@ CLIENT_SITE_MAP: dict[tuple[str, str], tuple[str, str, str, str]] = {
     ("SOUTH WEST", "Covalent Lithium"): ("covalent", "Covalent", "Mt Holland", "Mt Holland"),
     ("SOUTH WEST", "Tronox"): ("tronox", "Tronox", "Kwinana", "Major Shutdown"),
     ("CSBP", "CSBP Kwinana"): ("csbp", "CSBP", "Kwinana", "CSBP Kwinana"),
+    ("CSBP", "CSBP"): ("csbp", "CSBP", "Kwinana", "CSBP"),
+    ("WESCEF", "CSBP Kwinana"): ("csbp", "CSBP", "Kwinana", "CSBP Kwinana"),
+    ("WESCEF", "CSBP"): ("csbp", "CSBP", "Kwinana", "CSBP"),
     ("SOUTH WEST", "Kleenheat"): ("csbp", "CSBP", "Kwinana", "KPF LNG Kleenheat"),
 }
 
@@ -63,6 +66,28 @@ MONTH_NAME = ("", "January", "February", "March", "April", "May", "June",
               "July", "August", "September", "October", "November", "December")
 
 
+def _clean_text(value: Any) -> str:
+    return re.sub(r"\s+", " ", str(value or "").replace("\xa0", " ")).strip()
+
+
+def _map_client_site(client: Any, site: Any, job_no: int) -> tuple[str, str, str, str] | None:
+    c = _clean_text(client)
+    s = _clean_text(site)
+    mapped = CLIENT_SITE_MAP.get((c, s))
+    if mapped:
+        return mapped
+    cu = c.upper()
+    su = s.upper()
+    if "CSBP" in cu or "CSBP" in su or "NAAN" in su:
+        return ("csbp", "CSBP", "Kwinana", "CSBP")
+    if "TRONOX" in cu or "TRONOX" in su:
+        return ("tronox", "Tronox", "Kwinana", "Major Shutdown")
+    if "COVALENT" in cu or "COVALENT" in su or "MT HOLLAND" in su:
+        return ("covalent", "Covalent", "Mt Holland", "Mt Holland")
+    print(f"  warn: active JobNo {job_no} has unmapped client/site ({c!r}, {s!r}) — cannot emit dashboard card")
+    return None
+
+
 def _headers(ws) -> tuple[list[Any], dict[str, int]]:
     header = list(next(ws.iter_rows(max_row=1, values_only=True)))
     idx = {str(h).strip(): i for i, h in enumerate(header) if h is not None and str(h).strip()}
@@ -75,9 +100,15 @@ def _to_date(value) -> dt.date | None:
     if isinstance(value, dt.date):
         return value
     if isinstance(value, str):
-        m = re.match(r"(\d{4}-\d{2}-\d{2})", value)
+        text = value.strip()
+        m = re.match(r"(\d{4}-\d{2}-\d{2})", text)
         if m:
             return dt.date.fromisoformat(m.group(1))
+        for fmt in ("%d/%m/%y", "%d/%m/%Y", "%d-%m-%y", "%d-%m-%Y"):
+            try:
+                return dt.datetime.strptime(text, fmt).date()
+            except ValueError:
+                pass
     return None
 
 
@@ -119,7 +150,11 @@ def _read_active_jobnos(wb) -> set[int]:
         try:
             out.add(int(v))
         except (TypeError, ValueError):
-            print(f"  warn: ignoring non-numeric ACTIVE_SHUTDOWNS JobNo {v!r}")
+            m = re.search(r"\d+", str(v))
+            if m:
+                out.add(int(m.group(0)))
+            else:
+                print(f"  warn: ignoring non-numeric ACTIVE_SHUTDOWNS JobNo {v!r}")
     return out
 
 
@@ -131,7 +166,7 @@ def _read_trades(wb) -> dict[Any, str]:
         if not row or not any(row):
             continue
         tid = row[idx["TradeId"]]
-        name = str(row[idx["Trade"]] or "Unknown").strip() or "Unknown"
+        name = _clean_text(row[idx["Trade"]]) or "Unknown"
         out[tid] = ROLE_RENAME.get(name, name)
     return out
 
@@ -146,8 +181,15 @@ def _read_planning(wb, trades: dict[Any, str]) -> dict[int, dict[str, dict[str, 
         job = row[idx["JobNo"]]
         if job is None:
             continue
+        try:
+            job_no = int(job)
+        except (TypeError, ValueError):
+            m = re.search(r"\d+", str(job))
+            if not m:
+                continue
+            job_no = int(m.group(0))
         trade = trades.get(row[idx["CompetencyId"]], "Unknown")
-        bucket = out.setdefault(int(job), {})
+        bucket = out.setdefault(job_no, {})
         cell = bucket.setdefault(trade, {"required": 0, "filled": 0})
         cell["required"] += int(row[idx.get("Required", -1)] or 0) if "Required" in idx else 0
         cell["filled"] += int(row[idx.get("Filled", -1)] or 0) if "Filled" in idx else 0
@@ -164,13 +206,13 @@ def _read_personnel(wb) -> dict[Any, dict[str, str]]:
         pid = row[idx["Personnel Id"]]
         if not pid:
             continue
-        first = str(row[idx.get("Given Names", -1)] or "").strip()
-        last = str(row[idx.get("Surname", -1)] or "").strip()
+        first = _clean_text(row[idx.get("Given Names", -1)])
+        last = _clean_text(row[idx.get("Surname", -1)])
         out[pid] = {
             "name": f"{first} {last}".strip() or "Unknown",
-            "role": str(row[idx.get("Primary Role", -1)] or "Unknown").strip() or "Unknown",
+            "role": _clean_text(row[idx.get("Primary Role", -1)]) or "Unknown",
             "mobile": _mobile(row[idx.get("Mobile", -1)] if "Mobile" in idx else None),
-            "hire_company": str(row[idx.get("Hire Company", -1)] or "").strip(),
+            "hire_company": _clean_text(row[idx.get("Hire Company", -1)]),
         }
     return out
 
@@ -193,12 +235,15 @@ def _read_roster(wb, active_jobnos: set[int]) -> dict[int, dict[str, Any]]:
         try:
             job = int(job)
         except (TypeError, ValueError):
-            continue
+            m = re.search(r"\d+", str(job))
+            if not m:
+                continue
+            job = int(m.group(0))
         if job not in out:
             continue
         bucket = out[job]
-        bucket["client"] = bucket["client"] or row[idx.get("Client")]
-        bucket["site"] = bucket["site"] or row[idx.get("Site")]
+        bucket["client"] = bucket["client"] or _clean_text(row[idx.get("Client")])
+        bucket["site"] = bucket["site"] or _clean_text(row[idx.get("Site")])
         d = _to_date(row[idx["Schedule Date"]]) if "Schedule Date" in idx else None
         if d:
             bucket["dates"].append(d)
@@ -209,7 +254,7 @@ def _read_roster(wb, active_jobnos: set[int]) -> dict[int, dict[str, Any]]:
                 w["dates"].append(d)
             sched = row[idx["Schedule Type"]] if "Schedule Type" in idx else None
             if sched:
-                w["sched_types"][str(sched)] += 1
+                w["sched_types"][_clean_text(sched)] += 1
             if "IsOnLocation" in idx and row[idx["IsOnLocation"]]:
                 w["is_on_location"] = True
     return out
@@ -245,17 +290,18 @@ def _load_company(company_key: str, company_name: str) -> dict:
 
 def _project_label(base: str, start: dt.date | None, job_no: int) -> str:
     if start:
-        return f"{base} {MONTH_NAME[start.month]} {start.year}"
+        suffix = f"{MONTH_NAME[start.month]} {start.year}"
+        if base.upper() == "CSBP":
+            return f"CSBP Shutdown {suffix}"
+        return f"{base} {suffix}"
     return f"{base} Job {job_no}"
 
 
 def _build_placeholder(job_no: int, planning: dict[str, dict[str, int]], roster_raw: dict[str, Any], personnel: dict[Any, dict[str, str]]) -> tuple[str, str, dict] | None:
-    client = roster_raw.get("client")
-    site = roster_raw.get("site")
-    if (client, site) not in CLIENT_SITE_MAP:
-        print(f"  warn: active JobNo {job_no} has unmapped client/site ({client!r}, {site!r}) — cannot emit dashboard card")
+    mapped = _map_client_site(roster_raw.get("client"), roster_raw.get("site"), job_no)
+    if not mapped:
         return None
-    company_key, company_name, dashboard_site, label_base = CLIENT_SITE_MAP[(client, site)]
+    company_key, company_name, dashboard_site, label_base = mapped
 
     dates = list(roster_raw.get("dates") or [])
     start = min(dates) if dates else dt.date.today()
@@ -300,8 +346,6 @@ def _build_placeholder(job_no: int, planning: dict[str, dict[str, int]], roster_
     required = {role: int(v.get("required", 0)) for role, v in planning.items() if v.get("required") or v.get("filled")}
     filled = {role: int(v.get("filled", 0)) for role, v in planning.items() if v.get("required") or v.get("filled")}
 
-    # If JobPlanningView uses trade labels but the schedule has named workers under finer roles,
-    # keep the scheduled-only roles visible at zero demand rather than losing the roster entries.
     for role in scheduled_by_role:
         required.setdefault(role, 0)
         filled.setdefault(role, 0)

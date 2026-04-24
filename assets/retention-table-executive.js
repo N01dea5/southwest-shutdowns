@@ -1,0 +1,154 @@
+/* Executive retention table formatter.
+ *
+ * Rebuilds #retention-table after the base app renders it. This keeps app.js
+ * stable while presenting retention as an operational signal table:
+ *   Shutdown | Client | Start | Roster | Carry-over | Same-client | New hires | Signal
+ */
+(function () {
+  'use strict';
+
+  const DATA_FILES = ['data/covalent.json', 'data/tronox.json', 'data/csbp.json'];
+  let shutdownIndex = new Map();
+  let attempts = 0;
+  let timer = null;
+
+  function normalise(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function parseCount(value) {
+    const match = String(value || '').match(/-?\d+/);
+    return match ? Number(match[0]) : 0;
+  }
+
+  function pct(count, total) {
+    if (!total) return 0;
+    return Math.round((count / total) * 100);
+  }
+
+  function fmtDate(value) {
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value || '—');
+    return d.toLocaleDateString(undefined, { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  function signalFor(carryPct, newHirePct) {
+    if (newHirePct >= 50) return { label: 'High new-hire load', tone: 'warn' };
+    if (carryPct >= 70) return { label: 'Strong carry-over', tone: 'good' };
+    if (carryPct >= 50) return { label: 'Healthy', tone: 'ok' };
+    if (carryPct < 35) return { label: 'Low retention', tone: 'bad' };
+    return { label: 'Watch', tone: 'watch' };
+  }
+
+  function barHTML(percent) {
+    const safe = Math.max(0, Math.min(100, Number(percent) || 0));
+    return `<span class="retention-bar" aria-hidden="true"><span style="width:${safe}%"></span></span>`;
+  }
+
+  function metricHTML(count, total, emphasise) {
+    const percent = pct(count, total);
+    return `<div class="retention-metric ${emphasise ? 'primary' : ''}">
+      <div><strong>${percent}%</strong><span>${count}/${total}</span></div>
+      ${barHTML(percent)}
+    </div>`;
+  }
+
+  async function loadShutdownIndex() {
+    const index = new Map();
+    for (const file of DATA_FILES) {
+      try {
+        const response = await fetch(file, { cache: 'no-store' });
+        if (!response.ok) continue;
+        const payload = await response.json();
+        for (const shutdown of payload.shutdowns || []) {
+          const name = String(shutdown.name || shutdown.id || '');
+          if (!name) continue;
+          const key = normalise(name);
+          index.set(key, {
+            name,
+            company: payload.company || shutdown.company || '',
+            start_date: shutdown.start_date || '',
+            roster: Array.isArray(shutdown.roster) ? shutdown.roster.length : 0
+          });
+        }
+      } catch (error) {
+        console.warn('[retention-table-executive] skipped', file, error);
+      }
+    }
+    shutdownIndex = index;
+  }
+
+  function decorate() {
+    const table = document.getElementById('retention-table');
+    if (!table || !table.tBodies.length) return false;
+    if (table.dataset.executiveRetention === 'true') return true;
+
+    const sourceRows = [...table.tBodies[0].rows];
+    if (!sourceRows.length) return false;
+
+    const rows = sourceRows.map(row => {
+      const cells = [...row.cells].map(cell => cell.textContent.trim());
+      const shutdown = cells[0] || '';
+      const indexed = shutdownIndex.get(normalise(shutdown)) || {};
+      const company = cells[1] || indexed.company || '';
+      const start = cells[2] || indexed.start_date || '';
+      const roster = parseCount(cells[3]) || indexed.roster || 0;
+      const same = parseCount(cells[4]);
+      const carry = parseCount(cells[5]);
+      const newHires = parseCount(cells[6]);
+      const carryPct = pct(carry, roster);
+      const newHirePct = pct(newHires, roster);
+      return { shutdown, company, start, roster, same, carry, newHires, carryPct, newHirePct };
+    });
+
+    table.classList.add('retention-executive-table');
+    table.dataset.executiveRetention = 'true';
+    table.tHead.innerHTML = `<tr>
+      <th>Shutdown</th>
+      <th>Client</th>
+      <th>Start</th>
+      <th class="num">Roster</th>
+      <th>Carry-over</th>
+      <th>Same-client</th>
+      <th>New hires</th>
+      <th>Signal</th>
+    </tr>`;
+
+    table.tBodies[0].innerHTML = rows.map(row => {
+      const signal = signalFor(row.carryPct, row.newHirePct);
+      return `<tr>
+        <td class="ret-shutdown"><strong>${row.shutdown}</strong></td>
+        <td><span class="client-pill">${row.company}</span></td>
+        <td class="ret-date">${fmtDate(row.start)}</td>
+        <td class="num ret-roster">${row.roster}</td>
+        <td>${metricHTML(row.carry, row.roster, true)}</td>
+        <td>${metricHTML(row.same, row.roster, false)}</td>
+        <td><div class="new-hire-load"><strong>${row.newHires}</strong><span>${row.newHirePct}%</span></div></td>
+        <td><span class="signal-pill signal-${signal.tone}">${signal.label}</span></td>
+      </tr>`;
+    }).join('');
+
+    return true;
+  }
+
+  async function start() {
+    await loadShutdownIndex();
+    timer = window.setInterval(() => {
+      attempts += 1;
+      decorate();
+      if (attempts >= 40 || document.getElementById('retention-table')?.dataset.executiveRetention === 'true') {
+        window.clearInterval(timer);
+      }
+    }, 500);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
+})();

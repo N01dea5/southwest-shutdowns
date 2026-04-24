@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T01:49:29Z",
+  "archived_at": "2026-04-24T01:52:13Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
     "name": "1405 \u2013 CSBP - NAAN1 Shut",
@@ -17,19 +17,19 @@
     "filled_by_role": {
       "Trade Assistant": 8,
       "Supervisor - Mechanical": 1,
-      "Mechanical Fitter": 15
+      "Mechanical Fitter": 14
     },
     "crew_split": {
-      "Night": 5,
-      "Day": 19
+      "Night": 7,
+      "Day": 16
     },
     "mobilised_by_role": {
       "Trade Assistant": 8,
-      "Mechanical Fitter": 15,
+      "Mechanical Fitter": 14,
       "Supervisor - Mechanical": 1
     },
     "labour_hire_split": {
-      "SRG - South West": 24
+      "SRG - South West": 23
     },
     "roster": [
       {
@@ -73,44 +73,24 @@
         "mobile": "0457 470 330"
       },
       {
-        "name": "Naomi NDENGA",
-        "role": "Trade Assistant",
-        "shift": "Day",
+        "name": "Peter BURNS",
+        "role": "Supervisor - Mechanical",
+        "shift": "Night",
         "start": "2026-05-12",
         "end": "2026-05-16",
-        "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
+        "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
         "tickets": {},
-        "mobile": "0472 586 919"
+        "mobile": "0437 183 009"
       },
       {
-        "name": "John HANCOCK",
+        "name": "Jake GANGEMI",
         "role": "Mechanical Fitter",
-        "shift": "Day",
+        "shift": "Night",
         "start": "2026-05-12",
         "end": "2026-05-16",
-        "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
+        "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
         "tickets": {},
-        "mobile": "0409 998 059"
-      },
-      {
-        "name": "Tabani CHIPIRI",
-        "role": "Mechanical Fitter",
-        "shift": "Day",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
-        "tickets": {},
-        "mobile": "0497 594 673"
-      },
-      {
-        "name": "Jessica DILENA",
-        "role": "Trade Assistant",
-        "shift": "Day",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
-        "tickets": {},
-        "mobile": "0477 841 414"
+        "mobile": "0426 994 235"
       },
       {
         "name": "Gabriel NGUYEN",
@@ -121,26 +101,6 @@
         "personnel_id": "02FD7BD7-37A1-4FA8-9E51-B2B7BA75BFCA",
         "tickets": {},
         "mobile": "0448 737 990"
-      },
-      {
-        "name": "King GARCIA",
-        "role": "Trade Assistant",
-        "shift": "Day",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "178F800C-0AC1-4BD7-9DED-2990BF95B528",
-        "tickets": {},
-        "mobile": "0498 054 425"
-      },
-      {
-        "name": "Wayne FORREST",
-        "role": "Mechanical Fitter",
-        "shift": "Day",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
-        "tickets": {},
-        "mobile": "0438 101 966"
       },
       {
         "name": "William THOMPSON",
@@ -163,6 +123,16 @@
         "mobile": "0413 377 068"
       },
       {
+        "name": "King GARCIA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "178F800C-0AC1-4BD7-9DED-2990BF95B528",
+        "tickets": {},
+        "mobile": "0498 054 425"
+      },
+      {
         "name": "Richardson ALICANTE",
         "role": "Mechanical Fitter",
         "shift": "Day",
@@ -173,14 +143,34 @@
         "mobile": "0431 228 251"
       },
       {
-        "name": "Ivan RAYNOV",
+        "name": "Wayne FORREST",
         "role": "Mechanical Fitter",
         "shift": "Day",
         "start": "2026-05-13",
         "end": "2026-05-16",
-        "personnel_id": "F81364FE-F4A6-4174-A0EE-6A947B277839",
+        "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
         "tickets": {},
-        "mobile": "0401 749 106"
+        "mobile": "0438 101 966"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
+        "tickets": {},
+        "mobile": "0472 586 919"
+      },
+      {
+        "name": "Tabani CHIPIRI",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
+        "tickets": {},
+        "mobile": "0497 594 673"
       },
       {
         "name": "Paul BESTWICK",
@@ -203,16 +193,6 @@
         "mobile": "0476 247 673"
       },
       {
-        "name": "Peter BURNS",
-        "role": "Supervisor - Mechanical",
-        "shift": "Day",
-        "start": "2026-05-13",
-        "end": "2026-05-16",
-        "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
-        "tickets": {},
-        "mobile": "0437 183 009"
-      },
-      {
         "name": "Ben FRIEDAUER",
         "role": "Mechanical Fitter",
         "shift": "Day",
@@ -233,14 +213,24 @@
         "mobile": "0459 183 602"
       },
       {
-        "name": "Jake GANGEMI",
+        "name": "John HANCOCK",
         "role": "Mechanical Fitter",
         "shift": "Day",
         "start": "2026-05-13",
         "end": "2026-05-16",
-        "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
+        "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
         "tickets": {},
-        "mobile": "0426 994 235"
+        "mobile": "0409 998 059"
+      },
+      {
+        "name": "Jessica DILENA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
+        "tickets": {},
+        "mobile": "0477 841 414"
       },
       {
         "name": "Abhinav ABHINAV",
@@ -283,7 +273,7 @@
         "job_no": 1405,
         "job_description": "CSBP - NAAN1 Shut",
         "total_required": 27,
-        "total_filled": 24
+        "total_filled": 23
       }
     }
   }

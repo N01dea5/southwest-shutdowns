@@ -64,12 +64,24 @@
     return cell.classList.contains('availability-conflict') || text === '✕' || text === '×' || text.toLowerCase() === 'x';
   }
 
+  function cellHasTick(cell) {
+    if (!cell) return false;
+    const text = String(cell.textContent || '').trim();
+    return text === '✓' || text === '✔' || cell.classList.contains('present') || cell.classList.contains('matrix-present');
+  }
+
+  function cellIsGenuinelyBlank(cell) {
+    if (!cell) return false;
+    return !cellHasCross(cell) && !cellHasTick(cell);
+  }
+
   function selectMode(select) {
     const value = String(select.value || '').toLowerCase();
     const selectedText = String(select.options[select.selectedIndex]?.textContent || '').toLowerCase();
     const joined = `${value} ${selectedText}`;
     if (value === CROSS_VALUE) return CROSS_VALUE;
     if (joined.includes('blank') || joined.includes('absent')) return 'blank';
+    if (joined.includes('present') || joined.includes('tick') || joined.includes('✓')) return 'present';
     return 'other';
   }
 
@@ -86,9 +98,8 @@
     return filters;
   }
 
-  function baseVisible(row) {
-    // Preserve any hide behaviour already applied by app.js or other scripts.
-    return row.style.display !== 'none' || row.dataset.crossFilterHidden === 'true';
+  function activeBlankOrCrossFilterCount(t) {
+    return activeSpecialFilters(t).length;
   }
 
   function applyCrossFilters() {
@@ -111,11 +122,16 @@
       if (!filters.length) return;
 
       for (const row of rows) {
-        if (!baseVisible(row)) continue;
+        // Work from the current app.js result. If app.js has hidden it for
+        // search or another column, keep it hidden. If this script hid it on
+        // the previous pass, allow it to be reconsidered.
+        const visibleFromBase = row.style.display !== 'none' || row.dataset.crossFilterHidden === 'true';
+        if (!visibleFromBase) continue;
+
         const matches = filters.every(filter => {
           const cell = row.cells[filter.index];
           if (filter.mode === CROSS_VALUE) return cellHasCross(cell);
-          if (filter.mode === 'blank') return !cellHasCross(cell);
+          if (filter.mode === 'blank') return cellIsGenuinelyBlank(cell);
           return true;
         });
         if (!matches) {
@@ -128,6 +144,13 @@
     }
   }
 
+  function triggerRepeatedApply() {
+    // Red crosses are overlaid after the base table render. Apply repeatedly
+    // through that render window so Blanks is corrected after the cross cells
+    // actually exist.
+    [0, 50, 150, 350, 800, 1400].forEach(ms => window.setTimeout(applyCrossFilters, ms));
+  }
+
   function installListeners() {
     document.addEventListener('change', event => {
       const select = event.target && event.target.closest ? event.target.closest(`#${TABLE_ID} thead select`) : null;
@@ -135,20 +158,28 @@
       const key = columnKey(select);
       if (select.value === CROSS_VALUE) selectedByColumnKey.set(key, CROSS_VALUE);
       else selectedByColumnKey.delete(key);
-      window.setTimeout(applyCrossFilters, 0);
-      window.setTimeout(applyCrossFilters, 650);
+      triggerRepeatedApply();
+    }, true);
+
+    const search = document.getElementById('matrix-search');
+    if (search) search.addEventListener('input', triggerRepeatedApply);
+
+    document.addEventListener('click', event => {
+      if (event.target && event.target.closest && event.target.closest('.matrix-card')) {
+        triggerRepeatedApply();
+      }
     }, true);
   }
 
   function start() {
     installListeners();
-    window.setInterval(applyCrossFilters, 700);
+    window.setInterval(applyCrossFilters, 500);
     const root = document.querySelector('.matrix-card') || document.body;
     if (root && 'MutationObserver' in window) {
       const observer = new MutationObserver(() => window.setTimeout(applyCrossFilters, 50));
       observer.observe(root, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['class', 'style'] });
     }
-    applyCrossFilters();
+    triggerRepeatedApply();
   }
 
   if (document.readyState === 'loading') {

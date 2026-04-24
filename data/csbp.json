@@ -853,14 +853,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Trade Assistant": 18,
+        "Painter & Blaster": 2,
+        "Advanced Rigger": 2,
         "Mechanical Fitter": 23,
         "Scaffolder": 6,
         "Supervisor - Mechanical": 4,
-        "Advanced Rigger": 2,
-        "Intermediate Rigger": 3,
         "Sheet Metal Worker": 3,
-        "Painter & Blaster": 2
+        "Intermediate Rigger": 3,
+        "Trade Assistant": 18
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -2975,7 +2975,7 @@
     },
     {
       "id": "csbp-2026-05-1405",
-      "name": "CSBP Kwinana May 2026",
+      "name": "1405 \u2013 CSBP - NAAN1 Shut",
       "site": "Kwinana",
       "start_date": "2026-05-12",
       "end_date": "2026-05-16",
@@ -3246,11 +3246,13 @@
       ],
       "_source": {
         "job_no": 1405,
+        "job_description": "CSBP - NAAN1 Shut",
         "source_format": "rapidcrews_macro_safety_pass",
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "target_source": {
           "source": "rapid_crews_job_planning_view",
           "job_no": 1405,
+          "job_description": "CSBP - NAAN1 Shut",
           "total_required": 27,
           "total_filled": 24
         }
@@ -3264,18 +3266,18 @@
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
-        "Supervisor - Mechanical": 3,
-        "Trade Assistant": 16,
+        "Mechanical Fitter": 13,
         "Advanced Rigger": 4,
         "Intermediate Rigger": 0,
-        "Mechanical Fitter": 13
+        "Trade Assistant": 16,
+        "Supervisor - Mechanical": 3
       },
       "filled_by_role": {
-        "Supervisor - Mechanical": 3,
-        "Trade Assistant": 16,
+        "Mechanical Fitter": 13,
         "Advanced Rigger": 3,
         "Intermediate Rigger": 0,
-        "Mechanical Fitter": 13
+        "Trade Assistant": 16,
+        "Supervisor - Mechanical": 3
       },
       "crew_split": {
         "Day": 20,
@@ -4337,5 +4339,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-24T01:33:30Z"
+  "generated_at": "2026-04-24T01:38:38Z"
 }

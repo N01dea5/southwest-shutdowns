@@ -1,10 +1,10 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T01:33:30Z",
+  "archived_at": "2026-04-24T01:38:38Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
-    "name": "CSBP Kwinana May 2026",
+    "name": "1405 \u2013 CSBP - NAAN1 Shut",
     "site": "Kwinana",
     "start_date": "2026-05-12",
     "end_date": "2026-05-16",
@@ -275,11 +275,13 @@
     ],
     "_source": {
       "job_no": 1405,
+      "job_description": "CSBP - NAAN1 Shut",
       "source_format": "rapidcrews_macro_safety_pass",
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "target_source": {
         "source": "rapid_crews_job_planning_view",
         "job_no": 1405,
+        "job_description": "CSBP - NAAN1 Shut",
         "total_required": 27,
         "total_filled": 24
       }

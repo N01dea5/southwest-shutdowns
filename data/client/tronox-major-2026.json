@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-24T03:45:14Z",
+  "generated_at": "2026-04-24T04:33:26Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -15,8 +15,8 @@
   },
   "summary": {
     "required_total": 112,
-    "confirmed_total": 47,
-    "gap_total": 65,
+    "confirmed_total": 48,
+    "gap_total": 64,
     "same_client_retention": 15,
     "srg_carry_over": 29,
     "new_hires": 6,
@@ -81,8 +81,8 @@
     {
       "role": "Mechanical Fitter",
       "required": 40,
-      "confirmed": 16,
-      "gap": 24
+      "confirmed": 17,
+      "gap": 23
     },
     {
       "role": "Site Coordinator",

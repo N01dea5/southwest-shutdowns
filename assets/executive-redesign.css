@@ -262,6 +262,7 @@ main {
 
 .retained-grid {
   align-items: stretch;
+  grid-template-columns: minmax(420px, 0.9fr) minmax(640px, 1.35fr) !important;
 }
 
 .table-wrap {
@@ -289,6 +290,125 @@ td {
   padding: 9px 14px !important;
   border-bottom: 1px solid #e7eaee !important;
 }
+
+/* Executive retention table */
+.retention-executive-table {
+  min-width: 980px;
+}
+
+.retention-executive-table th,
+.retention-executive-table td {
+  vertical-align: middle;
+}
+
+.retention-executive-table th:nth-child(1),
+.retention-executive-table td:nth-child(1) {
+  min-width: 220px;
+}
+
+.ret-shutdown strong {
+  font-weight: 850;
+  color: var(--exec-ink);
+  line-height: 1.2;
+}
+
+.client-pill,
+.signal-pill {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.client-pill {
+  padding: 5px 8px;
+  background: #eef4fb;
+  color: #17466e;
+}
+
+.ret-date,
+.ret-roster {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.retention-metric {
+  min-width: 130px;
+}
+
+.retention-metric > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.retention-metric strong {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--exec-ink);
+}
+
+.retention-metric span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #69717b;
+}
+
+.retention-metric.primary strong {
+  color: var(--exec-blue);
+}
+
+.retention-bar {
+  display: block;
+  height: 5px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: #ecf0f4;
+  overflow: hidden;
+}
+
+.retention-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--exec-blue);
+}
+
+.retention-metric:not(.primary) .retention-bar span {
+  background: #7f8fa4;
+}
+
+.new-hire-load {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.new-hire-load strong {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.new-hire-load span {
+  font-size: 11px;
+  color: #69717b;
+  font-weight: 800;
+}
+
+.signal-pill {
+  padding: 7px 9px;
+}
+
+.signal-good { background: #e8f6ee; color: #0f7a3b; }
+.signal-ok { background: #eef4fb; color: #17466e; }
+.signal-watch { background: #fff7e6; color: #9a5a00; }
+.signal-warn { background: #fff1e8; color: #a44400; }
+.signal-bad { background: #fdecee; color: #b50510; }
 
 .chart-wrap {
   height: 260px;
@@ -335,6 +455,7 @@ footer {
 @media (max-width: 1120px) {
   .hero-facts { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
   .kpis { grid-template-columns: repeat(2, minmax(220px, 1fr)) !important; }
+  .retained-grid { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 720px) {

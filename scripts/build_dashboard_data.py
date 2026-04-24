@@ -22,6 +22,7 @@ PIPELINE = [
     "normalise_dashboard_data.py",
     "validate_dashboard_data.py",
     "export_tronox_client_dashboard.py",
+    "export_csbp_client_dashboard.py",
 ]
 
 

@@ -5,10 +5,7 @@ name: Refresh dashboard data
 # scripts/parse_rapidcrews.py.
 #
 # Triggers:
-#   push       — whenever a roster XLSX, target file, import, or script lands
-#   schedule   — nightly, picks up changes made overnight on each per-site
-#                dashboard (Covalent / Tronox / CSBP) even if nothing was
-#                pushed to this repo.
+#   push       — whenever a roster XLSX, target file, import, or resume file lands
 #   manual     — "Run workflow" button on the Actions tab.
 #
 # Outcome: the action runs both scripts and commits any regenerated files
@@ -22,7 +19,6 @@ on:
       - 'data/raw/**'                # includes Rapidcrews Macro Data.xlsx
       - 'data/targets/**'
       - 'data/imports/**'
-      - 'scripts/**'
       - 'Resumes.xlsx'               # resumes consolidation (SharePoint-owned)
   workflow_dispatch:
   # NOTE: nightly schedule disabled until SharePoint pull is wired up.

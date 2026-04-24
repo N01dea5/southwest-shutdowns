@@ -9,27 +9,35 @@
   <title>SRG Global &mdash; Southwest Shutdowns</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap">
   <link rel="stylesheet" href="assets/styles.css?v=20260424-0225" />
   <link rel="stylesheet" href="assets/dashboard-polish.css?v=20260424-0235" />
-  <style>
-    #placeholder-banner { display: none !important; }
-  </style>
+  <link rel="stylesheet" href="assets/executive-redesign.css?v=20260424-0300" />
+  <style>#placeholder-banner { display: none !important; }</style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="assets/app.js?v=20260424-0225" defer></script>
-  <script src="assets/matrix-hiring-company-safe.js?v=20260424-0230" defer></script>
+  <script src="assets/matrix-hiring-company-safe.js?v=20260424-0231" defer></script>
   <script src="assets/refresh-status.js?v=20260424-0235" defer></script>
+  <script src="assets/executive-hero.js?v=20260424-0300" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="logo-link" href="https://www.srgglobal.com.au" target="_blank" rel="noopener" aria-label="SRG Global">
-      <img class="logo" src="assets/srg-global-logo.png" alt="SRG Global" />
-    </a>
-    <div class="wm-divider" aria-hidden="true"></div>
-    <div class="brand">
-      <div class="eyebrow">Asset Maintenance &middot; Integrated Services</div>
-      <h1>Fulfilment and Retention — Southwest Shutdowns</h1>
-      <div id="refresh-status" class="refresh-status">Last refreshed: loading&hellip;</div>
+  <header class="hero-shell">
+    <div class="hero-meta-line">Fulfilment &amp; Retention <span>/</span> Southwest Shutdowns <span>/</span> FY26</div>
+    <div class="hero-main">
+      <div>
+        <h1>Southwest Shutdowns</h1>
+        <p class="hero-subtitle">Rostering, fulfilment and retention across Covalent, Tronox and CSBP.</p>
+      </div>
+      <a class="hero-logo" href="https://www.srgglobal.com.au" target="_blank" rel="noopener" aria-label="SRG Global">
+        <img src="assets/srg-global-logo.png" alt="SRG Global" />
+      </a>
+    </div>
+    <div class="hero-facts" aria-label="Dashboard summary">
+      <div class="hero-fact"><span>Reporting period</span><strong id="hero-reporting-period">Loading&hellip;</strong></div>
+      <div class="hero-fact"><span>Clients</span><strong id="hero-clients">Covalent &middot; Tronox &middot; CSBP</strong></div>
+      <div class="hero-fact"><span>Active shutdowns</span><strong id="hero-active-shutdowns">Loading&hellip;</strong></div>
+      <div class="hero-fact"><span>Next mobilisation</span><strong id="hero-next-mobilisation">Loading&hellip;</strong></div>
+      <div class="hero-fact"><span>Status</span><strong id="refresh-status" class="refresh-status">Last refreshed: loading&hellip;</strong></div>
     </div>
   </header>
 
@@ -40,14 +48,14 @@
 
   <nav class="filterbar" id="filterbar" aria-label="Filters">
     <div class="filter-group">
-      <span class="filter-label">Company:</span>
+      <span class="filter-label">Company</span>
       <button class="chip active" data-co="all">All</button>
       <button class="chip" data-co="Covalent">Covalent</button>
       <button class="chip" data-co="Tronox">Tronox</button>
       <button class="chip" data-co="CSBP">CSBP</button>
     </div>
     <div class="filter-group" id="status-filter-group">
-      <span class="filter-label">Status:</span>
+      <span class="filter-label">Status</span>
       <button class="chip chip-status active" data-status="all">All</button>
       <button class="chip chip-status" data-status="booked">Booked</button>
       <button class="chip chip-status" data-status="in_progress">In progress</button>
@@ -59,114 +67,133 @@
     <div id="placeholder-banner" class="banner" hidden></div>
 
     <section id="tab-dashboard" class="tab-panel active" role="tabpanel">
-    <section class="kpis" id="kpis">
-      <div class="kpi">
-        <div class="kpi-value" id="kpi-positions">&mdash;</div>
-        <div class="kpi-label">Required / Filled positions</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value" id="kpi-fillrate">&mdash;</div>
-        <div class="kpi-label">Overall fill rate</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value" id="kpi-retention">&mdash;</div>
-        <div class="kpi-label">Average retention <span class="kpi-sub">Cross-company carry-over</span></div>
-      </div>
-      <div class="kpi kpi-next">
-        <div class="kpi-value" id="kpi-next">&mdash;</div>
-        <div class="kpi-label">Next shutdown <span class="kpi-sub" id="kpi-next-sub">&mdash;</span></div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Retention and carry-over</h2>
-        <details class="method-note"><summary>Methodology</summary><p>Roster retention is matched on normalised worker name. Same-company retention measures repeat workers from that client; cross-company carry-over measures repeat workers from any prior shutdown in the regional pool.</p></details>
-      </div>
-      <div class="chart-wrap retention"><canvas id="chart-retention"></canvas></div>
-      <div class="table-wrap">
-        <table id="retention-table">
-          <thead>
-            <tr>
-              <th>Shutdown</th><th>Company</th><th>Start</th>
-              <th class="num">Roster</th>
-              <th class="num">Returning (same co.)</th>
-              <th class="num">Returning (cross co.)</th>
-              <th class="num">New hires</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Shutdown schedule</h2>
-        <details class="method-note"><summary>Legend</summary><p>Each bar is one shutdown. Shading indicates fill rate; dashed bars are booked but not yet mobilised.</p></details>
-      </div>
-      <div class="gantt-legend">
-        <span><span class="sw co-covalent"></span>Covalent</span>
-        <span><span class="sw co-tronox"></span>Tronox</span>
-        <span><span class="sw co-csbp"></span>CSBP</span>
-        <span class="sep">|</span>
-        <span><span class="sw booked-swatch"></span>Booked</span>
-        <span><span class="sw today-swatch"></span>Today</span>
-      </div>
-      <div id="gantt" class="gantt"></div>
-    </section>
-
-    <section class="grid-2">
-      <div class="card">
-        <h2>Fill rate by company</h2>
-        <div class="chart-wrap"><canvas id="chart-company"></canvas></div>
-      </div>
-      <div class="card">
-        <h2>Fill rate by trade</h2>
-        <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Shutdown detail</h2>
-        <details class="method-note"><summary>Methodology</summary><p>Role gaps compare RapidCrews required headcount against filled roster counts. Status is inferred from roster dates.</p></details>
-      </div>
-      <div id="shutdown-summary" class="shutdown-summary"></div>
-    </section>
-
-    <section class="card">
-      <details open>
-        <summary><h2>Worker retention matrix</h2></summary>
-        <p class="hint">One row per worker, including hiring company where available from RapidCrews.</p>
-        <div class="matrix-toolbar">
-          <input type="search" id="matrix-search" class="matrix-search" placeholder="Filter by name, role or hiring company&hellip;" autocomplete="off" />
-          <span class="matrix-count" id="matrix-count"></span>
+      <div class="section-label"><span>01</span> Overview</div>
+      <section class="kpis" id="kpis">
+        <div class="kpi kpi-requested">
+          <div class="kpi-label">Required / Filled</div>
+          <div class="kpi-value" id="kpi-positions">&mdash;</div>
+          <div class="kpi-foot">Across active shutdowns</div>
+          <div class="kpi-rule"></div>
         </div>
-        <div class="table-wrap matrix-wrap">
-          <table id="worker-matrix">
-            <thead></thead>
-            <tbody></tbody>
-          </table>
+        <div class="kpi kpi-fill">
+          <div class="kpi-label">Overall fill rate</div>
+          <div class="kpi-value" id="kpi-fillrate">&mdash;</div>
+          <div class="kpi-foot">Required headcount coverage</div>
+          <div class="kpi-rule"></div>
         </div>
-      </details>
-    </section>
+        <div class="kpi kpi-retain">
+          <div class="kpi-label">Average retention</div>
+          <div class="kpi-value" id="kpi-retention">&mdash;</div>
+          <div class="kpi-foot">Cross-company carry-over</div>
+          <div class="kpi-rule"></div>
+        </div>
+        <div class="kpi kpi-next">
+          <div class="kpi-label">Next shutdown</div>
+          <div class="kpi-value" id="kpi-next">&mdash;</div>
+          <div class="kpi-foot" id="kpi-next-sub">&mdash;</div>
+          <div class="kpi-rule"></div>
+        </div>
+      </section>
 
-    <section class="card">
-      <details>
-        <summary><h2>Data-quality warnings</h2></summary>
-        <p class="hint">Potential duplicate-name conflicts with overlapping dates. Review before relying on retention metrics.</p>
-        <div id="warnings"></div>
-      </details>
+      <section class="section-block">
+        <div class="section-label"><span>02</span> Retention &amp; Carry-over</div>
+        <div class="section-intro">Side-by-side view of same-client retention, regional carry-over and new hires across each shutdown.</div>
+        <div class="grid-2 retained-grid">
+          <section class="card">
+            <div class="card-head compact-head"><h2>Retention chart</h2></div>
+            <div class="chart-wrap retention"><canvas id="chart-retention"></canvas></div>
+          </section>
+          <section class="card">
+            <div class="card-head compact-head"><h2>Retention table</h2></div>
+            <div class="table-wrap">
+              <table id="retention-table">
+                <thead>
+                  <tr>
+                    <th>Shutdown</th><th>Company</th><th>Start</th>
+                    <th class="num">Roster</th>
+                    <th class="num">Return · same co.</th>
+                    <th class="num">Return · any co.</th>
+                    <th class="num">New hires</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-label"><span>03</span> Schedule &amp; Fill</div>
+        <div class="section-intro">Shutdown timing and fill status across the Southwest portfolio.</div>
+        <section class="card">
+          <div class="card-head compact-head"><h2>Shutdown schedule</h2></div>
+          <div class="gantt-legend">
+            <span><span class="sw co-covalent"></span>Covalent</span>
+            <span><span class="sw co-tronox"></span>Tronox</span>
+            <span><span class="sw co-csbp"></span>CSBP</span>
+            <span class="sep">|</span>
+            <span><span class="sw booked-swatch"></span>Booked</span>
+            <span><span class="sw today-swatch"></span>Today</span>
+          </div>
+          <div id="gantt" class="gantt"></div>
+        </section>
+
+        <section class="grid-2">
+          <div class="card">
+            <div class="card-head compact-head"><h2>Fill rate by company</h2></div>
+            <div class="chart-wrap"><canvas id="chart-company"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-head compact-head"><h2>Fill rate by trade</h2></div>
+            <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="section-block">
+        <div class="section-label"><span>04</span> Shutdown Detail</div>
+        <div class="section-intro">Required, filled and role gap detail by shutdown.</div>
+        <section class="card">
+          <div id="shutdown-summary" class="shutdown-summary"></div>
+        </section>
+      </section>
+
+      <section class="section-block">
+        <div class="section-label"><span>05</span> Worker Matrix</div>
+        <section class="card matrix-card">
+          <details open>
+            <summary><h2>Worker retention matrix</h2></summary>
+            <p class="hint">One row per worker, including hiring company where available from RapidCrews.</p>
+            <div class="matrix-toolbar">
+              <input type="search" id="matrix-search" class="matrix-search" placeholder="Filter by name, role or hiring company&hellip;" autocomplete="off" />
+              <span class="matrix-count" id="matrix-count"></span>
+            </div>
+            <div class="table-wrap matrix-wrap">
+              <table id="worker-matrix">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+      </section>
+
+      <section class="section-block warning-block">
+        <section class="card">
+          <details>
+            <summary><h2>Data-quality warnings</h2></summary>
+            <p class="hint">Potential duplicate-name conflicts with overlapping dates. Review before relying on retention metrics.</p>
+            <div id="warnings"></div>
+          </details>
+        </section>
+      </section>
     </section>
-    </section><!-- /#tab-dashboard -->
 
     <section id="tab-roster" class="tab-panel" role="tabpanel" hidden>
+      <div class="section-label"><span>06</span> Operations Roster</div>
       <section class="card">
-        <div class="card-head">
-          <h2>Consolidated operations roster</h2>
-          <details class="method-note"><summary>Methodology</summary><p>One row per worker showing where they are scheduled across active and historical shutdowns. Coloured blocks indicate client assignment.</p></details>
-        </div>
+        <div class="card-head compact-head"><h2>Consolidated operations roster</h2></div>
         <div class="roster-toolbar">
           <input type="search" id="roster-search" class="roster-search" placeholder="Filter by name or role&hellip;" autocomplete="off" />
           <label class="roster-jump"><input type="checkbox" id="roster-onsite-today" /> On site today only</label>
@@ -181,7 +208,7 @@
         </div>
         <div id="ops-roster" class="ops-roster"></div>
       </section>
-    </section><!-- /#tab-roster -->
+    </section>
   </main>
 
   <footer>

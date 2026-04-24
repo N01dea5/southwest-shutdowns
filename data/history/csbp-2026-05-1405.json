@@ -1,0 +1,288 @@
+{
+  "company_key": "csbp",
+  "client_name": "CSBP",
+  "archived_at": "2026-04-24T01:33:30Z",
+  "shutdown": {
+    "id": "csbp-2026-05-1405",
+    "name": "CSBP Kwinana May 2026",
+    "site": "Kwinana",
+    "start_date": "2026-05-12",
+    "end_date": "2026-05-16",
+    "status": "booked",
+    "required_by_role": {
+      "Trade Assistant": 8,
+      "Supervisor - Mechanical": 2,
+      "Mechanical Fitter": 17
+    },
+    "filled_by_role": {
+      "Trade Assistant": 8,
+      "Supervisor - Mechanical": 1,
+      "Mechanical Fitter": 15
+    },
+    "crew_split": {
+      "Night": 5,
+      "Day": 19
+    },
+    "mobilised_by_role": {
+      "Trade Assistant": 8,
+      "Mechanical Fitter": 15,
+      "Supervisor - Mechanical": 1
+    },
+    "labour_hire_split": {
+      "SRG - South West": 24
+    },
+    "roster": [
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "shift": "Night",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "9A74E591-2483-4936-97C6-F42ADB08778F",
+        "tickets": {},
+        "mobile": "0435 441 418"
+      },
+      {
+        "name": "Eleonora TRAORE",
+        "role": "Trade Assistant",
+        "shift": "Night",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
+        "tickets": {},
+        "mobile": "0421 524 270"
+      },
+      {
+        "name": "Ganesh MOHITE",
+        "role": "Mechanical Fitter",
+        "shift": "Night",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
+        "tickets": {},
+        "mobile": "0469 591 660"
+      },
+      {
+        "name": "Edward GARDINER",
+        "role": "Mechanical Fitter",
+        "shift": "Night",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "D5198AAE-943B-4DE3-A257-235F091A2348",
+        "tickets": {},
+        "mobile": "0457 470 330"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
+        "tickets": {},
+        "mobile": "0472 586 919"
+      },
+      {
+        "name": "John HANCOCK",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
+        "tickets": {},
+        "mobile": "0409 998 059"
+      },
+      {
+        "name": "Tabani CHIPIRI",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
+        "tickets": {},
+        "mobile": "0497 594 673"
+      },
+      {
+        "name": "Jessica DILENA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
+        "tickets": {},
+        "mobile": "0477 841 414"
+      },
+      {
+        "name": "Gabriel NGUYEN",
+        "role": "Trade Assistant",
+        "shift": "Night",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "02FD7BD7-37A1-4FA8-9E51-B2B7BA75BFCA",
+        "tickets": {},
+        "mobile": "0448 737 990"
+      },
+      {
+        "name": "King GARCIA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "178F800C-0AC1-4BD7-9DED-2990BF95B528",
+        "tickets": {},
+        "mobile": "0498 054 425"
+      },
+      {
+        "name": "Wayne FORREST",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
+        "tickets": {},
+        "mobile": "0438 101 966"
+      },
+      {
+        "name": "William THOMPSON",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "9C9AB719-37E2-4D3E-A87F-D7F890229D95",
+        "tickets": {},
+        "mobile": "0429 331 817"
+      },
+      {
+        "name": "Stjepan BOSNJAK",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "DC132943-0F0D-4FA4-AC3E-B89B161D8FAC",
+        "tickets": {},
+        "mobile": "0413 377 068"
+      },
+      {
+        "name": "Richardson ALICANTE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "40FCD406-BD10-4C68-888F-03D449BD7F44",
+        "tickets": {},
+        "mobile": "0431 228 251"
+      },
+      {
+        "name": "Ivan RAYNOV",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "F81364FE-F4A6-4174-A0EE-6A947B277839",
+        "tickets": {},
+        "mobile": "0401 749 106"
+      },
+      {
+        "name": "Paul BESTWICK",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "5D93FD4B-4778-434A-A3F8-44AF397E631A",
+        "tickets": {},
+        "mobile": "0406 613 783"
+      },
+      {
+        "name": "Graham WANGLER",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
+        "tickets": {},
+        "mobile": "0476 247 673"
+      },
+      {
+        "name": "Peter BURNS",
+        "role": "Supervisor - Mechanical",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
+        "tickets": {},
+        "mobile": "0437 183 009"
+      },
+      {
+        "name": "Ben FRIEDAUER",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
+        "tickets": {},
+        "mobile": "0424 977 431"
+      },
+      {
+        "name": "Herbert MUKUNGA",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
+        "tickets": {},
+        "mobile": "0459 183 602"
+      },
+      {
+        "name": "Jake GANGEMI",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
+        "tickets": {},
+        "mobile": "0426 994 235"
+      },
+      {
+        "name": "Abhinav ABHINAV",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "A7561DA7-F34F-44CA-A079-76AA961055BE",
+        "tickets": {},
+        "mobile": "0424 848 290"
+      },
+      {
+        "name": "Helen MOIR",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "F66BEECB-E7C7-4291-8C8C-44227339E943",
+        "tickets": {},
+        "mobile": "0448 220 506"
+      },
+      {
+        "name": "Omkar Uttam DORUGADE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "12CB2423-1EC1-4F3D-87D3-2143655BEBDE",
+        "tickets": {},
+        "mobile": "0424 804 281"
+      }
+    ],
+    "_source": {
+      "job_no": 1405,
+      "source_format": "rapidcrews_macro_safety_pass",
+      "required_target_source": "RAPID_CREWS_JOB_PLANNING",
+      "target_source": {
+        "source": "rapid_crews_job_planning_view",
+        "job_no": 1405,
+        "total_required": 27,
+        "total_filled": 24
+      }
+    }
+  }
+}

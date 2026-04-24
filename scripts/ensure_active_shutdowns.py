@@ -50,6 +50,14 @@ CLIENT_SITE_MAP: dict[tuple[str, str], tuple[str, str, str, str]] = {
     ("SOUTH WEST", "Kleenheat"): ("csbp", "CSBP", "Kwinana", "KPF LNG Kleenheat"),
 }
 
+# Optional overrides for cases where the SQL views expose client/site and job
+# number but not the descriptive text shown in the RapidCrews web UI. Keep this
+# list short; the parser still tries to read a description from workbook columns
+# before falling back to this dictionary.
+JOB_DESCRIPTION_OVERRIDES: dict[int, str] = {
+    1405: "CSBP - NAAN1 Shut",
+}
+
 ROLE_RENAME = {
     "Rigger - Advanced": "Advanced Rigger",
     "Rigger - Intermediate": "Intermediate Rigger",
@@ -65,9 +73,46 @@ CREW_LABEL = {
 MONTH_NAME = ("", "January", "February", "March", "April", "May", "June",
               "July", "August", "September", "October", "November", "December")
 
+JOB_DESC_HEADERS = (
+    "Job Description", "JobDescription", "Description", "Job Name", "JobName",
+    "Project", "Project Name", "Shutdown", "Shutdown Name", "Order Description",
+    "Work Order Description", "Job", "Job Label"
+)
+
 
 def _clean_text(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "").replace("\xa0", " ")).strip()
+
+
+def _normalise_job_description(raw: Any, job_no: int | None = None) -> str:
+    text = _clean_text(raw)
+    if not text and job_no in JOB_DESCRIPTION_OVERRIDES:
+        return JOB_DESCRIPTION_OVERRIDES[int(job_no)]
+    if not text:
+        return ""
+
+    # RapidCrews UI/drop-down strings can look like:
+    #   1405 | CSBP, CSBP Kwinana | 12/05/26 - 16/05/26 | CSBP - NAAN1 Shut, CSBP - NAAN1 Shut
+    # Keep the final descriptive segment and de-duplicate repeated comma parts.
+    if "|" in text:
+        text = text.split("|")[-1].strip()
+    text = re.sub(rf"^\s*{job_no}\s*[-–:|]\s*", "", text) if job_no else text
+
+    parts = [_clean_text(p) for p in text.split(",") if _clean_text(p)]
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for p in parts or [text]:
+        key = p.lower()
+        if key not in seen:
+            deduped.append(p)
+            seen.add(key)
+    text = ", ".join(deduped)
+
+    # Avoid useless labels that are just client/site rather than the shutdown description.
+    weak = {"csbp", "csbp kwinana", "kwinana", "south west", "tronox", "covalent lithium"}
+    if text.lower() in weak and job_no in JOB_DESCRIPTION_OVERRIDES:
+        return JOB_DESCRIPTION_OVERRIDES[int(job_no)]
+    return text
 
 
 def _map_client_site(client: Any, site: Any, job_no: int) -> tuple[str, str, str, str] | None:
@@ -92,6 +137,16 @@ def _headers(ws) -> tuple[list[Any], dict[str, int]]:
     header = list(next(ws.iter_rows(max_row=1, values_only=True)))
     idx = {str(h).strip(): i for i, h in enumerate(header) if h is not None and str(h).strip()}
     return header, idx
+
+
+def _first_present_idx(idx: dict[str, int], names: tuple[str, ...]) -> int | None:
+    lower = {k.lower(): v for k, v in idx.items()}
+    for name in names:
+        if name in idx:
+            return idx[name]
+        if name.lower() in lower:
+            return lower[name.lower()]
+    return None
 
 
 def _to_date(value) -> dt.date | None:
@@ -220,8 +275,9 @@ def _read_personnel(wb) -> dict[Any, dict[str, str]]:
 def _read_roster(wb, active_jobnos: set[int]) -> dict[int, dict[str, Any]]:
     ws = wb[ROSTER_VIEW_SHEET]
     _, idx = _headers(ws)
+    desc_idx = _first_present_idx(idx, JOB_DESC_HEADERS)
     out: dict[int, dict[str, Any]] = {
-        j: {"client": None, "site": None, "dates": [], "workers": defaultdict(lambda: {
+        j: {"client": None, "site": None, "job_description": JOB_DESCRIPTION_OVERRIDES.get(j, ""), "dates": [], "workers": defaultdict(lambda: {
             "dates": [], "sched_types": Counter(), "is_on_location": False,
         })}
         for j in active_jobnos
@@ -244,6 +300,8 @@ def _read_roster(wb, active_jobnos: set[int]) -> dict[int, dict[str, Any]]:
         bucket = out[job]
         bucket["client"] = bucket["client"] or _clean_text(row[idx.get("Client")])
         bucket["site"] = bucket["site"] or _clean_text(row[idx.get("Site")])
+        if desc_idx is not None and desc_idx < len(row):
+            bucket["job_description"] = bucket["job_description"] or _normalise_job_description(row[desc_idx], job)
         d = _to_date(row[idx["Schedule Date"]]) if "Schedule Date" in idx else None
         if d:
             bucket["dates"].append(d)
@@ -261,7 +319,11 @@ def _read_roster(wb, active_jobnos: set[int]) -> dict[int, dict[str, Any]]:
 
 
 def _existing_jobnos() -> set[int]:
-    out: set[int] = set()
+    return set(_existing_jobno_sources())
+
+
+def _existing_jobno_sources() -> dict[int, str]:
+    out: dict[int, str] = {}
     for name in ("covalent", "tronox", "csbp"):
         path = DATA_DIR / f"{name}.json"
         if not path.exists():
@@ -275,7 +337,7 @@ def _existing_jobnos() -> set[int]:
                 (src.get("target_source") or {}).get("job_no"),
             ):
                 try:
-                    out.add(int(raw))
+                    out[int(raw)] = src.get("source_format") or "unknown"
                 except (TypeError, ValueError):
                     pass
     return out
@@ -288,13 +350,14 @@ def _load_company(company_key: str, company_name: str) -> dict:
     return {"company": company_name, "generated_at": None, "shutdowns": []}
 
 
-def _project_label(base: str, start: dt.date | None, job_no: int) -> str:
+def _project_label(base: str, start: dt.date | None, job_no: int, job_description: str = "") -> str:
+    desc = _normalise_job_description(job_description, job_no)
+    if desc:
+        return f"{job_no} – {desc}"
     if start:
         suffix = f"{MONTH_NAME[start.month]} {start.year}"
-        if base.upper() == "CSBP":
-            return f"CSBP Shutdown {suffix}"
-        return f"{base} {suffix}"
-    return f"{base} Job {job_no}"
+        return f"{job_no} – {base} {suffix}"
+    return f"{job_no} – {base}"
 
 
 def _build_placeholder(job_no: int, planning: dict[str, dict[str, int]], roster_raw: dict[str, Any], personnel: dict[Any, dict[str, str]]) -> tuple[str, str, dict] | None:
@@ -302,6 +365,7 @@ def _build_placeholder(job_no: int, planning: dict[str, dict[str, int]], roster_
     if not mapped:
         return None
     company_key, company_name, dashboard_site, label_base = mapped
+    job_description = _normalise_job_description(roster_raw.get("job_description"), job_no)
 
     dates = list(roster_raw.get("dates") or [])
     start = min(dates) if dates else dt.date.today()
@@ -353,7 +417,7 @@ def _build_placeholder(job_no: int, planning: dict[str, dict[str, int]], roster_
     shutdown_id = f"{company_key}-{start.isoformat()[:7]}-{job_no}"
     shutdown = {
         "id": shutdown_id,
-        "name": _project_label(label_base, start, job_no),
+        "name": _project_label(label_base, start, job_no, job_description),
         "site": dashboard_site,
         "start_date": start.isoformat(),
         "end_date": end.isoformat(),
@@ -366,11 +430,13 @@ def _build_placeholder(job_no: int, planning: dict[str, dict[str, int]], roster_
         "roster": roster_entries,
         "_source": {
             "job_no": job_no,
+            "job_description": job_description,
             "source_format": "rapidcrews_macro_safety_pass",
             "required_target_source": "RAPID_CREWS_JOB_PLANNING",
             "target_source": {
                 "source": "rapid_crews_job_planning_view",
                 "job_no": job_no,
+                "job_description": job_description,
                 "total_required": sum(required.values()),
                 "total_filled": sum(filled.values()),
             },
@@ -397,15 +463,18 @@ def main() -> int:
     finally:
         wb.close()
 
-    existing = _existing_jobnos()
-    missing = sorted(active_jobnos - existing)
-    if not missing:
+    existing_sources = _existing_jobno_sources()
+    existing = set(existing_sources)
+    # Missing active jobs must be added. Jobs emitted by this safety pass should
+    # be refreshed too, so title/detail improvements apply after parser changes.
+    to_process = sorted((active_jobnos - existing) | {j for j in active_jobnos & existing if existing_sources.get(j) == "rapidcrews_macro_safety_pass"})
+    if not to_process:
         print(f"ensure_active_shutdowns: all {len(active_jobnos)} active JobNos already emitted")
         return 0
 
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     emitted = 0
-    for job_no in missing:
+    for job_no in to_process:
         planning = planning_all.get(job_no)
         if not planning:
             print(f"  warn: active JobNo {job_no} has no JobPlanningView rows — cannot emit dashboard card")
@@ -416,6 +485,11 @@ def main() -> int:
         company_key, company_name, shutdown = built
         payload = _load_company(company_key, company_name)
         payload["generated_at"] = now
+        # Replace any previous safety-pass output for the same JobNo rather than appending duplicates.
+        payload["shutdowns"] = [
+            s for s in payload.get("shutdowns", [])
+            if not ((s.get("_source") or {}).get("job_no") == job_no and (s.get("_source") or {}).get("source_format") == "rapidcrews_macro_safety_pass")
+        ]
         payload.setdefault("shutdowns", []).append(shutdown)
         payload["shutdowns"].sort(key=lambda s: (s.get("start_date") or "", s.get("id") or ""))
         out = DATA_DIR / f"{company_key}.json"
@@ -430,9 +504,9 @@ def main() -> int:
         }
         (HISTORY_DIR / f"{shutdown['id']}.json").write_text(json.dumps(hist, indent=2))
         emitted += 1
-        print(f"  emitted missing active JobNo {job_no}: {shutdown['id']} ({sum(shutdown['required_by_role'].values())} required / {sum(shutdown['filled_by_role'].values())} filled)")
+        print(f"  emitted/refreshed active JobNo {job_no}: {shutdown['id']} — {shutdown['name']} ({sum(shutdown['required_by_role'].values())} required / {sum(shutdown['filled_by_role'].values())} filled)")
 
-    print(f"ensure_active_shutdowns: emitted {emitted} missing active shutdown(s)")
+    print(f"ensure_active_shutdowns: emitted/refreshed {emitted} active shutdown(s)")
     return 0
 
 

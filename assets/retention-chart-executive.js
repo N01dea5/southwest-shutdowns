@@ -1,11 +1,12 @@
 /* Executive retention chart formatter.
  *
- * Replaces the base retention chart with a clearer operational readout:
- *   - bar: any-client carry-over rate
- *   - line: same-client retention rate
- *   - point: new-hire load
+ * Replaces the base retention chart with a simple 100% stacked horizontal bar:
+ *   - Same client
+ *   - SRG carry-over
+ *   - New
  *
- * This runs after app.js and is non-blocking.
+ * This is easier to interpret than mixed bars/lines and matches the requested
+ * retention terminology.
  */
 (function () {
   'use strict';
@@ -66,8 +67,8 @@
       const seenCompany = seenByCompany.get(company);
 
       let same = 0;
-      let carry = 0;
-      let newHires = 0;
+      let srgCarry = 0;
+      let fresh = 0;
 
       const uniqueWorkers = new Set();
       for (const worker of roster) {
@@ -78,8 +79,8 @@
         const wasSame = seenCompany.has(key);
         const wasAny = seenAny.has(key);
         if (wasSame) same += 1;
-        if (wasAny) carry += 1;
-        if (!wasAny) newHires += 1;
+        else if (wasAny) srgCarry += 1;
+        else fresh += 1;
       }
 
       for (const key of uniqueWorkers) {
@@ -94,11 +95,11 @@
         company,
         total,
         same,
-        carry,
-        newHires,
+        srgCarry,
+        fresh,
         samePct: pct(same, total),
-        carryPct: pct(carry, total),
-        newHirePct: pct(newHires, total)
+        srgCarryPct: pct(srgCarry, total),
+        freshPct: pct(fresh, total)
       };
     }).filter(row => row.total > 0);
   }
@@ -128,32 +129,31 @@
         labels,
         datasets: [
           {
-            type: 'bar',
-            label: 'Any-client carry-over',
-            data: rows.map(row => row.carryPct),
-            borderWidth: 0,
-            borderRadius: 8,
-            barThickness: 24,
-            maxBarThickness: 30
-          },
-          {
-            type: 'line',
-            label: 'Same-client retention',
+            label: 'Same client',
             data: rows.map(row => row.samePct),
-            borderWidth: 2,
-            tension: 0.28,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            fill: false
+            borderWidth: 0,
+            borderRadius: 0,
+            barThickness: 24,
+            maxBarThickness: 30,
+            stack: 'mix'
           },
           {
-            type: 'line',
-            label: 'New-hire load',
-            data: rows.map(row => row.newHirePct),
+            label: 'SRG carry-over',
+            data: rows.map(row => row.srgCarryPct),
             borderWidth: 0,
-            pointRadius: 5,
-            pointHoverRadius: 7,
-            showLine: false
+            borderRadius: 0,
+            barThickness: 24,
+            maxBarThickness: 30,
+            stack: 'mix'
+          },
+          {
+            label: 'New',
+            data: rows.map(row => row.freshPct),
+            borderWidth: 0,
+            borderRadius: 0,
+            barThickness: 24,
+            maxBarThickness: 30,
+            stack: 'mix'
           }
         ]
       },
@@ -169,7 +169,7 @@
               boxWidth: 10,
               boxHeight: 10,
               usePointStyle: true,
-              font: { size: 11, weight: '700' }
+              font: { size: 11, weight: '800' }
             }
           },
           tooltip: {
@@ -180,16 +180,17 @@
               },
               label(context) {
                 const row = rows[context.dataIndex];
-                const value = context.parsed.x;
-                if (context.dataset.label === 'Any-client carry-over') return `Carry-over: ${value}% (${row.carry}/${row.total})`;
-                if (context.dataset.label === 'Same-client retention') return `Same-client: ${value}% (${row.same}/${row.total})`;
-                return `New hires: ${value}% (${row.newHires}/${row.total})`;
+                const label = context.dataset.label;
+                if (label === 'Same client') return `Same client: ${row.samePct}% (${row.same}/${row.total})`;
+                if (label === 'SRG carry-over') return `SRG carry-over: ${row.srgCarryPct}% (${row.srgCarry}/${row.total})`;
+                return `New: ${row.freshPct}% (${row.fresh}/${row.total})`;
               }
             }
           }
         },
         scales: {
           x: {
+            stacked: true,
             min: 0,
             max: 100,
             grid: { color: '#eef1f4' },
@@ -199,11 +200,12 @@
             },
             title: {
               display: true,
-              text: 'Share of roster',
+              text: 'Roster mix',
               font: { size: 11, weight: '800' }
             }
           },
           y: {
+            stacked: true,
             grid: { display: false },
             ticks: {
               autoSkip: false,

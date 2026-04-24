@@ -10,16 +10,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
-  <!-- asset URLs carry a ?v= query-string so iOS Safari / aggressive caches
-       refetch after every deploy. Bump this on each material change. -->
   <link rel="stylesheet" href="assets/styles.css?v=20260424-0225" />
   <style>
-    /* Suppress the legacy "Heads Up" placeholder-target banner. */
     #placeholder-banner { display: none !important; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="assets/app.js?v=20260424-0225" defer></script>
   <script src="assets/matrix-hiring-company-safe.js?v=20260424-0230" defer></script>
+  <script src="assets/refresh-status.js?v=20260424-0235" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -29,7 +27,8 @@
     <div class="wm-divider" aria-hidden="true"></div>
     <div class="brand">
       <div class="eyebrow">Asset Maintenance &middot; Integrated Services</div>
-      <h1>Fulfilment &amp; Retention Southwest Shutdowns</h1>
+      <h1>Fulfilment and Retention — Southwest Shutdowns</h1>
+      <div id="refresh-status" class="refresh-status">Last refreshed: loading&hellip;</div>
     </div>
   </header>
 
@@ -62,7 +61,7 @@
     <section class="kpis" id="kpis">
       <div class="kpi">
         <div class="kpi-value" id="kpi-positions">&mdash;</div>
-        <div class="kpi-label">Requested / Confirmed positions</div>
+        <div class="kpi-label">Required / Filled positions</div>
       </div>
       <div class="kpi">
         <div class="kpi-value" id="kpi-fillrate">&mdash;</div>
@@ -70,7 +69,7 @@
       </div>
       <div class="kpi">
         <div class="kpi-value" id="kpi-retention">&mdash;</div>
-        <div class="kpi-label">Avg retention rate <span class="kpi-sub">Cross-company carry-over</span></div>
+        <div class="kpi-label">Average retention <span class="kpi-sub">Cross-company carry-over</span></div>
       </div>
       <div class="kpi kpi-next">
         <div class="kpi-value" id="kpi-next">&mdash;</div>
@@ -80,8 +79,8 @@
 
     <section class="card">
       <div class="card-head">
-        <h2>Retention &amp; carry-over</h2>
-        <p class="hint">Each bar is one shutdown&rsquo;s roster, split into: workers returning from the <strong>same company</strong> (loyalty), workers returning from a <strong>different SRG client</strong> in the pool (regional stickiness), and <strong>new hires</strong>. Matched on normalised name &mdash; there are no stable employee IDs in the source data.</p>
+        <h2>Retention and carry-over</h2>
+        <details class="method-note"><summary>Methodology</summary><p>Roster retention is matched on normalised worker name. Same-company retention measures repeat workers from that client; cross-company carry-over measures repeat workers from any prior shutdown in the regional pool.</p></details>
       </div>
       <div class="chart-wrap retention"><canvas id="chart-retention"></canvas></div>
       <div class="table-wrap">
@@ -102,15 +101,15 @@
 
     <section class="card">
       <div class="card-head">
-        <h2>Shutdown schedule (Gantt)</h2>
-        <p class="hint">All shutdowns across the sites, week-resolution. Shading encodes fill &mdash; darker means closer to target. Dashed outline = booked (not yet mobilised); solid = in progress or completed. Scrolls horizontally for long spans.</p>
+        <h2>Shutdown schedule</h2>
+        <details class="method-note"><summary>Legend</summary><p>Each bar is one shutdown. Shading indicates fill rate; dashed bars are booked but not yet mobilised.</p></details>
       </div>
       <div class="gantt-legend">
         <span><span class="sw co-covalent"></span>Covalent</span>
         <span><span class="sw co-tronox"></span>Tronox</span>
         <span><span class="sw co-csbp"></span>CSBP</span>
         <span class="sep">|</span>
-        <span><span class="sw booked-swatch"></span>Booked (dashed)</span>
+        <span><span class="sw booked-swatch"></span>Booked</span>
         <span><span class="sw today-swatch"></span>Today</span>
       </div>
       <div id="gantt" class="gantt"></div>
@@ -130,7 +129,7 @@
     <section class="card">
       <div class="card-head">
         <h2>Shutdown detail</h2>
-        <p class="hint">One collapsible card per shutdown, mirroring the per-site dashboards. Shows <strong>required vs filled</strong> by role, with the gap and per-role fill rate. Status chip reflects roster state: <em>Booked</em> (nobody mobilised yet) &middot; <em>In progress</em> (roster on site, not yet demobilised) &middot; <em>Completed</em> (all end dates in the past).</p>
+        <details class="method-note"><summary>Methodology</summary><p>Role gaps compare RapidCrews required headcount against filled roster counts. Status is inferred from roster dates.</p></details>
       </div>
       <div id="shutdown-summary" class="shutdown-summary"></div>
     </section>
@@ -138,9 +137,9 @@
     <section class="card">
       <details open>
         <summary><h2>Worker retention matrix</h2></summary>
-        <p class="hint">Each unique worker's appearance across every shutdown we have data for, sorted by <strong>count descending</strong> so repeat returners show first. Green tick &rarr; confirmed on that roster. Matched on normalised <em>name + role</em>.</p>
+        <p class="hint">One row per worker, including hiring company where available from RapidCrews.</p>
         <div class="matrix-toolbar">
-          <input type="search" id="matrix-search" class="matrix-search" placeholder="Filter by name or role&hellip;" autocomplete="off" />
+          <input type="search" id="matrix-search" class="matrix-search" placeholder="Filter by name, role or hiring company&hellip;" autocomplete="off" />
           <span class="matrix-count" id="matrix-count"></span>
         </div>
         <div class="table-wrap matrix-wrap">
@@ -155,7 +154,7 @@
     <section class="card">
       <details>
         <summary><h2>Data-quality warnings</h2></summary>
-        <p class="hint">Ambiguous matches &mdash; the same normalised name + role appears at two companies with overlapping dates. Probably two different workers; surface for ops review.</p>
+        <p class="hint">Potential duplicate-name conflicts with overlapping dates. Review before relying on retention metrics.</p>
         <div id="warnings"></div>
       </details>
     </section>
@@ -165,7 +164,7 @@
       <section class="card">
         <div class="card-head">
           <h2>Consolidated operations roster</h2>
-          <p class="hint">One row per worker showing <strong>where they are on any given day</strong> across the four sites. Coloured block = on site; hover for the shutdown and role. Grouped by primary company, sorted by name. Today is highlighted; horizontal scroll covers the full period.</p>
+          <details class="method-note"><summary>Methodology</summary><p>One row per worker showing where they are scheduled across active and historical shutdowns. Coloured blocks indicate client assignment.</p></details>
         </div>
         <div class="roster-toolbar">
           <input type="search" id="roster-search" class="roster-search" placeholder="Filter by name or role&hellip;" autocomplete="off" />
@@ -186,7 +185,7 @@
 
   <footer>
     <div class="foot-rule"></div>
-    <small>SRG Global &middot; Internal use only &middot; reads <code>data/covalent.json</code>, <code>data/tronox.json</code>, <code>data/csbp.json</code> &middot; refresh page after any source update</small>
+    <small>SRG Global &middot; Internal use only &middot; source: RapidCrews macro workbook and generated dashboard JSON</small>
   </footer>
 </body>
 </html>

@@ -49,15 +49,17 @@ COMPAT_HEADERS = [
 ]
 
 ALIASES = {
-    "Job No": ["Job No", "JobNo", "Job", "Job Number", "JobNo_"],
+    # New DailyPersonnelSchedule has no Job No column. QuoteNo / OrderNo carry
+    # the RapidCrews numeric job reference used by ACTIVE_SHUTDOWNS.
+    "Job No": ["Job No", "JobNo", "Job", "Job Number", "JobNo_", "QuoteNo", "Quote No", "OrderNo", "Order No", "JobId", "Job Id"],
     "Client": ["Client", "ClientId", "Client Id", "ClientID"],
-    "Site": ["Site", "SiteName", "Site Name", "Location", "Job Site"],
-    "Personnel Id": ["Personnel Id", "PersonnelId", "Personnel ID", "Employee Id", "EmployeeID", "Resource Id"],
-    "Schedule Date": ["Schedule Date", "Date", "Roster Date", "RosterDate", "Shift Date", "Work Date"],
+    "Site": ["Site", "SiteName", "Site Name", "Location", "Job Site", "SiteId", "Site Id"],
+    "Personnel Id": ["Personnel Id", "PersonnelId", "Personnel ID", "Employee Id", "EmployeeID", "Resource Id", "ResourceId"],
+    "Schedule Date": ["Schedule Date", "ReportDate", "Report Date", "Date", "Roster Date", "RosterDate", "Shift Date", "Work Date"],
     "Schedule Type": ["Schedule Type", "ScheduleType", "Shift", "Shift Type", "Roster Type", "Crew", "Crew Type"],
     "Status": ["Status", "Roster Status", "Schedule Status", "Personnel Status", "Booking Status"],
     "OnSite": ["OnSite", "On Site", "IsOnLocation", "Is On Location", "On Location"],
-    "ClientId": ["ClientId", "Client Id", "ClientID"],
+    "ClientId": ["ClientId", "Client Id", "ClientID", "Id"],
     "ClientName": ["ClientName", "Client Name", "Name"],
 }
 
@@ -134,8 +136,17 @@ def _parse_date(value: Any) -> dt.date | None:
 def _parse_job(value: Any) -> int | None:
     if isinstance(value, (int, float)):
         return int(value)
-    m = re.search(r"\d+", _clean(value))
-    return int(m.group(0)) if m else None
+    text = _clean(value)
+    if not text:
+        return None
+    # Prefer 3-6 digit job references inside mixed strings such as
+    # "1353 - Tronox Major Shutdown". Avoid returning GUID fragments.
+    matches = re.findall(r"\b\d{3,6}\b", text)
+    if matches:
+        return int(matches[0])
+    if re.fullmatch(r"\d+", text):
+        return int(text)
+    return None
 
 
 def _load_client_lookup(wb: openpyxl.Workbook) -> dict[str, str]:

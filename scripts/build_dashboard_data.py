@@ -14,6 +14,7 @@ import sys
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 PIPELINE = [
+    "audit_rapidcrews_workbook.py",
     "parse_rapidcrews.py",
     "ensure_active_shutdowns.py",
     "apply_hiring_company.py",

@@ -12,13 +12,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap">
   <link rel="stylesheet" href="assets/styles.css?v=20260424-0225" />
   <link rel="stylesheet" href="assets/dashboard-polish.css?v=20260424-0235" />
-  <link rel="stylesheet" href="assets/executive-redesign.css?v=20260424-0301" />
+  <link rel="stylesheet" href="assets/executive-redesign.css?v=20260424-0304" />
   <style>#placeholder-banner { display: none !important; }</style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="assets/app.js?v=20260424-0225" defer></script>
   <script src="assets/matrix-hiring-company-safe.js?v=20260424-0231" defer></script>
-  <script src="assets/retention-table-executive.js?v=20260424-0302" defer></script>
-  <script src="assets/retention-chart-executive.js?v=20260424-0303" defer></script>
+  <script src="assets/retention-table-executive.js?v=20260424-0304" defer></script>
   <script src="assets/refresh-status.js?v=20260424-0235" defer></script>
   <script src="assets/executive-hero.js?v=20260424-0300" defer></script>
 </head>
@@ -99,35 +98,30 @@
 
       <section class="section-block">
         <div class="section-label"><span>02</span> Retention &amp; SRG Carry-over</div>
-        <div class="section-intro">Each worker is classified as <strong>Same client</strong>, <strong>SRG carry-over</strong> from another client, or <strong>New</strong> to the dataset.</div>
-        <div class="grid-2 retained-grid">
-          <section class="card">
-            <div class="card-head compact-head"><h2>Retention chart</h2></div>
-            <div class="chart-wrap retention"><canvas id="chart-retention"></canvas></div>
-          </section>
-          <section class="card">
-            <div class="card-head compact-head"><h2>Retention table</h2></div>
-            <div class="table-wrap">
-              <table id="retention-table">
-                <thead>
-                  <tr>
-                    <th>Shutdown</th><th>Company</th><th>Start</th>
-                    <th class="num">Roster</th>
-                    <th class="num">Same client</th>
-                    <th class="num">SRG carry-over</th>
-                    <th class="num">New</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </section>
-        </div>
+        <div class="section-intro">Each worker is classified as <strong>Same client</strong>, <strong>SRG carry-over</strong> from another client, <strong>New</strong> to the dataset, or <strong>Labour hire</strong> where the hiring company does not contain SRG.</div>
+        <section class="card retention-table-card">
+          <div class="card-head compact-head"><h2>Retention table</h2></div>
+          <div class="table-wrap">
+            <table id="retention-table">
+              <thead>
+                <tr>
+                  <th>Shutdown</th><th>Company</th><th>Start</th>
+                  <th class="num">Roster</th>
+                  <th class="num">Same client</th>
+                  <th class="num">SRG carry-over</th>
+                  <th class="num">New</th>
+                  <th class="num">Labour hire</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
       </section>
 
       <section class="section-block">
-        <div class="section-label"><span>03</span> Schedule &amp; Fill</div>
-        <div class="section-intro">Shutdown timing and fill status across the Southwest portfolio.</div>
+        <div class="section-label"><span>03</span> Schedule</div>
+        <div class="section-intro">Shutdown timing across the Southwest portfolio.</div>
         <section class="card">
           <div class="card-head compact-head"><h2>Shutdown schedule</h2></div>
           <div class="gantt-legend">
@@ -139,17 +133,6 @@
             <span><span class="sw today-swatch"></span>Today</span>
           </div>
           <div id="gantt" class="gantt"></div>
-        </section>
-
-        <section class="grid-2">
-          <div class="card">
-            <div class="card-head compact-head"><h2>Fill rate by company</h2></div>
-            <div class="chart-wrap"><canvas id="chart-company"></canvas></div>
-          </div>
-          <div class="card">
-            <div class="card-head compact-head"><h2>Fill rate by trade</h2></div>
-            <div class="chart-wrap"><canvas id="chart-trade"></canvas></div>
-          </div>
         </section>
       </section>
 

@@ -885,14 +885,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
+        "Trade Assistant": 18,
         "Painter & Blaster": 2,
         "Supervisor - Mechanical": 4,
-        "Scaffolder": 6,
-        "Mechanical Fitter": 23,
-        "Advanced Rigger": 2,
-        "Intermediate Rigger": 3,
         "Sheet Metal Worker": 3,
-        "Trade Assistant": 18
+        "Mechanical Fitter": 23,
+        "Scaffolder": 6,
+        "Advanced Rigger": 2,
+        "Intermediate Rigger": 3
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -3377,25 +3377,40 @@
       "status": "booked",
       "required_by_role": {
         "Mechanical Fitter": 13,
-        "Supervisor - Mechanical": 3,
         "Advanced Rigger": 4,
-        "Intermediate Rigger": 0,
+        "Rigger - Advanced": 0,
+        "Rigger - Intermediate": 0,
+        "Site Coordinator": 0,
+        "Superintendent": 0,
+        "Supervisor - Mechanical": 3,
         "Trade Assistant": 16
       },
       "filled_by_role": {
         "Mechanical Fitter": 13,
-        "Supervisor - Mechanical": 3,
         "Advanced Rigger": 3,
-        "Intermediate Rigger": 0,
+        "Rigger - Advanced": 0,
+        "Rigger - Intermediate": 0,
+        "Site Coordinator": 0,
+        "Superintendent": 0,
+        "Supervisor - Mechanical": 3,
         "Trade Assistant": 16
       },
       "crew_split": {
-        "Day": 20,
-        "Night": 13
+        "Day": 22,
+        "Night": 14
       },
-      "mobilised_by_role": {},
+      "mobilised_by_role": {
+        "Site Coordinator": 1,
+        "Superintendent": 1,
+        "Supervisor - Mechanical": 1,
+        "Mechanical Fitter": 13,
+        "Rigger - Intermediate": 2,
+        "Rigger - Advanced": 2,
+        "Trade Assistant": 16
+      },
       "labour_hire_split": {
-        "SRG - South West": 33
+        "SRG - South West": 35,
+        "SRG - Southwest Tianqi": 1
       },
       "roster": [
         {
@@ -4375,7 +4390,33 @@
           "start": "2026-06-07",
           "end": "2026-06-18",
           "personnel_id": "0E4AEBD5-0E7C-435D-897F-1E9B5E2E57FF",
-          "tickets": {},
+          "tickets": {
+            "ewp": {
+              "expiry": "2027-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - HRWL.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - HRWL.pdf",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2026-10-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - Driver's Licence.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-12",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-06-12",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
           "hire_company": "SRG - South West"
         },
         {
@@ -4458,6 +4499,58 @@
             }
           },
           "hire_company": "SRG - South West"
+        },
+        {
+          "name": "Adam RILEY",
+          "role": "Superintendent",
+          "shift": "Day",
+          "start": "2026-05-25",
+          "end": "2026-06-21",
+          "personnel_id": "EC6E377A-A835-4073-B08C-4EE1C779F5DC",
+          "tickets": {},
+          "mobile": "0457 162 100"
+        },
+        {
+          "name": "Anthony SMITH",
+          "role": "Site Coordinator",
+          "shift": "Day",
+          "start": "2026-05-25",
+          "end": "2026-06-21",
+          "personnel_id": "C8AD4CF8-086E-4631-AF87-677B9F0775C6",
+          "tickets": {
+            "cse": {
+              "expiry": "2028-04-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SMITH, Anthony - c8ad4cf8-086e-4631-af87-677b9f0775c6/SMITH, Anthony - Confined Spaces Entry.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-04-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SMITH, Anthony - c8ad4cf8-086e-4631-af87-677b9f0775c6/SMITH, Anthony - Working at Heights.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0404 303 368"
+        },
+        {
+          "name": "Beau WITHERS",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-06-08",
+          "end": "2026-06-22",
+          "personnel_id": "9A74E591-2483-4936-97C6-F42ADB08778F",
+          "tickets": {
+            "wah": {
+              "expiry": "2028-04-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS, Beau - Working at Heights.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2026-05-08",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS , Beau - Confined Spaces.pdf",
+              "status": "expiring_soon"
+            }
+          },
+          "mobile": "0435 441 418"
         }
       ],
       "_source": {
@@ -4485,5 +4578,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-24T04:33:22Z"
+  "generated_at": "2026-04-24T04:48:16Z"
 }

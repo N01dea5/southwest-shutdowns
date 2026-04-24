@@ -20,6 +20,7 @@ PIPELINE = [
     "ensure_active_shutdowns.py",
     "apply_hiring_company.py",
     "apply_personnel_calendar.py",
+    "apply_rejected_shutdowns.py",
     "merge_macro_roster_additions.py",
     "apply_shutdown_display_labels.py",
     "normalise_dashboard_data.py",

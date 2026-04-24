@@ -17,8 +17,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="assets/app.js?v=20260424-0225" defer></script>
   <script src="assets/matrix-hiring-company-safe.js?v=20260424-0231" defer></script>
-  <script src="assets/retention-table-executive.js?v=20260424-0301" defer></script>
-  <script src="assets/retention-chart-executive.js?v=20260424-0302" defer></script>
+  <script src="assets/retention-table-executive.js?v=20260424-0302" defer></script>
+  <script src="assets/retention-chart-executive.js?v=20260424-0303" defer></script>
   <script src="assets/refresh-status.js?v=20260424-0235" defer></script>
   <script src="assets/executive-hero.js?v=20260424-0300" defer></script>
 </head>
@@ -86,7 +86,7 @@
         <div class="kpi kpi-retain">
           <div class="kpi-label">Average retention</div>
           <div class="kpi-value" id="kpi-retention">&mdash;</div>
-          <div class="kpi-foot">Cross-company carry-over</div>
+          <div class="kpi-foot">SRG carry-over</div>
           <div class="kpi-rule"></div>
         </div>
         <div class="kpi kpi-next">
@@ -98,8 +98,8 @@
       </section>
 
       <section class="section-block">
-        <div class="section-label"><span>02</span> Retention &amp; Carry-over</div>
-        <div class="section-intro">Side-by-side view of same-client retention, regional carry-over and new hires across each shutdown.</div>
+        <div class="section-label"><span>02</span> Retention &amp; SRG Carry-over</div>
+        <div class="section-intro">Each worker is classified as <strong>Same client</strong>, <strong>SRG carry-over</strong> from another client, or <strong>New</strong> to the dataset.</div>
         <div class="grid-2 retained-grid">
           <section class="card">
             <div class="card-head compact-head"><h2>Retention chart</h2></div>
@@ -113,9 +113,9 @@
                   <tr>
                     <th>Shutdown</th><th>Company</th><th>Start</th>
                     <th class="num">Roster</th>
-                    <th class="num">Return · same co.</th>
-                    <th class="num">Return · any co.</th>
-                    <th class="num">New hires</th>
+                    <th class="num">Same client</th>
+                    <th class="num">SRG carry-over</th>
+                    <th class="num">New</th>
                   </tr>
                 </thead>
                 <tbody></tbody>

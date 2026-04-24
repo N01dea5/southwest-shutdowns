@@ -1,10 +1,10 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-24T01:40:04Z",
+  "archived_at": "2026-04-24T01:49:21Z",
   "shutdown": {
     "id": "tronox-2025-11",
-    "name": "Major Shutdown November 2025",
+    "name": "1116 \u2013 Tronox Major Shutdown November 2025",
     "site": "Kwinana",
     "start_date": "2025-11-03",
     "end_date": "2025-11-16",
@@ -2539,7 +2539,9 @@
         "xref_exact": 0,
         "unmatched": 0,
         "ambiguous_samples": []
-      }
+      },
+      "job_no": 1116,
+      "job_description": "Tronox Major Shutdown November 2025"
     }
   }
 }

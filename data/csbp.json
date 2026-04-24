@@ -3,7 +3,7 @@
   "shutdowns": [
     {
       "id": "csbp-2025-11",
-      "name": "NAAN3 November 2025",
+      "name": "1147 \u2013 CSBP NAAN3 November 2025",
       "site": "Kwinana",
       "start_date": "2025-11-11",
       "end_date": "2025-11-17",
@@ -842,7 +842,9 @@
           "xref_exact": 0,
           "unmatched": 0,
           "ambiguous_samples": []
-        }
+        },
+        "job_no": 1147,
+        "job_description": "CSBP NAAN3 November 2025"
       }
     },
     {
@@ -853,14 +855,14 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
-        "Painter & Blaster": 2,
-        "Supervisor - Mechanical": 4,
-        "Sheet Metal Worker": 3,
-        "Mechanical Fitter": 23,
-        "Trade Assistant": 18,
-        "Scaffolder": 6,
         "Advanced Rigger": 2,
-        "Intermediate Rigger": 3
+        "Trade Assistant": 18,
+        "Intermediate Rigger": 3,
+        "Mechanical Fitter": 23,
+        "Supervisor - Mechanical": 4,
+        "Painter & Blaster": 2,
+        "Scaffolder": 6,
+        "Sheet Metal Worker": 3
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -3260,24 +3262,24 @@
     },
     {
       "id": "csbp-2026-05",
-      "name": "NAAN2 June 2026",
+      "name": "1375 \u2013 CSBP NAAN2 June 2026",
       "site": "Kwinana",
       "start_date": "2026-05-25",
       "end_date": "2026-06-21",
       "status": "booked",
       "required_by_role": {
-        "Trade Assistant": 16,
         "Advanced Rigger": 4,
-        "Supervisor - Mechanical": 3,
+        "Trade Assistant": 16,
         "Intermediate Rigger": 0,
-        "Mechanical Fitter": 13
+        "Mechanical Fitter": 13,
+        "Supervisor - Mechanical": 3
       },
       "filled_by_role": {
-        "Trade Assistant": 16,
         "Advanced Rigger": 3,
-        "Supervisor - Mechanical": 3,
+        "Trade Assistant": 16,
         "Intermediate Rigger": 0,
-        "Mechanical Fitter": 13
+        "Mechanical Fitter": 13,
+        "Supervisor - Mechanical": 3
       },
       "crew_split": {
         "Day": 20,
@@ -4334,10 +4336,13 @@
           "source": "rapid_crews_job_planning_view",
           "job_no": 1375,
           "total_required": 36,
-          "total_filled": 35
-        }
+          "total_filled": 35,
+          "job_description": "CSBP NAAN2 June 2026"
+        },
+        "job_no": 1375,
+        "job_description": "CSBP NAAN2 June 2026"
       }
     }
   ],
-  "generated_at": "2026-04-24T01:40:10Z"
+  "generated_at": "2026-04-24T01:49:29Z"
 }

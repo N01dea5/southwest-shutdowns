@@ -4,7 +4,7 @@
   "archived_at": "2026-04-23T23:22:49Z",
   "shutdown": {
     "id": "csbp-2026-03",
-    "name": "KPF LNG Kleenheat March 2026",
+    "name": "1374 \u2013 KPF LNG Kleenheat March 2026",
     "site": "Kwinana",
     "start_date": "2026-03-30",
     "end_date": "2026-06-30",
@@ -102,8 +102,11 @@
         "source": "rapid_crews_job_planning_view",
         "job_no": 1374,
         "total_required": 8,
-        "total_filled": 3
-      }
+        "total_filled": 3,
+        "job_description": "KPF LNG Kleenheat March 2026"
+      },
+      "job_no": 1374,
+      "job_description": "KPF LNG Kleenheat March 2026"
     }
   }
 }

@@ -3,7 +3,7 @@
   "shutdowns": [
     {
       "id": "tronox-2025-11",
-      "name": "Major Shutdown November 2025",
+      "name": "1116 \u2013 Tronox Major Shutdown November 2025",
       "site": "Kwinana",
       "start_date": "2025-11-03",
       "end_date": "2025-11-16",
@@ -2538,36 +2538,38 @@
           "xref_exact": 0,
           "unmatched": 0,
           "ambiguous_samples": []
-        }
+        },
+        "job_no": 1116,
+        "job_description": "Tronox Major Shutdown November 2025"
       }
     },
     {
       "id": "tronox-2026-05",
-      "name": "Major Shutdown May 2026",
+      "name": "1353 \u2013 Tronox Major Shutdown May 2026",
       "site": "Kwinana",
       "start_date": "2026-05-18",
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Boilermaker": 10,
-        "Supervisor - Mechanical": 10,
-        "Coded Welder": 20,
-        "Mechanical Fitter": 40,
-        "Trade Assistant": 20,
         "Advanced Rigger": 10,
-        "Site Coordinator": 1,
+        "Trade Assistant": 20,
+        "Coded Welder": 20,
         "Intermediate Rigger": 0,
+        "Mechanical Fitter": 40,
+        "Supervisor - Mechanical": 10,
+        "Site Coordinator": 1,
+        "Boilermaker": 10,
         "Superintendent": 1
       },
       "filled_by_role": {
-        "Boilermaker": 2,
-        "Supervisor - Mechanical": 1,
-        "Coded Welder": 1,
-        "Mechanical Fitter": 16,
-        "Trade Assistant": 20,
         "Advanced Rigger": 5,
-        "Site Coordinator": 1,
+        "Trade Assistant": 20,
+        "Coded Welder": 1,
         "Intermediate Rigger": 0,
+        "Mechanical Fitter": 16,
+        "Supervisor - Mechanical": 1,
+        "Site Coordinator": 1,
+        "Boilermaker": 2,
         "Superintendent": 1
       },
       "crew_split": {
@@ -4108,10 +4110,13 @@
           "source": "rapid_crews_job_planning_view",
           "job_no": 1353,
           "total_required": 112,
-          "total_filled": 47
-        }
+          "total_filled": 47,
+          "job_description": "Tronox Major Shutdown May 2026"
+        },
+        "job_no": 1353,
+        "job_description": "Tronox Major Shutdown May 2026"
       }
     }
   ],
-  "generated_at": "2026-04-24T01:40:04Z"
+  "generated_at": "2026-04-24T01:49:21Z"
 }

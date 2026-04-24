@@ -1,10 +1,10 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T01:40:04Z",
+  "archived_at": "2026-04-24T01:49:21Z",
   "shutdown": {
     "id": "csbp-2025-11",
-    "name": "NAAN3 November 2025",
+    "name": "1147 \u2013 CSBP NAAN3 November 2025",
     "site": "Kwinana",
     "start_date": "2025-11-11",
     "end_date": "2025-11-17",
@@ -843,7 +843,9 @@
         "xref_exact": 0,
         "unmatched": 0,
         "ambiguous_samples": []
-      }
+      },
+      "job_no": 1147,
+      "job_description": "CSBP NAAN3 November 2025"
     }
   }
 }

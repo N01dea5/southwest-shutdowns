@@ -47,7 +47,8 @@
             "status": "expiring_soon"
           }
         },
-        "mobile": "0435 441 418"
+        "mobile": "0435 441 418",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel JONES",
@@ -68,7 +69,8 @@
             "status": "current"
           }
         },
-        "mobile": "0457 632 156"
+        "mobile": "0457 632 156",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "David STITZ",
@@ -84,7 +86,8 @@
             "status": "current"
           }
         },
-        "mobile": "0408 939 455"
+        "mobile": "0408 939 455",
+        "hire_company": "SRG - South West"
       }
     ],
     "_source": {

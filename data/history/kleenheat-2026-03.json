@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T01:54:10Z",
+  "archived_at": "2026-04-24T02:08:38Z",
   "shutdown": {
     "id": "kleenheat-2026-03",
     "name": "KPF LNG Major Shutdown March 2026 (Kleenheat)",
@@ -11,13 +11,13 @@
     "status": "completed",
     "required_by_role": {
       "Scaffolder": 6,
+      "Intermediate Rigger": 3,
+      "Mechanical Fitter": 23,
+      "Advanced Rigger": 2,
       "Supervisor - Mechanical": 4,
       "Trade Assistant": 18,
-      "Intermediate Rigger": 3,
-      "Sheet Metal Worker": 3,
       "Painter & Blaster": 2,
-      "Advanced Rigger": 2,
-      "Mechanical Fitter": 23
+      "Sheet Metal Worker": 3
     },
     "filled_by_role": {
       "Supervisor - Mechanical": 4,
@@ -82,7 +82,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wayne CARTER",
@@ -103,7 +104,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CARTER, Wayne - f59c2859-12b2-4981-a890-8a43cb38a974/CARTER, Wayne - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jordan KIRKBY",
@@ -134,7 +136,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIRBY , Jordan - 282f0c80-9105-423b-96db-b0ee764b4372/KIRBY , Jordan - HRWL.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lewis NEWELL",
@@ -161,7 +164,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NEWELL , Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Willy FAVA",
@@ -187,7 +191,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FAVA , Willy - ae8759dc-ad07-40af-8650-daa528537270/FAVA , Willy - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Sharon GILCHRIST",
@@ -228,7 +233,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GILCHRIST, Sharon - c5b2056c-7cdf-4953-a4d1-92d4cb6fdc8d/GILCHRIST, Sharon - HRWL.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jessica DILENA",
@@ -259,7 +265,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DILENA, Jessica - 0e7f7822-7754-40b8-82db-243046b10575/DILENA, Jessica - HRWL.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "King GARCIA",
@@ -285,7 +292,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARCIA , King - 178f800c-0ac1-4bd7-9ded-2990bf95b528/GARCIA, King - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Robert HARRIS",
@@ -306,7 +314,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jacinta JEFFERY",
@@ -337,7 +346,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JEFFERY, Jacinta - 6af19c02-a3a3-4e63-8d86-0e6d1575f869/JEFFERY, Jacinta - Confined Spaces Entry.png",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Beau WITHERS",
@@ -358,7 +368,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS , Beau - Confined Spaces.pdf",
             "status": "expiring_soon"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Adrian WILLIAMS",
@@ -368,7 +379,8 @@
         "start": "2026-03-12",
         "end": "2026-03-20",
         "personnel_id": "E1DC6CFF-1BBA-4669-BC1A-E5FDA3F2CA7F",
-        "tickets": {}
+        "tickets": {},
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lise MONNET",
@@ -404,7 +416,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - HRWL.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jeremias MENDIVIL",
@@ -440,7 +453,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MENDIVIL, Jeremias - 081de93d-0ce7-407e-8187-abc4d6b23251/MENDIVIL, Jeremias - Gas Test Atmospheres.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Keron KAPPET",
@@ -471,7 +485,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAPPET, Keron - 528be73a-c8a5-4126-acc5-fe56c9e6c250/KAPPET, Keron - HRWL.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lea MONDESIR",
@@ -497,7 +512,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jaime HERNANDEZ",
@@ -523,7 +539,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HERNANDEZ, Jamie - 634b5548-ba39-44c4-9b46-aa04f032d8ba/HERNANDEZ, Jamie - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Federico Sarti",
@@ -554,7 +571,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SARTI, Federico - 8c4283f1-eff6-49d5-9385-60bd2be0197f/SARTI, Federico - Gas Test Atmospheres.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Naomi NDENGA",
@@ -580,7 +598,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Gas Test Atmospheres.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stefanos KARIKIS",
@@ -611,7 +630,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KARIKIS, Stefanos - 9df04efa-4215-4129-b836-45dd9245183a/KARIKIS, Stefanos - HRWL.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Issac REID",
@@ -642,7 +662,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REID, Issac - 95920b44-5e59-4f82-848f-a2045c39c151/REID, Issac - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "William THOMPSON",
@@ -673,7 +694,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Samsul FATA",
@@ -683,7 +705,8 @@
         "start": "2026-03-16",
         "end": "2026-03-20",
         "personnel_id": "5E9E568B-1065-4A84-96D2-C45ABDAF354B",
-        "tickets": {}
+        "tickets": {},
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Daniel JONES",
@@ -704,7 +727,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JONES, Daniel - 67d89284-f8de-405c-8c05-ea4fa0c3ed5e/JONES, Daniel - HRWL.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "David STITZ",
@@ -720,7 +744,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STITZ, David - 1a79a55c-deb3-4c16-96a5-8cde24fd107f/STITZ, David - Working at Heights.png",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Eileen HIELSCHER",
@@ -762,7 +787,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HIELSCHER , Eileen - f9aa9686-b5a3-4943-ad92-6cb513de64b4/HIELSCHER, Eileen - HRWL.png",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Hemi RATAHI",
@@ -809,7 +835,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel SILLIS",
@@ -846,7 +873,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Julian VAN DER ZANDEN",
@@ -888,7 +916,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Confined Spaces Entry.png",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Chaeyoon KIM",
@@ -935,7 +964,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - Confined Spaces Entry.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Julian VAN DER ZANDEN",
@@ -977,7 +1007,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Confined Spaces Entry.png",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Joe DACK",
@@ -1019,7 +1050,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Gas Test Atmospheres.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Pramod CHANDRASKHAR",
@@ -1055,7 +1087,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jack MONTEBELLO",
@@ -1076,7 +1109,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONTEBELLO , Jack - 3ae85e72-22bc-4323-b4c6-bcb6df1d666b/MONTEBELLO , Jack - Confined Spaces.PNG",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Gurshwinder SINGH",
@@ -1117,7 +1151,8 @@
             "doc": null,
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Tabani CHIPIRI",
@@ -1149,7 +1184,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHIPIRI, Tabani - 7d0df8a3-1f90-4e1c-8bc2-aea213e1799b/CHIPIRI, Tabani - HRWL.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Darren JAMES",
@@ -1175,7 +1211,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JAMES, Darren - 620ada5f-8586-4917-981d-7cef7f2e1c33/JAMES, Darren - Working at Heights.png",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mitya DOBBELAERE",
@@ -1201,7 +1238,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel GOVHONGO",
@@ -1232,7 +1270,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GOVHONGO , Daniel - 77b64f28-655e-4252-b58e-a4b3e2641582/GOVHONGO , Daniel - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Harrison ELLIOT",
@@ -1253,7 +1292,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ELLIOT , Harrison - 69502a00-b52e-4ee0-976f-f0128de9dfca/ELLIOT , Harrison - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Gerry \ud83d\udd37 UY",
@@ -1279,7 +1319,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/UY, Gerry - d72e221e-27e0-4202-a78e-549f69cacb8b/UY, Gerry - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "Hyrd - Labour Hire"
       },
       {
         "name": "Senthil DHANAPAL",
@@ -1315,7 +1356,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DHANAPAL, Senthil - 0f82d120-33df-47c1-922f-f8fbd594e76a/DHANAPAL , Senthil - HRWL.PNG",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jonathan MUTEMBO",
@@ -1362,7 +1404,8 @@
             "doc": null,
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Walid BOULAHDID",
@@ -1388,7 +1431,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOULAHDID, Walid - f99e2489-f591-4f37-8e99-a97d912cfbf9/BOULAHDID, Walid - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Teneesha TRUSCOTT",
@@ -1434,7 +1478,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TRUSCOTT, Teneesha - 0b0b2a09-0570-4edb-878c-4d875b3d31bb/TRUSCOTT, Teneesha - HRWL.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Amit \ud83d\udd37 GUND",
@@ -1455,7 +1500,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUND, Amit - 71b7b0cc-a4b2-493b-8a61-a4ad4b2eae04/GUND, Amit - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "Hyrd - Labour Hire"
       },
       {
         "name": "James GARDINER",
@@ -1507,7 +1553,8 @@
             "doc": null,
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mark \ud83d\udd37 SULLIVAN",
@@ -1533,7 +1580,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SULLIVAN, Mark - 6a5f0bf3-0fd1-43af-9c91-1ac6b5e9ee33/SULLIVAN, Mark - Gas Test Atmospheres.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "Hyrd - Labour Hire"
       },
       {
         "name": "Russell PHILLIPS",
@@ -1580,7 +1628,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PHILLIPS, Russell - dd2a1ab8-e3a2-4b81-95d3-762093242414/PHILLIPS, Russell - Confined Spaces Entry.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Edward GARDINER",
@@ -1606,7 +1655,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Confined Spaces Entry.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Kulvinder SINGH",
@@ -1627,7 +1677,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Kulvinder - a8b68078-61e0-405b-8853-6b26022502a8/SINGH, Kulvinder - Driver's Licence.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ngoni USORE",
@@ -1663,7 +1714,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Viet NGUYEN",
@@ -1705,7 +1757,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VIET, Nguyen - 024439f6-e882-4d8f-92e6-1c6bda72c85d/NGUYEN, Viet - HRWL.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Manish TOMAR",
@@ -1746,7 +1799,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TOMAR, Manish - ae5e9f27-c604-483c-b28f-43034110c056/TOMAR, Manish - HRWL.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Abhinav ABHINAV",
@@ -1772,7 +1826,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABHINAV, Abhinav - a7561da7-f34f-44ca-a079-76aa961055be/ABHINAV, Abhinav - Working at Heights.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mao LI",
@@ -1803,7 +1858,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LI, Jack - eba0088a-878a-4f99-b023-2827fc38134b/LI, Mao - HRWL.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Loyid JOSEPH",
@@ -1849,7 +1905,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - Confined Spaces Entry.pdf",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Santana PAYNE",
@@ -1880,7 +1937,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PAYNE, Santana - 002229/PAYNE, Santana - Working at Heights.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Francis AH KIAU",
@@ -1911,7 +1969,8 @@
             "doc": null,
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Dylan DIXON",
@@ -1942,7 +2001,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DIXON, Dylan - 8a345f96-f68b-4a8a-8381-628241c13b86/DIXON, Dylan - Working at Heights.jpeg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Zachary GARDINER",
@@ -1968,7 +2028,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, Zachary - e27391e2-e1a0-4287-9033-a7526d278c69/GARDINER, Zachary - HRWL.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wahib NADI",
@@ -1978,7 +2039,8 @@
         "start": "2026-03-15",
         "end": "2026-03-20",
         "personnel_id": "13FED3A1-88D9-46DA-AA88-AD95ABD95D07",
-        "tickets": {}
+        "tickets": {},
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Margaux VERGEZ",
@@ -2004,7 +2066,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VERGEZ, Margaux - f1377291-5485-4fc1-9c6b-351cc6e1aaf5/VERGEZ, Margaux - HRWL.pdf",
             "status": "expiring_soon"
           }
-        }
+        },
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Samuel BRYANT",
@@ -2055,7 +2118,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BRYANT, Samuel - 000538/BRYANT, Samuel - High Risk Work Licence.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - Active"
       },
       {
         "name": "Jordan ATITOA-BRYANT",
@@ -2101,7 +2165,8 @@
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ATITOA-BRYANT, Jordan - 000539/ATITOA-BRYANT, Jordan - High Risk Work Licence.jpg",
             "status": "current"
           }
-        }
+        },
+        "hire_company": "SRG - Active"
       }
     ],
     "_source": {

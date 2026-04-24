@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T01:54:18Z",
+  "archived_at": "2026-04-24T02:08:47Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
     "name": "1405 \u2013 CSBP - NAAN1 Shut",
@@ -40,7 +40,8 @@
         "end": "2026-05-16",
         "personnel_id": "9A74E591-2483-4936-97C6-F42ADB08778F",
         "tickets": {},
-        "mobile": "0435 441 418"
+        "mobile": "0435 441 418",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Eleonora TRAORE",
@@ -50,7 +51,8 @@
         "end": "2026-05-16",
         "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
         "tickets": {},
-        "mobile": "0421 524 270"
+        "mobile": "0421 524 270",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ganesh MOHITE",
@@ -60,7 +62,8 @@
         "end": "2026-05-16",
         "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
         "tickets": {},
-        "mobile": "0469 591 660"
+        "mobile": "0469 591 660",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Edward GARDINER",
@@ -70,7 +73,8 @@
         "end": "2026-05-16",
         "personnel_id": "D5198AAE-943B-4DE3-A257-235F091A2348",
         "tickets": {},
-        "mobile": "0457 470 330"
+        "mobile": "0457 470 330",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Peter BURNS",
@@ -80,7 +84,8 @@
         "end": "2026-05-16",
         "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
         "tickets": {},
-        "mobile": "0437 183 009"
+        "mobile": "0437 183 009",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jake GANGEMI",
@@ -90,7 +95,8 @@
         "end": "2026-05-16",
         "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
         "tickets": {},
-        "mobile": "0426 994 235"
+        "mobile": "0426 994 235",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Gabriel NGUYEN",
@@ -100,7 +106,8 @@
         "end": "2026-05-16",
         "personnel_id": "02FD7BD7-37A1-4FA8-9E51-B2B7BA75BFCA",
         "tickets": {},
-        "mobile": "0448 737 990"
+        "mobile": "0448 737 990",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "William THOMPSON",
@@ -110,7 +117,8 @@
         "end": "2026-05-16",
         "personnel_id": "9C9AB719-37E2-4D3E-A87F-D7F890229D95",
         "tickets": {},
-        "mobile": "0429 331 817"
+        "mobile": "0429 331 817",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stjepan BOSNJAK",
@@ -120,7 +128,8 @@
         "end": "2026-05-16",
         "personnel_id": "DC132943-0F0D-4FA4-AC3E-B89B161D8FAC",
         "tickets": {},
-        "mobile": "0413 377 068"
+        "mobile": "0413 377 068",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "King GARCIA",
@@ -130,7 +139,8 @@
         "end": "2026-05-16",
         "personnel_id": "178F800C-0AC1-4BD7-9DED-2990BF95B528",
         "tickets": {},
-        "mobile": "0498 054 425"
+        "mobile": "0498 054 425",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Richardson ALICANTE",
@@ -140,7 +150,8 @@
         "end": "2026-05-16",
         "personnel_id": "40FCD406-BD10-4C68-888F-03D449BD7F44",
         "tickets": {},
-        "mobile": "0431 228 251"
+        "mobile": "0431 228 251",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wayne FORREST",
@@ -150,7 +161,8 @@
         "end": "2026-05-16",
         "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
         "tickets": {},
-        "mobile": "0438 101 966"
+        "mobile": "0438 101 966",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Naomi NDENGA",
@@ -160,7 +172,8 @@
         "end": "2026-05-16",
         "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
         "tickets": {},
-        "mobile": "0472 586 919"
+        "mobile": "0472 586 919",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Tabani CHIPIRI",
@@ -170,7 +183,8 @@
         "end": "2026-05-16",
         "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
         "tickets": {},
-        "mobile": "0497 594 673"
+        "mobile": "0497 594 673",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Paul BESTWICK",
@@ -180,7 +194,8 @@
         "end": "2026-05-16",
         "personnel_id": "5D93FD4B-4778-434A-A3F8-44AF397E631A",
         "tickets": {},
-        "mobile": "0406 613 783"
+        "mobile": "0406 613 783",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Graham WANGLER",
@@ -190,7 +205,8 @@
         "end": "2026-05-16",
         "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
         "tickets": {},
-        "mobile": "0476 247 673"
+        "mobile": "0476 247 673",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ben FRIEDAUER",
@@ -200,7 +216,8 @@
         "end": "2026-05-16",
         "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
         "tickets": {},
-        "mobile": "0424 977 431"
+        "mobile": "0424 977 431",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Herbert MUKUNGA",
@@ -210,7 +227,8 @@
         "end": "2026-05-16",
         "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
         "tickets": {},
-        "mobile": "0459 183 602"
+        "mobile": "0459 183 602",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "John HANCOCK",
@@ -220,7 +238,8 @@
         "end": "2026-05-16",
         "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
         "tickets": {},
-        "mobile": "0409 998 059"
+        "mobile": "0409 998 059",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jessica DILENA",
@@ -230,7 +249,8 @@
         "end": "2026-05-16",
         "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
         "tickets": {},
-        "mobile": "0477 841 414"
+        "mobile": "0477 841 414",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Abhinav ABHINAV",
@@ -240,7 +260,8 @@
         "end": "2026-05-16",
         "personnel_id": "A7561DA7-F34F-44CA-A079-76AA961055BE",
         "tickets": {},
-        "mobile": "0424 848 290"
+        "mobile": "0424 848 290",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Helen MOIR",
@@ -250,7 +271,8 @@
         "end": "2026-05-16",
         "personnel_id": "F66BEECB-E7C7-4291-8C8C-44227339E943",
         "tickets": {},
-        "mobile": "0448 220 506"
+        "mobile": "0448 220 506",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Omkar Uttam DORUGADE",
@@ -260,7 +282,8 @@
         "end": "2026-05-16",
         "personnel_id": "12CB2423-1EC1-4F3D-87D3-2143655BEBDE",
         "tickets": {},
-        "mobile": "0424 804 281"
+        "mobile": "0424 804 281",
+        "hire_company": "SRG - South West"
       }
     ],
     "_source": {

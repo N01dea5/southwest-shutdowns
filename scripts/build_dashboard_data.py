@@ -21,6 +21,7 @@ PIPELINE = [
     "apply_shutdown_display_labels.py",
     "normalise_dashboard_data.py",
     "validate_dashboard_data.py",
+    "export_tronox_client_dashboard.py",
 ]
 
 

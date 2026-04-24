@@ -110,11 +110,15 @@
       const indexed = shutdownIndex.get(normalise(shutdown)) || {};
       const company = cells[1] || indexed.company || '';
       const start = cells[2] || indexed.start_date || '';
-      const roster = parseCount(cells[3]) || indexed.roster || 0;
       const same = parseCount(cells[4]);
       const srgCarry = parseCount(cells[5]);
       const fresh = parseCount(cells[6]);
-      const labourHire = indexed.labourHire || 0;
+      // Use the same filled/named-personnel basis as the retention buckets, not planned required headcount.
+      const filledRoster = same + srgCarry + fresh;
+      const fallbackRoster = parseCount(cells[3]) || indexed.roster || 0;
+      const roster = filledRoster || fallbackRoster;
+      const labourHireRaw = indexed.labourHire || 0;
+      const labourHire = Math.min(labourHireRaw, roster || labourHireRaw);
       const srgPct = pct(srgCarry, roster);
       const freshPct = pct(fresh, roster);
       const labourHirePct = pct(labourHire, roster);

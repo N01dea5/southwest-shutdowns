@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-24T09:02:10Z",
+  "archived_at": "2026-04-24T09:07:10Z",
   "shutdown": {
     "id": "tronox-2026-05",
     "name": "1353 \u2013 Tronox Major Shutdown May 2026",
@@ -10,26 +10,26 @@
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
-      "Intermediate Rigger": 0,
-      "Site Coordinator": 1,
+      "Advanced Rigger": 10,
       "Mechanical Fitter": 40,
-      "Trade Assistant": 20,
       "Boilermaker": 10,
-      "Coded Welder": 20,
+      "Site Coordinator": 1,
       "Superintendent": 1,
       "Supervisor - Mechanical": 10,
-      "Advanced Rigger": 10
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 0,
+      "Coded Welder": 20
     },
     "filled_by_role": {
-      "Intermediate Rigger": 0,
-      "Site Coordinator": 1,
+      "Advanced Rigger": 5,
       "Mechanical Fitter": 17,
-      "Trade Assistant": 20,
       "Boilermaker": 2,
-      "Coded Welder": 1,
+      "Site Coordinator": 1,
       "Superintendent": 1,
       "Supervisor - Mechanical": 1,
-      "Advanced Rigger": 5
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 0,
+      "Coded Welder": 1
     },
     "crew_split": {
       "Night": 22,

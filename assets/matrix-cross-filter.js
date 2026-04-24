@@ -2,8 +2,8 @@
  *
  * app.js owns the base matrix and its present/blank filters. matrix-availability.js
  * overlays red-cross cells after render. This script extends each shutdown
- * column filter with a red-cross option and applies that filter after the
- * availability overlay has marked cells.
+ * column filter with a red-cross option and corrects the blank filter so red
+ * crosses are not treated as blanks.
  */
 (function () {
   'use strict';
@@ -18,17 +18,13 @@
     return document.getElementById(TABLE_ID);
   }
 
-  function headerRows(t) {
-    return t && t.tHead ? Array.from(t.tHead.rows) : [];
-  }
-
   function columnKey(select) {
     const th = select.closest('th');
     if (!th) return '';
     const colIndex = th.cellIndex;
     const headerText = th.textContent
       .replace(CROSS_LABEL, '')
-      .replace(/All|Present|Absent|Blank|Tick|✓|✔|Cross|✕|×/gi, '')
+      .replace(/All|Any|Present|Absent|Blanks|Blank|Tick|✓|✔|Cross|✕|×/gi, '')
       .replace(/\s+/g, ' ')
       .trim();
     return `${colIndex}:${headerText}`;
@@ -40,7 +36,7 @@
 
   function looksLikeMatrixStatusFilter(select) {
     const optionText = Array.from(select.options).map(o => `${o.value} ${o.textContent}`.toLowerCase()).join(' ');
-    return optionText.includes('present') || optionText.includes('absent') || optionText.includes('blank') || optionText.includes('✓') || optionText.includes('tick');
+    return optionText.includes('present') || optionText.includes('absent') || optionText.includes('blank') || optionText.includes('✓') || optionText.includes('tick') || optionText.includes('any');
   }
 
   function injectCrossOptions() {
@@ -68,14 +64,24 @@
     return cell.classList.contains('availability-conflict') || text === '✕' || text === '×' || text.toLowerCase() === 'x';
   }
 
-  function activeCrossFilters(t) {
+  function selectMode(select) {
+    const value = String(select.value || '').toLowerCase();
+    const selectedText = String(select.options[select.selectedIndex]?.textContent || '').toLowerCase();
+    const joined = `${value} ${selectedText}`;
+    if (value === CROSS_VALUE) return CROSS_VALUE;
+    if (joined.includes('blank') || joined.includes('absent')) return 'blank';
+    return 'other';
+  }
+
+  function activeSpecialFilters(t) {
     const filters = [];
     if (!t || !t.tHead) return filters;
     for (const select of Array.from(t.tHead.querySelectorAll('select'))) {
-      if (select.value !== CROSS_VALUE) continue;
+      const mode = selectMode(select);
+      if (mode !== CROSS_VALUE && mode !== 'blank') continue;
       const th = select.closest('th');
       if (!th) continue;
-      filters.push(th.cellIndex);
+      filters.push({ index: th.cellIndex, mode });
     }
     return filters;
   }
@@ -92,7 +98,7 @@
       const t = table();
       if (!t || !t.tBodies.length) return;
       injectCrossOptions();
-      const filters = activeCrossFilters(t);
+      const filters = activeSpecialFilters(t);
       const rows = Array.from(t.tBodies[0].rows);
 
       for (const row of rows) {
@@ -106,7 +112,12 @@
 
       for (const row of rows) {
         if (!baseVisible(row)) continue;
-        const matches = filters.every(idx => cellHasCross(row.cells[idx]));
+        const matches = filters.every(filter => {
+          const cell = row.cells[filter.index];
+          if (filter.mode === CROSS_VALUE) return cellHasCross(cell);
+          if (filter.mode === 'blank') return !cellHasCross(cell);
+          return true;
+        });
         if (!matches) {
           row.dataset.crossFilterHidden = 'true';
           row.style.display = 'none';

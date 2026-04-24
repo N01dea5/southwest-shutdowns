@@ -66,7 +66,7 @@ footer {
 }
 
 .hero-logo img {
-  height: 46px;
+  height: 58px;
   width: auto;
   display: block;
 }
@@ -265,6 +265,10 @@ main {
   grid-template-columns: minmax(420px, 0.9fr) minmax(640px, 1.35fr) !important;
 }
 
+.retention-table-card {
+  width: 100%;
+}
+
 .table-wrap {
   border: 0 !important;
   border-radius: 0 !important;
@@ -293,7 +297,7 @@ td {
 
 /* Executive retention table */
 .retention-executive-table {
-  min-width: 980px;
+  min-width: 1180px;
 }
 
 .retention-executive-table th,
@@ -303,7 +307,7 @@ td {
 
 .retention-executive-table th:nth-child(1),
 .retention-executive-table td:nth-child(1) {
-  min-width: 220px;
+  min-width: 240px;
 }
 
 .ret-shutdown strong {
@@ -476,5 +480,8 @@ footer {
   }
   .hero-main h1 {
     font-size: 42px;
+  }
+  .hero-logo img {
+    height: 44px;
   }
 }

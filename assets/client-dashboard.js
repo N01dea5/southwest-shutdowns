@@ -4,6 +4,7 @@ let feed = null;
 const $ = id => document.getElementById(id);
 const pct = (n, d) => d ? Math.round(n / d * 100) : 0;
 const fmtDate = s => s ? new Date(s).toLocaleDateString(undefined, { day:'2-digit', month:'short', year:'numeric' }) : '—';
+const fmtDateTime = s => s ? new Date(s).toLocaleString(undefined, { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
 const isoDate = d => d.toISOString().slice(0,10);
 function setText(id, value) { const el = $(id); if (el) el.textContent = value; }
 function pill(text, tone) { return `<span class="pill ${tone}">${text}</span>`; }
@@ -22,14 +23,14 @@ function renderSummary(data) {
   const s = data.summary;
   const sh = data.shutdown;
   setText('subtitle', `${sh.name} · ${fmtDate(sh.start_date)} – ${fmtDate(sh.end_date)} · ${s.confirmed_total} confirmed`);
-  setText('updated', `Generated ${fmtDate(data.generated_at)} · Source: ${data.source_of_truth}`);
+  setText('updated', `Last updated ${fmtDateTime(data.generated_at)}`);
   setText('requiredTotal', s.required_total);
   setText('confirmedTotal', s.confirmed_total);
   setText('gapTotal', s.gap_total);
   setText('sameClient', `${s.same_client_retention} (${pct(s.same_client_retention, s.confirmed_total)}%)`);
   setText('srgCarry', `${s.srg_carry_over} (${pct(s.srg_carry_over, s.confirmed_total)}%)`);
   setText('buddyRequired', s.buddy_required);
-  setText('sourceNote', 'Client-facing feed is sanitised from the internal Southwest dashboard source of truth. Mobile numbers, personnel IDs, hiring company names and SharePoint document links are not exposed.');
+  setText('sourceNote', '');
 }
 function chartRows(items, max, fillClass = '') {
   return items.map(([label, value]) => {

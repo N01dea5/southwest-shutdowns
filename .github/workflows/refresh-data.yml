@@ -54,23 +54,8 @@ jobs:
           SHAREPOINT_FOLDER:        ${{ secrets.SHAREPOINT_FOLDER }}
         run: python3 scripts/sync_sharepoint.py
 
-      - name: Parse Rapid Crews rosters, archive history, emit resumes
-        run: python3 scripts/parse_rapidcrews.py
-
-      - name: Ensure active shutdowns are emitted
-        run: python3 scripts/ensure_active_shutdowns.py
-
-      - name: Apply hiring company details
-        run: python3 scripts/apply_hiring_company.py
-
-      - name: Apply shutdown display labels
-        run: python3 scripts/apply_shutdown_display_labels.py
-
-      - name: Normalise dashboard data
-        run: python3 scripts/normalise_dashboard_data.py
-
-      - name: Validate dashboard data
-        run: python3 scripts/validate_dashboard_data.py
+      - name: Build and validate dashboard data
+        run: python3 scripts/build_dashboard_data.py
 
       - name: Detect data changes
         id: diff
@@ -121,11 +106,5 @@ jobs:
             echo "- data/raw/Rapidcrews Macro Data.xlsx"
             echo "- Resumes.xlsx"
             echo ""
-            echo "Pipeline steps:"
-            echo "- parse_rapidcrews.py"
-            echo "- ensure_active_shutdowns.py"
-            echo "- apply_hiring_company.py"
-            echo "- apply_shutdown_display_labels.py"
-            echo "- normalise_dashboard_data.py"
-            echo "- validate_dashboard_data.py"
+            echo "Build entrypoint: scripts/build_dashboard_data.py"
           } >> "$GITHUB_STEP_SUMMARY"

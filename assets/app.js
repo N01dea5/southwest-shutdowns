@@ -1475,6 +1475,9 @@ function renderWorkerMatrix(_viewShutdowns) {
     .map(([sid]) => sid);
   if (conflictShutdownIds.length) {
     const applyConflictFilter = () => {
+      // If the user cycled back to "any" before this timeout fired, the filter
+      // state is gone — bail so we don't hide all rows in the fresh render.
+      if (!conflictShutdownIds.every(sid => state.matrixFilters[sid] === "absent")) return;
       const q = state.matrixSearch;
       tbody.querySelectorAll("tr").forEach(tr => {
         const matchesConflict = conflictShutdownIds.every(sid => {

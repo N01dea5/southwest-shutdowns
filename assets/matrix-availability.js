@@ -12,6 +12,7 @@
   const DATA_FILES = ['data/covalent.json', 'data/tronox.json', 'data/csbp.json'];
   const CALENDAR_FILE = 'data/personnel_calendar.json';
   let shutdownsByLabel = new Map();
+  let shutdownsById = new Map();
   let eventsByName = new Map();
   let attempts = 0;
   let timer = null;
@@ -61,6 +62,7 @@
 
   async function loadShutdowns() {
     const map = new Map();
+    const byId = new Map();
     for (const file of DATA_FILES) {
       try {
         const response = await fetch(file, { cache: 'no-store' });
@@ -75,12 +77,14 @@
             status: shutdown.status || ''
           };
           for (const key of shutdownKeys(shutdown)) map.set(key, record);
+          if (record.id) byId.set(record.id, record);
         }
       } catch (error) {
         console.warn('[matrix-availability] skipped shutdown data', file, error);
       }
     }
     shutdownsByLabel = map;
+    shutdownsById = byId;
   }
 
   async function loadCalendar() {
@@ -133,12 +137,18 @@
     const headerRow = table.tHead.querySelector('tr');
     if (!headerRow || !headerRow.cells.length) return false;
 
-    const headers = [...headerRow.cells].map(cell => cell.textContent || '');
-    const nameIdx = headers.findIndex(h => /worker|name/i.test(h));
-    const firstShutdownIdx = headers.findIndex(h => findShutdownForHeader(h));
-    if (nameIdx < 0 || firstShutdownIdx < 0) return false;
+    const headerCells = [...headerRow.cells];
+    const nameIdx = headerCells.findIndex(cell => /worker|name/i.test(cell.textContent || ''));
+    if (nameIdx < 0) return false;
 
-    const shutdownColumns = headers.map((text, idx) => ({ idx, shutdown: findShutdownForHeader(text) })).filter(item => item.shutdown);
+    // Identify shutdown columns: use data-shutdown-id when present (robust to
+    // extra columns inserted by other scripts), fall back to header text matching.
+    const shutdownColumns = headerCells.map((cell, idx) => {
+      const sid = cell.dataset && cell.dataset.shutdownId;
+      const shutdown = sid ? shutdownsById.get(sid) : findShutdownForHeader(cell.textContent);
+      return shutdown ? { idx, sid: sid || shutdown.id, shutdown } : null;
+    }).filter(Boolean);
+
     if (!shutdownColumns.length) return false;
 
     for (const row of table.tBodies[0].rows) {
@@ -148,9 +158,12 @@
       const events = eventsByName.get(key) || [];
       if (!events.length) continue;
 
-      for (const { idx, shutdown } of shutdownColumns) {
+      for (const { idx, sid, shutdown } of shutdownColumns) {
         if (shutdown.status === 'completed') continue;
-        const cell = row.cells[idx];
+        // Prefer data-attribute lookup so column insertions don't break the index.
+        const cell = sid
+          ? (row.querySelector(`td[data-shutdown-id="${sid}"]`) || row.cells[idx])
+          : row.cells[idx];
         if (!cell || isTickCell(cell)) continue;
 
         const conflict = events.find(event => overlaps(event.start, event.end, shutdown.start, shutdown.end));

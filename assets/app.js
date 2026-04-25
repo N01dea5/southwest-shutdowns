@@ -1417,7 +1417,7 @@ function renderWorkerMatrix(_viewShutdowns) {
       const projectLine = companyCounts[s.company] > 1
         ? `<span class="matrix-col-sub">${shortProject(s.name)}</span>`
         : "";
-      return `<th class="num matrix-col">
+      return `<th class="num matrix-col" data-shutdown-id="${s.id}">
         <span class="co-dot" style="background:${companyColor(s.company)}"></span>
         ${s.company}<br>
         ${projectLine}
@@ -1457,7 +1457,7 @@ function renderWorkerMatrix(_viewShutdowns) {
       ${mobileCell}
       ${shutdowns.map(s => {
         const r = w.rolesByShutdown[s.id];
-        return `<td class="num">${r
+        return `<td class="num" data-shutdown-id="${s.id}">${r
           ? `<span class="tick" title="${r}" aria-label="${r}">&#10003;</span>`
           : '<span class="tick-empty" aria-label="Not rostered"></span>'}</td>`;
       }).join("")}
@@ -1468,19 +1468,24 @@ function renderWorkerMatrix(_viewShutdowns) {
 
   // Schedule DOM-based conflict filter for "✗ only" columns. The availability
   // overlay (matrix-availability.js) adds .availability-conflict to cells after
-  // render; we run repeated passes until it has settled.
-  const conflictColIndices = Object.entries(state.matrixFilters)
+  // render; we run repeated passes until it has settled. Cells are looked up by
+  // data-shutdown-id so column insertions from other scripts don't break the index.
+  const conflictShutdownIds = Object.entries(state.matrixFilters)
     .filter(([, st]) => st === "absent")
-    .map(([sid]) => shutdowns.findIndex(s => s.id === sid) + 3) // +3: Worker/Role/Mobile
-    .filter(ci => ci >= 3);
-  if (conflictColIndices.length) {
+    .map(([sid]) => sid);
+  if (conflictShutdownIds.length) {
     const applyConflictFilter = () => {
+      const q = state.matrixSearch;
       tbody.querySelectorAll("tr").forEach(tr => {
-        const show = conflictColIndices.every(ci => {
-          const cell = tr.cells[ci];
+        const matchesConflict = conflictShutdownIds.every(sid => {
+          const cell = tr.querySelector(`td[data-shutdown-id="${sid}"]`);
           return cell && cell.classList.contains("availability-conflict");
         });
-        tr.style.display = show ? "" : "none";
+        if (!matchesConflict) {
+          tr.style.display = "none";
+        } else {
+          tr.style.display = (!q || tr.textContent.toLowerCase().includes(q)) ? "" : "none";
+        }
       });
     };
     [100, 400, 900, 1800, 3000].forEach(ms => setTimeout(applyConflictFilter, ms));

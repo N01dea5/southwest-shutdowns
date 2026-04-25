@@ -309,6 +309,12 @@ def _normalise_daily_schedule(wb: openpyxl.Workbook) -> bool:
     ws = wb[daily_sheet]
     idx = _header_index(ws)
     job_col = _find_col(idx, "Job No")
+    # Some workbooks (e.g. Kwinana sites) carry the numeric job reference only
+    # in JobId while QuoteNo/OrderNo hold descriptive text labels.  Look up
+    # JobId separately so we can use it as a fallback when the primary column
+    # doesn't parse to an integer.
+    normal_idx = {_norm(k): v for k, v in idx.items()}
+    job_id_col: int | None = normal_idx.get(_norm("JobId")) or normal_idx.get(_norm("Job Id"))
     client_col = _find_col(idx, "Client")
     site_col = _find_col(idx, "Site", required=False)
     pid_col = _find_col(idx, "Personnel Id")
@@ -325,6 +331,8 @@ def _normalise_daily_schedule(wb: openpyxl.Workbook) -> bool:
         if not row or not any(row):
             continue
         job = _parse_job(_get(row, job_col))
+        if job is None and job_id_col is not None:
+            job = _parse_job(_get(row, job_id_col))
         pid = _clean(_get(row, pid_col))
         row_date = _parse_date(_get(row, date_col))
         if not job or not pid or not row_date:

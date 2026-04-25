@@ -991,12 +991,15 @@ async function renderOpsRoster() {
     return "booked";
   };
 
-  // Map site name to a company colour consistent with the Gantt palette.
-  const siteColor = (site) => {
-    const s = (site || "").toLowerCase();
-    if (s.includes("tronox"))                            return companyColor("tronox");
-    if (s.includes("covalent") || s.includes("tianqi")) return companyColor("covalent");
-    if (s.includes("csbp") || s.includes("kwinana"))    return companyColor("csbp");
+  // Map site/client name to a company colour consistent with the Gantt palette.
+  const siteColor = (site, client) => {
+    const s = (site   || "").toLowerCase();
+    const c = (client || "").toLowerCase();
+    if (s.includes("tronox")   || c.includes("tronox"))              return companyColor("tronox");
+    if (s.includes("covalent") || s.includes("mt holland") ||
+        c.includes("covalent") || c.includes("tianqi"))              return companyColor("covalent");
+    if (s.includes("csbp")     || s.includes("kwinana") || s.includes("kleenheat") ||
+        c.includes("csbp")     || c.includes("kleenheat"))           return companyColor("csbp");
     return "#888";
   };
 
@@ -1216,7 +1219,7 @@ async function renderOpsRoster() {
       bar.className = "ops-roster-bar status-" + a.status + (a.status === "booked" ? " booked" : "");
       bar.style.left  = px(sd) + "px";
       bar.style.width = Math.max(6, px(ed) - px(sd)) + "px";
-      bar.style.setProperty("--co", siteColor(a.site));
+      bar.style.setProperty("--co", siteColor(a.site, a.client));
       bar.title = [
         `${rec.name} — ${rec.role}${a.scheduleType ? " (" + a.scheduleType + ")" : ""}`,
         `${a.site}${a.jobNo ? " · Job " + a.jobNo : ""}`,

@@ -19,6 +19,7 @@ PIPELINE = [
     "parse_rapidcrews.py",
     "ensure_active_shutdowns.py",
     "apply_hiring_company.py",
+    "export_operations_roster.py",
     "apply_personnel_calendar.py",
     "apply_rejected_shutdowns.py",
     "merge_macro_roster_additions.py",

@@ -33,6 +33,7 @@ const state = {
   matrixRenderGen: 0,      // incremented each render; stale DOM-filter passes check this
   opsSearch: "",           // live text filter for the ops-roster tab
   opsOnsiteTodayOnly: true, // default: show workers on site today
+  opsRosterData: null,     // lazy-loaded data/operations_roster.json; null = not yet fetched
   resumes: new Map(),      // normalised-name -> {resume_url, updated, notes}
 };
 
@@ -961,58 +962,82 @@ function statusLabel(st) {
  * container-width fitting with horizontal scroll fallback) so moving between
  * the two tabs feels consistent.
  */
-function renderOpsRoster() {
+async function renderOpsRoster() {
   const host = document.getElementById("ops-roster");
   if (!host) return;
-  host.innerHTML = "";
 
-  // Always draw from all Kwinana-area shutdowns regardless of the main
-  // dashboard company/status filter — planners want the complete workforce view.
-  const KWINANA_CLIENTS = ['covalent', 'tronox', 'csbp', 'tianqi', 'kleenheat', 'bp'];
-  const kwinanaShutdowns = state.shutdowns.filter(s =>
-    KWINANA_CLIENTS.some(k => String(s.company || '').toLowerCase().includes(k))
-  );
-  if (kwinanaShutdowns.length === 0) {
-    host.textContent = "No Kwinana shutdown data available.";
+  // Lazy-load data/operations_roster.json on first visit to this tab.
+  if (state.opsRosterData === null) {
+    host.innerHTML = '<p style="padding:1rem;color:var(--srg-grey-2)">Loading roster data…</p>';
+    try {
+      const r = await fetch("data/operations_roster.json", { cache: "no-store" });
+      state.opsRosterData = r.ok ? await r.json() : { workers: [] };
+    } catch (e) {
+      console.warn("renderOpsRoster: could not load operations_roster.json", e);
+      state.opsRosterData = { workers: [] };
+    }
+    renderOpsRoster();
     return;
   }
 
+  host.innerHTML = "";
+
+  const todayIso = new Date().toISOString().slice(0, 10);
+
+  // Derive assignment status from dates.
+  const deriveStatus = (start, end) => {
+    if (end < todayIso) return "completed";
+    if (start <= todayIso && todayIso <= end) return "in_progress";
+    return "booked";
+  };
+
+  // Map site name to a company colour consistent with the Gantt palette.
+  const siteColor = (site) => {
+    const s = (site || "").toLowerCase();
+    if (s.includes("tronox"))                            return companyColor("tronox");
+    if (s.includes("covalent") || s.includes("tianqi")) return companyColor("covalent");
+    if (s.includes("csbp") || s.includes("kwinana"))    return companyColor("csbp");
+    return "#888";
+  };
+
   // -- 1. Collect workers + their assignments --
+  const rawWorkers = state.opsRosterData.workers || [];
   const workers = new Map();
-  for (const s of kwinanaShutdowns) {
-    for (const w of s.roster) {
-      const key = workerKey(w);
-      if (!key) continue;
-      if (!workers.has(key)) {
-        workers.set(key, {
-          key, name: w.name, role: w.role, mobile: w.mobile || "",
-          hireCompany: w.hire_company || "",
-          companies: new Set(), assignments: [], _latestStart: null,
-        });
-      }
-      const rec = workers.get(key);
-      const start = w.start || s.start_date;
-      const end   = w.end   || s.end_date;
-      rec.companies.add(s.company);
+  for (const w of rawWorkers) {
+    const name = standardiseName(w.name);
+    if (!name) continue;
+    const key = workerKey({ name });
+    if (!workers.has(key)) {
+      workers.set(key, {
+        key, name, role: w.role || "", mobile: w.mobile || "",
+        hireCompany: w.hire_company || "",
+        assignments: [],
+      });
+    }
+    const rec = workers.get(key);
+    for (const a of w.assignments || []) {
+      if (!a.start || !a.end) continue;
       rec.assignments.push({
-        start, end,
-        company: s.company, site: s.site,
-        shutdownId: s.id, shutdownName: s.name, role: w.role,
-        status: s.status,
-        shift: w.shift || "",
+        start: a.start, end: a.end,
+        site: a.site || "", client: a.client || "",
+        jobNo: a.job_no || "",
+        scheduleType: a.schedule_type || "",
+        status: deriveStatus(a.start, a.end),
         hireCompany: w.hire_company || "",
       });
-      if (!rec._latestStart || start > rec._latestStart) {
-        rec._latestStart = start;
-        rec.role = w.role;
-        if (w.mobile) rec.mobile = w.mobile;
-        if (w.hire_company) rec.hireCompany = w.hire_company;
-      }
     }
+    // Keep role/mobile from the worker record (most recent data from Personnel sheet).
+    if (w.role)         rec.role        = w.role;
+    if (w.mobile)       rec.mobile      = w.mobile;
+    if (w.hire_company) rec.hireCompany = w.hire_company;
+  }
+
+  if (workers.size === 0) {
+    host.textContent = "No Kwinana roster data available. Run the data pipeline to generate data/operations_roster.json.";
+    return;
   }
 
   // -- 2. Filter: search (name/role/mobile/hire company) + "on site today only" --
-  const todayIso   = new Date().toISOString().slice(0, 10);
   const search     = state.opsSearch.trim().toLowerCase();
   const onsiteOnly = state.opsOnsiteTodayOnly;
   const rows = [...workers.values()].filter(rec => {
@@ -1050,8 +1075,9 @@ function renderOpsRoster() {
     nd.setUTCDate(nd.getUTCDate() - offset);
     return nd;
   };
-  const minStart  = kwinanaShutdowns.reduce((m, s) => s.start_date < m ? s.start_date : m, kwinanaShutdowns[0].start_date);
-  const maxEnd    = kwinanaShutdowns.reduce((m, s) => s.end_date   > m ? s.end_date   : m, kwinanaShutdowns[0].end_date);
+  const allAssignments = rows.flatMap(r => r.assignments);
+  const minStart = allAssignments.reduce((m, a) => a.start < m ? a.start : m, allAssignments[0]?.start || todayIso);
+  const maxEnd   = allAssignments.reduce((m, a) => a.end   > m ? a.end   : m, allAssignments[0]?.end   || todayIso);
   const spanStart = mondayOf(new Date(minStart + "T00:00:00Z"));
   const spanEnd   = mondayOf(new Date(maxEnd   + "T00:00:00Z"));
   spanEnd.setUTCDate(spanEnd.getUTCDate() + 7);
@@ -1190,15 +1216,15 @@ function renderOpsRoster() {
       bar.className = "ops-roster-bar status-" + a.status + (a.status === "booked" ? " booked" : "");
       bar.style.left  = px(sd) + "px";
       bar.style.width = Math.max(6, px(ed) - px(sd)) + "px";
-      bar.style.setProperty("--co", companyColor(a.company));
+      bar.style.setProperty("--co", siteColor(a.site));
       bar.title = [
-        `${rec.name} — ${a.role}${a.shift ? " (" + a.shift + ")" : ""}`,
-        `${a.company} · ${a.shutdownName}`,
-        a.hireCompany ? `Hired via: ${a.hireCompany}` : null,
+        `${rec.name} — ${rec.role}${a.scheduleType ? " (" + a.scheduleType + ")" : ""}`,
+        `${a.site}${a.jobNo ? " · Job " + a.jobNo : ""}`,
+        rec.hireCompany ? `Hired via: ${rec.hireCompany}` : null,
         `${fmtDate(a.start)} → ${fmtDate(a.end)}`,
         `Status: ${statusLabel(a.status)}`,
       ].filter(Boolean).join("\n");
-      bar.innerHTML = `<span>${a.company}</span>`;
+      bar.innerHTML = `<span>${a.site}</span>`;
       track.appendChild(bar);
     }
     row.appendChild(track);
@@ -1212,7 +1238,7 @@ function renderOpsRoster() {
   // as the Gantt.
   const focus = todayDate >= spanStart && todayDate <= spanEnd
               ? px(todayDate) - 80
-              : px(new Date(kwinanaShutdowns[0].start_date + "T00:00:00Z")) - 80;
+              : px(new Date(minStart + "T00:00:00Z")) - 80;
   host.scrollLeft = Math.max(0, focus);
 }
 

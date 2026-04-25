@@ -28,10 +28,11 @@ const state = {
   filter: "all",           // "all" | company display name
   statusFilter: "all",     // "all" | "booked" | "in_progress" | "completed"
   charts: {},              // Chart.js handles, so we can destroy() on re-render
-  matrixFilters: {},       // shutdownId -> "present" | "absent" (✗ conflict/rejected, DOM-filtered)
+  matrixFilters: {},       // shutdownId -> "present" | "absent" | "blank" (DOM-filtered)
   matrixSearch: "",        // live text filter for the matrix
+  matrixRenderGen: 0,      // incremented each render; stale DOM-filter passes check this
   opsSearch: "",           // live text filter for the ops-roster tab
-  opsOnsiteTodayOnly: false, // "on site today" checkbox state
+  opsOnsiteTodayOnly: true, // default: show workers on site today
   resumes: new Map(),      // normalised-name -> {resume_url, updated, notes}
 };
 
@@ -232,14 +233,15 @@ function setupTabs() {
   if (search) {
     search.addEventListener("input", e => {
       state.opsSearch = e.target.value;
-      if (state.tab === "roster") renderOpsRoster(filtered());
+      if (state.tab === "roster") renderOpsRoster();
     });
   }
   const onsite = document.getElementById("roster-onsite-today");
   if (onsite) {
+    onsite.checked = state.opsOnsiteTodayOnly;
     onsite.addEventListener("change", e => {
       state.opsOnsiteTodayOnly = e.target.checked;
-      if (state.tab === "roster") renderOpsRoster(filtered());
+      if (state.tab === "roster") renderOpsRoster();
     });
   }
 }
@@ -440,7 +442,7 @@ function render() {
     ["retention chart",  () => renderRetentionChart(view)],
     ["retention table",  () => renderRetentionTable(view)],
     ["worker matrix",    () => renderWorkerMatrix(view)],
-    ["ops roster",       () => renderOpsRoster(view)],
+    ["ops roster",       () => renderOpsRoster()],
     ["warnings",         () => renderWarnings()],
   ];
   for (const [name, fn] of steps) {
@@ -959,28 +961,32 @@ function statusLabel(st) {
  * container-width fitting with horizontal scroll fallback) so moving between
  * the two tabs feels consistent.
  */
-function renderOpsRoster(view) {
+function renderOpsRoster() {
   const host = document.getElementById("ops-roster");
   if (!host) return;
   host.innerHTML = "";
 
-  if (view.length === 0) {
-    host.textContent = "No shutdowns for this filter.";
+  // Always draw from all Kwinana-area shutdowns regardless of the main
+  // dashboard company/status filter — planners want the complete workforce view.
+  const KWINANA_CLIENTS = ['covalent', 'tronox', 'csbp', 'tianqi', 'kleenheat', 'bp'];
+  const kwinanaShutdowns = state.shutdowns.filter(s =>
+    KWINANA_CLIENTS.some(k => String(s.company || '').toLowerCase().includes(k))
+  );
+  if (kwinanaShutdowns.length === 0) {
+    host.textContent = "No Kwinana shutdown data available.";
     return;
   }
 
   // -- 1. Collect workers + their assignments --
-  // Keyed by normalised name (role-independent) so a worker who changes role
-  // between shutdowns is one row, not two. Latest role/mobile wins for the
-  // row label, mirroring the matrix tab.
   const workers = new Map();
-  for (const s of view) {
+  for (const s of kwinanaShutdowns) {
     for (const w of s.roster) {
       const key = workerKey(w);
       if (!key) continue;
       if (!workers.has(key)) {
         workers.set(key, {
           key, name: w.name, role: w.role, mobile: w.mobile || "",
+          hireCompany: w.hire_company || "",
           companies: new Set(), assignments: [], _latestStart: null,
         });
       }
@@ -993,22 +999,25 @@ function renderOpsRoster(view) {
         company: s.company, site: s.site,
         shutdownId: s.id, shutdownName: s.name, role: w.role,
         status: s.status,
+        shift: w.shift || "",
+        hireCompany: w.hire_company || "",
       });
       if (!rec._latestStart || start > rec._latestStart) {
         rec._latestStart = start;
         rec.role = w.role;
         if (w.mobile) rec.mobile = w.mobile;
+        if (w.hire_company) rec.hireCompany = w.hire_company;
       }
     }
   }
 
-  // -- 2. Filter: search (name/role/mobile) + "on site today only" --
+  // -- 2. Filter: search (name/role/mobile/hire company) + "on site today only" --
   const todayIso   = new Date().toISOString().slice(0, 10);
   const search     = state.opsSearch.trim().toLowerCase();
   const onsiteOnly = state.opsOnsiteTodayOnly;
   const rows = [...workers.values()].filter(rec => {
     if (search) {
-      const hay = `${rec.name} ${rec.role} ${rec.mobile}`.toLowerCase();
+      const hay = `${rec.name} ${rec.role} ${rec.mobile} ${rec.hireCompany}`.toLowerCase();
       if (!hay.includes(search)) return false;
     }
     if (onsiteOnly) {
@@ -1018,34 +1027,31 @@ function renderOpsRoster(view) {
     return true;
   });
 
-  // Stable sort: primary company (canonical order) → name.
-  const coOrder = c => {
-    const i = COMPANIES.findIndex(x => x.key === c.toLowerCase());
-    return i < 0 ? 99 : i;
-  };
-  const primaryCompany = rec => {
-    const list = [...rec.companies];
-    list.sort((a, b) => coOrder(a) - coOrder(b));
-    return list[0];
+  // Sort by site → name. Primary site = the site of today's active assignment,
+  // or the most-recent assignment when "on site today" is off.
+  const primarySite = rec => {
+    const today = rec.assignments.find(a => a.start <= todayIso && todayIso <= a.end);
+    if (today) return today.site || "Unknown";
+    const sorted = [...rec.assignments].sort((a, b) => b.start.localeCompare(a.start));
+    return sorted[0]?.site || "Unknown";
   };
   rows.sort((a, b) => {
-    const ca = coOrder(primaryCompany(a));
-    const cb = coOrder(primaryCompany(b));
-    if (ca !== cb) return ca - cb;
+    const sa = primarySite(a), sb = primarySite(b);
+    if (sa !== sb) return sa.localeCompare(sb);
     return a.name.localeCompare(b.name);
   });
 
   // -- 3. Time axis (Monday-aligned, matches Gantt) --
   const MIN_WEEK_PX  = 44;
-  const LANE_LABEL_W = 320;   // room for name + role + mobile
+  const LANE_LABEL_W = 320;   // room for name + role + hire company
   const mondayOf = (d) => {
     const nd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
     const offset = (nd.getUTCDay() + 6) % 7;
     nd.setUTCDate(nd.getUTCDate() - offset);
     return nd;
   };
-  const minStart  = view.reduce((m, s) => s.start_date < m ? s.start_date : m, view[0].start_date);
-  const maxEnd    = view.reduce((m, s) => s.end_date   > m ? s.end_date   : m, view[0].end_date);
+  const minStart  = kwinanaShutdowns.reduce((m, s) => s.start_date < m ? s.start_date : m, kwinanaShutdowns[0].start_date);
+  const maxEnd    = kwinanaShutdowns.reduce((m, s) => s.end_date   > m ? s.end_date   : m, kwinanaShutdowns[0].end_date);
   const spanStart = mondayOf(new Date(minStart + "T00:00:00Z"));
   const spanEnd   = mondayOf(new Date(maxEnd   + "T00:00:00Z"));
   spanEnd.setUTCDate(spanEnd.getUTCDate() + 7);
@@ -1145,13 +1151,13 @@ function renderOpsRoster(view) {
 
   let lastGroup = null;
   for (const rec of rows) {
-    const co = primaryCompany(rec);
-    if (co !== lastGroup) {
+    const site = primarySite(rec);
+    if (site !== lastGroup) {
       const hdr = document.createElement("div");
       hdr.className = "ops-roster-group";
-      hdr.innerHTML = `<span class="co-dot" style="background:${companyColor(co)}"></span>${co}`;
+      hdr.textContent = site;
       body.appendChild(hdr);
-      lastGroup = co;
+      lastGroup = site;
     }
 
     const row = document.createElement("div");
@@ -1165,7 +1171,8 @@ function renderOpsRoster(view) {
       : `<span class="muted">—</span>`;
     label.innerHTML = `
       <div class="ops-roster-name">${rec.name} ${resumeBadge(rec.name)}</div>
-      <div class="ops-roster-meta"><span class="ops-roster-role">${rec.role}</span> · ${mobileHtml}</div>`;
+      <div class="ops-roster-meta"><span class="ops-roster-role">${rec.role}</span> · ${mobileHtml}</div>
+      ${rec.hireCompany ? `<div class="ops-roster-hire">${rec.hireCompany}</div>` : ""}`;
     row.appendChild(label);
 
     const track = document.createElement("div");
@@ -1185,11 +1192,12 @@ function renderOpsRoster(view) {
       bar.style.width = Math.max(6, px(ed) - px(sd)) + "px";
       bar.style.setProperty("--co", companyColor(a.company));
       bar.title = [
-        `${rec.name} — ${a.role}`,
+        `${rec.name} — ${a.role}${a.shift ? " (" + a.shift + ")" : ""}`,
         `${a.company} · ${a.shutdownName}`,
+        a.hireCompany ? `Hired via: ${a.hireCompany}` : null,
         `${fmtDate(a.start)} → ${fmtDate(a.end)}`,
         `Status: ${statusLabel(a.status)}`,
-      ].join("\n");
+      ].filter(Boolean).join("\n");
       bar.innerHTML = `<span>${a.company}</span>`;
       track.appendChild(bar);
     }
@@ -1204,7 +1212,7 @@ function renderOpsRoster(view) {
   // as the Gantt.
   const focus = todayDate >= spanStart && todayDate <= spanEnd
               ? px(todayDate) - 80
-              : px(new Date(view[0].start_date + "T00:00:00Z")) - 80;
+              : px(new Date(kwinanaShutdowns[0].start_date + "T00:00:00Z")) - 80;
   host.scrollLeft = Math.max(0, focus);
 }
 
@@ -1347,6 +1355,31 @@ function renderShutdownSummary(view) {
  * the return history. Kept on the signature so `render()`'s dispatch table
  * stays uniform.
  */
+function updateMatrixConflictCounts() {
+  const table = document.getElementById("worker-matrix");
+  if (!table || !table.tHead || !table.tBodies[0]) return;
+  const headerRow = table.tHead.querySelector("tr");
+  if (!headerRow) return;
+  for (const th of headerRow.cells) {
+    const sid = th.dataset.shutdownId;
+    if (!sid) continue;
+    const count = table.tBodies[0]
+      .querySelectorAll(`td[data-shutdown-id="${sid}"].availability-conflict`).length;
+    let badge = th.querySelector(".conflict-count-badge");
+    if (count > 0) {
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "conflict-count-badge";
+        const btn = th.querySelector(".matrix-col-filter");
+        th.insertBefore(badge, btn || null);
+      }
+      badge.textContent = count + "✕";
+    } else if (badge) {
+      badge.remove();
+    }
+  }
+}
+
 function renderWorkerMatrix(_viewShutdowns) {
   const table = document.getElementById("worker-matrix");
   if (!table) return;
@@ -1468,22 +1501,25 @@ function renderWorkerMatrix(_viewShutdowns) {
     </tr>`;
   }).join("");
   tbody.innerHTML = html;
-  // Tell overlay scripts (matrix-availability.js) the table was rebuilt so they
-  // can re-apply marks — the setInterval only runs once at page load.
+  // Bump render generation so any DOM-filter passes from a previous render
+  // know they're stale and should bail without touching the new rows.
+  const renderGen = ++state.matrixRenderGen;
+  // Tell the availability overlay the table was rebuilt so it re-applies marks.
   document.dispatchEvent(new CustomEvent('matrixrendered'));
+  // Schedule conflict-count badge updates (runs after overlay settles).
+  [400, 800, 1600, 2500].forEach(ms => setTimeout(updateMatrixConflictCounts, ms));
 
   // Schedule DOM-based passes for "✗ only" (absent) and "· blank" columns.
-  // The availability overlay (matrix-availability.js) adds .availability-conflict
-  // asynchronously, so we re-check at increasing intervals until it settles.
-  // Cells are looked up by data-shutdown-id so other scripts inserting columns
-  // (e.g. hiring company) don't shift the index.
+  // Cells are looked up by data-shutdown-id so column insertions don't shift indices.
   const conflictShutdownIds = Object.entries(state.matrixFilters)
     .filter(([, st]) => st === "absent").map(([sid]) => sid);
   const blankShutdownIds = Object.entries(state.matrixFilters)
     .filter(([, st]) => st === "blank").map(([sid]) => sid);
   if (conflictShutdownIds.length || blankShutdownIds.length) {
     const applyDomFilter = () => {
-      // Bail if the user has cycled away from these states since scheduling.
+      // Bail if the table has been rebuilt since this pass was scheduled, or if
+      // the user has cycled the filter to a different state.
+      if (state.matrixRenderGen !== renderGen) return;
       if (!conflictShutdownIds.every(sid => state.matrixFilters[sid] === "absent")) return;
       if (!blankShutdownIds.every(sid => state.matrixFilters[sid] === "blank")) return;
       const q = state.matrixSearch;
@@ -1495,7 +1531,6 @@ function renderWorkerMatrix(_viewShutdowns) {
           }) &&
           blankShutdownIds.every(sid => {
             const cell = tr.querySelector(`td[data-shutdown-id="${sid}"]`);
-            // Blank = not rostered (no .tick span) AND no availability conflict.
             return cell && !cell.querySelector(".tick") && !cell.classList.contains("availability-conflict");
           });
         if (!ok) {

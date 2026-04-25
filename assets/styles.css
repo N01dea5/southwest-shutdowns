@@ -865,6 +865,7 @@ td.num, th.num {
 .ops-roster-role { font-weight: 600; color: var(--srg-dark); }
 .ops-roster-meta .muted { color: var(--srg-grey); }
 .ops-roster-meta .mobile-link { font-size: 11px; }
+.ops-roster-hire { font-size: 10px; color: var(--srg-grey-2); margin-top: 1px; }
 
 .ops-roster-track {
   position: relative;
@@ -1279,6 +1280,14 @@ td.num, th.num {
   background: var(--warn-soft);
   color: #92620a;
   border-color: var(--warn);
+}
+.conflict-count-badge {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--bad);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
 }
 .matrix-clear {
   appearance: none;

@@ -111,12 +111,16 @@
       const company = cells[1] || indexed.company || '';
       const start = cells[2] || indexed.start_date || '';
       const same = parseCount(cells[4]);
-      const srgCarry = parseCount(cells[5]);
+      // cells[5] is crossRet (all SRG returning, including same-client).
+      // Pure "from another SRG client" = crossRet minus same-client workers.
+      const crossRetRaw = parseCount(cells[5]);
+      const srgCarry = Math.max(0, crossRetRaw - same);
       const fresh = parseCount(cells[6]);
-      // Use the same filled/named-personnel basis as the retention buckets, not planned required headcount.
+      // Use rosterSize rendered by app.js (cells[3]) as the authoritative total.
+      // The filledRoster sum is a fallback only — same+srgCarry+fresh now sums to rosterSize.
       const filledRoster = same + srgCarry + fresh;
-      const fallbackRoster = parseCount(cells[3]) || indexed.roster || 0;
-      const roster = filledRoster || fallbackRoster;
+      const fallbackRoster = indexed.roster || filledRoster;
+      const roster = parseCount(cells[3]) || fallbackRoster;
       const labourHireRaw = indexed.labourHire || 0;
       const labourHire = Math.min(labourHireRaw, roster || labourHireRaw);
       const srgPct = pct(srgCarry, roster);

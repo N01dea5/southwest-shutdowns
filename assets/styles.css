@@ -1275,6 +1275,11 @@ td.num, th.num {
   color: var(--bad);
   border-color: var(--bad);
 }
+.matrix-col-filter[data-state="blank"] {
+  background: var(--warn-soft);
+  color: #92620a;
+  border-color: var(--warn);
+}
 .matrix-clear {
   appearance: none;
   margin-left: 10px;

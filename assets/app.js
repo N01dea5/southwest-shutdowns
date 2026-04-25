@@ -1413,6 +1413,7 @@ function renderWorkerMatrix(_viewShutdowns) {
       const fstate = state.matrixFilters[s.id] || "any";
       const flabel = fstate === "present" ? "✓ only"
                    : fstate === "absent"  ? "✗ only"
+                   : fstate === "blank"   ? "· blank"
                    : "any";
       const projectLine = companyCounts[s.company] > 1
         ? `<span class="matrix-col-sub">${shortProject(s.name)}</span>`
@@ -1432,12 +1433,14 @@ function renderWorkerMatrix(_viewShutdowns) {
     <th class="num">Shutdowns</th>
   </tr>`;
 
-  // Apply the active per-column filters. "present" is data-driven; "absent"
-  // (conflict/rejected) is DOM-driven — the availability overlay runs async
-  // after render, so we schedule a DOM pass below instead of filtering here.
+  // Apply the active per-column filters. "present" and "blank" can be partially
+  // data-driven; "absent" and "blank" are also DOM-driven (availability overlay
+  // runs async), so we schedule DOM passes below.
   const filteredRows = rows.filter(w => {
     for (const [sid, st] of Object.entries(state.matrixFilters)) {
       if (st === "present" && !w.appearances.has(sid)) return false;
+      // Rostered workers can never be blank — exclude them immediately.
+      if (st === "blank" && w.appearances.has(sid)) return false;
     }
     return true;
   });
@@ -1466,32 +1469,40 @@ function renderWorkerMatrix(_viewShutdowns) {
   }).join("");
   tbody.innerHTML = html;
 
-  // Schedule DOM-based conflict filter for "✗ only" columns. The availability
-  // overlay (matrix-availability.js) adds .availability-conflict to cells after
-  // render; we run repeated passes until it has settled. Cells are looked up by
-  // data-shutdown-id so column insertions from other scripts don't break the index.
+  // Schedule DOM-based passes for "✗ only" (absent) and "· blank" columns.
+  // The availability overlay (matrix-availability.js) adds .availability-conflict
+  // asynchronously, so we re-check at increasing intervals until it settles.
+  // Cells are looked up by data-shutdown-id so other scripts inserting columns
+  // (e.g. hiring company) don't shift the index.
   const conflictShutdownIds = Object.entries(state.matrixFilters)
-    .filter(([, st]) => st === "absent")
-    .map(([sid]) => sid);
-  if (conflictShutdownIds.length) {
-    const applyConflictFilter = () => {
-      // If the user cycled back to "any" before this timeout fired, the filter
-      // state is gone — bail so we don't hide all rows in the fresh render.
+    .filter(([, st]) => st === "absent").map(([sid]) => sid);
+  const blankShutdownIds = Object.entries(state.matrixFilters)
+    .filter(([, st]) => st === "blank").map(([sid]) => sid);
+  if (conflictShutdownIds.length || blankShutdownIds.length) {
+    const applyDomFilter = () => {
+      // Bail if the user has cycled away from these states since scheduling.
       if (!conflictShutdownIds.every(sid => state.matrixFilters[sid] === "absent")) return;
+      if (!blankShutdownIds.every(sid => state.matrixFilters[sid] === "blank")) return;
       const q = state.matrixSearch;
       tbody.querySelectorAll("tr").forEach(tr => {
-        const matchesConflict = conflictShutdownIds.every(sid => {
-          const cell = tr.querySelector(`td[data-shutdown-id="${sid}"]`);
-          return cell && cell.classList.contains("availability-conflict");
-        });
-        if (!matchesConflict) {
+        const ok =
+          conflictShutdownIds.every(sid => {
+            const cell = tr.querySelector(`td[data-shutdown-id="${sid}"]`);
+            return cell && cell.classList.contains("availability-conflict");
+          }) &&
+          blankShutdownIds.every(sid => {
+            const cell = tr.querySelector(`td[data-shutdown-id="${sid}"]`);
+            // Blank = not rostered (no .tick span) AND no availability conflict.
+            return cell && !cell.querySelector(".tick") && !cell.classList.contains("availability-conflict");
+          });
+        if (!ok) {
           tr.style.display = "none";
         } else {
           tr.style.display = (!q || tr.textContent.toLowerCase().includes(q)) ? "" : "none";
         }
       });
     };
-    [100, 400, 900, 1800, 3000].forEach(ms => setTimeout(applyConflictFilter, ms));
+    [100, 400, 900, 1800, 3000].forEach(ms => setTimeout(applyDomFilter, ms));
   }
 
   // Re-apply any live text search on top of the column filters, so typing
@@ -1568,6 +1579,7 @@ function onMatrixHeaderClick(e) {
   const cur = state.matrixFilters[sid] || "any";
   const next = cur === "any"     ? "present"
              : cur === "present" ? "absent"
+             : cur === "absent"  ? "blank"
                                  : "any";
   if (next === "any") delete state.matrixFilters[sid];
   else state.matrixFilters[sid] = next;

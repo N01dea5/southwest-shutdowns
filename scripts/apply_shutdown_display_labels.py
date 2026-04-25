@@ -24,6 +24,7 @@ JOB_DESCRIPTION_OVERRIDES: dict[int, str] = {
     1110: "Mt Holland October 2025",
     1116: "Tronox Major Shutdown November 2025",
     1147: "CSBP NAAN3 November 2025",
+    1206: "KPF LNG Major Shutdown March 2026 (Kleenheat)",
     1353: "Tronox Major Shutdown May 2026",
     1359: "Mt Holland April 2026",
     1375: "CSBP NAAN2 June 2026",
@@ -40,6 +41,7 @@ def _job_no(shutdown: dict) -> int | None:
     candidates = (
         src.get("job_no"),
         src.get("rapid_crews_roster_id"),
+        src.get("macro_data_job_no"),
         (src.get("target_source") or {}).get("job_no"),
     )
     for raw in candidates:

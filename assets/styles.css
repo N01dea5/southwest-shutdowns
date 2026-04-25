@@ -1188,11 +1188,6 @@ td.num, th.num {
   font-weight: 800;
   font-size: 14px;
 }
-#worker-matrix .tick-absent {
-  color: var(--bad);
-  font-size: 13px;
-  opacity: 0.55;
-}
 #worker-matrix .tick-empty {
   color: var(--srg-border);
 }
@@ -1279,11 +1274,6 @@ td.num, th.num {
   background: var(--bad-soft);
   color: var(--bad);
   border-color: var(--bad);
-}
-.matrix-col-filter[data-state="blank"] {
-  background: var(--surface-2);
-  color: var(--srg-grey);
-  border-color: var(--srg-grey);
 }
 .matrix-clear {
   appearance: none;

@@ -28,7 +28,7 @@ const state = {
   filter: "all",           // "all" | company display name
   statusFilter: "all",     // "all" | "booked" | "in_progress" | "completed"
   charts: {},              // Chart.js handles, so we can destroy() on re-render
-  matrixFilters: {},       // shutdownId -> "present" | "absent" (✗, finalized) | "blank" (·, booked)
+  matrixFilters: {},       // shutdownId -> "present" | "absent" (✗ conflict/rejected, DOM-filtered)
   matrixSearch: "",        // live text filter for the matrix
   opsSearch: "",           // live text filter for the ops-roster tab
   opsOnsiteTodayOnly: false, // "on site today" checkbox state
@@ -1413,7 +1413,6 @@ function renderWorkerMatrix(_viewShutdowns) {
       const fstate = state.matrixFilters[s.id] || "any";
       const flabel = fstate === "present" ? "✓ only"
                    : fstate === "absent"  ? "✗ only"
-                   : fstate === "blank"   ? "· only"
                    : "any";
       const projectLine = companyCounts[s.company] > 1
         ? `<span class="matrix-col-sub">${shortProject(s.name)}</span>`
@@ -1427,21 +1426,18 @@ function renderWorkerMatrix(_viewShutdowns) {
                 class="matrix-col-filter"
                 data-shutdown-id="${s.id}"
                 data-state="${fstate}"
-                title="Click to cycle: any → ✓ present only → ✗ absent only → · unassigned only">${flabel}</button>
+                title="Click to cycle: any → ✓ present only → ✗ rejected/unavailable only">${flabel}</button>
       </th>`;
     }).join("")}
     <th class="num">Shutdowns</th>
   </tr>`;
 
-  // Apply the active per-column filters on top of the name/role search.
+  // Apply the active per-column filters. "present" is data-driven; "absent"
+  // (conflict/rejected) is DOM-driven — the availability overlay runs async
+  // after render, so we schedule a DOM pass below instead of filtering here.
   const filteredRows = rows.filter(w => {
     for (const [sid, st] of Object.entries(state.matrixFilters)) {
-      const present = w.appearances.has(sid);
-      const sd = shutdowns.find(s => s.id === sid);
-      const finalized = sd && (sd.status === "completed" || sd.status === "in_progress");
-      if (st === "present" && !present)               return false;
-      if (st === "absent"  && (present || !finalized)) return false;  // ✗: not present + finalized
-      if (st === "blank"   && (present || finalized))  return false;  // ·: not present + booked
+      if (st === "present" && !w.appearances.has(sid)) return false;
     }
     return true;
   });
@@ -1461,17 +1457,34 @@ function renderWorkerMatrix(_viewShutdowns) {
       ${mobileCell}
       ${shutdowns.map(s => {
         const r = w.rolesByShutdown[s.id];
-        const finalized = s.status === "completed" || s.status === "in_progress";
         return `<td class="num">${r
           ? `<span class="tick" title="${r}" aria-label="${r}">&#10003;</span>`
-          : finalized
-            ? '<span class="tick-absent" aria-label="Absent">&#10007;</span>'
-            : '<span class="tick-empty" aria-label="Not assigned">&middot;</span>'}</td>`;
+          : '<span class="tick-empty" aria-label="Not rostered">&middot;</span>'}</td>`;
       }).join("")}
       <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
     </tr>`;
   }).join("");
   tbody.innerHTML = html;
+
+  // Schedule DOM-based conflict filter for "✗ only" columns. The availability
+  // overlay (matrix-availability.js) adds .availability-conflict to cells after
+  // render; we run repeated passes until it has settled.
+  const conflictColIndices = Object.entries(state.matrixFilters)
+    .filter(([, st]) => st === "absent")
+    .map(([sid]) => shutdowns.findIndex(s => s.id === sid) + 3) // +3: Worker/Role/Mobile
+    .filter(ci => ci >= 3);
+  if (conflictColIndices.length) {
+    const applyConflictFilter = () => {
+      tbody.querySelectorAll("tr").forEach(tr => {
+        const show = conflictColIndices.every(ci => {
+          const cell = tr.cells[ci];
+          return cell && cell.classList.contains("availability-conflict");
+        });
+        tr.style.display = show ? "" : "none";
+      });
+    };
+    [100, 400, 900, 1800, 3000].forEach(ms => setTimeout(applyConflictFilter, ms));
+  }
 
   // Re-apply any live text search on top of the column filters, so typing
   // "joe" then clicking a column filter keeps the typed query in effect.
@@ -1547,7 +1560,6 @@ function onMatrixHeaderClick(e) {
   const cur = state.matrixFilters[sid] || "any";
   const next = cur === "any"     ? "present"
              : cur === "present" ? "absent"
-             : cur === "absent"  ? "blank"
                                  : "any";
   if (next === "any") delete state.matrixFilters[sid];
   else state.matrixFilters[sid] = next;

@@ -1143,8 +1143,10 @@ td.num, th.num {
   font-weight: 800;
   font-size: 14px;
 }
-#worker-matrix .tick-empty {
-  color: var(--srg-border);
+#worker-matrix .tick-absent {
+  color: var(--bad);
+  font-size: 13px;
+  opacity: 0.55;
 }
 #worker-matrix .returner-count {
   color: var(--ok);

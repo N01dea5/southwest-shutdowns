@@ -1290,7 +1290,7 @@ function renderWorkerMatrix(viewShutdowns) {
     ${shutdowns.map(s => {
       const fstate = state.matrixFilters[s.id] || "any";
       const flabel = fstate === "present" ? "✓ only"
-                   : fstate === "absent"  ? "blanks"
+                   : fstate === "absent"  ? "✗ only"
                    : "any";
       const projectLine = companyCounts[s.company] > 1
         ? `<span class="matrix-col-sub">${shortProject(s.name)}</span>`
@@ -1304,7 +1304,7 @@ function renderWorkerMatrix(viewShutdowns) {
                 class="matrix-col-filter"
                 data-shutdown-id="${s.id}"
                 data-state="${fstate}"
-                title="Click to cycle: any → present only → blanks only">${flabel}</button>
+                title="Click to cycle: any → ✓ present only → ✗ absent only">${flabel}</button>
       </th>`;
     }).join("")}
     <th class="num">Shutdowns</th>
@@ -1337,7 +1337,7 @@ function renderWorkerMatrix(viewShutdowns) {
         const r = w.rolesByShutdown[s.id];
         return `<td class="num">${r
           ? `<span class="tick" title="${r}" aria-label="${r}">&#10003;</span>`
-          : '<span class="tick-empty" aria-label="Absent">&middot;</span>'}</td>`;
+          : '<span class="tick-absent" aria-label="Absent">&#10007;</span>'}</td>`;
       }).join("")}
       <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
     </tr>`;

@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T09:40:42Z",
+  "archived_at": "2026-04-25T02:39:10Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
     "name": "1405 \u2013 CSBP - NAAN1 Shut",
@@ -12,96 +12,49 @@
     "required_by_role": {
       "Trade Assistant": 8,
       "Supervisor - Mechanical": 2,
-      "Mechanical Fitter": 17
+      "Mechanical Fitter": 17,
+      "Scaffolder - Advanced": 0
     },
     "filled_by_role": {
       "Trade Assistant": 8,
       "Supervisor - Mechanical": 1,
-      "Mechanical Fitter": 14
+      "Mechanical Fitter": 14,
+      "Scaffolder - Advanced": 0
     },
     "crew_split": {
-      "Night": 7,
-      "Day": 16
+      "Day": 59
     },
-    "mobilised_by_role": {
-      "Trade Assistant": 8,
-      "Mechanical Fitter": 14,
-      "Supervisor - Mechanical": 1
-    },
+    "mobilised_by_role": {},
     "labour_hire_split": {
-      "SRG - South West": 23
+      "SRG - South West": 59
     },
     "roster": [
       {
-        "name": "Beau WITHERS",
-        "role": "Trade Assistant",
-        "shift": "Night",
+        "name": "Wahib NADI",
+        "role": "Scaffolder - Advanced",
+        "shift": "Day",
         "start": "2026-05-12",
         "end": "2026-05-16",
-        "personnel_id": "9A74E591-2483-4936-97C6-F42ADB08778F",
+        "personnel_id": "02235BE1-6B7C-4600-87AA-7B494815CE94",
         "tickets": {},
-        "mobile": "0435 441 418",
+        "mobile": "0421 543 441",
         "hire_company": "SRG - South West"
       },
       {
-        "name": "Eleonora TRAORE",
-        "role": "Trade Assistant",
-        "shift": "Night",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
-        "tickets": {},
-        "mobile": "0421 524 270",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Ganesh MOHITE",
+        "name": "Viet NGUYEN",
         "role": "Mechanical Fitter",
-        "shift": "Night",
+        "shift": "Day",
         "start": "2026-05-12",
         "end": "2026-05-16",
-        "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
+        "personnel_id": "024439F6-E882-4D8F-92E6-1C6BDA72C85D",
         "tickets": {},
-        "mobile": "0469 591 660",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Edward GARDINER",
-        "role": "Mechanical Fitter",
-        "shift": "Night",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "D5198AAE-943B-4DE3-A257-235F091A2348",
-        "tickets": {},
-        "mobile": "0457 470 330",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Peter BURNS",
-        "role": "Supervisor - Mechanical",
-        "shift": "Night",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
-        "tickets": {},
-        "mobile": "0437 183 009",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Jake GANGEMI",
-        "role": "Mechanical Fitter",
-        "shift": "Night",
-        "start": "2026-05-12",
-        "end": "2026-05-16",
-        "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
-        "tickets": {},
-        "mobile": "0426 994 235",
+        "mobile": "0434 326 455",
         "hire_company": "SRG - South West"
       },
       {
         "name": "Gabriel NGUYEN",
         "role": "Trade Assistant",
-        "shift": "Night",
+        "shift": "Day",
         "start": "2026-05-12",
         "end": "2026-05-16",
         "personnel_id": "02FD7BD7-37A1-4FA8-9E51-B2B7BA75BFCA",
@@ -110,36 +63,497 @@
         "hire_company": "SRG - South West"
       },
       {
-        "name": "William THOMPSON",
+        "name": "Jessica DILENA",
         "role": "Trade Assistant",
         "shift": "Day",
-        "start": "2026-05-13",
+        "start": "2026-05-12",
         "end": "2026-05-16",
-        "personnel_id": "9C9AB719-37E2-4D3E-A87F-D7F890229D95",
+        "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
         "tickets": {},
-        "mobile": "0429 331 817",
+        "mobile": "0477 841 414",
         "hire_company": "SRG - South West"
       },
       {
-        "name": "Stjepan BOSNJAK",
+        "name": "Wayne FORREST",
         "role": "Mechanical Fitter",
         "shift": "Day",
-        "start": "2026-05-13",
+        "start": "2026-05-12",
         "end": "2026-05-16",
-        "personnel_id": "DC132943-0F0D-4FA4-AC3E-B89B161D8FAC",
+        "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
         "tickets": {},
-        "mobile": "0413 377 068",
+        "mobile": "0438 101 966",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Prabhakaran THANGARASU",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "10F8A5A5-C397-44DE-99BE-72BBD686FE7C",
+        "tickets": {},
+        "mobile": "0434 916 762",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Renan SANCHEZ",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "174C6CBE-63E8-4652-B4FC-01C5F76E198B",
+        "tickets": {},
+        "mobile": "0431 951 293",
         "hire_company": "SRG - South West"
       },
       {
         "name": "King GARCIA",
         "role": "Trade Assistant",
         "shift": "Day",
-        "start": "2026-05-13",
+        "start": "2026-05-12",
         "end": "2026-05-16",
         "personnel_id": "178F800C-0AC1-4BD7-9DED-2990BF95B528",
         "tickets": {},
         "mobile": "0498 054 425",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Robert HARRIS",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "184D7AE9-8146-44E9-B0CC-63C50D7812A1",
+        "tickets": {},
+        "mobile": "0405 745 828",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Eleonora TRAORE",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
+        "tickets": {},
+        "mobile": "0421 524 270",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Mitya DOBBELAERE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "1C18F251-35E7-4E76-9B4B-0DDFAE7A830B",
+        "tickets": {},
+        "mobile": "0447 582 473",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Zacarria DAIR",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "31E8E037-AAF1-49F7-9EED-D2B50A9A62D6",
+        "tickets": {},
+        "mobile": "0450 484 624",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Ominder SINGH",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "327192CA-BA5A-47BD-B72B-221E1743B3FE",
+        "tickets": {},
+        "mobile": "0410 804 520",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Christopher McLENNAN",
+        "role": "Supervisor - Mechanical",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "36C1E1AE-9B30-40E0-B144-FBC7BF7108AD",
+        "tickets": {},
+        "mobile": "0427 164 636",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Dragonlee MANAIA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "473665A7-2A81-4A61-89FE-B612CE547A2B",
+        "tickets": {},
+        "mobile": "0450 921 358",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Omar ANADIF",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "49C01687-6184-40F5-9E12-0CC1697CD030",
+        "tickets": {},
+        "mobile": "0407 636 408",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Prabhakaran THANGARASU",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "4A1E8272-87EB-4CA8-8141-B6DACE776DD1",
+        "tickets": {},
+        "mobile": "0434 916 762",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Wilfredo MAPANAO",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "5CFCA82A-85AA-4AEB-B6BA-C5F127F87775",
+        "tickets": {},
+        "mobile": "0476 603 852",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Darren JAMES",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "620ADA5F-8586-4917-981D-7CEF7F2E1C33",
+        "tickets": {},
+        "mobile": "0432 522 247",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Warwick GREEN",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "6AF76F8C-3EE3-4867-9EEB-A43626A04B1C",
+        "tickets": {},
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Lea MONDESIR",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "7544B635-4F62-4B54-AEEF-D2AA5F28C1BA",
+        "tickets": {},
+        "mobile": "0436 652 133",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Grant SLATER",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "766265A8-ECAB-4811-BFB7-22DBF7A347F1",
+        "tickets": {},
+        "mobile": "0431 949 178",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Abdikadir MOHAMED",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "77027420-056C-4B3A-831F-C8FE1ABE8C31",
+        "tickets": {},
+        "mobile": "0478 161 027",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Swapnil KAMATE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "7A8B1A68-44BD-4205-B83E-AFB619254F5E",
+        "tickets": {},
+        "mobile": "0470 686 020",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Tabani CHIPIRI",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
+        "tickets": {},
+        "mobile": "0497 594 673",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Madeline JONES",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "857E8C18-3426-4CD7-9635-52F27E8850D2",
+        "tickets": {},
+        "mobile": "0489 067 447",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "John HANCOCK",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
+        "tickets": {},
+        "mobile": "0409 998 059",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Barry LYON",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "90F67A88-5C4B-4ADF-828A-C0423894CD99",
+        "tickets": {},
+        "mobile": "0438 555 069",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Issac REID",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "95920B44-5E59-4F82-848F-A2045C39C151",
+        "tickets": {},
+        "mobile": "0428 969 952",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Beau WITHERS",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "9A74E591-2483-4936-97C6-F42ADB08778F",
+        "tickets": {},
+        "mobile": "0435 441 418",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Stefanos KARIKIS",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "9DF04EFA-4215-4129-B836-45DD9245183A",
+        "tickets": {},
+        "mobile": "0403 267 784",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Ian BACH",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "A1B6A934-A8AF-43C9-A705-F9EA5F22EFBE",
+        "tickets": {},
+        "mobile": "0405 606 774",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Jonathan MUTEMBO",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "A2DF1D8B-2B8C-4EA0-B0F9-EBCD1E4D3CFE",
+        "tickets": {},
+        "mobile": "0420 268 896",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Henri MARTINS",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "B6857B26-E4E5-4246-8B5B-0449E8D2FCA1",
+        "tickets": {},
+        "mobile": "0439 185 083",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Nathan RHODES",
+        "role": "Supervisor - Mechanical",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "BF8886B2-06C5-43A3-AC85-D6037830E0A0",
+        "tickets": {},
+        "mobile": "0404 284 744",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Clemens SCHAAF",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "C7C57679-A54D-44BE-9BD3-9523344126D4",
+        "tickets": {},
+        "mobile": "0493 890 500",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "John RAMOS",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "CD85F944-FEB4-4FA9-834F-770337D4E289",
+        "tickets": {},
+        "mobile": "0424 723 918",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Jamie ADAMS",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "D44C6217-F879-43DC-AA70-298EDD14E204",
+        "tickets": {},
+        "mobile": "0436 486 524",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Edward GARDINER",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "D5198AAE-943B-4DE3-A257-235F091A2348",
+        "tickets": {},
+        "mobile": "0457 470 330",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Joshua MOYON",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "D9D46942-DEE4-4901-8E2A-C0B2FF2943A1",
+        "tickets": {},
+        "mobile": "0400 384 676",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Russell PHILLIPS",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "DD2A1AB8-E3A2-4B81-95D3-762093242414",
+        "tickets": {},
+        "mobile": "0421 795 621",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Ganesh MOHITE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
+        "tickets": {},
+        "mobile": "0469 591 660",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Nathan CHITEPO",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "F94B1B06-9A90-4E7B-8BDE-8CC35338A578",
+        "tickets": {},
+        "mobile": "0413 907 418",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Walid BOULAHDID",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "F99E2489-F591-4F37-8E99-A97D912CFBF9",
+        "tickets": {},
+        "mobile": "0404 303 830",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Naomi NDENGA",
+        "role": "Trade Assistant",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
+        "tickets": {},
+        "mobile": "0472 586 919",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Ngoni USORE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-12",
+        "end": "2026-05-16",
+        "personnel_id": "FEFAAFC8-7E0D-431A-9269-EA499C24DD63",
+        "tickets": {},
+        "mobile": "0401 500 098",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Omkar Uttam DORUGADE",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "12CB2423-1EC1-4F3D-87D3-2143655BEBDE",
+        "tickets": {},
+        "mobile": "0424 804 281",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Ben FRIEDAUER",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
+        "tickets": {},
+        "mobile": "0424 977 431",
         "hire_company": "SRG - South West"
       },
       {
@@ -154,36 +568,25 @@
         "hire_company": "SRG - South West"
       },
       {
-        "name": "Wayne FORREST",
+        "name": "Jake GANGEMI",
         "role": "Mechanical Fitter",
         "shift": "Day",
         "start": "2026-05-13",
         "end": "2026-05-16",
-        "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
+        "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
         "tickets": {},
-        "mobile": "0438 101 966",
+        "mobile": "0426 994 235",
         "hire_company": "SRG - South West"
       },
       {
-        "name": "Naomi NDENGA",
-        "role": "Trade Assistant",
-        "shift": "Day",
-        "start": "2026-05-13",
-        "end": "2026-05-16",
-        "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
-        "tickets": {},
-        "mobile": "0472 586 919",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Tabani CHIPIRI",
+        "name": "Herbert MUKUNGA",
         "role": "Mechanical Fitter",
         "shift": "Day",
         "start": "2026-05-13",
         "end": "2026-05-16",
-        "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
+        "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
         "tickets": {},
-        "mobile": "0497 594 673",
+        "mobile": "0459 183 602",
         "hire_company": "SRG - South West"
       },
       {
@@ -209,47 +612,14 @@
         "hire_company": "SRG - South West"
       },
       {
-        "name": "Ben FRIEDAUER",
-        "role": "Mechanical Fitter",
-        "shift": "Day",
-        "start": "2026-05-13",
-        "end": "2026-05-16",
-        "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
-        "tickets": {},
-        "mobile": "0424 977 431",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Herbert MUKUNGA",
-        "role": "Mechanical Fitter",
-        "shift": "Day",
-        "start": "2026-05-13",
-        "end": "2026-05-16",
-        "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
-        "tickets": {},
-        "mobile": "0459 183 602",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "John HANCOCK",
-        "role": "Mechanical Fitter",
-        "shift": "Day",
-        "start": "2026-05-13",
-        "end": "2026-05-16",
-        "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
-        "tickets": {},
-        "mobile": "0409 998 059",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Jessica DILENA",
+        "name": "William THOMPSON",
         "role": "Trade Assistant",
         "shift": "Day",
         "start": "2026-05-13",
         "end": "2026-05-16",
-        "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
+        "personnel_id": "9C9AB719-37E2-4D3E-A87F-D7F890229D95",
         "tickets": {},
-        "mobile": "0477 841 414",
+        "mobile": "0429 331 817",
         "hire_company": "SRG - South West"
       },
       {
@@ -264,6 +634,28 @@
         "hire_company": "SRG - South West"
       },
       {
+        "name": "Stjepan BOSNJAK",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "DC132943-0F0D-4FA4-AC3E-B89B161D8FAC",
+        "tickets": {},
+        "mobile": "0413 377 068",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Peter BURNS",
+        "role": "Supervisor - Mechanical",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
+        "tickets": {},
+        "mobile": "0437 183 009",
+        "hire_company": "SRG - South West"
+      },
+      {
         "name": "Helen MOIR",
         "role": "Trade Assistant",
         "shift": "Day",
@@ -275,14 +667,14 @@
         "hire_company": "SRG - South West"
       },
       {
-        "name": "Omkar Uttam DORUGADE",
+        "name": "Ivan RAYNOV",
         "role": "Mechanical Fitter",
         "shift": "Day",
         "start": "2026-05-13",
         "end": "2026-05-16",
-        "personnel_id": "12CB2423-1EC1-4F3D-87D3-2143655BEBDE",
+        "personnel_id": "F81364FE-F4A6-4174-A0EE-6A947B277839",
         "tickets": {},
-        "mobile": "0424 804 281",
+        "mobile": "0401 749 106",
         "hire_company": "SRG - South West"
       }
     ],

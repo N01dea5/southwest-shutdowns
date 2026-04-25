@@ -898,6 +898,15 @@ def main() -> int:
         if shutdown["id"] in rc_ids:
             print(f"  macro: JobNo {shutdown['_source']['macro_data_job_no']} "
                   f"-> {shutdown['id']} already covered by RosterCut, skipping")
+            # Stamp the macro job number onto the matching RosterCut shutdown so
+            # _restore_from_history can include it in present_jobnos and won't
+            # restore a stale history snapshot for this job.
+            job_no = shutdown["_source"].get("macro_data_job_no")
+            if job_no is not None:
+                for _, _, rc_sd in combined:
+                    if rc_sd["id"] == shutdown["id"]:
+                        rc_sd.setdefault("_source", {})["macro_data_job_no"] = job_no
+                        break
             continue
         combined.append((company_key, client_name, shutdown))
 

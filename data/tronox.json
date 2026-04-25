@@ -2638,30 +2638,30 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Rigger - Advanced": 0,
-        "Superintendent": 1,
-        "Sheet Metal Worker": 0,
-        "Trade Assistant": 20,
-        "Rigger - Intermediate": 0,
-        "Advanced Rigger": 10,
-        "Supervisor - Mechanical": 10,
-        "Coded Welder": 20,
-        "Site Coordinator": 1,
         "Mechanical Fitter": 40,
-        "Boilermaker": 10
+        "Trade Assistant": 20,
+        "Supervisor - Mechanical": 10,
+        "Boilermaker": 10,
+        "Rigger - Advanced": 0,
+        "Advanced Rigger": 10,
+        "Coded Welder": 20,
+        "Rigger - Intermediate": 0,
+        "Superintendent": 1,
+        "Site Coordinator": 1,
+        "Sheet Metal Worker": 0
       },
       "filled_by_role": {
-        "Rigger - Advanced": 0,
-        "Superintendent": 1,
-        "Sheet Metal Worker": 0,
-        "Trade Assistant": 20,
-        "Rigger - Intermediate": 0,
-        "Advanced Rigger": 5,
-        "Supervisor - Mechanical": 1,
-        "Coded Welder": 1,
-        "Site Coordinator": 1,
         "Mechanical Fitter": 17,
-        "Boilermaker": 2
+        "Trade Assistant": 20,
+        "Supervisor - Mechanical": 1,
+        "Boilermaker": 2,
+        "Rigger - Advanced": 0,
+        "Advanced Rigger": 5,
+        "Coded Welder": 1,
+        "Rigger - Intermediate": 0,
+        "Superintendent": 1,
+        "Site Coordinator": 1,
+        "Sheet Metal Worker": 0
       },
       "crew_split": {
         "Day": 133
@@ -6933,10 +6933,11 @@
           "total_filled": 48,
           "job_description": "Tronox Major Shutdown May 2026"
         },
+        "macro_data_job_no": 1353,
         "job_no": 1353,
         "job_description": "Tronox Major Shutdown May 2026"
       }
     }
   ],
-  "generated_at": "2026-04-25T02:46:27Z"
+  "generated_at": "2026-04-25T03:03:18Z"
 }

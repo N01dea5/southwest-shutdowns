@@ -710,58 +710,79 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Supervisor - Electrical": 1,
         "Coded Welder": 1,
-        "Advanced Rigger": 1,
-        "Telehandler Operator": 2,
-        "Site Coordinator": 1,
-        "Supervisor - Mechanical": 6,
-        "Basic Rigger": 4,
-        "HSE Advisor": 2,
+        "Leading Hand": 0,
         "Mechanical Fitter": 24,
-        "Boilermaker": 4,
-        "Supervisor": 1,
-        "Superintendent": 1,
+        "Telehandler Operator": 2,
+        "Supervisor - Mechanical": 6,
         "Trade Assistant": 5,
+        "Supervisor": 1,
+        "Rigger - Advanced": 0,
         "Electrician": 4,
         "Intermediate Rigger": 3,
-        "Lube Technician": 3
-      },
-      "filled_by_role": {
-        "Supervisor - Electrical": 1,
-        "Coded Welder": 1,
-        "Advanced Rigger": 1,
-        "Telehandler Operator": 1,
-        "Site Coordinator": 1,
-        "Supervisor - Mechanical": 6,
         "Basic Rigger": 4,
         "HSE Advisor": 2,
-        "Mechanical Fitter": 21,
         "Boilermaker": 4,
-        "Supervisor": 1,
+        "Rigger - Intermediate": 0,
+        "Lube Technician": 3,
+        "Step Up Supervisor - Mechanical": 0,
+        "Supervisor - Electrical": 1,
+        "Site Coordinator": 1,
         "Superintendent": 1,
+        "Advanced Rigger": 1
+      },
+      "filled_by_role": {
+        "Coded Welder": 1,
+        "Leading Hand": 0,
+        "Mechanical Fitter": 21,
+        "Telehandler Operator": 1,
+        "Supervisor - Mechanical": 6,
         "Trade Assistant": 5,
+        "Supervisor": 1,
+        "Rigger - Advanced": 0,
         "Electrician": 3,
         "Intermediate Rigger": 2,
-        "Lube Technician": 3
+        "Basic Rigger": 4,
+        "HSE Advisor": 2,
+        "Boilermaker": 4,
+        "Rigger - Intermediate": 0,
+        "Lube Technician": 3,
+        "Step Up Supervisor - Mechanical": 0,
+        "Supervisor - Electrical": 1,
+        "Site Coordinator": 1,
+        "Superintendent": 1,
+        "Advanced Rigger": 1
       },
       "crew_split": {
-        "Day": 32,
-        "Night": 27,
-        "Contingency": 8
+        "Day": 132
       },
       "mobilised_by_role": {
-        "Supervisor - Mechanical": 1,
-        "Superintendent": 1
+        "Mechanical Fitter": 18,
+        "Superintendent": 1,
+        "Trade Assistant": 10,
+        "Step Up Supervisor - Mechanical": 1,
+        "Supervisor - Mechanical": 3,
+        "Telehandler Operator": 3,
+        "Rigger - Intermediate": 2,
+        "Supervisor": 1,
+        "Electrician": 3,
+        "HSE Advisor": 1,
+        "Site Coordinator": 1,
+        "Boilermaker": 5,
+        "Supervisor - Electrical": 1,
+        "Lube Technician": 3,
+        "Rigger - Advanced": 1,
+        "Coded Welder": 1
       },
       "labour_hire_split": {
-        "SRG - South West": 49,
-        "2XM - Labour Hire": 2,
         "Hyrd - Labour Hire": 5,
-        "Torque - Labour Hire": 1,
-        "SRG": 1,
-        "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 6,
-        "Western Workforce - Labour Hire": 3
+        "SRG - South West": 96,
+        "SRG - Southwest Tronox": 2,
+        "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 11,
+        "SRG - Active": 2,
+        "Western Workforce - Labour Hire": 7,
+        "2XM - Labour Hire": 3,
+        "Torque - Labour Hire": 4
       },
       "roster": [
         {
@@ -2506,7 +2527,33 @@
           "start": "2026-04-24",
           "end": "2026-04-30",
           "personnel_id": "0E4AEBD5-0E7C-435D-897F-1E9B5E2E57FF",
-          "tickets": {},
+          "tickets": {
+            "ewp": {
+              "expiry": "2027-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - HRWL.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - HRWL.pdf",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2026-10-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - Driver's Licence.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-12",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-06-12",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MUKUNGA, Herbert - 52029175-1b24-45e0-a14c-0b9adce0411e/MUKUNGA, Herbert - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
           "ty": 6,
           "sy": 5,
           "sum": "Mechanical fitter with turbine and conveyor expertise and a strong ticket set including telehandler, EWP, HR and gas testing.",
@@ -2930,6 +2977,2018 @@
           "sy": 0,
           "sum": "Day shift fitter \u2014 newly added to the roster (19 Apr) replacing Hicham Bougazi. Resume and experience details to be confirmed. Mackauly Parker listed as SRG contingent.",
           "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
+        },
+        {
+          "name": "Aidan EDWARDS",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "8CA45F5B-C7DF-43FB-8F38-85263EBB2EB3",
+          "tickets": {
+            "cse": {
+              "expiry": "2028-03-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - Confined Spaces Entry.jpg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2030-10-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-03-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - Working at Heights.jpg",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2030-10-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0421 998 847"
+        },
+        {
+          "name": "Alexio NYAMAKAZI",
+          "role": "Boilermaker",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "661ED6D8-FF8C-4979-9EDD-057E957C53BB",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2029-07-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - HRWL.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-01-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - Working at Heights.jpg",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2029-07-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - HRWL.jpg",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-03-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - Gas Test Atmospheres.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0450 968 872"
+        },
+        {
+          "name": "Arron NAIRN",
+          "role": "Boilermaker",
+          "shift": "Day",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "personnel_id": "6EA10325-AECD-415A-9BB8-F660CAE7A409",
+          "tickets": {
+            "gta": {
+              "expiry": "2028-04-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NAIRN, Aaron - 6ea10325-aecd-415a-9bb8-f660cae7a409/NAIRN, Aaron - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-04-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NAIRN, Aaron - 6ea10325-aecd-415a-9bb8-f660cae7a409/NAIRN, Aaron - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-04-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NAIRN, Aaron - 6ea10325-aecd-415a-9bb8-f660cae7a409/NAIRN, Aaron - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0415 575 297"
+        },
+        {
+          "name": "Barry LYON",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "90F67A88-5C4B-4ADF-828A-C0423894CD99",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-11-08",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LYON, Barry - 90f67a88-5c4b-4adf-828a-c0423894cd99/LYON, Barry - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-09-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LYON, Barry - 90f67a88-5c4b-4adf-828a-c0423894cd99/LYON, Barry - Working at Heights.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0438 555 069"
+        },
+        {
+          "name": "Ben FRIEDAUER",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-22",
+          "end": "2026-04-28",
+          "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
+          "tickets": {
+            "fork": {
+              "expiry": "2026-08-04",
+              "doc": null,
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2026-08-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FRIEDAUR, Ben - 3b0e57db-8a9a-41a2-9fb2-a30b7188088e/FRIEDAUR, Ben - HRWL.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2028-04-13",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FRIEDAUR, Ben - 3b0e57db-8a9a-41a2-9fb2-a30b7188088e/FRIEDAUR, Ben - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-04-13",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FRIEDAUR, Ben - 3b0e57db-8a9a-41a2-9fb2-a30b7188088e/FRIEDAUR, Ben - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2026-08-04",
+              "doc": null,
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-04-13",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FRIEDAUR, Ben - 3b0e57db-8a9a-41a2-9fb2-a30b7188088e/FRIEDAUR, Ben - Working at Heights.pdf",
+              "status": "current"
+            },
+            "dog": {
+              "expiry": "2026-08-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FRIEDAUR, Ben - 3b0e57db-8a9a-41a2-9fb2-a30b7188088e/FRIEDAUR, Ben - HRWL.pdf",
+              "status": "current"
+            },
+            "rig": {
+              "expiry": "2026-08-04",
+              "doc": null,
+              "status": "current",
+              "level": "Basic"
+            }
+          },
+          "mobile": "0424 977 431"
+        },
+        {
+          "name": "Brett STONE \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-21",
+          "end": "2026-04-28",
+          "personnel_id": "8852421D-459C-46ED-A8B0-E96FC8635BDB",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2028-02-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STONE , Brett - 8852421d-459c-46ed-a8b0-e96fc8635bdb/STONE , Brett - HRWL.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2026-12-27",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STONE , Brett - 8852421d-459c-46ed-a8b0-e96fc8635bdb/STONE , Brett - Confined Spaces Entry.jpg",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2028-02-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STONE , Brett - 8852421d-459c-46ed-a8b0-e96fc8635bdb/STONE , Brett - HRWL.jpg",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-06-25",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STONE , Brett - 8852421d-459c-46ed-a8b0-e96fc8635bdb/STONE , Brett - Gas Test Atmospheres.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-12-27",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STONE , Brett - 8852421d-459c-46ed-a8b0-e96fc8635bdb/STONE , Brett - Working at Heights.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0410 436 761"
+        },
+        {
+          "name": "Bryan MESSENGER \ud83d\udd37",
+          "role": "Boilermaker",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "85A00BCC-CF03-4F84-84F0-157FA0BC6478",
+          "tickets": {
+            "cse": {
+              "expiry": "2028-02-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MESSENGER , Bryan - 85a00bcc-cf03-4f84-84f0-157fa0bc6478/MESSENGER , Bryan - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2026-10-09",
+              "doc": null,
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2029-01-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MESSENGER , Bryan - 85a00bcc-cf03-4f84-84f0-157fa0bc6478/MESSENGER , Bryan - Driver's Licence.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2026-10-09",
+              "doc": null,
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2026-10-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MESSENGER , Bryan - 85a00bcc-cf03-4f84-84f0-157fa0bc6478/MESSENGER , Bryan - HRWL.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2028-02-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MESSENGER , Bryan - 85a00bcc-cf03-4f84-84f0-157fa0bc6478/MESSENGER , Bryan - Gas Test Atmospheres.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0408 952 025"
+        },
+        {
+          "name": "Cameron DOLAN",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "A79CC8F1-D599-426A-8EC9-42D22E595FEB",
+          "tickets": {
+            "ewp": {
+              "expiry": "2029-05-02",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2026-05-28",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Confined Spaces.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2026-05-28",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-05-27",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Working at Heights.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2029-05-02",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0450 350 327"
+        },
+        {
+          "name": "Chieh-Ti WANG",
+          "role": "Rigger - Advanced",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "8B32A0F0-1F2F-417D-AC5A-555F6F712B72",
+          "tickets": {
+            "rig": {
+              "expiry": "2027-10-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANG, Chieh-Ti - 002250/MAY , Chieh-Ti - HRWL.pdf",
+              "status": "current",
+              "level": "Advanced"
+            },
+            "fork": {
+              "expiry": "2027-10-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANG, Chieh-Ti - 002250/MAY , Chieh-Ti - HRWL.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-10-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANG, Chieh-Ti - 002250/MAY , Chieh-Ti - HRWL.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2027-10-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANG, Chieh-Ti - 002250/MAY , Chieh-Ti - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0435 992 331"
+        },
+        {
+          "name": "Daniel GOVHONGO",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "77B64F28-655E-4252-B58E-A4B3E2641582",
+          "tickets": {
+            "cse": {
+              "expiry": "2026-07-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GOVHONGO , Daniel - 77b64f28-655e-4252-b58e-a4b3e2641582/GOVHONGO , Daniel - Confined Spaces.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2029-06-13",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GOVHONGO , Daniel - 77b64f28-655e-4252-b58e-a4b3e2641582/GOVHONGO , Daniel - HRWL.jpg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2029-06-13",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GOVHONGO , Daniel - 77b64f28-655e-4252-b58e-a4b3e2641582/GOVHONGO , Daniel - HRWL.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-07-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GOVHONGO , Daniel - 77b64f28-655e-4252-b58e-a4b3e2641582/GOVHONGO , Daniel - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0484 563 607"
+        },
+        {
+          "name": "Dhamodhar KUMAR",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "5191BEF4-728A-4C61-914B-CC5BF6337BAA",
+          "tickets": {},
+          "mobile": "0421 749 053"
+        },
+        {
+          "name": "Donggyu \ud83d\udd37 KIM",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "6BCFECF6-37A6-45CC-9722-0748145C4996",
+          "tickets": {
+            "gta": {
+              "expiry": "2028-02-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Donggyu - 6bcfecf6-37a6-45cc-9722-0748145c4996/KIM, Donggyu - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2029-02-05",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Donggyu - 6bcfecf6-37a6-45cc-9722-0748145c4996/KIM, Donggyu - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-02-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Donggyu - 6bcfecf6-37a6-45cc-9722-0748145c4996/KIM, Donggyu - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-02-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Donggyu - 6bcfecf6-37a6-45cc-9722-0748145c4996/KIM, Donggyu - Working at Heights.pdf",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2030-10-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Donggyu - 6bcfecf6-37a6-45cc-9722-0748145c4996/KIM, Donggyu - Driver's Licence.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2029-02-05",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Donggyu - 6bcfecf6-37a6-45cc-9722-0748145c4996/KIM, Donggyu - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0411 681 092"
+        },
+        {
+          "name": "Emilien CHATBOT",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "851BFAAB-2AD6-445E-A744-1C9006FAE3C1",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-06-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHATBOT , Emilien - 851bfaab-2ad6-445e-a744-1c9006fae3c1/CHATBOT , Emilien - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-06-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHATBOT , Emilien - 851bfaab-2ad6-445e-a744-1c9006fae3c1/CHATBOT , Emilien - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHATBOT , Emilien - 851bfaab-2ad6-445e-a744-1c9006fae3c1/CHATBOT , Emilien - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0415 867 529"
+        },
+        {
+          "name": "Federico Sarti",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "8C4283F1-EFF6-49D5-9385-60BD2BE0197F",
+          "tickets": {
+            "wah": {
+              "expiry": "2028-03-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SARTI, Federico - 8c4283f1-eff6-49d5-9385-60bd2be0197f/SARTI, Federico - Working at Heights.jpg",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2029-03-12",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SARTI, Federico - 8c4283f1-eff6-49d5-9385-60bd2be0197f/SARTI, Federico - Driver's Licence.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-03-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SARTI, Federico - 8c4283f1-eff6-49d5-9385-60bd2be0197f/SARTI, Federico - Confined Spaces Entry.jpg",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2028-03-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SARTI, Federico - 8c4283f1-eff6-49d5-9385-60bd2be0197f/SARTI, Federico - Gas Test Atmospheres.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0493 955 585"
+        },
+        {
+          "name": "Florian CHAVOT",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "24455AB0-79D9-4CF5-85D7-97E71C688075",
+          "tickets": {
+            "gta": {
+              "expiry": "2027-02-20",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHAVOT, Florian - 24455ab0-79d9-4cf5-85d7-97e71c688075/CHAVOT, Florian - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2030-12-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHAVOT, Florian - 24455ab0-79d9-4cf5-85d7-97e71c688075/CHAVOT, Florian - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-02-20",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHAVOT, Florian - 24455ab0-79d9-4cf5-85d7-97e71c688075/CHAVOT, Florian - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2030-12-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHAVOT, Florian - 24455ab0-79d9-4cf5-85d7-97e71c688075/CHAVOT, Florian - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-02-20",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHAVOT, Florian - 24455ab0-79d9-4cf5-85d7-97e71c688075/CHAVOT, Florian - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0494 410 798"
+        },
+        {
+          "name": "Ganesh MOHITE",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-30",
+          "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
+          "tickets": {
+            "ewp": {
+              "expiry": "2027-12-07",
+              "doc": null,
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2026-07-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHITE, Ganesh - f890ace8-5c49-4233-9b17-cb635bc1b88b/MOHITE, Ganesh - Gas Test Atmospheres.jpg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-12-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHITE, Ganesh - f890ace8-5c49-4233-9b17-cb635bc1b88b/MOHITE, Ganesh - HRWL.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2026-07-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHITE, Ganesh - f890ace8-5c49-4233-9b17-cb635bc1b88b/MOHITE, Ganesh - Confined Spaces Entry.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-07-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHITE, Ganesh - f890ace8-5c49-4233-9b17-cb635bc1b88b/MOHITE, Ganesh - Working at Heights.jpg",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2027-12-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MOHITE, Ganesh - f890ace8-5c49-4233-9b17-cb635bc1b88b/MOHITE, Ganesh - HRWL.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0469 591 660"
+        },
+        {
+          "name": "Geraud GNANASEGAR",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "78F97BC0-8291-4F50-871D-E410AE268A7A",
+          "tickets": {
+            "ewp": {
+              "expiry": "2031-03-05",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GNANASEGAR, Geraud - 78f97bc0-8291-4f50-871d-e410ae268a7a/GNANASEGAR, Geraud - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-04-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GNANASEGAR, Geraud - 78f97bc0-8291-4f50-871d-e410ae268a7a/GNANASEGAR, Geraud - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-04-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GNANASEGAR, Geraud - 78f97bc0-8291-4f50-871d-e410ae268a7a/GNANASEGAR, Geraud - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2031-03-05",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GNANASEGAR, Geraud - 78f97bc0-8291-4f50-871d-e410ae268a7a/GNANASEGAR, Geraud - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-04-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GNANASEGAR, Geraud - 78f97bc0-8291-4f50-871d-e410ae268a7a/GNANASEGAR, Geraud - Working at Heights.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2031-03-05",
+              "doc": null,
+              "status": "current"
+            }
+          },
+          "mobile": "0493 155 148"
+        },
+        {
+          "name": "Graham WANGLER",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
+          "tickets": {
+            "dog": {
+              "expiry": "2027-03-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-03-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-03-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - Working at Heights.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-03-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0476 247 673"
+        },
+        {
+          "name": "Hemi RATAHI",
+          "role": "Rigger - Advanced",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "4FA11D14-6DD0-41FB-8068-270F73668E6B",
+          "tickets": {
+            "rig": {
+              "expiry": "2028-03-15",
+              "doc": null,
+              "status": "current",
+              "level": "Advanced"
+            },
+            "fork": {
+              "expiry": "2028-03-15",
+              "doc": null,
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-03-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - HRWL.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-08-20",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Working at Heights.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2028-03-15",
+              "doc": null,
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2028-02-29",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Driver's Licence.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-08-20",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0457 420 744"
+        },
+        {
+          "name": "Hicham \ud83d\udd37 BOUZAGAOUI",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "D1BAFF22-E20D-43EE-B739-D4F774F083C0",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-08-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOUZAGAOUI, Hicham - d1baff22-e20d-43ee-b739-d4f774f083c0/BOUZAGAOUI, Hicham - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2030-09-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOUZAGAOUI, Hicham - d1baff22-e20d-43ee-b739-d4f774f083c0/BOUZAGAOUI, Hicham - HRWL.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-08-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOUZAGAOUI, Hicham - d1baff22-e20d-43ee-b739-d4f774f083c0/BOUZAGAOUI, Hicham - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2030-09-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOUZAGAOUI, Hicham - d1baff22-e20d-43ee-b739-d4f774f083c0/BOUZAGAOUI, Hicham - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-08-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOUZAGAOUI, Hicham - d1baff22-e20d-43ee-b739-d4f774f083c0/BOUZAGAOUI, Hicham - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0434 994 659"
+        },
+        {
+          "name": "Hoshiar SUDHU",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "43BE98F1-1896-4B9D-AD34-6ADDA674EFF7",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2029-06-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SUDHU , Hoshiar - 43be98f1-1896-4b9d-ad34-6adda674eff7/SUDHU , Hoshiar - HRWL.PNG",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2029-06-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SUDHU , Hoshiar - 43be98f1-1896-4b9d-ad34-6adda674eff7/SUDHU , Hoshiar - HRWL.PNG",
+              "status": "current"
+            }
+          },
+          "mobile": "0402 329 039"
+        },
+        {
+          "name": "Idriz TURKO \ud83d\udd37",
+          "role": "Supervisor - Electrical",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-29",
+          "personnel_id": "D4502233-23DE-452B-9751-ACF1A2E44E1A",
+          "tickets": {
+            "wah": {
+              "expiry": "2028-04-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TURKO , Idriz - d4502233-23de-452b-9751-acf1a2e44e1a/TURKO , Idriz - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-04-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TURKO , Idriz - d4502233-23de-452b-9751-acf1a2e44e1a/TURKO , Idriz - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2028-12-06",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TURKO , Idriz - d4502233-23de-452b-9751-acf1a2e44e1a/TURKO , Idriz - Driver's Licence.png",
+              "status": "current"
+            }
+          },
+          "mobile": "0402 051 678"
+        },
+        {
+          "name": "Irwin ISSAC",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "9317C9BC-F97E-4690-9A15-1F4783519BF1",
+          "tickets": {
+            "gta": {
+              "expiry": "2026-05-16",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ISAAC, Irwin - 002204/ISAAC , Irwin - Gas Test Atmospheres.pdf",
+              "status": "expiring_soon"
+            },
+            "cse": {
+              "expiry": "2026-05-16",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ISAAC, Irwin - 002204/ISAAC , Irwin - Confined Spaces.pdf",
+              "status": "expiring_soon"
+            }
+          },
+          "mobile": "0487 700 914"
+        },
+        {
+          "name": "Jack CHAPMAN \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "F1B8D0D9-7053-4C7D-BC29-60A5103ED1DF",
+          "tickets": {},
+          "mobile": "0415 125 799"
+        },
+        {
+          "name": "Jade MATENGA",
+          "role": "Leading Hand",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "6EAA57C1-D4C2-490C-8978-D227C2120A6A",
+          "tickets": {
+            "dog": {
+              "expiry": "2027-05-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - HRWL.png",
+              "status": "current"
+            },
+            "rig": {
+              "expiry": "2027-05-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - HRWL.png",
+              "status": "current",
+              "level": "Advanced"
+            },
+            "cse": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - Confined Spaces Entry.png",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2027-11-11",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - Driver's Licence.png",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-05-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - HRWL.png",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - Working at Heights.png",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2027-05-10",
+              "doc": null,
+              "status": "current"
+            }
+          },
+          "mobile": "0408 005 187"
+        },
+        {
+          "name": "James GARDINER",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "BBB642D5-7397-48D0-8A3F-BD6536634D32",
+          "tickets": {},
+          "mobile": "0458 420 731"
+        },
+        {
+          "name": "Jared SCHERER",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "57BBAC5C-4128-43BE-A042-A408B0F6F747",
+          "tickets": {
+            "cse": {
+              "expiry": "2026-08-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SCHERER, Jared - 57bbac5c-4128-43be-a042-a408b0f6f747/SCHERER, Jared - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2026-08-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SCHERER, Jared - 57bbac5c-4128-43be-a042-a408b0f6f747/SCHERER, Jared - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-08-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SCHERER, Jared - 57bbac5c-4128-43be-a042-a408b0f6f747/SCHERER, Jared - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0437 305 938"
+        },
+        {
+          "name": "Jayson MANUEL",
+          "role": "Coded Welder",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "FA6E5ABC-B92D-4229-B2D1-3292F3BFFA32",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2031-02-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MANUEL, Jayson - fa6e5abc-b92d-4229-b2d1-3292f3bffa32/MANUEL, Jayson - HRWL.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2031-02-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MANUEL, Jayson - fa6e5abc-b92d-4229-b2d1-3292f3bffa32/MANUEL, Jayson - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0412 133 892"
+        },
+        {
+          "name": "Jeremy LAROCK",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-21",
+          "end": "2026-04-28",
+          "personnel_id": "64A744E3-9E72-454C-81DB-E98DBC89380C",
+          "tickets": {
+            "fork": {
+              "expiry": "2028-02-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LAROCK, Jeremy - 64a744e3-9e72-454c-81db-e98dbc89380c/LAROCK, Jeremy - HRWL.jpeg",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2028-02-14",
+              "doc": null,
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-05-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LAROCK, Jeremy - 64a744e3-9e72-454c-81db-e98dbc89380c/LAROCK, Jeremy - Working at Heights.pdf",
+              "status": "expiring_soon"
+            },
+            "cse": {
+              "expiry": "2026-05-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LAROCK, Jeremy - 64a744e3-9e72-454c-81db-e98dbc89380c/LAROCK, Jeremy - Confined Spaces Entry.pdf",
+              "status": "expiring_soon"
+            },
+            "hrwl": {
+              "expiry": "2028-02-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LAROCK, Jeremy - 64a744e3-9e72-454c-81db-e98dbc89380c/LAROCK, Jeremy - HRWL.jpeg",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2026-07-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LAROCK, Jeremy - 64a744e3-9e72-454c-81db-e98dbc89380c/LAROCK, Jeremy - Driver's Licence.jpeg",
+              "status": "current"
+            }
+          },
+          "mobile": "0439 264 009"
+        },
+        {
+          "name": "Jordi \ud83d\udd37 PATINO ROCA",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-30",
+          "personnel_id": "4C7F85DF-909F-4165-A5FB-E3A7F3ED8980",
+          "tickets": {
+            "rig": {
+              "expiry": "2028-08-02",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PATINO ROCA, Jordi - 4c7f85df-909f-4165-a5fb-e3a7f3ed8980/PATINO ROCA, Jordi - HRWL.pdf",
+              "status": "current",
+              "level": "Intermediate"
+            },
+            "wah": {
+              "expiry": "2027-05-15",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PATINO ROCA, Jordi - 4c7f85df-909f-4165-a5fb-e3a7f3ed8980/PATINO ROCA, Jordi - Working at Heights.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-08-02",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PATINO ROCA, Jordi - 4c7f85df-909f-4165-a5fb-e3a7f3ed8980/PATINO ROCA, Jordi - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-03-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PATINO ROCA, Jordi - 4c7f85df-909f-4165-a5fb-e3a7f3ed8980/PATINO ROCA, Jordi - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0491 821 644"
+        },
+        {
+          "name": "Juan JACA",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "C8293B6E-2B6C-4D73-A288-D38C8622ED97",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2030-07-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JACA , Juan - c8293b6e-2b6c-4d73-a288-d38c8622ed97/JACA , Juan - HRWL.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-06-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JACA , Juan - c8293b6e-2b6c-4d73-a288-d38c8622ed97/JACA , Juan - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2030-07-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JACA , Juan - c8293b6e-2b6c-4d73-a288-d38c8622ed97/JACA , Juan - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-06-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JACA , Juan - c8293b6e-2b6c-4d73-a288-d38c8622ed97/JACA , Juan - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JACA , Juan - c8293b6e-2b6c-4d73-a288-d38c8622ed97/JACA , Juan - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0473 445 624"
+        },
+        {
+          "name": "Julian JENNY",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "0CA5B1C2-920A-472F-9D8E-83B65DD78553",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-07-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JENNY , Julian - 0ca5b1c2-920a-472f-9d8e-83b65dd78553/JENNY , Julian - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-07-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JENNY , Julian - 0ca5b1c2-920a-472f-9d8e-83b65dd78553/JENNY , Julian - Working at Heights.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-07-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JENNY , Julian - 0ca5b1c2-920a-472f-9d8e-83b65dd78553/JENNY , Julian - Gas Test Atmospheres.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0493 389 131"
+        },
+        {
+          "name": "Kapil \ud83d\udd37 CHAUDHARY",
+          "role": "Supervisor - Mechanical",
+          "shift": "Day",
+          "start": "2026-04-20",
+          "end": "2026-04-28",
+          "personnel_id": "4756F238-DF10-4821-842B-BED484C57338",
+          "tickets": {
+            "hr": {
+              "expiry": "2026-10-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHAUDHARY, Kapil - 4756f238-df10-4821-842b-bed484c57338/CHAUDHARY, Kapil - Driver's Licence.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0499 847 709"
+        },
+        {
+          "name": "Karunakar DEVIREDDY",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "2652802A-795D-400C-82F0-6E87DE14DBF1",
+          "tickets": {
+            "gta": {
+              "expiry": "2027-09-25",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Gas Test Atmospheres.jpg",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-09-25",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Working at Heights.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-09-25",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Confined Spaces Entry.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0434 848 554"
+        },
+        {
+          "name": "Keron KAPPET",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "528BE73A-C8A5-4126-ACC5-FE56C9E6C250",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2030-02-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAPPET, Keron - 528be73a-c8a5-4126-acc5-fe56c9e6c250/KAPPET, Keron - HRWL.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-04-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAPPET, Keron - 528be73a-c8a5-4126-acc5-fe56c9e6c250/KAPPET, Keron - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-04-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAPPET, Keron - 528be73a-c8a5-4126-acc5-fe56c9e6c250/KAPPET, Keron - Working at Heights.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2030-02-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAPPET, Keron - 528be73a-c8a5-4126-acc5-fe56c9e6c250/KAPPET, Keron - HRWL.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0437 976 484"
+        },
+        {
+          "name": "Kevin ANDREWS",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "CC804EE9-1E6E-442C-8925-DCD9145DDB17",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2028-12-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANDREWS , Kevin - cc804ee9-1e6e-442c-8925-dcd9145ddb17/ANDREWS , Kevin - HRWL.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2028-12-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANDREWS , Kevin - cc804ee9-1e6e-442c-8925-dcd9145ddb17/ANDREWS , Kevin - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0420 480 323"
+        },
+        {
+          "name": "Killian VANDEZANDE",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "04650C7B-A982-4B2B-B636-A402A214248C",
+          "tickets": {
+            "gta": {
+              "expiry": "2028-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VANDEZANDE, Killian - 04650c7b-a982-4b2b-b636-a402a214248c/VANDEZANDE, Killian - Gas Test Atmospheres.jpeg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VANDEZANDE, Killian - 04650c7b-a982-4b2b-b636-a402a214248c/VANDEZANDE, Killian - Confined Spaces Entry.jpeg",
+              "status": "current"
+            },
+            "rig": {
+              "expiry": "2028-09-14",
+              "doc": null,
+              "status": "current",
+              "level": "Basic"
+            },
+            "ewp": {
+              "expiry": "2028-09-14",
+              "doc": null,
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-01-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VANDEZANDE, Killian - 04650c7b-a982-4b2b-b636-a402a214248c/VANDEZANDE, Killian - Working at Heights.jpeg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-09-14",
+              "doc": null,
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2028-09-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VANDEZANDE, Killian - 04650c7b-a982-4b2b-b636-a402a214248c/VANDEZANDE, Killian - HRWL.jpeg",
+              "status": "current"
+            }
+          },
+          "mobile": "0428 164 011"
+        },
+        {
+          "name": "Lewis \ud83d\udd37 FERRIS",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-30",
+          "personnel_id": "9D8213E1-CF9D-4A4D-920A-0B699F943484",
+          "tickets": {
+            "cse": {
+              "expiry": "2026-04-30",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERRIS, Lewis - 9d8213e1-cf9d-4a4d-920a-0b699f943484/FERRIS, Lewis - Confined Spaces Entry.pdf",
+              "status": "expiring_soon"
+            },
+            "hrwl": {
+              "expiry": "2029-08-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERRIS, Lewis - 9d8213e1-cf9d-4a4d-920a-0b699f943484/FERRIS, Lewis - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-04-30",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERRIS, Lewis - 9d8213e1-cf9d-4a4d-920a-0b699f943484/FERRIS, Lewis - Working at Heights.pdf",
+              "status": "expiring_soon"
+            },
+            "ewp": {
+              "expiry": "2029-08-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERRIS, Lewis - 9d8213e1-cf9d-4a4d-920a-0b699f943484/FERRIS, Lewis - HRWL.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2026-04-30",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERRIS, Lewis - 9d8213e1-cf9d-4a4d-920a-0b699f943484/FERRIS, Lewis - Gas Test Atmospheres.pdf",
+              "status": "expiring_soon"
+            }
+          },
+          "mobile": "0417 167 962"
+        },
+        {
+          "name": "Lorenzo \ud83d\uded1 PELLIZZARI",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "11FD6E39-55B1-4932-AD50-46F7E4931936",
+          "tickets": {
+            "hr": {
+              "expiry": "2027-01-30",
+              "doc": null,
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-01-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PELLIZZARI, Lorenzo - 11fd6e39-55b1-4932-ad50-46f7e4931936/PELLIZZARI, Lorenzo - Working at Heights.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-04-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PELLIZZARI, Lorenzo - 11fd6e39-55b1-4932-ad50-46f7e4931936/PELLIZZARI, Lorenzo - Gas Test Atmospheres.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0480 770 912"
+        },
+        {
+          "name": "Loyid JOSEPH",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "24B6C2C5-28E9-497F-B672-3A24CEF290DC",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2029-01-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - HRWL.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-06-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2029-01-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-05-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - Working at Heights.pdf",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2030-05-28",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - Driver's Licence.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2029-01-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-05-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOSEPH, Loyid - 24b6c2c5-28e9-497f-b672-3a24cef290dc/JOSEPH, Loyid - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0450 060 007"
+        },
+        {
+          "name": "Mahadev YOGANANDA",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "5030D14C-63D1-4C75-8FDF-6D9FBA856D23",
+          "tickets": {
+            "wah": {
+              "expiry": "2027-04-30",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YOGANANDA , Mavadev - 5030d14c-63d1-4c75-8fdf-6d9fba856d23/YOGANANDA , Mavadev - Working at Heights.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-04-30",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YOGANANDA , Mavadev - 5030d14c-63d1-4c75-8fdf-6d9fba856d23/YOGANANDA , Mavadev - Confined Spaces.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0405 424 005"
+        },
+        {
+          "name": "Manohar NAUKUDKAR",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "08F6771B-D8F3-487F-9E30-FDCD893A30F1",
+          "tickets": {
+            "fork": {
+              "expiry": "2029-05-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAUKUDKAR, Manohar - 08f6771b-d8f3-487f-9e30-fdcd893a30f1/MAUKUDKAR, Manohar - HRWL.jpg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2029-05-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAUKUDKAR, Manohar - 08f6771b-d8f3-487f-9e30-fdcd893a30f1/MAUKUDKAR, Manohar - HRWL.jpg",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2029-05-31",
+              "doc": null,
+              "status": "current"
+            }
+          },
+          "mobile": "0488 249 286"
+        },
+        {
+          "name": "Marcel LAMICQ ZUMBADO",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-30",
+          "personnel_id": "2187D943-A653-406F-93ED-A120C7203B49",
+          "tickets": {},
+          "mobile": "0457 843 977"
+        },
+        {
+          "name": "Marco \ud83d\udd37 CAPALDI",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-30",
+          "personnel_id": "ABD4C951-1A7A-4557-8B5D-C10939C0120F",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2026-06-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CAPALDI, Marco - abd4c951-1a7a-4557-8b5d-c10939c0120f/CAPALDI, Marco - HRWL.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2026-06-07",
+              "doc": null,
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2026-06-07",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CAPALDI, Marco - abd4c951-1a7a-4557-8b5d-c10939c0120f/CAPALDI, Marco - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0450 311 285"
+        },
+        {
+          "name": "Matthew TECKLE",
+          "role": "Lube Technician",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "7BB0D5E3-1129-49F6-ADD8-7A1FB301953D",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-10-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TECKLE, Matthew - 7bb0d5e3-1129-49f6-add8-7a1fb301953d/TECKLE, Matthew - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-10-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TECKLE, Matthew - 7bb0d5e3-1129-49f6-add8-7a1fb301953d/TECKLE, Matthew - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0461 502 016"
+        },
+        {
+          "name": "Mehdi NISSANI \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "A6D77A63-74BD-4A79-AFD4-CFC4F1A4F233",
+          "tickets": {
+            "gta": {
+              "expiry": "2027-09-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NISSANI , Mehdi - a6d77a63-74bd-4a79-afd4-cfc4f1a4f233/NISSANI , Mehdi - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-09-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NISSANI , Mehdi - a6d77a63-74bd-4a79-afd4-cfc4f1a4f233/NISSANI , Mehdi - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-08-25",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NISSANI , Mehdi - a6d77a63-74bd-4a79-afd4-cfc4f1a4f233/NISSANI , Mehdi - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0406 632 325"
+        },
+        {
+          "name": "Michael LONERGAN",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "C7E6510C-1B53-4253-85A4-6ECB278B51F9",
+          "tickets": {
+            "cse": {
+              "expiry": "2028-02-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LONERGAN, Michael - c7e6510c-1b53-4253-85a4-6ecb278b51f9/LONERGAN, Michael - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-02-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LONERGAN, Michael - c7e6510c-1b53-4253-85a4-6ecb278b51f9/LONERGAN, Michael - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0493 542 602"
+        },
+        {
+          "name": "Mirko RISCHIA",
+          "role": "Coded Welder",
+          "shift": "Day",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "personnel_id": "BFFA8357-544F-49C0-BB0C-806C0AF55972",
+          "tickets": {
+            "wah": {
+              "expiry": "2027-10-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RISCHIA, Mirko - bffa8357-544f-49c0-bb0c-806c0af55972/RISCHIA, Mirko - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-10-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RISCHIA, Mirko - bffa8357-544f-49c0-bb0c-806c0af55972/RISCHIA, Mirko - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-10-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RISCHIA, Mirko - bffa8357-544f-49c0-bb0c-806c0af55972/RISCHIA, Mirko - Gas Test Atmospheres.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0410 851 191"
+        },
+        {
+          "name": "Mitya DOBBELAERE",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "1C18F251-35E7-4E76-9B4B-0DDFAE7A830B",
+          "tickets": {
+            "gta": {
+              "expiry": "2028-03-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2028-03-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-03-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0447 582 473"
+        },
+        {
+          "name": "Morgan HILL",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "80B25E6E-3E5F-4628-B813-DC58DBD4C862",
+          "tickets": {
+            "gta": {
+              "expiry": "2027-04-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HILL, Morgan - 80b25e6e-3e5f-4628-b813-dc58dbd4c862/HILL, Morgan - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-04-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HILL, Morgan - 80b25e6e-3e5f-4628-b813-dc58dbd4c862/HILL, Morgan - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-04-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HILL, Morgan - 80b25e6e-3e5f-4628-b813-dc58dbd4c862/HILL, Morgan - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0450 966 071"
+        },
+        {
+          "name": "Mustafa \ud83d\uded1 GUENDESLI",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "383ADACD-A2F4-4874-BD44-5A5D174B74B9",
+          "tickets": {
+            "wah": {
+              "expiry": "2027-11-17",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUENDESLI, Mustafa - 383adacd-a2f4-4874-bd44-5a5d174b74b9/GUENDESLI, Mustafa - Working at Heights.jpeg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2029-10-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUENDESLI, Mustafa - 383adacd-a2f4-4874-bd44-5a5d174b74b9/GUENDESLI, Mustafa - HRWL.jpeg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-11-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUENDESLI, Mustafa - 383adacd-a2f4-4874-bd44-5a5d174b74b9/GUENDESLI, Mustafa - Confined Spaces Entry.jpeg",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2029-10-24",
+              "doc": null,
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2029-10-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GUENDESLI, Mustafa - 383adacd-a2f4-4874-bd44-5a5d174b74b9/GUENDESLI, Mustafa - HRWL.jpeg",
+              "status": "current"
+            }
+          },
+          "mobile": "0459 117 611"
+        },
+        {
+          "name": "Nathan RHODES",
+          "role": "Supervisor - Mechanical",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "BF8886B2-06C5-43A3-AC85-D6037830E0A0",
+          "tickets": {
+            "wah": {
+              "expiry": "2027-02-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RHODES , Nathan - bf8886b2-06c5-43a3-ac85-d6037830e0a0/RHODES , Nathan - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-02-03",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RHODES , Nathan - bf8886b2-06c5-43a3-ac85-d6037830e0a0/RHODES , Nathan - Confined Spaces.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0404 284 744"
+        },
+        {
+          "name": "Ngoni USORE",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "FEFAAFC8-7E0D-431A-9269-EA499C24DD63",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2028-03-02",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - HRWL.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2028-03-02",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - HRWL.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/USORE, Ngoni - fefaafc8-7e0d-431a-9269-ea499c24dd63/USORE, Ngoni - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0401 500 098"
+        },
+        {
+          "name": "Oliver KYLE \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "5274412F-A70E-4DBF-A0FB-640E3C74EF0C",
+          "tickets": {
+            "gta": {
+              "expiry": "2027-01-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KYLE, Oliver - 5274412f-a70e-4dbf-a0fb-640e3c74ef0c/KYLE , Oliver - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-01-20",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KYLE, Oliver - 5274412f-a70e-4dbf-a0fb-640e3c74ef0c/KYLE , Oliver - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-01-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KYLE, Oliver - 5274412f-a70e-4dbf-a0fb-640e3c74ef0c/KYLE , Oliver - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0473 004 701"
+        },
+        {
+          "name": "Ominder SINGH",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "327192CA-BA5A-47BD-B72B-221E1743B3FE",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-07-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-11-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-07-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - Working at Heights.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-07-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2027-11-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - HRWL.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0410 804 520"
+        },
+        {
+          "name": "Paula SAFFIGNA",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "809A6192-6592-409B-BF85-4E4604B640B0",
+          "tickets": {
+            "hrwl": {
+              "expiry": "2027-08-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SAFFIGNA, Paula - 809a6192-6592-409b-bf85-4e4604b640b0/SAFFIGNA, Paula - HRWL.png",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2027-08-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SAFFIGNA, Paula - 809a6192-6592-409b-bf85-4e4604b640b0/SAFFIGNA, Paula - HRWL.png",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-08-29",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SAFFIGNA, Paula - 809a6192-6592-409b-bf85-4e4604b640b0/SAFFIGNA, Paula - Working at Heights.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0458 617 638"
+        },
+        {
+          "name": "Peter \ud83d\udd37 NAGLE",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-30",
+          "personnel_id": "AF4D42CC-1950-4573-9B93-94B631F39462",
+          "tickets": {
+            "hr": {
+              "expiry": "2027-03-16",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NAGLE, Peter - af4d42cc-1950-4573-9b93-94b631f39462/NAGLE, Peter - Driver's Licence.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0457 381 040"
+        },
+        {
+          "name": "Pralhad PAWAR",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "EF134557-8FE8-45F8-83CC-153A9A177F99",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-10-24",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PAWAR, Pralhad - ef134557-8fe8-45f8-83cc-153a9a177f99/PAWAR, Pralhad - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-03-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PAWAR, Pralhad - ef134557-8fe8-45f8-83cc-153a9a177f99/PAWAR, Pralhad - Working at Heights.pdf",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2027-07-05",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PAWAR, Pralhad - ef134557-8fe8-45f8-83cc-153a9a177f99/PAWAR, Pralhad - Driver's Licence.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0401 457 574"
+        },
+        {
+          "name": "Pramod CHANDRASKHAR",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "BC22C16C-AB64-4A88-BB07-86E7CCA871FE",
+          "tickets": {
+            "cse": {
+              "expiry": "2026-05-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - Confined Spaces Entry.pdf",
+              "status": "expiring_soon"
+            },
+            "gta": {
+              "expiry": "2026-05-22",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - Gas Test Atmospheres.pdf",
+              "status": "expiring_soon"
+            },
+            "hrwl": {
+              "expiry": "2030-01-16",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - HRWL.pdf",
+              "status": "current"
+            },
+            "fork": {
+              "expiry": "2030-01-16",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2026-12-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0494 037 814"
+        },
+        {
+          "name": "Richardson ALICANTE",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-27",
+          "personnel_id": "40FCD406-BD10-4C68-888F-03D449BD7F44",
+          "tickets": {
+            "ewp": {
+              "expiry": "2028-03-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE , Richardson - HRWL.PNG",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-03-09",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE, Richardson - Working at Heights.jpg",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-01-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE , Richardson - Confined Spaces.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-03-01",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE , Richardson - HRWL.PNG",
+              "status": "current"
+            }
+          },
+          "mobile": "0431 228 251"
+        },
+        {
+          "name": "Robert HARRIS",
+          "role": "Trade Assistant",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "184D7AE9-8146-44E9-B0CC-63C50D7812A1",
+          "tickets": {
+            "wah": {
+              "expiry": "2027-10-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-10-31",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0405 745 828"
+        },
+        {
+          "name": "Russell CHITTY",
+          "role": "Rigger - Advanced",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "1B74F6CE-C078-43E8-BE7D-AC8B4D728724",
+          "tickets": {
+            "rig": {
+              "expiry": "2028-12-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - HRWL.pdf",
+              "status": "current",
+              "level": "Advanced"
+            },
+            "dog": {
+              "expiry": "2028-12-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - HRWL.pdf",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-12-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - HRWL.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-09-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - Working at Heights.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-09-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - Confined Spaces Entry.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0435 052 151"
+        },
+        {
+          "name": "Ryan MERIKHI \ud83d\udd37",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-04-28",
+          "personnel_id": "2AF62504-EB2E-4BD3-92DE-9E0F64AE24FF",
+          "tickets": {
+            "cse": {
+              "expiry": "2028-04-11",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MERIKHI , Ryan - 2af62504-eb2e-4bd3-92de-9e0f64ae24ff/MERIKHI , Ryan - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2028-04-11",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MERIKHI , Ryan - 2af62504-eb2e-4bd3-92de-9e0f64ae24ff/MERIKHI , Ryan - Working at Heights.pdf",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2028-04-11",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MERIKHI , Ryan - 2af62504-eb2e-4bd3-92de-9e0f64ae24ff/MERIKHI , Ryan - Gas Test Atmospheres.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0493 911 607"
+        },
+        {
+          "name": "Sean SMIDT",
+          "role": "HSE Advisor",
+          "shift": "Day",
+          "start": "2026-04-21",
+          "end": "2026-04-29",
+          "personnel_id": "C12547B2-D1BB-4A64-B70B-D2CCB202AF86",
+          "tickets": {
+            "cse": {
+              "expiry": "2027-03-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SMIDT, Sean - 001453/SMIDT, Sean - Confined Spaces.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-03-14",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SMIDT, Sean - 001453/SMIDT, Sean - Working at Heights.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0475 568 497"
+        },
+        {
+          "name": "Senthil DHANAPAL",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "0F82D120-33DF-47C1-922F-F8FBD594E76A",
+          "tickets": {
+            "fork": {
+              "expiry": "2028-11-29",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DHANAPAL, Senthil - 0f82d120-33df-47c1-922f-f8fbd594e76a/DHANAPAL , Senthil - HRWL.PNG",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-02-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DHANAPAL, Senthil - 0f82d120-33df-47c1-922f-f8fbd594e76a/DHANAPAL , Senthil - Confined Spaces.PNG",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-02-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DHANAPAL, Senthil - 0f82d120-33df-47c1-922f-f8fbd594e76a/DHANAPAL , Senthil - Working at Heights.PNG",
+              "status": "current"
+            },
+            "gta": {
+              "expiry": "2027-02-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DHANAPAL, Senthil - 0f82d120-33df-47c1-922f-f8fbd594e76a/DHANAPAL , Senthil - Gas Test Atmospheres.PNG",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-11-29",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DHANAPAL, Senthil - 0f82d120-33df-47c1-922f-f8fbd594e76a/DHANAPAL , Senthil - HRWL.PNG",
+              "status": "current"
+            }
+          },
+          "mobile": "0433 394 685"
+        },
+        {
+          "name": "Tacio YAG-AS",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "BD09570A-DFDB-458D-B85C-2FC2666F90FE",
+          "tickets": {
+            "gta": {
+              "expiry": "2027-05-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YAG-AS , Tacio - bd09570a-dfdb-458d-b85c-2fc2666f90fe/YAG-AS , Tacio - Gas Test Atmospheres.pdf",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2027-05-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YAG-AS , Tacio - bd09570a-dfdb-458d-b85c-2fc2666f90fe/YAG-AS , Tacio - Confined Spaces Entry.pdf",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-05-21",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YAG-AS , Tacio - bd09570a-dfdb-458d-b85c-2fc2666f90fe/YAG-AS , Tacio - Working at Heights.pdf",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2027-04-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YAG-AS , Tacio - bd09570a-dfdb-458d-b85c-2fc2666f90fe/YAG-AS , Tacio - HRWL.jpg",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-04-04",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/YAG-AS , Tacio - bd09570a-dfdb-458d-b85c-2fc2666f90fe/YAG-AS , Tacio - HRWL.jpg",
+              "status": "current"
+            }
+          },
+          "mobile": "0476 464 217"
+        },
+        {
+          "name": "Tawanda \ud83d\udd37 TAMBIRI",
+          "role": "Supervisor - Electrical",
+          "shift": "Day",
+          "start": "2026-04-22",
+          "end": "2026-04-29",
+          "personnel_id": "20B6CE9F-28D8-43FB-83A2-6FDF73AB77C1",
+          "tickets": {
+            "wah": {
+              "expiry": "2026-10-27",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TAMBIRI, Tawanda - 20b6ce9f-28d8-43fb-83a2-6fdf73ab77c1/TAMBIRI, Tawanda - Working at Heights.pdf",
+              "status": "current"
+            },
+            "fa": {
+              "expiry": "2027-09-26",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TAMBIRI, Tawanda - 20b6ce9f-28d8-43fb-83a2-6fdf73ab77c1/TAMBIRI, Tawanda - First Aid.pdf",
+              "status": "current"
+            }
+          },
+          "mobile": "0497 588 470"
+        },
+        {
+          "name": "Tim CURRAN",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "4FBAF741-B1FA-4CD9-9825-D3391340EE49",
+          "tickets": {
+            "fork": {
+              "expiry": "2028-01-23",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CURRAN , Tim - 4fbaf741-b1fa-4cd9-9825-d3391340ee49/CURRAN , Tim - HRWL.PNG",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2028-01-23",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CURRAN , Tim - 4fbaf741-b1fa-4cd9-9825-d3391340ee49/CURRAN , Tim - HRWL.PNG",
+              "status": "current"
+            },
+            "cse": {
+              "expiry": "2026-10-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CURRAN , Tim - 4fbaf741-b1fa-4cd9-9825-d3391340ee49/CURRAN , Tim - Confined Spaces.PNG",
+              "status": "current"
+            },
+            "rig": {
+              "expiry": "2028-01-23",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CURRAN , Tim - 4fbaf741-b1fa-4cd9-9825-d3391340ee49/CURRAN , Tim - HRWL.PNG",
+              "status": "current",
+              "level": "Basic"
+            },
+            "wah": {
+              "expiry": "2026-10-18",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CURRAN , Tim - 4fbaf741-b1fa-4cd9-9825-d3391340ee49/CURRAN , Tim - Working at Heights.PNG",
+              "status": "current"
+            },
+            "dog": {
+              "expiry": "2028-01-23",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CURRAN , Tim - 4fbaf741-b1fa-4cd9-9825-d3391340ee49/CURRAN , Tim - HRWL.PNG",
+              "status": "current"
+            }
+          },
+          "mobile": "0449 055 490"
+        },
+        {
+          "name": "Zacarria DAIR",
+          "role": "Mechanical Fitter",
+          "shift": "Day",
+          "start": "2026-04-25",
+          "end": "2026-05-01",
+          "personnel_id": "31E8E037-AAF1-49F7-9EED-D2B50A9A62D6",
+          "tickets": {},
+          "mobile": "0450 484 624"
         }
       ],
       "_source": {
@@ -2967,5 +5026,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-25T01:55:31Z"
+  "generated_at": "2026-04-25T02:06:48Z"
 }

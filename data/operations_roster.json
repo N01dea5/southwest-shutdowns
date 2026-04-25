@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T02:01:16Z",
+  "generated_at": "2026-04-25T02:07:02Z",
   "worker_count": 423,
   "workers": [
     {
@@ -69,6 +69,15 @@
           "site": "Kwinana",
           "start": "2026-05-18",
           "end": "2026-05-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -172,11 +181,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -393,6 +420,15 @@
           "site": "Kwinana",
           "start": "2025-11-03",
           "end": "2025-11-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-12",
+          "end": "2026-03-20",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -694,6 +730,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -946,6 +991,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -1027,12 +1081,30 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-22",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -1161,6 +1233,15 @@
       "mobile": "0424 977 431",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -1666,6 +1747,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -1855,6 +1945,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -1906,6 +2005,15 @@
           "start": "2026-04-23",
           "end": "2026-04-28",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -2278,6 +2386,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -2322,6 +2439,15 @@
       "mobile": "0457 632 156",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -2422,6 +2548,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-12",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -2512,11 +2647,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -2791,6 +2944,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -2971,6 +3133,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -3042,6 +3213,15 @@
       "mobile": "0481 845 862",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -3133,11 +3313,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-12",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-12",
           "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -3196,6 +3394,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -3246,9 +3453,18 @@
       "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
       "name": "Eleonora TRAORE",
       "role": "Trade Assistant",
-      "mobile": "0421524270",
+      "mobile": "0421 524 270",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -3394,6 +3610,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -3492,6 +3717,15 @@
       "mobile": "0434 580 355",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -3637,6 +3871,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "csbp-2026-05",
           "client": "CSBP",
           "site": "Kwinana",
@@ -3681,6 +3924,15 @@
       "mobile": "0469 591 660",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "csbp-2026-05",
           "client": "CSBP",
@@ -3952,6 +4204,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -4060,6 +4321,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1217",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -4111,6 +4381,15 @@
           "start": "2025-11-10",
           "end": "2025-11-14",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -4237,6 +4516,15 @@
           "start": "2026-05-18",
           "end": "2026-05-22",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-18",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -4375,6 +4663,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-12",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -4456,6 +4753,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -4480,6 +4786,15 @@
           "start": "2026-05-18",
           "end": "2026-05-22",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -4559,7 +4874,7 @@
     {
       "personnel_id": "B6857B26-E4E5-4246-8B5B-0449E8D2FCA1",
       "name": "Henri MARTINS",
-      "role": "Basic Rigger",
+      "role": "Trade Assistant",
       "mobile": "0439 185 083",
       "hire_company": "SRG - South West",
       "assignments": [
@@ -4569,6 +4884,15 @@
           "site": "Mt Holland",
           "start": "2026-04-21",
           "end": "2026-04-28",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -4632,9 +4956,18 @@
       "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
       "name": "Herbert MUKUNGA",
       "role": "Mechanical Fitter",
-      "mobile": "0459183602",
+      "mobile": "0459 183 602",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1217",
           "client": "CSBP",
@@ -4830,9 +5163,18 @@
       "personnel_id": "A1B6A934-A8AF-43C9-A705-F9EA5F22EFBE",
       "name": "Ian BACH",
       "role": "Mechanical Fitter",
-      "mobile": "0405606774",
+      "mobile": "0405 606 774",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1405",
           "client": "CSBP",
@@ -4933,12 +5275,30 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-16",
           "end": "2026-03-21",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -4992,6 +5352,15 @@
           "site": "Kwinana",
           "start": "2025-11-11",
           "end": "2025-11-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -5086,6 +5455,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -5166,6 +5544,15 @@
       "mobile": "0437 264 211",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -5356,6 +5743,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -5433,6 +5829,15 @@
           "site": "Mt Holland",
           "start": "2026-04-23",
           "end": "2026-05-01",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -5581,6 +5986,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -5686,6 +6100,15 @@
           "start": "2026-05-18",
           "end": "2026-05-22",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -5896,6 +6319,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-18",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -5995,11 +6427,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-16",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -6144,6 +6594,15 @@
           "site": "Kwinana",
           "start": "2026-05-18",
           "end": "2026-05-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-15",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -6328,6 +6787,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -6445,6 +6913,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -6490,11 +6967,29 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -6561,6 +7056,15 @@
       "mobile": "0414 579 891",
       "hire_company": "SRG - Active",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -6667,6 +7171,15 @@
           "start": "2026-04-21",
           "end": "2026-04-28",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-04",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -6832,6 +7345,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -6982,6 +7504,15 @@
           "start": "2026-05-18",
           "end": "2026-05-22",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-12",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -7215,6 +7746,15 @@
           "site": "Kwinana",
           "start": "2025-11-12",
           "end": "2025-11-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -7489,11 +8029,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-16",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -7657,6 +8215,15 @@
           "start": "2026-04-23",
           "end": "2026-04-28",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -7849,11 +8416,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-16",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -8007,6 +8592,15 @@
           "site": "Kwinana",
           "start": "2025-11-03",
           "end": "2025-11-15",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-04",
+          "end": "2026-03-22",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -8173,6 +8767,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -8316,6 +8919,15 @@
       "mobile": "0450 060 007",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -8556,6 +9168,15 @@
           "site": "Mt Holland",
           "start": "2026-04-20",
           "end": "2026-05-01",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -8821,6 +9442,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -8907,6 +9537,15 @@
           "site": "Mt Holland",
           "start": "2026-04-24",
           "end": "2026-05-01",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -9010,6 +9649,15 @@
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -9061,6 +9709,15 @@
           "start": "2026-04-21",
           "end": "2026-04-30",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -9775,12 +10432,30 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-21",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -10054,11 +10729,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-16",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -10153,6 +10846,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -10215,6 +10917,15 @@
       "mobile": "0404 284 744",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -10324,11 +11035,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -10504,6 +11233,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -10545,9 +11283,18 @@
       "personnel_id": "327192CA-BA5A-47BD-B72B-221E1743B3FE",
       "name": "Ominder SINGH",
       "role": "Mechanical Fitter",
-      "mobile": "0410804520",
+      "mobile": "0410 804 520",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -10626,6 +11373,15 @@
           "site": "Kwinana",
           "start": "2026-05-18",
           "end": "2026-05-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -10792,6 +11548,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-04",
+          "end": "2026-03-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -10860,6 +11625,15 @@
           "site": "Kwinana",
           "start": "2025-11-12",
           "end": "2025-11-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -11013,6 +11787,15 @@
           "site": "Kwinana",
           "start": "2026-05-18",
           "end": "2026-05-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -11179,6 +11962,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1336",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -11214,6 +12006,15 @@
       "mobile": "0434 916 762",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1405",
           "client": "CSBP",
@@ -11274,6 +12075,15 @@
           "site": "Mt Holland",
           "start": "2025-10-14",
           "end": "2025-10-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -11485,6 +12295,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "csbp-2026-05",
           "client": "CSBP",
           "site": "Kwinana",
@@ -11574,6 +12393,15 @@
       "mobile": "0431 228 251",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -11809,11 +12637,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-17",
+          "end": "2026-03-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-17",
           "end": "2026-03-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -12097,11 +12943,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -12259,6 +13123,15 @@
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -12285,6 +13158,15 @@
       "mobile": "0408 500 677",
       "hire_company": "SRG - Active",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -12474,6 +13356,15 @@
       "mobile": "0434 734 382",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -12700,6 +13591,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
@@ -12822,6 +13722,15 @@
           "site": "Kwinana",
           "start": "2026-05-18",
           "end": "2026-05-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -12952,12 +13861,30 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-21",
           "schedule_type": "Night",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
           "is_on_location": true
         },
         {
@@ -13083,6 +14010,15 @@
           "site": "Kwinana",
           "start": "2025-11-03",
           "end": "2025-11-14",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -13258,6 +14194,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1196",
           "client": "ALCOA",
           "site": "Kwinana",
@@ -13294,11 +14239,29 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-18",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-16",
           "end": "2026-03-18",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -13428,6 +14391,15 @@
       "mobile": "0447 711 925",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -14059,11 +15031,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -14133,30 +15123,30 @@
       ]
     },
     {
-      "personnel_id": "13FED3A1-88D9-46DA-AA88-AD95ABD95D07",
-      "name": "Wahib NADI",
-      "role": "Scaffolder",
-      "mobile": "0421 543 441",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "02235BE1-6B7C-4600-87AA-7B494815CE94",
       "name": "Wahib NADI",
       "role": "Scaffolder - Advanced",
       "mobile": "0421 543 441",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -14196,6 +15186,24 @@
       ]
     },
     {
+      "personnel_id": "13FED3A1-88D9-46DA-AA88-AD95ABD95D07",
+      "name": "Wahib NADI",
+      "role": "Scaffolder",
+      "mobile": "0421 543 441",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "kleenheat-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "F99E2489-F591-4F37-8E99-A97D912CFBF9",
       "name": "Walid BOULAHDID",
       "role": "Mechanical Fitter",
@@ -14212,11 +15220,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-19",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-19",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -14266,6 +15292,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -14292,6 +15327,15 @@
       "mobile": "0414 774 682",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-10",
+          "end": "2026-03-21",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
@@ -14334,6 +15378,15 @@
           "site": "Kwinana",
           "start": "2026-05-18",
           "end": "2026-05-22",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -14397,9 +15450,18 @@
       "personnel_id": "5CFCA82A-85AA-4AEB-B6BA-C5F127F87775",
       "name": "Wilfredo MAPANAO",
       "role": "Mechanical Fitter",
-      "mobile": "0476603852",
+      "mobile": "0476 603 852",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -14455,11 +15517,29 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",
           "site": "Kwinana",
           "start": "2026-03-15",
           "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -14595,6 +15675,15 @@
           "site": "Kwinana",
           "start": "2025-11-12",
           "end": "2025-11-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-15",
+          "end": "2026-03-20",
           "schedule_type": "Day",
           "is_on_location": true
         },
@@ -14743,6 +15832,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "csbp-2026-05-1405",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
+        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -14787,6 +15885,15 @@
       "mobile": "0499 756 868",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "csbp-2026-03",
+          "client": "CSBP",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day",
+          "is_on_location": true
+        },
         {
           "job_no": "kleenheat-2026-03",
           "client": "CSBP",

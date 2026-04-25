@@ -1069,8 +1069,8 @@ async function renderOpsRoster() {
     return a.name.localeCompare(b.name);
   });
 
-  // -- 3. Time axis (Monday-aligned, matches Gantt) --
-  const MIN_WEEK_PX  = 44;
+  // -- 3. Time axis (day-level, Monday-aligned span) --
+  const MIN_DAY_PX   = 14;   // minimum px per day; keeps short spans scrollable
   const LANE_LABEL_W = 320;   // room for name + role + hire company
   const mondayOf = (d) => {
     const nd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
@@ -1084,14 +1084,14 @@ async function renderOpsRoster() {
   const spanStart = mondayOf(new Date(minStart + "T00:00:00Z"));
   const spanEnd   = mondayOf(new Date(maxEnd   + "T00:00:00Z"));
   spanEnd.setUTCDate(spanEnd.getUTCDate() + 7);
-  const totalMs    = spanEnd - spanStart;
-  const totalWeeks = Math.round(totalMs / (7 * 86400 * 1000));
+  const totalMs   = spanEnd - spanStart;
+  const totalDays = Math.round(totalMs / (86400 * 1000));
   const containerW = host.clientWidth
                   || host.parentElement?.clientWidth
                   || 1200;
-  const fitWeekPx  = (containerW - LANE_LABEL_W) / totalWeeks;
-  const WEEK_PX    = Math.max(MIN_WEEK_PX, fitWeekPx);
-  const innerW     = Math.round(totalWeeks * WEEK_PX);
+  const fitDayPx  = (containerW - LANE_LABEL_W) / totalDays;
+  const DAY_PX    = Math.max(MIN_DAY_PX, fitDayPx);
+  const innerW    = Math.round(totalDays * DAY_PX);
   const px = (d) => ((d - spanStart) / totalMs) * innerW;
 
   // -- 4. Header summary: #workers + #on site today --
@@ -1112,7 +1112,7 @@ async function renderOpsRoster() {
   inner.style.width = (LANE_LABEL_W + innerW) + "px";
   inner.style.setProperty("--lane-label-w", LANE_LABEL_W + "px");
 
-  // -- 6. Axis (month + week tiers) --
+  // -- 6. Axis (month tier + day tier) --
   const axis = document.createElement("div");
   axis.className = "ops-roster-axis";
 
@@ -1138,28 +1138,32 @@ async function renderOpsRoster() {
   }
   axis.appendChild(months);
 
-  const weeks = document.createElement("div");
-  weeks.className = "ops-roster-weeks";
-  const wCursor = new Date(spanStart);
-  while (wCursor < spanEnd) {
+  // Day-level tick tier: one tick per day, label shown on Mondays and 1st of month.
+  const daysTier = document.createElement("div");
+  daysTier.className = "ops-roster-days";
+  const dCursor = new Date(spanStart);
+  while (dCursor < spanEnd) {
+    const isMonday     = dCursor.getUTCDay() === 1;
+    const isMonthStart = dCursor.getUTCDate() === 1;
     const tick = document.createElement("div");
-    tick.className = "ops-roster-week-tick";
-    tick.style.left  = px(wCursor) + "px";
-    tick.style.width = WEEK_PX + "px";
-    const monthLetter = wCursor.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" });
-    const dom = wCursor.getUTCDate();
-    tick.innerHTML = `<span class="dom">${dom}</span><span class="mo">${monthLetter}</span>`;
-    weeks.appendChild(tick);
-    wCursor.setUTCDate(wCursor.getUTCDate() + 7);
+    tick.className = "ops-roster-day-tick" + (isMonday ? " week-start" : "");
+    tick.style.left  = px(dCursor) + "px";
+    tick.style.width = DAY_PX + "px";
+    if (isMonday || isMonthStart) {
+      const dom = dCursor.getUTCDate();
+      tick.innerHTML = `<span class="dom">${dom}</span>`;
+    }
+    daysTier.appendChild(tick);
+    dCursor.setUTCDate(dCursor.getUTCDate() + 1);
   }
-  axis.appendChild(weeks);
+  axis.appendChild(daysTier);
   inner.appendChild(axis);
 
   // -- 7. Body: one row per worker, grouped by primary company --
   const body = document.createElement("div");
   body.className = "ops-roster-body";
 
-  // Weekly gridlines + today marker (shared across all rows).
+  // Weekly (Monday) gridlines + today marker shared across all rows.
   const grid = document.createElement("div");
   grid.className = "ops-roster-grid";
   const g = new Date(spanStart);

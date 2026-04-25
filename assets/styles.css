@@ -754,31 +754,28 @@ td.num, th.num {
   border-left: 1px solid var(--srg-border);
 }
 .ops-roster-month-tick:first-child { border-left: none; }
-.ops-roster-weeks {
+.ops-roster-days {
   position: relative;
-  height: 26px;
+  height: 22px;
 }
-.ops-roster-week-tick {
+.ops-roster-day-tick {
   position: absolute;
   top: 0; bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding-left: 4px;
-  font-size: 10px;
-  color: var(--srg-grey);
-  border-left: 1px dashed var(--srg-border);
-  line-height: 1.1;
+  border-left: 1px solid var(--srg-border);
+  opacity: 0.45;
 }
-.ops-roster-week-tick .dom {
+.ops-roster-day-tick.week-start {
+  border-left-color: var(--srg-grey);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+}
+.ops-roster-day-tick .dom {
+  font-size: 10px;
   font-weight: 700;
   color: var(--srg-dark);
-}
-.ops-roster-week-tick .mo {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
 .ops-roster-body { position: relative; }

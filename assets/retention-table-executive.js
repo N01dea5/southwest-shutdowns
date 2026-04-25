@@ -81,11 +81,14 @@
           const key = normalise(name);
           const roster = Array.isArray(shutdown.roster) ? shutdown.roster : [];
           const labourHire = roster.reduce((count, worker) => count + (isLabourHire(worker) ? 1 : 0), 0);
+          // filled_by_role total aligns with the Shutdown Detail table (JobPlanningView).
+          // Prefer this over roster.length which includes macro-appended workers.
+          const filledTotal = Object.values(shutdown.filled_by_role || {}).reduce((s, v) => s + v, 0);
           index.set(key, {
             name,
             company: payload.company || shutdown.company || '',
             start_date: shutdown.start_date || '',
-            roster: roster.length,
+            roster: filledTotal || roster.length,
             labourHire
           });
         }
@@ -110,17 +113,16 @@
       const indexed = shutdownIndex.get(normalise(shutdown)) || {};
       const company = cells[1] || indexed.company || '';
       const start = cells[2] || indexed.start_date || '';
+      // cells[5] is crossRet (all SRG returning, including same-client workers).
+      // Pure cross-company carry-over = crossRet minus same-client.
       const same = parseCount(cells[4]);
-      // cells[5] is crossRet (all SRG returning, including same-client).
-      // Pure "from another SRG client" = crossRet minus same-client workers.
       const crossRetRaw = parseCount(cells[5]);
       const srgCarry = Math.max(0, crossRetRaw - same);
-      const fresh = parseCount(cells[6]);
-      // Use rosterSize rendered by app.js (cells[3]) as the authoritative total.
-      // The filledRoster sum is a fallback only — same+srgCarry+fresh now sums to rosterSize.
-      const filledRoster = same + srgCarry + fresh;
-      const fallbackRoster = indexed.roster || filledRoster;
-      const roster = parseCount(cells[3]) || fallbackRoster;
+      // Roster from indexed uses filled_by_role total (aligns with detail table).
+      const roster = indexed.roster || parseCount(cells[3]) || 0;
+      // "New" = positions not filled by any returning SRG worker. Derived from
+      // the filled total so same + srgCarry + fresh always sums to roster.
+      const fresh = Math.max(0, roster - same - srgCarry);
       const labourHireRaw = indexed.labourHire || 0;
       const labourHire = Math.min(labourHireRaw, roster || labourHireRaw);
       const srgPct = pct(srgCarry, roster);

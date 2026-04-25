@@ -106,6 +106,23 @@ def _date(value: Any) -> str:
     return ""
 
 
+def _contiguous_ranges(sorted_dates: list[str]) -> list[tuple[str, str]]:
+    """Split a sorted list of ISO dates into (start, end) contiguous segments."""
+    if not sorted_dates:
+        return []
+    ranges: list[tuple[str, str]] = []
+    seg_start = sorted_dates[0]
+    prev = dt.date.fromisoformat(sorted_dates[0])
+    for d_str in sorted_dates[1:]:
+        d = dt.date.fromisoformat(d_str)
+        if (d - prev).days > 1:
+            ranges.append((seg_start, prev.isoformat()))
+            seg_start = d_str
+        prev = d
+    ranges.append((seg_start, prev.isoformat()))
+    return ranges
+
+
 def _parse_bool(value: Any) -> bool:
     if isinstance(value, bool):
         return value
@@ -290,20 +307,21 @@ def _load_kwinana_from_roster_view(
             if g["sched_types"] else "Day Shift"
         )
         p = personnel.get(g["pid"], {})
-        assignments.append({
-            "pid":            g["pid"],
-            "name":           p.get("name", ""),
-            "role":           p.get("role", ""),
-            "mobile":         p.get("mobile", ""),
-            "hire_company":   p.get("hire_company", ""),
-            "job_no":         g["job"],
-            "client":         g["client"],
-            "site":           g["site"],
-            "start":          sorted_dates[0],
-            "end":            sorted_dates[-1],
-            "schedule_type":  sched,
-            "is_on_location": g["on_location_count"] > 0,
-        })
+        for seg_start, seg_end in _contiguous_ranges(sorted_dates):
+            assignments.append({
+                "pid":            g["pid"],
+                "name":           p.get("name", ""),
+                "role":           p.get("role", ""),
+                "mobile":         p.get("mobile", ""),
+                "hire_company":   p.get("hire_company", ""),
+                "job_no":         g["job"],
+                "client":         g["client"],
+                "site":           g["site"],
+                "start":          seg_start,
+                "end":            seg_end,
+                "schedule_type":  sched,
+                "is_on_location": g["on_location_count"] > 0,
+            })
     return assignments
 
 

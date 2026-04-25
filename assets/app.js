@@ -1468,6 +1468,9 @@ function renderWorkerMatrix(_viewShutdowns) {
     </tr>`;
   }).join("");
   tbody.innerHTML = html;
+  // Tell overlay scripts (matrix-availability.js) the table was rebuilt so they
+  // can re-apply marks — the setInterval only runs once at page load.
+  document.dispatchEvent(new CustomEvent('matrixrendered'));
 
   // Schedule DOM-based passes for "✗ only" (absent) and "· blank" columns.
   // The availability overlay (matrix-availability.js) adds .availability-conflict

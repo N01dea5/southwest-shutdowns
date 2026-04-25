@@ -14,8 +14,6 @@
   let shutdownsByLabel = new Map();
   let shutdownsById = new Map();
   let eventsByName = new Map();
-  let attempts = 0;
-  let timer = null;
 
   function normText(value) {
     return String(value || '')
@@ -180,13 +178,18 @@
     return true;
   }
 
+  function scheduleApply() {
+    // Stagger a few passes to give the DOM time to settle after a render.
+    [0, 250, 600, 1400].forEach(ms => setTimeout(applyAvailability, ms));
+  }
+
   async function start() {
     await Promise.all([loadShutdowns(), loadCalendar()]);
-    timer = window.setInterval(() => {
-      attempts += 1;
-      applyAvailability();
-      if (attempts >= 40) window.clearInterval(timer);
-    }, 500);
+    // Apply to whatever is in the table right now (first render may have
+    // already completed while data was loading).
+    scheduleApply();
+    // Re-apply every time app.js rebuilds the tbody (filter clicks, etc.).
+    document.addEventListener('matrixrendered', scheduleApply);
   }
 
   if (document.readyState === 'loading') {

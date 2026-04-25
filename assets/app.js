@@ -1459,7 +1459,7 @@ function renderWorkerMatrix(_viewShutdowns) {
         const r = w.rolesByShutdown[s.id];
         return `<td class="num">${r
           ? `<span class="tick" title="${r}" aria-label="${r}">&#10003;</span>`
-          : '<span class="tick-empty" aria-label="Not rostered">&middot;</span>'}</td>`;
+          : '<span class="tick-empty" aria-label="Not rostered"></span>'}</td>`;
       }).join("")}
       <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
     </tr>`;

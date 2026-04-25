@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-24T13:58:41Z",
+  "archived_at": "2026-04-25T00:57:32Z",
   "shutdown": {
     "id": "kleenheat-2026-03",
     "name": "KPF LNG Major Shutdown March 2026 (Kleenheat)",
@@ -12,12 +12,12 @@
     "required_by_role": {
       "Trade Assistant": 18,
       "Painter & Blaster": 2,
-      "Supervisor - Mechanical": 4,
-      "Advanced Rigger": 2,
       "Intermediate Rigger": 3,
       "Mechanical Fitter": 23,
+      "Sheet Metal Worker": 3,
+      "Advanced Rigger": 2,
       "Scaffolder": 6,
-      "Sheet Metal Worker": 3
+      "Supervisor - Mechanical": 4
     },
     "filled_by_role": {
       "Supervisor - Mechanical": 4,

@@ -28,7 +28,7 @@ const state = {
   filter: "all",           // "all" | company display name
   statusFilter: "all",     // "all" | "booked" | "in_progress" | "completed"
   charts: {},              // Chart.js handles, so we can destroy() on re-render
-  matrixFilters: {},       // shutdownId -> "present" | "absent" (absent = blank)
+  matrixFilters: {},       // shutdownId -> "present" | "absent" (✗, finalized) | "blank" (·, booked)
   matrixSearch: "",        // live text filter for the matrix
   opsSearch: "",           // live text filter for the ops-roster tab
   opsOnsiteTodayOnly: false, // "on site today" checkbox state
@@ -1291,6 +1291,7 @@ function renderWorkerMatrix(viewShutdowns) {
       const fstate = state.matrixFilters[s.id] || "any";
       const flabel = fstate === "present" ? "✓ only"
                    : fstate === "absent"  ? "✗ only"
+                   : fstate === "blank"   ? "· only"
                    : "any";
       const projectLine = companyCounts[s.company] > 1
         ? `<span class="matrix-col-sub">${shortProject(s.name)}</span>`
@@ -1304,7 +1305,7 @@ function renderWorkerMatrix(viewShutdowns) {
                 class="matrix-col-filter"
                 data-shutdown-id="${s.id}"
                 data-state="${fstate}"
-                title="Click to cycle: any → ✓ present only → ✗ absent only">${flabel}</button>
+                title="Click to cycle: any → ✓ present only → ✗ absent only → · unassigned only">${flabel}</button>
       </th>`;
     }).join("")}
     <th class="num">Shutdowns</th>
@@ -1314,8 +1315,11 @@ function renderWorkerMatrix(viewShutdowns) {
   const filteredRows = rows.filter(w => {
     for (const [sid, st] of Object.entries(state.matrixFilters)) {
       const present = w.appearances.has(sid);
-      if (st === "present" && !present) return false;
-      if (st === "absent"  &&  present) return false;
+      const sd = shutdowns.find(s => s.id === sid);
+      const finalized = sd && (sd.status === "completed" || sd.status === "in_progress");
+      if (st === "present" && !present)               return false;
+      if (st === "absent"  && (present || !finalized)) return false;  // ✗: not present + finalized
+      if (st === "blank"   && (present || finalized))  return false;  // ·: not present + booked
     }
     return true;
   });
@@ -1335,9 +1339,12 @@ function renderWorkerMatrix(viewShutdowns) {
       ${mobileCell}
       ${shutdowns.map(s => {
         const r = w.rolesByShutdown[s.id];
+        const finalized = s.status === "completed" || s.status === "in_progress";
         return `<td class="num">${r
           ? `<span class="tick" title="${r}" aria-label="${r}">&#10003;</span>`
-          : '<span class="tick-absent" aria-label="Absent">&#10007;</span>'}</td>`;
+          : finalized
+            ? '<span class="tick-absent" aria-label="Absent">&#10007;</span>'
+            : '<span class="tick-empty" aria-label="Not assigned">&middot;</span>'}</td>`;
       }).join("")}
       <td class="num ${w.total > 1 ? "returner-count" : ""}">${w.total}</td>
     </tr>`;
@@ -1418,6 +1425,7 @@ function onMatrixHeaderClick(e) {
   const cur = state.matrixFilters[sid] || "any";
   const next = cur === "any"     ? "present"
              : cur === "present" ? "absent"
+             : cur === "absent"  ? "blank"
                                  : "any";
   if (next === "any") delete state.matrixFilters[sid];
   else state.matrixFilters[sid] = next;

@@ -224,18 +224,6 @@ function setupTabs() {
       p.hidden = !active;
     });
     if (statusGroup) statusGroup.hidden = (tab === "roster");
-    // Tianqi / Kleenheat chips only make sense on the ops roster tab where
-    // assignments are site-filtered.  Show them on roster, hide on dashboard.
-    document.querySelectorAll(".chip-ops-only").forEach(c => {
-      c.hidden = (tab !== "roster");
-    });
-    // If an ops-only filter is active, reset to "all" when leaving the roster.
-    if (tab !== "roster" && !["all", "Covalent", "Tronox", "CSBP"].includes(state.filter)) {
-      state.filter = "all";
-      document.querySelectorAll("#filterbar .chip[data-co]").forEach(c => {
-        c.classList.toggle("active", c.dataset.co === "all");
-      });
-    }
     // Gantt and ops roster both measure clientWidth on render — re-render
     // when the tab becomes visible so widths are correct.
     render();
@@ -1003,15 +991,12 @@ async function renderOpsRoster() {
     return "booked";
   };
 
-  // Map site/client name to a company colour consistent with the Gantt palette.
-  const siteColor = (site, client) => {
-    const s = (site   || "").toLowerCase();
-    const c = (client || "").toLowerCase();
-    if (s.includes("tronox")   || c.includes("tronox"))              return companyColor("tronox");
-    if (s.includes("covalent") || s.includes("mt holland") ||
-        c.includes("covalent") || c.includes("tianqi"))              return companyColor("covalent");
-    if (s.includes("csbp")     || s.includes("kwinana") || s.includes("kleenheat") ||
-        c.includes("csbp")     || c.includes("kleenheat"))           return companyColor("csbp");
+  // Map site name to a company colour consistent with the Gantt palette.
+  const siteColor = (site) => {
+    const s = (site || "").toLowerCase();
+    if (s.includes("tronox"))                            return companyColor("tronox");
+    if (s.includes("covalent") || s.includes("tianqi")) return companyColor("covalent");
+    if (s.includes("csbp") || s.includes("kwinana"))    return companyColor("csbp");
     return "#888";
   };
 
@@ -1037,6 +1022,7 @@ async function renderOpsRoster() {
         site: a.site || "", client: a.client || "",
         jobNo: a.job_no || "",
         scheduleType: a.schedule_type || "",
+        isOnLocation: a.is_on_location !== false,
         status: deriveStatus(a.start, a.end),
         hireCompany: w.hire_company || "",
       });
@@ -1052,28 +1038,18 @@ async function renderOpsRoster() {
     return;
   }
 
-  // -- 2. Filter: site (company chip), search, "on site today only" --
-  // Map the company chip value to a site-match predicate.
-  const siteMatch = (() => {
-    const f = state.filter;
-    if (f === "all")       return () => true;
-    if (f === "Covalent")  return s => /covalent|mt.?holland/i.test(s);
-    if (f === "Tronox")    return s => /tronox/i.test(s);
-    if (f === "CSBP")      return s => /csbp/i.test(s);
-    if (f === "Tianqi")    return s => /tianqi/i.test(s);
-    if (f === "Kleenheat") return s => /kleenheat/i.test(s);
-    return () => true;
-  })();
+  // -- 2. Filter: search (name/role/mobile/hire company) + "on site today only" --
   const search     = state.opsSearch.trim().toLowerCase();
   const onsiteOnly = state.opsOnsiteTodayOnly;
   const rows = [...workers.values()].filter(rec => {
-    if (!rec.assignments.some(a => siteMatch(a.site))) return false;
     if (search) {
       const hay = `${rec.name} ${rec.role} ${rec.mobile} ${rec.hireCompany}`.toLowerCase();
       if (!hay.includes(search)) return false;
     }
     if (onsiteOnly) {
-      const onsite = rec.assignments.some(a => a.start <= todayIso && todayIso <= a.end && siteMatch(a.site));
+      const onsite = rec.assignments.some(a =>
+        a.start <= todayIso && todayIso <= a.end && a.isOnLocation
+      );
       if (!onsite) return false;
     }
     return true;
@@ -1120,7 +1096,9 @@ async function renderOpsRoster() {
 
   // -- 4. Header summary: #workers + #on site today --
   const onsiteNow = rows.filter(rec =>
-    rec.assignments.some(a => a.start <= todayIso && todayIso <= a.end)).length;
+    rec.assignments.some(a =>
+      a.start <= todayIso && todayIso <= a.end && a.isOnLocation
+    )).length;
   const countEl = document.getElementById("roster-count");
   if (countEl) {
     countEl.textContent = onsiteOnly
@@ -1243,7 +1221,7 @@ async function renderOpsRoster() {
       bar.className = "ops-roster-bar status-" + a.status + (a.status === "booked" ? " booked" : "");
       bar.style.left  = px(sd) + "px";
       bar.style.width = Math.max(6, px(ed) - px(sd)) + "px";
-      bar.style.setProperty("--co", siteColor(a.site, a.client));
+      bar.style.setProperty("--co", siteColor(a.site));
       bar.title = [
         `${rec.name} — ${rec.role}${a.scheduleType ? " (" + a.scheduleType + ")" : ""}`,
         `${a.site}${a.jobNo ? " · Job " + a.jobNo : ""}`,

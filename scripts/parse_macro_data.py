@@ -110,14 +110,17 @@ _CACHE: dict | None = None
 # gets rendered on the tiles — it deliberately differs from the source Site
 # so "Covalent Lithium" reads as "Mt Holland" (the plant's location) to
 # match the existing dashboard copy.
-CLIENT_SITE_MAP: dict[tuple[str, str], tuple[str, str, str, str]] = {
-    ("SOUTH WEST", "Covalent Lithium"): ("covalent", "Covalent", "Mt Holland", "Mt Holland"),
-    ("SOUTH WEST", "Tronox"):            ("tronox",   "Tronox",   "Kwinana",    "Major Shutdown"),
-    ("CSBP",       "CSBP Kwinana"):      ("csbp",     "CSBP",     "Kwinana",    "CSBP Kwinana"),
-    # Kleenheat rolls up under CSBP (WesCEF umbrella — see ROSTER_MAP note
-    # in parse_rapidcrews.py). Dashboard_site stays "Kwinana" so the tile
-    # lines up with the historical KPF LNG March 2026 entry.
-    ("SOUTH WEST", "Kleenheat"):         ("csbp",     "CSBP",     "Kwinana",    "KPF LNG Kleenheat"),
+# Tuple: (company_key, client_display, dashboard_site, label_base, id_prefix)
+# id_prefix overrides company_key when generating the shutdown id (company_key-YYYY-MM).
+# Use it when a RosterCut-derived id uses a different prefix than company_key so
+# the macro-only dedup in parse_rapidcrews.py correctly detects the collision.
+CLIENT_SITE_MAP: dict[tuple[str, str], tuple[str, str, str, str, str]] = {
+    ("SOUTH WEST", "Covalent Lithium"): ("covalent", "Covalent", "Mt Holland", "Mt Holland",      "covalent"),
+    ("SOUTH WEST", "Tronox"):            ("tronox",   "Tronox",   "Kwinana",    "Major Shutdown",  "tronox"),
+    ("CSBP",       "CSBP Kwinana"):      ("csbp",     "CSBP",     "Kwinana",    "CSBP Kwinana",    "csbp"),
+    # Kleenheat rolls up under CSBP (WesCEF umbrella) but the RosterCut file
+    # uses id prefix "kleenheat-", so we must match that to get correct dedup.
+    ("SOUTH WEST", "Kleenheat"):         ("csbp",     "CSBP",     "Kwinana",    "KPF LNG Kleenheat", "kleenheat"),
 }
 
 # Schedule Types that count as "on the job" for start/end + crew_split
@@ -585,7 +588,7 @@ def _build_one(job_no: int,
         print(f"  warn: JobNo {job_no} has unmapped client/site "
               f"({client!r}, {site!r}) — skipping. Add to CLIENT_SITE_MAP.")
         return None
-    company_key, client_name, dashboard_site, label_base = CLIENT_SITE_MAP[(client, site)]
+    company_key, client_name, dashboard_site, label_base, id_prefix = CLIENT_SITE_MAP[(client, site)]
 
     workers = roster_raw["workers"]
     # Build one roster row per unique Personnel Id, using only on-site
@@ -645,7 +648,7 @@ def _build_one(job_no: int,
     all_starts = [dt.date.fromisoformat(e["start"]) for e in roster_entries]
     all_ends   = [dt.date.fromisoformat(e["end"])   for e in roster_entries]
     sd, ed = min(all_starts), max(all_ends)
-    shutdown_id = f"{company_key}-{sd.isoformat()[:7]}"
+    shutdown_id = f"{id_prefix}-{sd.isoformat()[:7]}"
 
     # JobPlanningView drives BOTH Required and Filled — those are the
     # figures the Rapid Crews website shows. PersonnelRosterView's unique

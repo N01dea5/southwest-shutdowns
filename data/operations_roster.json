@@ -1,25 +1,7 @@
 {
-  "generated_at": "2026-04-25T02:09:01Z",
-  "worker_count": 423,
+  "generated_at": "2026-04-25T02:40:20Z",
+  "worker_count": 382,
   "workers": [
-    {
-      "personnel_id": "",
-      "name": "Aaron NAIRN",
-      "role": "Boilermaker",
-      "mobile": "0415 575 297",
-      "hire_company": "",
-      "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
     {
       "personnel_id": "F8CD2F42-6730-457A-BA9B-8241A8650DF8",
       "name": "Aaron SYKES",
@@ -190,42 +172,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -271,15 +217,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -303,45 +240,9 @@
       "personnel_id": "A7561DA7-F34F-44CA-A079-76AA961055BE",
       "name": "Abhinav ABHINAV",
       "role": "Mechanical Fitter",
-      "mobile": "0424 848 290",
+      "mobile": "0424848290",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -385,7 +286,7 @@
           "start": "2026-04-29",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1405",
@@ -406,15 +307,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -431,33 +323,6 @@
           "end": "2026-06-18",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "BFD0643A-374F-41DC-B48B-AD03393D9B53",
-      "name": "Adam RILEY",
-      "role": "Superintendent",
-      "mobile": "0457 162 100",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-09",
-          "end": "2026-04-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
         }
       ]
     },
@@ -678,57 +543,12 @@
       ]
     },
     {
-      "personnel_id": "7768382C-FCCC-4522-8E5F-3E62B61B0D08",
-      "name": "Aden Pakau",
-      "role": "Painter & Blaster",
-      "mobile": "0408 757 774",
-      "hire_company": "SRG - Alcoa",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-13",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "E1DC6CFF-1BBA-4669-BC1A-E5FDA3F2CA7F",
       "name": "Adrian WILLIAMS",
       "role": "Trade Assistant",
       "mobile": "0428 421 338",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -752,19 +572,10 @@
     {
       "personnel_id": "675FB686-A0BA-4CFA-A823-0155ECEF4879",
       "name": "Adrien PLUNIAN",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Intermediate",
       "mobile": "0404 655 007",
       "hire_company": "SRG - Southwest Tianqi",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1275",
           "client": "SOUTH WEST",
@@ -779,19 +590,10 @@
     {
       "personnel_id": "7BDC1767-96E2-4C7B-9EF6-F626850E6A9B",
       "name": "Agnes KONOKONO",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Basic",
       "mobile": "0420 496 157",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1411",
           "client": "SOUTH WEST",
@@ -810,24 +612,6 @@
       "mobile": "0421 998 847",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-13",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -999,15 +783,6 @@
       "mobile": "0404 864 325",
       "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -2133,15 +1908,6 @@
       "mobile": "0450 968 872",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -5176,33 +4942,6 @@
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-22",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -5218,24 +4957,6 @@
           "start": "2026-04-22",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "3E6B034F-EAF2-4262-A143-6C4A24FEE296",
-      "name": "Andre VAN DER MERWE",
-      "role": "Supervisor - Mechanical",
-      "mobile": "0448 014 946",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
           "is_on_location": true
         }
       ]
@@ -5409,15 +5130,6 @@
       "mobile": "0404 303 368",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -6888,57 +6600,12 @@
       ]
     },
     {
-      "personnel_id": "C9563491-1319-4A40-9117-4750F6512856",
-      "name": "Aurele HUGUET",
-      "role": "Rope Access - Trade Assistant",
-      "mobile": "0429 626 492",
-      "hire_company": "SRG - Active",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-07",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "90F67A88-5C4B-4ADF-828A-C0423894CD99",
       "name": "Barry LYON",
       "role": "Trade Assistant",
       "mobile": "0438 555 069",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -6967,15 +6634,6 @@
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1356",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -6991,7 +6649,7 @@
           "start": "2026-04-29",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         }
       ]
     },
@@ -7002,60 +6660,6 @@
       "mobile": "0435 441 418",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-16",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -7126,7 +6730,7 @@
           "start": "2026-04-29",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1374",
@@ -7426,15 +7030,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -7461,15 +7056,6 @@
       "mobile": "0424 977 431",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -7673,19 +7259,10 @@
     {
       "personnel_id": "4B2C5DDE-0531-409A-BF82-6D39378561E1",
       "name": "Benjamin \ud83d\udd37 CHOPPING",
-      "role": "Electrician",
-      "mobile": "0422 011 648",
+      "role": "Boilermaker",
+      "mobile": "0422011648",
       "hire_company": "2XM - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-29",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -8992,15 +8569,6 @@
       "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -9012,39 +8580,12 @@
       ]
     },
     {
-      "personnel_id": "FD2DD0AA-A479-4855-AFEB-DAE8F7FF6541",
-      "name": "Brendon WYATT",
-      "role": "Rope Access - Superintendent",
-      "mobile": "0451 773 731",
-      "hire_company": "SRG - Active",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-13",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "8852421D-459C-46ED-A8B0-E96FC8635BDB",
       "name": "Brett STONE \ud83d\udd37",
       "role": "Mechanical Fitter",
       "mobile": "0410 436 761",
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-13",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1288",
           "client": "SOUTH WEST",
@@ -9061,24 +8602,6 @@
           "start": "2026-04-21",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "0A15D5E4-AD1A-42EA-8C74-0A22E6EF8126",
-      "name": "Brodie ANDERSON",
-      "role": "Mechanical Fitter",
-      "mobile": "0427 833 385",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
           "is_on_location": true
         }
       ]
@@ -9311,28 +8834,10 @@
     {
       "personnel_id": "2BAC97C9-76ED-42B8-BFC4-B6E966EA223C",
       "name": "Cameron DUNN",
-      "role": "Coded Welder",
+      "role": "Boilermaker",
       "mobile": "0499 485 946",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-06",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -10643,55 +10148,10 @@
     {
       "personnel_id": "F6DFD541-679E-481C-AFE0-57C72A575335",
       "name": "Chaeyoon KIM",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0419 549 708",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -10754,24 +10214,6 @@
           "end": "2026-05-22",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "DC03DB95-63F7-462E-8246-99EB7A0157CF",
-      "name": "Charlie FLUX \ud83d\udd37",
-      "role": "Intermediate Rigger",
-      "mobile": "0422 238 900",
-      "hire_company": "Torque - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
         }
       ]
     },
@@ -11386,42 +10828,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-13",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-04",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -11467,24 +10873,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -11525,28 +10913,10 @@
     {
       "personnel_id": "092D727D-F0EE-42DC-8AEF-BE06531EAAE5",
       "name": "Clifford LEMON",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0438 800 692",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1375",
           "client": "CSBP",
@@ -11555,24 +10925,6 @@
           "end": "2026-06-21",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "D6FC1755-F529-43DB-8292-D549E0B62116",
-      "name": "Colin FORD \ud83d\udd37",
-      "role": "Mechanical Fitter",
-      "mobile": "0413 371 184",
-      "hire_company": "Hyrd - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
         }
       ]
     },
@@ -11737,15 +11089,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -11781,24 +11124,6 @@
       "mobile": "0420 513 425",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-11",
-          "end": "2025-11-11",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-17",
-          "end": "2025-11-17",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1201",
           "client": "SOUTH WEST",
@@ -12105,15 +11430,6 @@
       "mobile": "0410 477 394",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-04",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1391",
           "client": "SOUTH WEST",
@@ -12585,24 +11901,6 @@
       ]
     },
     {
-      "personnel_id": "6A503A05-FE64-4C7E-887D-5F4703705938",
-      "name": "Dale ROBERTS",
-      "role": "Supervisor - Mechanical",
-      "mobile": "0430 911 958",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "2FCB0EC8-204D-438D-B3A5-04141FAE1043",
       "name": "Dallas TAPARA-ORMSBY",
       "role": "Scaffolder - Advanced",
@@ -12621,48 +11919,12 @@
       ]
     },
     {
-      "personnel_id": "E2EF397A-906A-4E57-AC2D-B8070A878C98",
-      "name": "Damien CAILLEUX",
-      "role": "Intermediate Rigger",
-      "mobile": "0488 182 943",
-      "hire_company": "SRG - Active",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "77B64F28-655E-4252-B58E-A4B3E2641582",
       "name": "Daniel GOVHONGO",
       "role": "Mechanical Fitter",
       "mobile": "0484 563 607",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -12699,24 +11961,6 @@
       "mobile": "0457 632 156",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1201",
           "client": "SOUTH WEST",
@@ -13550,19 +12794,10 @@
     {
       "personnel_id": "CE54D0D2-2563-44FC-B1C0-8F70F29836B9",
       "name": "Daniel PRICE",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Advanced",
       "mobile": "0417 919 978",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -14936,46 +14171,10 @@
     {
       "personnel_id": "86417FEA-2E4E-4CF9-B000-1513F23D2A03",
       "name": "Daniel SILLIS",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0449 125 720",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -15010,7 +14209,7 @@
           "start": "2026-04-29",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1375",
@@ -15183,51 +14382,6 @@
       "mobile": "0432 522 247",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -16673,19 +15827,10 @@
     {
       "personnel_id": "230AE1F2-8169-489D-9946-4EBA894AF04E",
       "name": "Darren TAYLOR",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0430 499 997",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -19810,33 +18955,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-04",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1201",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -20674,15 +19792,6 @@
       "hire_company": "",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-04-30",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -20865,24 +19974,6 @@
       ]
     },
     {
-      "personnel_id": "140039F4-8B6B-46A3-B19B-96AFE40AA441",
-      "name": "Dian PRATAMA",
-      "role": "Rope Access - Trade Assistant",
-      "mobile": "0404 495 276",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "6BCFECF6-37A6-45CC-9722-0748145C4996",
       "name": "Donggyu \ud83d\udd37 KIM",
       "role": "Mechanical Fitter",
@@ -20935,24 +20026,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -20998,15 +20071,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-29",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -21020,28 +20084,10 @@
     {
       "personnel_id": "8A345F96-F68B-4A8A-8381-628241C13B86",
       "name": "Dylan DIXON",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Advanced",
       "mobile": "0481 845 862",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -22573,60 +21619,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -22676,37 +21668,10 @@
     {
       "personnel_id": "F9AA9686-B5A3-4943-AD92-6CB513DE64B4",
       "name": "Eileen HIELSCHER",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0448 678 573",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-04",
-          "end": "2026-06-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -22740,18 +21705,9 @@
       "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
       "name": "Eleonora TRAORE",
       "role": "Trade Assistant",
-      "mobile": "0421 524 270",
+      "mobile": "0421524270",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -22987,24 +21943,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -23022,42 +21960,6 @@
       "mobile": "0493 955 585",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -23135,28 +22037,10 @@
     {
       "personnel_id": "A6813487-9332-411D-9CA0-8D1CF1D8A5FE",
       "name": "Francis AH KIAU",
-      "role": "Scaffolder",
-      "mobile": "0434 580 355",
+      "role": "Scaffolder - Advanced",
+      "mobile": "0434580355",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -23491,15 +22375,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1336",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -23671,42 +22546,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -23742,24 +22581,6 @@
       "mobile": "0469 591 660",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -25205,19 +24026,10 @@
     {
       "personnel_id": "E96241F2-0017-4A77-B026-AE49764D8522",
       "name": "Gary CAVERZASIO",
-      "role": "Basic Rigger",
+      "role": "Trade Assistant",
       "mobile": "0499 098 280",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-04-28",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -25226,24 +24038,6 @@
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "225E44D5-D1E6-48FE-952C-0DC6DEC18DB6",
-      "name": "Gary DELANEY \ud83d\udd37",
-      "role": "Rope Access - Level 3",
-      "mobile": "0499 084 946",
-      "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-11",
-          "schedule_type": "Day",
-          "is_on_location": true
         }
       ]
     },
@@ -25632,33 +24426,6 @@
       "mobile": "0455 733 546",
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-22",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -26961,27 +25728,9 @@
       "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
       "name": "Graham WANGLER",
       "role": "Mechanical Fitter",
-      "mobile": "0476 247 673",
+      "mobile": "0476247673",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1217",
           "client": "CSBP",
@@ -27028,24 +25777,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -27086,19 +25817,10 @@
     {
       "personnel_id": "C03B3DFF-EC38-43F5-B233-BFEFA09944C7",
       "name": "Gregory HAUWAERT",
-      "role": "Trade Assistant",
+      "role": "Mechanical Fitter",
       "mobile": "0484 919 373",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-13",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -28765,42 +27487,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-18",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-18",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -28878,18 +27564,9 @@
       "personnel_id": "C5B95CAD-9E14-4650-8ACE-7A9E6049CAB7",
       "name": "Hannah SULTAN",
       "role": "Trade Assistant",
-      "mobile": "0476 050 686",
+      "mobile": "0476050686",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1391",
           "client": "SOUTH WEST",
@@ -28926,24 +27603,6 @@
       "mobile": "0447 156 618",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -29413,15 +28072,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -29435,37 +28085,10 @@
     {
       "personnel_id": "4FA11D14-6DD0-41FB-8068-270F73668E6B",
       "name": "Hemi RATAHI",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0457 420 744",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -30898,24 +29521,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -30936,57 +29541,12 @@
       ]
     },
     {
-      "personnel_id": "0E4AEBD5-0E7C-435D-897F-1E9B5E2E57FF",
-      "name": "Herbert MUKUNGA",
-      "role": "Mechanical Fitter",
-      "mobile": "0459 183 602",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-24",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-07",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
       "name": "Herbert MUKUNGA",
       "role": "Mechanical Fitter",
-      "mobile": "0459 183 602",
+      "mobile": "0459183602",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1217",
           "client": "CSBP",
@@ -31541,19 +30101,10 @@
     {
       "personnel_id": "94246795-225D-4C97-84F3-0BEB4C90757D",
       "name": "Hunia HATI",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Intermediate",
       "mobile": "0426 776 433",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -31578,18 +30129,9 @@
       "personnel_id": "A1B6A934-A8AF-43C9-A705-F9EA5F22EFBE",
       "name": "Ian BACH",
       "role": "Mechanical Fitter",
-      "mobile": "0405 606 774",
+      "mobile": "0405606774",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1405",
           "client": "CSBP",
@@ -31626,15 +30168,6 @@
       "mobile": "0487 700 914",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1196",
           "client": "ALCOA",
@@ -31812,45 +30345,9 @@
       "personnel_id": "95920B44-5E59-4F82-848F-A2045C39C151",
       "name": "Issac REID",
       "role": "Trade Assistant",
-      "mobile": "0428 969 952",
+      "mobile": "0428969952",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -31896,24 +30393,6 @@
       "mobile": "0401 749 106",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-11",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -32113,51 +30592,6 @@
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-04-30",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -32238,24 +30672,6 @@
       "mobile": "0437 264 211",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -32437,15 +30853,6 @@
       "hire_company": "Western Workforce - Labour Hire",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1300",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -32486,19 +30893,10 @@
     {
       "personnel_id": "F3CAA4F1-AF27-460B-9DDB-DE450B0BC8DB",
       "name": "Jackson POWELL",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0493 334 531",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -32553,42 +30951,6 @@
       "mobile": "0499 422 603",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-05",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -32788,33 +31150,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -32855,28 +31190,10 @@
     {
       "personnel_id": "E4AC9591-767F-4D92-A27A-0A750EFD7192",
       "name": "James ARNOULD",
-      "role": "Supervisor - Mechanical",
+      "role": "Mechanical Fitter",
       "mobile": "0426 856 352",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-13",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -33481,24 +31798,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -33688,15 +31987,6 @@
       "hire_company": "SRG - Active",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-29",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -33714,33 +32004,6 @@
       "mobile": "0436 486 524",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -35965,33 +34228,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-18",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-18",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -36069,54 +34305,9 @@
       "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
       "name": "Jessica DILENA",
       "role": "Trade Assistant",
-      "mobile": "0477 841 414",
+      "mobile": "0477841414",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -37549,24 +35740,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-07",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -37580,64 +35753,10 @@
     {
       "personnel_id": "055BAAA5-5685-465E-BA8F-5F5F577218B7",
       "name": "Joe DACK",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0449 995 304",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-04",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1196",
           "client": "ALCOA",
@@ -37654,7 +35773,7 @@
           "start": "2026-04-25",
           "end": "2026-04-27",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1206",
@@ -37697,19 +35816,10 @@
     {
       "personnel_id": "9B6F31D7-F288-4BC4-85D7-96D1C2724B9E",
       "name": "Joey CANTOS",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Advanced",
       "mobile": "0448 566 252",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -39216,24 +37326,6 @@
       ]
     },
     {
-      "personnel_id": "3584637E-FB7B-432A-947A-8D45B33A87DB",
-      "name": "John BEBEK \ud83d\udd37",
-      "role": "Mechanical Fitter",
-      "mobile": "0437 031 659",
-      "hire_company": "Hyrd - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "EA7FB649-BD7C-4FED-9BFD-C136C0CC5EAE",
       "name": "John BOWN",
       "role": "Mechanical Fitter",
@@ -39412,24 +37504,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-04",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -39486,39 +37560,12 @@
       ]
     },
     {
-      "personnel_id": "89827310-D7F6-4023-9288-EE3C780432F4",
-      "name": "John HILL",
-      "role": "Coded Welder",
-      "mobile": "0487 251 137",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "EF4B5F4C-3F68-4A59-A517-C12C931667CF",
       "name": "John KAONZA",
       "role": "Mechanical Fitter",
       "mobile": "0406 082 127",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -41014,24 +39061,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -41052,66 +39081,12 @@
       ]
     },
     {
-      "personnel_id": "0F403AC5-7005-4767-B704-E68DDC9F7C76",
-      "name": "Jon DORRONSORO",
-      "role": "Trade Assistant",
-      "mobile": "0480 734 929",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-05",
-          "end": "2025-11-07",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "A2DF1D8B-2B8C-4EA0-B0F9-EBCD1E4D3CFE",
       "name": "Jonathan MUTEMBO",
       "role": "Mechanical Fitter",
       "mobile": "0420 268 896",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-07",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -41297,28 +39272,10 @@
     {
       "personnel_id": "997DD71C-4134-4E43-928A-38455AA7F5F9",
       "name": "Jordan ATITOA-BRYANT",
-      "role": "Painter & Blaster",
+      "role": "Applicator",
       "mobile": "0414 579 891",
       "hire_company": "SRG - Active",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -41495,19 +39452,10 @@
     {
       "personnel_id": "2C49A908-B15B-4340-8A12-4E9AC9BF989A",
       "name": "Jordan ENUA",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Advanced",
       "mobile": "0424 974 571",
       "hire_company": "SRG - Southwest Tianqi",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -43034,37 +40982,10 @@
     {
       "personnel_id": "282F0C80-9105-423B-96DB-B0EE764B4372",
       "name": "Jordan KIRKBY",
-      "role": "Supervisor - Mechanical",
+      "role": "Supervisor",
       "mobile": "0406 872 504",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-04",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-04",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -45012,39 +42933,12 @@
       ]
     },
     {
-      "personnel_id": "63F7896D-8CCF-4F43-A6E4-DCCDC984FAE8",
-      "name": "Josh SMITH \ud83d\udd37",
-      "role": "Mechanical Fitter",
-      "mobile": "0459 348 781",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-17",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "8927AA09-49EE-403B-AE8C-72BBD773DA43",
       "name": "Josh TOTH",
       "role": "Supervisor - Mechanical",
       "mobile": "0414 940 421",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-15",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -46702,15 +44596,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -46783,15 +44668,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -46805,19 +44681,10 @@
     {
       "personnel_id": "0CA5B1C2-920A-472F-9D8E-83B65DD78553",
       "name": "Julian JENNY",
-      "role": "Lube Technician",
+      "role": "Mechanical Fitter",
       "mobile": "0493 389 131",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-15",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -46985,55 +44852,10 @@
     {
       "personnel_id": "F93AB05D-D842-44A0-840C-8F3B76FC4C33",
       "name": "Julian VAN DER ZANDEN",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0433 449 381",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-12",
-          "end": "2026-03-13",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -47077,7 +44899,7 @@
           "start": "2026-04-29",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1375",
@@ -48367,15 +46189,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -48736,33 +46549,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -48873,39 +46659,12 @@
       ]
     },
     {
-      "personnel_id": "3C498782-970E-479C-B0C5-67B62A656322",
-      "name": "Kevin GARTY \ud83d\udd37",
-      "role": "Mechanical Fitter",
-      "mobile": "0420 359 303",
-      "hire_company": "Hyrd - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "D8A71843-4B21-40D5-B011-836450432A93",
       "name": "Khan MATENGA",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Intermediate",
       "mobile": "0411 927 711",
       "hire_company": "SRG - Southwest Tianqi",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1275",
           "client": "SOUTH WEST",
@@ -50482,69 +48241,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-13",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1201",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -50606,24 +48302,6 @@
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "FA156097-12A5-4B95-B342-B8E1C3C13A50",
-      "name": "Ko THAT \ud83d\udd37",
-      "role": "Trade Assistant",
-      "mobile": "0452 607 533",
-      "hire_company": "Torque - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-14",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
         }
       ]
     },
@@ -50788,24 +48466,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-11",
-          "end": "2025-11-11",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-17",
-          "end": "2025-11-17",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1201",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -50823,33 +48483,6 @@
       "mobile": "0411 406 465",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -51177,39 +48810,12 @@
       ]
     },
     {
-      "personnel_id": "145D922E-1C26-4D4E-8976-B7AEACC22298",
-      "name": "Kyoodong KIM",
-      "role": "Intermediate Rigger",
-      "mobile": "0437 888 251",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-11",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "CE26A64E-09F0-4F97-B84B-B9BC9B2C6EE9",
       "name": "Lakshman VASANTHAN",
       "role": "Lube Technician",
       "mobile": "0452 220 105",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-22",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -51229,24 +48835,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -51264,69 +48852,6 @@
       "mobile": "0436 652 133",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -51402,24 +48927,6 @@
       ]
     },
     {
-      "personnel_id": "95762367-D82A-449A-BD54-C78759F1EDD0",
-      "name": "Leeroy SIMON",
-      "role": "NDT",
-      "mobile": "0416 708 404",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "A52FA868-334E-4B4C-80B8-D0A82A8E4D73",
       "name": "Leslie SELLS",
       "role": "Rigger - Advanced",
@@ -51449,46 +48956,10 @@
     {
       "personnel_id": "2158DA5B-EC2E-491E-BCAA-DB7117C25D2A",
       "name": "Lewis NEWELL",
-      "role": "Supervisor - Mechanical",
+      "role": "Step Up Supervisor - Mechanical",
       "mobile": "0434 841 251",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-04",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-04",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1201",
           "client": "SOUTH WEST",
@@ -51548,19 +49019,10 @@
     {
       "personnel_id": "276B4DB2-C37B-4E84-9669-B6862E05FA96",
       "name": "Lia LAGNARINI",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0413 648 553",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1275",
           "client": "SOUTH WEST",
@@ -53220,66 +50682,12 @@
       ]
     },
     {
-      "personnel_id": "B0DEF9D2-BBF1-40AD-ACD6-C640CE19EC70",
-      "name": "Liam DODD",
-      "role": "Scaffolder",
-      "mobile": "0421 943 208",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "8310D30A-030D-4DC4-93A2-B2AD73248638",
       "name": "Lise MONNET",
       "role": "Trade Assistant",
       "mobile": "0427 753 796",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -53526,48 +50934,12 @@
       ]
     },
     {
-      "personnel_id": "7222054E-685E-4513-BAEE-467384159BB1",
-      "name": "Louisito CUSTODIO \ud83d\udd39",
-      "role": "Mechanical Fitter",
-      "mobile": "0433 515 002",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-13",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "24B6C2C5-28E9-497F-B672-3A24CEF290DC",
       "name": "Loyid JOSEPH",
       "role": "Mechanical Fitter",
       "mobile": "0450 060 007",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -53771,19 +51143,10 @@
     {
       "personnel_id": "C581D632-84B0-4577-99A2-C4AD68FC30EC",
       "name": "Lucrecia Celeste SOSA",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0401 023 205",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -53825,28 +51188,10 @@
     {
       "personnel_id": "B2EA1F52-15A2-46E7-98A4-6707052B1AAA",
       "name": "Luis FERNANDES",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0424 476 507",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -54275,19 +51620,10 @@
     {
       "personnel_id": "36D14C47-AC1E-42FF-9F6C-247EB5EB5BEE",
       "name": "Luke McNAMARA",
-      "role": "Superintendent",
+      "role": "Supervisor",
       "mobile": "0474 058 989",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -56206,24 +53542,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -56439,15 +53757,6 @@
       "mobile": "0400 398 056",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-14",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -57961,42 +55270,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1217",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -58101,27 +55374,9 @@
       "personnel_id": "AE5E9F27-C604-483C-B28F-43034110C056",
       "name": "Manish TOMAR",
       "role": "Mechanical Fitter",
-      "mobile": "0488 751 209",
+      "mobile": "0488751209",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -58330,42 +55585,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-24",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -58402,15 +55621,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -58442,28 +55652,10 @@
     {
       "personnel_id": "F1377291-5485-4FC1-9C6B-351CC6E1AAF5",
       "name": "Margaux VERGEZ",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Intermediate",
       "mobile": "0435 319 380",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -58617,42 +55809,6 @@
       "mobile": "0473 108 682",
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-09",
-          "end": "2026-04-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -58861,15 +56017,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -58885,24 +56032,6 @@
           "start": "2026-04-23",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "3CCA8B5F-8046-4555-A198-203FDE91D029",
-      "name": "Matt LODGE",
-      "role": "Supervisor - Scaffold",
-      "mobile": "0418 953 354",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
           "is_on_location": true
         }
       ]
@@ -58958,60 +56087,6 @@
           "end": "2026-06-21",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "8ABFD546-4D2F-46E4-96C3-D2CE380BD5B7",
-      "name": "Max FOELSCHE \ud83d\udd37",
-      "role": "Mechanical Fitter",
-      "mobile": "0497 548 098",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-17",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "4CAF3908-EAA9-49BC-BA5A-93209C3D4EFB",
-      "name": "Max LUTTENAUER \ud83d\udd37",
-      "role": "Boilermaker",
-      "mobile": "0494 413 258",
-      "hire_company": "2XM - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "CD8E2C9D-9BC7-471A-B119-429A87D61174",
-      "name": "Max McCORMICK \ud83d\udd37",
-      "role": "Intermediate Rigger",
-      "mobile": "0415 372 252",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
         }
       ]
     },
@@ -59338,33 +56413,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -59415,18 +56463,9 @@
       "personnel_id": "47E90C13-C5F3-439C-8922-C7C0330552F1",
       "name": "Mehdi \ud83d\udd37 MOKEDDEM",
       "role": "Lube Technician",
-      "mobile": "0433 410 707",
+      "mobile": "0433410707",
       "hire_company": "Torque - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -59445,24 +56484,6 @@
       "mobile": "0429 525 137",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -62231,19 +59252,10 @@
     {
       "personnel_id": "858EFE8E-889D-4468-A56B-5384ABF1D2DF",
       "name": "Michael DAWSON",
-      "role": "Supervisor - Mechanical",
+      "role": "Supervisor",
       "mobile": "0411 097 139",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-11",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -64083,24 +61095,6 @@
       ]
     },
     {
-      "personnel_id": "C0CAEC8E-F002-4BF2-87FC-83E2A4321B26",
-      "name": "Michael TE PUIA (JNR)",
-      "role": "Scaffolder",
-      "mobile": "0434 720 078",
-      "hire_company": "SRG - Southwest Pool",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "E87076F3-5E95-4B6D-828A-1CCFBC9550C6",
       "name": "Michael TE PUIA (SNR)",
       "role": "Scaffolder - Advanced",
@@ -65622,24 +62616,6 @@
       ]
     },
     {
-      "personnel_id": "0BA1F499-EA8E-4DE1-9043-D1F5D251EDE2",
-      "name": "Michael WILLIAMS \ud83d\udd37",
-      "role": "Mechanical Fitter",
-      "mobile": "0448 035 944",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-11",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "99DBC480-A64F-4445-A521-6FB8BE59D53A",
       "name": "Mika IOANE",
       "role": "Scaffolder/Rigger",
@@ -66222,51 +63198,6 @@
       "mobile": "0447 582 473",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -68356,15 +65287,6 @@
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-05",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -69999,63 +66921,9 @@
       "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
       "name": "Naomi NDENGA",
       "role": "Trade Assistant",
-      "mobile": "0472 586 919",
+      "mobile": "0472586919",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -70129,24 +66997,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -70210,15 +67060,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -70250,19 +67091,10 @@
     {
       "personnel_id": "2B94C481-DCBD-4545-8E39-BF3AC28A6388",
       "name": "Nathan \ud83d\udd37 ARBUCKLE",
-      "role": "Advanced Rigger",
-      "mobile": "0427 546 026",
+      "role": "Rigger - Advanced",
+      "mobile": "0427546026",
       "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -70275,84 +67107,12 @@
       ]
     },
     {
-      "personnel_id": "5C82E40E-F855-4261-9312-00696BA646E5",
-      "name": "Neil EVINA \ud83d\udd37",
-      "role": "Boilermaker",
-      "mobile": "0428 000 435",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "D1FF5ECF-C03C-417C-9954-3782C11BE943",
-      "name": "Neva TEOFILO",
-      "role": "Scaffolder",
-      "mobile": "0455 312 701",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "FEFAAFC8-7E0D-431A-9269-EA499C24DD63",
       "name": "Ngoni USORE",
       "role": "Mechanical Fitter",
       "mobile": "0401 500 098",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -70453,15 +67213,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -70480,15 +67231,6 @@
       "hire_company": "Western Workforce - Labour Hire",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -70506,33 +67248,6 @@
       "mobile": "0407 636 408",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -70575,18 +67290,9 @@
       "personnel_id": "327192CA-BA5A-47BD-B72B-221E1743B3FE",
       "name": "Ominder SINGH",
       "role": "Mechanical Fitter",
-      "mobile": "0410 804 520",
+      "mobile": "0410804520",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -70782,36 +67488,9 @@
       "personnel_id": "12CB2423-1EC1-4F3D-87D3-2143655BEBDE",
       "name": "Omkar Uttam DORUGADE",
       "role": "Mechanical Fitter",
-      "mobile": "0424 804 281",
+      "mobile": "0424804281",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -72379,15 +69058,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-15",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -72687,57 +69357,12 @@
       ]
     },
     {
-      "personnel_id": "B187152C-3275-4312-89F6-CC581DF62DA1",
-      "name": "Parnera TITOKO \ud83d\udd37",
-      "role": "Boilermaker",
-      "mobile": "0408 943 518",
-      "hire_company": "2XM - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "DBA7B127-FEAF-4F9F-9DF7-782317AFF864",
       "name": "Patrick DALY",
       "role": "Supervisor - Mechanical",
       "mobile": "0420 397 028",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-07",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-04",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-04",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -72756,24 +69381,6 @@
       "mobile": "0455 599 800",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-13",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1391",
           "client": "SOUTH WEST",
@@ -72928,33 +69535,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-04",
-          "end": "2026-06-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1217",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -73018,15 +69598,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -73045,15 +69616,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -73071,51 +69633,6 @@
       "mobile": "0437 183 009",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-25",
-          "end": "2026-06-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -73639,15 +70156,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-29",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -73665,24 +70173,6 @@
       "mobile": "0434 916 762",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1336",
           "client": "SOUTH WEST",
@@ -73719,15 +70209,6 @@
       "mobile": "0434 916 762",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1405",
           "client": "CSBP",
@@ -74863,33 +71344,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -74916,15 +71370,6 @@
       "mobile": "0430 179 158",
       "hire_company": "Torque - Labour Hire",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1288",
           "client": "SOUTH WEST",
@@ -75610,42 +72055,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -75677,19 +72086,10 @@
     {
       "personnel_id": "4E05B422-C39D-4FE5-9278-47100DC7F4C5",
       "name": "Rhys \ud83d\udd37 CORBETT",
-      "role": "Advanced Rigger",
-      "mobile": "0487 853 435",
+      "role": "Rigger - Advanced",
+      "mobile": "0487853435",
       "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -75702,39 +72102,12 @@
       ]
     },
     {
-      "personnel_id": "990CFF13-5D98-44B8-A251-B5E8A0D10D16",
-      "name": "Richard McKENZIE \ud83d\udd37",
-      "role": "Supervisor - Mechanical",
-      "mobile": "0473 613 365",
-      "hire_company": "Hyrd - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "40FCD406-BD10-4C68-888F-03D449BD7F44",
       "name": "Richardson ALICANTE",
       "role": "Mechanical Fitter",
       "mobile": "0431 228 251",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -75902,19 +72275,10 @@
     {
       "personnel_id": "16695B58-69A4-44CC-9E39-908F0B1C0803",
       "name": "Ricky TRUSLOVE",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0436 111 460",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -75947,19 +72311,10 @@
     {
       "personnel_id": "C29279F4-529E-4BF2-8395-A78B819F6BD5",
       "name": "Ricky WHITE",
-      "role": "Scaffolder",
-      "mobile": "0484 658 726",
+      "role": "Scaffolder - Intermediate",
+      "mobile": "0484658726",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -77455,15 +73810,6 @@
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-05",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -77788,24 +74134,6 @@
       "hire_company": "SRG - Southwest Tianqi",
       "assignments": [
         {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1275",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -77841,51 +74169,6 @@
       "mobile": "0405 745 828",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-17",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-17",
-          "end": "2026-03-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -77945,19 +74228,10 @@
     {
       "personnel_id": "6B69B372-0C38-460D-9048-115ED861A33B",
       "name": "Robert McCAULEY",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Intermediate",
       "mobile": "0480 668 620",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -77985,33 +74259,6 @@
       "mobile": "0419 949 242",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1275",
           "client": "SOUTH WEST",
@@ -78213,48 +74460,12 @@
       ]
     },
     {
-      "personnel_id": "7CC6800C-1A38-4FDA-B307-599BB7C22083",
-      "name": "Ross McCALLUM",
-      "role": "Supervisor - Mechanical",
-      "mobile": "0421 407 427",
-      "hire_company": "SRG - Active",
-      "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-13",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "1B74F6CE-C078-43E8-BE7D-AC8B4D728724",
       "name": "Russell CHITTY",
-      "role": "Intermediate Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0435 052 151",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -78282,42 +74493,6 @@
       "mobile": "0421 795 621",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -78787,15 +74962,6 @@
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -78958,15 +75124,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1196",
           "client": "ALCOA",
           "site": "Kwinana",
@@ -79003,24 +75160,6 @@
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
         {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -79034,28 +75173,10 @@
     {
       "personnel_id": "AFF8E439-D73C-4961-864E-6E1C7759CD68",
       "name": "Samuel BRYANT",
-      "role": "Painter & Blaster",
+      "role": "Supervisor",
       "mobile": "0408 500 677",
       "hire_company": "SRG - Active",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -80794,15 +76915,6 @@
       "hire_company": "Western Workforce - Labour Hire",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-22",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
@@ -80834,19 +76946,10 @@
     {
       "personnel_id": "91164E08-F230-4EC2-94D9-760890C0C69A",
       "name": "Sang Woo \ud83d\udd37 KIM",
-      "role": "Trade Assistant",
-      "mobile": "0459 883 208",
+      "role": "Telehandler Operator",
+      "mobile": "0459883208",
       "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -80861,28 +76964,10 @@
     {
       "personnel_id": "DDA17974-BFC0-42E4-BD30-3629DF5817A4",
       "name": "Santana PAYNE",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Advanced",
       "mobile": "0434 734 382",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -83134,15 +79219,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -83166,18 +79242,9 @@
       "personnel_id": "792D9428-1D6C-4CBD-BDDA-46A3645F6E65",
       "name": "Sebastian \ud83d\udd37 DJAFFER",
       "role": "Lube Technician",
-      "mobile": "0401 117 401",
+      "mobile": "0401117401",
       "hire_company": "Torque - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -83193,18 +79260,9 @@
       "personnel_id": "6D9F62D6-E1AF-480E-ADB2-BCEC0D9F7262",
       "name": "Selva \ud83d\udd37 LOORTHSMAY",
       "role": "Mechanical Fitter",
-      "mobile": "0467 302 917",
+      "mobile": "0467302917",
       "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -83232,24 +79290,6 @@
       "mobile": "0433 394 685",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -83451,84 +79491,12 @@
       ]
     },
     {
-      "personnel_id": "5FFF4A7A-6A2B-4C22-BE82-4EF1B783C001",
-      "name": "Shane \ud83d\udd37 COX",
-      "role": "Telehandler Operator",
-      "mobile": "0458 323 009",
-      "hire_company": "Hyrd - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-30",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "52854210-A60C-459E-BAB5-6D96A33B9003",
-      "name": "Sharaine HOWSON \ud83d\udd37",
-      "role": "Intermediate Rigger",
-      "mobile": "0400 035 694",
-      "hire_company": "Torque - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "C5B2056C-7CDF-4953-A4D1-92D4CB6FDC8D",
       "name": "Sharon GILCHRIST",
       "role": "Trade Assistant",
       "mobile": "0417 096 745",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -83602,15 +79570,6 @@
       "hire_company": "Hyrd - Labour Hire",
       "assignments": [
         {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -83628,60 +79587,6 @@
       "mobile": "0403 267 784",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -84036,48 +79941,12 @@
       ]
     },
     {
-      "personnel_id": "38E33086-C27B-45D6-96BC-460457268338",
-      "name": "Steven TREEN",
-      "role": "Supervisor - Mechanical",
-      "mobile": "0498 493 782",
-      "hire_company": "SRG - Southwest Alcoa",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "DC132943-0F0D-4FA4-AC3E-B89B161D8FAC",
       "name": "Stjepan BOSNJAK",
       "role": "Mechanical Fitter",
       "mobile": "0413 377 068",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-03",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -84166,7 +80035,7 @@
           "start": "2026-04-29",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1375",
@@ -84345,18 +80214,9 @@
       "personnel_id": "8F9D8183-1CA8-461E-B47D-933268FEE1B4",
       "name": "Sujin JEON",
       "role": "Telehandler Operator",
-      "mobile": "0474 828 152",
+      "mobile": "0474828152",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-20",
-          "end": "2026-05-01",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -84371,19 +80231,10 @@
     {
       "personnel_id": "4B019164-0641-4F6A-AADA-B7EDD65A0573",
       "name": "Sven \ud83d\udd37 HOPLA",
-      "role": "Advanced Rigger",
-      "mobile": "0447 103 566",
+      "role": "Rigger - Advanced",
+      "mobile": "0447103566",
       "hire_company": "Western Workforce - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-05-01",
-          "schedule_type": "Contingency",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -84402,15 +80253,6 @@
       "mobile": "0470 686 020",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1196",
           "client": "ALCOA",
@@ -84444,45 +80286,9 @@
       "personnel_id": "7D0DF8A3-1F90-4E1C-8BC2-AEA213E1799B",
       "name": "Tabani CHIPIRI",
       "role": "Mechanical Fitter",
-      "mobile": "0497 594 673",
+      "mobile": "049 759 4673",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -84517,7 +80323,7 @@
           "start": "2026-05-01",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": true
+          "is_on_location": false
         },
         {
           "job_no": "1375",
@@ -84871,24 +80677,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -85092,18 +80880,9 @@
       "personnel_id": "6D9756BA-7ED5-4C4D-9020-D9BCAEC1F962",
       "name": "Teufik (Teo) MEDANOVIC",
       "role": "Electrician",
-      "mobile": "0451 029 041",
+      "mobile": "0451029041",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-29",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -85123,15 +80902,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1336",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -85149,15 +80919,6 @@
       "mobile": "0434 259 436",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-14",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1173",
           "client": "SOUTH WEST",
@@ -86838,18 +82599,9 @@
       "personnel_id": "DAF2090A-0A68-454E-A8D3-CE2D9243A996",
       "name": "Timo \ud83d\udd37 GRONENBERG",
       "role": "Mechanical Fitter",
-      "mobile": "0457 325 980",
+      "mobile": "0457325980",
       "hire_company": "2XM - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-22",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -86949,15 +82701,6 @@
       "mobile": "0419 907 031",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1196",
           "client": "ALCOA",
@@ -87183,15 +82926,6 @@
       "mobile": "0497 419 629",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-21",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -89614,15 +85348,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-05",
-          "end": "2025-11-14",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -89668,42 +85393,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-15",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -89726,19 +85415,10 @@
     {
       "personnel_id": "4BBB3EF5-1359-4B75-852E-5F543E9F9747",
       "name": "Vincenzo MARGOTTA",
-      "role": "Advanced Rigger",
+      "role": "Rigger - Advanced",
       "mobile": "0411 462 357",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-05",
-          "end": "2025-11-15",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -89751,48 +85431,12 @@
       ]
     },
     {
-      "personnel_id": "F1C68320-7A29-4025-A4F5-FD853FD86BA8",
-      "name": "Vu NGHIEM \ud83d\udd37",
-      "role": "Intermediate Rigger",
-      "mobile": "0411 829 656",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "tronox-2025-11",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2025-11-10",
-          "end": "2025-11-15",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "02235BE1-6B7C-4600-87AA-7B494815CE94",
       "name": "Wahib NADI",
       "role": "Scaffolder - Advanced",
       "mobile": "0421 543 441",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -89832,66 +85476,12 @@
       ]
     },
     {
-      "personnel_id": "13FED3A1-88D9-46DA-AA88-AD95ABD95D07",
-      "name": "Wahib NADI",
-      "role": "Scaffolder",
-      "mobile": "0421 543 441",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
       "personnel_id": "F99E2489-F591-4F37-8E99-A97D912CFBF9",
       "name": "Walid BOULAHDID",
       "role": "Mechanical Fitter",
       "mobile": "0404 303 830",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-19",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-19",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -89938,15 +85528,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -89974,24 +85555,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-10",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-10",
-          "end": "2026-03-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -90018,33 +85581,6 @@
       "mobile": "0438 101 966",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-21",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1217",
           "client": "CSBP",
@@ -90096,18 +85632,9 @@
       "personnel_id": "5CFCA82A-85AA-4AEB-B6BA-C5F127F87775",
       "name": "Wilfredo MAPANAO",
       "role": "Mechanical Fitter",
-      "mobile": "0476 603 852",
+      "mobile": "0476603852",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1300",
           "client": "CSBP",
@@ -90144,60 +85671,6 @@
       "mobile": "0429 331 817",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -90276,18 +85749,9 @@
       "personnel_id": "18630A5C-B8F2-4905-8484-FBFD54FE28E9",
       "name": "William \ud83d\udd37 ROBINSON",
       "role": "Boilermaker",
-      "mobile": "0410 842 339",
+      "mobile": "0410842339",
       "hire_company": "Western Workforce - Labour Hire",
       "assignments": [
-        {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1359",
           "client": "SOUTH WEST",
@@ -90306,42 +85770,6 @@
       "mobile": "0481 092 939",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "tronox-2026-05",
-          "client": "Tronox",
-          "site": "Kwinana",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2025-11",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2025-11-12",
-          "end": "2025-11-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-15",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",
@@ -90523,39 +85951,12 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2026-04",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-23",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "DF5828A2-3514-4AAE-8942-621E47199C75",
-      "name": "Yanis BELHADJ",
-      "role": "Mechanical Fitter",
-      "mobile": "0490 930 033",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-18",
-          "schedule_type": "Day",
           "is_on_location": true
         }
       ]
@@ -90739,24 +86140,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "covalent-2025-10",
-          "client": "Covalent",
-          "site": "Mt Holland",
-          "start": "2025-10-14",
-          "end": "2025-10-21",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
-        {
-          "job_no": "csbp-2026-05-1405",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -90932,28 +86315,10 @@
     {
       "personnel_id": "E27391E2-E1A0-4287-9033-A7526D278C69",
       "name": "Zachary GARDINER",
-      "role": "Scaffolder",
+      "role": "Scaffolder - Advanced",
       "mobile": "0499 756 868",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "csbp-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Day",
-          "is_on_location": true
-        },
-        {
-          "job_no": "kleenheat-2026-03",
-          "client": "CSBP",
-          "site": "Kwinana",
-          "start": "2026-03-16",
-          "end": "2026-03-20",
-          "schedule_type": "Night",
-          "is_on_location": true
-        },
         {
           "job_no": "1206",
           "client": "SOUTH WEST",

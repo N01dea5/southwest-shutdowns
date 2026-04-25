@@ -71,7 +71,8 @@
             id: shutdown.id || '',
             name: shutdown.name || '',
             start: shutdown.start_date || '',
-            end: shutdown.end_date || shutdown.start_date || ''
+            end: shutdown.end_date || shutdown.start_date || '',
+            status: shutdown.status || ''
           };
           for (const key of shutdownKeys(shutdown)) map.set(key, record);
         }
@@ -148,6 +149,7 @@
       if (!events.length) continue;
 
       for (const { idx, shutdown } of shutdownColumns) {
+        if (shutdown.status === 'completed') continue;
         const cell = row.cells[idx];
         if (!cell || isTickCell(cell)) continue;
 

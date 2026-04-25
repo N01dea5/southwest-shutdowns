@@ -970,7 +970,7 @@ async function renderOpsRoster() {
   if (state.opsRosterData === null) {
     host.innerHTML = '<p style="padding:1rem;color:var(--srg-grey-2)">Loading roster data…</p>';
     try {
-      const r = await fetch("data/operations_roster.json", { cache: "no-store" });
+      const r = await fetch(`data/operations_roster.json?_=${Date.now()}`, { cache: "no-store" });
       state.opsRosterData = r.ok ? await r.json() : { workers: [] };
     } catch (e) {
       console.warn("renderOpsRoster: could not load operations_roster.json", e);
@@ -1209,8 +1209,11 @@ async function renderOpsRoster() {
     const track = document.createElement("div");
     track.className = "ops-roster-track";
 
-    // Sort assignments by start so overlapping bars layer predictably.
-    const sortedAssignments = [...rec.assignments].sort((a, b) => a.start.localeCompare(b.start));
+    // Only render on-location assignments — off-site segments (R&R, demob,
+    // future unconfirmed) are excluded to keep the Gantt readable.
+    const sortedAssignments = [...rec.assignments]
+      .filter(a => a.isOnLocation)
+      .sort((a, b) => a.start.localeCompare(b.start));
     for (const a of sortedAssignments) {
       const sd = new Date(a.start + "T00:00:00Z");
       // End date is inclusive — stretch the bar to the end of its last day so

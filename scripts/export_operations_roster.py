@@ -96,6 +96,45 @@ def _date(value: Any) -> str:
     return ""
 
 
+def _contiguous_ranges_with_sched(
+    tuples: list[tuple[str, str, bool]],
+) -> list[dict[str, Any]]:
+    """Split (date_str, sched_type, is_on_location) tuples into contiguous segments.
+
+    A new segment starts when the calendar gap is > 1 day, the schedule_type
+    changes, or is_on_location changes.  This ensures that off-site days (R&R,
+    demob) form separate segments with is_on_location=False rather than being
+    merged with preceding on-site days.
+    """
+    if not tuples:
+        return []
+    segs: list[dict[str, Any]] = []
+    seg_start, seg_sched, seg_onsite = tuples[0]
+    prev_date = dt.date.fromisoformat(tuples[0][0])
+
+    for date_str, sched, onsite in tuples[1:]:
+        d = dt.date.fromisoformat(date_str)
+        if (d - prev_date).days > 1 or sched != seg_sched or onsite != seg_onsite:
+            segs.append({
+                "start": seg_start,
+                "end": prev_date.isoformat(),
+                "schedule_type": seg_sched,
+                "is_on_location": seg_onsite,
+            })
+            seg_start  = date_str
+            seg_sched  = sched
+            seg_onsite = onsite
+        prev_date = d
+
+    segs.append({
+        "start": seg_start,
+        "end": prev_date.isoformat(),
+        "schedule_type": seg_sched,
+        "is_on_location": seg_onsite,
+    })
+    return segs
+
+
 def _parse_bool(value: Any) -> bool:
     if isinstance(value, bool):
         return value
@@ -191,42 +230,40 @@ def _load_roster_assignments(wb: openpyxl.Workbook) -> list[dict[str, Any]]:
         sched  = _clean(_get(row, sched_i))  if sched_i  is not None else ""
         onsite = _parse_bool(_get(row, onsite_i))
 
+        if not sched:
+            sched = "Day Shift"
         key = (pid, job)
         if key not in groups:
             groups[key] = {
                 "pid": pid, "job": job,
                 "client": client, "site": site,
-                "dates": set(),
-                "sched_types": {},
-                "on_location_count": 0,
+                "days": {},  # date_str -> (sched_type, is_on_location)
             }
         g = groups[key]
-        g["dates"].add(day)
-        if sched:
-            g["sched_types"][sched] = g["sched_types"].get(sched, 0) + 1
-        if onsite:
-            g["on_location_count"] += 1
+        # When multiple rows exist for the same day, prefer is_on_location=True.
+        existing = g["days"].get(day)
+        if existing is None or (onsite and not existing[1]):
+            g["days"][day] = (sched, onsite)
 
     assignments: list[dict[str, Any]] = []
     for g in groups.values():
-        if not g["dates"]:
+        if not g["days"]:
             continue
-        sorted_dates = sorted(g["dates"])
-        sched = (
-            max(g["sched_types"], key=g["sched_types"].get)
-            if g["sched_types"]
-            else "Day Shift"
-        )
-        assignments.append({
-            "pid":            g["pid"],
-            "job":            g["job"],
-            "client":         g["client"],
-            "site":           g["site"],
-            "start":          sorted_dates[0],
-            "end":            sorted_dates[-1],
-            "schedule_type":  sched,
-            "is_on_location": g["on_location_count"] > 0,
-        })
+        sorted_tuples = [
+            (d, sc, ol)
+            for d, (sc, ol) in sorted(g["days"].items())
+        ]
+        for seg in _contiguous_ranges_with_sched(sorted_tuples):
+            assignments.append({
+                "pid":            g["pid"],
+                "job":            g["job"],
+                "client":         g["client"],
+                "site":           g["site"],
+                "start":          seg["start"],
+                "end":            seg["end"],
+                "schedule_type":  seg["schedule_type"],
+                "is_on_location": seg["is_on_location"],
+            })
     return assignments
 
 

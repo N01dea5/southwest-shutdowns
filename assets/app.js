@@ -1022,6 +1022,7 @@ async function renderOpsRoster() {
         site: a.site || "", client: a.client || "",
         jobNo: a.job_no || "",
         scheduleType: a.schedule_type || "",
+        isOnLocation: a.is_on_location !== false,
         status: deriveStatus(a.start, a.end),
         hireCompany: w.hire_company || "",
       });
@@ -1046,7 +1047,9 @@ async function renderOpsRoster() {
       if (!hay.includes(search)) return false;
     }
     if (onsiteOnly) {
-      const onsite = rec.assignments.some(a => a.start <= todayIso && todayIso <= a.end);
+      const onsite = rec.assignments.some(a =>
+        a.start <= todayIso && todayIso <= a.end && a.isOnLocation
+      );
       if (!onsite) return false;
     }
     return true;
@@ -1093,7 +1096,9 @@ async function renderOpsRoster() {
 
   // -- 4. Header summary: #workers + #on site today --
   const onsiteNow = rows.filter(rec =>
-    rec.assignments.some(a => a.start <= todayIso && todayIso <= a.end)).length;
+    rec.assignments.some(a =>
+      a.start <= todayIso && todayIso <= a.end && a.isOnLocation
+    )).length;
   const countEl = document.getElementById("roster-count");
   if (countEl) {
     countEl.textContent = onsiteOnly

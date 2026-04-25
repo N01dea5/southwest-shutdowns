@@ -1213,16 +1213,26 @@ async function renderOpsRoster() {
     const track = document.createElement("div");
     track.className = "ops-roster-track";
 
-    // Only render on-location assignments — off-site segments (R&R, demob,
-    // future unconfirmed) are excluded to keep the Gantt readable.
-    const sortedAssignments = [...rec.assignments]
-      .filter(a => a.isOnLocation)
-      .sort((a, b) => a.start.localeCompare(b.start));
-    for (const a of sortedAssignments) {
+    // Collapse all segments for the same job into one bar spanning the full
+    // date range. This handles alternating on/off shift patterns (e.g. 4-on
+    // 4-off) where each on-site day would otherwise appear as a separate tick.
+    const jobMap = new Map();
+    for (const a of rec.assignments) {
+      if (!a.isOnLocation) continue;
+      const key = a.jobNo != null ? String(a.jobNo) : (a.site || "x");
+      if (!jobMap.has(key)) {
+        jobMap.set(key, { ...a });
+      } else {
+        const e = jobMap.get(key);
+        if (a.start < e.start) e.start = a.start;
+        if (a.end   > e.end)   e.end   = a.end;
+      }
+    }
+    const sortedBars = [...jobMap.values()].sort((a, b) => a.start.localeCompare(b.start));
+    for (const a of sortedBars) {
       const sd = new Date(a.start + "T00:00:00Z");
-      // End date is inclusive — stretch the bar to the end of its last day so
-      // a one-day assignment still shows as a visible block.
-      const ed = new Date(a.end   + "T00:00:00Z");
+      // End date is inclusive — stretch to the end of the last day.
+      const ed = new Date(a.end + "T00:00:00Z");
       ed.setUTCDate(ed.getUTCDate() + 1);
       const bar = document.createElement("div");
       bar.className = "ops-roster-bar status-" + a.status + (a.status === "booked" ? " booked" : "");

@@ -40,6 +40,19 @@ GRAPH_ROOT = "https://graph.microsoft.com/v1.0"
 REPO_ROOT  = pathlib.Path(__file__).resolve().parent.parent
 RAW_DIR    = REPO_ROOT / "data" / "raw"
 
+# Filenames that SharePoint owns but don't live in data/raw/ — routed to
+# their specific destinations. Anything else in the watched SharePoint
+# folder defaults to data/raw/.
+#   - Rapidcrews Macro Data.xlsx:  the SQL-exported workbook. Lives in
+#     data/raw/ alongside the RosterCut files (that's where every Rapid
+#     Crews artefact lands — parse_rapidcrews.py reads the whole dir).
+#   - Resumes.xlsx: standalone ops-owned workbook, kept at the repo root
+#     because it isn't Rapid Crews data.
+ROOT_FILES = {
+    "Rapidcrews Macro Data.xlsx": RAW_DIR    / "Rapidcrews Macro Data.xlsx",
+    "Resumes.xlsx":               REPO_ROOT  / "Resumes.xlsx",
+}
+
 
 def _required_env(name: str) -> str:
     v = os.environ.get(name, "").strip()
@@ -114,8 +127,10 @@ def main() -> int:
         name = item["name"]
         if not name.lower().endswith(".xlsx"):
             continue
+        # Route the two root-owned files (macro workbook, resumes) to the
+        # repo root; everything else is a roster and lands in data/raw/.
+        dest = ROOT_FILES.get(name, RAW_DIR / name)
         remote_size = int(item.get("size") or 0)
-        dest = RAW_DIR / name
         if dest.exists() and dest.stat().st_size == remote_size:
             skipped += 1
             continue
@@ -124,7 +139,8 @@ def main() -> int:
             print(f"  ! {name}: no downloadUrl, skipping")
             continue
         n = _download(download_url, dest, token)
-        print(f"  pulled {name} ({n:,} bytes)")
+        rel = dest.relative_to(REPO_ROOT)
+        print(f"  pulled {name} -> {rel} ({n:,} bytes)")
         pulled += 1
 
     print(f"SharePoint sync: {pulled} new · {skipped} already present")

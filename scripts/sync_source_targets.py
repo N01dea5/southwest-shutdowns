@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """Sync headcount targets from each site's source dashboard repo.
 
+NOTE (2026-04): Rapid Crews (`Rapidcrews Macro Data.xlsx`) is now the source
+of truth for required + filled counts. This script is no longer in the
+default GitHub Actions workflow — the values it used to write would be
+ignored by the parser for any shutdown that JobPlanningView covers. It's
+kept as a manual escape-hatch: run it when you want to snapshot a per-site
+dashboard's planned roster into `data/imports/` for provenance, or seed a
+`data/targets/<id>.json` for a shutdown that Rapid Crews doesn't yet list.
+
 For every client whose dashboard the unified roll-up reads from, this script
 fetches the site's own `index.html` (raw from GitHub), extracts the planned
 roster encoded in its JavaScript, and writes two artefacts:

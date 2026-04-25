@@ -1,327 +1,192 @@
-# Southwest Shutdowns — Unified Dashboard
+# Southwest Shutdowns Dashboard
 
-Internal-only roll-up of the four live site dashboards (Tianqi, Covalent, Tronox, CSBP). The CSBP umbrella covers both the NAAN2 fertiliser shutdown and the KPF LNG (Kleenheat-branded) March 2026 shutdown — both run by WesCEF. Shows:
+Static GitHub Pages dashboard for SRG Global Southwest shutdown fulfilment, retention and operations roster visibility.
 
-- **Fulfillment** — positions required vs. filled, overall and by trade, for completed shutdowns.
-- **Booked positions** — aggregate confirmed-vs-target headcount for upcoming shutdowns.
-- **Retention / carry-over** — how many workers return on the next shutdown, both at the **same company** and **across any of the three companies**.
-- **Gantt schedule** — swimlane view of every shutdown (completed and booked) with a "today" marker and fill shading.
+The live branch is **`main`** and GitHub Pages should serve from **`main / root`**. Power Automate pushes the latest SharePoint workbook into this branch and the GitHub Action regenerates the dashboard JSON.
 
-Static site, no server. Each source dashboard pushes its canonical data into this repo as JSON; this page re-reads on load.
+> Repository setting still to confirm manually: change the default branch to `main` if it is still pointing at an old Claude branch.
 
-## Layout
+## What the dashboard shows
 
+- **Required / Filled positions** by shutdown, company and trade.
+- **Retention and carry-over** across the Southwest labour pool.
+- **Shutdown schedule** as a Gantt-style timeline.
+- **Shutdown detail** cards with required, filled, gap and over-plan flags.
+- **Worker retention matrix**, including Hiring Company where available.
+- **Operations roster** showing where each worker is scheduled by day.
+- **Last refreshed** timestamp from the generated JSON payloads.
+
+## Source of truth
+
+Primary source is:
+
+```text
+ data/raw/Rapidcrews Macro Data.xlsx
 ```
-index.html                       unified dashboard
-assets/app.js                    load → normalise → compute → render
-assets/styles.css
-data/
-  kleenheat.json                 historical shutdown (retention seed only)
-  covalent.json                  source-of-truth data per client
-  tronox.json
-  csbp.json
-  schema.md                      JSON contract documented
-  raw/                           Rapid Crews "RosterCut" XLSX exports (one per shutdown)
-  targets/                       per-shutdown {role: required_headcount} overrides
-                                 (synced from each site's source dashboard repo)
-  imports/                       raw planned-roster extracts from each site dashboard
-                                 (full names, roles, groups, shifts, TBC flags, contingency)
+
+Key sheets:
+
+```text
+ACTIVE_SHUTDOWNS              control list of JobNo values to show
+xpbi02 JobPlanningView        required / filled planning demand
+xpbi02 PersonnelRosterView    worker schedule, client, site, dates
+xpbi02 DisciplineTrade        trade lookup
+xll01 Personnel               personnel master, mobile, hiring company
+```
+
+Supporting source:
+
+```text
+Resumes.xlsx                  optional resume link index
+```
+
+Generated outputs:
+
+```text
+data/covalent.json
+data/tronox.json
+data/csbp.json
+data/resumes.json
+data/history/*.json
+```
+
+## Current repository layout
+
+```text
+index.html
+assets/
+  app.js                              main dashboard renderer
+  styles.css                          base SRG styling
+  dashboard-polish.css                final presentation polish
+  matrix-hiring-company-safe.js       safe matrix Hiring Company enhancer
+  refresh-status.js                   last refreshed display
 scripts/
-  parse_rapidcrews.py            converts data/raw/*.xlsx → data/<company>.json
+  build_dashboard_data.py             single supported build entrypoint
+  parse_rapidcrews.py                 core RapidCrews and roster parser
+  parse_macro_data.py                 macro workbook reader
+  ensure_active_shutdowns.py          emits active JobNo cards if parser misses them
+  apply_hiring_company.py             adds hire_company to roster entries
+  apply_shutdown_display_labels.py    applies JobNo - description labels
+  normalise_dashboard_data.py         normalises JSON shape for browser safety
+  validate_dashboard_data.py          fails refresh if JSON shape is invalid
+  sync_sharepoint.py                  optional Graph-based SharePoint pull
+data/
+  raw/                                source workbooks pushed by Power Automate
+  targets/                            fallback required-headcount overrides
+  imports/                            provenance snapshots only
+  history/                            archived shutdown snapshots
+.github/workflows/
+  refresh-data.yml                    automated refresh workflow
 ```
 
-## Run locally
+## Normal refresh flow
+
+```text
+SharePoint workbook saved
+  -> Power Automate commits data/raw/Rapidcrews Macro Data.xlsx to main
+  -> GitHub Action runs refresh-data.yml
+  -> scripts/build_dashboard_data.py runs the full data build
+  -> generated data/*.json is committed if changed
+  -> index.html cache-buster is bumped
+  -> GitHub Pages redeploys
+```
+
+The workflow intentionally does **not** use `[skip ci]`; the job itself ignores its own bot commits to prevent loops while still allowing Pages to deploy.
+
+## Running locally
 
 ```sh
+pip install openpyxl
+python3 scripts/build_dashboard_data.py
 python3 -m http.server 8000
-# browse http://localhost:8000/
 ```
 
-Chart.js + Google Fonts (Barlow Condensed / Bebas Neue) are loaded via CDN; no build step.
+Open:
 
-## Updating data
-
-The current source of truth is **Rapid Crews**. Every refresh follows the same
-loop:
-
-1. **Export** a roster from Rapid Crews → "RosterCut" → XLSX.
-2. **Drop** the file into `data/raw/`. The filename's leading numeric token is
-   the Rapid Crews roster id (e.g. `1353`).
-3. **Map** that roster id to a client + project + site by adding a line to
-   `ROSTER_MAP` in `scripts/parse_rapidcrews.py`.
-4. **Run** `python3 scripts/parse_rapidcrews.py` — it regenerates
-   `data/<company>.json` from every roster in `data/raw/`.
-5. **Commit** the regenerated JSONs. The dashboard re-reads on every page load,
-   so the next refresh picks the change up — no code deploy needed.
-
-### Kleenheat-style rosters (alternate XLSX format)
-
-The parser also accepts a looser spreadsheet schema (columns: `Name`, `Trade`,
-`Company`, `On Site`, `Off Site`, `Crew`, `Email`, …), used for the Kleenheat
-March 2026 historical roster that seeds retention stats. When the spreadsheet
-only carries first names, surnames are reconstructed in priority order:
-
-1. An explicit `Last Dna` / `Last Name` / `Surname` column if populated.
-2. The `Email` local-part — e.g. `dackjoe@outlook.com` → `Joe Dack`.
-3. Cross-reference against the three Rapid Crews rosters by first-name + role
-   (when a Kleenheat "Joe, Intermediate Rigger" has exactly one match in the
-   other companies' Intermediate Riggers, the full name from there is copied).
-
-Each row is tagged with its `_name_resolution` (`explicit_column` /
-`email_heuristic` / `xref_exact` / `xref_ambiguous` / `unmatched`) and a
-roll-up lands in `_source.name_resolution` for ops review.
-
-### Real headcount targets
-
-The Rapid Crews roster export only carries *confirmed* heads, not the
-*requested* target. If a shutdown has no target file, the dashboard runs with
-`required_by_role = filled_by_role` (so fill rate trivially reads 100%) and
-shows a banner saying as much.
-
-Targets for the three current shutdowns are now synced from each site's own
-SRG Global dashboard repo:
-
-- `data/targets/covalent-2026-04.json` — from
-  [N01dea5/Covalent-Mt-Holland---April-2026][covalent-src] (63 planned)
-- `data/targets/tronox-2026-05.json` — from
-  [N01dea5/tronox-major-shutdown-may-2026][tronox-src] (104 planned)
-- `data/targets/csbp-2026-05.json` — from
-  [N01dea5/csbp-naan2-shutdown-workforce-dashboard][csbp-src] (36 planned)
-
-[covalent-src]: https://github.com/N01dea5/Covalent-Mt-Holland---April-2026
-[tronox-src]:   https://github.com/N01dea5/tronox-major-shutdown-may-2026
-[csbp-src]:     https://github.com/N01dea5/csbp-naan2-shutdown-workforce-dashboard
-
-Each target file is `{role: required_headcount}` keyed by the role names the
-Rapid Crews roster uses (e.g. `"Mechanical Fitter"`, `"Advanced Rigger"`,
-`"Supervisor - Mechanical"`). The parser merges these on top of the counts
-derived from the Rapid Crews XLSX, flips the shutdown's
-`required_target_source` to `"REAL_TARGET"`, and the dashboard's placeholder
-banner clears.
-
-The full planned roster from each source dashboard — names, shifts, trade
-groups, shift-days, TBC flags and contingency workforce — is archived raw in
-`data/imports/<company>-source.json`. Those files are provenance, not inputs
-to the parser. When a source dashboard changes (new headcount, slot added),
-re-run `scripts/sync_source_targets.py` (see below) to regenerate both
-`data/imports/` and `data/targets/`.
-
-Override per-shutdown by editing the file at:
-
-```
-data/targets/<shutdown_id>.json
+```text
+http://localhost:8000/
 ```
 
-Example (`data/targets/tronox-2026-05.json`):
+## Adding a shutdown
 
-```json
-{
-  "Mechanical Fitter": 40,
-  "Boilermaker": 10,
-  "Coded Welder": 10,
-  "Trade Assistant": 20,
-  "Advanced Rigger": 10,
-  "Intermediate Rigger": 10,
-  "Supervisor - Mechanical": 4
-}
+1. Open `data/raw/Rapidcrews Macro Data.xlsx` in SharePoint.
+2. Add the RapidCrews **JobNo** to `ACTIVE_SHUTDOWNS`.
+3. Confirm the JobNo has rows in `xpbi02 JobPlanningView` and `xpbi02 PersonnelRosterView`.
+4. Save the workbook.
+5. Power Automate pushes the workbook to GitHub.
+6. The dashboard refresh workflow regenerates JSON.
+
+If a shutdown has planning demand but no rich RosterCut export, `ensure_active_shutdowns.py` creates a safe dashboard card from the macro workbook.
+
+## Naming and headings
+
+Dashboard headings are applied by `scripts/apply_shutdown_display_labels.py` and should follow:
+
+```text
+<RapidCrews JobNo> – <RapidCrews description>
 ```
 
-Re-run the parser. The banner disappears for that shutdown and fill-rate
-reflects the gap to target.
+Known fallback labels are stored in `JOB_DESCRIPTION_OVERRIDES` inside that script. Add new overrides there if the workbook does not expose a clean description.
 
-### Refreshing from the source dashboards
+## Hiring Company
 
-`scripts/sync_source_targets.py` fetches each source dashboard's `index.html`,
-extracts its planned roster, writes `data/imports/<company>-source.json`, and
-rewrites `data/targets/<shutdown_id>.json` using a per-company role map from
-the source vocabulary (e.g. Covalent's "Fitter - Inspections", Tronox's
-"Rigger - Advanced") into the Rapid Crews vocabulary the parser reads. Run it
-any time a site dashboard ships new targets, then re-run
-`scripts/parse_rapidcrews.py`.
+Hiring Company is applied in two layers:
 
-## Automation — GitHub Actions
+1. `scripts/apply_hiring_company.py` writes `hire_company` onto roster entries in `data/*.json`.
+2. `assets/matrix-hiring-company-safe.js` decorates the worker retention matrix after the main dashboard has rendered.
 
-`.github/workflows/refresh-data.yml` runs the full refresh loop without any
-manual invocation of the scripts. Three triggers:
+The enhancement is deliberately non-blocking. If it fails, the core dashboard still loads.
 
-| Trigger         | When it fires                                        | Use |
-|-----------------|------------------------------------------------------|-----|
-| **Push**        | A roster XLSX, target file, import, or script changes on `main` or the default branch | Auto-regenerates `data/*.json` after you upload a new RosterCut |
-| **Schedule**    | 22:00 UTC (~06:00 AWST) every day                    | Picks up overnight edits made on any per-site dashboard, even if nothing landed in this repo |
-| **Manual**      | "Run workflow" button on the Actions tab             | Force a refresh whenever you like |
+## Data validation
 
-Each run:
+The workflow runs:
 
-1. `pip install openpyxl`
-2. `python3 scripts/sync_source_targets.py` — pulls planned + confirmed counts
-   from each per-site dashboard (`Covalent-Mt-Holland---April-2026`,
-   `tronox-major-shutdown-may-2026`, `csbp-naan2-shutdown-workforce-dashboard`)
-3. `python3 scripts/parse_rapidcrews.py` — parses every XLSX in `data/raw/`
-   and merges the target overrides
-4. If any file under `data/` changed, the workflow bumps the `?v=…`
-   cache-buster on `index.html` (so iOS Safari refetches the CSS/JS after GH
-   Pages redeploys) and commits the lot back with
-   `Auto-refresh dashboard data [skip ci]`
+```sh
+python3 scripts/validate_dashboard_data.py
+```
 
-The `[skip ci]` in the auto-commit message stops the workflow from
-re-triggering itself. `concurrency: refresh-data-${ref}` lets a newer push
-queue up behind the current run rather than stepping on it.
+It validates:
 
-### What's still manual
+- JSON parses cleanly.
+- Each company file has `company` and `shutdowns`.
+- Each shutdown has ID, name, site, dates and status.
+- `required_by_role` and `filled_by_role` are role-to-integer maps.
+- Role keys match between required and filled maps.
+- `roster` is an array.
+- Worker rows have name and role.
 
-1. Uploading a RosterCut XLSX to `data/raw/` when a new Rapid Crews snapshot
-   is available (three options below: GitHub web UI, SharePoint drop-zone, or
-   `git add && push`).
-2. Editing `data/targets/*.json` or `data/imports/*.json` by hand when the
-   per-site dashboard role mapping needs a tweak — everything else is picked
-   up by the sync script.
+## Manual refresh
 
-Everything after those two things is automatic.
+Use:
 
-### Logs and manual runs
+```text
+GitHub -> Actions -> Refresh dashboard data -> Run workflow
+```
 
-Actions tab → "Refresh dashboard data" workflow. Click a run to see the
-per-step logs and the summary (which site dashboards were polled, whether
-anything changed). Hit "Run workflow" in the top-right for a manual refresh.
+Use this after script changes or when Power Automate has pushed data but the dashboard does not yet show it.
 
-## SharePoint drop-zone
+## Troubleshooting
 
-The refresh workflow already calls `scripts/sync_sharepoint.py` as its first
-step. It's a no-op unless five secrets are configured; once they are, any
-`.xlsx` dropped into the configured SharePoint folder is pulled into
-`data/raw/` on the next workflow run.
+See:
 
-Two ways to wire up the drop-zone — pick one:
+```text
+docs/troubleshooting.md
+```
 
-### Option A — Power Automate flow (no code, near-instant)
+Most failures are one of:
 
-SharePoint drop-zone → Power Automate → commits the XLSX to `data/raw/` on
-GitHub → the existing `refresh-data` workflow sees the push and reruns the
-whole pipeline. End-to-end latency ~ 60-90 seconds.
+- Power Automate pushed to the wrong branch.
+- GitHub Pages has not redeployed yet.
+- The workbook saved but no data changed under `data/*.json`.
+- A new JobNo is missing from `ACTIVE_SHUTDOWNS`.
+- A new JobNo has unmapped Client/Site text.
+- JSON validation failed.
 
-#### 1. Create a GitHub personal access token
+## Maintenance notes
 
-Needed once, stored in the Power Automate GitHub connection.
-
-1. GitHub → your avatar → **Settings** → **Developer settings** →
-   **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
-2. **Resource owner**: `N01dea5` · **Repository access**: "Only select
-   repositories" → `southwest-shutdowns`.
-3. **Permissions → Repository**:
-   - *Contents*: **Read and write** (so the flow can commit files)
-   - *Metadata*: **Read-only** (auto-enabled)
-   - *Actions*: **Read and write** (only if you want the optional
-     `workflow_dispatch` step below — otherwise skip)
-4. **Expiration**: 90 days is a sensible default; set a calendar reminder
-   to rotate.
-5. **Generate token** → copy the value. You will not see it again.
-
-#### 2. Build the flow
-
-1. **Power Automate** → **My flows** → **New flow** → **Automated cloud flow**.
-2. Name it "Southwest shutdowns — roster drop". Trigger: **When a file is
-   created (properties only)** (SharePoint connector).
-3. Trigger config:
-   - **Site Address**: the SharePoint site hosting the drop folder.
-   - **Library Name**: the document library (usually "Documents").
-   - **Folder**: the drop-zone subfolder (e.g. `/Rosters`). Leave blank to
-     watch the library root.
-4. **+ New step → Condition**:
-   - Left: `ends with` — drag in **File name with extension** from the
-     trigger's dynamic content.
-   - Operator: `ends with`
-   - Right: `.xlsx`
-   - This filters out Office temp files and anything that isn't a roster
-     export.
-5. Under **If yes**: **+ Add an action → SharePoint → Get file content**.
-   - **Site Address**: same site.
-   - **File Identifier**: select **Identifier** from the trigger's dynamic
-     content.
-6. **+ Add an action → GitHub → Create or update file contents**
-   (connection: sign in with your GitHub PAT when prompted).
-   - **Repository Owner**: `N01dea5`
-   - **Repository**: `southwest-shutdowns`
-   - **Branch**: `main`
-   - **File Path**: expression
-     ```
-     concat('data/raw/', triggerOutputs()?['body/{FilenameWithExtension}'])
-     ```
-   - **Commit Message**: expression
-     ```
-     concat('roster: drop ', triggerOutputs()?['body/{FilenameWithExtension}'])
-     ```
-   - **File Content**: **File Content** from the "Get file content" step's
-     output (the connector handles base64 encoding internally).
-7. **Save**.
-
-That's the minimum. The push to `data/raw/` hits the existing `on: push`
-trigger in `refresh-data.yml`, which re-parses and commits the regenerated
-`data/*.json` back to the same branch. GH Pages rebuilds and the dashboard
-picks up the new cache-buster.
-
-#### 3. (Optional) Kick the workflow manually for instant feedback
-
-Useful when the push event is rate-limited or delayed. Add one more step
-after **Create or update file contents**:
-
-- **+ Add an action → HTTP**:
-  - Method: `POST`
-  - URI: `https://api.github.com/repos/N01dea5/southwest-shutdowns/actions/workflows/refresh-data.yml/dispatches`
-  - Headers:
-    ```
-    Authorization: Bearer <same PAT as above>
-    Accept:        application/vnd.github+json
-    Content-Type:  application/json
-    ```
-  - Body: `{ "ref": "main" }`
-
-Drop the PAT into a Power Automate connection (**Settings → Connections**)
-rather than hard-coding it in the step, so it doesn't show up in run history.
-
-#### 4. Test it
-
-1. Drop a file named `9999 (RosterCut) 2026-04-14_18-00-00.xlsx` into the
-   SharePoint folder (use a copy of an existing roster).
-2. Flow run should appear green within a minute.
-3. GitHub → **Actions** tab → the "Refresh dashboard data" run should follow
-   seconds later, parse the file (skip-unmapped for unknown roster ids, or
-   parse normally if it's a mapped id), and commit the regenerated JSONs.
-4. Remove the test file from SharePoint and the repo when done.
-
-### Option B — GitHub Actions + Microsoft Graph (code-first)
-
-Keeps the entire pipeline inside this repo; no Power Automate needed.
-
-1. **Azure AD (Entra ID)** → register a new application.
-2. Grant it the **application** permission `Files.Read.All` (or the narrower
-   `Sites.Selected` with admin-consented read on the one site). Admin consent
-   required.
-3. Create a client secret; copy the value.
-4. **Repo → Settings → Secrets and variables → Actions** — add:
-
-   | Secret | Value |
-   |---|---|
-   | `SHAREPOINT_TENANT_ID` | Directory (tenant) ID |
-   | `SHAREPOINT_CLIENT_ID` | Application (client) ID |
-   | `SHAREPOINT_CLIENT_SECRET` | client secret value |
-   | `SHAREPOINT_SITE` | `<tenant>.sharepoint.com:/sites/<site-name>` |
-   | `SHAREPOINT_FOLDER` | path to the drop-zone inside the site's drive, e.g. `Shared Documents/Rosters` |
-
-5. The scheduled cron in `refresh-data.yml` now picks up any new XLSX inside
-   the folder on each run (nightly 22:00 UTC by default). Bump the cron to
-   `*/30 * * * *` or similar if you want sub-hourly polling.
-
-No secrets set → the SharePoint step logs `SharePoint sync skipped — no
-secrets configured` and the workflow continues as normal. Safe to enable
-later without touching the workflow file.
-
-## Retention semantics
-
-No stable employee IDs exist in the source data, so matching is on a normalised `name + role` key (lowercased, punctuation stripped, whitespace collapsed). Two retention views are shown side-by-side:
-
-- **Same-company retention** — for each shutdown, share of its roster who were also on that company's previous shutdown (chronological). Measures site loyalty.
-- **Cross-company carry-over** — for each shutdown, share of its roster who appeared on *any* prior shutdown at *any* of the three companies. Measures regional workforce stickiness and is mathematically ≥ same-company retention.
-
-A "new hires" column on the retention table equals `roster − cross-company returning`.
-
-A data-quality panel flags cases where the same normalised name+role is on two companies' rosters with overlapping dates — almost certainly two different people, surfaced for ops review.
+- Keep `main` as the live branch.
+- Keep GitHub Pages pointed at `main / root`.
+- Keep source workbook pushes limited to `data/raw/**` and `Resumes.xlsx`.
+- Avoid committing Office lock files such as `~$*.xlsx`.
+- Do not re-enable the old unsafe `assets/matrix-hiring-company.js`; the safe version is `assets/matrix-hiring-company-safe.js`.
+- The repo still contains generated data and workbook history. Periodically review `data/raw/`, `data/imports/` and `data/history/` for stale files.

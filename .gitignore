@@ -1,2 +1,31 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Office temporary lock files
+~$*.xlsx
+~$*.xlsm
+~$*.xls
+~$*.docx
+~$*.pptx
+
+# Atomic-save artefacts from the in-place XML edit pattern used on the
+# macro workbook (see scripts/parse_macro_data.py comments).
+*.xlsx.tmp
+
+# Local/runtime artefacts
+*.tmp
+*.log
+.env
+.env.*

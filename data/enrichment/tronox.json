@@ -1,0 +1,112 @@
+{
+  "_note": "Hand-maintained annotation overlay for the Tronox Major Shutdown per-site dashboard. parse_rapidcrews.py name-matches roster entries against this file and injects newhire/extras/drivers onto each worker's record in data/tronox.json. Migrated from the per-site dashboard's inline TICKETS object so the consolidated feed is the single source of truth. Ticket booleans live in the SQL compliance sheet; this file only holds fields the compliance sheet doesn't carry.",
+  "_source": "N01dea5/tronox-major-shutdown-may-2026 index.html — hand-authored Apr 2026",
+  "records": [
+    {
+      "name": "WANGLER, Graham",
+      "drivers": "C"
+    },
+    {
+      "name": "GANGEMI, Jake",
+      "newhire": true,
+      "extras": "CN",
+      "drivers": "C"
+    },
+    {
+      "name": "USORE, Ngoni",
+      "drivers": "C"
+    },
+    {
+      "name": "MUKUNGA, Herbert",
+      "drivers": "HR"
+    },
+    {
+      "name": "ANADIF, Omar",
+      "newhire": true,
+      "drivers": "C"
+    },
+    {
+      "name": "RATAHI, Hemi",
+      "extras": "C0, C6, SB, SI",
+      "drivers": "HR"
+    },
+    {
+      "name": "RAFFAELE, Roberto",
+      "drivers": "C"
+    },
+    {
+      "name": "DILENA, Jessica",
+      "drivers": "C-A"
+    },
+    {
+      "name": "SARTI, Federico",
+      "drivers": "HR"
+    },
+    {
+      "name": "THOMPSON, William",
+      "drivers": "HR"
+    },
+    {
+      "name": "BENDANI, Mehdi",
+      "newhire": true,
+      "drivers": "C"
+    },
+    {
+      "name": "SOSA, Lucrecia Celeste",
+      "newhire": true,
+      "drivers": "C"
+    },
+    {
+      "name": "RISCHIA, Mirko",
+      "newhire": true,
+      "drivers": "C"
+    },
+    {
+      "name": "VAN DER ZANDEN, Julian",
+      "drivers": "C"
+    },
+    {
+      "name": "RILEY, Adam",
+      "drivers": "C"
+    },
+    {
+      "name": "SMITH, Anthony",
+      "newhire": true
+    },
+    {
+      "name": "MENDIVIL, Jeremias",
+      "drivers": "C"
+    },
+    {
+      "name": "KARIKIS, Stefanos",
+      "drivers": "C"
+    },
+    {
+      "name": "GILCHRIST, Sharon",
+      "drivers": "HR"
+    },
+    {
+      "name": "THANGARASU, Prabhakaran",
+      "newhire": true,
+      "drivers": "C"
+    },
+    {
+      "name": "MOHAMED, Abdikadir",
+      "newhire": true,
+      "drivers": "C"
+    },
+    {
+      "name": "DOBBELAERE, Mitya",
+      "drivers": "C"
+    },
+    {
+      "name": "ABHINAV, Abhinav",
+      "drivers": "HR"
+    },
+    {
+      "name": "MENDY, Mathias",
+      "extras": "SI",
+      "drivers": "C"
+    }
+  ]
+}

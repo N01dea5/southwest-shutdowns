@@ -32,6 +32,7 @@ const state = {
   matrixSearch: "",        // live text filter for the matrix
   opsSearch: "",           // live text filter for the ops-roster tab
   opsOnsiteTodayOnly: false, // "on site today" checkbox state
+  resumes: new Map(),      // normalised-name -> {resume_url, updated, notes}
 };
 
 // -------------------- helpers --------------------
@@ -101,6 +102,18 @@ function companyColor(name) {
   return co ? co.color : "#888";
 }
 
+/** Render a resume-link badge for the given worker name. Empty string when
+ * we don't have a URL on file — callers just concatenate the output, so an
+ * absent resume keeps the layout stable. */
+function resumeBadge(name) {
+  const rec = state.resumes.get(normaliseName(name || ""));
+  if (!rec || !rec.resume_url) return "";
+  const upd = rec.updated ? ` · updated ${rec.updated}` : "";
+  return `<a class="resume-badge" href="${rec.resume_url}" target="_blank" rel="noopener"
+            title="Open CV in a new tab${upd}"
+            onclick="event.stopPropagation()">CV</a>`;
+}
+
 // -------------------- load --------------------
 
 async function load() {
@@ -111,6 +124,25 @@ async function load() {
   }));
   for (const payload of results) {
     if (payload && payload.company) state.raw[payload.company] = payload;
+  }
+
+  // Resumes are decorative — a 404 here shouldn't block the dashboard.
+  try {
+    const rr = await fetch("data/resumes.json", { cache: "no-store" });
+    if (rr.ok) {
+      const doc = await rr.json();
+      for (const r of doc.resumes || []) {
+        const k = normaliseName(r.name || "");
+        if (!k) continue;
+        state.resumes.set(k, {
+          resume_url: r.resume_url || "",
+          updated:    r.updated || "",
+          notes:      r.notes || "",
+        });
+      }
+    }
+  } catch (e) {
+    console.warn("Failed to load data/resumes.json:", e);
   }
 
   // Flatten and sort chronologically. Infer status from dates when missing.
@@ -235,7 +267,14 @@ function fulfillmentRollup(shutdowns) {
     }
     for (const [role, n] of Object.entries(s.filled_by_role)) {
       filled += n;
+      // filled_by_role can list roles that required_by_role doesn't — the
+      // SQL-sourced filled counts sometimes include on-site workers in
+      // roles (Superintendent, Site Coordinator, …) the per-site dashboard's
+      // required view doesn't plan for. Defensive init so the page doesn't
+      // crash when a role is present only on the filled side.
+      byCompany[s.company] = byCompany[s.company] || { required: 0, filled: 0 };
       byCompany[s.company].filled += n;
+      byRole[role] = byRole[role] || { required: 0, filled: 0 };
       byRole[role].filled += n;
     }
   }
@@ -329,12 +368,20 @@ function render() {
 
   const star = (cond) => cond ? '<span class="kpi-star" title="No real target supplied — value derived from confirmed roster">*</span>' : "";
 
-  // 1. Requested / Confirmed positions (demand first, supply second).
-  document.getElementById("kpi-positions").innerHTML = totalRoll.required
-    ? `${fmtInt(totalRoll.required)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.filled)}${star(allPlaceholder)}`
+  // 1. Requested / Confirmed positions (demand first, supply second). When
+  //    confirmed exceeds requested — the shutdown grew past its planned roster
+  //    — flag the surplus inline so the number isn't misread as "only" 100%.
+  const overRoll  = totalRoll.filled > totalRoll.required;
+  const surplusN  = totalRoll.filled - totalRoll.required;
+  const positionsEl = document.getElementById("kpi-positions");
+  positionsEl.className = "kpi-value" + (overRoll ? " positive" : "");
+  positionsEl.innerHTML = totalRoll.required
+    ? `${fmtInt(totalRoll.required)} <span class="kpi-sep">/</span> ${fmtInt(totalRoll.filled)}${star(allPlaceholder)}` +
+      (overRoll ? ` <span class="kpi-surplus" title="Confirmed exceeds the plan by ${fmtInt(surplusN)}">+${fmtInt(surplusN)}</span>` : "")
     : "—";
 
-  // 2. Overall fill rate — coloured green when ≥100%.
+  // 2. Overall fill rate — coloured green at ≥100%. Surpluses read above
+  //    100% (e.g. 106%) rather than clamping to 100 — the delta matters.
   const fillRateEl = document.getElementById("kpi-fillrate");
   fillRateEl.className = "kpi-value";
   if (totalRoll.required) {
@@ -382,11 +429,12 @@ function render() {
     nextSubEl.textContent = "No upcoming shutdowns";
   }
 
-  // Each render step is isolated — one failure shouldn't black out the rest of the page.
-  const chartRoll = fulfillmentRollup(view);
+  // Each render step is isolated — one failure shouldn't black out the rest
+  // of the page. totalRoll from above is reused (fulfillmentRollup is
+  // deterministic — no need to rerun it).
   const steps = [
-    ["company chart",    () => renderCompanyChart(chartRoll)],
-    ["trade chart",      () => renderTradeChart(chartRoll)],
+    ["company chart",    () => renderCompanyChart(totalRoll)],
+    ["trade chart",      () => renderTradeChart(totalRoll)],
     ["gantt",            () => renderGantt(view)],
     ["shutdown summary", () => renderShutdownSummary(view)],
     ["retention chart",  () => renderRetentionChart(view)],
@@ -529,66 +577,123 @@ function renderTradeChart(roll) {
 }
 
 function renderRetentionChart(view) {
-  // One line per company for same-company retention, plus one line for cross-company across the whole view.
-  const byCompany = {};
-  for (const s of view) {
-    (byCompany[s.company] = byCompany[s.company] || []).push(s);
-  }
-  Object.values(byCompany).forEach(arr => arr.sort((a, b) => a.start_date.localeCompare(b.start_date)));
-
-  // Build a shared x-axis of all shutdowns in the view, chronological.
+  // Horizontal stacked bar, one bar per shutdown, chronological. Each bar is
+  // partitioned into three bands: workers returning from the SAME company,
+  // workers returning from a DIFFERENT SRG-pool company, and NEW hires. The
+  // bar totals are the shutdown's roster size; the band widths are absolute
+  // headcounts (tooltips show the % of roster).
+  //
+  // This replaces the earlier multi-line chart: lines were sparse (each
+  // company only had values on its own shutdowns), overlapped the cross-
+  // company dashed line, and the category axis ran out of room once there
+  // were 6+ shutdowns. A stacked bar per shutdown reads at a glance and
+  // fills the card width regardless of shutdown count.
   const ordered = [...view].sort((a, b) => a.start_date.localeCompare(b.start_date));
-  const labels = ordered.map(s => `${s.company} ${s.name}`);
-
-  const datasets = [];
-  for (const [co, arr] of Object.entries(byCompany)) {
-    datasets.push({
-      label: `${co} – same company`,
-      data: ordered.map(s => s.company === co ? +(s.metrics.sameRetPct * 100).toFixed(1) : null),
-      borderColor: companyColor(co),
-      backgroundColor: companyColor(co),
-      spanGaps: true,
-      tension: 0.25,
-      borderWidth: 2,
-    });
-  }
-  datasets.push({
-    label: "Any company – cross-company carry-over",
-    data: ordered.map(s => +(s.metrics.crossRetPct * 100).toFixed(1)),
-    borderColor: BRAND.red,
-    backgroundColor: BRAND.red,
-    borderDash: [6, 4],
-    tension: 0.25,
-    borderWidth: 2.5,
-    pointRadius: 4,
-    pointHoverRadius: 6,
+  const labels  = ordered.map(s => {
+    const monthYear = new Date(s.start_date + "T00:00:00Z")
+      .toLocaleDateString(undefined, { month: "short", year: "2-digit", timeZone: "UTC" });
+    return `${s.company} · ${monthYear}`;
   });
 
+  // Propagate the row count so the card auto-grows — see .chart-wrap.retention.
+  const canvas = document.getElementById("chart-retention");
+  if (canvas && canvas.parentElement) {
+    canvas.parentElement.style.setProperty("--retention-rows", String(Math.max(1, ordered.length)));
+  }
+
+  // Derive band sizes (headcounts) per shutdown. `sameRet` is a subset of
+  // `crossRet`, so pure cross-company = crossRet - sameRet.
+  const sameCo   = ordered.map(s => s.metrics.sameRet);
+  const xCompany = ordered.map(s => Math.max(0, s.metrics.crossRet - s.metrics.sameRet));
+  const newHires = ordered.map(s => s.metrics.newHires);
+  const totals   = ordered.map(s => s.metrics.rosterSize);
+
+  // Build per-bar border colour so each bar is visually anchored to its
+  // company (echoes the company dot in the table below) without obscuring
+  // the three-band fill inside.
+  const coBorders = ordered.map(s => companyColor(s.company));
+
+  const pct = (n, total) => total ? ` (${Math.round(100 * n / total)}%)` : "";
+
   makeChart("chart-retention", {
-    type: "line",
-    data: { labels, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true, max: 100,
-          grid: { color: BRAND.border },
-          ticks: { color: BRAND.grey, callback: v => v + "%" },
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Returning – same company",
+          data: sameCo,
+          backgroundColor: "#16A34A",       // strong green — loyalty
+          borderColor: coBorders,
+          borderWidth: { top: 0, bottom: 0, left: 1, right: 0 },
+          stack: "roster",
         },
+        {
+          label: "Returning – cross-company",
+          data: xCompany,
+          backgroundColor: "#7FC89A",       // softer green — still returning, different site
+          borderColor: coBorders,
+          borderWidth: { top: 0, bottom: 0, left: 0, right: 0 },
+          stack: "roster",
+        },
+        {
+          label: "New hires",
+          data: newHires,
+          backgroundColor: BRAND.required,  // neutral grey — fresh intake
+          borderColor: coBorders,
+          borderWidth: { top: 0, bottom: 0, left: 0, right: 1 },
+          stack: "roster",
+        },
+      ],
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true, maintainAspectRatio: false,
+      // Fatter bars so the three-band fill is legible; clamped so short
+      // rosters don't disappear in the padding.
+      barPercentage: 0.82,
+      categoryPercentage: 0.88,
+      scales: {
         x: {
+          beginAtZero: true,
+          stacked: true,
           grid: { color: BRAND.border },
-          ticks: { color: BRAND.dark, font: { weight: "600" }, maxRotation: 60, minRotation: 30, autoSkip: false },
+          ticks: { color: BRAND.grey, precision: 0 },
+          title: { display: true, text: "Roster headcount",
+                   color: BRAND.grey, font: { size: 11, weight: "600" } },
+        },
+        y: {
+          stacked: true,
+          grid: { display: false },
+          ticks: { color: BRAND.dark, font: { weight: "700" } },
         },
       },
       plugins: {
-        legend: { position: "bottom", labels: { color: BRAND.dark, font: { weight: "600" } } },
+        legend: { position: "bottom",
+                  labels: { color: BRAND.dark, font: { weight: "600" }, boxWidth: 14 } },
         tooltip: {
           backgroundColor: BRAND.dark,
           titleColor: "#fff",
           bodyColor: "#fff",
           borderColor: BRAND.red,
           borderWidth: 1,
-          callbacks: { label: ctx => ctx.dataset.label + ": " + ctx.parsed.y + "%" },
+          callbacks: {
+            title: (items) => {
+              if (!items.length) return "";
+              const s = ordered[items[0].dataIndex];
+              return `${s.company} – ${s.name}`;
+            },
+            label: (ctx) => {
+              const total = totals[ctx.dataIndex];
+              const v = ctx.parsed.x;
+              return `${ctx.dataset.label}: ${v}${pct(v, total)}`;
+            },
+            afterBody: (items) => {
+              if (!items.length) return "";
+              const total = totals[items[0].dataIndex];
+              return `Total roster: ${total}`;
+            },
+          },
         },
       },
     },
@@ -1059,7 +1164,7 @@ function renderOpsRoster(view) {
       ? `<a class="mobile-link" href="${telHref}">${rec.mobile}</a>`
       : `<span class="muted">—</span>`;
     label.innerHTML = `
-      <div class="ops-roster-name">${rec.name}</div>
+      <div class="ops-roster-name">${rec.name} ${resumeBadge(rec.name)}</div>
       <div class="ops-roster-meta"><span class="ops-roster-role">${rec.role}</span> · ${mobileHtml}</div>`;
     row.appendChild(label);
 
@@ -1128,6 +1233,17 @@ function renderShutdownSummary(view) {
     const totalGap    = totalReq - totalFilled;
     const fillRate    = totalReq ? totalFilled / totalReq : 0;
     const isPlaceholder = s._source?.required_target_source === "PLACEHOLDER_FROM_ROSTER";
+    const isOverstaffed = totalReq > 0 && totalFilled > totalReq;
+    const overstaffedPill = isOverstaffed
+      ? `<span class="sd-over-pill" title="Confirmed roster is ${fmtInt(-totalGap)} above the requested plan">+${fmtInt(-totalGap)} over plan</span>`
+      : "";
+    // "Archived" pill when the live SQL view no longer has this JobNo — the
+    // parser re-hydrated it from data/history/, so numbers are frozen to the
+    // last successful refresh rather than the current live state.
+    const isArchived = s._source?.restored_from_archive === true;
+    const archivedPill = isArchived
+      ? `<span class="sd-archive-pill" title="Rapid Crews' live SQL view no longer lists this JobNo — values frozen to the last snapshot in data/history/">Archived</span>`
+      : "";
 
     const body = roles.map(r => {
       const rq   = req[r] || 0;
@@ -1180,6 +1296,7 @@ function renderShutdownSummary(view) {
         </div>
         <div class="sd-meta">
           <span class="sd-status status-${s.status}">${statusLabel(s.status)}</span>
+          ${overstaffedPill}${archivedPill}
           <span class="sd-dates">${fmtDate(s.start_date)} &rarr; ${fmtDate(s.end_date)}</span>
           <span class="sd-site">${s.site || ""}</span>
           <span class="sd-quick">${fmtInt(totalReq)} / ${fmtInt(totalFilled)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""} &middot; ${totalReq ? fmtPct(fillRate) : "—"}</span>
@@ -1224,8 +1341,13 @@ function renderShutdownSummary(view) {
  * across ALL shutdowns (not just the filtered view, so cross-company stickiness
  * stays visible even when filtered down to one company). Tick marks identify
  * the shutdowns each worker was rostered on, sorted by total count descending.
+ *
+ * Param is intentionally ignored: the matrix reads `state.shutdowns` directly
+ * so the filter chip above can whittle the KPI view without also collapsing
+ * the return history. Kept on the signature so `render()`'s dispatch table
+ * stays uniform.
  */
-function renderWorkerMatrix(viewShutdowns) {
+function renderWorkerMatrix(_viewShutdowns) {
   const table = document.getElementById("worker-matrix");
   if (!table) return;
 
@@ -1334,7 +1456,7 @@ function renderWorkerMatrix(viewShutdowns) {
       ? `<td><a class="mobile-link" href="tel:${w.mobile.replace(/\s+/g, "")}">${w.mobile}</a></td>`
       : `<td class="fill-empty">—</td>`;
     return `<tr data-key="${w.key}">
-      <td>${w.displayName}</td>
+      <td>${w.displayName} ${resumeBadge(w.displayName)}</td>
       ${roleCell}
       ${mobileCell}
       ${shutdowns.map(s => {
@@ -1447,10 +1569,10 @@ function togglePlaceholderBanner(placeholderShutdowns, allInView) {
   host.hidden = false;
   host.innerHTML =
     `<strong>Heads up:</strong> ${placeholderShutdowns.length} of ${allInView.length} shutdown(s) ` +
-    `are missing a real headcount target — fill-rate KPIs marked <span class="kpi-star">*</span> ` +
-    `default to 100% of the confirmed roster. Drop a target file at ` +
-    `<code>data/targets/&lt;shutdown_id&gt;.json</code> to override (affected: ` +
-    `<code>${ids}</code>).`;
+    `have no Required figure in Rapid Crews — fill-rate KPIs marked <span class="kpi-star">*</span> ` +
+    `default to 100% of the confirmed roster. Add the JobNo to Rapid Crews' JobPlanningView ` +
+    `or drop a manual override at <code>data/targets/&lt;shutdown_id&gt;.json</code> ` +
+    `(affected: <code>${ids}</code>).`;
 }
 
 function renderWarnings() {

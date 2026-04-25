@@ -2638,30 +2638,30 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Mechanical Fitter": 40,
-        "Trade Assistant": 20,
-        "Supervisor - Mechanical": 10,
-        "Boilermaker": 10,
-        "Rigger - Advanced": 0,
-        "Advanced Rigger": 10,
-        "Coded Welder": 20,
-        "Rigger - Intermediate": 0,
-        "Superintendent": 1,
         "Site Coordinator": 1,
-        "Sheet Metal Worker": 0
+        "Boilermaker": 10,
+        "Rigger - Intermediate": 0,
+        "Rigger - Advanced": 0,
+        "Sheet Metal Worker": 0,
+        "Trade Assistant": 20,
+        "Coded Welder": 20,
+        "Superintendent": 1,
+        "Mechanical Fitter": 40,
+        "Supervisor - Mechanical": 10,
+        "Advanced Rigger": 10
       },
       "filled_by_role": {
-        "Mechanical Fitter": 17,
-        "Trade Assistant": 20,
-        "Supervisor - Mechanical": 1,
-        "Boilermaker": 2,
-        "Rigger - Advanced": 0,
-        "Advanced Rigger": 5,
-        "Coded Welder": 1,
-        "Rigger - Intermediate": 0,
-        "Superintendent": 1,
         "Site Coordinator": 1,
-        "Sheet Metal Worker": 0
+        "Boilermaker": 2,
+        "Rigger - Intermediate": 0,
+        "Rigger - Advanced": 0,
+        "Sheet Metal Worker": 0,
+        "Trade Assistant": 20,
+        "Coded Welder": 1,
+        "Superintendent": 1,
+        "Mechanical Fitter": 17,
+        "Supervisor - Mechanical": 1,
+        "Advanced Rigger": 5
       },
       "crew_split": {
         "Day": 133
@@ -6939,5 +6939,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-25T03:03:18Z"
+  "generated_at": "2026-04-25T03:08:03Z"
 }

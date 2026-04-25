@@ -1404,28 +1404,7 @@ function renderShutdownSummary(view) {
  * stays uniform.
  */
 function updateMatrixConflictCounts() {
-  const table = document.getElementById("worker-matrix");
-  if (!table || !table.tHead || !table.tBodies[0]) return;
-  const headerRow = table.tHead.querySelector("tr");
-  if (!headerRow) return;
-  for (const th of headerRow.cells) {
-    const sid = th.dataset.shutdownId;
-    if (!sid) continue;
-    const count = table.tBodies[0]
-      .querySelectorAll(`td[data-shutdown-id="${sid}"].availability-conflict`).length;
-    let badge = th.querySelector(".conflict-count-badge");
-    if (count > 0) {
-      if (!badge) {
-        badge = document.createElement("span");
-        badge.className = "conflict-count-badge";
-        const btn = th.querySelector(".matrix-col-filter");
-        th.insertBefore(badge, btn || null);
-      }
-      badge.textContent = count + "✕";
-    } else if (badge) {
-      badge.remove();
-    }
-  }
+  // Removed — column conflict-count badges are no longer shown.
 }
 
 function renderWorkerMatrix(_viewShutdowns) {
@@ -1554,8 +1533,7 @@ function renderWorkerMatrix(_viewShutdowns) {
   const renderGen = ++state.matrixRenderGen;
   // Tell the availability overlay the table was rebuilt so it re-applies marks.
   document.dispatchEvent(new CustomEvent('matrixrendered'));
-  // Schedule conflict-count badge updates (runs after overlay settles).
-  [400, 800, 1600, 2500].forEach(ms => setTimeout(updateMatrixConflictCounts, ms));
+  // Conflict-count badges removed at user request — no scheduled updates needed.
 
   // Schedule DOM-based passes for "✗ only" (absent) and "· blank" columns.
   // Cells are looked up by data-shutdown-id so column insertions don't shift indices.

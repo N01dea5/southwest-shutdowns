@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-25T03:09:13Z",
+  "generated_at": "2026-04-27T02:45:47Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -1829,7 +1829,7 @@
           "expiry": "2026-05-28"
         },
         "wah": {
-          "status": "current",
+          "status": "expiring_soon",
           "expiry": "2026-05-27"
         },
         "ewp": {

@@ -489,7 +489,7 @@
         },
         {
           "sheet": "xpbi02 PersonnelRosterView",
-          "rows": 75984,
+          "rows": 66590,
           "columns": 7,
           "detected_header_row": 1,
           "headers": [

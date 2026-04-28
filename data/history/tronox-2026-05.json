@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-28T07:41:05Z",
+  "archived_at": "2026-04-28T08:43:22Z",
   "shutdown": {
     "id": "tronox-2026-05",
     "name": "1353 \u2013 Tronox Major Shutdown May 2026",
@@ -10,26 +10,26 @@
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
+      "Mechanical Fitter": 40,
+      "Advanced Rigger": 10,
+      "Site Coordinator": 1,
+      "Intermediate Rigger": 0,
+      "Supervisor - Mechanical": 10,
+      "Boilermaker": 10,
       "Superintendent": 1,
       "Trade Assistant": 20,
-      "Advanced Rigger": 10,
-      "Supervisor - Mechanical": 10,
-      "Intermediate Rigger": 0,
-      "Mechanical Fitter": 40,
-      "Coded Welder": 20,
-      "Site Coordinator": 1,
-      "Boilermaker": 10
+      "Coded Welder": 20
     },
     "filled_by_role": {
+      "Mechanical Fitter": 17,
+      "Advanced Rigger": 5,
+      "Site Coordinator": 1,
+      "Intermediate Rigger": 4,
+      "Supervisor - Mechanical": 1,
+      "Boilermaker": 2,
       "Superintendent": 1,
       "Trade Assistant": 20,
-      "Advanced Rigger": 5,
-      "Supervisor - Mechanical": 1,
-      "Intermediate Rigger": 4,
-      "Mechanical Fitter": 17,
-      "Coded Welder": 1,
-      "Site Coordinator": 1,
-      "Boilermaker": 2
+      "Coded Welder": 1
     },
     "crew_split": {
       "Day": 52
@@ -1864,15 +1864,15 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 52,
       "macro_data_filled_by_role": {
+        "Mechanical Fitter": 17,
         "Trade Assistant": 20,
         "Advanced Rigger": 5,
-        "Superintendent": 1,
-        "Boilermaker": 2,
-        "Mechanical Fitter": 17,
-        "Supervisor - Mechanical": 1,
         "Intermediate Rigger": 4,
-        "Site Coordinator": 1,
-        "Coded Welder": 1
+        "Boilermaker": 2,
+        "Coded Welder": 1,
+        "Superintendent": 1,
+        "Supervisor - Mechanical": 1,
+        "Site Coordinator": 1
       },
       "planning_filled_by_role": {
         "Superintendent": 1,

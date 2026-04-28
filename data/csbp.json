@@ -885,42 +885,42 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
+        "Mechanical Fitter": 23,
         "Sheet Metal Worker": 3,
-        "Trade Assistant": 18,
         "Advanced Rigger": 2,
-        "Supervisor - Mechanical": 4,
-        "Painter & Blaster": 2,
-        "Scaffolder": 6,
         "Intermediate Rigger": 3,
-        "Mechanical Fitter": 23
+        "Supervisor - Mechanical": 4,
+        "Scaffolder": 6,
+        "Trade Assistant": 18,
+        "Painter & Blaster": 2
       },
       "filled_by_role": {
-        "Trade Assistant": 18,
         "Mechanical Fitter": 25,
-        "Supervisor - Mechanical": 4,
-        "Intermediate Rigger": 4,
-        "Advanced Rigger": 2,
+        "Trade Assistant": 18,
         "Scaffolder": 6,
+        "Intermediate Rigger": 4,
         "Sheet Metal Worker": 3,
+        "Supervisor - Mechanical": 4,
+        "Advanced Rigger": 2,
         "Painter & Blaster": 2
       },
       "crew_split": {
         "Day": 64
       },
       "mobilised_by_role": {
-        "Trade Assistant": 18,
         "Mechanical Fitter": 25,
-        "Supervisor - Mechanical": 4,
-        "Intermediate Rigger": 4,
-        "Advanced Rigger": 2,
+        "Trade Assistant": 18,
         "Scaffolder": 6,
+        "Intermediate Rigger": 4,
         "Sheet Metal Worker": 3,
+        "Supervisor - Mechanical": 4,
+        "Advanced Rigger": 2,
         "Painter & Blaster": 2
       },
       "labour_hire_split": {
         "SRG - South West": 54,
-        "Hyrd - Labour Hire": 3,
         "SRG - Southwest Tronox": 5,
+        "Hyrd - Labour Hire": 3,
         "SRG - Active": 2
       },
       "roster": [
@@ -3053,13 +3053,13 @@
         "required_target_source": "TARGET_FILE",
         "macro_data_roster_size": 64,
         "macro_data_filled_by_role": {
-          "Trade Assistant": 18,
           "Mechanical Fitter": 25,
-          "Supervisor - Mechanical": 4,
-          "Intermediate Rigger": 4,
-          "Advanced Rigger": 2,
+          "Trade Assistant": 18,
           "Scaffolder": 6,
+          "Intermediate Rigger": 4,
           "Sheet Metal Worker": 3,
+          "Supervisor - Mechanical": 4,
+          "Advanced Rigger": 2,
           "Painter & Blaster": 2
         },
         "planning_filled_by_role": {},
@@ -3911,18 +3911,18 @@
       "end_date": "2026-06-22",
       "status": "booked",
       "required_by_role": {
-        "Trade Assistant": 16,
+        "Mechanical Fitter": 13,
         "Advanced Rigger": 4,
-        "Supervisor - Mechanical": 3,
         "Intermediate Rigger": 0,
-        "Mechanical Fitter": 13
+        "Supervisor - Mechanical": 3,
+        "Trade Assistant": 16
       },
       "filled_by_role": {
-        "Trade Assistant": 17,
+        "Mechanical Fitter": 13,
         "Advanced Rigger": 3,
-        "Supervisor - Mechanical": 3,
         "Intermediate Rigger": 1,
-        "Mechanical Fitter": 13
+        "Supervisor - Mechanical": 3,
+        "Trade Assistant": 17
       },
       "crew_split": {
         "Day": 37
@@ -5147,10 +5147,10 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 37,
         "macro_data_filled_by_role": {
-          "Mechanical Fitter": 13,
           "Trade Assistant": 17,
-          "Advanced Rigger": 3,
+          "Mechanical Fitter": 13,
           "Supervisor - Mechanical": 3,
+          "Advanced Rigger": 3,
           "Intermediate Rigger": 1
         },
         "planning_filled_by_role": {
@@ -5174,5 +5174,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-28T07:41:05Z"
+  "generated_at": "2026-04-28T08:43:22Z"
 }

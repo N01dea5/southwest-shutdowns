@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-28T08:44:34Z",
+  "generated_at": "2026-04-28T09:09:34Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/history/csbp-2026-05.json",
   "client": "CSBP",
   "dashboard": "CSBP NAAN2 Shutdown Workforce Dashboard",

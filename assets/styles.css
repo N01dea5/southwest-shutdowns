@@ -1024,7 +1024,7 @@ td.num, th.num {
    exceeds the requested plan. Green outline + soft fill so it reads as a
    positive variance (the team mobilised more people than required) and
    never clashes with the .status-in_progress amber chip next to it. */
-.sd-over-pill, .sd-archive-pill {
+.sd-over-pill, .sd-archive-pill, .sd-planning-pill {
   display: inline-flex;
   align-items: center;
   padding: 3px 10px;
@@ -1047,6 +1047,15 @@ td.num, th.num {
   color: var(--srg-grey);
   background: var(--srg-light);
   border: 1px solid var(--srg-grey-2);
+}
+/* "Planning view" pill: RapidCrews JobPlanningView reports more filled
+   positions than the named roster export contains. We trust the named
+   roster (matches the matrix and retention table); the pill makes the
+   upstream gap discoverable so it can be reconciled at source. */
+.sd-planning-pill {
+  color: #8a5a00;
+  background: #fff4d6;
+  border: 1px solid #d9a233;
 }
 
 .sd-kpis {

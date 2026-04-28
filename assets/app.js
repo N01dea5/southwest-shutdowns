@@ -168,9 +168,31 @@ async function load() {
       // Standardise every roster entry's display name up-front so matrix /
       // retention table / summary cards all see the same canonical form.
       const cleanRoster = s.roster.map(w => ({ ...w, name: standardiseName(w.name) }));
+
+      // Derive filled_by_role from the named roster (deduped by normalised
+      // name) so it matches what the matrix shows and what the retention
+      // table counts. The JSON's filled_by_role comes from RapidCrews'
+      // JobPlanningView which can disagree with the named export — typical
+      // case: planning view shows 5 Advanced Riggers filled, but the named
+      // export has zero by name. Without this we end up with a "filled" KPI
+      // and shutdown-detail total that no human roster entry backs up.
+      const rosterFilledByRole = {};
+      const seenKeys = new Set();
+      for (const w of cleanRoster) {
+        const k = workerKey(w);
+        if (!k || seenKeys.has(k)) continue;
+        seenKeys.add(k);
+        if (w.role) rosterFilledByRole[w.role] = (rosterFilledByRole[w.role] || 0) + 1;
+      }
+      // Keep the original JobPlanningView counts so we can surface the gap
+      // in the shutdown-detail card without losing the upstream view.
+      const planningFilledByRole = s.filled_by_role || {};
+
       state.shutdowns.push({
         ...s,
         roster: cleanRoster,
+        filled_by_role: rosterFilledByRole,
+        planning_filled_by_role: planningFilledByRole,
         status,
         company: payload.company,
         rosterKeys: new Set(cleanRoster.map(workerKey)),
@@ -1281,7 +1303,10 @@ function renderShutdownSummary(view) {
   for (const s of view) {
     const req = s.required_by_role || {};
     const fil = s.filled_by_role   || {};
-    const roles = [...new Set([...Object.keys(req), ...Object.keys(fil)])]
+    // Include planning-view roles in the breakdown so the "(planning view: N)"
+    // gap callout below isn't pointing to roles the table never lists.
+    const planningFil = s.planning_filled_by_role || {};
+    const roles = [...new Set([...Object.keys(req), ...Object.keys(fil), ...Object.keys(planningFil)])]
       .sort((a, b) => (req[b] || 0) - (req[a] || 0) || a.localeCompare(b));
 
     const totalReq    = Object.values(req).reduce((a, b) => a + b, 0);
@@ -1299,6 +1324,17 @@ function renderShutdownSummary(view) {
     const isArchived = s._source?.restored_from_archive === true;
     const archivedPill = isArchived
       ? `<span class="sd-archive-pill" title="Rapid Crews' live SQL view no longer lists this JobNo — values frozen to the last snapshot in data/history/">Archived</span>`
+      : "";
+
+    // RapidCrews' JobPlanningView occasionally counts role-fills (Riggers,
+    // Supervisor – Mechanical) that have no matching entry in the named
+    // roster export. We trust the named roster (since that's what every
+    // view counts), and surface the gap so users can see the upstream
+    // disagreement instead of being confused by silent differences.
+    const planningTotal = Object.values(planningFil).reduce((a, b) => a + b, 0);
+    const planningGap   = planningTotal - totalFilled;
+    const planningPill  = planningGap > 0
+      ? `<span class="sd-planning-pill" title="RapidCrews' JobPlanningView reports ${fmtInt(planningTotal)} filled, but only ${fmtInt(totalFilled)} have names in the roster export. The dashboard counts the named roster; refresh RapidCrews to reconcile.">Planning view: ${fmtInt(planningTotal)} (${fmtInt(planningGap)} unnamed)</span>`
       : "";
 
     const body = roles.map(r => {
@@ -1352,7 +1388,7 @@ function renderShutdownSummary(view) {
         </div>
         <div class="sd-meta">
           <span class="sd-status status-${s.status}">${statusLabel(s.status)}</span>
-          ${overstaffedPill}${archivedPill}
+          ${overstaffedPill}${planningPill}${archivedPill}
           <span class="sd-dates">${fmtDate(s.start_date)} &rarr; ${fmtDate(s.end_date)}</span>
           <span class="sd-site">${s.site || ""}</span>
           <span class="sd-quick">${fmtInt(totalReq)} / ${fmtInt(totalFilled)}${isPlaceholder ? '<span class="kpi-star">*</span>' : ""} &middot; ${totalReq ? fmtPct(fillRate) : "—"}</span>

@@ -595,11 +595,8 @@ def _build_one(job_no: int,
     # schedule types to pick start/end/crew. Workers who *only* have
     # Personal Event / Annual Leave / Working Elsewhere rows for this
     # job get skipped — they aren't actually on the shutdown.
-    roster_entries: list[dict] = []
-    crew_split:        Counter  = Counter()
-    mobilised_by_role: Counter  = Counter()
-    labour_hire_split: Counter  = Counter()
-    filled_by_role:    Counter  = Counter()
+    worker_candidates: list[dict] = []
+    filled_by_role: Counter = Counter()
     for pid, w in workers.items():
         onsite_dates = [d for d, st in zip(w["dates"],
                                            _explode_sched_types(w["sched_types"], len(w["dates"])))
@@ -632,23 +629,19 @@ def _build_one(job_no: int,
         }
         if mobile:
             entry["mobile"] = mobile
-        roster_entries.append(entry)
-
+        worker_candidates.append({
+            "entry": entry,
+            "role": role,
+            "shift": crew_label,
+            "hire_company": person["hire_company"],
+            "is_on_location": bool(w["is_on_location"]),
+            "onsite_days": len(onsite_dates),
+        })
         filled_by_role[role]  += 1
-        crew_split[crew_label] += 1
-        if w["is_on_location"]:
-            mobilised_by_role[role] += 1
-        labour_hire_split[person["hire_company"]] += 1
 
-    if not roster_entries:
+    if not worker_candidates:
         print(f"  warn: JobNo {job_no} has no on-site workers — skipping")
         return None
-
-    # Shutdown window = span of on-site workers' earliest/latest dates.
-    all_starts = [dt.date.fromisoformat(e["start"]) for e in roster_entries]
-    all_ends   = [dt.date.fromisoformat(e["end"])   for e in roster_entries]
-    sd, ed = min(all_starts), max(all_ends)
-    shutdown_id = f"{id_prefix}-{sd.isoformat()[:7]}"
 
     # JobPlanningView drives BOTH Required and Filled — those are the
     # figures the Rapid Crews website shows. PersonnelRosterView's unique
@@ -658,8 +651,49 @@ def _build_one(job_no: int,
     # source of truth; target files only apply when RC has nothing.
     planning_req = planning["required_by_role"]
     planning_fil = planning["filled_by_role"]
+    roster_selected = list(worker_candidates)
     if planning_req or any(planning_fil.values()):
-        all_keys = set(filled_by_role) | set(planning_req) | set(planning_fil)
+        # Matrix/headcount reconciliation: cap roster rows to JobPlanningView
+        # Filled counts per role (source of truth). Prefer workers explicitly
+        # marked on location, then those with the most on-site schedule days.
+        selected: list[dict] = []
+        by_role: dict[str, list[dict]] = defaultdict(list)
+        for c in worker_candidates:
+            by_role[c["role"]].append(c)
+        for role, candidates in by_role.items():
+            quota = int(planning_fil.get(role, 0))
+            if quota <= 0:
+                continue
+            ranked = sorted(
+                candidates,
+                key=lambda c: (
+                    0 if c["is_on_location"] else 1,
+                    -int(c["onsite_days"]),
+                    c["entry"]["start"],
+                    c["entry"]["name"],
+                ),
+            )
+            selected.extend(ranked[:quota])
+        roster_selected = selected
+
+    if not roster_selected:
+        print(f"  warn: JobNo {job_no} has no selected workers after planning reconciliation — skipping")
+        return None
+
+    # Shutdown window = span of selected workers' earliest/latest dates.
+    all_starts = [dt.date.fromisoformat(c["entry"]["start"]) for c in roster_selected]
+    all_ends   = [dt.date.fromisoformat(c["entry"]["end"])   for c in roster_selected]
+    sd, ed = min(all_starts), max(all_ends)
+    shutdown_id = f"{id_prefix}-{sd.isoformat()[:7]}"
+
+    roster_entries = sorted((c["entry"] for c in roster_selected), key=lambda r: r["name"])
+    crew_split: Counter = Counter(c["shift"] for c in roster_selected)
+    mobilised_by_role: Counter = Counter(c["role"] for c in roster_selected if c["is_on_location"])
+    labour_hire_split: Counter = Counter(c["hire_company"] for c in roster_selected)
+
+    if planning_req or any(planning_fil.values()):
+        selected_by_role = Counter(c["role"] for c in roster_selected)
+        all_keys = set(selected_by_role) | set(planning_req) | set(planning_fil)
         required     = {r: int(planning_req.get(r, 0)) for r in all_keys}
         filled_final = {r: int(planning_fil.get(r, 0)) for r in all_keys}
         target_source_meta     = {"source": "rapid_crews_job_planning_view",

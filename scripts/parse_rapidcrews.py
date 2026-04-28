@@ -887,27 +887,49 @@ def main() -> int:
               f"[{shutdown['status']}]")
 
     # -- 3b. Pull shutdowns from Rapidcrews Macro Data.xlsx (ACTIVE_SHUTDOWNS
-    #        sheet). RosterCut wins on shutdown-id collisions — richer
-    #        per-worker data (Position-On-Project, Confirmed, Crew Type).
+    #        sheet). Macro wins when it matches an existing RosterCut by
+    #        JobNo (same shutdown, fresher roster semantics). If two different
+    #        JobNos would otherwise share the same monthly id (e.g. CSBP NAAN1
+    #        + NAAN2 in the same month), keep both by suffixing the macro id.
     import parse_macro_data
     macro_triples   = parse_macro_data.shutdowns_from_macro_data()
     active_jobnos   = parse_macro_data.active_shutdowns_jobnos()
-    rc_ids          = {s["id"] for _, _, s in rc_triples}
     combined: list[tuple[str, str, dict]] = list(rc_triples)
+
+    def _job_no(sd: dict) -> int | None:
+        src = sd.get("_source", {}) or {}
+        for raw in (src.get("macro_data_job_no"), src.get("job_no"), src.get("rapid_crews_roster_id")):
+            try:
+                return int(raw)
+            except (TypeError, ValueError):
+                continue
+        return None
+
     for company_key, client_name, shutdown in macro_triples:
-        if shutdown["id"] in rc_ids:
-            print(f"  macro: JobNo {shutdown['_source']['macro_data_job_no']} "
-                  f"-> {shutdown['id']} already covered by RosterCut, skipping")
-            # Stamp the macro job number onto the matching RosterCut shutdown so
-            # _restore_from_history can include it in present_jobnos and won't
-            # restore a stale history snapshot for this job.
-            job_no = shutdown["_source"].get("macro_data_job_no")
-            if job_no is not None:
-                for _, _, rc_sd in combined:
-                    if rc_sd["id"] == shutdown["id"]:
-                        rc_sd.setdefault("_source", {})["macro_data_job_no"] = job_no
-                        break
+        macro_job = _job_no(shutdown)
+        sid = shutdown["id"]
+        # 1) Prefer matching by JobNo (authoritative identity for collisions).
+        match_idx = None
+        for i, (_, _, existing) in enumerate(combined):
+            if macro_job is not None and _job_no(existing) == macro_job:
+                match_idx = i
+                break
+        if match_idx is not None:
+            _, _, rc_sd = combined[match_idx]
+            print(f"  macro: JobNo {macro_job} -> {sid} overrides matched RosterCut")
+            rc_src = rc_sd.get("_source", {}) or {}
+            shutdown.setdefault("_source", {})["rapid_crews_export_file"] = rc_src.get("rapid_crews_export_file")
+            shutdown["_source"]["rapid_crews_roster_id"] = rc_src.get("rapid_crews_roster_id")
+            combined[match_idx] = (company_key, client_name, shutdown)
             continue
+
+        # 2) Different JobNo but same id token -> disambiguate with job suffix.
+        if any(existing["id"] == sid for _, _, existing in combined) and macro_job is not None:
+            shutdown = dict(shutdown)
+            shutdown["id"] = f"{sid}-{macro_job}"
+            print(f"  macro: JobNo {macro_job} id clash on {sid}; renamed -> {shutdown['id']}")
+        else:
+            print(f"  macro: JobNo {macro_job} -> {shutdown['id']} added (no matched RosterCut)")
         combined.append((company_key, client_name, shutdown))
 
     # -- 3c. If the ACTIVE_SHUTDOWNS sheet is present, it's an allow-list:

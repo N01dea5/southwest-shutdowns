@@ -814,6 +814,59 @@ def _file_key(xlsx: pathlib.Path) -> str:
     return xlsx.stem.strip()
 
 
+def _merge_macro_triples(
+    rc_triples: list[tuple[str, str, dict]],
+    macro_triples: list[tuple[str, str, dict]],
+) -> list[tuple[str, str, dict]]:
+    """Merge macro-derived shutdowns into RosterCut triples.
+
+    Rules:
+      1) Macro overrides when JobNo matches an existing shutdown.
+      2) If IDs collide but JobNo differs, macro shutdown id is suffixed
+         with "-<job_no>" so both shutdowns survive.
+      3) Preserve pointers to replaced RosterCut source files for audit.
+    """
+    combined: list[tuple[str, str, dict]] = list(rc_triples)
+
+    def _job_no(sd: dict) -> int | None:
+        src = sd.get("_source", {}) or {}
+        for raw in (src.get("macro_data_job_no"), src.get("job_no"), src.get("rapid_crews_roster_id")):
+            try:
+                return int(raw)
+            except (TypeError, ValueError):
+                continue
+        return None
+
+    for company_key, client_name, shutdown in macro_triples:
+        macro_job = _job_no(shutdown)
+        sid = shutdown["id"]
+
+        # Prefer authoritative identity (JobNo) over formatted id token.
+        match_idx = None
+        for i, (_, _, existing) in enumerate(combined):
+            if macro_job is not None and _job_no(existing) == macro_job:
+                match_idx = i
+                break
+        if match_idx is not None:
+            _, _, rc_sd = combined[match_idx]
+            print(f"  macro: JobNo {macro_job} -> {sid} overrides matched RosterCut")
+            rc_src = rc_sd.get("_source", {}) or {}
+            shutdown.setdefault("_source", {})["rapid_crews_export_file"] = rc_src.get("rapid_crews_export_file")
+            shutdown["_source"]["rapid_crews_roster_id"] = rc_src.get("rapid_crews_roster_id")
+            combined[match_idx] = (company_key, client_name, shutdown)
+            continue
+
+        # Different JobNo sharing the same monthly id (e.g. NAAN1 + NAAN2).
+        if any(existing["id"] == sid for _, _, existing in combined) and macro_job is not None:
+            shutdown = dict(shutdown)
+            shutdown["id"] = f"{sid}-{macro_job}"
+            print(f"  macro: JobNo {macro_job} id clash on {sid}; renamed -> {shutdown['id']}")
+        else:
+            print(f"  macro: JobNo {macro_job} -> {shutdown['id']} added (no matched RosterCut)")
+        combined.append((company_key, client_name, shutdown))
+    return combined
+
+
 def main() -> int:
     if not RAW_DIR.exists():
         print(f"No raw dir at {RAW_DIR}", file=sys.stderr)
@@ -887,30 +940,11 @@ def main() -> int:
               f"[{shutdown['status']}]")
 
     # -- 3b. Pull shutdowns from Rapidcrews Macro Data.xlsx (ACTIVE_SHUTDOWNS
-    #        sheet). Macro wins on shutdown-id collisions because its roster
-    #        is sourced from DailyPersonnelSchedule (matrix source of truth).
+    #        sheet), then merge with explicit JobNo-first conflict rules.
     import parse_macro_data
     macro_triples   = parse_macro_data.shutdowns_from_macro_data()
     active_jobnos   = parse_macro_data.active_shutdowns_jobnos()
-    combined_by_id: dict[str, tuple[str, str, dict]] = {
-        s["id"]: (company_key, client_name, s)
-        for company_key, client_name, s in rc_triples
-    }
-    for company_key, client_name, shutdown in macro_triples:
-        sid = shutdown["id"]
-        if sid in combined_by_id:
-            print(f"  macro: JobNo {shutdown['_source']['macro_data_job_no']} "
-                  f"-> {sid} overrides RosterCut roster")
-            # Keep a pointer to the raw export that existed for audit/debug.
-            _, _, rc_sd = combined_by_id[sid]
-            rc_src = rc_sd.get("_source") or {}
-            shutdown.setdefault("_source", {})["rapid_crews_export_file"] = rc_src.get("rapid_crews_export_file")
-            shutdown["_source"]["rapid_crews_roster_id"] = rc_src.get("rapid_crews_roster_id")
-        else:
-            print(f"  macro: JobNo {shutdown['_source']['macro_data_job_no']} "
-                  f"-> {sid} added (no matching RosterCut)")
-        combined_by_id[sid] = (company_key, client_name, shutdown)
-    combined: list[tuple[str, str, dict]] = list(combined_by_id.values())
+    combined = _merge_macro_triples(rc_triples, macro_triples)
 
     # -- 3c. If the ACTIVE_SHUTDOWNS sheet is present, it's an allow-list:
     #        RosterCut shutdowns whose numeric roster_id isn't listed drop

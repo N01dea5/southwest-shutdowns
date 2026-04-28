@@ -114,15 +114,15 @@
       const company = cells[1] || indexed.company || '';
       const start = cells[2] || indexed.start_date || '';
       // cells[5] is crossRet (all SRG returning, including same-client workers).
-      // Pure cross-company carry-over = crossRet minus same-client.
+      // Executive definition of "SRG carry-over" uses this full returning SRG
+      // cohort, so it should never be below "Same client".
       const same = parseCount(cells[4]);
       const crossRetRaw = parseCount(cells[5]);
-      const srgCarry = Math.max(0, crossRetRaw - same);
+      const srgCarry = Math.max(0, crossRetRaw);
       // Roster from indexed uses filled_by_role total (aligns with detail table).
       const roster = indexed.roster || parseCount(cells[3]) || 0;
-      // "New" = positions not filled by any returning SRG worker. Derived from
-      // the filled total so same + srgCarry + fresh always sums to roster.
-      const fresh = Math.max(0, roster - same - srgCarry);
+      // "New" = positions not filled by any returning SRG worker.
+      const fresh = Math.max(0, roster - srgCarry);
       const labourHireRaw = indexed.labourHire || 0;
       const labourHire = Math.min(labourHireRaw, roster || labourHireRaw);
       const srgPct = pct(srgCarry, roster);

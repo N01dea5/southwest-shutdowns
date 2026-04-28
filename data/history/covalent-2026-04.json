@@ -1,7 +1,7 @@
 {
   "company_key": "covalent",
   "client_name": "Covalent",
-  "archived_at": "2026-04-27T02:44:35Z",
+  "archived_at": "2026-04-28T01:06:32Z",
   "shutdown": {
     "id": "covalent-2026-04",
     "name": "1359 \u2013 Mt Holland April 2026",
@@ -10,40 +10,40 @@
     "end_date": "2026-05-01",
     "status": "in_progress",
     "required_by_role": {
-      "Lube Technician": 3,
-      "Site Coordinator": 1,
-      "HSE Advisor": 2,
       "Boilermaker": 4,
-      "Intermediate Rigger": 3,
-      "Supervisor": 1,
-      "Basic Rigger": 4,
-      "Electrician": 4,
-      "Coded Welder": 1,
       "Supervisor - Electrical": 1,
-      "Telehandler Operator": 2,
-      "Superintendent": 1,
-      "Advanced Rigger": 1,
-      "Mechanical Fitter": 24,
       "Trade Assistant": 5,
-      "Supervisor - Mechanical": 6
+      "Supervisor": 1,
+      "Superintendent": 1,
+      "Electrician": 4,
+      "Advanced Rigger": 1,
+      "Intermediate Rigger": 3,
+      "Site Coordinator": 1,
+      "Basic Rigger": 4,
+      "Mechanical Fitter": 24,
+      "Coded Welder": 1,
+      "Supervisor - Mechanical": 6,
+      "Lube Technician": 3,
+      "HSE Advisor": 2,
+      "Telehandler Operator": 2
     },
     "filled_by_role": {
-      "Lube Technician": 3,
-      "Site Coordinator": 1,
-      "HSE Advisor": 2,
       "Boilermaker": 4,
-      "Intermediate Rigger": 2,
-      "Supervisor": 1,
-      "Basic Rigger": 4,
-      "Electrician": 3,
-      "Coded Welder": 1,
       "Supervisor - Electrical": 1,
-      "Telehandler Operator": 1,
-      "Superintendent": 1,
-      "Advanced Rigger": 1,
-      "Mechanical Fitter": 21,
       "Trade Assistant": 5,
-      "Supervisor - Mechanical": 6
+      "Supervisor": 1,
+      "Superintendent": 1,
+      "Electrician": 3,
+      "Advanced Rigger": 1,
+      "Intermediate Rigger": 2,
+      "Site Coordinator": 1,
+      "Basic Rigger": 4,
+      "Mechanical Fitter": 21,
+      "Coded Welder": 1,
+      "Supervisor - Mechanical": 6,
+      "Lube Technician": 3,
+      "HSE Advisor": 2,
+      "Telehandler Operator": 1
     },
     "crew_split": {
       "Day": 32,
@@ -1918,7 +1918,7 @@
           "ewp": {
             "expiry": "2026-05-28",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAHONEY, James - f1be1792-0f2f-4dbe-a894-e845ca325108/MAHONEY, James - HRWL.jpeg",
-            "status": "current"
+            "status": "expiring_soon"
           },
           "fa": {
             "expiry": "2028-09-24",
@@ -1938,7 +1938,7 @@
           "hrwl": {
             "expiry": "2026-05-28",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAHONEY, James - f1be1792-0f2f-4dbe-a894-e845ca325108/MAHONEY, James - HRWL.jpeg",
-            "status": "current"
+            "status": "expiring_soon"
           },
           "gta": {
             "expiry": "2028-04-02",

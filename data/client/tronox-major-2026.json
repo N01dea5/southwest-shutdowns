@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-27T02:45:47Z",
+  "generated_at": "2026-04-28T01:07:42Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -18,11 +18,11 @@
     "confirmed_total": 48,
     "gap_total": 64,
     "same_client_retention": 32,
-    "srg_carry_over": 77,
+    "srg_carry_over": 74,
     "new_hires": 33,
     "buddy_required": 33,
     "shift_split": {
-      "Day": 116,
+      "Day": 113,
       "Night": 22
     },
     "role_shift_split": {
@@ -41,8 +41,11 @@
         "Day": 2,
         "Night": 2
       },
+      "Leading Hand": {
+        "Day": 1
+      },
       "Mechanical Fitter": {
-        "Day": 65,
+        "Day": 61,
         "Night": 7
       },
       "Rigger - Advanced": {
@@ -87,6 +90,12 @@
       "required": 20,
       "confirmed": 1,
       "gap": 19
+    },
+    {
+      "role": "Leading Hand",
+      "required": 0,
+      "confirmed": 0,
+      "gap": 0
     },
     {
       "role": "Mechanical Fitter",
@@ -1825,7 +1834,7 @@
       "buddy_required": false,
       "tickets": {
         "cse": {
-          "status": "current",
+          "status": "expiring_soon",
           "expiry": "2026-05-28"
         },
         "wah": {
@@ -1837,7 +1846,7 @@
           "expiry": "2029-05-02"
         },
         "gta": {
-          "status": "current",
+          "status": "expiring_soon",
           "expiry": "2026-05-28"
         },
         "hrwl": {
@@ -2405,39 +2414,6 @@
       }
     },
     {
-      "name": "Ivan RAYNOV",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-11-06"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-11-06"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2026-08-24"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2030-11-22"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2026-08-24"
-        }
-      }
-    },
-    {
       "name": "Jack MONTEBELLO",
       "role": "Mechanical Fitter",
       "shift": "Day",
@@ -2485,6 +2461,48 @@
         "hrwl": {
           "status": "current",
           "expiry": "2028-10-12"
+        }
+      }
+    },
+    {
+      "name": "Jade MATENGA",
+      "role": "Leading Hand",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2027-05-10"
+        },
+        "hr": {
+          "status": "current",
+          "expiry": "2027-11-11"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2027-05-10"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2027-05-10",
+          "level": "Advanced"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2027-05-10"
         }
       }
     },
@@ -2562,18 +2580,6 @@
           "expiry": "2031-02-25"
         }
       }
-    },
-    {
-      "name": "James GARDINER",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
     },
     {
       "name": "Jared SCHERER",
@@ -3385,39 +3391,6 @@
       }
     },
     {
-      "name": "Ominder SINGH",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-07-09"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-07-09"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2027-11-10"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-07-09"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-11-10"
-        }
-      }
-    },
-    {
       "name": "Pralhad PAWAR",
       "role": "Mechanical Fitter",
       "shift": "Day",
@@ -3983,44 +3956,6 @@
         "gta": {
           "status": "current",
           "expiry": "2027-07-21"
-        }
-      }
-    },
-    {
-      "name": "Wilfredo MAPANAO",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-10-12"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-10-12"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-04-15"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2029-04-15"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-04-15",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-04-15"
         }
       }
     },

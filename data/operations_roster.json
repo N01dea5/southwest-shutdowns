@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-27T02:44:49Z",
-  "worker_count": 382,
+  "generated_at": "2026-04-28T01:06:46Z",
+  "worker_count": 373,
   "workers": [
     {
       "personnel_id": "F8CD2F42-6730-457A-BA9B-8241A8650DF8",
@@ -22,7 +22,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -184,7 +184,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -206,6 +206,15 @@
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -217,19 +226,10 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1409",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -580,7 +580,7 @@
           "job_no": "1275",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-10",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -625,7 +625,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -634,7 +634,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -814,7 +814,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -1912,7 +1912,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -3010,7 +3010,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -3019,7 +3019,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -4981,7 +4981,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -6393,6 +6393,159 @@
       ]
     },
     {
+      "personnel_id": "14774ADF-8F80-43C3-869A-A56CA9ABC3A2",
+      "name": "Archieval LAR",
+      "role": "Boilermaker",
+      "mobile": "0432 121 359",
+      "hire_company": "Western Workforce - Labour Hire",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-29",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "6EA10325-AECD-415A-9BB8-F660CAE7A409",
       "name": "Arron NAIRN",
       "role": "Boilermaker",
@@ -6439,7 +6592,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -6610,7 +6763,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -7043,7 +7196,7 @@
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-21",
-          "end": "2026-05-01",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -7114,7 +7267,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -7267,26 +7420,8 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-29",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "313AD3CD-979F-4472-9832-503ECB3C1525",
-      "name": "Bianca IVORRA",
-      "role": "Trade Assistant",
-      "mobile": "0467 848 023",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -7312,7 +7447,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -7465,7 +7600,7 @@
           "job_no": "1275",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -8617,7 +8752,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -8635,7 +8770,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -8803,15 +8938,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -8824,7 +8950,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -8880,15 +9006,6 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-08",
           "end": "2026-06-18",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -10174,7 +10291,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -10225,19 +10342,10 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -10907,6 +11015,15 @@
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -11094,6 +11211,15 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-08",
           "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -11434,7 +11560,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -11605,7 +11731,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -11938,7 +12064,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -14435,6 +14561,15 @@
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -15853,7 +15988,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -18652,7 +18787,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -18805,7 +18940,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -18942,6 +19077,15 @@
           "site": "Tianqi Lithium",
           "start": "2026-05-31",
           "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1405",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -19822,7 +19966,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -19831,7 +19975,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -19984,7 +20128,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -20056,7 +20200,7 @@
           "job_no": "1409",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -21682,15 +21826,6 @@
           "is_on_location": true
         },
         {
-          "job_no": "1356",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-04-29",
-          "end": "2026-05-01",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -21757,7 +21892,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -21793,7 +21928,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -21991,7 +22126,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -22002,15 +22137,6 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-06",
           "end": "2026-06-18",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -22027,7 +22153,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -22225,7 +22351,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -22396,7 +22522,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -22603,7 +22729,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -22621,7 +22747,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -22783,7 +22909,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -23881,7 +24007,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -24024,39 +24150,12 @@
       ]
     },
     {
-      "personnel_id": "E96241F2-0017-4A77-B026-AE49764D8522",
-      "name": "Gary CAVERZASIO",
-      "role": "Trade Assistant",
-      "mobile": "0499 098 280",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1359",
-          "client": "SOUTH WEST",
-          "site": "Covalent Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-28",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "CD6C2BAB-3A15-4E1B-A5C0-C8BDFFBDCE83",
       "name": "Gaston FARRERO",
       "role": "Trade Assistant",
       "mobile": "0456 530 802",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -24106,7 +24205,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -24268,7 +24367,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -24277,7 +24376,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -24416,6 +24515,15 @@
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -24439,7 +24547,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -24457,7 +24565,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -25546,7 +25654,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -25717,7 +25825,7 @@
           "job_no": "1196",
           "client": "ALCOA",
           "site": "Kwinana",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-26",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -25753,7 +25861,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -25794,15 +25902,6 @@
       "mobile": "0431 042 219",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -27337,7 +27436,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -27543,42 +27642,6 @@
       ]
     },
     {
-      "personnel_id": "139B9CA5-BD07-46F5-B1B8-BFCD6246A0E2",
-      "name": "Haeun LEE",
-      "role": "Trade Assistant",
-      "mobile": "0419 860 888",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "C5B95CAD-9E14-4650-8ACE-7A9E6049CAB7",
-      "name": "Hannah SULTAN",
-      "role": "Trade Assistant",
-      "mobile": "0476050686",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "7642876E-F91D-4ACE-BF32-9B6E8FDC2E93",
       "name": "Harris TUHAKARAINA",
       "role": "Scaffolder - Advanced",
@@ -27643,7 +27706,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -27922,7 +27985,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -28111,7 +28174,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -29605,10 +29668,10 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1375",
@@ -29650,7 +29713,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -29677,7 +29740,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -30154,7 +30217,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-29",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -30169,15 +30232,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -30190,7 +30244,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -30199,7 +30253,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -30394,15 +30448,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1380",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -30415,10 +30460,10 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30427,7 +30472,7 @@
           "start": "2026-05-03",
           "end": "2026-05-03",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30436,7 +30481,7 @@
           "start": "2026-05-05",
           "end": "2026-05-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30445,7 +30490,7 @@
           "start": "2026-05-07",
           "end": "2026-05-07",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30454,7 +30499,7 @@
           "start": "2026-05-09",
           "end": "2026-05-09",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30463,7 +30508,7 @@
           "start": "2026-05-11",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30472,7 +30517,7 @@
           "start": "2026-05-13",
           "end": "2026-05-13",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30481,7 +30526,7 @@
           "start": "2026-05-15",
           "end": "2026-05-15",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30490,7 +30535,7 @@
           "start": "2026-05-17",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30499,7 +30544,7 @@
           "start": "2026-05-19",
           "end": "2026-05-19",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30508,7 +30553,7 @@
           "start": "2026-05-21",
           "end": "2026-05-21",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30517,7 +30562,7 @@
           "start": "2026-05-23",
           "end": "2026-05-23",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30526,7 +30571,7 @@
           "start": "2026-05-25",
           "end": "2026-05-25",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30535,7 +30580,7 @@
           "start": "2026-05-27",
           "end": "2026-05-27",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30544,7 +30589,7 @@
           "start": "2026-05-29",
           "end": "2026-05-29",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -30553,16 +30598,7 @@
           "start": "2026-05-31",
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1405",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-05-13",
-          "end": "2026-05-16",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -30658,10 +30694,10 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -30703,7 +30739,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -30934,13 +30970,436 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-30",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-31",
+          "end": "2026-06-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-03",
+          "end": "2026-06-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-07",
+          "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-09",
+          "end": "2026-06-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-11",
+          "end": "2026-06-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-13",
+          "end": "2026-06-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-15",
+          "end": "2026-06-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-17",
+          "end": "2026-06-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-19",
+          "end": "2026-06-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-21",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-23",
+          "end": "2026-06-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-25",
+          "end": "2026-06-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-27",
+          "end": "2026-06-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-29",
+          "end": "2026-06-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-01",
+          "end": "2026-07-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-03",
+          "end": "2026-07-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-05",
+          "end": "2026-07-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-07",
+          "end": "2026-07-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-09",
+          "end": "2026-07-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-11",
+          "end": "2026-07-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-13",
+          "end": "2026-07-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-15",
+          "end": "2026-07-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-17",
+          "end": "2026-07-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-19",
+          "end": "2026-07-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-21",
+          "end": "2026-07-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-23",
+          "end": "2026-07-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-25",
+          "end": "2026-07-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-27",
+          "end": "2026-07-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-29",
+          "end": "2026-07-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-31",
+          "end": "2026-07-31",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -31000,7 +31459,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -31180,7 +31639,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-13",
+          "start": "2026-05-12",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -31200,150 +31659,6 @@
           "site": "Tronox",
           "start": "2026-05-18",
           "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-05-01",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-03",
-          "end": "2026-05-03",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-05",
-          "end": "2026-05-05",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-07",
-          "end": "2026-05-07",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-09",
-          "end": "2026-05-09",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-11",
-          "end": "2026-05-11",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-13",
-          "end": "2026-05-13",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-15",
-          "end": "2026-05-15",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-17",
-          "end": "2026-05-17",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-19",
-          "end": "2026-05-19",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-21",
-          "end": "2026-05-21",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-23",
-          "end": "2026-05-23",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-25",
-          "end": "2026-05-25",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-27",
-          "end": "2026-05-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-29",
-          "end": "2026-05-29",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-05-31",
-          "end": "2026-06-05",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -31807,19 +32122,10 @@
           "is_on_location": true
         },
         {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -31834,10 +32140,118 @@
           "is_on_location": false
         },
         {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "F1BE1792-0F2F-4DBE-A894-E845CA325108",
+      "name": "James MAHONEY",
+      "role": "Electrician",
+      "mobile": "0444 536 537",
+      "hire_company": "SRG - Active",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "D44C6217-F879-43DC-AA70-298EDD14E204",
+      "name": "Jamie ADAMS",
+      "role": "Mechanical Fitter",
+      "mobile": "0436 486 524",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1356",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1380",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-04-20",
+          "end": "2026-04-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1405",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-12",
+          "end": "2026-05-16",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "4D35D51A-F318-46B6-ADAF-CA8D2C1B1406",
+      "name": "Jamie MCCAFFREY",
+      "role": "Boilermaker",
+      "mobile": "0428 641 209",
+      "hire_company": "Western Workforce - Labour Hire",
+      "assignments": [
+        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -31974,87 +32388,6 @@
           "site": "Tianqi Lithium",
           "start": "2026-05-31",
           "end": "2026-06-05",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "F1BE1792-0F2F-4DBE-A894-E845CA325108",
-      "name": "James MAHONEY",
-      "role": "Electrician",
-      "mobile": "0444 536 537",
-      "hire_company": "SRG - Active",
-      "assignments": [
-        {
-          "job_no": "1359",
-          "client": "SOUTH WEST",
-          "site": "Covalent Lithium",
-          "start": "2026-04-21",
-          "end": "2026-04-29",
-          "schedule_type": "Day Shift",
-          "is_on_location": true
-        }
-      ]
-    },
-    {
-      "personnel_id": "D44C6217-F879-43DC-AA70-298EDD14E204",
-      "name": "Jamie ADAMS",
-      "role": "Mechanical Fitter",
-      "mobile": "0436 486 524",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1356",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-04-29",
-          "end": "2026-05-01",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1359",
-          "client": "SOUTH WEST",
-          "site": "Covalent Lithium",
-          "start": "2026-04-23",
-          "end": "2026-04-28",
-          "schedule_type": "Day Shift",
-          "is_on_location": true
-        },
-        {
-          "job_no": "1375",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-06-08",
-          "end": "2026-06-18",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1380",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-04-20",
-          "end": "2026-04-21",
-          "schedule_type": "Day Shift",
-          "is_on_location": true
-        },
-        {
-          "job_no": "1405",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -33313,7 +33646,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -33322,7 +33655,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -34069,7 +34402,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -34078,7 +34411,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -34258,7 +34591,7 @@
           "job_no": "1409",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -34339,7 +34672,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-12",
+          "start": "2026-05-13",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -35767,15 +36100,6 @@
           "is_on_location": true
         },
         {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1206",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -35798,7 +36122,7 @@
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-21",
-          "end": "2026-05-01",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         },
@@ -37354,7 +37678,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -37552,7 +37876,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-12",
+          "start": "2026-05-13",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -39118,7 +39442,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -41017,7 +41341,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -44446,7 +44770,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -44605,15 +44929,6 @@
           "is_on_location": false
         },
         {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -44653,25 +44968,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-28",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "7273119A-67E2-4363-809D-78B47AB159A1",
-      "name": "Julia VAATAINEN",
-      "role": "Trade Assistant",
-      "mobile": "0402 737 490",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1359",
-          "client": "SOUTH WEST",
-          "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -44698,7 +44995,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -44707,7 +45004,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -44923,7 +45220,7 @@
           "job_no": "1409",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -46228,7 +46525,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -46237,7 +46534,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -46399,7 +46696,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -46570,7 +46867,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -46588,7 +46885,7 @@
           "job_no": "1409",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -46615,7 +46912,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -48055,7 +48352,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -48217,7 +48514,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -48281,7 +48578,7 @@
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-20",
-          "end": "2026-04-28",
+          "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
         },
@@ -48298,7 +48595,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-12",
+          "start": "2026-05-13",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -48316,7 +48613,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -48828,24 +49125,6 @@
       ]
     },
     {
-      "personnel_id": "85F94D22-2A8D-45A4-8012-38EE4FD226CF",
-      "name": "Lauryn REDUIT",
-      "role": "Trade Assistant",
-      "mobile": "0409 543 555",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "7544B635-4F62-4B54-AEEF-D2AA5F28C1BA",
       "name": "Lea MONDESIR",
       "role": "Trade Assistant",
@@ -48914,15 +49193,6 @@
           "end": "2026-06-18",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
         }
       ]
     },
@@ -48933,15 +49203,6 @@
       "mobile": "0427 288 150",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -49009,7 +49270,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -50908,7 +51169,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -50980,7 +51241,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -50998,7 +51259,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -51135,6 +51396,15 @@
           "site": "Tianqi Lithium",
           "start": "2026-05-31",
           "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -53122,7 +53392,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -53555,7 +53825,7 @@
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-20",
-          "end": "2026-05-01",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         },
@@ -53599,7 +53869,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -53608,7 +53878,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -55309,7 +55579,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -55322,6 +55592,15 @@
           "end": "2026-06-18",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -55332,15 +55611,6 @@
       "mobile": "0493 952 084",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -55426,7 +55696,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -55435,7 +55705,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -55578,6 +55848,24 @@
       ]
     },
     {
+      "personnel_id": "56DB33B4-E421-4319-A173-6984A8EEAE56",
+      "name": "Manuel AUGILOR",
+      "role": "Electrician",
+      "mobile": "0448 576 336",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-28",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "EBA0088A-878A-4F99-B023-2827FC38134B",
       "name": "Mao LI",
       "role": "Mechanical Fitter",
@@ -55597,10 +55885,10 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1375",
@@ -55608,6 +55896,15 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-08",
           "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -55624,7 +55921,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -55642,7 +55939,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -55992,24 +56289,6 @@
       ]
     },
     {
-      "personnel_id": "68CD150E-D687-41D3-A0D9-B05463CF1A4A",
-      "name": "Martina ROSSI",
-      "role": "Trade Assistant",
-      "mobile": "0472 608 149",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "027304F6-8511-468A-AD6A-DB0F0573E02D",
       "name": "Mathias MENDY",
       "role": "Boilermaker",
@@ -56065,7 +56344,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -56263,10 +56542,10 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56275,7 +56554,7 @@
           "start": "2026-05-03",
           "end": "2026-05-03",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56284,7 +56563,7 @@
           "start": "2026-05-05",
           "end": "2026-05-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56293,7 +56572,7 @@
           "start": "2026-05-07",
           "end": "2026-05-07",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56302,7 +56581,7 @@
           "start": "2026-05-09",
           "end": "2026-05-09",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56311,7 +56590,7 @@
           "start": "2026-05-11",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56320,7 +56599,7 @@
           "start": "2026-05-13",
           "end": "2026-05-13",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56329,7 +56608,7 @@
           "start": "2026-05-15",
           "end": "2026-05-15",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56338,7 +56617,7 @@
           "start": "2026-05-17",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56347,7 +56626,7 @@
           "start": "2026-05-19",
           "end": "2026-05-19",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56356,7 +56635,7 @@
           "start": "2026-05-21",
           "end": "2026-05-21",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56365,7 +56644,7 @@
           "start": "2026-05-23",
           "end": "2026-05-23",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56374,7 +56653,7 @@
           "start": "2026-05-25",
           "end": "2026-05-25",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56383,7 +56662,7 @@
           "start": "2026-05-27",
           "end": "2026-05-27",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56392,7 +56671,7 @@
           "start": "2026-05-29",
           "end": "2026-05-29",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -56401,7 +56680,7 @@
           "start": "2026-05-31",
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -56452,7 +56731,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -56471,7 +56750,7 @@
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-23",
-          "end": "2026-04-28",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -56488,7 +56767,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -59107,7 +59386,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -60934,7 +61213,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -60952,7 +61231,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -63229,7 +63508,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -64921,7 +65200,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -65083,7 +65362,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -65101,7 +65380,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -65272,7 +65551,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -66952,19 +67231,10 @@
           "is_on_location": false
         },
         {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-12",
+          "start": "2026-05-13",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -66982,7 +67252,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -67049,6 +67319,15 @@
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -67072,7 +67351,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -67144,7 +67423,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -67180,26 +67459,8 @@
           "job_no": "1275",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-10",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "86FE0C1B-FEC3-4ECB-ADDE-ACFAC920D765",
-      "name": "Nicole HUNTER",
-      "role": "Trade Assistant",
-      "mobile": "0468 416 521",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -67234,7 +67495,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -67303,19 +67564,10 @@
           "is_on_location": true
         },
         {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -67333,7 +67585,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -67472,15 +67724,6 @@
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        },
-        {
-          "job_no": "1405",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
         }
       ]
     },
@@ -67506,15 +67749,6 @@
           "site": "Tronox",
           "start": "2026-05-18",
           "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1356",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-04-29",
-          "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
         },
@@ -69061,7 +69295,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -69601,26 +69835,8 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "912FCCBB-DD9B-4624-85A9-8C6F4A492696",
-      "name": "Paula TEIXEIRA",
-      "role": "Trade Assistant",
-      "mobile": "0460 882 590",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -69664,7 +69880,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-13",
+          "start": "2026-05-12",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -69988,7 +70204,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -70159,7 +70375,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -70231,7 +70447,7 @@
           "job_no": "1173",
           "client": "SOUTH WEST",
           "site": "Tronox",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -71329,7 +71545,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -71356,7 +71572,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -71542,15 +71758,6 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1353",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -71563,7 +71770,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -71734,7 +71941,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -72094,10 +72301,10 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -72109,19 +72316,10 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
-          "job_no": "1359",
-          "client": "SOUTH WEST",
-          "site": "Covalent Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -74114,15 +74312,6 @@
           "end": "2026-06-18",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        },
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
         }
       ]
     },
@@ -74200,7 +74389,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -74301,6 +74490,15 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-08",
           "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1409",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-28",
+          "end": "2026-05-12",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -74479,7 +74677,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -74515,7 +74713,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -74535,6 +74733,15 @@
           "site": "CSBP Kwinana",
           "start": "2026-05-12",
           "end": "2026-05-16",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -74965,7 +75172,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -74974,7 +75181,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -77124,24 +77331,6 @@
       ]
     },
     {
-      "personnel_id": "35005B14-259F-43CF-A5BE-A986D38B8AF1",
-      "name": "Scott FARDIG",
-      "role": "Rigger - Advanced",
-      "mobile": "0400 557 907",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "CC876CC2-ADC4-4682-9A62-468009F532C8",
       "name": "Scott James LUPTON",
       "role": "Scaffolder - Advanced",
@@ -79250,7 +79439,7 @@
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
           "start": "2026-04-23",
-          "end": "2026-04-28",
+          "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -79330,7 +79519,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -79348,7 +79537,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -79521,15 +79710,6 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-08",
           "end": "2026-06-18",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1409",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-04-28",
-          "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -80229,39 +80409,12 @@
       ]
     },
     {
-      "personnel_id": "4B019164-0641-4F6A-AADA-B7EDD65A0573",
-      "name": "Sven \ud83d\udd37 HOPLA",
-      "role": "Rigger - Advanced",
-      "mobile": "0447103566",
-      "hire_company": "Western Workforce - Labour Hire",
-      "assignments": [
-        {
-          "job_no": "1359",
-          "client": "SOUTH WEST",
-          "site": "Covalent Lithium",
-          "start": "2026-04-27",
-          "end": "2026-05-01",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "7A8B1A68-44BD-4205-B83E-AFB619254F5E",
       "name": "Swapnil KAMATE",
       "role": "Mechanical Fitter",
       "mobile": "0470 686 020",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1217",
           "client": "CSBP",
@@ -80338,7 +80491,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-12",
+          "start": "2026-05-13",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -80365,7 +80518,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -80383,7 +80536,7 @@
           "job_no": "1285",
           "client": "BP",
           "site": "Kwinana",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -80734,7 +80887,7 @@
           "job_no": "1364",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -82444,7 +82597,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -82453,7 +82606,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -82727,15 +82880,6 @@
           "end": "2026-06-21",
           "schedule_type": "Day Shift",
           "is_on_location": false
-        },
-        {
-          "job_no": "1409",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-04-28",
-          "end": "2026-05-11",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
         }
       ]
     },
@@ -82746,15 +82890,6 @@
       "mobile": "0466 978 862",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1196",
-          "client": "ALCOA",
-          "site": "Kwinana",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1353",
           "client": "SOUTH WEST",
@@ -82930,7 +83065,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -83362,7 +83497,7 @@
           "job_no": "1275",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -84748,7 +84883,7 @@
           "job_no": "1365",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -84910,7 +85045,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -85341,30 +85476,291 @@
       ]
     },
     {
-      "personnel_id": "76855A98-FDFB-4D3E-AC65-FB95B359E127",
-      "name": "Victor JOVENEAU",
-      "role": "Trade Assistant",
-      "mobile": "0458 498 626",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
       "personnel_id": "71438312-D4C1-4FF8-9E75-2AEA80963991",
       "name": "Victor LOISEAU",
       "role": "Scaffolder - Intermediate",
       "mobile": "0434 108 939",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-13",
+          "end": "2026-06-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-03",
+          "end": "2026-06-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-07",
+          "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-09",
+          "end": "2026-06-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-11",
+          "end": "2026-06-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-13",
+          "end": "2026-06-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-15",
+          "end": "2026-06-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-17",
+          "end": "2026-06-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-19",
+          "end": "2026-06-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-21",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-23",
+          "end": "2026-06-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-25",
+          "end": "2026-06-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-27",
+          "end": "2026-06-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-06-29",
+          "end": "2026-06-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-01",
+          "end": "2026-07-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-03",
+          "end": "2026-07-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-05",
+          "end": "2026-07-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-07",
+          "end": "2026-07-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-09",
+          "end": "2026-07-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-11",
+          "end": "2026-07-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-13",
+          "end": "2026-07-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-15",
+          "end": "2026-07-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-17",
+          "end": "2026-07-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-19",
+          "end": "2026-07-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-21",
+          "end": "2026-07-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-23",
+          "end": "2026-07-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-25",
+          "end": "2026-07-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-27",
+          "end": "2026-07-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-29",
+          "end": "2026-07-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1173",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-07-31",
+          "end": "2026-07-31",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "1201",
           "client": "SOUTH WEST",
@@ -85382,6 +85778,15 @@
           "end": "2026-03-27",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1411",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-28",
+          "end": "2026-05-12",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -85504,7 +85909,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -85527,15 +85932,6 @@
       "mobile": "",
       "hire_company": "SRG - South West",
       "assignments": [
-        {
-          "job_no": "1391",
-          "client": "SOUTH WEST",
-          "site": "Tianqi Lithium",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
         {
           "job_no": "1405",
           "client": "CSBP",
@@ -85621,7 +86017,7 @@
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
-          "start": "2026-05-12",
+          "start": "2026-05-13",
           "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -85645,20 +86041,20 @@
           "is_on_location": true
         },
         {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
+          "job_no": "1405",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
           "schedule_type": "Day Shift",
           "is_on_location": false
         },
         {
-          "job_no": "1405",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-05-12",
-          "end": "2026-05-16",
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -85738,7 +86134,7 @@
           "job_no": "1275",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-30",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -85990,7 +86386,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -86152,7 +86548,7 @@
           "job_no": "1359",
           "client": "SOUTH WEST",
           "site": "Covalent Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -86161,7 +86557,7 @@
           "job_no": "1391",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": false
@@ -86307,6 +86703,15 @@
           "site": "CSBP Kwinana",
           "start": "2026-05-12",
           "end": "2026-05-16",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-06",
+          "end": "2026-05-15",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }

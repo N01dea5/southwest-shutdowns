@@ -49,7 +49,7 @@ Rows: 566 | Columns: 43 | Header row: 1
 Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
 
 ### NEW — `xpbi02 DailyPersonnelSchedule`
-Rows: 174056 | Columns: 27 | Header row: 1
+Rows: 175202 | Columns: 27 | Header row: 1
 Headers: `Id`, `ReportDate`, `PersonnelId`, `FirstName`, `Surname`, `Status`, `OnSite`, `Confirmed`, `ResourceId`, `ClientId`, `Client`, `SiteId`, `Site`, `JobGroupId`, `JobGroup`, `JobId`, `QuoteNo`, `OrderNo`, `JobStart`, `JobEnd`, `jobStatus`, `jobActive`, `employeeActive`, `CompetencyId`, `Trade`, `DisciplineId`, `Discipline`
 
 ### OK — `xpbi02 DisciplineTrade`
@@ -61,7 +61,7 @@ Rows: 4473 | Columns: 17 | Header row: 1
 Headers: `Personnel Id`, `Given Names`, `Surname`, `Employee Number`, `Primary Role`, `Email`, `Mobile`, `Status`, `Status Comment`, `Onboarding Status`, `Application Date`, `Hire Date`, `Recruiter`, `Hire Company`, `Critical Information`, `Created`, `Archived`
 
 ### OK — `xll01 PersonnelCompetency`
-Rows: 25843 | Columns: 8 | Header row: 1
+Rows: 25854 | Columns: 8 | Header row: 1
 Headers: `Competency`, `Personnel Id`, `Expiry`, `Issued`, `Document Location`, `Licence #`, `Created`, `Archived`
 
 ### NEW — `xll01 HireCompany`
@@ -77,7 +77,7 @@ Rows: 28 | Columns: 21 | Header row: 1
 Headers: `JobNo`
 
 ### OK — `xpbi02 PersonnelRosterView`
-Rows: 75838 | Columns: 7 | Header row: 1
+Rows: 75984 | Columns: 7 | Header row: 1
 Headers: `Job No`, `Client`, `Site`, `Personnel Id`, `Schedule Date`, `Schedule Type`, `IsOnLocation`
 
 ## `data/raw/Tianqi Construction Ramp Up Project .xlsx`

@@ -2638,37 +2638,39 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Site Coordinator": 1,
-        "Mechanical Fitter": 40,
-        "Superintendent": 1,
         "Trade Assistant": 20,
-        "Rigger - Advanced": 0,
         "Advanced Rigger": 10,
-        "Supervisor - Mechanical": 10,
-        "Boilermaker": 10,
-        "Coded Welder": 20,
+        "Mechanical Fitter": 40,
         "Sheet Metal Worker": 0,
-        "Rigger - Intermediate": 0
+        "Rigger - Intermediate": 0,
+        "Coded Welder": 20,
+        "Leading Hand": 0,
+        "Site Coordinator": 1,
+        "Boilermaker": 10,
+        "Superintendent": 1,
+        "Rigger - Advanced": 0,
+        "Supervisor - Mechanical": 10
       },
       "filled_by_role": {
-        "Site Coordinator": 1,
-        "Mechanical Fitter": 17,
-        "Superintendent": 1,
         "Trade Assistant": 20,
-        "Rigger - Advanced": 0,
         "Advanced Rigger": 5,
-        "Supervisor - Mechanical": 1,
-        "Boilermaker": 2,
-        "Coded Welder": 1,
+        "Mechanical Fitter": 17,
         "Sheet Metal Worker": 0,
-        "Rigger - Intermediate": 0
+        "Rigger - Intermediate": 0,
+        "Coded Welder": 1,
+        "Leading Hand": 0,
+        "Site Coordinator": 1,
+        "Boilermaker": 2,
+        "Superintendent": 1,
+        "Rigger - Advanced": 0,
+        "Supervisor - Mechanical": 1
       },
       "crew_split": {
-        "Day": 133
+        "Day": 130
       },
       "mobilised_by_role": {},
       "labour_hire_split": {
-        "SRG - South West": 132,
+        "SRG - South West": 129,
         "SRG - Southwest Tronox": 1
       },
       "roster": [
@@ -4528,12 +4530,12 @@
             "cse": {
               "expiry": "2026-05-28",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Confined Spaces.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "gta": {
               "expiry": "2026-05-28",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Gas Test Atmospheres.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "wah": {
               "expiry": "2026-05-27",
@@ -5136,42 +5138,6 @@
           "mobile": "0487 700 914"
         },
         {
-          "name": "Ivan RAYNOV",
-          "role": "Mechanical Fitter",
-          "shift": "Day",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "personnel_id": "F81364FE-F4A6-4174-A0EE-6A947B277839",
-          "tickets": {
-            "cse": {
-              "expiry": "2026-11-06",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAYNOV, Ivan - f81364fe-f4a6-4174-a0ee-6a947b277839/RAYNOV, Ivan - Confined Spaces Entry.pdf",
-              "status": "current"
-            },
-            "hr": {
-              "expiry": "2030-11-22",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAYNOV, Ivan - f81364fe-f4a6-4174-a0ee-6a947b277839/RAYNOV, Ivan - Driver's Licence.pdf",
-              "status": "current"
-            },
-            "wah": {
-              "expiry": "2026-11-06",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAYNOV, Ivan - f81364fe-f4a6-4174-a0ee-6a947b277839/RAYNOV, Ivan - Working at Heights.pdf",
-              "status": "current"
-            },
-            "hrwl": {
-              "expiry": "2026-08-24",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAYNOV, Ivan - f81364fe-f4a6-4174-a0ee-6a947b277839/RAYNOV, Ivan - HRWL.jpg",
-              "status": "current"
-            },
-            "fork": {
-              "expiry": "2026-08-24",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAYNOV, Ivan - f81364fe-f4a6-4174-a0ee-6a947b277839/RAYNOV, Ivan - HRWL.jpg",
-              "status": "current"
-            }
-          },
-          "mobile": "0401 749 106"
-        },
-        {
           "name": "Jack MONTEBELLO",
           "role": "Mechanical Fitter",
           "shift": "Day",
@@ -5223,6 +5189,53 @@
             }
           },
           "mobile": "0493 334 531"
+        },
+        {
+          "name": "Jade MATENGA",
+          "role": "Leading Hand",
+          "shift": "Day",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "personnel_id": "6EAA57C1-D4C2-490C-8978-D227C2120A6A",
+          "tickets": {
+            "dog": {
+              "expiry": "2027-05-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - HRWL.png",
+              "status": "current"
+            },
+            "rig": {
+              "expiry": "2027-05-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - HRWL.png",
+              "status": "current",
+              "level": "Advanced"
+            },
+            "cse": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - Confined Spaces Entry.png",
+              "status": "current"
+            },
+            "hr": {
+              "expiry": "2027-11-11",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - Driver's Licence.png",
+              "status": "current"
+            },
+            "hrwl": {
+              "expiry": "2027-05-10",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - HRWL.png",
+              "status": "current"
+            },
+            "wah": {
+              "expiry": "2027-06-19",
+              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Jade - 6eaa57c1-d4c2-490c-8978-d227c2120a6a/MATENGA, Jade - Working at Heights.png",
+              "status": "current"
+            },
+            "ewp": {
+              "expiry": "2027-05-10",
+              "doc": null,
+              "status": "current"
+            }
+          },
+          "mobile": "0408 005 187"
         },
         {
           "name": "Jake GANGEMI",
@@ -5306,16 +5319,6 @@
             }
           },
           "mobile": "0426 856 352"
-        },
-        {
-          "name": "James GARDINER",
-          "role": "Mechanical Fitter",
-          "shift": "Day",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "personnel_id": "BBB642D5-7397-48D0-8A3F-BD6536634D32",
-          "tickets": {},
-          "mobile": "0458 420 731"
         },
         {
           "name": "Jared SCHERER",
@@ -6176,42 +6179,6 @@
           "mobile": "0404 284 744"
         },
         {
-          "name": "Ominder SINGH",
-          "role": "Mechanical Fitter",
-          "shift": "Day",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "personnel_id": "327192CA-BA5A-47BD-B72B-221E1743B3FE",
-          "tickets": {
-            "cse": {
-              "expiry": "2027-07-09",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - Confined Spaces Entry.pdf",
-              "status": "current"
-            },
-            "hrwl": {
-              "expiry": "2027-11-10",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - HRWL.pdf",
-              "status": "current"
-            },
-            "wah": {
-              "expiry": "2027-07-09",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - Working at Heights.pdf",
-              "status": "current"
-            },
-            "gta": {
-              "expiry": "2027-07-09",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - Gas Test Atmospheres.pdf",
-              "status": "current"
-            },
-            "fork": {
-              "expiry": "2027-11-10",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SINGH, Ominder - 327192ca-ba5a-47bd-b72b-221e1743b3fe/SINGH, Ominder - HRWL.pdf",
-              "status": "current"
-            }
-          },
-          "mobile": "0410 804 520"
-        },
-        {
           "name": "Pralhad PAWAR",
           "role": "Mechanical Fitter",
           "shift": "Day",
@@ -6817,48 +6784,6 @@
           "mobile": "0414 774 682"
         },
         {
-          "name": "Wilfredo MAPANAO",
-          "role": "Mechanical Fitter",
-          "shift": "Day",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "personnel_id": "5CFCA82A-85AA-4AEB-B6BA-C5F127F87775",
-          "tickets": {
-            "rig": {
-              "expiry": "2029-04-15",
-              "doc": null,
-              "status": "current",
-              "level": "Intermediate"
-            },
-            "ewp": {
-              "expiry": "2029-04-15",
-              "doc": null,
-              "status": "current"
-            },
-            "fork": {
-              "expiry": "2029-04-15",
-              "doc": null,
-              "status": "current"
-            },
-            "cse": {
-              "expiry": "2026-10-12",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAPANAO, Wilfredo - 5cfca82a-85aa-4aeb-b6ba-c5f127f87775/MAPANAO, Wilfredo - Confined Spaces Entry.jpg",
-              "status": "current"
-            },
-            "hrwl": {
-              "expiry": "2029-04-15",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAPANAO, Wilfredo - 5cfca82a-85aa-4aeb-b6ba-c5f127f87775/MAPANAO, Wilfredo - HRWL.jpg",
-              "status": "current"
-            },
-            "wah": {
-              "expiry": "2026-10-12",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAPANAO, Wilfredo - 5cfca82a-85aa-4aeb-b6ba-c5f127f87775/MAPANAO, Wilfredo - Working at Heights.jpg",
-              "status": "current"
-            }
-          },
-          "mobile": "0476 603 852"
-        },
-        {
           "name": "Yvan CHEVALIER",
           "role": "Mechanical Fitter",
           "shift": "Day",
@@ -6939,5 +6864,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-27T02:44:35Z"
+  "generated_at": "2026-04-28T01:06:32Z"
 }

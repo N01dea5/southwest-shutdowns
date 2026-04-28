@@ -710,54 +710,54 @@
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Site Coordinator": 1,
-        "Lube Technician": 3,
-        "Mechanical Fitter": 24,
-        "Superintendent": 1,
         "Trade Assistant": 5,
-        "Supervisor": 1,
-        "Rigger - Advanced": 0,
-        "Advanced Rigger": 1,
+        "Electrician": 4,
         "Supervisor - Electrical": 1,
-        "Basic Rigger": 4,
+        "Advanced Rigger": 1,
+        "Mechanical Fitter": 24,
         "Intermediate Rigger": 3,
+        "Basic Rigger": 4,
         "HSE Advisor": 2,
-        "Telehandler Operator": 2,
-        "Leading Hand": 0,
-        "Supervisor - Mechanical": 6,
-        "Boilermaker": 4,
-        "Step Up Supervisor - Mechanical": 0,
-        "Coded Welder": 1,
         "Rigger - Intermediate": 0,
-        "Electrician": 4
+        "Supervisor": 1,
+        "Coded Welder": 1,
+        "Leading Hand": 0,
+        "Telehandler Operator": 2,
+        "Step Up Supervisor - Mechanical": 0,
+        "Site Coordinator": 1,
+        "Boilermaker": 4,
+        "Superintendent": 1,
+        "Rigger - Advanced": 0,
+        "Lube Technician": 3,
+        "Supervisor - Mechanical": 6
       },
       "filled_by_role": {
-        "Site Coordinator": 1,
-        "Lube Technician": 3,
-        "Mechanical Fitter": 21,
-        "Superintendent": 1,
         "Trade Assistant": 5,
-        "Supervisor": 1,
-        "Rigger - Advanced": 0,
-        "Advanced Rigger": 1,
+        "Electrician": 3,
         "Supervisor - Electrical": 1,
-        "Basic Rigger": 4,
+        "Advanced Rigger": 1,
+        "Mechanical Fitter": 21,
         "Intermediate Rigger": 2,
+        "Basic Rigger": 4,
         "HSE Advisor": 2,
-        "Telehandler Operator": 1,
-        "Leading Hand": 0,
-        "Supervisor - Mechanical": 6,
-        "Boilermaker": 4,
-        "Step Up Supervisor - Mechanical": 0,
-        "Coded Welder": 1,
         "Rigger - Intermediate": 0,
-        "Electrician": 3
+        "Supervisor": 1,
+        "Coded Welder": 1,
+        "Leading Hand": 0,
+        "Telehandler Operator": 1,
+        "Step Up Supervisor - Mechanical": 0,
+        "Site Coordinator": 1,
+        "Boilermaker": 4,
+        "Superintendent": 1,
+        "Rigger - Advanced": 0,
+        "Lube Technician": 3,
+        "Supervisor - Mechanical": 6
       },
       "crew_split": {
-        "Day": 132
+        "Day": 128
       },
       "mobilised_by_role": {
-        "Mechanical Fitter": 18,
+        "Mechanical Fitter": 21,
         "Superintendent": 1,
         "Trade Assistant": 10,
         "Step Up Supervisor - Mechanical": 1,
@@ -771,16 +771,17 @@
         "Boilermaker": 5,
         "Supervisor - Electrical": 1,
         "Lube Technician": 3,
-        "Rigger - Advanced": 1,
-        "Coded Welder": 1
+        "Rigger - Advanced": 2,
+        "Coded Welder": 1,
+        "Leading Hand": 1
       },
       "labour_hire_split": {
         "Hyrd - Labour Hire": 5,
-        "SRG - South West": 96,
+        "SRG - South West": 93,
         "SRG - Southwest Tronox": 2,
         "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 11,
         "SRG - Active": 2,
-        "Western Workforce - Labour Hire": 7,
+        "Western Workforce - Labour Hire": 6,
         "2XM - Labour Hire": 3,
         "Torque - Labour Hire": 4
       },
@@ -2665,7 +2666,7 @@
             "ewp": {
               "expiry": "2026-05-28",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAHONEY, James - f1be1792-0f2f-4dbe-a894-e845ca325108/MAHONEY, James - HRWL.jpeg",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "fa": {
               "expiry": "2028-09-24",
@@ -2685,7 +2686,7 @@
             "hrwl": {
               "expiry": "2026-05-28",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MAHONEY, James - f1be1792-0f2f-4dbe-a894-e845ca325108/MAHONEY, James - HRWL.jpeg",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "gta": {
               "expiry": "2028-04-02",
@@ -2982,7 +2983,7 @@
           "name": "Aidan EDWARDS",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "8CA45F5B-C7DF-43FB-8F38-85263EBB2EB3",
           "tickets": {
@@ -3013,7 +3014,7 @@
           "name": "Alexio NYAMAKAZI",
           "role": "Boilermaker",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "661ED6D8-FF8C-4979-9EDD-057E957C53BB",
           "tickets": {
@@ -3070,7 +3071,7 @@
           "name": "Barry LYON",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "90F67A88-5C4B-4ADF-828A-C0423894CD99",
           "tickets": {
@@ -3179,7 +3180,7 @@
           "name": "Bryan MESSENGER \ud83d\udd37",
           "role": "Boilermaker",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "85A00BCC-CF03-4F84-84F0-157FA0BC6478",
           "tickets": {
@@ -3220,7 +3221,7 @@
           "name": "Cameron DOLAN",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "A79CC8F1-D599-426A-8EC9-42D22E595FEB",
           "tickets": {
@@ -3232,12 +3233,12 @@
             "cse": {
               "expiry": "2026-05-28",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Confined Spaces.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "gta": {
               "expiry": "2026-05-28",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOLAN , Cameron - a79cc8f1-d599-426a-8ec9-42d22e595feb/DOLAN , Cameron - Gas Test Atmospheres.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "wah": {
               "expiry": "2026-05-27",
@@ -3256,7 +3257,7 @@
           "name": "Chieh-Ti WANG",
           "role": "Rigger - Advanced",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "8B32A0F0-1F2F-417D-AC5A-555F6F712B72",
           "tickets": {
@@ -3288,7 +3289,7 @@
           "name": "Daniel GOVHONGO",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "77B64F28-655E-4252-B58E-A4B3E2641582",
           "tickets": {
@@ -3319,7 +3320,7 @@
           "name": "Dhamodhar KUMAR",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "5191BEF4-728A-4C61-914B-CC5BF6337BAA",
           "tickets": {},
@@ -3329,7 +3330,7 @@
           "name": "Donggyu \ud83d\udd37 KIM",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "6BCFECF6-37A6-45CC-9722-0748145C4996",
           "tickets": {
@@ -3370,7 +3371,7 @@
           "name": "Emilien CHATBOT",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "851BFAAB-2AD6-445E-A744-1C9006FAE3C1",
           "tickets": {
@@ -3396,7 +3397,7 @@
           "name": "Federico Sarti",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "8C4283F1-EFF6-49D5-9385-60BD2BE0197F",
           "tickets": {
@@ -3427,7 +3428,7 @@
           "name": "Florian CHAVOT",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "24455AB0-79D9-4CF5-85D7-97E71C688075",
           "tickets": {
@@ -3463,7 +3464,7 @@
           "name": "Ganesh MOHITE",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
           "tickets": {
@@ -3504,7 +3505,7 @@
           "name": "Geraud GNANASEGAR",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "78F97BC0-8291-4F50-871D-E410AE268A7A",
           "tickets": {
@@ -3545,7 +3546,7 @@
           "name": "Graham WANGLER",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
           "tickets": {
@@ -3576,7 +3577,7 @@
           "name": "Hemi RATAHI",
           "role": "Rigger - Advanced",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "4FA11D14-6DD0-41FB-8068-270F73668E6B",
           "tickets": {
@@ -3623,7 +3624,7 @@
           "name": "Hicham \ud83d\udd37 BOUZAGAOUI",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "D1BAFF22-E20D-43EE-B739-D4F774F083C0",
           "tickets": {
@@ -3659,7 +3660,7 @@
           "name": "Hoshiar SUDHU",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "43BE98F1-1896-4B9D-AD34-6ADDA674EFF7",
           "tickets": {
@@ -3680,7 +3681,7 @@
           "name": "Idriz TURKO \ud83d\udd37",
           "role": "Supervisor - Electrical",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-29",
           "personnel_id": "D4502233-23DE-452B-9751-ACF1A2E44E1A",
           "tickets": {
@@ -3706,7 +3707,7 @@
           "name": "Irwin ISSAC",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "9317C9BC-F97E-4690-9A15-1F4783519BF1",
           "tickets": {
@@ -3727,7 +3728,7 @@
           "name": "Jack CHAPMAN \ud83d\udd37",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-04-28",
           "personnel_id": "F1B8D0D9-7053-4C7D-BC29-60A5103ED1DF",
           "tickets": {},
@@ -3737,7 +3738,7 @@
           "name": "Jade MATENGA",
           "role": "Leading Hand",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-24",
           "end": "2026-04-28",
           "personnel_id": "6EAA57C1-D4C2-490C-8978-D227C2120A6A",
           "tickets": {
@@ -3784,7 +3785,7 @@
           "name": "James GARDINER",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "BBB642D5-7397-48D0-8A3F-BD6536634D32",
           "tickets": {},
@@ -3794,7 +3795,7 @@
           "name": "Jared SCHERER",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "57BBAC5C-4128-43BE-A042-A408B0F6F747",
           "tickets": {
@@ -3820,7 +3821,7 @@
           "name": "Jayson MANUEL",
           "role": "Coded Welder",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "FA6E5ABC-B92D-4229-B2D1-3292F3BFFA32",
           "tickets": {
@@ -3882,7 +3883,7 @@
           "name": "Jordi \ud83d\udd37 PATINO ROCA",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "personnel_id": "4C7F85DF-909F-4165-A5FB-E3A7F3ED8980",
           "tickets": {
@@ -3914,7 +3915,7 @@
           "name": "Juan JACA",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "C8293B6E-2B6C-4D73-A288-D38C8622ED97",
           "tickets": {
@@ -3950,7 +3951,7 @@
           "name": "Julian JENNY",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "0CA5B1C2-920A-472F-9D8E-83B65DD78553",
           "tickets": {
@@ -3992,7 +3993,7 @@
           "name": "Karunakar DEVIREDDY",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "2652802A-795D-400C-82F0-6E87DE14DBF1",
           "tickets": {
@@ -4018,7 +4019,7 @@
           "name": "Keron KAPPET",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "528BE73A-C8A5-4126-ACC5-FE56C9E6C250",
           "tickets": {
@@ -4049,7 +4050,7 @@
           "name": "Kevin ANDREWS",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "CC804EE9-1E6E-442C-8925-DCD9145DDB17",
           "tickets": {
@@ -4070,7 +4071,7 @@
           "name": "Killian VANDEZANDE",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "04650C7B-A982-4B2B-B636-A402A214248C",
           "tickets": {
@@ -4117,7 +4118,7 @@
           "name": "Lewis \ud83d\udd37 FERRIS",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "personnel_id": "9D8213E1-CF9D-4A4D-920A-0B699F943484",
           "tickets": {
@@ -4153,7 +4154,7 @@
           "name": "Lorenzo \ud83d\uded1 PELLIZZARI",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "11FD6E39-55B1-4932-AD50-46F7E4931936",
           "tickets": {
@@ -4179,7 +4180,7 @@
           "name": "Loyid JOSEPH",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "24B6C2C5-28E9-497F-B672-3A24CEF290DC",
           "tickets": {
@@ -4225,7 +4226,7 @@
           "name": "Mahadev YOGANANDA",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "5030D14C-63D1-4C75-8FDF-6D9FBA856D23",
           "tickets": {
@@ -4246,7 +4247,7 @@
           "name": "Manohar NAUKUDKAR",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "08F6771B-D8F3-487F-9E30-FDCD893A30F1",
           "tickets": {
@@ -4272,7 +4273,7 @@
           "name": "Marcel LAMICQ ZUMBADO",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "personnel_id": "2187D943-A653-406F-93ED-A120C7203B49",
           "tickets": {},
@@ -4282,7 +4283,7 @@
           "name": "Marco \ud83d\udd37 CAPALDI",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "personnel_id": "ABD4C951-1A7A-4557-8B5D-C10939C0120F",
           "tickets": {
@@ -4308,7 +4309,7 @@
           "name": "Matthew TECKLE",
           "role": "Lube Technician",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "7BB0D5E3-1129-49F6-ADD8-7A1FB301953D",
           "tickets": {
@@ -4329,7 +4330,7 @@
           "name": "Mehdi NISSANI \ud83d\udd37",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "A6D77A63-74BD-4A79-AFD4-CFC4F1A4F233",
           "tickets": {
@@ -4355,7 +4356,7 @@
           "name": "Michael LONERGAN",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "C7E6510C-1B53-4253-85A4-6ECB278B51F9",
           "tickets": {
@@ -4402,7 +4403,7 @@
           "name": "Mitya DOBBELAERE",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "1C18F251-35E7-4E76-9B4B-0DDFAE7A830B",
           "tickets": {
@@ -4428,7 +4429,7 @@
           "name": "Morgan HILL",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "80B25E6E-3E5F-4628-B813-DC58DBD4C862",
           "tickets": {
@@ -4454,7 +4455,7 @@
           "name": "Mustafa \ud83d\uded1 GUENDESLI",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "383ADACD-A2F4-4874-BD44-5A5D174B74B9",
           "tickets": {
@@ -4490,7 +4491,7 @@
           "name": "Nathan RHODES",
           "role": "Supervisor - Mechanical",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "BF8886B2-06C5-43A3-AC85-D6037830E0A0",
           "tickets": {
@@ -4511,7 +4512,7 @@
           "name": "Ngoni USORE",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "FEFAAFC8-7E0D-431A-9269-EA499C24DD63",
           "tickets": {
@@ -4547,7 +4548,7 @@
           "name": "Oliver KYLE \ud83d\udd37",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "5274412F-A70E-4DBF-A0FB-640E3C74EF0C",
           "tickets": {
@@ -4573,7 +4574,7 @@
           "name": "Ominder SINGH",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "327192CA-BA5A-47BD-B72B-221E1743B3FE",
           "tickets": {
@@ -4609,7 +4610,7 @@
           "name": "Paula SAFFIGNA",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "809A6192-6592-409B-BF85-4E4604B640B0",
           "tickets": {
@@ -4635,7 +4636,7 @@
           "name": "Peter \ud83d\udd37 NAGLE",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-30",
           "personnel_id": "AF4D42CC-1950-4573-9B93-94B631F39462",
           "tickets": {
@@ -4651,7 +4652,7 @@
           "name": "Pralhad PAWAR",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "EF134557-8FE8-45F8-83CC-153A9A177F99",
           "tickets": {
@@ -4677,7 +4678,7 @@
           "name": "Pramod CHANDRASKHAR",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "BC22C16C-AB64-4A88-BB07-86E7CCA871FE",
           "tickets": {
@@ -4710,41 +4711,10 @@
           "mobile": "0494 037 814"
         },
         {
-          "name": "Richardson ALICANTE",
-          "role": "Mechanical Fitter",
-          "shift": "Day",
-          "start": "2026-04-27",
-          "end": "2026-04-27",
-          "personnel_id": "40FCD406-BD10-4C68-888F-03D449BD7F44",
-          "tickets": {
-            "ewp": {
-              "expiry": "2028-03-01",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE , Richardson - HRWL.PNG",
-              "status": "current"
-            },
-            "wah": {
-              "expiry": "2028-03-09",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE, Richardson - Working at Heights.jpg",
-              "status": "current"
-            },
-            "cse": {
-              "expiry": "2027-01-18",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE , Richardson - Confined Spaces.pdf",
-              "status": "current"
-            },
-            "hrwl": {
-              "expiry": "2028-03-01",
-              "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ALICANTE , Richardson - 40fcd406-bd10-4c68-888f-03d449bd7f44/ALICANTE , Richardson - HRWL.PNG",
-              "status": "current"
-            }
-          },
-          "mobile": "0431 228 251"
-        },
-        {
           "name": "Robert HARRIS",
           "role": "Trade Assistant",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "184D7AE9-8146-44E9-B0CC-63C50D7812A1",
           "tickets": {
@@ -4765,7 +4735,7 @@
           "name": "Russell CHITTY",
           "role": "Rigger - Advanced",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "1B74F6CE-C078-43E8-BE7D-AC8B4D728724",
           "tickets": {
@@ -4802,7 +4772,7 @@
           "name": "Ryan MERIKHI \ud83d\udd37",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-04-28",
           "personnel_id": "2AF62504-EB2E-4BD3-92DE-9E0F64AE24FF",
           "tickets": {
@@ -4849,7 +4819,7 @@
           "name": "Senthil DHANAPAL",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "0F82D120-33DF-47C1-922F-F8FBD594E76A",
           "tickets": {
@@ -4885,7 +4855,7 @@
           "name": "Tacio YAG-AS",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "BD09570A-DFDB-458D-B85C-2FC2666F90FE",
           "tickets": {
@@ -4942,7 +4912,7 @@
           "name": "Tim CURRAN",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "4FBAF741-B1FA-4CD9-9825-D3391340EE49",
           "tickets": {
@@ -4984,7 +4954,7 @@
           "name": "Zacarria DAIR",
           "role": "Mechanical Fitter",
           "shift": "Day",
-          "start": "2026-04-27",
+          "start": "2026-04-28",
           "end": "2026-05-01",
           "personnel_id": "31E8E037-AAF1-49F7-9EED-D2B50A9A62D6",
           "tickets": {},
@@ -5027,5 +4997,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-27T02:44:35Z"
+  "generated_at": "2026-04-28T01:06:32Z"
 }

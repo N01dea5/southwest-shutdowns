@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-27T02:45:47Z",
+  "generated_at": "2026-04-28T01:07:42Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/history/csbp-2026-05.json",
   "client": "CSBP",
   "dashboard": "CSBP NAAN2 Shutdown Workforce Dashboard",
@@ -17,8 +17,8 @@
     "required_total": 36,
     "confirmed_total": 35,
     "gap_total": 1,
-    "same_client_retention": 56,
-    "srg_carry_over": 17,
+    "same_client_retention": 55,
+    "srg_carry_over": 18,
     "new_hires": 5,
     "buddy_required": 5,
     "shift_split": {
@@ -2063,8 +2063,8 @@
       "shift": "Day",
       "start": "2026-06-06",
       "end": "2026-06-18",
-      "same_client_retention": true,
-      "srg_carry_over": false,
+      "same_client_retention": false,
+      "srg_carry_over": true,
       "new_hire": false,
       "buddy_required": false,
       "tickets": {

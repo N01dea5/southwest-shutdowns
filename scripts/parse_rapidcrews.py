@@ -887,10 +887,10 @@ def main() -> int:
               f"[{shutdown['status']}]")
 
     # -- 3b. Pull shutdowns from Rapidcrews Macro Data.xlsx (ACTIVE_SHUTDOWNS
-    #        sheet). Macro wins when it matches an existing RosterCut by
-    #        JobNo (same shutdown, fresher roster semantics). If two different
-    #        JobNos would otherwise share the same monthly id (e.g. CSBP NAAN1
-    #        + NAAN2 in the same month), keep both by suffixing the macro id.
+    #        sheet). Conflict-resolution rule:
+    #          * match/override by JobNo (authoritative shutdown identity)
+    #          * if IDs collide but JobNos differ, keep both via "-<jobno>"
+    #        This resolves the previous id-only merge ambiguity.
     import parse_macro_data
     macro_triples   = parse_macro_data.shutdowns_from_macro_data()
     active_jobnos   = parse_macro_data.active_shutdowns_jobnos()

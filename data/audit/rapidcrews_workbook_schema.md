@@ -57,11 +57,11 @@ Rows: 118 | Columns: 4 | Header row: 1
 Headers: `TradeId`, `DisciplineId`, `Discipline`, `Trade`
 
 ### OK — `xll01 Personnel`
-Rows: 4480 | Columns: 17 | Header row: 1
+Rows: 4482 | Columns: 17 | Header row: 1
 Headers: `Personnel Id`, `Given Names`, `Surname`, `Employee Number`, `Primary Role`, `Email`, `Mobile`, `Status`, `Status Comment`, `Onboarding Status`, `Application Date`, `Hire Date`, `Recruiter`, `Hire Company`, `Critical Information`, `Created`, `Archived`
 
 ### OK — `xll01 PersonnelCompetency`
-Rows: 25911 | Columns: 8 | Header row: 1
+Rows: 25929 | Columns: 8 | Header row: 1
 Headers: `Competency`, `Personnel Id`, `Expiry`, `Issued`, `Document Location`, `Licence #`, `Created`, `Archived`
 
 ### NEW — `xll01 HireCompany`
@@ -73,7 +73,7 @@ Rows: 47 | Columns: 14 | Header row: 1
 Headers: `ClientId`, `ClientName`, `InactiveDate`
 
 ### OK — `ACTIVE_SHUTDOWNS`
-Rows: 28 | Columns: 21 | Header row: 1
+Rows: 35 | Columns: 21 | Header row: 1
 Headers: `JobNo`
 
 ### OK — `xpbi02 PersonnelRosterView`

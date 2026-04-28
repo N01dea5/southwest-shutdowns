@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-28T05:08:44Z",
+  "archived_at": "2026-04-28T06:06:59Z",
   "shutdown": {
     "id": "kleenheat-2026-03-1206",
     "name": "1206 \u2013 KPF LNG Major Shutdown March 2026 (Kleenheat)",
@@ -10,19 +10,19 @@
     "end_date": "2026-03-22",
     "status": "completed",
     "required_by_role": {
+      "Applicator": 1,
+      "Rigger - Advanced": 2,
+      "Scaffolder - Intermediate": 1,
+      "Advanced Rigger": 2,
+      "Sheet Metal Worker": 3,
       "Rigger - Intermediate": 4,
       "Trade Assistant": 18,
-      "Mechanical Fitter": 23,
-      "Advanced Rigger": 2,
-      "Step Up Supervisor - Mechanical": 1,
-      "Supervisor - Mechanical": 4,
-      "Applicator": 1,
-      "Scaffolder - Intermediate": 1,
       "Intermediate Rigger": 3,
-      "Supervisor": 2,
-      "Rigger - Advanced": 2,
       "Scaffolder - Advanced": 5,
-      "Sheet Metal Worker": 3
+      "Supervisor": 2,
+      "Supervisor - Mechanical": 4,
+      "Mechanical Fitter": 23,
+      "Step Up Supervisor - Mechanical": 1
     },
     "filled_by_role": {
       "Advanced Rigger": 0,

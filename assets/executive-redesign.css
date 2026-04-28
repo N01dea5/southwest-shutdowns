@@ -212,8 +212,7 @@ main {
   line-height: 1.12 !important;
 }
 
-.kpi-foot,
-.kpi-sub {
+.kpi-foot {
   margin-top: 8px !important;
   display: block;
   font-size: 12px !important;

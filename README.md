@@ -71,14 +71,11 @@ assets/
   executive-redesign.css              executive dashboard layout
   executive-hero.js                   executive hero metadata strip
   retention-table-executive.js        executive retention table formatter
-  retention-chart-executive.js        executive retention chart formatter
   matrix-availability.js              availability overlay — marks workers ✗ when
                                         unavailable (other booking, time off, rejected)
   matrix-hiring-company-safe.js       decorates worker matrix with Hiring Company
-  matrix-cross-filter.js              legacy — inert with current button-based filter
   refresh-status.js                   last refreshed timestamp display
-  client-dashboard.css                shared stylesheet for client dashboard pages
-  client-dashboard.js                 shared renderer for client dashboard pages
+  favicon.ico, favicon-{16,32,180}.png  square SRG mark for the browser tab
   srg-global-logo.png
 
 scripts/
@@ -189,8 +186,6 @@ The matrix cells have three states:
 | blank | No clash identified | — |
 
 The availability overlay runs asynchronously after the base table renders. The per-column filter cycles **Any → ✓ only → ✗ only** — the ✗ filter is DOM-based and applies in repeated passes as the overlay settles.
-
-`matrix-cross-filter.js` is an older companion script that is currently **inert** — it targets `<select>` elements but `app.js` uses `<button>` elements.
 
 ## Client dashboards
 

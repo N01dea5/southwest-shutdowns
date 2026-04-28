@@ -1440,10 +1440,6 @@ function renderShutdownSummary(view) {
  * the return history. Kept on the signature so `render()`'s dispatch table
  * stays uniform.
  */
-function updateMatrixConflictCounts() {
-  // Removed — column conflict-count badges are no longer shown.
-}
-
 function renderWorkerMatrix(_viewShutdowns) {
   const table = document.getElementById("worker-matrix");
   if (!table) return;

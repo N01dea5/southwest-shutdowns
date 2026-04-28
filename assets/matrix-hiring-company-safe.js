@@ -163,10 +163,16 @@
       console.warn('[matrix-hiring-company] lookup load failed', error);
     }
 
+    // Decorate when app.js rebuilds the matrix (filter clicks, etc.).
+    document.addEventListener('matrixrendered', applyHiringCompanyColumn);
+
+    // Initial decoration: poll briefly while app.js is building the table for
+    // the first time. Bail out as soon as decoration succeeds so the timer
+    // doesn't keep firing for the full 20 seconds in the happy path.
     timer = window.setInterval(() => {
       attempts += 1;
-      applyHiringCompanyColumn();
-      if (attempts >= 40) window.clearInterval(timer);
+      const ok = applyHiringCompanyColumn();
+      if (ok || attempts >= 40) window.clearInterval(timer);
     }, 500);
   }
 

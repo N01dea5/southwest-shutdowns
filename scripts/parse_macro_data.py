@@ -641,6 +641,13 @@ def _load_daily_personnel_schedule(wb: openpyxl.Workbook,
     "Rejected" doesn't paper over a real on-site stint.
     """
     if DAILY_SCHEDULE_SHEET not in wb.sheetnames:
+        # _build_one falls back to PRV-only logic when DPS data is absent,
+        # which still works but loses the status filter (Confirmed /
+        # Mobilising / Onsite / Demobilised). Surface the missing sheet so
+        # users notice they're running against an old workbook export.
+        print(f"  warn: macro workbook is missing the {DAILY_SCHEDULE_SHEET!r} "
+              f"sheet — falling back to PersonnelRosterView without a status "
+              f"filter. Re-export the workbook to restore named-roster filtering.")
         return {j: {} for j in jobnos}
     ws = wb[DAILY_SCHEDULE_SHEET]
     headers = [c.value for c in next(ws.iter_rows(max_row=1))]
@@ -968,12 +975,15 @@ def shutdowns_from_macro_data() -> list[tuple[str, str, dict]]:
 
     out: list[tuple[str, str, dict]] = []
     for job in sorted(jobnos):
-        if job not in roster or not roster[job]["workers"]:
+        bucket = roster.get(job)
+        has_prv = bool(bucket and bucket["workers"])
+        has_dps = bool(bucket and bucket.get("dps"))
+        if not (has_prv or has_dps):
             print(f"  warn: JobNo {job} has no roster rows in macro data — skipping")
             continue
         result = _build_one(job,
                             planning.get(job, {"required_by_role": {}, "filled_by_role": {}}),
-                            roster[job], cache["personnel"])
+                            bucket, cache["personnel"])
         if result is not None:
             out.append(result)
             _, client_name, shutdown = result

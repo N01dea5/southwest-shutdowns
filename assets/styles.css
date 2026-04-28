@@ -289,15 +289,6 @@ main {
   text-transform: uppercase;
   color: var(--srg-grey);
 }
-.kpi-sub {
-  display: block;
-  margin-top: 3px;
-  font-size: 11px;
-  color: var(--srg-grey-2);
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: 500;
-}
 .kpi-value.positive { color: var(--ok); }
 /* Surplus pill on the "Requested / Confirmed" KPI — appears only when the
    overall confirmed roster exceeds the requested plan. Kept visually subtle
@@ -1286,14 +1277,6 @@ td.num, th.num {
   background: var(--warn-soft);
   color: #92620a;
   border-color: var(--warn);
-}
-.conflict-count-badge {
-  display: block;
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--bad);
-  letter-spacing: 0.05em;
-  margin-bottom: 2px;
 }
 .matrix-clear {
   appearance: none;

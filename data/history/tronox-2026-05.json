@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-28T09:41:06Z",
+  "archived_at": "2026-04-28T12:24:04Z",
   "shutdown": {
     "id": "tronox-2026-05",
     "name": "1353 \u2013 Tronox Major Shutdown May 2026",
@@ -10,26 +10,26 @@
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
-      "Intermediate Rigger": 0,
       "Site Coordinator": 1,
-      "Coded Welder": 20,
-      "Boilermaker": 10,
+      "Intermediate Rigger": 0,
       "Trade Assistant": 20,
-      "Supervisor - Mechanical": 10,
+      "Coded Welder": 20,
       "Superintendent": 1,
-      "Mechanical Fitter": 40,
-      "Advanced Rigger": 10
+      "Boilermaker": 10,
+      "Supervisor - Mechanical": 10,
+      "Advanced Rigger": 10,
+      "Mechanical Fitter": 40
     },
     "filled_by_role": {
-      "Intermediate Rigger": 4,
       "Site Coordinator": 1,
-      "Coded Welder": 1,
-      "Boilermaker": 2,
+      "Intermediate Rigger": 4,
       "Trade Assistant": 20,
-      "Supervisor - Mechanical": 1,
+      "Coded Welder": 1,
       "Superintendent": 1,
-      "Mechanical Fitter": 17,
-      "Advanced Rigger": 5
+      "Boilermaker": 2,
+      "Supervisor - Mechanical": 1,
+      "Advanced Rigger": 5,
+      "Mechanical Fitter": 17
     },
     "crew_split": {
       "Day": 52
@@ -1865,12 +1865,12 @@
       "macro_data_roster_size": 52,
       "macro_data_filled_by_role": {
         "Mechanical Fitter": 17,
-        "Intermediate Rigger": 4,
         "Trade Assistant": 20,
+        "Advanced Rigger": 5,
         "Site Coordinator": 1,
         "Superintendent": 1,
+        "Intermediate Rigger": 4,
         "Boilermaker": 2,
-        "Advanced Rigger": 5,
         "Supervisor - Mechanical": 1,
         "Coded Welder": 1
       },

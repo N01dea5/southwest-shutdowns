@@ -1,21 +1,20 @@
 name: Refresh dashboard data
 
-# Regenerates the public dashboard data after Power Automate has finished
-# pushing source workbooks/data into this repository. GitHub Pages serves main / root.
+# Regenerates the public dashboard data from source workbooks/data already
+# pushed into this repository by Power Automate. GitHub Pages serves main / root.
 #
-# This workflow is intentionally manual-only. Power Automate should trigger it
-# explicitly after all files have been pushed, rather than relying on push events.
+# Scheduled runs avoid firing on every workbook push, reducing overlap while
+# still keeping the dashboard refreshed automatically. Manual runs can also be
+# used when an immediate refresh is required.
 
 on:
   workflow_dispatch:
-  # Optional polling mode. Leave disabled while Power Automate is the source
-  # trigger. Re-enable only if SharePoint Graph secrets are configured.
-  # schedule:
-  #   - cron: '0 22 * * *'        # 22:00 UTC ≈ 06:00 AWST
+  schedule:
+    - cron: '0 * * * *'          # Hourly
 
 concurrency:
   group: refresh-data-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -39,7 +38,10 @@ jobs:
       - name: Install dependencies
         run: pip install openpyxl
 
+      # Power Automate already pushes refreshed workbook/data files into GitHub.
+      # Only pull directly from SharePoint when this workflow is run manually.
       - name: Pull new rosters from SharePoint
+        if: github.event_name == 'workflow_dispatch'
         env:
           SHAREPOINT_TENANT_ID:     ${{ secrets.SHAREPOINT_TENANT_ID }}
           SHAREPOINT_CLIENT_ID:     ${{ secrets.SHAREPOINT_CLIENT_ID }}

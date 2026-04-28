@@ -1,10 +1,10 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-28T03:07:10Z",
+  "archived_at": "2026-04-28T03:26:36Z",
   "shutdown": {
     "id": "csbp-2026-05",
-    "name": "1375 \u2013 CSBP NAAN2 June 2026",
+    "name": "1405 \u2013 CSBP - NAAN1 Shut",
     "site": "Kwinana",
     "start_date": "2026-05-12",
     "end_date": "2026-05-16",
@@ -767,12 +767,10 @@
         "job_no": 1405,
         "total_required": 27,
         "total_filled": 23,
-        "job_description": "CSBP NAAN2 June 2026"
+        "job_description": "CSBP - NAAN1 Shut"
       },
-      "rapid_crews_export_file": "1375 (RosterCut) 2026-04-14_15-18-44.xlsx",
-      "rapid_crews_roster_id": "1375",
-      "job_no": 1375,
-      "job_description": "CSBP NAAN2 June 2026"
+      "job_no": 1405,
+      "job_description": "CSBP - NAAN1 Shut"
     }
   }
 }

@@ -63,6 +63,14 @@
     return `<div class="new-hire-load ${className || ''}"><strong>${count}</strong><span>${percent}%</span></div>`;
   }
 
+  function nameKey(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
   function isLabourHire(worker) {
     const company = String(worker && (worker.hire_company || worker.hiring_company || '') || '').trim();
     return company && !/\bSRG\b/i.test(company);
@@ -80,15 +88,23 @@
           if (!name) continue;
           const key = normalise(name);
           const roster = Array.isArray(shutdown.roster) ? shutdown.roster : [];
-          const labourHire = roster.reduce((count, worker) => count + (isLabourHire(worker) ? 1 : 0), 0);
-          // filled_by_role total aligns with the Shutdown Detail table (JobPlanningView).
-          // Prefer this over roster.length which includes macro-appended workers.
-          const filledTotal = Object.values(shutdown.filled_by_role || {}).reduce((s, v) => s + v, 0);
+          // De-dupe by normalised name so the labour-hire count and the
+          // roster count use the same denominator the worker matrix shows
+          // (one row per unique worker) and the retention metrics are
+          // computed against (rosterKeys is name-keyed).
+          const seen = new Set();
+          let labourHire = 0;
+          for (const worker of roster) {
+            const k = nameKey(worker.name);
+            if (!k || seen.has(k)) continue;
+            seen.add(k);
+            if (isLabourHire(worker)) labourHire += 1;
+          }
           index.set(key, {
             name,
             company: payload.company || shutdown.company || '',
             start_date: shutdown.start_date || '',
-            roster: filledTotal || roster.length,
+            roster: seen.size,
             labourHire
           });
         }
@@ -113,16 +129,22 @@
       const indexed = shutdownIndex.get(normalise(shutdown)) || {};
       const company = cells[1] || indexed.company || '';
       const start = cells[2] || indexed.start_date || '';
+      // Roster size = unique named workers in this shutdown's roster. This is
+      // the denominator the upstream retention metrics (sameRet / crossRet /
+      // newHires) were computed against, and it matches the worker matrix's
+      // tick count for this shutdown's column. cells[3] carries
+      // s.metrics.rosterSize from app.js; the indexed value is a fallback.
+      const roster = parseCount(cells[3]) || indexed.roster || 0;
+      const same = parseCount(cells[4]);
       // cells[5] is crossRet (all SRG returning, including same-client workers).
       // Executive definition of "SRG carry-over" uses this full returning SRG
       // cohort, so it should never be below "Same client".
-      const same = parseCount(cells[4]);
       const crossRetRaw = parseCount(cells[5]);
       const srgCarry = Math.max(0, crossRetRaw);
-      // Roster from indexed uses filled_by_role total (aligns with detail table).
-      const roster = indexed.roster || parseCount(cells[3]) || 0;
-      // "New" = positions not filled by any returning SRG worker.
-      const fresh = Math.max(0, roster - srgCarry);
+      // "New" = workers in this roster who hadn't appeared in any prior
+      // shutdown anywhere. Pull straight from cells[6] (s.metrics.newHires)
+      // so same + (crossRet - same) + new always sums back to roster.
+      const fresh = parseCount(cells[6]);
       const labourHireRaw = indexed.labourHire || 0;
       const labourHire = Math.min(labourHireRaw, roster || labourHireRaw);
       const srgPct = pct(srgCarry, roster);

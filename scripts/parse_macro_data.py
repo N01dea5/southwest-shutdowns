@@ -46,9 +46,17 @@ RESUMES_FILE = REPO_ROOT / "Resumes.xlsx"   # standalone so end users can own
 CONTROL_SHEET      = "ACTIVE_SHUTDOWNS"
 JOB_PLANNING_SHEET = "xpbi02 JobPlanningView"
 ROSTER_VIEW_SHEET  = "xpbi02 PersonnelRosterView"
+DAILY_SCHEDULE_SHEET = "xpbi02 DailyPersonnelSchedule"
 TRADE_SHEET        = "xpbi02 DisciplineTrade"
 PERSONNEL_SHEET    = "xll01 Personnel"
 COMPLIANCE_SHEET   = "xll01 PersonnelCompetency"
+
+# DailyPersonnelSchedule statuses that mean "this person is filling a role on
+# this job". Anything else (Contacted, Short List, Declined, Late Withdrawal,
+# Rejected, Planning) is upstream-of-confirmation noise and shouldn't appear
+# in the named roster — that's how the matrix and shutdown-detail "filled"
+# stay aligned with RapidCrews JobPlanningView's Filled count.
+ONSITE_PERSONNEL_STATUSES = {"Confirmed", "Mobilising", "Onsite", "Demobilised"}
 
 # The SQL DisciplineTrade table uses "Rigger - Advanced/Intermediate/Basic"
 # but the RosterCut Position-On-Project (and every downstream key — target
@@ -159,13 +167,14 @@ def _load_cache() -> dict:
     if _CACHE is not None:
         return _CACHE
     if not MACRO_FILE.exists():
-        _CACHE = {"active_jobnos": None, "trades": {}, "personnel": {},
-                  "personnel_name_index": {}, "planning_all": {},
-                  "compliance": {}, "resumes": None}
+        _CACHE = {"active_jobnos": None, "active_labels": {}, "trades": {},
+                  "personnel": {}, "personnel_name_index": {},
+                  "planning_all": {}, "compliance": {}, "resumes": None}
         return _CACHE
     wb = _open()
     try:
         active_jobnos          = _read_active_shutdowns(wb)
+        active_labels          = _read_active_shutdown_labels(wb)
         trades                 = _load_trade_names(wb)
         personnel              = _load_personnel(wb)
         personnel_name_index   = _load_personnel_name_index(wb)
@@ -176,6 +185,7 @@ def _load_cache() -> dict:
     resumes = _load_resumes_file(personnel) if RESUMES_FILE.exists() else None
     _CACHE = {
         "active_jobnos":        active_jobnos,
+        "active_labels":        active_labels,
         "trades":               trades,
         "personnel":            personnel,
         "personnel_name_index": personnel_name_index,
@@ -209,6 +219,45 @@ def _read_active_shutdowns(wb: openpyxl.Workbook) -> set[int] | None:
         except (TypeError, ValueError):
             print(f"  warn: {CONTROL_SHEET} ignoring non-numeric JobNo {row[jobno_col]!r}")
     return jobnos
+
+
+def _read_active_shutdown_labels(wb: openpyxl.Workbook) -> dict[int, str]:
+    """JobNo -> descriptive label from ACTIVE_SHUTDOWNS sheet (col 2).
+
+    The control sheet pairs each JobNo with a free-text description like
+    "CSBP NaaN1" / "CSBP Naan2" / "Tronox May 2026". When two ACTIVE jobs
+    map to the same id_prefix-YYYY-MM (e.g. NAAN1 and NAAN2 both starting
+    in May 2026), this label disambiguates them in the project name so the
+    dashboard's shutdown card and gantt swimlane don't both read identical.
+    """
+    if CONTROL_SHEET not in wb.sheetnames:
+        return {}
+    ws = wb[CONTROL_SHEET]
+    rows = ws.iter_rows(values_only=True)
+    try:
+        header = next(rows)
+    except StopIteration:
+        return {}
+    cols = [h for h in header if h]
+    try:
+        jobno_col = cols.index("JobNo")
+    except ValueError:
+        return {}
+    out: dict[int, str] = {}
+    for row in rows:
+        if not row or row[jobno_col] is None:
+            continue
+        try:
+            jno = int(row[jobno_col])
+        except (TypeError, ValueError):
+            continue
+        # Take the next non-empty cell as the description.
+        for cell in row[jobno_col + 1:]:
+            text = str(cell or "").strip()
+            if text:
+                out[jno] = text
+                break
+    return out
 
 
 def _load_planning_all(wb: openpyxl.Workbook,
@@ -572,6 +621,64 @@ def _load_roster(wb: openpyxl.Workbook,
     return out
 
 
+def _load_daily_personnel_schedule(wb: openpyxl.Workbook,
+                                   jobnos: set[int]
+                                   ) -> dict[int, dict]:
+    """JobNo -> {PersonnelId -> {role, statuses, status_latest}}.
+
+    DailyPersonnelSchedule has one row per (person, job, day) with a Status
+    field that tracks the worker's placement state on that job (Contacted →
+    Short List → Confirmed → Mobilising → Onsite → Demobilised, with
+    Declined / Late Withdrawal / Rejected as off-ramps). This loader keeps
+    every (job, pid) the macro file mentions for any active job, so callers
+    can decide which Status set to treat as "filled". `role` is taken from
+    the Trade column and renamed to the canonical vocabulary.
+    """
+    if DAILY_SCHEDULE_SHEET not in wb.sheetnames:
+        return {j: {} for j in jobnos}
+    ws = wb[DAILY_SCHEDULE_SHEET]
+    headers = [c.value for c in next(ws.iter_rows(max_row=1))]
+    idx = {h: i for i, h in enumerate(headers) if h}
+    out: dict[int, dict] = {j: {} for j in jobnos}
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        if not any(row):
+            continue
+        job = row[idx["JobId"]]
+        if job not in out:
+            continue
+        pid = row[idx["PersonnelId"]]
+        if not pid:
+            continue
+        status = (row[idx["Status"]] or "").strip()
+        trade  = (row[idx["Trade"]]  or "").strip()
+        trade  = MACRO_ROLE_RENAME.get(trade, trade)
+        report = row[idx["ReportDate"]]
+        if isinstance(report, dt.datetime):
+            report = report.date()
+        rec = out[job].get(pid)
+        if rec is None:
+            rec = {
+                "trades":         Counter(),
+                "statuses":       set(),
+                "report_dates":   [],
+                "onsite_days":    0,
+                "latest_status":  ("", None),  # (status, date) most-recent
+            }
+            out[job][pid] = rec
+        if status:
+            rec["statuses"].add(status)
+            cur_status, cur_date = rec["latest_status"]
+            if report and (cur_date is None or report > cur_date):
+                rec["latest_status"] = (status, report)
+        if trade and status in ONSITE_PERSONNEL_STATUSES:
+            rec["trades"][trade] += 1
+        if report and status in ONSITE_PERSONNEL_STATUSES:
+            rec["report_dates"].append(report)
+        if row[idx.get("OnSite")] in (1, True):
+            rec["onsite_days"] += 1
+    return out
+
+
 # --------------------------------------------------------------------------- builder
 
 def _project_label(base: str, start: dt.date) -> str:
@@ -590,31 +697,74 @@ def _build_one(job_no: int,
         return None
     company_key, client_name, dashboard_site, label_base, id_prefix = CLIENT_SITE_MAP[(client, site)]
 
-    workers = roster_raw["workers"]
-    # Build one roster row per unique Personnel Id, using only on-site
-    # schedule types to pick start/end/crew. Workers who *only* have
-    # Personal Event / Annual Leave / Working Elsewhere rows for this
-    # job get skipped — they aren't actually on the shutdown.
+    workers   = roster_raw["workers"]
+    dps       = roster_raw.get("dps", {}) or {}
+    # The named roster is the union of (a) PersonnelRosterView entries with at
+    # least one on-site schedule day and (b) DailyPersonnelSchedule entries
+    # whose Status is Confirmed/Mobilising/Onsite/Demobilised. In practice
+    # both lists are the same set of PIDs for active shutdowns — but we
+    # accept either side so a worker confirmed in DPS without a daily roster
+    # row yet still appears, and an on-site PRV worker without a DPS row
+    # still appears (legacy completed jobs where DPS has aged out).
+    pids = set(workers) | set(dps)
     worker_candidates: list[dict] = []
     filled_by_role: Counter = Counter()
-    for pid, w in workers.items():
-        onsite_dates = [d for d, st in zip(w["dates"],
-                                           _explode_sched_types(w["sched_types"], len(w["dates"])))
-                        if st in ONSITE_SCHED_TYPES]
-        if not onsite_dates:
-            continue
+    skipped_dps_unfilled = 0
+    for pid in pids:
+        w   = workers.get(pid) or {"dates": [], "sched_types": Counter(), "is_on_location": False}
+        dps_rec = dps.get(pid)
+
+        # Status filter: when DPS knows about this person on this job, only
+        # keep them if they're in an "actually filling a slot" status. PRV-
+        # only PIDs (legacy / older snapshots without DPS coverage) keep the
+        # previous "any on-site Schedule Type" rule so we don't drop history.
+        if dps_rec is not None:
+            if not (dps_rec["statuses"] & ONSITE_PERSONNEL_STATUSES):
+                skipped_dps_unfilled += 1
+                continue
+        else:
+            onsite_dates = [d for d, st in zip(w["dates"],
+                                               _explode_sched_types(w["sched_types"], len(w["dates"])))
+                            if st in ONSITE_SCHED_TYPES]
+            if not onsite_dates:
+                continue
+
         person = personnel.get(pid)
         if not person:
             continue
-        role   = person["role"]
         mobile = person["mobile"]
-        start  = min(w["dates"])
-        end    = max(w["dates"])
-        # Dominant on-site schedule type drives crew label.
+
+        # Per-job role: prefer DPS Trade (the trade this person is filling
+        # *on this job* — what JobPlanningView counts against). Fall back to
+        # the worker's Primary Role from xll01 Personnel when DPS doesn't
+        # cover this PID.
+        if dps_rec and dps_rec["trades"]:
+            role = dps_rec["trades"].most_common(1)[0][0]
+        else:
+            role = person["role"]
+
+        # Date span — prefer PRV scheduled days when present, else DPS
+        # ReportDates filtered to ONSITE statuses.
+        if w["dates"]:
+            start = min(w["dates"])
+            end   = max(w["dates"])
+        elif dps_rec and dps_rec["report_dates"]:
+            start = min(dps_rec["report_dates"])
+            end   = max(dps_rec["report_dates"])
+        else:
+            # Only happens for PIDs in DPS with onsite status but no report
+            # dates yet — treat as open-ended at today.
+            start = end = dt.date.today()
+
+        # Dominant on-site Schedule Type drives the crew label. DPS doesn't
+        # carry shift labels, so PRV-less PIDs default to "Day".
         onsite_only = Counter({k: v for k, v in w["sched_types"].items()
                                if k in ONSITE_SCHED_TYPES})
-        dom_sched = onsite_only.most_common(1)[0][0]
-        crew_label = CREW_LABEL.get(dom_sched, dom_sched)
+        if onsite_only:
+            dom_sched  = onsite_only.most_common(1)[0][0]
+            crew_label = CREW_LABEL.get(dom_sched, dom_sched)
+        else:
+            crew_label = "Day"
 
         entry = {
             "name":         person["name"],
@@ -623,61 +773,44 @@ def _build_one(job_no: int,
             "start":        start.isoformat(),
             "end":          end.isoformat(),
             "personnel_id": pid,
-            # Tickets are free here — we already have the Personnel Id from
-            # PersonnelRosterView. No name-matching pass needed.
             "tickets":      (_load_cache().get("compliance") or {}).get(pid, {}),
         }
         if mobile:
             entry["mobile"] = mobile
-        worker_candidates.append({
-            "entry": entry,
-            "role": role,
-            "shift": crew_label,
-            "hire_company": person["hire_company"],
-            "is_on_location": bool(w["is_on_location"]),
-            "onsite_days": len(onsite_dates),
-        })
-        filled_by_role[role]  += 1
+        if dps_rec and dps_rec["latest_status"][0]:
+            entry["status"] = dps_rec["latest_status"][0]
 
+        worker_candidates.append({
+            "entry":          entry,
+            "role":           role,
+            "shift":          crew_label,
+            "hire_company":   person["hire_company"],
+            "is_on_location": bool(w["is_on_location"]) or bool(dps_rec and dps_rec["onsite_days"]),
+            "onsite_days":    max(len([d for d, st in zip(w["dates"],
+                                                          _explode_sched_types(w["sched_types"], len(w["dates"])))
+                                       if st in ONSITE_SCHED_TYPES]),
+                                  (dps_rec["onsite_days"] if dps_rec else 0)),
+        })
+        filled_by_role[role] += 1
+
+    if skipped_dps_unfilled:
+        print(f"  macro: JobNo {job_no} skipped {skipped_dps_unfilled} workers "
+              f"with non-filling DPS status (Contacted/Declined/Rejected/etc.)")
     if not worker_candidates:
         print(f"  warn: JobNo {job_no} has no on-site workers — skipping")
         return None
 
-    # JobPlanningView drives BOTH Required and Filled — those are the
-    # figures the Rapid Crews website shows. PersonnelRosterView's unique
-    # personnel count (the old "filled_by_role" Counter above) tends to
-    # drift above JobPlanningView.Filled because it counts anyone with a
-    # scheduled day, not just officially-filled slots. Rapid Crews is the
-    # source of truth; target files only apply when RC has nothing.
+    # DailyPersonnelSchedule already gave us the authoritative filled list
+    # above. No JobPlanningView cap — we used to chop roster rows down to
+    # JP's per-role Filled count, but that hid people RapidCrews considered
+    # mobilising/on-site. The named roster IS the Filled list now, and
+    # filled_by_role is derived from it directly.
     planning_req = planning["required_by_role"]
     planning_fil = planning["filled_by_role"]
     roster_selected = list(worker_candidates)
-    if planning_req or any(planning_fil.values()):
-        # Matrix/headcount reconciliation: cap roster rows to JobPlanningView
-        # Filled counts per role (source of truth). Prefer workers explicitly
-        # marked on location, then those with the most on-site schedule days.
-        selected: list[dict] = []
-        by_role: dict[str, list[dict]] = defaultdict(list)
-        for c in worker_candidates:
-            by_role[c["role"]].append(c)
-        for role, candidates in by_role.items():
-            quota = int(planning_fil.get(role, 0))
-            if quota <= 0:
-                continue
-            ranked = sorted(
-                candidates,
-                key=lambda c: (
-                    0 if c["is_on_location"] else 1,
-                    -int(c["onsite_days"]),
-                    c["entry"]["start"],
-                    c["entry"]["name"],
-                ),
-            )
-            selected.extend(ranked[:quota])
-        roster_selected = selected
 
     if not roster_selected:
-        print(f"  warn: JobNo {job_no} has no selected workers after planning reconciliation — skipping")
+        print(f"  warn: JobNo {job_no} has no selected workers — skipping")
         return None
 
     # Shutdown window = span of selected workers' earliest/latest dates.
@@ -692,14 +825,21 @@ def _build_one(job_no: int,
     labour_hire_split: Counter = Counter(c["hire_company"] for c in roster_selected)
 
     if planning_req or any(planning_fil.values()):
+        # filled_by_role is derived from the named roster (one row per unique
+        # PersonnelId, role = DPS Trade), so the per-role table sums to the
+        # same total that the matrix and KPI cards show. Required keeps using
+        # JobPlanningView (the only place the full demand by trade lives).
+        # planning_fil is preserved on _source so the dashboard can flag the
+        # gap when JobPlanningView and the named roster disagree.
         selected_by_role = Counter(c["role"] for c in roster_selected)
         all_keys = set(selected_by_role) | set(planning_req) | set(planning_fil)
-        required     = {r: int(planning_req.get(r, 0)) for r in all_keys}
-        filled_final = {r: int(planning_fil.get(r, 0)) for r in all_keys}
+        required     = {r: int(planning_req.get(r, 0))     for r in all_keys}
+        filled_final = {r: int(selected_by_role.get(r, 0)) for r in all_keys}
         target_source_meta     = {"source": "rapid_crews_job_planning_view",
                                   "job_no": job_no,
-                                  "total_required": sum(planning_req.values()),
-                                  "total_filled":   sum(planning_fil.values())}
+                                  "total_required":          sum(planning_req.values()),
+                                  "total_filled_planning":   sum(planning_fil.values()),
+                                  "total_filled_named":      len(roster_selected)}
         required_target_source = "RAPID_CREWS_JOB_PLANNING"
     else:
         required, filled_final, target_source_meta = rc.merge_targets(shutdown_id, filled_by_role)
@@ -710,9 +850,19 @@ def _build_one(job_no: int,
 
     status = rc._infer_status(sd, ed, dt.date.today())
 
+    # Prefer the descriptive label from the ACTIVE_SHUTDOWNS sheet (e.g.
+    # "CSBP NaaN1" / "CSBP Naan2") when supplied — disambiguates two
+    # shutdowns at the same site in the same month. Fall back to the
+    # generic site-month template.
+    label_from_sheet = (_load_cache().get("active_labels") or {}).get(int(job_no))
+    if label_from_sheet:
+        project_name = f"{label_from_sheet} {_MONTH_NAME[sd.month]} {sd.year}"
+    else:
+        project_name = _project_label(label_base, sd)
+
     shutdown = {
         "id":               shutdown_id,
-        "name":             _project_label(label_base, sd),
+        "name":             project_name,
         "site":             dashboard_site,
         "start_date":       sd.isoformat(),
         "end_date":         ed.isoformat(),
@@ -724,14 +874,18 @@ def _build_one(job_no: int,
         "labour_hire_split": dict(labour_hire_split),
         "roster":           sorted(roster_entries, key=lambda r: r["name"]),
         "_source": {
-            "macro_data_job_no":          job_no,
-            "macro_data_client":          client,
-            "macro_data_site":            site,
-            "source_format":              "macro_data",
-            "required_target_source":     required_target_source,
-            "macro_data_roster_size":     len(roster_entries),
-            "macro_data_filled_by_role":  dict(filled_by_role),
-            "target_source":              target_source_meta,
+            "macro_data_job_no":           job_no,
+            "macro_data_client":           client,
+            "macro_data_site":             site,
+            "source_format":               "macro_data",
+            "required_target_source":      required_target_source,
+            "macro_data_roster_size":      len(roster_entries),
+            "macro_data_filled_by_role":   dict(filled_by_role),
+            # JobPlanningView's per-role Filled — preserved so the dashboard can
+            # surface a "Planning view: N (M unnamed)" gap pill when it differs
+            # from the named-roster total. Not used as a number on screen.
+            "planning_filled_by_role":     dict(planning_fil),
+            "target_source":               target_source_meta,
         },
     }
     return company_key, client_name, shutdown
@@ -770,13 +924,21 @@ def shutdowns_from_macro_data() -> list[tuple[str, str, dict]]:
     print(f"  macro: ACTIVE_SHUTDOWNS lists {len(jobnos)} JobNo(s): "
           f"{sorted(jobnos)}")
 
-    # PersonnelRosterView is the only sheet scoped to ACTIVE_SHUTDOWNS (the
-    # others are already fully loaded into the cache).
+    # PersonnelRosterView gives us per-day Schedule Type (Day/Night/RNR) for
+    # crew_split. DailyPersonnelSchedule is the source of truth for who's
+    # actually filling a slot on each job (Status: Confirmed/Mobilising/
+    # Onsite/Demobilised) and what trade they're filling it as. We pull both
+    # and combine in _build_one so the named roster matches the matrix and
+    # the shutdown-detail filled count.
     wb = _open()
     try:
         roster = _load_roster(wb, jobnos)
+        dps    = _load_daily_personnel_schedule(wb, jobnos)
     finally:
         wb.close()
+    for job, dps_workers in dps.items():
+        if job in roster:
+            roster[job]["dps"] = dps_workers
 
     # Re-shape the cached planning rows into the legacy {required_by_role,
     # filled_by_role} shape _build_one expects.

@@ -1,40 +1,42 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-28T04:07:11Z",
+  "archived_at": "2026-04-28T04:59:27Z",
   "shutdown": {
     "id": "tronox-2026-05",
-    "name": "1353 \u2013 Tronox Major Shutdown May 2026",
+    "name": "Tronox May 2026 May 2026",
     "site": "Kwinana",
     "start_date": "2026-05-18",
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
-      "Mechanical Fitter": 40,
-      "Superintendent": 1,
-      "Supervisor - Mechanical": 10,
       "Advanced Rigger": 10,
-      "Site Coordinator": 1,
       "Coded Welder": 20,
+      "Mechanical Fitter": 40,
+      "Intermediate Rigger": 0,
+      "Supervisor - Mechanical": 10,
+      "Site Coordinator": 1,
+      "Superintendent": 1,
       "Boilermaker": 10,
       "Trade Assistant": 20
     },
     "filled_by_role": {
-      "Mechanical Fitter": 17,
-      "Superintendent": 1,
-      "Supervisor - Mechanical": 1,
       "Advanced Rigger": 5,
-      "Site Coordinator": 1,
       "Coded Welder": 1,
+      "Mechanical Fitter": 17,
+      "Intermediate Rigger": 4,
+      "Supervisor - Mechanical": 1,
+      "Site Coordinator": 1,
+      "Superintendent": 1,
       "Boilermaker": 2,
       "Trade Assistant": 20
     },
     "crew_split": {
-      "Day": 43
+      "Day": 52
     },
     "mobilised_by_role": {},
     "labour_hire_split": {
-      "SRG - South West": 42,
+      "SRG - South West": 51,
       "SRG - Southwest Tronox": 1
     },
     "roster": [
@@ -58,7 +60,7 @@
           }
         },
         "mobile": "0478 161 027",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Abhinav ABHINAV",
@@ -85,7 +87,7 @@
           }
         },
         "mobile": "0424 848 290",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Adam RILEY",
@@ -96,7 +98,7 @@
         "personnel_id": "EC6E377A-A835-4073-B08C-4EE1C779F5DC",
         "tickets": {},
         "mobile": "0457 162 100",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Anthony SMITH",
@@ -118,7 +120,7 @@
           }
         },
         "mobile": "0404 303 368",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Beau WITHERS",
@@ -140,7 +142,7 @@
           }
         },
         "mobile": "0435 441 418",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Ben FRIEDAUER",
@@ -193,7 +195,45 @@
           }
         },
         "mobile": "0424 977 431",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Daniel SILLIS",
+        "role": "Intermediate Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "86417FEA-2E4E-4CF9-B000-1513F23D2A03",
+        "tickets": {
+          "cse": {
+            "expiry": "2028-02-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2029-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
+            "status": "current"
+          },
+          "rig": {
+            "expiry": "2029-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
+            "status": "current",
+            "level": "Intermediate"
+          },
+          "hrwl": {
+            "expiry": "2029-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2028-02-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Working at Heights.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0449 125 720",
+        "status": "Mobilising"
       },
       {
         "name": "Darren JAMES",
@@ -220,7 +260,35 @@
           }
         },
         "mobile": "0432 522 247",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Darren TAYLOR",
+        "role": "Advanced Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "230AE1F2-8169-489D-9946-4EBA894AF04E",
+        "tickets": {
+          "rig": {
+            "expiry": "2030-10-06",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TAYLOR , Darren - 230ae1f2-8169-489d-9946-4eba894af04e/TAYLOR, Darren - HRWL.jpg",
+            "status": "current",
+            "level": "Advanced"
+          },
+          "dog": {
+            "expiry": "2030-10-06",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TAYLOR , Darren - 230ae1f2-8169-489d-9946-4eba894af04e/TAYLOR, Darren - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-10-06",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TAYLOR , Darren - 230ae1f2-8169-489d-9946-4eba894af04e/TAYLOR, Darren - HRWL.jpg",
+            "status": "current"
+          }
+        },
+        "mobile": "0430 499 997",
+        "status": "Mobilising"
       },
       {
         "name": "Edward GARDINER",
@@ -247,7 +315,7 @@
           }
         },
         "mobile": "0457 470 330",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Eleonora TRAORE",
@@ -279,7 +347,7 @@
           }
         },
         "mobile": "0421 524 270",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Federico Sarti",
@@ -311,7 +379,7 @@
           }
         },
         "mobile": "0493 955 585",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Gabriel NGUYEN",
@@ -338,7 +406,7 @@
           }
         },
         "mobile": "0448 737 990",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Gurshwinder SINGH",
@@ -380,7 +448,55 @@
           }
         },
         "mobile": "0431 100 007",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Hemi RATAHI",
+        "role": "Advanced Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "4FA11D14-6DD0-41FB-8068-270F73668E6B",
+        "tickets": {
+          "rig": {
+            "expiry": "2028-03-15",
+            "doc": null,
+            "status": "current",
+            "level": "Advanced"
+          },
+          "fork": {
+            "expiry": "2028-03-15",
+            "doc": null,
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-03-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - HRWL.jpg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-08-20",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Working at Heights.pdf",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2028-03-15",
+            "doc": null,
+            "status": "current"
+          },
+          "hr": {
+            "expiry": "2028-02-29",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Driver's Licence.jpg",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-08-20",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RATAHI, Hemi - 4fa11d14-6dd0-41fb-8068-270f73668e6b/RATAHI, Hemi - Confined Spaces Entry.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0457 420 744",
+        "status": "Mobilising"
       },
       {
         "name": "Herbert MUKUNGA",
@@ -417,7 +533,7 @@
           }
         },
         "mobile": "0459 183 602",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Issac REID",
@@ -449,7 +565,7 @@
           }
         },
         "mobile": "0428 969 952",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Jacinta JEFFERY",
@@ -481,7 +597,7 @@
           }
         },
         "mobile": "0428 238 866",
-        "hire_company": "SRG - Southwest Tronox"
+        "status": "Mobilising"
       },
       {
         "name": "Jaime HERNANDEZ",
@@ -508,7 +624,7 @@
           }
         },
         "mobile": "0499 422 603",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Jake GANGEMI",
@@ -555,7 +671,7 @@
           }
         },
         "mobile": "0426 994 235",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Jeremias MENDIVIL",
@@ -592,7 +708,7 @@
           }
         },
         "mobile": "0433 197 500",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Jessica DILENA",
@@ -624,7 +740,50 @@
           }
         },
         "mobile": "0477 841 414",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Joe DACK",
+        "role": "Advanced Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "055BAAA5-5685-465E-BA8F-5F5F577218B7",
+        "tickets": {
+          "hrwl": {
+            "expiry": "2030-05-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
+            "status": "current"
+          },
+          "rig": {
+            "expiry": "2030-05-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
+            "status": "current",
+            "level": "Intermediate"
+          },
+          "dog": {
+            "expiry": "2030-05-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-03-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-03-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Working at Heights.pdf",
+            "status": "current"
+          },
+          "gta": {
+            "expiry": "2027-03-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Gas Test Atmospheres.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0449 995 304",
+        "status": "Mobilising"
       },
       {
         "name": "John HANCOCK",
@@ -656,7 +815,44 @@
           }
         },
         "mobile": "0409 998 059",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Julian VAN DER ZANDEN",
+        "role": "Intermediate Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "F93AB05D-D842-44A0-840C-8F3B76FC4C33",
+        "tickets": {
+          "gta": {
+            "expiry": "2028-03-03",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Gas Test Atmospheres.png",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2028-02-02",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Working at Heights.png",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-07-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - HRWL.png",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2028-07-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - HRWL.png",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2028-03-03",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Confined Spaces Entry.png",
+            "status": "current"
+          }
+        },
+        "mobile": "0433 449 381",
+        "status": "Mobilising"
       },
       {
         "name": "King GARCIA",
@@ -683,7 +879,7 @@
           }
         },
         "mobile": "0498 054 425",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Lea MONDESIR",
@@ -710,7 +906,7 @@
           }
         },
         "mobile": "0436 652 133",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Lise MONNET",
@@ -747,7 +943,108 @@
           }
         },
         "mobile": "0427 753 796",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Lucrecia Celeste SOSA",
+        "role": "Intermediate Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "C581D632-84B0-4577-99A2-C4AD68FC30EC",
+        "tickets": {
+          "hrwl": {
+            "expiry": "2030-07-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - HRWL.pdf",
+            "status": "current"
+          },
+          "fa": {
+            "expiry": "2028-05-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - First Aid.pdf",
+            "status": "current"
+          },
+          "rig": {
+            "expiry": "2030-07-31",
+            "doc": null,
+            "status": "current",
+            "level": "Intermediate"
+          },
+          "dog": {
+            "expiry": "2030-07-31",
+            "doc": null,
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2027-05-08",
+            "doc": null,
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - Working at Heights.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "gta": {
+            "expiry": "2027-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2030-07-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SOSA, Lucrecia - c581d632-84b0-4577-99a2-c4ad68fc30ec/SOSA, Lucrecia - HRWL.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0401 023 205",
+        "status": "Mobilising"
+      },
+      {
+        "name": "Luis FERNANDES",
+        "role": "Advanced Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "B2EA1F52-15A2-46E7-98A4-6707052B1AAA",
+        "tickets": {
+          "cse": {
+            "expiry": "2026-09-22",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2029-11-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
+            "status": "current"
+          },
+          "rig": {
+            "expiry": "2029-11-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
+            "status": "current",
+            "level": "Intermediate"
+          },
+          "gta": {
+            "expiry": "2026-09-22",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-11-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2026-09-22",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Working at Heights.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0424 476 507",
+        "status": "Mobilising"
       },
       {
         "name": "Malcolm GRAINGER-ROUSSEAU",
@@ -779,7 +1076,60 @@
           }
         },
         "mobile": "0487 104 895",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Malo AYMARD",
+        "role": "Intermediate Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "23B21728-3A28-4341-A8F9-D637E9992203",
+        "tickets": {
+          "hrwl": {
+            "expiry": "2030-05-12",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/AYMARD, Malo - 23b21728-3a28-4341-a8f9-d637e9992203/AYMARD, Malo - HRWL.jpg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-05-12",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/AYMARD, Malo - 23b21728-3a28-4341-a8f9-d637e9992203/AYMARD, Malo - HRWL.jpg",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2030-05-12",
+            "doc": null,
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2026-11-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/AYMARD, Malo - 23b21728-3a28-4341-a8f9-d637e9992203/AYMARD, Malo - Working at Heights.jpeg",
+            "status": "current"
+          },
+          "rig": {
+            "expiry": "2030-05-12",
+            "doc": null,
+            "status": "current",
+            "level": "Intermediate"
+          },
+          "gta": {
+            "expiry": "2026-11-19",
+            "doc": null,
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2030-05-12",
+            "doc": null,
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2026-11-19",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/AYMARD, Malo - 23b21728-3a28-4341-a8f9-d637e9992203/AYMARD, Malo - Confined Spaces Entry.jpeg",
+            "status": "current"
+          }
+        },
+        "mobile": "0475 382 914",
+        "status": "Mobilising"
       },
       {
         "name": "Mathias MENDY",
@@ -837,7 +1187,7 @@
           }
         },
         "mobile": "0493 038 522",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Mehdi BENDANI",
@@ -864,7 +1214,7 @@
           }
         },
         "mobile": "0493 536 751",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Melvin TIAMSON",
@@ -901,7 +1251,7 @@
           }
         },
         "mobile": "0429 525 137",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Mirko RISCHIA",
@@ -928,7 +1278,7 @@
           }
         },
         "mobile": "0410 851 191",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Mitya DOBBELAERE",
@@ -955,7 +1305,7 @@
           }
         },
         "mobile": "0447 582 473",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Naomi NDENGA",
@@ -982,7 +1332,7 @@
           }
         },
         "mobile": "0472 586 919",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Ngoni USORE",
@@ -1019,7 +1369,7 @@
           }
         },
         "mobile": "0401 500 098",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Omar ANADIF",
@@ -1061,7 +1411,7 @@
           }
         },
         "mobile": "0407 636 408",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Omkar Uttam DORUGADE",
@@ -1088,7 +1438,7 @@
           }
         },
         "mobile": "0424 804 281",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Peter BURNS",
@@ -1115,7 +1465,7 @@
           }
         },
         "mobile": "0437 183 009",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Prabhakaran THANGARASU",
@@ -1147,7 +1497,7 @@
           }
         },
         "mobile": "0434 916 762",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Roberto RAFFAELE",
@@ -1179,7 +1529,45 @@
           }
         },
         "mobile": "0419 949 242",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
+      },
+      {
+        "name": "Russell CHITTY",
+        "role": "Advanced Rigger",
+        "shift": "Day",
+        "start": "2026-05-18",
+        "end": "2026-05-22",
+        "personnel_id": "1B74F6CE-C078-43E8-BE7D-AC8B4D728724",
+        "tickets": {
+          "rig": {
+            "expiry": "2028-12-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - HRWL.pdf",
+            "status": "current",
+            "level": "Advanced"
+          },
+          "dog": {
+            "expiry": "2028-12-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - HRWL.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-12-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - HRWL.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - Working at Heights.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITTY, Russell - 1b74f6ce-c078-43e8-be7d-ac8b4d728724/CHITTY, Russell - Confined Spaces Entry.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0435 052 151",
+        "status": "Mobilising"
       },
       {
         "name": "Sharon GILCHRIST",
@@ -1221,7 +1609,7 @@
           }
         },
         "mobile": "0417 096 745",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Stefanos KARIKIS",
@@ -1253,7 +1641,7 @@
           }
         },
         "mobile": "0403 267 784",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Stjepan BOSNJAK",
@@ -1280,7 +1668,7 @@
           }
         },
         "mobile": "0413 377 068",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Teresita MATILLA",
@@ -1307,7 +1695,7 @@
           }
         },
         "mobile": "0486 046 871",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Trevor POWELL",
@@ -1349,7 +1737,7 @@
           }
         },
         "mobile": "0419 907 031",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "Wayne FORREST",
@@ -1381,7 +1769,7 @@
           }
         },
         "mobile": "0438 101 966",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       },
       {
         "name": "William THOMPSON",
@@ -1413,7 +1801,7 @@
           }
         },
         "mobile": "0429 331 817",
-        "hire_company": "SRG - South West"
+        "status": "Mobilising"
       }
     ],
     "_source": {
@@ -1422,29 +1810,37 @@
       "macro_data_site": "Tronox",
       "source_format": "macro_data",
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
-      "macro_data_roster_size": 43,
+      "macro_data_roster_size": 52,
       "macro_data_filled_by_role": {
-        "Boilermaker": 2,
-        "Trade Assistant": 20,
-        "Rigger - Intermediate": 5,
         "Mechanical Fitter": 17,
-        "Rigger - Advanced": 4,
+        "Trade Assistant": 20,
+        "Site Coordinator": 1,
+        "Advanced Rigger": 5,
+        "Intermediate Rigger": 4,
+        "Superintendent": 1,
+        "Coded Welder": 1,
+        "Boilermaker": 2,
+        "Supervisor - Mechanical": 1
+      },
+      "planning_filled_by_role": {
+        "Superintendent": 1,
         "Coded Welder": 1,
         "Site Coordinator": 1,
+        "Trade Assistant": 20,
+        "Advanced Rigger": 5,
         "Supervisor - Mechanical": 1,
-        "Superintendent": 1
+        "Mechanical Fitter": 17,
+        "Boilermaker": 2
       },
       "target_source": {
         "source": "rapid_crews_job_planning_view",
         "job_no": 1353,
         "total_required": 112,
-        "total_filled": 48,
-        "job_description": "Tronox Major Shutdown May 2026"
+        "total_filled_planning": 48,
+        "total_filled_named": 52
       },
       "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
-      "rapid_crews_roster_id": "1353",
-      "job_no": 1353,
-      "job_description": "Tronox Major Shutdown May 2026"
+      "rapid_crews_roster_id": "1353"
     }
   }
 }

@@ -169,13 +169,12 @@ async function load() {
       // retention table / summary cards all see the same canonical form.
       const cleanRoster = s.roster.map(w => ({ ...w, name: standardiseName(w.name) }));
 
-      // Derive filled_by_role from the named roster (deduped by normalised
-      // name) so it matches what the matrix shows and what the retention
-      // table counts. The JSON's filled_by_role comes from RapidCrews'
-      // JobPlanningView which can disagree with the named export — typical
-      // case: planning view shows 5 Advanced Riggers filled, but the named
-      // export has zero by name. Without this we end up with a "filled" KPI
-      // and shutdown-detail total that no human roster entry backs up.
+      // The pipeline derives filled_by_role from the named roster (DPS-
+      // filtered to Confirmed/Mobilising/Onsite/Demobilised) so the JSON's
+      // top-level filled_by_role already aligns with the matrix tick count.
+      // We still recompute defensively here so the dashboard stays
+      // self-consistent if a hand-edited JSON or older pipeline output
+      // drifts apart from its roster array.
       const rosterFilledByRole = {};
       const seenKeys = new Set();
       for (const w of cleanRoster) {
@@ -184,9 +183,11 @@ async function load() {
         seenKeys.add(k);
         if (w.role) rosterFilledByRole[w.role] = (rosterFilledByRole[w.role] || 0) + 1;
       }
-      // Keep the original JobPlanningView counts so we can surface the gap
-      // in the shutdown-detail card without losing the upstream view.
-      const planningFilledByRole = s.filled_by_role || {};
+      // JobPlanningView's per-role Filled count, preserved by the pipeline
+      // for transparency. Used to surface a "Planning view: N (M unnamed)"
+      // pill on the shutdown-detail card when JP and the named roster
+      // disagree, so the upstream gap stays visible.
+      const planningFilledByRole = (s._source && s._source.planning_filled_by_role) || {};
 
       state.shutdowns.push({
         ...s,

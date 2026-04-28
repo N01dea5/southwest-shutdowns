@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-28T01:40:37Z",
+  "generated_at": "2026-04-28T02:36:27Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -17,45 +17,28 @@
     "required_total": 112,
     "confirmed_total": 48,
     "gap_total": 64,
-    "same_client_retention": 32,
-    "srg_carry_over": 74,
-    "new_hires": 33,
-    "buddy_required": 33,
+    "same_client_retention": 15,
+    "srg_carry_over": 33,
+    "new_hires": 4,
+    "buddy_required": 4,
     "shift_split": {
-      "Day": 113,
-      "Night": 22
+      "Day": 52
     },
     "role_shift_split": {
-      "Advanced Rigger": {
-        "Day": 2,
-        "Night": 2
-      },
       "Boilermaker": {
-        "Day": 4,
-        "Night": 1
+        "Day": 2
       },
       "Coded Welder": {
-        "Day": 3
-      },
-      "Intermediate Rigger": {
-        "Day": 2,
-        "Night": 2
-      },
-      "Leading Hand": {
         "Day": 1
       },
       "Mechanical Fitter": {
-        "Day": 61,
-        "Night": 7
+        "Day": 17
       },
       "Rigger - Advanced": {
         "Day": 4
       },
       "Rigger - Intermediate": {
-        "Day": 7
-      },
-      "Sheet Metal Worker": {
-        "Day": 1
+        "Day": 5
       },
       "Site Coordinator": {
         "Day": 1
@@ -64,11 +47,10 @@
         "Day": 1
       },
       "Supervisor - Mechanical": {
-        "Day": 4
+        "Day": 1
       },
       "Trade Assistant": {
-        "Day": 22,
-        "Night": 10
+        "Day": 20
       }
     }
   },
@@ -92,12 +74,6 @@
       "gap": 19
     },
     {
-      "role": "Leading Hand",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
       "role": "Mechanical Fitter",
       "required": 40,
       "confirmed": 17,
@@ -111,12 +87,6 @@
     },
     {
       "role": "Rigger - Intermediate",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Sheet Metal Worker",
       "required": 0,
       "confirmed": 0,
       "gap": 0
@@ -148,1192 +118,7 @@
   ],
   "workers": [
     {
-      "name": "Jamie ADAMS",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-17"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-17"
-        }
-      }
-    },
-    {
-      "name": "Graham WANGLER",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-03-26"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-03-26"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2027-03-09"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-03-09"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Melvin TIAMSON",
-      "role": "Boilermaker",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-09-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-09-17"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-05-24"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-09-17"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-05-24"
-        }
-      }
-    },
-    {
-      "name": "Gurshwinder SINGH",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-22"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-22"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-03-17"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-03-17"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-02-22"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-03-17"
-        }
-      }
-    },
-    {
-      "name": "Ngoni USORE",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-19"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-19"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-03-02"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-06-19"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-03-02"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Herbert MUKUNGA",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-12"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-12"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-01-31"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2026-10-15"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-01-31"
-        }
-      },
-      "drivers": "HR"
-    },
-    {
-      "name": "Renan SANCHEZ",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-04-30"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-04-30"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-10-03"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-04-30"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-10-03"
-        }
-      }
-    },
-    {
-      "name": "Omar ANADIF",
-      "role": "Mechanical Fitter",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-05-15"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-15"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-09-04"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-09-04"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-05-15"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-09-04"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Hemi RATAHI",
-      "role": "Advanced Rigger",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-08-20"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-08-20"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-03-15"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-03-15"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2028-02-29"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-03-15",
-          "level": "Advanced"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-03-15"
-        }
-      },
-      "extras": "C0, C6, SB, SI",
-      "drivers": "HR"
-    },
-    {
-      "name": "Luis FERNANDES",
-      "role": "Advanced Rigger",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-09-22"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-09-22"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2029-11-08"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-11-08",
-          "level": "Intermediate"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-09-22"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-11-08"
-        }
-      }
-    },
-    {
-      "name": "William THOMPSON",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-06-30"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-06-30"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2027-02-28"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-06-30"
-        }
-      },
-      "drivers": "HR"
-    },
-    {
-      "name": "Jessica DILENA",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-10"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-10"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-02-29"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-02-29"
-        }
-      },
-      "drivers": "C-A"
-    },
-    {
-      "name": "Federico Sarti",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-07"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-07"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2029-03-12"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-07"
-        }
-      },
-      "drivers": "HR"
-    },
-    {
-      "name": "Lea MONDESIR",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-06-12"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-06-12"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-06-12"
-        }
-      }
-    },
-    {
-      "name": "Mehdi BENDANI",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-01-21"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-01-21"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-01-21"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Beau WITHERS",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-08"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-10"
-        }
-      }
-    },
-    {
-      "name": "Issac REID",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-28"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-28"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-02-28"
-        },
-        "fa": {
-          "status": "current",
-          "expiry": "2028-03-14"
-        }
-      }
-    },
-    {
-      "name": "Gabriel NGUYEN",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-13"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-10-13"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-10-13"
-        }
-      }
-    },
-    {
-      "name": "Roberto RAFFAELE",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-11"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-11"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2027-08-23"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-08-23"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "King GARCIA",
-      "role": "Trade Assistant",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-10"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-10"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-10"
-        }
-      }
-    },
-    {
-      "name": "Lucrecia Celeste SOSA",
-      "role": "Intermediate Rigger",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-05-08"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-08"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-05-08"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-07-31"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-07-31"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-07-31",
-          "level": "Intermediate"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-05-08"
-        },
-        "fa": {
-          "status": "current",
-          "expiry": "2028-05-17"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-07-31"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Julian VAN DER ZANDEN",
-      "role": "Intermediate Rigger",
-      "shift": "Night",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-03"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-02"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-07-13"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-03"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-07-13"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Cameron DUNN",
-      "role": "Coded Welder",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-21"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-09-17"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-10-21"
-        }
-      }
-    },
-    {
-      "name": "Daniel SILLIS",
-      "role": "Intermediate Rigger",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-02-21"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-21"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2029-04-09"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-04-09",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-04-09"
-        }
-      }
-    },
-    {
-      "name": "Chaeyoon KIM",
-      "role": "Intermediate Rigger",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-07-04"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-07-04"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-08-21"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-08-21"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-08-21"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-08-21",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-08-21"
-        }
-      }
-    },
-    {
-      "name": "Willy FAVA",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-12-02"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-12-02"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-12-02"
-        }
-      }
-    },
-    {
-      "name": "Naomi NDENGA",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-12-07"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-12-07"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-12-07"
-        }
-      }
-    },
-    {
-      "name": "Stefanos KARIKIS",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-13"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-13"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-11-03"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-11-03"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Sharon GILCHRIST",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-04"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-04"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-10-12"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2027-10-12"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2027-03-26"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-10-12"
-        }
-      },
-      "drivers": "HR"
-    },
-    {
-      "name": "Jaime HERNANDEZ",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-05"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-05"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-06-05"
-        }
-      }
-    },
-    {
-      "name": "Lise MONNET",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-07-16"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-07-16"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-09-04"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-07-16"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-09-04"
-        }
-      }
-    },
-    {
-      "name": "Barry LYON",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-08"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-09-17"
-        }
-      }
-    },
-    {
-      "name": "Jacinta JEFFERY",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-07"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-07"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-08-03"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-08-03"
-        }
-      }
-    },
-    {
-      "name": "Jeremias MENDIVIL",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-02-26"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-26"
-        },
-        "fork": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-11"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-02-26"
-        },
-        "hrwl": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-11"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Robert FRONGILLO",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-30"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-10-30"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-10-30"
-        }
-      }
-    },
-    {
-      "name": "Russell CHITTY",
-      "role": "Advanced Rigger",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-09-04"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-09-04"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2028-12-04"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-12-04",
-          "level": "Advanced"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-12-04"
-        }
-      }
-    },
-    {
-      "name": "Joe DACK",
-      "role": "Advanced Rigger",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-03-31"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-03-31"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-05-13"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-05-13",
-          "level": "Intermediate"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-03-31"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-05-13"
-        }
-      }
-    },
-    {
-      "name": "Peter BURNS",
-      "role": "Supervisor - Mechanical",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-09"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-09"
-        },
-        "fa": {
-          "status": "current",
-          "expiry": "2027-03-20"
-        }
-      }
-    },
-    {
-      "name": "Malcolm GRAINGER-ROUSSEAU",
+      "name": "Abdikadir MOHAMED",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
@@ -1345,47 +130,13 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-04-01"
+          "expiry": "2028-02-11"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-04-01"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-03-15"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-03-15"
+          "expiry": "2028-02-05"
         }
       }
-    },
-    {
-      "name": "Mitya DOBBELAERE",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-01"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-01"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-01"
-        }
-      },
-      "drivers": "C"
     },
     {
       "name": "Abhinav ABHINAV",
@@ -1410,176 +161,7 @@
           "status": "current",
           "expiry": "2026-05-31"
         }
-      },
-      "drivers": "HR"
-    },
-    {
-      "name": "Edward GARDINER",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-10-17"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-10-17"
-        }
       }
-    },
-    {
-      "name": "Prabhakaran THANGARASU",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-04-03"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-04-03"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-09-18"
-        },
-        "fa": {
-          "status": "current",
-          "expiry": "2028-04-05"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Abdikadir MOHAMED",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-02-11"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-05"
-        }
-      },
-      "drivers": "C"
-    },
-    {
-      "name": "Omkar Uttam DORUGADE",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-02-25"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-25"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-02-25"
-        }
-      }
-    },
-    {
-      "name": "Wayne FORREST",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-15"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-15"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-08-23"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-08-23"
-        }
-      }
-    },
-    {
-      "name": "Darren JAMES",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-02-25"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-25"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-02-25"
-        }
-      }
-    },
-    {
-      "name": "Adam PARANZEE",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
     },
     {
       "name": "Adam RILEY",
@@ -1592,81 +174,6 @@
       "new_hire": false,
       "buddy_required": false,
       "tickets": {}
-    },
-    {
-      "name": "Aidan EDWARDS",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-09"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-09"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-10-21"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-10-21"
-        }
-      }
-    },
-    {
-      "name": "Alexio NYAMAKAZI",
-      "role": "Boilermaker",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "wah": {
-          "status": "current",
-          "expiry": "2027-01-21"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-07-04"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-03-06"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-07-04"
-        }
-      }
-    },
-    {
-      "name": "Anthony JACKSON",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "wah": {
-          "status": "current",
-          "expiry": "2026-06-26"
-        }
-      }
     },
     {
       "name": "Anthony SMITH",
@@ -1690,56 +197,23 @@
       }
     },
     {
-      "name": "Arumugam SOMASUNDARAM",
-      "role": "Mechanical Fitter",
+      "name": "Beau WITHERS",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
-      "same_client_retention": false,
+      "same_client_retention": true,
       "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-06-07"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-06-07"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-04-11"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-04-11"
-        }
-      }
-    },
-    {
-      "name": "Ben ATTACK",
-      "role": "Boilermaker",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
       "new_hire": false,
       "buddy_required": false,
       "tickets": {
         "cse": {
-          "status": "current",
-          "expiry": "2027-05-12"
+          "status": "expiring_soon",
+          "expiry": "2026-05-08"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-05-09"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-05-12"
+          "expiry": "2028-04-10"
         }
       }
     },
@@ -1790,95 +264,8 @@
       }
     },
     {
-      "name": "Benjamin BIRD",
-      "role": "Boilermaker",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-05-30"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-30"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-12-29"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2027-12-29"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-12-29"
-        }
-      }
-    },
-    {
-      "name": "Cameron DOLAN",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-28"
-        },
-        "wah": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-27"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-05-02"
-        },
-        "gta": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-28"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-05-02"
-        }
-      }
-    },
-    {
-      "name": "Charlie BRATTLEY",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-26"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-26"
-        }
-      }
-    },
-    {
-      "name": "Christopher McLENNAN",
-      "role": "Supervisor - Mechanical",
+      "name": "Daniel SILLIS",
+      "role": "Rigger - Intermediate",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
@@ -1889,24 +276,29 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2028-02-01"
+          "expiry": "2028-02-21"
         },
         "wah": {
           "status": "current",
-          "expiry": "2028-02-01"
+          "expiry": "2028-02-21"
         },
-        "ewp": {
+        "dog": {
           "status": "current",
-          "expiry": "2029-10-10"
+          "expiry": "2029-04-09"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2029-04-09",
+          "level": "Intermediate"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2029-10-10"
+          "expiry": "2029-04-09"
         }
       }
     },
     {
-      "name": "Clemens SCHAAF",
+      "name": "Darren JAMES",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
@@ -1918,81 +310,15 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-11-05"
+          "expiry": "2028-02-25"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-11-05"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2031-01-20"
+          "expiry": "2028-02-25"
         },
         "gta": {
           "status": "current",
-          "expiry": "2027-11-05"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2031-01-20"
-        }
-      }
-    },
-    {
-      "name": "Courage MUNYAKARI",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-11-22"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-11-22"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-10-19"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-10-19"
-        }
-      }
-    },
-    {
-      "name": "Cristobal HERRERA",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-08-29"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-08-16"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-08-29"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-08-16"
+          "expiry": "2028-02-25"
         }
       }
     },
@@ -2003,9 +329,9 @@
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
       "tickets": {
         "dog": {
           "status": "current",
@@ -2023,43 +349,27 @@
       }
     },
     {
-      "name": "Dhamodhar KUMAR",
+      "name": "Edward GARDINER",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
-    },
-    {
-      "name": "Dragonlee MANAIA",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
+      "same_client_retention": true,
+      "srg_carry_over": false,
       "new_hire": false,
       "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-09-11"
+          "expiry": "2027-10-17"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-11-11"
+          "expiry": "2027-10-17"
         },
-        "fork": {
+        "gta": {
           "status": "current",
-          "expiry": "2030-09-29"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-09-29"
+          "expiry": "2027-10-17"
         }
       }
     },
@@ -2093,161 +403,61 @@
       }
     },
     {
-      "name": "Ernie BARABONA",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-17"
-        }
-      }
-    },
-    {
-      "name": "Fungai KAREMBA",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-10"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-10-10"
-        }
-      }
-    },
-    {
-      "name": "Ganesh MOHITE",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-07-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-07-24"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-12-07"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2027-12-07"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-07-24"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-12-07"
-        }
-      }
-    },
-    {
-      "name": "Garry MAYNARD",
-      "role": "Coded Welder",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-06"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-08-28"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-08-28"
-        }
-      }
-    },
-    {
-      "name": "Gaston FARRERO",
+      "name": "Federico Sarti",
       "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2026-10-08"
+          "expiry": "2028-03-07"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-04-26"
+          "expiry": "2028-03-07"
         },
-        "ewp": {
+        "hr": {
           "status": "current",
-          "expiry": "2027-09-13"
+          "expiry": "2029-03-12"
         },
-        "hrwl": {
+        "gta": {
           "status": "current",
-          "expiry": "2027-09-13"
+          "expiry": "2028-03-07"
         }
       }
     },
     {
-      "name": "George McDONALD",
-      "role": "Mechanical Fitter",
+      "name": "Gabriel NGUYEN",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
-      "same_client_retention": false,
+      "same_client_retention": true,
       "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
+      "new_hire": false,
+      "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-01-07"
+          "expiry": "2027-10-13"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-01-07"
+          "expiry": "2027-10-13"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-10-13"
         }
       }
     },
     {
-      "name": "Geraud GNANASEGAR",
+      "name": "Gurshwinder SINGH",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
@@ -2259,250 +469,185 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-04-26"
+          "expiry": "2027-02-22"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-04-26"
+          "expiry": "2027-02-22"
         },
         "ewp": {
           "status": "current",
-          "expiry": "2031-03-05"
+          "expiry": "2030-03-17"
         },
         "fork": {
           "status": "current",
-          "expiry": "2031-03-05"
+          "expiry": "2030-03-17"
         },
         "gta": {
           "status": "current",
-          "expiry": "2027-04-26"
+          "expiry": "2027-02-22"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2031-03-05"
+          "expiry": "2030-03-17"
         }
       }
     },
     {
-      "name": "Gregory ELLEMENT",
+      "name": "Hemi RATAHI",
       "role": "Rigger - Advanced",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-09-19"
+          "expiry": "2027-08-20"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-10-03"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2026-11-22"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2026-11-22",
-          "level": "Advanced"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2026-11-22"
-        }
-      }
-    },
-    {
-      "name": "Guanasagaran NADASON",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-11-06"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-11-06"
+          "expiry": "2027-08-20"
         },
         "ewp": {
           "status": "current",
-          "expiry": "2030-06-23"
+          "expiry": "2028-03-15"
         },
         "fork": {
           "status": "current",
-          "expiry": "2030-06-23"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-06-23"
-        }
-      }
-    },
-    {
-      "name": "Harrison ELLIOT",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-03-01"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-03-01"
-        }
-      }
-    },
-    {
-      "name": "Hoshiar SUDHU",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-06-22"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-06-22"
-        }
-      }
-    },
-    {
-      "name": "Irwin ISSAC",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-16"
-        },
-        "gta": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-16"
-        }
-      }
-    },
-    {
-      "name": "Jack MONTEBELLO",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-10"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-10"
-        }
-      }
-    },
-    {
-      "name": "Jackson POWELL",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-04"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2028-10-12"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-10-12",
-          "level": "Basic"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-10-12"
-        }
-      }
-    },
-    {
-      "name": "Jade MATENGA",
-      "role": "Leading Hand",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-06-19"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-06-19"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-05-10"
+          "expiry": "2028-03-15"
         },
         "hr": {
           "status": "current",
-          "expiry": "2027-11-11"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2027-05-10"
+          "expiry": "2028-02-29"
         },
         "rig": {
           "status": "current",
-          "expiry": "2027-05-10",
+          "expiry": "2028-03-15",
           "level": "Advanced"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2027-05-10"
+          "expiry": "2028-03-15"
+        }
+      }
+    },
+    {
+      "name": "Herbert MUKUNGA",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-06-12"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-06-12"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2027-01-31"
+        },
+        "hr": {
+          "status": "current",
+          "expiry": "2026-10-15"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2027-01-31"
+        }
+      }
+    },
+    {
+      "name": "Issac REID",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-02-28"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-02-28"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-02-28"
+        },
+        "fa": {
+          "status": "current",
+          "expiry": "2028-03-14"
+        }
+      }
+    },
+    {
+      "name": "Jacinta JEFFERY",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-11-07"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-11-07"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2028-08-03"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-08-03"
+        }
+      }
+    },
+    {
+      "name": "Jaime HERNANDEZ",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-06-05"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-06-05"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-06-05"
         }
       }
     },
@@ -2548,42 +693,8 @@
       }
     },
     {
-      "name": "James ARNOULD",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "ewp": {
-          "status": "current",
-          "expiry": "2031-02-24"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2031-02-25"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2031-02-25"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2031-02-25",
-          "level": "Basic"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2031-02-25"
-        }
-      }
-    },
-    {
-      "name": "Jared SCHERER",
-      "role": "Mechanical Fitter",
+      "name": "Jeremias MENDIVIL",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
@@ -2594,57 +705,90 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2026-08-22"
+          "expiry": "2028-02-26"
         },
         "wah": {
           "status": "current",
-          "expiry": "2026-08-22"
+          "expiry": "2028-02-26"
+        },
+        "fork": {
+          "status": "expiring_soon",
+          "expiry": "2026-05-11"
         },
         "gta": {
           "status": "current",
-          "expiry": "2026-08-22"
+          "expiry": "2028-02-26"
+        },
+        "hrwl": {
+          "status": "expiring_soon",
+          "expiry": "2026-05-11"
         }
       }
     },
     {
-      "name": "Jerome TASI",
-      "role": "Mechanical Fitter",
+      "name": "Jessica DILENA",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
       "tickets": {
         "cse": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-24"
+          "status": "current",
+          "expiry": "2028-03-10"
         },
         "wah": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-24"
+          "status": "current",
+          "expiry": "2028-03-10"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2028-02-29"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-02-29"
         }
       }
     },
     {
-      "name": "John BOWN",
-      "role": "Mechanical Fitter",
+      "name": "Joe DACK",
+      "role": "Rigger - Intermediate",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
-      "same_client_retention": false,
+      "same_client_retention": true,
       "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
+      "new_hire": false,
+      "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-09-01"
+          "expiry": "2027-03-31"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-09-01"
+          "expiry": "2027-03-31"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2030-05-13"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2030-05-13",
+          "level": "Intermediate"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-03-31"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-05-13"
         }
       }
     },
@@ -2678,7 +822,65 @@
       }
     },
     {
-      "name": "John RAMOS",
+      "name": "Julian VAN DER ZANDEN",
+      "role": "Rigger - Intermediate",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2028-03-03"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2028-02-02"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2028-07-13"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2028-03-03"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-07-13"
+        }
+      }
+    },
+    {
+      "name": "King GARCIA",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2028-03-10"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2028-03-10"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2028-03-10"
+        }
+      }
+    },
+    {
+      "name": "Lea MONDESIR",
       "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
@@ -2690,100 +892,21 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-05-14"
+          "expiry": "2026-06-12"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-05-14"
+          "expiry": "2026-06-12"
         },
         "gta": {
           "status": "current",
-          "expiry": "2027-05-14"
+          "expiry": "2026-06-12"
         }
       }
     },
     {
-      "name": "Jonathan MUTEMBO",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-19"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-19"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2030-09-22"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-09-22"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-09-22"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-09-22",
-          "level": "Advanced"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-09-22"
-        }
-      }
-    },
-    {
-      "name": "Joshua HAY",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {}
-    },
-    {
-      "name": "Julian JENNY",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-07-01"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-07-01"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-07-01"
-        }
-      }
-    },
-    {
-      "name": "Karunakar DEVIREDDY",
-      "role": "Mechanical Fitter",
+      "name": "Lise MONNET",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
@@ -2794,262 +917,28 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-09-25"
+          "expiry": "2027-07-16"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-09-25"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-09-25"
-        }
-      }
-    },
-    {
-      "name": "Keone CLAY",
-      "role": "Sheet Metal Worker",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-09-02"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-09-02"
-        }
-      }
-    },
-    {
-      "name": "Keron KAPPET",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-04-22"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-04-22"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2030-02-24"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-02-24"
-        }
-      }
-    },
-    {
-      "name": "Kevin ANDREWS",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "ewp": {
-          "status": "current",
-          "expiry": "2028-12-04"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-12-04"
-        }
-      }
-    },
-    {
-      "name": "Killian VANDEZANDE",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-01-31"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-01-31"
+          "expiry": "2027-07-16"
         },
         "ewp": {
           "status": "current",
-          "expiry": "2028-09-14"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-09-14"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-09-14",
-          "level": "Basic"
+          "expiry": "2030-09-04"
         },
         "gta": {
           "status": "current",
-          "expiry": "2028-01-31"
+          "expiry": "2027-07-16"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2028-09-14"
+          "expiry": "2030-09-04"
         }
       }
     },
     {
-      "name": "Leslie SELLS",
-      "role": "Rigger - Advanced",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "wah": {
-          "status": "current",
-          "expiry": "2026-11-21"
-        }
-      }
-    },
-    {
-      "name": "Lorenzo \ud83d\uded1 PELLIZZARI",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "wah": {
-          "status": "current",
-          "expiry": "2027-01-17"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2027-01-30"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-04-14"
-        }
-      }
-    },
-    {
-      "name": "Loyid JOSEPH",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-05-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-24"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-01-18"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2029-01-18"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2030-05-28"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-06-18"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-01-18"
-        }
-      }
-    },
-    {
-      "name": "Madeline JONES",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-05-12"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-09"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-05-12"
-        }
-      }
-    },
-    {
-      "name": "Mahadev YOGANANDA",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-04-30"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-04-30"
-        }
-      }
-    },
-    {
-      "name": "Malina SUNDARA",
+      "name": "Lucrecia Celeste SOSA",
       "role": "Rigger - Intermediate",
       "shift": "Day",
       "start": "2026-05-18",
@@ -3061,28 +950,107 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2028-02-21"
+          "expiry": "2027-05-08"
         },
         "wah": {
           "status": "current",
-          "expiry": "2028-02-21"
+          "expiry": "2027-05-08"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2027-05-08"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2030-07-31"
         },
         "dog": {
           "status": "current",
-          "expiry": "2029-09-27"
+          "expiry": "2030-07-31"
         },
         "rig": {
           "status": "current",
-          "expiry": "2029-09-27",
+          "expiry": "2030-07-31",
           "level": "Intermediate"
         },
         "gta": {
           "status": "current",
-          "expiry": "2028-02-21"
+          "expiry": "2027-05-08"
+        },
+        "fa": {
+          "status": "current",
+          "expiry": "2028-05-17"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2029-09-27"
+          "expiry": "2030-07-31"
+        }
+      }
+    },
+    {
+      "name": "Luis FERNANDES",
+      "role": "Rigger - Advanced",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2026-09-22"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2026-09-22"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2029-11-08"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2029-11-08",
+          "level": "Intermediate"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2026-09-22"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2029-11-08"
+        }
+      }
+    },
+    {
+      "name": "Malcolm GRAINGER-ROUSSEAU",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-04-01"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-04-01"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2028-03-15"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-03-15"
         }
       }
     },
@@ -3129,31 +1097,6 @@
         "hrwl": {
           "status": "current",
           "expiry": "2030-05-12"
-        }
-      }
-    },
-    {
-      "name": "Manohar NAUKUDKAR",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-05-31"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2029-05-31"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-05-31"
         }
       }
     },
@@ -3208,31 +1151,60 @@
       }
     },
     {
-      "name": "Michael BRUESER",
-      "role": "Mechanical Fitter",
+      "name": "Mehdi BENDANI",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-02-16"
+          "expiry": "2028-01-21"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-02-16"
+          "expiry": "2028-01-21"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2028-01-21"
+        }
+      }
+    },
+    {
+      "name": "Melvin TIAMSON",
+      "role": "Boilermaker",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-09-17"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-09-17"
         },
         "ewp": {
           "status": "current",
-          "expiry": "2026-11-02"
+          "expiry": "2027-05-24"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-09-17"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2026-11-02"
+          "expiry": "2027-05-24"
         }
       }
     },
@@ -3262,28 +1234,7 @@
       }
     },
     {
-      "name": "Mohaniraj JAWALE",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-07-04"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-07-04"
-        }
-      }
-    },
-    {
-      "name": "Morgan HILL",
+      "name": "Mitya DOBBELAERE",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
@@ -3295,54 +1246,21 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-04-04"
+          "expiry": "2028-03-01"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-04-04"
+          "expiry": "2028-03-01"
         },
         "gta": {
           "status": "current",
-          "expiry": "2027-04-04"
+          "expiry": "2028-03-01"
         }
       }
     },
     {
-      "name": "Mustafa \ud83d\uded1 GUENDESLI",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-18"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-17"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-10-24"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2029-10-24"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-10-24"
-        }
-      }
-    },
-    {
-      "name": "Nathan CHITEPO",
-      "role": "Mechanical Fitter",
+      "name": "Naomi NDENGA",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
@@ -3353,145 +1271,119 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2026-07-18"
+          "expiry": "2027-12-07"
         },
         "wah": {
           "status": "current",
-          "expiry": "2026-07-18"
+          "expiry": "2027-12-07"
         },
-        "fork": {
+        "gta": {
           "status": "current",
-          "expiry": "2029-08-02"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-08-02"
+          "expiry": "2027-12-07"
         }
       }
     },
     {
-      "name": "Nathan RHODES",
+      "name": "Ngoni USORE",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2028-03-02"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-03-02"
+        }
+      }
+    },
+    {
+      "name": "Omar ANADIF",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-05-15"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-05-15"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2030-09-04"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2030-09-04"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-05-15"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-09-04"
+        }
+      }
+    },
+    {
+      "name": "Omkar Uttam DORUGADE",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2028-02-25"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2028-02-25"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2028-02-25"
+        }
+      }
+    },
+    {
+      "name": "Peter BURNS",
       "role": "Supervisor - Mechanical",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-03"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-03"
-        }
-      }
-    },
-    {
-      "name": "Pralhad PAWAR",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-10-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-03-10"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2027-07-05"
-        }
-      }
-    },
-    {
-      "name": "Rahul CHAVAN",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-10-10"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-10-14"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-10-10"
-        }
-      }
-    },
-    {
-      "name": "Rajesh MAKWANA",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {}
-    },
-    {
-      "name": "Ricky TRUSLOVE",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-01-09"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-01-09"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2027-02-14"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2027-02-14",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-02-14"
-        }
-      }
-    },
-    {
-      "name": "Robert HARRIS",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
       "same_client_retention": true,
       "srg_carry_over": false,
       "new_hire": false,
@@ -3499,42 +1391,20 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-10-31"
+          "expiry": "2027-11-09"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-10-31"
+          "expiry": "2027-11-09"
+        },
+        "fa": {
+          "status": "current",
+          "expiry": "2027-03-20"
         }
       }
     },
     {
-      "name": "Robert McCAULEY",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "dog": {
-          "status": "current",
-          "expiry": "2029-08-14"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-08-14",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-08-14"
-        }
-      }
-    },
-    {
-      "name": "Russell PHILLIPS",
+      "name": "Prabhakaran THANGARASU",
       "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
@@ -3546,75 +1416,125 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-12-12"
+          "expiry": "2027-04-03"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-12-12"
+          "expiry": "2027-04-03"
         },
-        "ewp": {
+        "gta": {
           "status": "current",
-          "expiry": "2030-09-01"
+          "expiry": "2027-09-18"
+        },
+        "fa": {
+          "status": "current",
+          "expiry": "2028-04-05"
+        }
+      }
+    },
+    {
+      "name": "Roberto RAFFAELE",
+      "role": "Trade Assistant",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-06-11"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-06-11"
         },
         "fork": {
           "status": "current",
-          "expiry": "2030-09-01"
+          "expiry": "2027-08-23"
         },
-        "hr": {
+        "hrwl": {
           "status": "current",
-          "expiry": "2027-12-03"
+          "expiry": "2027-08-23"
+        }
+      }
+    },
+    {
+      "name": "Russell CHITTY",
+      "role": "Rigger - Advanced",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-09-04"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-09-04"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2028-12-04"
         },
         "rig": {
           "status": "current",
-          "expiry": "2030-09-01",
+          "expiry": "2028-12-04",
           "level": "Advanced"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2030-09-01"
+          "expiry": "2028-12-04"
         }
       }
     },
     {
-      "name": "Sam RICHDALE",
+      "name": "Sharon GILCHRIST",
       "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
+      "same_client_retention": false,
+      "srg_carry_over": true,
       "new_hire": false,
       "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-08-15"
+          "expiry": "2027-06-04"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-08-15"
+          "expiry": "2027-06-04"
         },
-        "gta": {
+        "ewp": {
           "status": "current",
-          "expiry": "2027-08-21"
+          "expiry": "2027-10-12"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2027-10-12"
+        },
+        "hr": {
+          "status": "current",
+          "expiry": "2027-03-26"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2027-10-12"
         }
       }
     },
     {
-      "name": "Sebastian LUEBKEN",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
-    },
-    {
-      "name": "Senthil DHANAPAL",
-      "role": "Mechanical Fitter",
+      "name": "Stefanos KARIKIS",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
@@ -3625,23 +1545,19 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-02-26"
+          "expiry": "2028-03-13"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-02-26"
+          "expiry": "2028-03-13"
         },
-        "fork": {
+        "dog": {
           "status": "current",
-          "expiry": "2028-11-29"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-02-26"
+          "expiry": "2030-11-03"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2028-11-29"
+          "expiry": "2030-11-03"
         }
       }
     },
@@ -3671,39 +1587,6 @@
       }
     },
     {
-      "name": "Tacio YAG-AS",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-05-21"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-05-21"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-04-04"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-05-21"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-04-04"
-        }
-      }
-    },
-    {
       "name": "Teresita MATILLA",
       "role": "Trade Assistant",
       "shift": "Day",
@@ -3725,74 +1608,6 @@
         "gta": {
           "status": "current",
           "expiry": "2028-04-14"
-        }
-      }
-    },
-    {
-      "name": "Tim CURRAN",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-10-18"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-10-18"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-01-23"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2028-01-23"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-01-23",
-          "level": "Basic"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-01-23"
-        }
-      }
-    },
-    {
-      "name": "Tomas PALOPOLI",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "ewp": {
-          "status": "current",
-          "expiry": "2029-03-14"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2029-03-14"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-03-14",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-03-14"
         }
       }
     },
@@ -3834,88 +1649,37 @@
       }
     },
     {
-      "name": "Troy HUNTER",
-      "role": "Rigger - Intermediate",
+      "name": "Wayne FORREST",
+      "role": "Mechanical Fitter",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-02-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-02-24"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2028-01-18"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-01-18",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-01-18"
-        }
-      }
-    },
-    {
-      "name": "Vincenzo MARGOTTA",
-      "role": "Rigger - Advanced",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
+      "srg_carry_over": true,
       "new_hire": false,
       "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-02-02"
+          "expiry": "2027-02-15"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-02-02"
+          "expiry": "2027-02-15"
         },
         "ewp": {
           "status": "current",
-          "expiry": "2030-05-08"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-05-08"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-05-08",
-          "level": "Advanced"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-02-02"
-        },
-        "fa": {
-          "status": "current",
-          "expiry": "2028-03-22"
+          "expiry": "2028-08-23"
         },
         "hrwl": {
           "status": "current",
-          "expiry": "2030-05-08"
+          "expiry": "2028-08-23"
         }
       }
     },
     {
-      "name": "Walid BOULAHDID",
-      "role": "Mechanical Fitter",
+      "name": "William THOMPSON",
+      "role": "Trade Assistant",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
@@ -3926,88 +1690,21 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2026-11-05"
+          "expiry": "2026-06-30"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-11-05"
+          "expiry": "2026-06-30"
+        },
+        "hr": {
+          "status": "current",
+          "expiry": "2027-02-28"
         },
         "gta": {
           "status": "current",
-          "expiry": "2026-12-17"
+          "expiry": "2026-06-30"
         }
       }
-    },
-    {
-      "name": "Wayne CARTER",
-      "role": "Supervisor - Mechanical",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-04-13"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-07-21"
-        }
-      }
-    },
-    {
-      "name": "Yvan CHEVALIER",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": false,
-      "new_hire": true,
-      "buddy_required": true,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-08-02"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-08-02"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-12-05"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2027-12-05"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2027-12-05",
-          "level": "Intermediate"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2027-12-05"
-        }
-      }
-    },
-    {
-      "name": "Zacarria DAIR",
-      "role": "Mechanical Fitter",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
     }
   ]
 }

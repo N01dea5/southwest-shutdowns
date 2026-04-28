@@ -1,81 +1,81 @@
 {
   "company_key": "covalent",
   "client_name": "Covalent",
-  "archived_at": "2026-04-28T04:59:27Z",
+  "archived_at": "2026-04-28T06:07:35Z",
   "shutdown": {
     "id": "covalent-2026-04",
-    "name": "Mt Holland April 2026 April 2026",
+    "name": "Mt Holland April 2026",
     "site": "Mt Holland",
     "start_date": "2026-04-09",
     "end_date": "2026-05-01",
     "status": "in_progress",
     "required_by_role": {
-      "HSE Advisor": 2,
-      "Advanced Rigger": 1,
       "Mechanical Fitter": 24,
+      "Boilermaker": 4,
+      "Electrician": 4,
+      "HSE Advisor": 2,
+      "Site Coordinator": 1,
+      "Advanced Rigger": 1,
+      "Trade Assistant": 5,
+      "Supervisor - Mechanical": 6,
+      "Supervisor - Electrical": 1,
+      "Basic Rigger": 4,
+      "Superintendent": 1,
       "Supervisor": 1,
       "Intermediate Rigger": 3,
-      "Supervisor - Mechanical": 6,
-      "Lube Technician": 3,
-      "Site Coordinator": 1,
-      "Superintendent": 1,
-      "Basic Rigger": 4,
-      "Supervisor - Electrical": 1,
       "Telehandler Operator": 2,
-      "Electrician": 4,
-      "Coded Welder": 1,
-      "Trade Assistant": 5,
-      "Boilermaker": 4
+      "Lube Technician": 3,
+      "Coded Welder": 1
     },
     "filled_by_role": {
-      "HSE Advisor": 2,
-      "Advanced Rigger": 2,
       "Mechanical Fitter": 21,
+      "Boilermaker": 4,
+      "Electrician": 3,
+      "HSE Advisor": 2,
+      "Site Coordinator": 1,
+      "Advanced Rigger": 2,
+      "Trade Assistant": 6,
+      "Supervisor - Mechanical": 6,
+      "Supervisor - Electrical": 1,
+      "Basic Rigger": 4,
+      "Superintendent": 1,
       "Supervisor": 1,
       "Intermediate Rigger": 2,
-      "Supervisor - Mechanical": 6,
-      "Lube Technician": 3,
-      "Site Coordinator": 1,
-      "Superintendent": 1,
-      "Basic Rigger": 4,
-      "Supervisor - Electrical": 1,
       "Telehandler Operator": 2,
-      "Electrician": 3,
-      "Coded Welder": 1,
-      "Trade Assistant": 6,
-      "Boilermaker": 4
+      "Lube Technician": 3,
+      "Coded Welder": 1
     },
     "crew_split": {
       "Day": 60
     },
     "mobilised_by_role": {
-      "Electrician": 3,
-      "Supervisor": 1,
-      "Site Coordinator": 1,
-      "Intermediate Rigger": 2,
-      "Telehandler Operator": 2,
-      "Mechanical Fitter": 21,
-      "Lube Technician": 3,
-      "Advanced Rigger": 2,
-      "Supervisor - Mechanical": 6,
       "Trade Assistant": 6,
       "HSE Advisor": 2,
-      "Superintendent": 1,
-      "Coded Welder": 1,
-      "Boilermaker": 4,
+      "Site Coordinator": 1,
+      "Electrician": 3,
+      "Mechanical Fitter": 21,
       "Basic Rigger": 4,
-      "Supervisor - Electrical": 1
+      "Boilermaker": 4,
+      "Supervisor - Mechanical": 6,
+      "Coded Welder": 1,
+      "Telehandler Operator": 2,
+      "Advanced Rigger": 2,
+      "Intermediate Rigger": 2,
+      "Superintendent": 1,
+      "Supervisor - Electrical": 1,
+      "Lube Technician": 3,
+      "Supervisor": 1
     },
     "labour_hire_split": {
       "SRG - South West": 38,
-      "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 8,
-      "Torque - Labour Hire": 2,
-      "2XM - Labour Hire": 1,
       "SRG - Active": 2,
-      "": 2,
-      "Hyrd - Labour Hire": 3,
       "Western Workforce - Labour Hire": 3,
-      "SRG - Southwest Tronox": 1
+      "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 8,
+      "2XM - Labour Hire": 1,
+      "": 2,
+      "SRG - Southwest Tronox": 1,
+      "Torque - Labour Hire": 2,
+      "Hyrd - Labour Hire": 3
     },
     "roster": [
       {
@@ -282,7 +282,7 @@
           }
         },
         "mobile": "0424 616 763",
-        "status": "Rejected"
+        "status": "Onsite"
       },
       {
         "name": "Brett STONE \ud83d\udd37",
@@ -926,7 +926,7 @@
           }
         },
         "mobile": "0406 872 504",
-        "status": "Rejected"
+        "status": "Onsite"
       },
       {
         "name": "Kapil \ud83d\udd37 CHAUDHARY",
@@ -1732,7 +1732,7 @@
           }
         },
         "mobile": "0403 267 784",
-        "status": "Rejected"
+        "status": "Onsite"
       },
       {
         "name": "Sujin JEON",
@@ -1957,22 +1957,22 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 60,
       "macro_data_filled_by_role": {
-        "Electrician": 3,
-        "Supervisor": 1,
-        "Site Coordinator": 1,
-        "Intermediate Rigger": 2,
-        "Telehandler Operator": 2,
-        "Mechanical Fitter": 21,
-        "Lube Technician": 3,
-        "Advanced Rigger": 2,
-        "Supervisor - Mechanical": 6,
         "Trade Assistant": 6,
         "HSE Advisor": 2,
-        "Superintendent": 1,
-        "Coded Welder": 1,
-        "Boilermaker": 4,
+        "Site Coordinator": 1,
+        "Electrician": 3,
+        "Mechanical Fitter": 21,
         "Basic Rigger": 4,
-        "Supervisor - Electrical": 1
+        "Boilermaker": 4,
+        "Supervisor - Mechanical": 6,
+        "Coded Welder": 1,
+        "Telehandler Operator": 2,
+        "Advanced Rigger": 2,
+        "Intermediate Rigger": 2,
+        "Superintendent": 1,
+        "Supervisor - Electrical": 1,
+        "Lube Technician": 3,
+        "Supervisor": 1
       },
       "planning_filled_by_role": {
         "Superintendent": 1,

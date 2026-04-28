@@ -633,6 +633,12 @@ def _load_daily_personnel_schedule(wb: openpyxl.Workbook,
     every (job, pid) the macro file mentions for any active job, so callers
     can decide which Status set to treat as "filled". `role` is taken from
     the Trade column and renamed to the canonical vocabulary.
+
+    A worker can have rows in multiple statuses on the same day (e.g.
+    "Onsite" + "Rejected" appearing together when a roster slot is
+    reassigned). For the displayed `latest_status` we pick the most-recent
+    row whose status is in ONSITE_PERSONNEL_STATUSES so a single trailing
+    "Rejected" doesn't paper over a real on-site stint.
     """
     if DAILY_SCHEDULE_SHEET not in wb.sheetnames:
         return {j: {} for j in jobnos}
@@ -662,14 +668,15 @@ def _load_daily_personnel_schedule(wb: openpyxl.Workbook,
                 "statuses":       set(),
                 "report_dates":   [],
                 "onsite_days":    0,
-                "latest_status":  ("", None),  # (status, date) most-recent
+                "latest_status":  ("", None),  # (status, date) within ONSITE set only
             }
             out[job][pid] = rec
         if status:
             rec["statuses"].add(status)
-            cur_status, cur_date = rec["latest_status"]
-            if report and (cur_date is None or report > cur_date):
-                rec["latest_status"] = (status, report)
+            if status in ONSITE_PERSONNEL_STATUSES:
+                cur_status, cur_date = rec["latest_status"]
+                if report and (cur_date is None or report > cur_date):
+                    rec["latest_status"] = (status, report)
         if trade and status in ONSITE_PERSONNEL_STATUSES:
             rec["trades"][trade] += 1
         if report and status in ONSITE_PERSONNEL_STATUSES:
@@ -853,10 +860,17 @@ def _build_one(job_no: int,
     # Prefer the descriptive label from the ACTIVE_SHUTDOWNS sheet (e.g.
     # "CSBP NaaN1" / "CSBP Naan2") when supplied — disambiguates two
     # shutdowns at the same site in the same month. Fall back to the
-    # generic site-month template.
+    # generic site-month template. Some labels in the sheet already
+    # include the month/year ("Tronox May 2026"); only append when missing
+    # so we don't end up with "Tronox May 2026 May 2026".
     label_from_sheet = (_load_cache().get("active_labels") or {}).get(int(job_no))
     if label_from_sheet:
-        project_name = f"{label_from_sheet} {_MONTH_NAME[sd.month]} {sd.year}"
+        month = _MONTH_NAME[sd.month]
+        year  = str(sd.year)
+        if month in label_from_sheet and year in label_from_sheet:
+            project_name = label_from_sheet
+        else:
+            project_name = f"{label_from_sheet} {month} {year}"
     else:
         project_name = _project_label(label_base, sd)
 

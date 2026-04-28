@@ -847,6 +847,18 @@ def _merge_macro_triples(
             if macro_job is not None and _job_no(existing) == macro_job:
                 match_idx = i
                 break
+        # Fallback identity: same id AND same start/end dates. Used for
+        # XLSX-keyed shutdowns (e.g. "Kleenheat Major March 2026") whose
+        # rapid_crews_roster_id is a string and can never match a numeric
+        # macro JobNo, but which describe the same shutdown the macro is
+        # now producing from JobPlanningView/DailyPersonnelSchedule.
+        if match_idx is None:
+            for i, (_, _, existing) in enumerate(combined):
+                if (existing.get("id") == sid
+                    and existing.get("start_date") == shutdown.get("start_date")
+                    and existing.get("end_date")   == shutdown.get("end_date")):
+                    match_idx = i
+                    break
         if match_idx is not None:
             _, _, rc_sd = combined[match_idx]
             print(f"  macro: JobNo {macro_job} -> {sid} overrides matched RosterCut")

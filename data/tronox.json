@@ -2543,32 +2543,32 @@
     },
     {
       "id": "tronox-2026-05",
-      "name": "Tronox May 2026 May 2026",
+      "name": "Tronox May 2026",
       "site": "Kwinana",
       "start_date": "2026-05-18",
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Advanced Rigger": 10,
-        "Coded Welder": 20,
         "Mechanical Fitter": 40,
-        "Intermediate Rigger": 0,
-        "Supervisor - Mechanical": 10,
-        "Site Coordinator": 1,
-        "Superintendent": 1,
         "Boilermaker": 10,
-        "Trade Assistant": 20
+        "Site Coordinator": 1,
+        "Advanced Rigger": 10,
+        "Intermediate Rigger": 0,
+        "Trade Assistant": 20,
+        "Supervisor - Mechanical": 10,
+        "Coded Welder": 20,
+        "Superintendent": 1
       },
       "filled_by_role": {
-        "Advanced Rigger": 5,
-        "Coded Welder": 1,
         "Mechanical Fitter": 17,
-        "Intermediate Rigger": 4,
-        "Supervisor - Mechanical": 1,
-        "Site Coordinator": 1,
-        "Superintendent": 1,
         "Boilermaker": 2,
-        "Trade Assistant": 20
+        "Site Coordinator": 1,
+        "Advanced Rigger": 5,
+        "Intermediate Rigger": 4,
+        "Trade Assistant": 20,
+        "Supervisor - Mechanical": 1,
+        "Coded Welder": 1,
+        "Superintendent": 1
       },
       "crew_split": {
         "Day": 52
@@ -4351,15 +4351,15 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 52,
         "macro_data_filled_by_role": {
-          "Mechanical Fitter": 17,
           "Trade Assistant": 20,
           "Site Coordinator": 1,
-          "Advanced Rigger": 5,
+          "Mechanical Fitter": 17,
           "Intermediate Rigger": 4,
-          "Superintendent": 1,
-          "Coded Welder": 1,
           "Boilermaker": 2,
-          "Supervisor - Mechanical": 1
+          "Coded Welder": 1,
+          "Advanced Rigger": 5,
+          "Supervisor - Mechanical": 1,
+          "Superintendent": 1
         },
         "planning_filled_by_role": {
           "Superintendent": 1,
@@ -4383,5 +4383,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-28T04:59:27Z"
+  "generated_at": "2026-04-28T06:07:35Z"
 }

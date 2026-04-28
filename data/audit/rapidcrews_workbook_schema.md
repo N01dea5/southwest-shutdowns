@@ -49,7 +49,7 @@ Rows: 572 | Columns: 43 | Header row: 1
 Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
 
 ### NEW — `xpbi02 DailyPersonnelSchedule`
-Rows: 175202 | Columns: 27 | Header row: 1
+Rows: 175275 | Columns: 27 | Header row: 1
 Headers: `Id`, `ReportDate`, `PersonnelId`, `FirstName`, `Surname`, `Status`, `OnSite`, `Confirmed`, `ResourceId`, `ClientId`, `Client`, `SiteId`, `Site`, `JobGroupId`, `JobGroup`, `JobId`, `QuoteNo`, `OrderNo`, `JobStart`, `JobEnd`, `jobStatus`, `jobActive`, `employeeActive`, `CompetencyId`, `Trade`, `DisciplineId`, `Discipline`
 
 ### OK — `xpbi02 DisciplineTrade`
@@ -77,7 +77,7 @@ Rows: 35 | Columns: 21 | Header row: 1
 Headers: `JobNo`
 
 ### OK — `xpbi02 PersonnelRosterView`
-Rows: 66590 | Columns: 7 | Header row: 1
+Rows: 66730 | Columns: 7 | Header row: 1
 Headers: `Job No`, `Client`, `Site`, `Personnel Id`, `Schedule Date`, `Schedule Type`, `IsOnLocation`
 
 ## `data/raw/Tianqi Construction Ramp Up Project .xlsx`

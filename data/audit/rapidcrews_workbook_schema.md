@@ -45,7 +45,7 @@ Headers: `Company`, `Date In`, `Date Out`, `Shift`, `Pegasus ID`, `Surname`, `Fi
 ## `data/raw/Rapidcrews Macro Data.xlsx`
 
 ### OK — `xpbi02 JobPlanningView`
-Rows: 568 | Columns: 43 | Header row: 1
+Rows: 572 | Columns: 43 | Header row: 1
 Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
 
 ### NEW — `xpbi02 DailyPersonnelSchedule`

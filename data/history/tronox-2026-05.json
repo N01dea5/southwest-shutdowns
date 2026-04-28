@@ -1,35 +1,35 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-28T06:41:23Z",
+  "archived_at": "2026-04-28T07:41:05Z",
   "shutdown": {
     "id": "tronox-2026-05",
-    "name": "Tronox May 2026",
+    "name": "1353 \u2013 Tronox Major Shutdown May 2026",
     "site": "Kwinana",
     "start_date": "2026-05-18",
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
+      "Superintendent": 1,
+      "Trade Assistant": 20,
+      "Advanced Rigger": 10,
+      "Supervisor - Mechanical": 10,
+      "Intermediate Rigger": 0,
+      "Mechanical Fitter": 40,
       "Coded Welder": 20,
       "Site Coordinator": 1,
-      "Superintendent": 1,
-      "Mechanical Fitter": 40,
-      "Advanced Rigger": 10,
-      "Boilermaker": 10,
-      "Intermediate Rigger": 0,
-      "Trade Assistant": 20,
-      "Supervisor - Mechanical": 10
+      "Boilermaker": 10
     },
     "filled_by_role": {
+      "Superintendent": 1,
+      "Trade Assistant": 20,
+      "Advanced Rigger": 5,
+      "Supervisor - Mechanical": 1,
+      "Intermediate Rigger": 4,
+      "Mechanical Fitter": 17,
       "Coded Welder": 1,
       "Site Coordinator": 1,
-      "Superintendent": 1,
-      "Mechanical Fitter": 17,
-      "Advanced Rigger": 5,
-      "Boilermaker": 2,
-      "Intermediate Rigger": 4,
-      "Trade Assistant": 20,
-      "Supervisor - Mechanical": 1
+      "Boilermaker": 2
     },
     "crew_split": {
       "Day": 52
@@ -60,7 +60,8 @@
           }
         },
         "mobile": "0478 161 027",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Abhinav ABHINAV",
@@ -87,7 +88,8 @@
           }
         },
         "mobile": "0424 848 290",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Adam RILEY",
@@ -98,7 +100,8 @@
         "personnel_id": "EC6E377A-A835-4073-B08C-4EE1C779F5DC",
         "tickets": {},
         "mobile": "0457 162 100",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Anthony SMITH",
@@ -120,7 +123,8 @@
           }
         },
         "mobile": "0404 303 368",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Beau WITHERS",
@@ -142,7 +146,8 @@
           }
         },
         "mobile": "0435 441 418",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ben FRIEDAUER",
@@ -195,7 +200,8 @@
           }
         },
         "mobile": "0424 977 431",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel SILLIS",
@@ -233,7 +239,8 @@
           }
         },
         "mobile": "0449 125 720",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Darren JAMES",
@@ -260,7 +267,8 @@
           }
         },
         "mobile": "0432 522 247",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Darren TAYLOR",
@@ -288,7 +296,8 @@
           }
         },
         "mobile": "0430 499 997",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Edward GARDINER",
@@ -315,7 +324,8 @@
           }
         },
         "mobile": "0457 470 330",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Eleonora TRAORE",
@@ -347,7 +357,8 @@
           }
         },
         "mobile": "0421 524 270",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Federico Sarti",
@@ -379,7 +390,8 @@
           }
         },
         "mobile": "0493 955 585",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Gabriel NGUYEN",
@@ -406,7 +418,8 @@
           }
         },
         "mobile": "0448 737 990",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Gurshwinder SINGH",
@@ -448,7 +461,8 @@
           }
         },
         "mobile": "0431 100 007",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Hemi RATAHI",
@@ -496,7 +510,8 @@
           }
         },
         "mobile": "0457 420 744",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Herbert MUKUNGA",
@@ -533,7 +548,8 @@
           }
         },
         "mobile": "0459 183 602",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Issac REID",
@@ -565,7 +581,8 @@
           }
         },
         "mobile": "0428 969 952",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jacinta JEFFERY",
@@ -597,7 +614,8 @@
           }
         },
         "mobile": "0428 238 866",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Jaime HERNANDEZ",
@@ -624,7 +642,8 @@
           }
         },
         "mobile": "0499 422 603",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jake GANGEMI",
@@ -671,7 +690,8 @@
           }
         },
         "mobile": "0426 994 235",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jeremias MENDIVIL",
@@ -708,7 +728,8 @@
           }
         },
         "mobile": "0433 197 500",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jessica DILENA",
@@ -740,7 +761,8 @@
           }
         },
         "mobile": "0477 841 414",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Joe DACK",
@@ -783,7 +805,8 @@
           }
         },
         "mobile": "0449 995 304",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "John HANCOCK",
@@ -815,7 +838,8 @@
           }
         },
         "mobile": "0409 998 059",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Julian VAN DER ZANDEN",
@@ -852,7 +876,8 @@
           }
         },
         "mobile": "0433 449 381",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "King GARCIA",
@@ -879,7 +904,8 @@
           }
         },
         "mobile": "0498 054 425",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lea MONDESIR",
@@ -906,7 +932,8 @@
           }
         },
         "mobile": "0436 652 133",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lise MONNET",
@@ -943,7 +970,8 @@
           }
         },
         "mobile": "0427 753 796",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lucrecia Celeste SOSA",
@@ -1001,7 +1029,8 @@
           }
         },
         "mobile": "0401 023 205",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Luis FERNANDES",
@@ -1044,7 +1073,8 @@
           }
         },
         "mobile": "0424 476 507",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Malcolm GRAINGER-ROUSSEAU",
@@ -1076,7 +1106,8 @@
           }
         },
         "mobile": "0487 104 895",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Malo AYMARD",
@@ -1129,7 +1160,8 @@
           }
         },
         "mobile": "0475 382 914",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mathias MENDY",
@@ -1187,7 +1219,8 @@
           }
         },
         "mobile": "0493 038 522",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mehdi BENDANI",
@@ -1214,7 +1247,8 @@
           }
         },
         "mobile": "0493 536 751",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Melvin TIAMSON",
@@ -1251,7 +1285,8 @@
           }
         },
         "mobile": "0429 525 137",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mirko RISCHIA",
@@ -1278,7 +1313,8 @@
           }
         },
         "mobile": "0410 851 191",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mitya DOBBELAERE",
@@ -1305,7 +1341,8 @@
           }
         },
         "mobile": "0447 582 473",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Naomi NDENGA",
@@ -1332,7 +1369,8 @@
           }
         },
         "mobile": "0472 586 919",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ngoni USORE",
@@ -1369,7 +1407,8 @@
           }
         },
         "mobile": "0401 500 098",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Omar ANADIF",
@@ -1411,7 +1450,8 @@
           }
         },
         "mobile": "0407 636 408",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Omkar Uttam DORUGADE",
@@ -1438,7 +1478,8 @@
           }
         },
         "mobile": "0424 804 281",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Peter BURNS",
@@ -1465,7 +1506,8 @@
           }
         },
         "mobile": "0437 183 009",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Prabhakaran THANGARASU",
@@ -1497,7 +1539,8 @@
           }
         },
         "mobile": "0434 916 762",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Roberto RAFFAELE",
@@ -1529,7 +1572,8 @@
           }
         },
         "mobile": "0419 949 242",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Russell CHITTY",
@@ -1567,7 +1611,8 @@
           }
         },
         "mobile": "0435 052 151",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Sharon GILCHRIST",
@@ -1609,7 +1654,8 @@
           }
         },
         "mobile": "0417 096 745",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stefanos KARIKIS",
@@ -1641,7 +1687,8 @@
           }
         },
         "mobile": "0403 267 784",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stjepan BOSNJAK",
@@ -1668,7 +1715,8 @@
           }
         },
         "mobile": "0413 377 068",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Teresita MATILLA",
@@ -1695,7 +1743,8 @@
           }
         },
         "mobile": "0486 046 871",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Trevor POWELL",
@@ -1737,7 +1786,8 @@
           }
         },
         "mobile": "0419 907 031",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wayne FORREST",
@@ -1769,7 +1819,8 @@
           }
         },
         "mobile": "0438 101 966",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "William THOMPSON",
@@ -1801,7 +1852,8 @@
           }
         },
         "mobile": "0429 331 817",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       }
     ],
     "_source": {
@@ -1813,14 +1865,14 @@
       "macro_data_roster_size": 52,
       "macro_data_filled_by_role": {
         "Trade Assistant": 20,
-        "Superintendent": 1,
-        "Mechanical Fitter": 17,
         "Advanced Rigger": 5,
-        "Intermediate Rigger": 4,
+        "Superintendent": 1,
         "Boilermaker": 2,
-        "Coded Welder": 1,
+        "Mechanical Fitter": 17,
+        "Supervisor - Mechanical": 1,
+        "Intermediate Rigger": 4,
         "Site Coordinator": 1,
-        "Supervisor - Mechanical": 1
+        "Coded Welder": 1
       },
       "planning_filled_by_role": {
         "Superintendent": 1,
@@ -1837,10 +1889,13 @@
         "job_no": 1353,
         "total_required": 112,
         "total_filled_planning": 48,
-        "total_filled_named": 52
+        "total_filled_named": 52,
+        "job_description": "Tronox Major Shutdown May 2026"
       },
       "rapid_crews_export_file": "1353 (RosterCut) 2026-04-14_15-16-54.xlsx",
-      "rapid_crews_roster_id": "1353"
+      "rapid_crews_roster_id": "1353",
+      "job_no": 1353,
+      "job_description": "Tronox Major Shutdown May 2026"
     }
   }
 }

@@ -3,7 +3,7 @@
   "shutdowns": [
     {
       "id": "covalent-2025-10",
-      "name": "Mt Holland October 2025",
+      "name": "1110 \u2013 Mt Holland October 2025",
       "site": "Mt Holland",
       "start_date": "2025-10-13",
       "end_date": "2025-10-21",
@@ -48,7 +48,8 @@
           "start": "2025-10-14",
           "end": "2025-10-18",
           "personnel_id": "DF5828A2-3514-4AAE-8942-621E47199C75",
-          "tickets": {}
+          "tickets": {},
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Malcolm GRAINGER-ROUSSEAU",
@@ -79,7 +80,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GRAINGER- ROUSSEAU , Malcolm - 7a7840e8-d802-4d20-baea-7c93df94696a/GRAINGER-ROUSSEAU, Malcolm - Confined Spaces.jpg",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Lia LAGNARINI",
@@ -131,7 +133,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LAGNARINI, Lia - 276b4db2-c37b-4e84-9669-b6862e05fa96/LAGNARINI, Lia - Confined Spaces Entry.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Viet NGUYEN",
@@ -173,7 +176,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VIET, Nguyen - 024439f6-e882-4d8f-92e6-1c6bda72c85d/NGUYEN, Viet - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Beau WITHERS",
@@ -194,7 +198,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS , Beau - Confined Spaces.pdf",
               "status": "expiring_soon"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Lauryn REDUIT",
@@ -230,7 +235,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REDUIT , Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT , Lauryn - HRWL.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Robert McCAULEY",
@@ -257,7 +263,8 @@
               "status": "current",
               "level": "Intermediate"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Josh SMITH \ud83d\udd37",
@@ -267,7 +274,8 @@
           "start": "2025-10-17",
           "end": "2025-10-21",
           "personnel_id": "63F7896D-8CCF-4F43-A6E4-DCCDC984FAE8",
-          "tickets": {}
+          "tickets": {},
+          "hire_company": "Western Workforce - Labour Hire"
         },
         {
           "name": "Aidan EDWARDS",
@@ -298,7 +306,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Julian JENNY",
@@ -324,7 +333,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JENNY , Julian - 0ca5b1c2-920a-472f-9d8e-83b65dd78553/JENNY , Julian - Gas Test Atmospheres.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Pramod CHANDRASKHAR",
@@ -360,7 +370,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHANDRASKHAR, Pradmod - bc22c16c-ab64-4a88-bb07-86e7cca871fe/CHANDRASKHAR, Pradmod - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "James ARNOULD",
@@ -397,7 +408,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ARNOULD , James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Ross McCALLUM",
@@ -423,7 +435,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCCALLUM , Ross - 7cc6800c-1a38-4fda-b307-599bb7c22083/MCCALLUM , Ross - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - Active"
         },
         {
           "name": "Marcel LAMICQ ZUMBADO",
@@ -433,7 +446,8 @@
           "start": "2025-10-14",
           "end": "2025-10-21",
           "personnel_id": "2187D943-A653-406F-93ED-A120C7203B49",
-          "tickets": {}
+          "tickets": {},
+          "hire_company": "SRG - South West"
         },
         {
           "name": "King GARCIA",
@@ -462,7 +476,8 @@
           },
           "ty": 5,
           "sy": 3,
-          "sum": "Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket."
+          "sum": "Mechanical trades assistant with conveyor roller, crusher, screen and chute liner experience plus forklift ticket.",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Thirugnanasampantham PERIASAMY",
@@ -488,7 +503,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Working at Heights.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Gregory HAUWAERT",
@@ -524,7 +540,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HAUWAERT , Gregory - c03b3dff-ec38-43f5-b233-bfefa09944c7/HAUWAERT , Gregory - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Paganini Jr URSUA",
@@ -560,7 +577,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/URSUA, Paganini - e4c0ce84-9b11-46f6-b04b-e8f75c313470/URSUA, Paganini - HRWL.jpeg",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Zacarria DAIR",
@@ -570,7 +588,8 @@
           "start": "2025-10-14",
           "end": "2025-10-21",
           "personnel_id": "31E8E037-AAF1-49F7-9EED-D2B50A9A62D6",
-          "tickets": {}
+          "tickets": {},
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Paul BERRY",
@@ -591,7 +610,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BERRY, Paul - 881ddf41-276d-480b-81c0-75e8671346c0/BERRY, Paul - Confined Spaces Entry.JPG",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "SRG - Southwest Tronox"
         },
         {
           "name": "Max FOELSCHE \ud83d\udd37",
@@ -617,7 +637,8 @@
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FOELSCHE , Max - 8abfd546-4d2f-46e4-96c3-d2ce380bd5b7/FOELSCHE , Max - Gas Test Atmospheres.pdf",
               "status": "current"
             }
-          }
+          },
+          "hire_company": "Western Workforce - Labour Hire"
         },
         {
           "name": "Christopher McLENNAN",
@@ -651,7 +672,8 @@
           },
           "ty": 18,
           "sy": 15,
-          "sum": "Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience."
+          "sum": "Mechanical supervisor supporting roller crew leadership depth with strong shutdown planning and supervision experience.",
+          "hire_company": "SRG - South West"
         }
       ],
       "_source": {
@@ -675,82 +697,83 @@
           "xref_exact": 0,
           "unmatched": 0,
           "ambiguous_samples": []
-        }
+        },
+        "job_no": 1110,
+        "job_description": "Mt Holland October 2025"
       }
     },
     {
       "id": "covalent-2026-04",
-      "name": "Mt Holland April 2026",
+      "name": "1359 \u2013 Mt Holland April 2026",
       "site": "Mt Holland",
       "start_date": "2026-04-09",
       "end_date": "2026-05-01",
       "status": "in_progress",
       "required_by_role": {
-        "Telehandler Operator": 2,
+        "HSE Advisor": 2,
         "Superintendent": 1,
-        "Electrician": 4,
-        "Advanced Rigger": 1,
+        "Supervisor - Mechanical": 6,
+        "Intermediate Rigger": 3,
+        "Mechanical Fitter": 24,
         "Basic Rigger": 4,
         "Supervisor - Electrical": 1,
+        "Electrician": 4,
         "Trade Assistant": 5,
-        "HSE Advisor": 2,
-        "Coded Welder": 1,
-        "Site Coordinator": 1,
-        "Lube Technician": 3,
-        "Mechanical Fitter": 24,
-        "Boilermaker": 4,
-        "Intermediate Rigger": 3,
+        "Advanced Rigger": 1,
         "Supervisor": 1,
-        "Supervisor - Mechanical": 6
+        "Coded Welder": 1,
+        "Lube Technician": 3,
+        "Telehandler Operator": 2,
+        "Site Coordinator": 1,
+        "Boilermaker": 4
       },
       "filled_by_role": {
-        "Telehandler Operator": 2,
+        "HSE Advisor": 2,
         "Superintendent": 1,
-        "Electrician": 3,
-        "Advanced Rigger": 2,
+        "Supervisor - Mechanical": 6,
+        "Intermediate Rigger": 2,
+        "Mechanical Fitter": 21,
         "Basic Rigger": 4,
         "Supervisor - Electrical": 1,
+        "Electrician": 3,
         "Trade Assistant": 6,
-        "HSE Advisor": 2,
-        "Coded Welder": 1,
-        "Site Coordinator": 1,
-        "Lube Technician": 3,
-        "Mechanical Fitter": 21,
-        "Boilermaker": 4,
-        "Intermediate Rigger": 2,
+        "Advanced Rigger": 2,
         "Supervisor": 1,
-        "Supervisor - Mechanical": 6
+        "Coded Welder": 1,
+        "Lube Technician": 3,
+        "Telehandler Operator": 2,
+        "Site Coordinator": 1,
+        "Boilermaker": 4
       },
       "crew_split": {
         "Day": 60
       },
       "mobilised_by_role": {
-        "Trade Assistant": 6,
-        "Mechanical Fitter": 21,
-        "Intermediate Rigger": 2,
-        "Superintendent": 1,
-        "Supervisor - Mechanical": 6,
-        "Electrician": 3,
-        "Supervisor - Electrical": 1,
-        "Lube Technician": 3,
+        "HSE Advisor": 2,
         "Basic Rigger": 4,
-        "Advanced Rigger": 2,
+        "Supervisor - Mechanical": 6,
+        "Superintendent": 1,
         "Boilermaker": 4,
+        "Mechanical Fitter": 21,
+        "Advanced Rigger": 2,
+        "Lube Technician": 3,
+        "Electrician": 3,
+        "Trade Assistant": 6,
+        "Supervisor - Electrical": 1,
+        "Intermediate Rigger": 2,
+        "Site Coordinator": 1,
         "Coded Welder": 1,
         "Telehandler Operator": 2,
-        "Site Coordinator": 1,
-        "Supervisor": 1,
-        "HSE Advisor": 2
+        "Supervisor": 1
       },
       "labour_hire_split": {
-        "SRG - South West": 38,
         "SRG - Active": 2,
+        "SRG - South West": 38,
         "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 8,
-        "Hyrd - Labour Hire": 3,
-        "Western Workforce - Labour Hire": 3,
         "Torque - Labour Hire": 2,
+        "Hyrd - Labour Hire": 3,
         "2XM - Labour Hire": 1,
-        "": 2,
+        "Western Workforce - Labour Hire": 3,
         "SRG - Southwest Tronox": 1
       },
       "roster": [
@@ -763,7 +786,8 @@
           "personnel_id": "EC6E377A-A835-4073-B08C-4EE1C779F5DC",
           "tickets": {},
           "mobile": "0457 162 100",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Alessio \ud83d\udd37 SAMMITO",
@@ -780,7 +804,8 @@
             }
           },
           "mobile": "0404 864 325",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Amit \ud83d\udd37 GUND",
@@ -802,7 +827,8 @@
             }
           },
           "mobile": "0423 173 031",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Hyrd - Labour Hire"
         },
         {
           "name": "Anthony SMITH",
@@ -824,7 +850,8 @@
             }
           },
           "mobile": "0404 303 368",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Arron NAIRN",
@@ -851,7 +878,8 @@
             }
           },
           "mobile": "0415 575 297",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Ben ATTACK",
@@ -878,7 +906,8 @@
             }
           },
           "mobile": "0489 067 448",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Ben FRIEDAUER",
@@ -931,7 +960,8 @@
             }
           },
           "mobile": "0424 977 431",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Brendan \ud83d\udd37 HILLMAN",
@@ -958,7 +988,8 @@
             }
           },
           "mobile": "0424 616 763",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Brett STONE \ud83d\udd37",
@@ -995,7 +1026,8 @@
             }
           },
           "mobile": "0410 436 761",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Hyrd - Labour Hire"
         },
         {
           "name": "Christopher McLENNAN",
@@ -1027,7 +1059,8 @@
             }
           },
           "mobile": "0427 164 636",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Clemens SCHAAF",
@@ -1064,7 +1097,8 @@
             }
           },
           "mobile": "0493 890 500",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Darren JAMES",
@@ -1091,7 +1125,8 @@
             }
           },
           "mobile": "0432 522 247",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "David \ud83d\udd37 BRYCE",
@@ -1135,7 +1170,8 @@
             }
           },
           "mobile": "0427 117 309",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Edward GARDINER",
@@ -1162,7 +1198,8 @@
             }
           },
           "mobile": "0457 470 330",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Gurshwinder SINGH",
@@ -1204,7 +1241,8 @@
             }
           },
           "mobile": "0431 100 007",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Henri MARTINS",
@@ -1241,7 +1279,8 @@
             }
           },
           "mobile": "0439 185 083",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Herbert MUKUNGA",
@@ -1278,7 +1317,8 @@
             }
           },
           "mobile": "0459 183 602",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Jacinta JEFFERY",
@@ -1310,7 +1350,8 @@
             }
           },
           "mobile": "0428 238 866",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - Southwest Tronox"
         },
         {
           "name": "Jack CHAPMAN \ud83d\udd37",
@@ -1321,7 +1362,8 @@
           "personnel_id": "F1B8D0D9-7053-4C7D-BC29-60A5103ED1DF",
           "tickets": {},
           "mobile": "0415 125 799",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Western Workforce - Labour Hire"
         },
         {
           "name": "Jade MATENGA",
@@ -1369,7 +1411,8 @@
             }
           },
           "mobile": "0408 005 187",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Jake GANGEMI",
@@ -1416,7 +1459,8 @@
             }
           },
           "mobile": "0426 994 235",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "James MAHONEY",
@@ -1458,7 +1502,8 @@
             }
           },
           "mobile": "0444 536 537",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - Active"
         },
         {
           "name": "Jamie ADAMS",
@@ -1485,7 +1530,8 @@
             }
           },
           "mobile": "0436 486 524",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Jeremy LAROCK",
@@ -1527,7 +1573,8 @@
             }
           },
           "mobile": "0439 264 009",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Joe DACK",
@@ -1570,7 +1617,8 @@
             }
           },
           "mobile": "0449 995 304",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Jordan KIRKBY",
@@ -1602,7 +1650,8 @@
             }
           },
           "mobile": "0406 872 504",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Kapil \ud83d\udd37 CHAUDHARY",
@@ -1646,7 +1695,8 @@
             }
           },
           "mobile": "0498 054 425",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Kulvinder SINGH",
@@ -1668,7 +1718,8 @@
             }
           },
           "mobile": "0411 406 465",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Lakshman VASANTHAN",
@@ -1690,7 +1741,8 @@
             }
           },
           "mobile": "0452 220 105",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Lea MONDESIR",
@@ -1717,7 +1769,8 @@
             }
           },
           "mobile": "0436 652 133",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Lewis NEWELL",
@@ -1745,7 +1798,8 @@
             }
           },
           "mobile": "0434 841 251",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Madeline JONES",
@@ -1772,7 +1826,8 @@
             }
           },
           "mobile": "0489 067 447",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Mao LI",
@@ -1804,7 +1859,8 @@
             }
           },
           "mobile": "0432 066 471",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Mark \ud83d\udd37 SULLIVAN",
@@ -1831,7 +1887,8 @@
             }
           },
           "mobile": "0473 108 682",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Hyrd - Labour Hire"
         },
         {
           "name": "Mathias MENDY",
@@ -1889,7 +1946,8 @@
             }
           },
           "mobile": "0493 038 522",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Mehdi BENDANI",
@@ -1916,7 +1974,8 @@
             }
           },
           "mobile": "0493 536 751",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Mehdi \ud83d\udd37 MOKEDDEM",
@@ -1958,7 +2017,8 @@
             }
           },
           "mobile": "0433 410 707",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Torque - Labour Hire"
         },
         {
           "name": "Mirko RISCHIA",
@@ -1985,7 +2045,8 @@
             }
           },
           "mobile": "0410 851 191",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Nathan \ud83d\udd37 ARBUCKLE",
@@ -2028,7 +2089,8 @@
             }
           },
           "mobile": "0427 546 026",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Omar ANADIF",
@@ -2070,7 +2132,8 @@
             }
           },
           "mobile": "0407 636 408",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Omkar Uttam DORUGADE",
@@ -2097,7 +2160,8 @@
             }
           },
           "mobile": "0424 804 281",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Peter BURNS",
@@ -2124,7 +2188,8 @@
             }
           },
           "mobile": "0437 183 009",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Rhys \ud83d\udd37 CORBETT",
@@ -2157,7 +2222,8 @@
             }
           },
           "mobile": "0487 853 435",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Ricky TRUSLOVE",
@@ -2195,7 +2261,8 @@
             }
           },
           "mobile": "0436 111 460",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Samuel \ud83d\udd37 GUNN",
@@ -2222,7 +2289,8 @@
             }
           },
           "mobile": "0435 728 441",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Western Workforce - Labour Hire"
         },
         {
           "name": "Sang Woo KIM \ud83d\udd37",
@@ -2233,7 +2301,8 @@
           "personnel_id": "C3403EEB-CD71-4858-AB9C-194D350C7BAA",
           "tickets": {},
           "mobile": "0459 883 208",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Sang Woo \ud83d\udd37 KIM",
@@ -2275,7 +2344,8 @@
             }
           },
           "mobile": "0459 883 208",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Sean SMIDT",
@@ -2297,7 +2367,8 @@
             }
           },
           "mobile": "0475 568 497",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - Active"
         },
         {
           "name": "Sebastian \ud83d\udd37 DJAFFER",
@@ -2339,7 +2410,8 @@
             }
           },
           "mobile": "0401 117 401",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Torque - Labour Hire"
         },
         {
           "name": "Selva \ud83d\udd37 LOORTHSMAY",
@@ -2376,7 +2448,8 @@
             }
           },
           "mobile": "0467 302 917",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Stefanos KARIKIS",
@@ -2408,7 +2481,8 @@
             }
           },
           "mobile": "0403 267 784",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Sujin JEON",
@@ -2455,7 +2529,8 @@
             }
           },
           "mobile": "0474 828 152",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Tawanda \ud83d\udd37 TAMBIRI",
@@ -2477,7 +2552,8 @@
             }
           },
           "mobile": "0497 588 470",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
         },
         {
           "name": "Teufik (Teo) MEDANOVIC",
@@ -2514,7 +2590,8 @@
             }
           },
           "mobile": "0451 029 041",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "Timo \ud83d\udd37 GRONENBERG",
@@ -2536,7 +2613,8 @@
             }
           },
           "mobile": "0457 325 980",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "2XM - Labour Hire"
         },
         {
           "name": "William THOMPSON",
@@ -2568,7 +2646,8 @@
             }
           },
           "mobile": "0429 331 817",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         },
         {
           "name": "William \ud83d\udd37 ROBINSON",
@@ -2590,7 +2669,8 @@
             }
           },
           "mobile": "0410 842 339",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "Western Workforce - Labour Hire"
         },
         {
           "name": "Wisdom MANDIZVIDA",
@@ -2622,7 +2702,8 @@
             }
           },
           "mobile": "0488 401 076",
-          "status": "Onsite"
+          "status": "Onsite",
+          "hire_company": "SRG - South West"
         }
       ],
       "_source": {
@@ -2633,22 +2714,22 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 60,
         "macro_data_filled_by_role": {
-          "Trade Assistant": 6,
-          "Mechanical Fitter": 21,
-          "Intermediate Rigger": 2,
-          "Superintendent": 1,
-          "Supervisor - Mechanical": 6,
-          "Electrician": 3,
-          "Supervisor - Electrical": 1,
-          "Lube Technician": 3,
+          "HSE Advisor": 2,
           "Basic Rigger": 4,
-          "Advanced Rigger": 2,
+          "Supervisor - Mechanical": 6,
+          "Superintendent": 1,
           "Boilermaker": 4,
+          "Mechanical Fitter": 21,
+          "Advanced Rigger": 2,
+          "Lube Technician": 3,
+          "Electrician": 3,
+          "Trade Assistant": 6,
+          "Supervisor - Electrical": 1,
+          "Intermediate Rigger": 2,
+          "Site Coordinator": 1,
           "Coded Welder": 1,
           "Telehandler Operator": 2,
-          "Site Coordinator": 1,
-          "Supervisor": 1,
-          "HSE Advisor": 2
+          "Supervisor": 1
         },
         "planning_filled_by_role": {
           "Superintendent": 1,
@@ -2673,12 +2754,15 @@
           "job_no": 1359,
           "total_required": 63,
           "total_filled_planning": 57,
-          "total_filled_named": 60
+          "total_filled_named": 60,
+          "job_description": "Mt Holland April 2026"
         },
         "rapid_crews_export_file": "1359 (RosterCut) 2026-04-14_15-11-34.xlsx",
-        "rapid_crews_roster_id": "1359"
+        "rapid_crews_roster_id": "1359",
+        "job_no": 1359,
+        "job_description": "Mt Holland April 2026"
       }
     }
   ],
-  "generated_at": "2026-04-28T06:41:23Z"
+  "generated_at": "2026-04-28T07:41:05Z"
 }

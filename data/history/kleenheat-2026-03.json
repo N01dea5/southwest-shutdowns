@@ -1,33 +1,33 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-28T06:41:23Z",
+  "archived_at": "2026-04-28T07:41:05Z",
   "shutdown": {
     "id": "kleenheat-2026-03",
-    "name": "Kleenheat LNG March 2026",
+    "name": "1206 \u2013 KPF LNG Major Shutdown March 2026 (Kleenheat)",
     "site": "Kwinana",
     "start_date": "2026-03-04",
     "end_date": "2026-03-22",
     "status": "completed",
     "required_by_role": {
-      "Scaffolder": 6,
-      "Mechanical Fitter": 23,
-      "Advanced Rigger": 2,
-      "Trade Assistant": 18,
       "Sheet Metal Worker": 3,
+      "Trade Assistant": 18,
+      "Advanced Rigger": 2,
+      "Supervisor - Mechanical": 4,
       "Painter & Blaster": 2,
+      "Scaffolder": 6,
       "Intermediate Rigger": 3,
-      "Supervisor - Mechanical": 4
+      "Mechanical Fitter": 23
     },
     "filled_by_role": {
       "Trade Assistant": 18,
       "Mechanical Fitter": 25,
-      "Scaffolder": 6,
       "Supervisor - Mechanical": 4,
-      "Painter & Blaster": 2,
+      "Intermediate Rigger": 4,
       "Advanced Rigger": 2,
+      "Scaffolder": 6,
       "Sheet Metal Worker": 3,
-      "Intermediate Rigger": 4
+      "Painter & Blaster": 2
     },
     "crew_split": {
       "Day": 64
@@ -35,18 +35,18 @@
     "mobilised_by_role": {
       "Trade Assistant": 18,
       "Mechanical Fitter": 25,
-      "Scaffolder": 6,
       "Supervisor - Mechanical": 4,
-      "Painter & Blaster": 2,
+      "Intermediate Rigger": 4,
       "Advanced Rigger": 2,
+      "Scaffolder": 6,
       "Sheet Metal Worker": 3,
-      "Intermediate Rigger": 4
+      "Painter & Blaster": 2
     },
     "labour_hire_split": {
       "SRG - South West": 54,
+      "Hyrd - Labour Hire": 3,
       "SRG - Southwest Tronox": 5,
-      "SRG - Active": 2,
-      "Hyrd - Labour Hire": 3
+      "SRG - Active": 2
     },
     "roster": [
       {
@@ -74,7 +74,8 @@
           }
         },
         "mobile": "0424 848 290",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Adrian WILLIAMS",
@@ -85,7 +86,8 @@
         "personnel_id": "E1DC6CFF-1BBA-4669-BC1A-E5FDA3F2CA7F",
         "tickets": {},
         "mobile": "0428 421 338",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Amit \ud83d\udd37 GUND",
@@ -107,7 +109,8 @@
           }
         },
         "mobile": "0423 173 031",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "Hyrd - Labour Hire"
       },
       {
         "name": "Beau WITHERS",
@@ -129,7 +132,8 @@
           }
         },
         "mobile": "0435 441 418",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Chaeyoon KIM",
@@ -177,7 +181,8 @@
           }
         },
         "mobile": "0419 549 708",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel GOVHONGO",
@@ -209,7 +214,8 @@
           }
         },
         "mobile": "0484 563 607",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel JONES",
@@ -231,7 +237,8 @@
           }
         },
         "mobile": "0457 632 156",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Daniel SILLIS",
@@ -269,7 +276,8 @@
           }
         },
         "mobile": "0449 125 720",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Darren JAMES",
@@ -296,7 +304,8 @@
           }
         },
         "mobile": "0432 522 247",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "David STITZ",
@@ -313,7 +322,8 @@
           }
         },
         "mobile": "0408 939 455",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Dylan DIXON",
@@ -345,7 +355,8 @@
           }
         },
         "mobile": "0481 845 862",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Edward GARDINER",
@@ -372,7 +383,8 @@
           }
         },
         "mobile": "0457 470 330",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Eileen HIELSCHER",
@@ -415,7 +427,8 @@
           }
         },
         "mobile": "0448 678 573",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Federico Sarti",
@@ -447,7 +460,8 @@
           }
         },
         "mobile": "0493 955 585",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Francis AH KIAU",
@@ -479,7 +493,8 @@
           }
         },
         "mobile": "0434 580 355",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Gerry \ud83d\udd37 UY",
@@ -506,7 +521,8 @@
           }
         },
         "mobile": "0455 733 546",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "Hyrd - Labour Hire"
       },
       {
         "name": "Gurshwinder SINGH",
@@ -548,7 +564,8 @@
           }
         },
         "mobile": "0431 100 007",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Harrison ELLIOT",
@@ -570,7 +587,8 @@
           }
         },
         "mobile": "0447 156 618",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Hemi RATAHI",
@@ -618,7 +636,8 @@
           }
         },
         "mobile": "0457 420 744",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Issac REID",
@@ -650,7 +669,8 @@
           }
         },
         "mobile": "0428 969 952",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jacinta JEFFERY",
@@ -682,7 +702,8 @@
           }
         },
         "mobile": "0428 238 866",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Jack MONTEBELLO",
@@ -704,7 +725,8 @@
           }
         },
         "mobile": "0437 264 211",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jaime HERNANDEZ",
@@ -731,7 +753,8 @@
           }
         },
         "mobile": "0499 422 603",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "James GARDINER",
@@ -742,7 +765,8 @@
         "personnel_id": "BBB642D5-7397-48D0-8A3F-BD6536634D32",
         "tickets": {},
         "mobile": "0458 420 731",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jeremias MENDIVIL",
@@ -779,7 +803,8 @@
           }
         },
         "mobile": "0433 197 500",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jessica DILENA",
@@ -811,7 +836,8 @@
           }
         },
         "mobile": "0477 841 414",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Joe DACK",
@@ -854,7 +880,8 @@
           }
         },
         "mobile": "0449 995 304",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jonathan MUTEMBO",
@@ -902,7 +929,8 @@
           }
         },
         "mobile": "0420 268 896",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jordan ATITOA-BRYANT",
@@ -949,7 +977,8 @@
           }
         },
         "mobile": "0414 579 891",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Active"
       },
       {
         "name": "Jordan KIRKBY",
@@ -981,7 +1010,8 @@
           }
         },
         "mobile": "0406 872 504",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Julian VAN DER ZANDEN",
@@ -1018,7 +1048,8 @@
           }
         },
         "mobile": "0433 449 381",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Keron KAPPET",
@@ -1050,7 +1081,8 @@
           }
         },
         "mobile": "0437 976 484",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "King GARCIA",
@@ -1077,7 +1109,8 @@
           }
         },
         "mobile": "0498 054 425",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Kulvinder SINGH",
@@ -1099,7 +1132,8 @@
           }
         },
         "mobile": "0411 406 465",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lea MONDESIR",
@@ -1126,7 +1160,8 @@
           }
         },
         "mobile": "0436 652 133",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lewis NEWELL",
@@ -1154,7 +1189,8 @@
           }
         },
         "mobile": "0434 841 251",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Lise MONNET",
@@ -1191,7 +1227,8 @@
           }
         },
         "mobile": "0427 753 796",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Loyid JOSEPH",
@@ -1238,7 +1275,8 @@
           }
         },
         "mobile": "0450 060 007",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Manish TOMAR",
@@ -1280,7 +1318,8 @@
           }
         },
         "mobile": "0488 751 209",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Mao LI",
@@ -1312,7 +1351,8 @@
           }
         },
         "mobile": "0432 066 471",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Margaux VERGEZ",
@@ -1339,7 +1379,8 @@
           }
         },
         "mobile": "0435 319 380",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Mark \ud83d\udd37 SULLIVAN",
@@ -1366,7 +1407,8 @@
           }
         },
         "mobile": "0473 108 682",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "Hyrd - Labour Hire"
       },
       {
         "name": "Mitya DOBBELAERE",
@@ -1393,7 +1435,8 @@
           }
         },
         "mobile": "0447 582 473",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Naomi NDENGA",
@@ -1420,7 +1463,8 @@
           }
         },
         "mobile": "0472 586 919",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ngoni USORE",
@@ -1457,7 +1501,8 @@
           }
         },
         "mobile": "0401 500 098",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Patrick DALY",
@@ -1495,7 +1540,8 @@
           }
         },
         "mobile": "0420 397 028",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Pramod CHANDRASKHAR",
@@ -1532,7 +1578,8 @@
           }
         },
         "mobile": "0494 037 814",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Robert HARRIS",
@@ -1554,7 +1601,8 @@
           }
         },
         "mobile": "0405 745 828",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Russell PHILLIPS",
@@ -1602,7 +1650,8 @@
           }
         },
         "mobile": "0421 795 621",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Samsul FATA",
@@ -1613,7 +1662,8 @@
         "personnel_id": "5E9E568B-1065-4A84-96D2-C45ABDAF354B",
         "tickets": {},
         "mobile": "0490 804 999",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Samuel BRYANT",
@@ -1665,7 +1715,8 @@
           }
         },
         "mobile": "0408 500 677",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Active"
       },
       {
         "name": "Santana PAYNE",
@@ -1697,7 +1748,8 @@
           }
         },
         "mobile": "0434 734 382",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - Southwest Tronox"
       },
       {
         "name": "Senthil DHANAPAL",
@@ -1734,7 +1786,8 @@
           }
         },
         "mobile": "0433 394 685",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Sharon GILCHRIST",
@@ -1776,7 +1829,8 @@
           }
         },
         "mobile": "0417 096 745",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stefanos KARIKIS",
@@ -1808,7 +1862,8 @@
           }
         },
         "mobile": "0403 267 784",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Tabani CHIPIRI",
@@ -1841,7 +1896,8 @@
           }
         },
         "mobile": "0497 594 673",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Teneesha TRUSCOTT",
@@ -1888,7 +1944,8 @@
           }
         },
         "mobile": "0447 711 925",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Viet NGUYEN",
@@ -1931,7 +1988,8 @@
           }
         },
         "mobile": "0434 326 455",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wahib NADI",
@@ -1968,7 +2026,8 @@
           }
         },
         "mobile": "0421 543 441",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Walid BOULAHDID",
@@ -1995,7 +2054,8 @@
           }
         },
         "mobile": "0404 303 830",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wayne CARTER",
@@ -2017,7 +2077,8 @@
           }
         },
         "mobile": "0414 774 682",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "William THOMPSON",
@@ -2049,7 +2110,8 @@
           }
         },
         "mobile": "0429 331 817",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Willy FAVA",
@@ -2076,7 +2138,8 @@
           }
         },
         "mobile": "0481 092 939",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Zachary GARDINER",
@@ -2103,7 +2166,8 @@
           }
         },
         "mobile": "0499 756 868",
-        "status": "Demobilised"
+        "status": "Demobilised",
+        "hire_company": "SRG - South West"
       }
     ],
     "_source": {
@@ -2116,17 +2180,19 @@
       "macro_data_filled_by_role": {
         "Trade Assistant": 18,
         "Mechanical Fitter": 25,
-        "Scaffolder": 6,
         "Supervisor - Mechanical": 4,
-        "Painter & Blaster": 2,
+        "Intermediate Rigger": 4,
         "Advanced Rigger": 2,
+        "Scaffolder": 6,
         "Sheet Metal Worker": 3,
-        "Intermediate Rigger": 4
+        "Painter & Blaster": 2
       },
       "planning_filled_by_role": {},
       "target_source": null,
       "rapid_crews_export_file": "Kleenheat Major March 2026.xlsx",
-      "rapid_crews_roster_id": "Kleenheat Major March 2026"
+      "rapid_crews_roster_id": "Kleenheat Major March 2026",
+      "job_no": 1206,
+      "job_description": "KPF LNG Major Shutdown March 2026 (Kleenheat)"
     }
   }
 }

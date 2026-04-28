@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-28T06:08:00Z",
+  "generated_at": "2026-04-28T07:42:04Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -15,21 +15,27 @@
   },
   "summary": {
     "required_total": 112,
-    "confirmed_total": 48,
-    "gap_total": 64,
-    "same_client_retention": 12,
-    "srg_carry_over": 30,
-    "new_hires": 1,
-    "buddy_required": 1,
+    "confirmed_total": 52,
+    "gap_total": 60,
+    "same_client_retention": 15,
+    "srg_carry_over": 31,
+    "new_hires": 6,
+    "buddy_required": 6,
     "shift_split": {
-      "Day": 43
+      "Day": 52
     },
     "role_shift_split": {
+      "Advanced Rigger": {
+        "Day": 5
+      },
       "Boilermaker": {
         "Day": 2
       },
       "Coded Welder": {
         "Day": 1
+      },
+      "Intermediate Rigger": {
+        "Day": 4
       },
       "Mechanical Fitter": {
         "Day": 17
@@ -66,6 +72,12 @@
       "required": 20,
       "confirmed": 1,
       "gap": 19
+    },
+    {
+      "role": "Intermediate Rigger",
+      "required": 0,
+      "confirmed": 4,
+      "gap": 0
     },
     {
       "role": "Mechanical Fitter",
@@ -106,9 +118,9 @@
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
       "tickets": {
         "cse": {
           "status": "current",
@@ -246,6 +258,40 @@
       }
     },
     {
+      "name": "Daniel SILLIS",
+      "role": "Intermediate Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2028-02-21"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2028-02-21"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2029-04-09"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2029-04-09",
+          "level": "Intermediate"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2029-04-09"
+        }
+      }
+    },
+    {
       "name": "Darren JAMES",
       "role": "Mechanical Fitter",
       "shift": "Day",
@@ -267,6 +313,32 @@
         "gta": {
           "status": "current",
           "expiry": "2028-02-25"
+        }
+      }
+    },
+    {
+      "name": "Darren TAYLOR",
+      "role": "Advanced Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
+      "tickets": {
+        "dog": {
+          "status": "current",
+          "expiry": "2030-10-06"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2030-10-06",
+          "level": "Advanced"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-10-06"
         }
       }
     },
@@ -412,6 +484,48 @@
         "hrwl": {
           "status": "current",
           "expiry": "2030-03-17"
+        }
+      }
+    },
+    {
+      "name": "Hemi RATAHI",
+      "role": "Advanced Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-08-20"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-08-20"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2028-03-15"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2028-03-15"
+        },
+        "hr": {
+          "status": "current",
+          "expiry": "2028-02-29"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2028-03-15",
+          "level": "Advanced"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-03-15"
         }
       }
     },
@@ -635,6 +749,44 @@
       }
     },
     {
+      "name": "Joe DACK",
+      "role": "Advanced Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-03-31"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-03-31"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2030-05-13"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2030-05-13",
+          "level": "Intermediate"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-03-31"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-05-13"
+        }
+      }
+    },
+    {
       "name": "John HANCOCK",
       "role": "Mechanical Fitter",
       "shift": "Day",
@@ -660,6 +812,39 @@
         "hrwl": {
           "status": "current",
           "expiry": "2031-04-07"
+        }
+      }
+    },
+    {
+      "name": "Julian VAN DER ZANDEN",
+      "role": "Intermediate Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2028-03-03"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2028-02-02"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2028-07-13"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2028-03-03"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-07-13"
         }
       }
     },
@@ -747,6 +932,94 @@
       }
     },
     {
+      "name": "Lucrecia Celeste SOSA",
+      "role": "Intermediate Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-05-08"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-05-08"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2027-05-08"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2030-07-31"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2030-07-31"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2030-07-31",
+          "level": "Intermediate"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-05-08"
+        },
+        "fa": {
+          "status": "current",
+          "expiry": "2028-05-17"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-07-31"
+        }
+      }
+    },
+    {
+      "name": "Luis FERNANDES",
+      "role": "Advanced Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2026-09-22"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2026-09-22"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2029-11-08"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2029-11-08",
+          "level": "Intermediate"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2026-09-22"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2029-11-08"
+        }
+      }
+    },
+    {
       "name": "Malcolm GRAINGER-ROUSSEAU",
       "role": "Mechanical Fitter",
       "shift": "Day",
@@ -772,6 +1045,52 @@
         "hrwl": {
           "status": "current",
           "expiry": "2028-03-15"
+        }
+      }
+    },
+    {
+      "name": "Malo AYMARD",
+      "role": "Intermediate Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2026-11-19"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2026-11-13"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2030-05-12"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2030-05-12"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2030-05-12"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2030-05-12",
+          "level": "Intermediate"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2026-11-19"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-05-12"
         }
       }
     },
@@ -1085,9 +1404,9 @@
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
       "tickets": {
         "cse": {
           "status": "current",
@@ -1133,6 +1452,40 @@
         "hrwl": {
           "status": "current",
           "expiry": "2027-08-23"
+        }
+      }
+    },
+    {
+      "name": "Russell CHITTY",
+      "role": "Advanced Rigger",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-09-04"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-09-04"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2028-12-04"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2028-12-04",
+          "level": "Advanced"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2028-12-04"
         }
       }
     },

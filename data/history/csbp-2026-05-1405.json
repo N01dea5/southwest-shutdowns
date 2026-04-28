@@ -1,23 +1,23 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-28T06:41:23Z",
+  "archived_at": "2026-04-28T07:41:05Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
-    "name": "CSBP NaaN1 May 2026",
+    "name": "1405 \u2013 CSBP - NAAN1 Shut",
     "site": "Kwinana",
     "start_date": "2026-05-12",
     "end_date": "2026-05-16",
     "status": "booked",
     "required_by_role": {
+      "Mechanical Fitter": 17,
       "Trade Assistant": 8,
-      "Supervisor - Mechanical": 2,
-      "Mechanical Fitter": 17
+      "Supervisor - Mechanical": 2
     },
     "filled_by_role": {
+      "Mechanical Fitter": 14,
       "Trade Assistant": 9,
-      "Supervisor - Mechanical": 1,
-      "Mechanical Fitter": 14
+      "Supervisor - Mechanical": 1
     },
     "crew_split": {
       "Day": 24
@@ -52,7 +52,8 @@
           }
         },
         "mobile": "0424 848 290",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Beau WITHERS",
@@ -74,7 +75,8 @@
           }
         },
         "mobile": "0435 441 418",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ben FRIEDAUER",
@@ -127,7 +129,8 @@
           }
         },
         "mobile": "0424 977 431",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Edward GARDINER",
@@ -154,7 +157,8 @@
           }
         },
         "mobile": "0457 470 330",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Eleonora TRAORE",
@@ -186,7 +190,8 @@
           }
         },
         "mobile": "0421 524 270",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Gabriel NGUYEN",
@@ -213,7 +218,8 @@
           }
         },
         "mobile": "0448 737 990",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Ganesh MOHITE",
@@ -255,7 +261,8 @@
           }
         },
         "mobile": "0469 591 660",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Graham WANGLER",
@@ -287,7 +294,8 @@
           }
         },
         "mobile": "0476 247 673",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Helen MOIR",
@@ -324,7 +332,8 @@
           }
         },
         "mobile": "0448 220 506",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Herbert MUKUNGA",
@@ -361,7 +370,8 @@
           }
         },
         "mobile": "0459 183 602",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jake GANGEMI",
@@ -408,7 +418,8 @@
           }
         },
         "mobile": "0426 994 235",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Jessica DILENA",
@@ -440,7 +451,8 @@
           }
         },
         "mobile": "0477 841 414",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "John HANCOCK",
@@ -472,7 +484,8 @@
           }
         },
         "mobile": "0409 998 059",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "King GARCIA",
@@ -499,7 +512,8 @@
           }
         },
         "mobile": "0498 054 425",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Naomi NDENGA",
@@ -526,7 +540,8 @@
           }
         },
         "mobile": "0472 586 919",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Omkar Uttam DORUGADE",
@@ -553,7 +568,8 @@
           }
         },
         "mobile": "0424 804 281",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Paul BESTWICK",
@@ -564,7 +580,8 @@
         "personnel_id": "5D93FD4B-4778-434A-A3F8-44AF397E631A",
         "tickets": {},
         "mobile": "0406 613 783",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Peter BURNS",
@@ -591,7 +608,8 @@
           }
         },
         "mobile": "0437 183 009",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Richardson ALICANTE",
@@ -623,7 +641,8 @@
           }
         },
         "mobile": "0431 228 251",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stefanos KARIKIS",
@@ -655,7 +674,8 @@
           }
         },
         "mobile": "0403 267 784",
-        "status": "Confirmed"
+        "status": "Confirmed",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Stjepan BOSNJAK",
@@ -682,7 +702,8 @@
           }
         },
         "mobile": "0413 377 068",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Tabani CHIPIRI",
@@ -715,7 +736,8 @@
           }
         },
         "mobile": "0497 594 673",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Wayne FORREST",
@@ -747,7 +769,8 @@
           }
         },
         "mobile": "0438 101 966",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       },
       {
         "name": "William THOMPSON",
@@ -779,7 +802,8 @@
           }
         },
         "mobile": "0429 331 817",
-        "status": "Mobilising"
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
       }
     ],
     "_source": {
@@ -790,8 +814,8 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 24,
       "macro_data_filled_by_role": {
-        "Trade Assistant": 9,
         "Mechanical Fitter": 14,
+        "Trade Assistant": 9,
         "Supervisor - Mechanical": 1
       },
       "planning_filled_by_role": {
@@ -804,8 +828,11 @@
         "job_no": 1405,
         "total_required": 27,
         "total_filled_planning": 23,
-        "total_filled_named": 24
-      }
+        "total_filled_named": 24,
+        "job_description": "CSBP - NAAN1 Shut"
+      },
+      "job_no": 1405,
+      "job_description": "CSBP - NAAN1 Shut"
     }
   }
 }

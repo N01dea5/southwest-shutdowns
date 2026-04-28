@@ -77,7 +77,7 @@ Rows: 28 | Columns: 21 | Header row: 1
 Headers: `JobNo`
 
 ### OK — `xpbi02 PersonnelRosterView`
-Rows: 75984 | Columns: 7 | Header row: 1
+Rows: 66590 | Columns: 7 | Header row: 1
 Headers: `Job No`, `Client`, `Site`, `Personnel Id`, `Schedule Date`, `Schedule Type`, `IsOnLocation`
 
 ## `data/raw/Tianqi Construction Ramp Up Project .xlsx`

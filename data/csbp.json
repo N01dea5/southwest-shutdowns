@@ -886,13 +886,13 @@
       "status": "completed",
       "required_by_role": {
         "Mechanical Fitter": 23,
-        "Sheet Metal Worker": 3,
-        "Advanced Rigger": 2,
-        "Trade Assistant": 18,
+        "Scaffolder": 6,
         "Intermediate Rigger": 3,
         "Supervisor - Mechanical": 4,
-        "Painter & Blaster": 2,
-        "Scaffolder": 6
+        "Trade Assistant": 18,
+        "Sheet Metal Worker": 3,
+        "Advanced Rigger": 2,
+        "Painter & Blaster": 2
       },
       "filled_by_role": {
         "Supervisor - Mechanical": 4,
@@ -3025,18 +3025,18 @@
       "status": "completed",
       "required_by_role": {
         "Mechanical Fitter": 23,
-        "Sheet Metal Worker": 3,
-        "Scaffolder - Intermediate": 1,
         "Rigger - Advanced": 2,
-        "Advanced Rigger": 2,
+        "Intermediate Rigger": 3,
+        "Applicator": 1,
+        "Supervisor - Mechanical": 4,
+        "Supervisor": 2,
         "Trade Assistant": 18,
         "Scaffolder - Advanced": 5,
-        "Intermediate Rigger": 3,
-        "Supervisor": 2,
-        "Supervisor - Mechanical": 4,
-        "Step Up Supervisor - Mechanical": 1,
+        "Sheet Metal Worker": 3,
         "Rigger - Intermediate": 4,
-        "Applicator": 1
+        "Scaffolder - Intermediate": 1,
+        "Advanced Rigger": 2,
+        "Step Up Supervisor - Mechanical": 1
       },
       "filled_by_role": {
         "Advanced Rigger": 0,
@@ -5167,14 +5167,14 @@
       "status": "booked",
       "required_by_role": {
         "Mechanical Fitter": 13,
-        "Trade Assistant": 16,
         "Advanced Rigger": 4,
+        "Trade Assistant": 16,
         "Supervisor - Mechanical": 3
       },
       "filled_by_role": {
         "Mechanical Fitter": 13,
-        "Trade Assistant": 16,
         "Advanced Rigger": 3,
+        "Trade Assistant": 16,
         "Supervisor - Mechanical": 3
       },
       "crew_split": {
@@ -6424,15 +6424,15 @@
       "status": "booked",
       "required_by_role": {
         "Mechanical Fitter": 13,
-        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 3,
         "Trade Assistant": 16,
-        "Supervisor - Mechanical": 3
+        "Advanced Rigger": 4
       },
       "filled_by_role": {
         "Mechanical Fitter": 13,
-        "Advanced Rigger": 3,
+        "Supervisor - Mechanical": 3,
         "Trade Assistant": 16,
-        "Supervisor - Mechanical": 3
+        "Advanced Rigger": 3
       },
       "crew_split": {
         "Day": 30
@@ -7401,5 +7401,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-28T03:26:36Z"
+  "generated_at": "2026-04-28T03:30:46Z"
 }

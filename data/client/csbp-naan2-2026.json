@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-28T02:36:27Z",
+  "generated_at": "2026-04-28T02:46:45Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/history/csbp-2026-05.json",
   "client": "CSBP",
   "dashboard": "CSBP NAAN2 Shutdown Workforce Dashboard",
@@ -17,34 +17,22 @@
     "required_total": 36,
     "confirmed_total": 35,
     "gap_total": 1,
-    "same_client_retention": 21,
-    "srg_carry_over": 16,
-    "new_hires": 9,
-    "buddy_required": 9,
+    "same_client_retention": 17,
+    "srg_carry_over": 12,
+    "new_hires": 10,
+    "buddy_required": 10,
     "shift_split": {
-      "Day": 46
+      "Day": 39
     },
     "role_shift_split": {
       "Fitter": {
         "Day": 21
       },
-      "Rigger - Advanced": {
-        "Day": 2
-      },
-      "Rigger - Intermediate": {
-        "Day": 2
-      },
-      "Site Coordinator": {
-        "Day": 1
-      },
-      "Superintendent": {
-        "Day": 1
-      },
       "Supervisor": {
         "Day": 1
       },
       "Trade Assistant": {
-        "Day": 18
+        "Day": 17
       }
     }
   },
@@ -60,30 +48,6 @@
       "required": 4,
       "confirmed": 3,
       "gap": 1
-    },
-    {
-      "role": "Rigger - Advanced",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Rigger - Intermediate",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Site Coordinator",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
-    },
-    {
-      "role": "Superintendent",
-      "required": 0,
-      "confirmed": 0,
-      "gap": 0
     },
     {
       "role": "Supervisor",
@@ -756,35 +720,6 @@
       }
     },
     {
-      "name": "William THOMPSON",
-      "role": "Trade Assistant",
-      "shift": "Day",
-      "start": "2026-05-13",
-      "end": "2026-05-16",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-06-30"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-06-30"
-        },
-        "hr": {
-          "status": "current",
-          "expiry": "2027-02-28"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-06-30"
-        }
-      }
-    },
-    {
       "name": "Abdikadir MOHAMED",
       "role": "Fitter",
       "shift": "Day",
@@ -802,77 +737,6 @@
         "wah": {
           "status": "current",
           "expiry": "2028-02-05"
-        }
-      }
-    },
-    {
-      "name": "Adam RILEY",
-      "role": "Superintendent",
-      "shift": "Day",
-      "start": "2026-05-25",
-      "end": "2026-06-21",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {}
-    },
-    {
-      "name": "Anthony SMITH",
-      "role": "Site Coordinator",
-      "shift": "Day",
-      "start": "2026-05-25",
-      "end": "2026-06-21",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-04-17"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-04-17"
-        }
-      }
-    },
-    {
-      "name": "Clifford LEMON",
-      "role": "Rigger - Advanced",
-      "shift": "Day",
-      "start": "2026-06-06",
-      "end": "2026-06-21",
-      "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-11-24"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-11-20"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2028-11-04"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2028-11-04",
-          "level": "Advanced"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-11-24"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-11-04"
         }
       }
     },
@@ -903,44 +767,6 @@
         "hrwl": {
           "status": "current",
           "expiry": "2031-04-28"
-        }
-      }
-    },
-    {
-      "name": "Eileen HIELSCHER",
-      "role": "Rigger - Advanced",
-      "shift": "Day",
-      "start": "2026-06-04",
-      "end": "2026-06-21",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-17"
-        },
-        "wah": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-16"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-08-25"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-08-25",
-          "level": "Advanced"
-        },
-        "gta": {
-          "status": "expiring_soon",
-          "expiry": "2026-05-17"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-08-25"
         }
       }
     },
@@ -1036,44 +862,6 @@
       }
     },
     {
-      "name": "Joe DACK",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-06-04",
-      "end": "2026-06-18",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2027-03-31"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2027-03-31"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2030-05-13"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2030-05-13",
-          "level": "Intermediate"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2027-03-31"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2030-05-13"
-        }
-      }
-    },
-    {
       "name": "Jonathan MUTEMBO",
       "role": "Fitter",
       "shift": "Day",
@@ -1112,39 +900,6 @@
         "hrwl": {
           "status": "current",
           "expiry": "2030-09-22"
-        }
-      }
-    },
-    {
-      "name": "Julian VAN DER ZANDEN",
-      "role": "Rigger - Intermediate",
-      "shift": "Day",
-      "start": "2026-06-08",
-      "end": "2026-06-18",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2028-03-03"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2028-02-02"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2028-07-13"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-03"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2028-07-13"
         }
       }
     },
@@ -1238,9 +993,9 @@
       "start": "2026-06-08",
       "end": "2026-06-18",
       "same_client_retention": false,
-      "srg_carry_over": true,
-      "new_hire": false,
-      "buddy_required": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
       "tickets": {
         "cse": {
           "status": "current",
@@ -1390,10 +1145,10 @@
       }
     },
     {
-      "name": "Sharon GILCHRIST",
+      "name": "William THOMPSON",
       "role": "Trade Assistant",
       "shift": "Day",
-      "start": "2026-06-08",
+      "start": "2026-06-06",
       "end": "2026-06-18",
       "same_client_retention": true,
       "srg_carry_over": false,
@@ -1402,27 +1157,19 @@
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2027-06-04"
+          "expiry": "2026-06-30"
         },
         "wah": {
           "status": "current",
-          "expiry": "2027-06-04"
-        },
-        "ewp": {
-          "status": "current",
-          "expiry": "2027-10-12"
-        },
-        "fork": {
-          "status": "current",
-          "expiry": "2027-10-12"
+          "expiry": "2026-06-30"
         },
         "hr": {
           "status": "current",
-          "expiry": "2027-03-26"
+          "expiry": "2027-02-28"
         },
-        "hrwl": {
+        "gta": {
           "status": "current",
-          "expiry": "2027-10-12"
+          "expiry": "2026-06-30"
         }
       }
     }

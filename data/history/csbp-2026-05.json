@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-28T02:35:16Z",
+  "archived_at": "2026-04-28T02:45:42Z",
   "shutdown": {
     "id": "csbp-2026-05",
     "name": "1375 \u2013 CSBP NAAN2 June 2026",
@@ -11,20 +11,20 @@
     "status": "booked",
     "required_by_role": {
       "Trade Assistant": 8,
-      "Supervisor - Mechanical": 2,
-      "Mechanical Fitter": 17
+      "Mechanical Fitter": 17,
+      "Supervisor - Mechanical": 2
     },
     "filled_by_role": {
       "Trade Assistant": 8,
-      "Supervisor - Mechanical": 1,
-      "Mechanical Fitter": 14
+      "Mechanical Fitter": 14,
+      "Supervisor - Mechanical": 1
     },
     "crew_split": {
-      "Day": 24
+      "Day": 23
     },
     "mobilised_by_role": {},
     "labour_hire_split": {
-      "SRG - South West": 24
+      "SRG - South West": 23
     },
     "roster": [
       {
@@ -748,38 +748,6 @@
         },
         "mobile": "0438 101 966",
         "hire_company": "SRG - South West"
-      },
-      {
-        "name": "William THOMPSON",
-        "role": "Trade Assistant",
-        "shift": "Day",
-        "start": "2026-05-13",
-        "end": "2026-05-16",
-        "personnel_id": "9C9AB719-37E2-4D3E-A87F-D7F890229D95",
-        "tickets": {
-          "hr": {
-            "expiry": "2027-02-28",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Driver's Licence.JPG",
-            "status": "current"
-          },
-          "gta": {
-            "expiry": "2026-06-30",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "cse": {
-            "expiry": "2026-06-30",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2026-06-30",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/THOMPSON, William - 9c9ab719-37e2-4d3e-a87f-d7f890229d95/THOMPSON, William - Working at Heights.pdf",
-            "status": "current"
-          }
-        },
-        "mobile": "0429 331 817",
-        "hire_company": "SRG - South West"
       }
     ],
     "_source": {
@@ -788,7 +756,7 @@
       "macro_data_site": "CSBP Kwinana",
       "source_format": "macro_data",
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
-      "macro_data_roster_size": 24,
+      "macro_data_roster_size": 23,
       "macro_data_filled_by_role": {
         "Trade Assistant": 9,
         "Mechanical Fitter": 14,

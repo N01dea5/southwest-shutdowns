@@ -12,8 +12,8 @@ parser runs:
 - resolve Client GUIDs through `xpbi02 ClientView`
 - de-duplicate to one row per (Job No, Personnel Id, Schedule Date), preferring
   onsite over demobilised when both are present
-- skip OnSite = 0 rows only when the row date is before today
-- for today/future rows, pass through any non-rejected row regardless of OnSite
+- only pass rows that represent a real roster commitment:
+  Confirmed, OnSite/Mobilised, or Demobilised
 - when a worker is rostered every calendar day of a month, keep 50% of those
   daily rows to avoid overcounting continuous-contract workers
 
@@ -228,9 +228,18 @@ def _schedule_type(raw: Any, status: str) -> str:
 def _should_include(row_date: dt.date, status: str, onsite: bool, today: dt.date) -> bool:
     if _is_rejected(status):
         return False
-    if row_date < today and not onsite:
-        return False
-    return True
+    if onsite:
+        return True
+    # Matrix/business rule: count a worker as present only when the daily
+    # schedule explicitly marks them as Confirmed, OnSite/Mobilised, or
+    # Demobilised.
+    return (
+        "confirmed" in status
+        or "onsite" in status
+        or "on site" in status
+        or "mobilis" in status
+        or any(term in status for term in DEMOB_TERMS)
+    )
 
 
 def _scale_full_month_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:

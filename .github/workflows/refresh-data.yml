@@ -45,7 +45,10 @@ jobs:
       - name: Install dependencies
         run: pip install openpyxl
 
+      # Power Automate already pushes refreshed workbook/data files into GitHub.
+      # Only pull directly from SharePoint when this workflow is run manually.
       - name: Pull new rosters from SharePoint
+        if: github.event_name == 'workflow_dispatch'
         env:
           SHAREPOINT_TENANT_ID:     ${{ secrets.SHAREPOINT_TENANT_ID }}
           SHAREPOINT_CLIENT_ID:     ${{ secrets.SHAREPOINT_CLIENT_ID }}

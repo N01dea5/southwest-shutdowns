@@ -867,6 +867,24 @@ def _merge_macro_triples(
     return combined
 
 
+def _canonical_job_no(shutdown: dict) -> int | None:
+    """Return the authoritative JobNo for filtering/merge decisions."""
+    src = shutdown.get("_source", {}) or {}
+    # For RosterCut-origin shutdowns, roster_id is authoritative.
+    if src.get("source_format") == "rapidcrews":
+        rid = src.get("rapid_crews_roster_id")
+        try:
+            return int(rid)
+        except (TypeError, ValueError):
+            pass
+    for raw in (src.get("macro_data_job_no"), src.get("job_no"), src.get("rapid_crews_roster_id")):
+        try:
+            return int(raw)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
 def main() -> int:
     if not RAW_DIR.exists():
         print(f"No raw dir at {RAW_DIR}", file=sys.stderr)
@@ -945,6 +963,22 @@ def main() -> int:
     macro_triples   = parse_macro_data.shutdowns_from_macro_data()
     active_jobnos   = parse_macro_data.active_shutdowns_jobnos()
     combined = _merge_macro_triples(rc_triples, macro_triples)
+    # Historical safety: old snapshots sometimes stamped a macro JobNo onto a
+    # RosterCut shutdown with a different roster_id. Keep source fields sane.
+    for _, _, shutdown in combined:
+        src = shutdown.get("_source", {}) or {}
+        if src.get("source_format") != "rapidcrews":
+            continue
+        try:
+            rid = int(src.get("rapid_crews_roster_id"))
+        except (TypeError, ValueError):
+            continue
+        bad_macro = src.get("macro_data_job_no")
+        try:
+            if bad_macro is not None and int(bad_macro) != rid:
+                src.pop("macro_data_job_no", None)
+        except (TypeError, ValueError):
+            src.pop("macro_data_job_no", None)
 
     # -- 3c. If the ACTIVE_SHUTDOWNS sheet is present, it's an allow-list:
     #        RosterCut shutdowns whose numeric roster_id isn't listed drop
@@ -953,12 +987,7 @@ def main() -> int:
     if active_jobnos is not None:
         kept: list[tuple[str, str, dict]] = []
         for company_key, client_name, shutdown in combined:
-            src = shutdown.get("_source", {})
-            job_no = src.get("macro_data_job_no")
-            if job_no is None:
-                rid = src.get("rapid_crews_roster_id") or ""
-                if str(rid).isdigit():
-                    job_no = int(rid)
+            job_no = _canonical_job_no(shutdown)
             if job_no is None or job_no in active_jobnos:
                 kept.append((company_key, client_name, shutdown))
             else:

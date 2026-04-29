@@ -45,11 +45,11 @@ Headers: `Company`, `Date In`, `Date Out`, `Shift`, `Pegasus ID`, `Surname`, `Fi
 ## `data/raw/Rapidcrews Macro Data.xlsx`
 
 ### OK — `xpbi02 JobPlanningView`
-Rows: 574 | Columns: 43 | Header row: 1
+Rows: 586 | Columns: 43 | Header row: 1
 Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
 
 ### NEW — `xpbi02 DailyPersonnelSchedule`
-Rows: 175275 | Columns: 27 | Header row: 1
+Rows: 175944 | Columns: 27 | Header row: 1
 Headers: `Id`, `ReportDate`, `PersonnelId`, `FirstName`, `Surname`, `Status`, `OnSite`, `Confirmed`, `ResourceId`, `ClientId`, `Client`, `SiteId`, `Site`, `JobGroupId`, `JobGroup`, `JobId`, `QuoteNo`, `OrderNo`, `JobStart`, `JobEnd`, `jobStatus`, `jobActive`, `employeeActive`, `CompetencyId`, `Trade`, `DisciplineId`, `Discipline`
 
 ### OK — `xpbi02 DisciplineTrade`
@@ -57,11 +57,11 @@ Rows: 118 | Columns: 4 | Header row: 1
 Headers: `TradeId`, `DisciplineId`, `Discipline`, `Trade`
 
 ### OK — `xll01 Personnel`
-Rows: 4486 | Columns: 17 | Header row: 1
+Rows: 4492 | Columns: 17 | Header row: 1
 Headers: `Personnel Id`, `Given Names`, `Surname`, `Employee Number`, `Primary Role`, `Email`, `Mobile`, `Status`, `Status Comment`, `Onboarding Status`, `Application Date`, `Hire Date`, `Recruiter`, `Hire Company`, `Critical Information`, `Created`, `Archived`
 
 ### OK — `xll01 PersonnelCompetency`
-Rows: 25978 | Columns: 8 | Header row: 1
+Rows: 26028 | Columns: 8 | Header row: 1
 Headers: `Competency`, `Personnel Id`, `Expiry`, `Issued`, `Document Location`, `Licence #`, `Created`, `Archived`
 
 ### NEW — `xll01 HireCompany`
@@ -73,11 +73,11 @@ Rows: 47 | Columns: 14 | Header row: 1
 Headers: `ClientId`, `ClientName`, `InactiveDate`
 
 ### NEW — `xpbi02 SRGJobPlanningView`
-Rows: 7206 | Columns: 12 | Header row: 1
+Rows: 7218 | Columns: 12 | Header row: 1
 Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
 
 ### NEW — `xpbi02 JobDetailsView`
-Rows: 1415 | Columns: 15 | Header row: 1
+Rows: 1417 | Columns: 15 | Header row: 1
 Headers: `Job Id`, `Job No`, `Quote No`, `Order No`, `Req No`, `Client Id`, `Site Id`, `Site Hex`, `Site Name`, `Job Group Id`, `Job Group Name`, `Start Date`, `End Date`, `Status`, `Archived`
 
 ### OK — `ACTIVE_SHUTDOWNS`
@@ -85,7 +85,7 @@ Rows: 35 | Columns: 21 | Header row: 1
 Headers: `JobNo`
 
 ### OK — `xpbi02 PersonnelRosterView`
-Rows: 66730 | Columns: 7 | Header row: 1
+Rows: 66925 | Columns: 7 | Header row: 1
 Headers: `Job No`, `Client`, `Site`, `Personnel Id`, `Schedule Date`, `Schedule Type`, `IsOnLocation`
 
 ## `data/raw/Tianqi Construction Ramp Up Project .xlsx`

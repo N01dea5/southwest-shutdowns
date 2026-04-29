@@ -1,7 +1,7 @@
 {
   "company_key": "covalent",
   "client_name": "Covalent",
-  "archived_at": "2026-04-29T02:06:27Z",
+  "archived_at": "2026-04-29T05:49:26Z",
   "shutdown": {
     "id": "covalent-2026-04",
     "name": "1359 \u2013 Mt Holland April 2026",
@@ -10,71 +10,71 @@
     "end_date": "2026-05-01",
     "status": "in_progress",
     "required_by_role": {
+      "Supervisor": 1,
+      "Telehandler Operator": 2,
       "Trade Assistant": 5,
-      "Superintendent": 1,
       "Electrician": 4,
-      "Site Coordinator": 1,
-      "Intermediate Rigger": 3,
-      "Boilermaker": 4,
+      "Advanced Rigger": 1,
+      "Supervisor - Electrical": 1,
       "Supervisor - Mechanical": 6,
+      "Mechanical Fitter": 24,
+      "Site Coordinator": 1,
+      "Basic Rigger": 4,
+      "Intermediate Rigger": 3,
       "Lube Technician": 3,
       "HSE Advisor": 2,
-      "Mechanical Fitter": 24,
-      "Coded Welder": 1,
-      "Supervisor": 1,
-      "Supervisor - Electrical": 1,
-      "Telehandler Operator": 2,
-      "Advanced Rigger": 1,
-      "Basic Rigger": 4
+      "Boilermaker": 4,
+      "Superintendent": 1,
+      "Coded Welder": 1
     },
     "filled_by_role": {
+      "Supervisor": 1,
+      "Telehandler Operator": 2,
       "Trade Assistant": 6,
-      "Superintendent": 1,
       "Electrician": 3,
-      "Site Coordinator": 1,
-      "Intermediate Rigger": 2,
-      "Boilermaker": 4,
+      "Advanced Rigger": 2,
+      "Supervisor - Electrical": 1,
       "Supervisor - Mechanical": 6,
+      "Mechanical Fitter": 21,
+      "Site Coordinator": 1,
+      "Basic Rigger": 4,
+      "Intermediate Rigger": 2,
       "Lube Technician": 3,
       "HSE Advisor": 2,
-      "Mechanical Fitter": 21,
-      "Coded Welder": 1,
-      "Supervisor": 1,
-      "Supervisor - Electrical": 1,
-      "Telehandler Operator": 2,
-      "Advanced Rigger": 2,
-      "Basic Rigger": 4
+      "Boilermaker": 4,
+      "Superintendent": 1,
+      "Coded Welder": 1
     },
     "crew_split": {
       "Day": 60
     },
     "mobilised_by_role": {
-      "Intermediate Rigger": 2,
-      "Mechanical Fitter": 21,
-      "Boilermaker": 4,
-      "Site Coordinator": 1,
-      "Lube Technician": 3,
-      "Supervisor": 1,
-      "Coded Welder": 1,
-      "Trade Assistant": 6,
-      "Telehandler Operator": 2,
       "Electrician": 3,
-      "HSE Advisor": 2,
-      "Supervisor - Mechanical": 6,
-      "Advanced Rigger": 2,
-      "Superintendent": 1,
       "Basic Rigger": 4,
+      "Mechanical Fitter": 21,
+      "Intermediate Rigger": 2,
+      "Supervisor": 1,
+      "Supervisor - Mechanical": 6,
+      "Boilermaker": 4,
+      "Telehandler Operator": 2,
+      "Trade Assistant": 6,
+      "Lube Technician": 3,
+      "Site Coordinator": 1,
+      "Coded Welder": 1,
+      "Advanced Rigger": 2,
+      "HSE Advisor": 2,
+      "Superintendent": 1,
       "Supervisor - Electrical": 1
     },
     "labour_hire_split": {
       "SRG - South West": 38,
-      "Western Workforce - Labour Hire": 3,
+      "SRG - Active": 2,
+      "2XM - Labour Hire": 1,
       "Torque - Labour Hire": 2,
       "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 8,
-      "SRG - Southwest Tronox": 1,
       "Hyrd - Labour Hire": 3,
-      "SRG - Active": 2,
-      "2XM - Labour Hire": 1
+      "Western Workforce - Labour Hire": 3,
+      "SRG - Southwest Tronox": 1
     },
     "roster": [
       {
@@ -127,7 +127,7 @@
           }
         },
         "mobile": "0423 173 031",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Hyrd - Labour Hire"
       },
       {
@@ -178,7 +178,7 @@
           }
         },
         "mobile": "0415 575 297",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -260,7 +260,7 @@
           }
         },
         "mobile": "0424 977 431",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -288,7 +288,7 @@
           }
         },
         "mobile": "0424 616 763",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
       },
       {
@@ -326,7 +326,7 @@
           }
         },
         "mobile": "0410 436 761",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Hyrd - Labour Hire"
       },
       {
@@ -359,7 +359,7 @@
           }
         },
         "mobile": "0427 164 636",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -397,7 +397,7 @@
           }
         },
         "mobile": "0493 890 500",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -470,7 +470,7 @@
           }
         },
         "mobile": "0427 117 309",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -498,7 +498,7 @@
           }
         },
         "mobile": "0457 470 330",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -541,7 +541,7 @@
           }
         },
         "mobile": "0431 100 007",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -579,7 +579,7 @@
           }
         },
         "mobile": "0439 185 083",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -662,7 +662,7 @@
         "personnel_id": "F1B8D0D9-7053-4C7D-BC29-60A5103ED1DF",
         "tickets": {},
         "mobile": "0415 125 799",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Western Workforce - Labour Hire"
       },
       {
@@ -711,7 +711,7 @@
           }
         },
         "mobile": "0408 005 187",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -802,7 +802,7 @@
           }
         },
         "mobile": "0444 536 537",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - Active"
       },
       {
@@ -830,7 +830,7 @@
           }
         },
         "mobile": "0436 486 524",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -873,7 +873,7 @@
           }
         },
         "mobile": "0439 264 009",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -950,7 +950,7 @@
           }
         },
         "mobile": "0406 872 504",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -968,7 +968,7 @@
           }
         },
         "mobile": "0499 847 709",
-        "status": "Onsite"
+        "status": "Demobilised"
       },
       {
         "name": "King GARCIA",
@@ -1018,7 +1018,7 @@
           }
         },
         "mobile": "0411 406 465",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1041,7 +1041,7 @@
           }
         },
         "mobile": "0452 220 105",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1069,7 +1069,7 @@
           }
         },
         "mobile": "0436 652 133",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1345,7 +1345,7 @@
           }
         },
         "mobile": "0410 851 191",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1432,7 +1432,7 @@
           }
         },
         "mobile": "0407 636 408",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1460,7 +1460,7 @@
           }
         },
         "mobile": "0424 804 281",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1522,7 +1522,7 @@
           }
         },
         "mobile": "0487 853 435",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
       },
       {
@@ -1589,7 +1589,7 @@
           }
         },
         "mobile": "0435 728 441",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Western Workforce - Labour Hire"
       },
       {
@@ -1667,7 +1667,7 @@
           }
         },
         "mobile": "0475 568 497",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - Active"
       },
       {
@@ -1781,7 +1781,7 @@
           }
         },
         "mobile": "0403 267 784",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1852,7 +1852,7 @@
           }
         },
         "mobile": "0497 588 470",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire"
       },
       {
@@ -1890,7 +1890,7 @@
           }
         },
         "mobile": "0451 029 041",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1913,7 +1913,7 @@
           }
         },
         "mobile": "0457 325 980",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "2XM - Labour Hire"
       },
       {
@@ -1946,7 +1946,7 @@
           }
         },
         "mobile": "0429 331 817",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       },
       {
@@ -1969,7 +1969,7 @@
           }
         },
         "mobile": "0410 842 339",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "Western Workforce - Labour Hire"
       },
       {
@@ -2002,7 +2002,7 @@
           }
         },
         "mobile": "0488 401 076",
-        "status": "Onsite",
+        "status": "Demobilised",
         "hire_company": "SRG - South West"
       }
     ],
@@ -2014,21 +2014,21 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 60,
       "macro_data_filled_by_role": {
-        "Intermediate Rigger": 2,
-        "Mechanical Fitter": 21,
-        "Boilermaker": 4,
-        "Site Coordinator": 1,
-        "Lube Technician": 3,
-        "Supervisor": 1,
-        "Coded Welder": 1,
-        "Trade Assistant": 6,
-        "Telehandler Operator": 2,
         "Electrician": 3,
-        "HSE Advisor": 2,
-        "Supervisor - Mechanical": 6,
-        "Advanced Rigger": 2,
-        "Superintendent": 1,
         "Basic Rigger": 4,
+        "Mechanical Fitter": 21,
+        "Intermediate Rigger": 2,
+        "Supervisor": 1,
+        "Supervisor - Mechanical": 6,
+        "Boilermaker": 4,
+        "Telehandler Operator": 2,
+        "Trade Assistant": 6,
+        "Lube Technician": 3,
+        "Site Coordinator": 1,
+        "Coded Welder": 1,
+        "Advanced Rigger": 2,
+        "HSE Advisor": 2,
+        "Superintendent": 1,
         "Supervisor - Electrical": 1
       },
       "planning_filled_by_role": {

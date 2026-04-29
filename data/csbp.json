@@ -886,35 +886,35 @@
       "status": "completed",
       "required_by_role": {
         "Mechanical Fitter": 23,
-        "Painter & Blaster": 2,
-        "Sheet Metal Worker": 3,
         "Intermediate Rigger": 3,
-        "Scaffolder": 6,
-        "Supervisor - Mechanical": 4,
+        "Sheet Metal Worker": 3,
+        "Trade Assistant": 18,
         "Advanced Rigger": 2,
-        "Trade Assistant": 18
+        "Painter & Blaster": 2,
+        "Supervisor - Mechanical": 4,
+        "Scaffolder": 6
       },
       "filled_by_role": {
+        "Intermediate Rigger": 4,
         "Trade Assistant": 18,
         "Mechanical Fitter": 25,
-        "Scaffolder": 6,
-        "Intermediate Rigger": 4,
-        "Painter & Blaster": 2,
-        "Supervisor - Mechanical": 4,
         "Sheet Metal Worker": 3,
+        "Supervisor - Mechanical": 4,
+        "Painter & Blaster": 2,
+        "Scaffolder": 6,
         "Advanced Rigger": 2
       },
       "crew_split": {
         "Day": 64
       },
       "mobilised_by_role": {
+        "Intermediate Rigger": 4,
         "Trade Assistant": 18,
         "Mechanical Fitter": 25,
-        "Scaffolder": 6,
-        "Intermediate Rigger": 4,
-        "Painter & Blaster": 2,
-        "Supervisor - Mechanical": 4,
         "Sheet Metal Worker": 3,
+        "Supervisor - Mechanical": 4,
+        "Painter & Blaster": 2,
+        "Scaffolder": 6,
         "Advanced Rigger": 2
       },
       "labour_hire_split": {
@@ -3053,13 +3053,13 @@
         "required_target_source": "TARGET_FILE",
         "macro_data_roster_size": 64,
         "macro_data_filled_by_role": {
+          "Intermediate Rigger": 4,
           "Trade Assistant": 18,
           "Mechanical Fitter": 25,
-          "Scaffolder": 6,
-          "Intermediate Rigger": 4,
-          "Painter & Blaster": 2,
-          "Supervisor - Mechanical": 4,
           "Sheet Metal Worker": 3,
+          "Supervisor - Mechanical": 4,
+          "Painter & Blaster": 2,
+          "Scaffolder": 6,
           "Advanced Rigger": 2
         },
         "planning_filled_by_role": {},
@@ -3882,9 +3882,9 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 24,
         "macro_data_filled_by_role": {
+          "Trade Assistant": 9,
           "Mechanical Fitter": 14,
-          "Supervisor - Mechanical": 1,
-          "Trade Assistant": 9
+          "Supervisor - Mechanical": 1
         },
         "planning_filled_by_role": {
           "Trade Assistant": 8,
@@ -3914,15 +3914,15 @@
         "Mechanical Fitter": 13,
         "Intermediate Rigger": 0,
         "Advanced Rigger": 4,
-        "Supervisor - Mechanical": 3,
-        "Trade Assistant": 16
+        "Trade Assistant": 16,
+        "Supervisor - Mechanical": 3
       },
       "filled_by_role": {
         "Mechanical Fitter": 13,
         "Intermediate Rigger": 1,
         "Advanced Rigger": 3,
-        "Supervisor - Mechanical": 3,
-        "Trade Assistant": 17
+        "Trade Assistant": 17,
+        "Supervisor - Mechanical": 3
       },
       "crew_split": {
         "Day": 37
@@ -5147,11 +5147,11 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 37,
         "macro_data_filled_by_role": {
-          "Supervisor - Mechanical": 3,
-          "Mechanical Fitter": 13,
           "Trade Assistant": 17,
           "Advanced Rigger": 3,
-          "Intermediate Rigger": 1
+          "Mechanical Fitter": 13,
+          "Intermediate Rigger": 1,
+          "Supervisor - Mechanical": 3
         },
         "planning_filled_by_role": {
           "Trade Assistant": 16,
@@ -5174,5 +5174,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-29T15:07:33Z"
+  "generated_at": "2026-04-29T17:21:37Z"
 }

@@ -1,7 +1,7 @@
 {
   "company_key": "covalent",
   "client_name": "Covalent",
-  "archived_at": "2026-04-28T23:47:52Z",
+  "archived_at": "2026-04-29T02:06:27Z",
   "shutdown": {
     "id": "covalent-2025-10",
     "name": "1110 \u2013 Mt Holland October 2025",
@@ -492,17 +492,17 @@
           "cse": {
             "expiry": "2026-05-29",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Confined Spaces Entry.pdf",
-            "status": "current"
+            "status": "expiring_soon"
           },
           "gta": {
             "expiry": "2026-05-29",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Gas Test Atmospheres.pdf",
-            "status": "current"
+            "status": "expiring_soon"
           },
           "wah": {
             "expiry": "2026-05-29",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Working at Heights.pdf",
-            "status": "current"
+            "status": "expiring_soon"
           }
         },
         "hire_company": "SRG - South West"

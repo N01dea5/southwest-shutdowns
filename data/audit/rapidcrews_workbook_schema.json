@@ -303,7 +303,7 @@
       "sheets": [
         {
           "sheet": "xpbi02 JobPlanningView",
-          "rows": 572,
+          "rows": 574,
           "columns": 43,
           "detected_header_row": 1,
           "headers": [
@@ -387,7 +387,7 @@
         },
         {
           "sheet": "xll01 Personnel",
-          "rows": 4483,
+          "rows": 4486,
           "columns": 17,
           "detected_header_row": 1,
           "headers": [
@@ -422,7 +422,7 @@
         },
         {
           "sheet": "xll01 PersonnelCompetency",
-          "rows": 25942,
+          "rows": 25978,
           "columns": 8,
           "detected_header_row": 1,
           "headers": [
@@ -468,6 +468,55 @@
             "ClientId",
             "ClientName",
             "InactiveDate"
+          ],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "xpbi02 SRGJobPlanningView",
+          "rows": 7206,
+          "columns": 12,
+          "detected_header_row": 1,
+          "headers": [
+            "ClientId",
+            "SiteId",
+            "JobNo",
+            "StartDate",
+            "EndDate",
+            "CompetencyId",
+            "Required",
+            "Filled",
+            "ToFill",
+            "ColourIndex",
+            "JobId",
+            "Actual"
+          ],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "xpbi02 JobDetailsView",
+          "rows": 1415,
+          "columns": 15,
+          "detected_header_row": 1,
+          "headers": [
+            "Job Id",
+            "Job No",
+            "Quote No",
+            "Order No",
+            "Req No",
+            "Client Id",
+            "Site Id",
+            "Site Hex",
+            "Site Name",
+            "Job Group Id",
+            "Job Group Name",
+            "Start Date",
+            "End Date",
+            "Status",
+            "Archived"
           ],
           "expected_headers": [],
           "missing_expected_headers": [],

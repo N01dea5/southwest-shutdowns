@@ -45,7 +45,7 @@ Headers: `Company`, `Date In`, `Date Out`, `Shift`, `Pegasus ID`, `Surname`, `Fi
 ## `data/raw/Rapidcrews Macro Data.xlsx`
 
 ### OK — `xpbi02 JobPlanningView`
-Rows: 572 | Columns: 43 | Header row: 1
+Rows: 574 | Columns: 43 | Header row: 1
 Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
 
 ### NEW — `xpbi02 DailyPersonnelSchedule`
@@ -57,11 +57,11 @@ Rows: 118 | Columns: 4 | Header row: 1
 Headers: `TradeId`, `DisciplineId`, `Discipline`, `Trade`
 
 ### OK — `xll01 Personnel`
-Rows: 4483 | Columns: 17 | Header row: 1
+Rows: 4486 | Columns: 17 | Header row: 1
 Headers: `Personnel Id`, `Given Names`, `Surname`, `Employee Number`, `Primary Role`, `Email`, `Mobile`, `Status`, `Status Comment`, `Onboarding Status`, `Application Date`, `Hire Date`, `Recruiter`, `Hire Company`, `Critical Information`, `Created`, `Archived`
 
 ### OK — `xll01 PersonnelCompetency`
-Rows: 25942 | Columns: 8 | Header row: 1
+Rows: 25978 | Columns: 8 | Header row: 1
 Headers: `Competency`, `Personnel Id`, `Expiry`, `Issued`, `Document Location`, `Licence #`, `Created`, `Archived`
 
 ### NEW — `xll01 HireCompany`
@@ -71,6 +71,14 @@ Headers: `Name`, `Created`, `Archived`
 ### NEW — `xpbi02 ClientView`
 Rows: 47 | Columns: 14 | Header row: 1
 Headers: `ClientId`, `ClientName`, `InactiveDate`
+
+### NEW — `xpbi02 SRGJobPlanningView`
+Rows: 7206 | Columns: 12 | Header row: 1
+Headers: `ClientId`, `SiteId`, `JobNo`, `StartDate`, `EndDate`, `CompetencyId`, `Required`, `Filled`, `ToFill`, `ColourIndex`, `JobId`, `Actual`
+
+### NEW — `xpbi02 JobDetailsView`
+Rows: 1415 | Columns: 15 | Header row: 1
+Headers: `Job Id`, `Job No`, `Quote No`, `Order No`, `Req No`, `Client Id`, `Site Id`, `Site Hex`, `Site Name`, `Job Group Id`, `Job Group Name`, `Start Date`, `End Date`, `Status`, `Archived`
 
 ### OK — `ACTIVE_SHUTDOWNS`
 Rows: 35 | Columns: 21 | Header row: 1

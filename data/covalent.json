@@ -491,17 +491,17 @@
             "cse": {
               "expiry": "2026-05-29",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Confined Spaces Entry.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "gta": {
               "expiry": "2026-05-29",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Gas Test Atmospheres.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             },
             "wah": {
               "expiry": "2026-05-29",
               "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PERIASAMY, Thirugnanasampantham - 77b0ec2b-356c-4008-96ab-8591c4f84c94/PERIASAMY, Thirugnanasampantham - Working at Heights.pdf",
-              "status": "current"
+              "status": "expiring_soon"
             }
           },
           "hire_company": "SRG - South West"
@@ -711,70 +711,70 @@
       "status": "in_progress",
       "required_by_role": {
         "Trade Assistant": 5,
+        "Superintendent": 1,
+        "Electrician": 4,
+        "Site Coordinator": 1,
+        "Intermediate Rigger": 3,
+        "Boilermaker": 4,
+        "Supervisor - Mechanical": 6,
+        "Lube Technician": 3,
+        "HSE Advisor": 2,
+        "Mechanical Fitter": 24,
+        "Coded Welder": 1,
+        "Supervisor": 1,
+        "Supervisor - Electrical": 1,
         "Telehandler Operator": 2,
         "Advanced Rigger": 1,
-        "Supervisor - Electrical": 1,
-        "Basic Rigger": 4,
-        "Lube Technician": 3,
-        "Supervisor": 1,
-        "Boilermaker": 4,
-        "Intermediate Rigger": 3,
-        "Supervisor - Mechanical": 6,
-        "Superintendent": 1,
-        "Mechanical Fitter": 24,
-        "Electrician": 4,
-        "Coded Welder": 1,
-        "Site Coordinator": 1,
-        "HSE Advisor": 2
+        "Basic Rigger": 4
       },
       "filled_by_role": {
         "Trade Assistant": 6,
+        "Superintendent": 1,
+        "Electrician": 3,
+        "Site Coordinator": 1,
+        "Intermediate Rigger": 2,
+        "Boilermaker": 4,
+        "Supervisor - Mechanical": 6,
+        "Lube Technician": 3,
+        "HSE Advisor": 2,
+        "Mechanical Fitter": 21,
+        "Coded Welder": 1,
+        "Supervisor": 1,
+        "Supervisor - Electrical": 1,
         "Telehandler Operator": 2,
         "Advanced Rigger": 2,
-        "Supervisor - Electrical": 1,
-        "Basic Rigger": 4,
-        "Lube Technician": 3,
-        "Supervisor": 1,
-        "Boilermaker": 4,
-        "Intermediate Rigger": 2,
-        "Supervisor - Mechanical": 6,
-        "Superintendent": 1,
-        "Mechanical Fitter": 21,
-        "Electrician": 3,
-        "Coded Welder": 1,
-        "Site Coordinator": 1,
-        "HSE Advisor": 2
+        "Basic Rigger": 4
       },
       "crew_split": {
         "Day": 60
       },
       "mobilised_by_role": {
-        "Lube Technician": 3,
-        "Advanced Rigger": 2,
-        "Telehandler Operator": 2,
-        "Mechanical Fitter": 21,
-        "Electrician": 3,
-        "Supervisor - Mechanical": 6,
-        "Boilermaker": 4,
-        "Superintendent": 1,
         "Intermediate Rigger": 2,
-        "Trade Assistant": 6,
+        "Mechanical Fitter": 21,
+        "Boilermaker": 4,
+        "Site Coordinator": 1,
+        "Lube Technician": 3,
         "Supervisor": 1,
-        "Basic Rigger": 4,
-        "HSE Advisor": 2,
         "Coded Welder": 1,
-        "Supervisor - Electrical": 1,
-        "Site Coordinator": 1
+        "Trade Assistant": 6,
+        "Telehandler Operator": 2,
+        "Electrician": 3,
+        "HSE Advisor": 2,
+        "Supervisor - Mechanical": 6,
+        "Advanced Rigger": 2,
+        "Superintendent": 1,
+        "Basic Rigger": 4,
+        "Supervisor - Electrical": 1
       },
       "labour_hire_split": {
         "SRG - South West": 38,
-        "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 8,
         "Western Workforce - Labour Hire": 3,
         "Torque - Labour Hire": 2,
+        "Mining Maintenance & Fabrication Services (MMFS) - Labour Hire": 8,
+        "SRG - Southwest Tronox": 1,
         "Hyrd - Labour Hire": 3,
-        "2XM - Labour Hire": 1,
         "SRG - Active": 2,
-        "SRG - Southwest Tronox": 1
+        "2XM - Labour Hire": 1
       },
       "roster": [
         {
@@ -2714,22 +2714,22 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 60,
         "macro_data_filled_by_role": {
-          "Lube Technician": 3,
-          "Advanced Rigger": 2,
-          "Telehandler Operator": 2,
-          "Mechanical Fitter": 21,
-          "Electrician": 3,
-          "Supervisor - Mechanical": 6,
-          "Boilermaker": 4,
-          "Superintendent": 1,
           "Intermediate Rigger": 2,
-          "Trade Assistant": 6,
+          "Mechanical Fitter": 21,
+          "Boilermaker": 4,
+          "Site Coordinator": 1,
+          "Lube Technician": 3,
           "Supervisor": 1,
-          "Basic Rigger": 4,
-          "HSE Advisor": 2,
           "Coded Welder": 1,
-          "Supervisor - Electrical": 1,
-          "Site Coordinator": 1
+          "Trade Assistant": 6,
+          "Telehandler Operator": 2,
+          "Electrician": 3,
+          "HSE Advisor": 2,
+          "Supervisor - Mechanical": 6,
+          "Advanced Rigger": 2,
+          "Superintendent": 1,
+          "Basic Rigger": 4,
+          "Supervisor - Electrical": 1
         },
         "planning_filled_by_role": {
           "Superintendent": 1,
@@ -2764,5 +2764,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-28T23:47:52Z"
+  "generated_at": "2026-04-29T02:06:27Z"
 }

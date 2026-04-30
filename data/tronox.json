@@ -2638,25 +2638,25 @@
       "end_date": "2026-05-22",
       "status": "booked",
       "required_by_role": {
-        "Supervisor - Mechanical": 9,
-        "Trade Assistant": 20,
+        "Mechanical Fitter": 40,
+        "Advanced Rigger": 10,
+        "Superintendent": 1,
         "Coded Welder": 12,
         "Site Coordinator": 1,
-        "Advanced Rigger": 10,
+        "Trade Assistant": 20,
+        "Supervisor - Mechanical": 9,
         "Boilermaker": 12,
-        "Mechanical Fitter": 40,
-        "Superintendent": 1,
         "Intermediate Rigger": 0
       },
       "filled_by_role": {
-        "Supervisor - Mechanical": 3,
-        "Trade Assistant": 20,
+        "Mechanical Fitter": 19,
+        "Advanced Rigger": 4,
+        "Superintendent": 1,
         "Coded Welder": 4,
         "Site Coordinator": 1,
-        "Advanced Rigger": 4,
+        "Trade Assistant": 20,
+        "Supervisor - Mechanical": 3,
         "Boilermaker": 2,
-        "Mechanical Fitter": 19,
-        "Superintendent": 1,
         "Intermediate Rigger": 4
       },
       "crew_split": {
@@ -2664,8 +2664,8 @@
       },
       "mobilised_by_role": {},
       "labour_hire_split": {
-        "SRG - Southwest Tronox": 4,
-        "SRG - South West": 54
+        "SRG - South West": 54,
+        "SRG - Southwest Tronox": 4
       },
       "roster": [
         {
@@ -4703,14 +4703,14 @@
         "macro_data_roster_size": 58,
         "macro_data_filled_by_role": {
           "Trade Assistant": 20,
-          "Coded Welder": 4,
-          "Advanced Rigger": 4,
-          "Mechanical Fitter": 19,
           "Intermediate Rigger": 4,
+          "Mechanical Fitter": 19,
+          "Boilermaker": 2,
+          "Advanced Rigger": 4,
           "Supervisor - Mechanical": 3,
           "Site Coordinator": 1,
-          "Boilermaker": 2,
-          "Superintendent": 1
+          "Superintendent": 1,
+          "Coded Welder": 4
         },
         "planning_filled_by_role": {
           "Superintendent": 1,
@@ -4737,5 +4737,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-30T21:52:30Z"
+  "generated_at": "2026-04-30T22:45:36Z"
 }

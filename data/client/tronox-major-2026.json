@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-30T22:46:37Z",
+  "generated_at": "2026-04-30T23:47:47Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",

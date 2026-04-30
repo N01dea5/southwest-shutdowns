@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-30T02:06:43Z",
+  "archived_at": "2026-04-30T05:53:28Z",
   "shutdown": {
     "id": "csbp-2026-05",
     "name": "1375 \u2013 CSBP NAAN2 June 2026",
@@ -10,18 +10,18 @@
     "end_date": "2026-06-22",
     "status": "booked",
     "required_by_role": {
-      "Trade Assistant": 16,
-      "Intermediate Rigger": 0,
-      "Supervisor - Mechanical": 3,
       "Mechanical Fitter": 13,
-      "Advanced Rigger": 4
+      "Advanced Rigger": 4,
+      "Supervisor - Mechanical": 3,
+      "Intermediate Rigger": 0,
+      "Trade Assistant": 16
     },
     "filled_by_role": {
-      "Trade Assistant": 17,
-      "Intermediate Rigger": 1,
-      "Supervisor - Mechanical": 3,
       "Mechanical Fitter": 13,
-      "Advanced Rigger": 3
+      "Advanced Rigger": 3,
+      "Supervisor - Mechanical": 3,
+      "Intermediate Rigger": 1,
+      "Trade Assistant": 17
     },
     "crew_split": {
       "Day": 37
@@ -416,6 +416,39 @@
         "hire_company": "SRG - South West"
       },
       {
+        "name": "Graham WANGLER",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-06-06",
+        "end": "2026-06-18",
+        "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
+        "tickets": {
+          "dog": {
+            "expiry": "2027-03-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - HRWL.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-03-26",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-03-26",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - Working at Heights.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2027-03-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WANGLER, Graham - 96ef1405-f289-4ca0-857d-1e7a4e0fa988/WANGLER, Graham - HRWL.pdf",
+            "status": "current"
+          }
+        },
+        "mobile": "0476 247 673",
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
+      },
+      {
         "name": "Herbert MUKUNGA",
         "role": "Mechanical Fitter",
         "shift": "Day",
@@ -663,9 +696,20 @@
         "end": "2026-06-18",
         "personnel_id": "F93AB05D-D842-44A0-840C-8F3B76FC4C33",
         "tickets": {
+          "rig": {
+            "expiry": "2028-07-13",
+            "doc": null,
+            "status": "current",
+            "level": "Intermediate"
+          },
           "gta": {
             "expiry": "2028-03-03",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Gas Test Atmospheres.png",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2028-07-13",
+            "doc": null,
             "status": "current"
           },
           "wah": {
@@ -840,34 +884,6 @@
           }
         },
         "mobile": "0493 536 751",
-        "status": "Mobilising",
-        "hire_company": "SRG - South West"
-      },
-      {
-        "name": "Mitya DOBBELAERE",
-        "role": "Mechanical Fitter",
-        "shift": "Day",
-        "start": "2026-06-06",
-        "end": "2026-06-18",
-        "personnel_id": "1C18F251-35E7-4E76-9B4B-0DDFAE7A830B",
-        "tickets": {
-          "gta": {
-            "expiry": "2028-03-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "cse": {
-            "expiry": "2028-03-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2028-03-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DOBBELAERE, Mitya - 1c18f251-35e7-4e76-9b4b-0ddfae7a830b/DOBBELAERE, Mitya - Working at Heights.pdf",
-            "status": "current"
-          }
-        },
-        "mobile": "0447 582 473",
         "status": "Mobilising",
         "hire_company": "SRG - South West"
       },
@@ -1247,10 +1263,10 @@
       "macro_data_roster_size": 37,
       "macro_data_filled_by_role": {
         "Trade Assistant": 17,
-        "Supervisor - Mechanical": 3,
-        "Mechanical Fitter": 13,
         "Advanced Rigger": 3,
-        "Intermediate Rigger": 1
+        "Mechanical Fitter": 13,
+        "Intermediate Rigger": 1,
+        "Supervisor - Mechanical": 3
       },
       "planning_filled_by_role": {
         "Trade Assistant": 16,

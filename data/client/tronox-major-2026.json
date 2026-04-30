@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-30T02:07:51Z",
+  "generated_at": "2026-04-30T05:54:36Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -15,30 +15,30 @@
   },
   "summary": {
     "required_total": 105,
-    "confirmed_total": 52,
-    "gap_total": 53,
-    "same_client_retention": 15,
-    "srg_carry_over": 31,
-    "new_hires": 6,
-    "buddy_required": 6,
+    "confirmed_total": 58,
+    "gap_total": 47,
+    "same_client_retention": 18,
+    "srg_carry_over": 32,
+    "new_hires": 8,
+    "buddy_required": 8,
     "shift_split": {
-      "Day": 52
+      "Day": 58
     },
     "role_shift_split": {
       "Advanced Rigger": {
-        "Day": 5
+        "Day": 4
       },
       "Boilermaker": {
         "Day": 2
       },
       "Coded Welder": {
-        "Day": 1
+        "Day": 4
       },
       "Intermediate Rigger": {
         "Day": 4
       },
       "Mechanical Fitter": {
-        "Day": 17
+        "Day": 19
       },
       "Site Coordinator": {
         "Day": 1
@@ -47,7 +47,7 @@
         "Day": 1
       },
       "Supervisor - Mechanical": {
-        "Day": 1
+        "Day": 3
       },
       "Trade Assistant": {
         "Day": 20
@@ -58,8 +58,8 @@
     {
       "role": "Advanced Rigger",
       "required": 10,
-      "confirmed": 5,
-      "gap": 5
+      "confirmed": 4,
+      "gap": 6
     },
     {
       "role": "Boilermaker",
@@ -70,8 +70,8 @@
     {
       "role": "Coded Welder",
       "required": 12,
-      "confirmed": 1,
-      "gap": 11
+      "confirmed": 4,
+      "gap": 8
     },
     {
       "role": "Intermediate Rigger",
@@ -82,8 +82,8 @@
     {
       "role": "Mechanical Fitter",
       "required": 40,
-      "confirmed": 17,
-      "gap": 23
+      "confirmed": 19,
+      "gap": 21
     },
     {
       "role": "Site Coordinator",
@@ -100,8 +100,8 @@
     {
       "role": "Supervisor - Mechanical",
       "required": 9,
-      "confirmed": 1,
-      "gap": 8
+      "confirmed": 3,
+      "gap": 6
     },
     {
       "role": "Trade Assistant",
@@ -254,6 +254,31 @@
         "hrwl": {
           "status": "current",
           "expiry": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "Cameron DUNN",
+      "role": "Coded Welder",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-10-21"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2026-09-17"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-10-21"
         }
       }
     },
@@ -621,6 +646,48 @@
       }
     },
     {
+      "name": "Jade MATENGA",
+      "role": "Supervisor - Mechanical",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-06-19"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2027-05-10"
+        },
+        "hr": {
+          "status": "current",
+          "expiry": "2027-11-11"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2027-05-10"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2027-05-10",
+          "level": "Advanced"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2027-05-10"
+        }
+      }
+    },
+    {
       "name": "Jaime HERNANDEZ",
       "role": "Trade Assistant",
       "shift": "Day",
@@ -816,6 +883,48 @@
       }
     },
     {
+      "name": "Jonathan MUTEMBO",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": true,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-11-19"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-11-19"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2030-09-22"
+        },
+        "fork": {
+          "status": "current",
+          "expiry": "2030-09-22"
+        },
+        "dog": {
+          "status": "current",
+          "expiry": "2030-09-22"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2030-09-22",
+          "level": "Advanced"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2030-09-22"
+        }
+      }
+    },
+    {
       "name": "Julian VAN DER ZANDEN",
       "role": "Intermediate Rigger",
       "shift": "Day",
@@ -838,6 +947,15 @@
           "status": "current",
           "expiry": "2028-07-13"
         },
+        "dog": {
+          "status": "current",
+          "expiry": "2028-07-13"
+        },
+        "rig": {
+          "status": "current",
+          "expiry": "2028-07-13",
+          "level": "Intermediate"
+        },
         "gta": {
           "status": "current",
           "expiry": "2028-03-03"
@@ -845,6 +963,35 @@
         "hrwl": {
           "status": "current",
           "expiry": "2028-07-13"
+        }
+      }
+    },
+    {
+      "name": "Julien DOUCET",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": false,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2028-04-02"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2028-04-02"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2028-04-02"
+        },
+        "fa": {
+          "status": "current",
+          "expiry": "2029-03-30"
         }
       }
     },
@@ -978,44 +1125,6 @@
         "hrwl": {
           "status": "current",
           "expiry": "2030-07-31"
-        }
-      }
-    },
-    {
-      "name": "Luis FERNANDES",
-      "role": "Advanced Rigger",
-      "shift": "Day",
-      "start": "2026-05-18",
-      "end": "2026-05-22",
-      "same_client_retention": true,
-      "srg_carry_over": false,
-      "new_hire": false,
-      "buddy_required": false,
-      "tickets": {
-        "cse": {
-          "status": "current",
-          "expiry": "2026-09-22"
-        },
-        "wah": {
-          "status": "current",
-          "expiry": "2026-09-22"
-        },
-        "dog": {
-          "status": "current",
-          "expiry": "2029-11-08"
-        },
-        "rig": {
-          "status": "current",
-          "expiry": "2029-11-08",
-          "level": "Intermediate"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2026-09-22"
-        },
-        "hrwl": {
-          "status": "current",
-          "expiry": "2029-11-08"
         }
       }
     },
@@ -1228,27 +1337,48 @@
       }
     },
     {
-      "name": "Mitya DOBBELAERE",
-      "role": "Mechanical Fitter",
+      "name": "Modesto JAIME",
+      "role": "Coded Welder",
       "shift": "Day",
       "start": "2026-05-18",
       "end": "2026-05-22",
       "same_client_retention": false,
-      "srg_carry_over": true,
+      "srg_carry_over": false,
+      "new_hire": true,
+      "buddy_required": true,
+      "tickets": {
+        "wah": {
+          "status": "current",
+          "expiry": "2027-11-27"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2026-07-14"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2026-07-14"
+        }
+      }
+    },
+    {
+      "name": "Naing WIN",
+      "role": "Coded Welder",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
       "new_hire": false,
       "buddy_required": false,
       "tickets": {
         "cse": {
           "status": "current",
-          "expiry": "2028-03-01"
+          "expiry": "2027-06-24"
         },
         "wah": {
           "status": "current",
-          "expiry": "2028-03-01"
-        },
-        "gta": {
-          "status": "current",
-          "expiry": "2028-03-01"
+          "expiry": "2027-06-24"
         }
       }
     },
@@ -1373,6 +1503,27 @@
       }
     },
     {
+      "name": "Paul BERRY",
+      "role": "Supervisor - Mechanical",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-08-12"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-07-31"
+        }
+      }
+    },
+    {
       "name": "Peter BURNS",
       "role": "Supervisor - Mechanical",
       "shift": "Day",
@@ -1423,6 +1574,39 @@
         "fa": {
           "status": "current",
           "expiry": "2028-04-05"
+        }
+      }
+    },
+    {
+      "name": "Renan SANCHEZ",
+      "role": "Mechanical Fitter",
+      "shift": "Day",
+      "start": "2026-05-18",
+      "end": "2026-05-22",
+      "same_client_retention": true,
+      "srg_carry_over": false,
+      "new_hire": false,
+      "buddy_required": false,
+      "tickets": {
+        "cse": {
+          "status": "current",
+          "expiry": "2027-04-30"
+        },
+        "wah": {
+          "status": "current",
+          "expiry": "2027-04-30"
+        },
+        "ewp": {
+          "status": "current",
+          "expiry": "2029-10-03"
+        },
+        "gta": {
+          "status": "current",
+          "expiry": "2027-04-30"
+        },
+        "hrwl": {
+          "status": "current",
+          "expiry": "2029-10-03"
         }
       }
     },

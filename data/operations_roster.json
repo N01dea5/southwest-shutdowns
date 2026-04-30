@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T02:06:56Z",
-  "worker_count": 275,
+  "generated_at": "2026-04-30T05:53:41Z",
+  "worker_count": 276,
   "workers": [
     {
       "personnel_id": "F8CD2F42-6730-457A-BA9B-8241A8650DF8",
@@ -205,7 +205,7 @@
           "start": "2026-04-30",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -4490,6 +4490,15 @@
           "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -7036,7 +7045,7 @@
           "start": "2026-04-30",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7045,7 +7054,7 @@
           "start": "2026-05-03",
           "end": "2026-05-03",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7054,7 +7063,7 @@
           "start": "2026-05-05",
           "end": "2026-05-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7063,7 +7072,7 @@
           "start": "2026-05-07",
           "end": "2026-05-07",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7072,7 +7081,7 @@
           "start": "2026-05-09",
           "end": "2026-05-09",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7081,7 +7090,7 @@
           "start": "2026-05-11",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7090,7 +7099,7 @@
           "start": "2026-05-13",
           "end": "2026-05-13",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7099,7 +7108,7 @@
           "start": "2026-05-15",
           "end": "2026-05-15",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7108,7 +7117,7 @@
           "start": "2026-05-17",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7117,7 +7126,7 @@
           "start": "2026-05-19",
           "end": "2026-05-19",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7126,7 +7135,7 @@
           "start": "2026-05-21",
           "end": "2026-05-21",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7135,7 +7144,7 @@
           "start": "2026-05-23",
           "end": "2026-05-23",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7144,7 +7153,7 @@
           "start": "2026-05-25",
           "end": "2026-05-25",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7153,7 +7162,7 @@
           "start": "2026-05-27",
           "end": "2026-05-27",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7162,7 +7171,7 @@
           "start": "2026-05-29",
           "end": "2026-05-29",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -7171,7 +7180,7 @@
           "start": "2026-05-31",
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -17119,6 +17128,15 @@
           "is_on_location": false
         },
         {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "1405",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -20157,6 +20175,15 @@
           "site": "Tronox",
           "start": "2026-07-31",
           "end": "2026-07-31",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
           "schedule_type": "Day Shift",
           "is_on_location": false
         },
@@ -27685,6 +27712,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "1375",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -32892,6 +32928,24 @@
           "site": "CSBP Kwinana",
           "start": "2026-06-08",
           "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "E4D24EA9-9FB0-4810-B660-49143601BAE6",
+      "name": "Julien DOUCET",
+      "role": "Mechanical Fitter",
+      "mobile": "0476 654 959",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -38365,24 +38419,6 @@
       "name": "Lucrecia Celeste SOSA",
       "role": "Rigger - Intermediate",
       "mobile": "0401 023 205",
-      "hire_company": "SRG - South West",
-      "assignments": [
-        {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        }
-      ]
-    },
-    {
-      "personnel_id": "B2EA1F52-15A2-46E7-98A4-6707052B1AAA",
-      "name": "Luis FERNANDES",
-      "role": "Rigger - Advanced",
-      "mobile": "0424 476 507",
       "hire_company": "SRG - South West",
       "assignments": [
         {
@@ -48203,24 +48239,6 @@
           "end": "2026-03-25",
           "schedule_type": "Day Shift",
           "is_on_location": true
-        },
-        {
-          "job_no": "1353",
-          "client": "SOUTH WEST",
-          "site": "Tronox",
-          "start": "2026-05-18",
-          "end": "2026-05-22",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
-        },
-        {
-          "job_no": "1375",
-          "client": "CSBP",
-          "site": "CSBP Kwinana",
-          "start": "2026-06-06",
-          "end": "2026-06-18",
-          "schedule_type": "Day Shift",
-          "is_on_location": false
         }
       ]
     },
@@ -49715,6 +49733,15 @@
           "end": "2026-12-31",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         },
         {
           "job_no": "1391",
@@ -51353,6 +51380,15 @@
           "end": "2026-12-31",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         },
         {
           "job_no": "1391",
@@ -53503,7 +53539,7 @@
           "start": "2026-04-30",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53512,7 +53548,7 @@
           "start": "2026-05-03",
           "end": "2026-05-03",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53521,7 +53557,7 @@
           "start": "2026-05-05",
           "end": "2026-05-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53530,7 +53566,7 @@
           "start": "2026-05-07",
           "end": "2026-05-07",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53539,7 +53575,7 @@
           "start": "2026-05-09",
           "end": "2026-05-09",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53548,7 +53584,7 @@
           "start": "2026-05-11",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53557,7 +53593,7 @@
           "start": "2026-05-13",
           "end": "2026-05-13",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53566,7 +53602,7 @@
           "start": "2026-05-15",
           "end": "2026-05-15",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53575,7 +53611,7 @@
           "start": "2026-05-17",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53584,7 +53620,7 @@
           "start": "2026-05-19",
           "end": "2026-05-19",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53593,7 +53629,7 @@
           "start": "2026-05-21",
           "end": "2026-05-21",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53602,7 +53638,7 @@
           "start": "2026-05-23",
           "end": "2026-05-23",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53611,7 +53647,7 @@
           "start": "2026-05-25",
           "end": "2026-05-25",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53620,7 +53656,7 @@
           "start": "2026-05-27",
           "end": "2026-05-27",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53629,7 +53665,7 @@
           "start": "2026-05-29",
           "end": "2026-05-29",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -53638,7 +53674,7 @@
           "start": "2026-05-31",
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -53649,6 +53685,15 @@
       "mobile": "0455 599 800",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "1391",
           "client": "SOUTH WEST",
@@ -54594,6 +54639,15 @@
       "mobile": "0431 951 293",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "1375",
           "client": "CSBP",
@@ -63939,6 +63993,24 @@
       ]
     },
     {
+      "personnel_id": "F5E6E5B6-69BF-4B9B-82DB-7A3A05F8A2F6",
+      "name": "Travis FARRELL",
+      "role": "Electrician",
+      "mobile": "0461 393 363",
+      "hire_company": "",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-30",
+          "end": "2026-05-12",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "3C8501A9-5060-44ED-B94E-88630B80CEAD",
       "name": "Trevor POWELL",
       "role": "Trade Assistant",
@@ -66688,7 +66760,7 @@
           "start": "2026-04-30",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },
@@ -67129,7 +67201,7 @@
           "start": "2026-04-30",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67138,7 +67210,7 @@
           "start": "2026-05-03",
           "end": "2026-05-03",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67147,7 +67219,7 @@
           "start": "2026-05-05",
           "end": "2026-05-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67156,7 +67228,7 @@
           "start": "2026-05-07",
           "end": "2026-05-07",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67165,7 +67237,7 @@
           "start": "2026-05-09",
           "end": "2026-05-09",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67174,7 +67246,7 @@
           "start": "2026-05-11",
           "end": "2026-05-11",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67183,7 +67255,7 @@
           "start": "2026-05-13",
           "end": "2026-05-13",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67192,7 +67264,7 @@
           "start": "2026-05-15",
           "end": "2026-05-15",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67201,7 +67273,7 @@
           "start": "2026-05-17",
           "end": "2026-05-17",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67210,7 +67282,7 @@
           "start": "2026-05-19",
           "end": "2026-05-19",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67219,7 +67291,7 @@
           "start": "2026-05-21",
           "end": "2026-05-21",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67228,7 +67300,7 @@
           "start": "2026-05-23",
           "end": "2026-05-23",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67237,7 +67309,7 @@
           "start": "2026-05-25",
           "end": "2026-05-25",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67246,7 +67318,7 @@
           "start": "2026-05-27",
           "end": "2026-05-27",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67255,7 +67327,7 @@
           "start": "2026-05-29",
           "end": "2026-05-29",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         },
         {
           "job_no": "1391",
@@ -67264,7 +67336,7 @@
           "start": "2026-05-31",
           "end": "2026-06-05",
           "schedule_type": "Day Shift",
-          "is_on_location": false
+          "is_on_location": true
         }
       ]
     },

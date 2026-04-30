@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-30T02:06:43Z",
+  "archived_at": "2026-04-30T05:53:28Z",
   "shutdown": {
     "id": "kleenheat-2026-03",
     "name": "1206 \u2013 KPF LNG Major Shutdown March 2026 (Kleenheat)",
@@ -10,21 +10,21 @@
     "end_date": "2026-03-22",
     "status": "completed",
     "required_by_role": {
-      "Trade Assistant": 18,
-      "Painter & Blaster": 2,
-      "Sheet Metal Worker": 3,
-      "Intermediate Rigger": 3,
-      "Supervisor - Mechanical": 4,
-      "Scaffolder": 6,
       "Mechanical Fitter": 23,
-      "Advanced Rigger": 2
+      "Sheet Metal Worker": 3,
+      "Scaffolder": 6,
+      "Advanced Rigger": 2,
+      "Supervisor - Mechanical": 4,
+      "Painter & Blaster": 2,
+      "Intermediate Rigger": 3,
+      "Trade Assistant": 18
     },
     "filled_by_role": {
-      "Trade Assistant": 18,
-      "Sheet Metal Worker": 3,
-      "Intermediate Rigger": 4,
       "Scaffolder": 6,
+      "Trade Assistant": 18,
       "Mechanical Fitter": 25,
+      "Intermediate Rigger": 4,
+      "Sheet Metal Worker": 3,
       "Supervisor - Mechanical": 4,
       "Painter & Blaster": 2,
       "Advanced Rigger": 2
@@ -33,11 +33,11 @@
       "Day": 64
     },
     "mobilised_by_role": {
-      "Trade Assistant": 18,
-      "Sheet Metal Worker": 3,
-      "Intermediate Rigger": 4,
       "Scaffolder": 6,
+      "Trade Assistant": 18,
       "Mechanical Fitter": 25,
+      "Intermediate Rigger": 4,
+      "Sheet Metal Worker": 3,
       "Supervisor - Mechanical": 4,
       "Painter & Blaster": 2,
       "Advanced Rigger": 2
@@ -1021,9 +1021,20 @@
         "end": "2026-03-21",
         "personnel_id": "F93AB05D-D842-44A0-840C-8F3B76FC4C33",
         "tickets": {
+          "rig": {
+            "expiry": "2028-07-13",
+            "doc": null,
+            "status": "current",
+            "level": "Intermediate"
+          },
           "gta": {
             "expiry": "2028-03-03",
             "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER ZANDEN, Julian - f93ab05d-d842-44a0-840c-8f3b76fc4c33/VAN DER ZANDEN, Julian - Gas Test Atmospheres.png",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2028-07-13",
+            "doc": null,
             "status": "current"
           },
           "wah": {
@@ -2173,11 +2184,11 @@
       "required_target_source": "TARGET_FILE",
       "macro_data_roster_size": 64,
       "macro_data_filled_by_role": {
-        "Trade Assistant": 18,
-        "Sheet Metal Worker": 3,
-        "Intermediate Rigger": 4,
         "Scaffolder": 6,
+        "Trade Assistant": 18,
         "Mechanical Fitter": 25,
+        "Intermediate Rigger": 4,
+        "Sheet Metal Worker": 3,
         "Supervisor - Mechanical": 4,
         "Painter & Blaster": 2,
         "Advanced Rigger": 2

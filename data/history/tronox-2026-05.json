@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-29T22:51:02Z",
+  "archived_at": "2026-04-30T02:06:43Z",
   "shutdown": {
     "id": "tronox-2026-05",
     "name": "1353 \u2013 Tronox Major Shutdown May 2026",
@@ -10,26 +10,26 @@
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
-      "Superintendent": 1,
-      "Advanced Rigger": 10,
-      "Trade Assistant": 20,
-      "Boilermaker": 10,
-      "Coded Welder": 20,
-      "Intermediate Rigger": 0,
-      "Mechanical Fitter": 40,
       "Site Coordinator": 1,
-      "Supervisor - Mechanical": 10
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 0,
+      "Coded Welder": 12,
+      "Supervisor - Mechanical": 9,
+      "Boilermaker": 12,
+      "Mechanical Fitter": 40,
+      "Superintendent": 1,
+      "Advanced Rigger": 10
     },
     "filled_by_role": {
-      "Superintendent": 1,
-      "Advanced Rigger": 5,
-      "Trade Assistant": 20,
-      "Boilermaker": 2,
-      "Coded Welder": 1,
-      "Intermediate Rigger": 4,
-      "Mechanical Fitter": 17,
       "Site Coordinator": 1,
-      "Supervisor - Mechanical": 1
+      "Trade Assistant": 20,
+      "Intermediate Rigger": 4,
+      "Coded Welder": 1,
+      "Supervisor - Mechanical": 1,
+      "Boilermaker": 2,
+      "Mechanical Fitter": 17,
+      "Superintendent": 1,
+      "Advanced Rigger": 5
     },
     "crew_split": {
       "Day": 52
@@ -1864,31 +1864,31 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 52,
       "macro_data_filled_by_role": {
-        "Mechanical Fitter": 17,
-        "Trade Assistant": 20,
-        "Advanced Rigger": 5,
-        "Intermediate Rigger": 4,
-        "Boilermaker": 2,
         "Site Coordinator": 1,
+        "Trade Assistant": 20,
+        "Mechanical Fitter": 17,
+        "Intermediate Rigger": 4,
+        "Advanced Rigger": 5,
+        "Supervisor - Mechanical": 1,
         "Superintendent": 1,
-        "Coded Welder": 1,
-        "Supervisor - Mechanical": 1
+        "Boilermaker": 2,
+        "Coded Welder": 1
       },
       "planning_filled_by_role": {
         "Superintendent": 1,
-        "Coded Welder": 1,
+        "Coded Welder": 4,
         "Site Coordinator": 1,
         "Trade Assistant": 20,
-        "Advanced Rigger": 5,
-        "Supervisor - Mechanical": 1,
+        "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 3,
         "Mechanical Fitter": 17,
         "Boilermaker": 2
       },
       "target_source": {
         "source": "rapid_crews_job_planning_view",
         "job_no": 1353,
-        "total_required": 112,
-        "total_filled_planning": 48,
+        "total_required": 105,
+        "total_filled_planning": 52,
         "total_filled_named": 52,
         "job_description": "Tronox Major Shutdown May 2026"
       },

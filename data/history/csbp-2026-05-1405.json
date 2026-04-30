@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-29T22:51:02Z",
+  "archived_at": "2026-04-30T02:06:43Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
     "name": "1405 \u2013 CSBP - NAAN1 Shut",
@@ -10,21 +10,21 @@
     "end_date": "2026-05-16",
     "status": "booked",
     "required_by_role": {
-      "Mechanical Fitter": 17,
+      "Supervisor - Mechanical": 2,
       "Trade Assistant": 8,
-      "Supervisor - Mechanical": 2
+      "Mechanical Fitter": 17
     },
     "filled_by_role": {
-      "Mechanical Fitter": 14,
+      "Supervisor - Mechanical": 1,
       "Trade Assistant": 9,
-      "Supervisor - Mechanical": 1
+      "Mechanical Fitter": 16
     },
     "crew_split": {
-      "Day": 24
+      "Day": 26
     },
     "mobilised_by_role": {},
     "labour_hire_split": {
-      "SRG - South West": 24
+      "SRG - South West": 26
     },
     "roster": [
       {
@@ -129,6 +129,34 @@
           }
         },
         "mobile": "0424 977 431",
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
+      },
+      {
+        "name": "Darren JAMES",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "620ADA5F-8586-4917-981D-7CEF7F2E1C33",
+        "tickets": {
+          "gta": {
+            "expiry": "2028-02-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JAMES, Darren - 620ada5f-8586-4917-981d-7cef7f2e1c33/JAMES, Darren - Gas Test Atmospheres.png",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2028-02-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JAMES, Darren - 620ada5f-8586-4917-981d-7cef7f2e1c33/JAMES, Darren - Confined Spaces Entry.png",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2028-02-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JAMES, Darren - 620ada5f-8586-4917-981d-7cef7f2e1c33/JAMES, Darren - Working at Heights.png",
+            "status": "current"
+          }
+        },
+        "mobile": "0432 522 247",
         "status": "Mobilising",
         "hire_company": "SRG - South West"
       },
@@ -544,6 +572,49 @@
         "hire_company": "SRG - South West"
       },
       {
+        "name": "Omar ANADIF",
+        "role": "Mechanical Fitter",
+        "shift": "Day",
+        "start": "2026-05-13",
+        "end": "2026-05-16",
+        "personnel_id": "49C01687-6184-40F5-9E12-0CC1697CD030",
+        "tickets": {
+          "ewp": {
+            "expiry": "2030-09-04",
+            "doc": null,
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2030-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - HRWL.jpeg",
+            "status": "current"
+          },
+          "gta": {
+            "expiry": "2027-05-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - Gas Test Atmospheres.jpg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-05-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - Working at Heights.jpg",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-05-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - Confined Spaces Entry.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANADIF, Omar - 49c01687-6184-40f5-9e12-0cc1697cd030/ANADIF, Omar - HRWL.jpeg",
+            "status": "current"
+          }
+        },
+        "mobile": "0407 636 408",
+        "status": "Mobilising",
+        "hire_company": "SRG - South West"
+      },
+      {
         "name": "Omkar Uttam DORUGADE",
         "role": "Mechanical Fitter",
         "shift": "Day",
@@ -812,10 +883,10 @@
       "macro_data_site": "CSBP Kwinana",
       "source_format": "macro_data",
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
-      "macro_data_roster_size": 24,
+      "macro_data_roster_size": 26,
       "macro_data_filled_by_role": {
-        "Mechanical Fitter": 14,
         "Trade Assistant": 9,
+        "Mechanical Fitter": 16,
         "Supervisor - Mechanical": 1
       },
       "planning_filled_by_role": {
@@ -828,7 +899,7 @@
         "job_no": 1405,
         "total_required": 27,
         "total_filled_planning": 25,
-        "total_filled_named": 24,
+        "total_filled_named": 26,
         "job_description": "CSBP - NAAN1 Shut"
       },
       "job_no": 1405,

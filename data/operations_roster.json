@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-29T22:51:15Z",
-  "worker_count": 274,
+  "generated_at": "2026-04-30T02:06:56Z",
+  "worker_count": 275,
   "workers": [
     {
       "personnel_id": "F8CD2F42-6730-457A-BA9B-8241A8650DF8",
@@ -9658,11 +9658,20 @@
           "is_on_location": true
         },
         {
+          "job_no": "1405",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "1412",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-05-06",
-          "end": "2026-05-15",
+          "start": "2026-05-05",
+          "end": "2026-05-08",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -16492,8 +16501,8 @@
           "job_no": "1412",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
-          "start": "2026-05-06",
-          "end": "2026-05-11",
+          "start": "2026-05-05",
+          "end": "2026-05-08",
           "schedule_type": "Day Shift",
           "is_on_location": false
         }
@@ -17189,6 +17198,159 @@
           "end": "2026-04-21",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "A19681C4-AD37-437A-B878-6F655D579241",
+      "name": "Gwanu SONG",
+      "role": "Coded Welder",
+      "mobile": "0413133910",
+      "hire_company": "Hyrd - Labour Hire",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-01",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -51560,6 +51722,15 @@
           "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1405",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-13",
+          "end": "2026-05-16",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         },
         {
           "job_no": "1412",

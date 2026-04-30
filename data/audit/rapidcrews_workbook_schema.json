@@ -303,7 +303,7 @@
       "sheets": [
         {
           "sheet": "xpbi02 JobPlanningView",
-          "rows": 583,
+          "rows": 584,
           "columns": 43,
           "detected_header_row": 1,
           "headers": [
@@ -331,7 +331,7 @@
         },
         {
           "sheet": "xpbi02 DailyPersonnelSchedule",
-          "rows": 175944,
+          "rows": 176239,
           "columns": 27,
           "detected_header_row": 1,
           "headers": [
@@ -387,7 +387,7 @@
         },
         {
           "sheet": "xll01 Personnel",
-          "rows": 4494,
+          "rows": 4496,
           "columns": 17,
           "detected_header_row": 1,
           "headers": [
@@ -422,7 +422,7 @@
         },
         {
           "sheet": "xll01 PersonnelCompetency",
-          "rows": 26056,
+          "rows": 26081,
           "columns": 8,
           "detected_header_row": 1,
           "headers": [
@@ -475,7 +475,7 @@
         },
         {
           "sheet": "xpbi02 SRGJobPlanningView",
-          "rows": 7218,
+          "rows": 7224,
           "columns": 12,
           "detected_header_row": 1,
           "headers": [
@@ -498,7 +498,7 @@
         },
         {
           "sheet": "xpbi02 JobDetailsView",
-          "rows": 1417,
+          "rows": 1418,
           "columns": 15,
           "detected_header_row": 1,
           "headers": [
@@ -538,7 +538,7 @@
         },
         {
           "sheet": "xpbi02 PersonnelRosterView",
-          "rows": 66925,
+          "rows": 67038,
           "columns": 7,
           "detected_header_row": 1,
           "headers": [

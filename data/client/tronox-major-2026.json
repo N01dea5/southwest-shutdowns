@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-29T22:52:10Z",
+  "generated_at": "2026-04-30T02:07:51Z",
   "source_of_truth": "N01dea5/southwest-shutdowns:data/tronox.json",
   "client": "Tronox",
   "dashboard": "Tronox Major Shutdown May 2026",
@@ -14,9 +14,9 @@
     "status": "booked"
   },
   "summary": {
-    "required_total": 112,
+    "required_total": 105,
     "confirmed_total": 52,
-    "gap_total": 60,
+    "gap_total": 53,
     "same_client_retention": 15,
     "srg_carry_over": 31,
     "new_hires": 6,
@@ -63,15 +63,15 @@
     },
     {
       "role": "Boilermaker",
-      "required": 10,
+      "required": 12,
       "confirmed": 2,
-      "gap": 8
+      "gap": 10
     },
     {
       "role": "Coded Welder",
-      "required": 20,
+      "required": 12,
       "confirmed": 1,
-      "gap": 19
+      "gap": 11
     },
     {
       "role": "Intermediate Rigger",
@@ -99,9 +99,9 @@
     },
     {
       "role": "Supervisor - Mechanical",
-      "required": 10,
+      "required": 9,
       "confirmed": 1,
-      "gap": 9
+      "gap": 8
     },
     {
       "role": "Trade Assistant",

@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-30T05:53:28Z",
+  "archived_at": "2026-04-30T08:08:34Z",
   "shutdown": {
     "id": "csbp-2026-05-1405",
     "name": "1405 \u2013 CSBP - NAAN1 Shut",
@@ -10,13 +10,13 @@
     "end_date": "2026-05-16",
     "status": "booked",
     "required_by_role": {
-      "Mechanical Fitter": 17,
       "Supervisor - Mechanical": 2,
+      "Mechanical Fitter": 17,
       "Trade Assistant": 8
     },
     "filled_by_role": {
-      "Mechanical Fitter": 16,
       "Supervisor - Mechanical": 1,
+      "Mechanical Fitter": 16,
       "Trade Assistant": 9
     },
     "crew_split": {
@@ -885,8 +885,8 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 26,
       "macro_data_filled_by_role": {
-        "Trade Assistant": 9,
         "Mechanical Fitter": 16,
+        "Trade Assistant": 9,
         "Supervisor - Mechanical": 1
       },
       "planning_filled_by_role": {

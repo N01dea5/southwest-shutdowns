@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-30T08:08:34Z",
+  "archived_at": "2026-04-30T10:50:11Z",
   "shutdown": {
     "id": "csbp-2026-05",
     "name": "1375 \u2013 CSBP NAAN2 June 2026",
@@ -10,17 +10,17 @@
     "end_date": "2026-06-22",
     "status": "booked",
     "required_by_role": {
-      "Supervisor - Mechanical": 3,
-      "Intermediate Rigger": 0,
       "Trade Assistant": 16,
       "Advanced Rigger": 4,
+      "Supervisor - Mechanical": 3,
+      "Intermediate Rigger": 0,
       "Mechanical Fitter": 13
     },
     "filled_by_role": {
-      "Supervisor - Mechanical": 3,
-      "Intermediate Rigger": 1,
       "Trade Assistant": 17,
       "Advanced Rigger": 3,
+      "Supervisor - Mechanical": 3,
+      "Intermediate Rigger": 1,
       "Mechanical Fitter": 13
     },
     "crew_split": {
@@ -28,8 +28,8 @@
     },
     "mobilised_by_role": {},
     "labour_hire_split": {
-      "SRG - Southwest Tianqi": 1,
-      "SRG - South West": 36
+      "SRG - South West": 36,
+      "SRG - Southwest Tianqi": 1
     },
     "roster": [
       {
@@ -1262,9 +1262,9 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 37,
       "macro_data_filled_by_role": {
+        "Mechanical Fitter": 13,
         "Trade Assistant": 17,
         "Advanced Rigger": 3,
-        "Mechanical Fitter": 13,
         "Intermediate Rigger": 1,
         "Supervisor - Mechanical": 3
       },

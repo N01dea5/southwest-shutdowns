@@ -61,7 +61,7 @@ Rows: 4506 | Columns: 17 | Header row: 1
 Headers: `Personnel Id`, `Given Names`, `Surname`, `Employee Number`, `Primary Role`, `Email`, `Mobile`, `Status`, `Status Comment`, `Onboarding Status`, `Application Date`, `Hire Date`, `Recruiter`, `Hire Company`, `Critical Information`, `Created`, `Archived`
 
 ### OK — `xll01 PersonnelCompetency`
-Rows: 26199 | Columns: 8 | Header row: 1
+Rows: 26214 | Columns: 8 | Header row: 1
 Headers: `Competency`, `Personnel Id`, `Expiry`, `Issued`, `Document Location`, `Licence #`, `Created`, `Archived`
 
 ### NEW — `xll01 HireCompany`

@@ -885,37 +885,37 @@
       "end_date": "2026-03-22",
       "status": "completed",
       "required_by_role": {
+        "Trade Assistant": 18,
+        "Advanced Rigger": 2,
+        "Painter & Blaster": 2,
         "Supervisor - Mechanical": 4,
         "Intermediate Rigger": 3,
         "Sheet Metal Worker": 3,
-        "Trade Assistant": 18,
-        "Scaffolder": 6,
-        "Advanced Rigger": 2,
         "Mechanical Fitter": 23,
-        "Painter & Blaster": 2
+        "Scaffolder": 6
       },
       "filled_by_role": {
-        "Mechanical Fitter": 25,
-        "Intermediate Rigger": 4,
-        "Trade Assistant": 18,
-        "Advanced Rigger": 2,
         "Supervisor - Mechanical": 4,
+        "Trade Assistant": 18,
+        "Mechanical Fitter": 25,
         "Sheet Metal Worker": 3,
         "Scaffolder": 6,
-        "Painter & Blaster": 2
+        "Painter & Blaster": 2,
+        "Intermediate Rigger": 4,
+        "Advanced Rigger": 2
       },
       "crew_split": {
         "Day": 64
       },
       "mobilised_by_role": {
-        "Mechanical Fitter": 25,
-        "Intermediate Rigger": 4,
-        "Trade Assistant": 18,
-        "Advanced Rigger": 2,
         "Supervisor - Mechanical": 4,
+        "Trade Assistant": 18,
+        "Mechanical Fitter": 25,
         "Sheet Metal Worker": 3,
         "Scaffolder": 6,
-        "Painter & Blaster": 2
+        "Painter & Blaster": 2,
+        "Intermediate Rigger": 4,
+        "Advanced Rigger": 2
       },
       "labour_hire_split": {
         "SRG - South West": 54,
@@ -3059,14 +3059,14 @@
         "required_target_source": "TARGET_FILE",
         "macro_data_roster_size": 64,
         "macro_data_filled_by_role": {
-          "Mechanical Fitter": 25,
-          "Intermediate Rigger": 4,
-          "Trade Assistant": 18,
-          "Advanced Rigger": 2,
           "Supervisor - Mechanical": 4,
+          "Trade Assistant": 18,
+          "Mechanical Fitter": 25,
           "Sheet Metal Worker": 3,
           "Scaffolder": 6,
-          "Painter & Blaster": 2
+          "Painter & Blaster": 2,
+          "Intermediate Rigger": 4,
+          "Advanced Rigger": 2
         },
         "planning_filled_by_role": {},
         "target_source": null,
@@ -3084,14 +3084,14 @@
       "end_date": "2026-05-16",
       "status": "booked",
       "required_by_role": {
+        "Trade Assistant": 8,
         "Supervisor - Mechanical": 2,
-        "Mechanical Fitter": 17,
-        "Trade Assistant": 8
+        "Mechanical Fitter": 17
       },
       "filled_by_role": {
+        "Trade Assistant": 9,
         "Supervisor - Mechanical": 1,
-        "Mechanical Fitter": 16,
-        "Trade Assistant": 9
+        "Mechanical Fitter": 16
       },
       "crew_split": {
         "Day": 26
@@ -3988,17 +3988,17 @@
       "end_date": "2026-06-22",
       "status": "booked",
       "required_by_role": {
-        "Supervisor - Mechanical": 3,
-        "Intermediate Rigger": 0,
         "Trade Assistant": 16,
         "Advanced Rigger": 4,
+        "Supervisor - Mechanical": 3,
+        "Intermediate Rigger": 0,
         "Mechanical Fitter": 13
       },
       "filled_by_role": {
-        "Supervisor - Mechanical": 3,
-        "Intermediate Rigger": 1,
         "Trade Assistant": 17,
         "Advanced Rigger": 3,
+        "Supervisor - Mechanical": 3,
+        "Intermediate Rigger": 1,
         "Mechanical Fitter": 13
       },
       "crew_split": {
@@ -4006,8 +4006,8 @@
       },
       "mobilised_by_role": {},
       "labour_hire_split": {
-        "SRG - Southwest Tianqi": 1,
-        "SRG - South West": 36
+        "SRG - South West": 36,
+        "SRG - Southwest Tianqi": 1
       },
       "roster": [
         {
@@ -5240,9 +5240,9 @@
         "required_target_source": "RAPID_CREWS_JOB_PLANNING",
         "macro_data_roster_size": 37,
         "macro_data_filled_by_role": {
+          "Mechanical Fitter": 13,
           "Trade Assistant": 17,
           "Advanced Rigger": 3,
-          "Mechanical Fitter": 13,
           "Intermediate Rigger": 1,
           "Supervisor - Mechanical": 3
         },
@@ -5267,5 +5267,5 @@
       }
     }
   ],
-  "generated_at": "2026-04-30T08:08:34Z"
+  "generated_at": "2026-04-30T10:50:11Z"
 }

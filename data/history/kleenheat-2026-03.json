@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-04-30T12:12:42Z",
+  "archived_at": "2026-04-30T15:03:31Z",
   "shutdown": {
     "id": "kleenheat-2026-03",
     "name": "1206 \u2013 KPF LNG Major Shutdown March 2026 (Kleenheat)",
@@ -12,41 +12,41 @@
     "required_by_role": {
       "Scaffolder": 6,
       "Mechanical Fitter": 23,
-      "Trade Assistant": 18,
-      "Painter & Blaster": 2,
-      "Advanced Rigger": 2,
-      "Intermediate Rigger": 3,
+      "Sheet Metal Worker": 3,
       "Supervisor - Mechanical": 4,
-      "Sheet Metal Worker": 3
+      "Painter & Blaster": 2,
+      "Intermediate Rigger": 3,
+      "Advanced Rigger": 2,
+      "Trade Assistant": 18
     },
     "filled_by_role": {
-      "Intermediate Rigger": 4,
-      "Scaffolder": 6,
+      "Sheet Metal Worker": 3,
       "Mechanical Fitter": 25,
-      "Supervisor - Mechanical": 4,
+      "Scaffolder": 6,
+      "Intermediate Rigger": 4,
       "Trade Assistant": 18,
-      "Painter & Blaster": 2,
       "Advanced Rigger": 2,
-      "Sheet Metal Worker": 3
+      "Supervisor - Mechanical": 4,
+      "Painter & Blaster": 2
     },
     "crew_split": {
       "Day": 64
     },
     "mobilised_by_role": {
-      "Intermediate Rigger": 4,
-      "Scaffolder": 6,
+      "Sheet Metal Worker": 3,
       "Mechanical Fitter": 25,
-      "Supervisor - Mechanical": 4,
+      "Scaffolder": 6,
+      "Intermediate Rigger": 4,
       "Trade Assistant": 18,
-      "Painter & Blaster": 2,
       "Advanced Rigger": 2,
-      "Sheet Metal Worker": 3
+      "Supervisor - Mechanical": 4,
+      "Painter & Blaster": 2
     },
     "labour_hire_split": {
       "SRG - South West": 54,
+      "SRG - Southwest Tronox": 5,
       "Hyrd - Labour Hire": 3,
-      "SRG - Active": 2,
-      "SRG - Southwest Tronox": 5
+      "SRG - Active": 2
     },
     "roster": [
       {
@@ -2184,14 +2184,14 @@
       "required_target_source": "TARGET_FILE",
       "macro_data_roster_size": 64,
       "macro_data_filled_by_role": {
-        "Intermediate Rigger": 4,
-        "Scaffolder": 6,
+        "Sheet Metal Worker": 3,
         "Mechanical Fitter": 25,
-        "Supervisor - Mechanical": 4,
+        "Scaffolder": 6,
+        "Intermediate Rigger": 4,
         "Trade Assistant": 18,
-        "Painter & Blaster": 2,
         "Advanced Rigger": 2,
-        "Sheet Metal Worker": 3
+        "Supervisor - Mechanical": 4,
+        "Painter & Blaster": 2
       },
       "planning_filled_by_role": {},
       "target_source": null,

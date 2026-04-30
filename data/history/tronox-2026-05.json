@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-30T12:12:42Z",
+  "archived_at": "2026-04-30T15:03:31Z",
   "shutdown": {
     "id": "tronox-2026-05",
     "name": "1353 \u2013 Tronox Major Shutdown May 2026",
@@ -10,26 +10,26 @@
     "end_date": "2026-05-22",
     "status": "booked",
     "required_by_role": {
-      "Site Coordinator": 1,
       "Mechanical Fitter": 40,
+      "Supervisor - Mechanical": 9,
+      "Coded Welder": 12,
+      "Intermediate Rigger": 0,
+      "Advanced Rigger": 10,
+      "Site Coordinator": 1,
       "Trade Assistant": 20,
       "Superintendent": 1,
-      "Advanced Rigger": 10,
-      "Boilermaker": 12,
-      "Intermediate Rigger": 0,
-      "Supervisor - Mechanical": 9,
-      "Coded Welder": 12
+      "Boilermaker": 12
     },
     "filled_by_role": {
-      "Site Coordinator": 1,
       "Mechanical Fitter": 19,
+      "Supervisor - Mechanical": 3,
+      "Coded Welder": 4,
+      "Intermediate Rigger": 4,
+      "Advanced Rigger": 4,
+      "Site Coordinator": 1,
       "Trade Assistant": 20,
       "Superintendent": 1,
-      "Advanced Rigger": 4,
-      "Boilermaker": 2,
-      "Intermediate Rigger": 4,
-      "Supervisor - Mechanical": 3,
-      "Coded Welder": 4
+      "Boilermaker": 2
     },
     "crew_split": {
       "Day": 58
@@ -2074,15 +2074,15 @@
       "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "macro_data_roster_size": 58,
       "macro_data_filled_by_role": {
-        "Intermediate Rigger": 4,
-        "Trade Assistant": 20,
         "Mechanical Fitter": 19,
-        "Supervisor - Mechanical": 3,
-        "Site Coordinator": 1,
         "Advanced Rigger": 4,
-        "Superintendent": 1,
+        "Trade Assistant": 20,
+        "Intermediate Rigger": 4,
         "Boilermaker": 2,
-        "Coded Welder": 4
+        "Supervisor - Mechanical": 3,
+        "Superintendent": 1,
+        "Coded Welder": 4,
+        "Site Coordinator": 1
       },
       "planning_filled_by_role": {
         "Superintendent": 1,

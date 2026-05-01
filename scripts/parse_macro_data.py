@@ -78,8 +78,17 @@ TICKET_MAP = {
     "Confined Spaces Entry":                              "cse",
     "Working at Heights":                                 "wah",
     "EWP":                                                "ewp",
+    # Breathing apparatus — three source competencies treated as the same
+    # ticket. CA-EBS is the offshore-style Compressed-Air EBS course; SCBA is
+    # self-contained breathing apparatus; "SOA - Operate Breathing Apparatus"
+    # is the unit-of-competency code for the same skill set.
     "CA-EBS - Compressed Air Emergency Breathing System": "ba",
+    "SCBA":                                               "ba",
+    "SOA - Operate Breathing Apparatus":                  "ba",
+    # Forklift — `LF - Forklift Truck` is the HRWL class; `Forklift` is the
+    # legacy/free-text variant some sites enter. Treated as the same ticket.
     "LF - Forklift Truck":                                "fork",
+    "Forklift":                                           "fork",
     # HR Class = Heavy Rigid driver's licence. HRWL = High Risk Work Licence
     # (the legal register). Two different tickets — the dashboards label them
     # separately so conflating them under one key would hide which is held.
@@ -88,6 +97,15 @@ TICKET_MAP = {
     "DG - Dogging":                                       "dog",
     "Gas Test Atmospheres":                               "gta",
     "First Aid":                                          "fa",
+    "CPR":                                                "cpr",
+    # Telehandler — both the national unit-of-competency name and the
+    # Fortescue VOC variant collapse to the same ticket.
+    "Conduct Telescopic Materials Handler Operations":    "telehandler",
+    "Fortescue VOC Telehandler Operations":               "telehandler",
+    # Site-access cards — independent of inductions, kept as their own keys
+    # so dashboards can answer "can this person enter this zone?" directly.
+    "RIO ID":                                             "rio_id",
+    "MSIC":                                               "msic",
 }
 # Rigging is special: per-site dashboards expect a single `rig` field whose
 # value is the level string ("Advanced" / "Intermediate" / "Basic"), not a
@@ -102,6 +120,33 @@ RIG_COMPS = {
     "Rigger - Basic":            "Basic",
 }
 RIG_PRIORITY = {"Advanced": 3, "Intermediate": 2, "Basic": 1}
+
+# Multi-cert composites: one dashboard ticket key that aggregates several
+# source competencies, each tracked in a sub-list. Used for capabilities
+# where holding any of the variants is operationally meaningful but the
+# specific variant matters too (NDT method, RTIO induction type).
+#
+# Output shape:
+#   {"status": "current"|"expiring_soon",   # worst-of across held variants
+#    "expiry": iso|None,                    # earliest non-null expiry
+#    "<list_field>": ["Variant A", ...]}    # sorted, de-duped names
+NDT_COMPS = {
+    "NDT - UT":  "UT",
+    "NDT - MPI": "MPI",
+    "NDT - LPI": "LPI",
+    "NDT - ECT": "ECT",
+}
+RTIO_COMPS = {
+    "RTIO - IWP Essentials and Lockholder Theory":   "IWP Essentials & Lockholder",
+    "RTIO - Perth Regional Hub Essentials for Site": "Perth Regional Hub",
+    "RTIO - Personal Isolation":                     "Personal Isolation",
+}
+# (composite_key, source_map, list_field) — drives the multi-cert branch in
+# _load_compliance.
+MULTI_CERT_COMPS = (
+    ("ndt",  NDT_COMPS,  "methods"),
+    ("rtio", RTIO_COMPS, "inductions"),
+)
 EXPIRING_SOON_DAYS = 30
 
 # Module-level cache so the workbook only gets opened once per run, even when
@@ -418,8 +463,11 @@ def _load_compliance(wb: openpyxl.Workbook) -> dict[str, dict[str, dict]]:
     today). Rows with no Expiry are kept as permanent certs.
 
     Collisions:
-      - Non-rig: keep the record with the LATEST expiry (permanent > dated).
-      - Rig:     keep the HIGHEST level held (Advanced > Intermediate > Basic).
+      - Non-rig:    keep the record with the LATEST expiry (permanent > dated).
+      - Rig:        keep the HIGHEST level held (Advanced > Intermediate > Basic).
+      - Multi-cert: union the variants into a list; track the EARLIEST
+                    non-null expiry (most-restrictive renewal date) and
+                    surface "expiring_soon" if any variant is.
     """
     if COMPLIANCE_SHEET not in wb.sheetnames:
         return {}
@@ -428,6 +476,11 @@ def _load_compliance(wb: openpyxl.Workbook) -> dict[str, dict[str, dict]]:
     idx = {h: n for n, h in enumerate(headers) if h}
     today = dt.date.today()
     soon  = today + dt.timedelta(days=EXPIRING_SOON_DAYS)
+    # Reverse-index source competency -> (composite_key, variant_label, list_field)
+    multi_lookup: dict[str, tuple[str, str, str]] = {}
+    for ckey, src_map, lfield in MULTI_CERT_COMPS:
+        for src_comp, label in src_map.items():
+            multi_lookup[src_comp] = (ckey, label, lfield)
     out: dict[str, dict[str, dict]] = {}
     for r in ws.iter_rows(min_row=2, values_only=True):
         if r[idx["Archived"]]:
@@ -436,8 +489,14 @@ def _load_compliance(wb: openpyxl.Workbook) -> dict[str, dict[str, dict]]:
         pid  = r[idx["Personnel Id"]]
         if not comp or not pid:
             continue
-        is_rig = comp in RIG_COMPS
-        key    = "rig" if is_rig else TICKET_MAP.get(comp)
+        is_rig   = comp in RIG_COMPS
+        multi    = multi_lookup.get(comp)
+        if is_rig:
+            key = "rig"
+        elif multi:
+            key = multi[0]
+        else:
+            key = TICKET_MAP.get(comp)
         if key is None:
             continue
         exp = r[idx["Expiry"]]
@@ -458,6 +517,25 @@ def _load_compliance(wb: openpyxl.Workbook) -> dict[str, dict[str, dict]]:
             existing = out.setdefault(pid, {}).get(key)
             if existing is None or RIG_PRIORITY[record["level"]] > RIG_PRIORITY[existing["level"]]:
                 out[pid][key] = record
+        elif multi:
+            _, variant_label, lfield = multi
+            existing = out.setdefault(pid, {}).get(key)
+            if existing is None:
+                existing = {"status": record["status"],
+                            "expiry": record["expiry"],
+                            lfield:   [variant_label]}
+                out[pid][key] = existing
+            else:
+                variants = existing.setdefault(lfield, [])
+                if variant_label not in variants:
+                    variants.append(variant_label)
+                # Earliest non-null expiry wins (most-restrictive renewal).
+                e_exp = existing.get("expiry")
+                if record["expiry"] is not None and (e_exp is None or record["expiry"] < e_exp):
+                    existing["expiry"] = record["expiry"]
+                if record["status"] == "expiring_soon":
+                    existing["status"] = "expiring_soon"
+            existing[lfield] = sorted(set(existing[lfield]))
         else:
             existing = out.setdefault(pid, {}).get(key)
             if existing is None:

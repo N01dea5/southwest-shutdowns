@@ -27,7 +27,8 @@ OUT_FILE = OUT_DIR / "tronox-major-2026.json"
 TARGET_ID = "tronox-2026-05"
 TARGET_JOB_NO = "1353"
 SENSITIVE_KEYS = {"mobile", "phone", "personnel_id", "hire_company", "hiring_company", "doc", "source_row"}
-TICKET_ORDER = ["cse", "wah", "ewp", "ba", "fork", "hr", "dog", "rig", "gta", "fa", "hrwl"]
+TICKET_ORDER = ["cse", "wah", "ewp", "ba", "fork", "hr", "dog", "rig", "gta", "fa",
+                "hrwl", "cpr", "telehandler", "ndt", "rtio", "rio_id", "msic"]
 
 
 def _load_json(path: pathlib.Path) -> dict[str, Any]:
@@ -122,14 +123,18 @@ def _ticket_summary(tickets: dict[str, Any]) -> dict[str, Any]:
         if not value:
             continue
         if isinstance(value, dict):
-            out[key] = {
+            item: dict[str, Any] = {
                 "status": value.get("status") or "current",
                 "expiry": _date(value.get("expiry")) or None,
-                "level": value.get("level") or None,
             }
-            # Remove empty level for cleaner feed.
-            if out[key]["level"] is None:
-                out[key].pop("level", None)
+            if value.get("level"):
+                item["level"] = value.get("level")
+            # Multi-cert composites carry a list of held variants; preserve
+            # so the client dashboard can render e.g. "NDT: UT, MPI".
+            for list_field in ("methods", "inductions"):
+                if isinstance(value.get(list_field), list) and value[list_field]:
+                    item[list_field] = list(value[list_field])
+            out[key] = item
         elif value is True:
             out[key] = {"status": "current", "expiry": None}
     # Preserve extras/drivers as non-sensitive capability notes.

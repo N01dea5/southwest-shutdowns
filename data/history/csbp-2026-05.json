@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-05-05T01:41:18Z",
+  "archived_at": "2026-05-05T02:01:52Z",
   "shutdown": {
     "id": "csbp-2026-05",
     "name": "1375 \u2013 CSBP NAAN2 June 2026",
@@ -10,22 +10,22 @@
     "end_date": "2026-06-22",
     "status": "booked",
     "required_by_role": {
-      "Mechanical Fitter": 13,
-      "Site Coordinator": 0,
       "Superintendent": 0,
-      "Supervisor - Mechanical": 3,
-      "Trade Assistant": 16,
       "Intermediate Rigger": 0,
-      "Advanced Rigger": 4
+      "Supervisor - Mechanical": 3,
+      "Mechanical Fitter": 13,
+      "Advanced Rigger": 4,
+      "Trade Assistant": 16,
+      "Site Coordinator": 0
     },
     "filled_by_role": {
-      "Mechanical Fitter": 13,
-      "Site Coordinator": 1,
       "Superintendent": 1,
-      "Supervisor - Mechanical": 1,
-      "Trade Assistant": 16,
       "Intermediate Rigger": 2,
-      "Advanced Rigger": 2
+      "Supervisor - Mechanical": 1,
+      "Mechanical Fitter": 13,
+      "Advanced Rigger": 2,
+      "Trade Assistant": 16,
+      "Site Coordinator": 1
     },
     "crew_split": {
       "Day": 36
@@ -1200,9 +1200,9 @@
         "Trade Assistant": 16,
         "Mechanical Fitter": 13,
         "Site Coordinator": 1,
+        "Advanced Rigger": 2,
         "Intermediate Rigger": 2,
         "Superintendent": 1,
-        "Advanced Rigger": 2,
         "Supervisor - Mechanical": 1
       },
       "planning_filled_by_role": {

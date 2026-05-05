@@ -1,7 +1,7 @@
 {
   "company_key": "csbp",
   "client_name": "CSBP",
-  "archived_at": "2026-05-05T01:41:18Z",
+  "archived_at": "2026-05-05T02:01:52Z",
   "shutdown": {
     "id": "csbp-2025-11",
     "name": "1147 \u2013 CSBP NAAN3 November 2025",
@@ -10,18 +10,18 @@
     "end_date": "2025-11-17",
     "status": "completed",
     "required_by_role": {
-      "Supervisor - Mechanical": 3,
-      "Sheet Metal Worker": 4,
       "Mechanical Fitter": 11,
+      "Intermediate Rigger": 4,
+      "Supervisor - Mechanical": 3,
       "Trade Assistant": 9,
-      "Intermediate Rigger": 4
+      "Sheet Metal Worker": 4
     },
     "filled_by_role": {
-      "Supervisor - Mechanical": 3,
-      "Sheet Metal Worker": 4,
       "Mechanical Fitter": 3,
+      "Intermediate Rigger": 2,
+      "Supervisor - Mechanical": 3,
       "Trade Assistant": 7,
-      "Intermediate Rigger": 2
+      "Sheet Metal Worker": 4
     },
     "crew_split": {
       "Day": 23,

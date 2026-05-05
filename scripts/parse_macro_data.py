@@ -364,9 +364,10 @@ def _load_personnel(wb: openpyxl.Workbook) -> dict[str, dict]:
             continue
         first = (row[idx["Given Names"]] or "").strip()
         last  = (row[idx["Surname"]]      or "").strip()
+        primary_role = (row[idx["Primary Role"]] or "Unknown").strip()
         out[pid] = {
             "name":         f"{first} {last}".strip() or "Unknown",
-            "role":         (row[idx["Primary Role"]] or "Unknown").strip(),
+            "role":         MACRO_ROLE_RENAME.get(primary_role, primary_role),
             "mobile":       rc._standardise_mobile(row[idx["Mobile"]]),
             "hire_company": (row[idx["Hire Company"]] or "").strip(),
         }

@@ -300,8 +300,256 @@
     },
     {
       "file": "data/raw/Rapidcrews Macro Data.xlsx",
-      "error": "tuple index out of range",
-      "sheets": []
+      "sheets": [
+        {
+          "sheet": "xpbi02 DailyPersonnelSchedule",
+          "rows": 150689,
+          "columns": 27,
+          "detected_header_row": 1,
+          "headers": [
+            "Id",
+            "ReportDate",
+            "PersonnelId",
+            "FirstName",
+            "Surname",
+            "Status",
+            "OnSite",
+            "Confirmed",
+            "ResourceId",
+            "ClientId",
+            "Client",
+            "SiteId",
+            "Site",
+            "JobGroupId",
+            "JobGroup",
+            "JobId",
+            "QuoteNo",
+            "OrderNo",
+            "JobStart",
+            "JobEnd",
+            "jobStatus",
+            "jobActive",
+            "employeeActive",
+            "CompetencyId",
+            "Trade",
+            "DisciplineId",
+            "Discipline"
+          ],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "xpbi02 DisciplineTrade",
+          "rows": 226,
+          "columns": 4,
+          "detected_header_row": 1,
+          "headers": [
+            "TradeId",
+            "DisciplineId",
+            "Discipline",
+            "Trade"
+          ],
+          "expected_headers": [
+            "TradeId",
+            "Trade"
+          ],
+          "missing_expected_headers": [],
+          "known_sheet": true
+        },
+        {
+          "sheet": "xll01 Personnel",
+          "rows": 4608,
+          "columns": 17,
+          "detected_header_row": 1,
+          "headers": [
+            "Personnel Id",
+            "Given Names",
+            "Surname",
+            "Employee Number",
+            "Primary Role",
+            "Email",
+            "Mobile",
+            "Status",
+            "Status Comment",
+            "Onboarding Status",
+            "Application Date",
+            "Hire Date",
+            "Recruiter",
+            "Hire Company",
+            "Critical Information",
+            "Created",
+            "Archived"
+          ],
+          "expected_headers": [
+            "Personnel Id",
+            "Given Names",
+            "Surname",
+            "Primary Role",
+            "Mobile",
+            "Hire Company"
+          ],
+          "missing_expected_headers": [],
+          "known_sheet": true
+        },
+        {
+          "sheet": "xll01 PersonnelCompetency",
+          "rows": 31132,
+          "columns": 8,
+          "detected_header_row": 1,
+          "headers": [
+            "Competency",
+            "Personnel Id",
+            "Expiry",
+            "Issued",
+            "Document Location",
+            "Licence #",
+            "Created",
+            "Archived"
+          ],
+          "expected_headers": [
+            "Personnel Id",
+            "Competency",
+            "Expiry",
+            "Document Location",
+            "Archived"
+          ],
+          "missing_expected_headers": [],
+          "known_sheet": true
+        },
+        {
+          "sheet": "xll01 HireCompany",
+          "rows": 106,
+          "columns": 3,
+          "detected_header_row": 1,
+          "headers": [
+            "Name",
+            "Created",
+            "Archived"
+          ],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "xpbi02 ClientView",
+          "rows": 93,
+          "columns": 14,
+          "detected_header_row": 1,
+          "headers": [
+            "ClientId",
+            "ClientName",
+            "InactiveDate"
+          ],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "xpbi02 JobPlanningView",
+          "rows": 7264,
+          "columns": 12,
+          "detected_header_row": 1,
+          "headers": [
+            "ClientId",
+            "SiteId",
+            "JobNo",
+            "StartDate",
+            "EndDate",
+            "CompetencyId",
+            "Required",
+            "Filled",
+            "ToFill",
+            "ColourIndex",
+            "JobId",
+            "Actual"
+          ],
+          "expected_headers": [
+            "JobNo",
+            "CompetencyId",
+            "Required",
+            "Filled"
+          ],
+          "missing_expected_headers": [],
+          "known_sheet": true
+        },
+        {
+          "sheet": "xpbi02 JobDetailsView",
+          "rows": 1429,
+          "columns": 15,
+          "detected_header_row": 1,
+          "headers": [
+            "Job Id",
+            "Job No",
+            "Quote No",
+            "Order No",
+            "Req No",
+            "Client Id",
+            "Site Id",
+            "Site Hex",
+            "Site Name",
+            "Job Group Id",
+            "Job Group Name",
+            "Start Date",
+            "End Date",
+            "Status",
+            "Archived"
+          ],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "SouthWest",
+          "rows": 18,
+          "columns": 9,
+          "detected_header_row": 1,
+          "headers": [],
+          "expected_headers": [],
+          "missing_expected_headers": [],
+          "known_sheet": false
+        },
+        {
+          "sheet": "ACTIVE_SHUTDOWNS",
+          "rows": 35,
+          "columns": 21,
+          "detected_header_row": 1,
+          "headers": [
+            "JobNo"
+          ],
+          "expected_headers": [
+            "JobNo"
+          ],
+          "missing_expected_headers": [],
+          "known_sheet": true
+        },
+        {
+          "sheet": "xpbi02 PersonnelRosterView",
+          "rows": 63723,
+          "columns": 7,
+          "detected_header_row": 1,
+          "headers": [
+            "Job No",
+            "Client",
+            "Site",
+            "Personnel Id",
+            "Schedule Date",
+            "Schedule Type",
+            "IsOnLocation"
+          ],
+          "expected_headers": [
+            "Job No",
+            "Client",
+            "Site",
+            "Personnel Id",
+            "Schedule Date",
+            "Schedule Type",
+            "IsOnLocation"
+          ],
+          "missing_expected_headers": [],
+          "known_sheet": true
+        }
+      ]
     },
     {
       "file": "data/raw/Tianqi Construction Ramp Up Project .xlsx",

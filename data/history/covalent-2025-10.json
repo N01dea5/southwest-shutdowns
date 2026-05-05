@@ -1,7 +1,7 @@
 {
   "company_key": "covalent",
   "client_name": "Covalent",
-  "archived_at": "2026-05-05T01:12:49Z",
+  "archived_at": "2026-05-05T01:41:18Z",
   "shutdown": {
     "id": "covalent-2025-10",
     "name": "1110 \u2013 Mt Holland October 2025",
@@ -10,20 +10,20 @@
     "end_date": "2025-10-21",
     "status": "completed",
     "required_by_role": {
-      "Superintendent": 1,
-      "Lube Technician": 4,
-      "Intermediate Rigger": 2,
-      "Trade Assistant": 5,
+      "Supervisor - Mechanical": 3,
       "Mechanical Fitter": 9,
-      "Supervisor - Mechanical": 3
+      "Lube Technician": 4,
+      "Trade Assistant": 5,
+      "Intermediate Rigger": 2,
+      "Superintendent": 1
     },
     "filled_by_role": {
-      "Superintendent": 1,
-      "Lube Technician": 3,
-      "Intermediate Rigger": 2,
-      "Trade Assistant": 4,
+      "Supervisor - Mechanical": 2,
       "Mechanical Fitter": 5,
-      "Supervisor - Mechanical": 2
+      "Lube Technician": 3,
+      "Trade Assistant": 4,
+      "Intermediate Rigger": 2,
+      "Superintendent": 1
     },
     "crew_split": {
       "Day": 14,

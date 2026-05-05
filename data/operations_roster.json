@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-05T01:13:00Z",
-  "worker_count": 106,
+  "generated_at": "2026-05-05T01:41:27Z",
+  "worker_count": 186,
   "workers": [
     {
       "personnel_id": "F8CD2F42-6730-457A-BA9B-8241A8650DF8",
@@ -165,12 +165,48 @@
       ]
     },
     {
+      "personnel_id": "77027420-056C-4B3A-831F-C8FE1ABE8C31",
+      "name": "Abdikadir MOHAMED",
+      "role": "Mechanical Fitter",
+      "mobile": "0478 161 027",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "A7561DA7-F34F-44CA-A079-76AA961055BE",
       "name": "Abhinav ABHINAV",
       "role": "Mechanical Fitter",
       "mobile": "0424848290",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "8903",
           "client": "SOUTH WEST",
@@ -188,6 +224,51 @@
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "EC6E377A-A835-4073-B08C-4EE1C779F5DC",
+      "name": "Adam RILEY",
+      "role": "Superintendent",
+      "mobile": "0457162100",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-09",
+          "end": "2026-04-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-25",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -1704,6 +1785,42 @@
       ]
     },
     {
+      "personnel_id": "C8AD4CF8-086E-4631-AF87-677B9F0775C6",
+      "name": "Anthony SMITH",
+      "role": "Site Coordinator",
+      "mobile": "0404 303 368",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-30",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-05-25",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "D6211989-6AE5-4748-8BC6-CF6913ABFA03",
       "name": "Antoine HAMON",
       "role": "Scaffolder - Intermediate",
@@ -2937,6 +3054,24 @@
       ]
     },
     {
+      "personnel_id": "6EA10325-AECD-415A-9BB8-F660CAE7A409",
+      "name": "Arron NAIRN",
+      "role": "Boilermaker",
+      "mobile": "0415 575 297",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "298A452B-D294-4956-A224-24842A66A5C6",
       "name": "Ashleigh PAITO",
       "role": "Scaffolder - Advanced",
@@ -2989,6 +3124,294 @@
           "is_on_location": true
         },
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-02",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-31",
+          "end": "2026-06-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-03",
+          "end": "2026-06-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-07",
+          "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-09",
+          "end": "2026-06-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-11",
+          "end": "2026-06-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-13",
+          "end": "2026-06-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-15",
+          "end": "2026-06-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-17",
+          "end": "2026-06-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-19",
+          "end": "2026-06-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-21",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-23",
+          "end": "2026-06-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-25",
+          "end": "2026-06-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-27",
+          "end": "2026-06-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-29",
+          "end": "2026-06-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "4992",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -3012,6 +3435,51 @@
           "site": "Tronox",
           "start": "2026-04-29",
           "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "FD302D24-8676-4AD6-BD13-5A831F2BD2BC",
+      "name": "Ben ATTACK",
+      "role": "Boilermaker",
+      "mobile": "0489 067 448",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-30",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "3B0E57DB-8A9A-41A2-9FB2-A30B7188088E",
+      "name": "Ben FRIEDAUER",
+      "role": "Mechanical Fitter",
+      "mobile": "0424 977 431",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-22",
+          "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -3185,6 +3653,204 @@
           "end": "2026-02-11",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "77DDFF4A-1204-4EDB-809E-3D2C9D4944C1",
+      "name": "Bryce CAIN",
+      "role": "Rope Access - Level 3",
+      "mobile": "0491 609 900",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "F160911E-00D2-45DC-8032-297383F24065",
+      "name": "Bryce COTTLE",
+      "role": "Electrician",
+      "mobile": "0428 477 374",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-28",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "2BAC97C9-76ED-42B8-BFC4-B6E966EA223C",
+      "name": "Cameron DUNN",
+      "role": "Boilermaker",
+      "mobile": "0499 485 946",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1196",
+          "client": "ALCOA",
+          "site": "Kwinana",
+          "start": "2026-03-10",
+          "end": "2026-04-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -4440,6 +5106,231 @@
       ]
     },
     {
+      "personnel_id": "36C1E1AE-9B30-40E0-B144-FBC7BF7108AD",
+      "name": "Christopher McLENNAN",
+      "role": "Supervisor - Mechanical",
+      "mobile": "0427 164 636",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "C7C57679-A54D-44BE-9BD3-9523344126D4",
+      "name": "Clemens SCHAAF",
+      "role": "Mechanical Fitter",
+      "mobile": "0493 890 500",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "092D727D-F0EE-42DC-8AEF-BE06531EAAE5",
+      "name": "Clifford LEMON",
+      "role": "Rigger - Advanced",
+      "mobile": "0438 800 692",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "CBE4645C-6F02-4B79-8E98-ABB37F4DAFBA",
+      "name": "Colin OAKES",
+      "role": "Mechanical Fitter",
+      "mobile": "0425 343 965",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-22",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "E9D7AD50-6D22-4A04-9003-A0961B414CDC",
+      "name": "Cormac NAGLE",
+      "role": "Mechanical Fitter",
+      "mobile": "0449 552 403",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "A20FEAD5-49D2-4F03-A57E-C25C2DC68070",
       "name": "Craig ALLEN",
       "role": "Sheet Metal Worker",
@@ -4482,6 +5373,420 @@
       "mobile": "0457 632 156",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-03-30",
+          "end": "2026-04-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-03",
+          "end": "2026-04-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-05",
+          "end": "2026-04-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-07",
+          "end": "2026-04-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-09",
+          "end": "2026-04-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-11",
+          "end": "2026-04-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-13",
+          "end": "2026-04-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-15",
+          "end": "2026-04-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-17",
+          "end": "2026-04-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-19",
+          "end": "2026-04-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-21",
+          "end": "2026-04-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-23",
+          "end": "2026-04-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-25",
+          "end": "2026-04-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-27",
+          "end": "2026-04-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-29",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-01",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-31",
+          "end": "2026-06-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-03",
+          "end": "2026-06-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-07",
+          "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-09",
+          "end": "2026-06-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-11",
+          "end": "2026-06-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-13",
+          "end": "2026-06-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-15",
+          "end": "2026-06-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-17",
+          "end": "2026-06-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-19",
+          "end": "2026-06-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-21",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-23",
+          "end": "2026-06-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-25",
+          "end": "2026-06-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-27",
+          "end": "2026-06-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-29",
+          "end": "2026-06-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
         {
           "job_no": "5790",
           "client": "SOUTH WEST",
@@ -4924,6 +6229,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "8903",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -4940,6 +6254,51 @@
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "620ADA5F-8586-4917-981D-7CEF7F2E1C33",
+      "name": "Darren JAMES",
+      "role": "Mechanical Fitter",
+      "mobile": "0432 522 247",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-03-25",
+          "end": "2026-03-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-08",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -6336,6 +7695,15 @@
       "mobile": "0430 499 997",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "8903",
           "client": "SOUTH WEST",
@@ -9127,6 +10495,411 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-03-30",
+          "end": "2026-04-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-03",
+          "end": "2026-04-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-05",
+          "end": "2026-04-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-07",
+          "end": "2026-04-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-09",
+          "end": "2026-04-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-11",
+          "end": "2026-04-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-13",
+          "end": "2026-04-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-15",
+          "end": "2026-04-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-17",
+          "end": "2026-04-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-19",
+          "end": "2026-04-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-21",
+          "end": "2026-04-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-23",
+          "end": "2026-04-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-25",
+          "end": "2026-04-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-27",
+          "end": "2026-04-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-04-29",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-01",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-05-31",
+          "end": "2026-06-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-03",
+          "end": "2026-06-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-07",
+          "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-09",
+          "end": "2026-06-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-11",
+          "end": "2026-06-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-13",
+          "end": "2026-06-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-15",
+          "end": "2026-06-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-17",
+          "end": "2026-06-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-19",
+          "end": "2026-06-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-21",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-23",
+          "end": "2026-06-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-25",
+          "end": "2026-06-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-27",
+          "end": "2026-06-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1374",
+          "client": "SOUTH WEST",
+          "site": "Kleenheat",
+          "start": "2026-06-29",
+          "end": "2026-06-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
           "job_no": "5790",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -9539,6 +11312,42 @@
           "end": "2026-05-31",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "5E0B9A6B-796A-4F3C-8E02-BB953B5F403D",
+      "name": "Drew BRAND",
+      "role": "Electrician",
+      "mobile": "0427 117 309",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "8A345F96-F68B-4A8A-8381-628241C13B86",
+      "name": "Dylan DIXON",
+      "role": "Scaffolder - Advanced",
+      "mobile": "0481 845 862",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1411",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-05-12",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -11071,6 +12880,33 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1412",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-08",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "8903",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -11078,6 +12914,87 @@
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "F9AA9686-B5A3-4943-AD92-6CB513DE64B4",
+      "name": "Eileen HIELSCHER",
+      "role": "Rigger - Advanced",
+      "mobile": "0448 678 573",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-04",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "18F364E6-1EF8-4C35-B19C-AE8CECBAB579",
+      "name": "Eleonora TRAORE",
+      "role": "Trade Assistant",
+      "mobile": "0421524270",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-14",
+          "end": "2026-04-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "0BF775FC-76D3-4476-9186-12A2BB2561A2",
+      "name": "Fabien ONOLFO",
+      "role": "Trade Assistant",
+      "mobile": "0498 459 340",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "8C4283F1-EFF6-49D5-9385-60BD2BE0197F",
+      "name": "Federico Sarti",
+      "role": "Trade Assistant",
+      "mobile": "0493 955 585",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -11226,6 +13143,42 @@
       ]
     },
     {
+      "personnel_id": "02FD7BD7-37A1-4FA8-9E51-B2B7BA75BFCA",
+      "name": "Gabriel NGUYEN",
+      "role": "Trade Assistant",
+      "mobile": "0448 737 990",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "F890ACE8-5C49-4233-9B17-CB635BC1B88B",
+      "name": "Ganesh MOHITE",
+      "role": "Mechanical Fitter",
+      "mobile": "0469 591 660",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "1618A680-64AA-4475-899D-8724B672BACE",
       "name": "Godwin ADU-SEKYIM",
       "role": "Mechanical Fitter",
@@ -11244,6 +13197,159 @@
       ]
     },
     {
+      "personnel_id": "E97AA5EF-43BB-4D63-9AD0-137224E88C4E",
+      "name": "Graham CADE",
+      "role": "Boilermaker",
+      "mobile": "0438 938 505",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-29",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "96EF1405-F289-4CA0-857D-1E7A4E0FA988",
       "name": "Graham WANGLER",
       "role": "Mechanical Fitter",
@@ -11256,6 +13362,60 @@
           "site": "CSBP Kwinana",
           "start": "2026-01-13",
           "end": "2026-01-14",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "EF1B7A09-BFF1-4C76-996C-523783AB4A43",
+      "name": "Gurshwinder SINGH",
+      "role": "Mechanical Fitter",
+      "mobile": "0431 100 007",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -12657,6 +14817,24 @@
       ]
     },
     {
+      "personnel_id": "B6857B26-E4E5-4246-8B5B-0449E8D2FCA1",
+      "name": "Henri MARTINS",
+      "role": "Trade Assistant",
+      "mobile": "0439 185 083",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-22",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "52029175-1B24-45E0-A14C-0B9ADCE0411E",
       "name": "Herbert MUKUNGA",
       "role": "Mechanical Fitter",
@@ -12671,6 +14849,42 @@
           "end": "2026-01-14",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-03-25",
+          "end": "2026-03-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-24",
+          "end": "2026-04-30",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-07",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         },
         {
           "job_no": "8903",
@@ -13116,6 +15330,159 @@
       ]
     },
     {
+      "personnel_id": "F81364FE-F4A6-4174-A0EE-6A947B277839",
+      "name": "Ivan RAYNOV",
+      "role": "Mechanical Fitter",
+      "mobile": "0401 749 106",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-24",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "6AF19C02-A3A3-4E63-8D86-0E6D1575F869",
       "name": "Jacinta JEFFERY",
       "role": "Trade Assistant",
@@ -13128,6 +15495,24 @@
           "site": "Tronox",
           "start": "2026-01-20",
           "end": "2026-01-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         },
@@ -13167,6 +15552,15 @@
       "mobile": "0408 005187",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-24",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
         {
           "job_no": "4992",
           "client": "SOUTH WEST",
@@ -13591,6 +15985,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "7267",
           "client": "SOUTH WEST",
           "site": "Tianqi Lithium",
@@ -13737,12 +16140,57 @@
       ]
     },
     {
+      "personnel_id": "43E1B4E2-91B7-4069-995D-3B50A9FC8F53",
+      "name": "Jake GANGEMI",
+      "role": "Mechanical Fitter",
+      "mobile": "0426 994 235",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "3A8F9F52-8CCA-4024-A331-F6ADCFD73AAD",
       "name": "James BALLANTYNE",
       "role": "Scaffolder - Advanced",
       "mobile": "0451411488",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "4992",
           "client": "SOUTH WEST",
@@ -14163,6 +16611,24 @@
           "site": "Tianqi Lithium",
           "start": "2026-04-21",
           "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "D44C6217-F879-43DC-AA70-298EDD14E204",
+      "name": "Jamie ADAMS",
+      "role": "Mechanical Fitter",
+      "mobile": "0436 486 524",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -15825,12 +18291,93 @@
       ]
     },
     {
+      "personnel_id": "FA6E5ABC-B92D-4229-B2D1-3292F3BFFA32",
+      "name": "Jayson MANUEL",
+      "role": "Coded Welder",
+      "mobile": "0412133892",
+      "hire_company": "SRG - Southwest Tronox",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "081DE93D-0CE7-407E-8187-ABC4D6B23251",
+      "name": "Jeremias MENDIVIL",
+      "role": "Trade Assistant",
+      "mobile": "0433 197 500",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "64A744E3-9E72-454C-81DB-E98DBC89380C",
+      "name": "Jeremy LAROCK",
+      "role": "Trade Assistant",
+      "mobile": "0439 264 009",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "0E7F7822-7754-40B8-82DB-243046B10575",
+      "name": "Jessica DILENA",
+      "role": "Trade Assistant",
+      "mobile": "0477841414",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "45151500-6592-48DE-A0EC-4905FD590EB2",
       "name": "Jessie LEACH",
       "role": "Painter & Blaster",
       "mobile": "0413 007 318",
       "hire_company": "SRG - Southwest Tronox",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-19",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "4992",
           "client": "SOUTH WEST",
@@ -17193,6 +19740,69 @@
       ]
     },
     {
+      "personnel_id": "2F9BBFAF-3296-4AB5-A094-CF89182172D4",
+      "name": "Joe BROOKS",
+      "role": "Trade Assistant",
+      "mobile": "0421 411 263",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-07",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "055BAAA5-5685-465E-BA8F-5F5F577218B7",
+      "name": "Joe DACK",
+      "role": "Rigger - Intermediate",
+      "mobile": "0449 995 304",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1196",
+          "client": "ALCOA",
+          "site": "Kwinana",
+          "start": "2026-03-16",
+          "end": "2026-03-20",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-30",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-04",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "9B6F31D7-F288-4BC4-85D7-96D1C2724B9E",
       "name": "Joey CANTOS",
       "role": "Scaffolder - Advanced",
@@ -18199,6 +20809,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1196",
+          "client": "ALCOA",
+          "site": "Kwinana",
+          "start": "2026-03-10",
+          "end": "2026-04-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
           "job_no": "1217",
           "client": "CSBP",
           "site": "CSBP Kwinana",
@@ -18206,6 +20825,15 @@
           "end": "2026-01-14",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -19713,6 +22341,33 @@
       ]
     },
     {
+      "personnel_id": "A2DF1D8B-2B8C-4EA0-B0F9-EBCD1E4D3CFE",
+      "name": "Jonathan MUTEMBO",
+      "role": "Mechanical Fitter",
+      "mobile": "0420 268 896",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-07",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "2C49A908-B15B-4340-8A12-4E9AC9BF989A",
       "name": "Jordan ENUA",
       "role": "Scaffolder - Advanced",
@@ -20976,6 +23631,33 @@
           "site": "Tianqi Lithium",
           "start": "2026-05-31",
           "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "282F0C80-9105-423B-96DB-B0EE764B4372",
+      "name": "Jordan KIRKBY",
+      "role": "Supervisor",
+      "mobile": "0406 872 504",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -24409,6 +27091,24 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "8903",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -24425,6 +27125,24 @@
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "E4D24EA9-9FB0-4810-B660-49143601BAE6",
+      "name": "Julien DOUCET",
+      "role": "Mechanical Fitter",
+      "mobile": "0476 654 959",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -25683,6 +28401,24 @@
           "site": "CSBP Kwinana",
           "start": "2026-01-12",
           "end": "2026-01-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "528BE73A-C8A5-4126-ACC5-FE56C9E6C250",
+      "name": "Keron KAPPET",
+      "role": "Trade Assistant",
+      "mobile": "0437 976 484",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1409",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-28",
+          "end": "2026-05-11",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -27226,6 +29962,24 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "5790",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -27249,6 +30003,24 @@
           "site": "Kleenheat",
           "start": "2026-02-02",
           "end": "2026-02-20",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "A8B68078-61E0-405B-8853-6B26022502A8",
+      "name": "Kulvinder SINGH",
+      "role": "Mechanical Fitter",
+      "mobile": "0411 406 465",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -27534,6 +30306,51 @@
       ]
     },
     {
+      "personnel_id": "CE26A64E-09F0-4F97-B84B-B9BC9B2C6EE9",
+      "name": "Lakshman VASANTHAN",
+      "role": "Lube Technician",
+      "mobile": "0452 220 105",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-22",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "7544B635-4F62-4B54-AEEF-D2AA5F28C1BA",
+      "name": "Lea MONDESIR",
+      "role": "Trade Assistant",
+      "mobile": "0436 652 133",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "2158DA5B-EC2E-491E-BCAA-DB7117C25D2A",
       "name": "Lewis NEWELL",
       "role": "Step Up Supervisor - Mechanical",
@@ -27546,6 +30363,24 @@
           "site": "CSBP Kwinana",
           "start": "2026-01-12",
           "end": "2026-01-12",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
         },
@@ -29676,6 +32511,24 @@
       ]
     },
     {
+      "personnel_id": "C581D632-84B0-4577-99A2-C4AD68FC30EC",
+      "name": "Lucrecia Celeste SOSA",
+      "role": "Rigger - Intermediate",
+      "mobile": "0401 023 205",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "B2A185DF-0AD4-4524-8223-9EEE6548BF74",
       "name": "Luis MAGPANTAY",
       "role": "Scaffolder - Advanced",
@@ -30102,6 +32955,24 @@
           "site": "Tronox",
           "start": "2026-01-02",
           "end": "2026-01-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "857E8C18-3426-4CD7-9635-52F27E8850D2",
+      "name": "Madeline JONES",
+      "role": "Trade Assistant",
+      "mobile": "0489 067 447",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -31508,6 +34379,96 @@
           "end": "2026-01-13",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-03-25",
+          "end": "2026-03-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "23B21728-3A28-4341-A8F9-D637E9992203",
+      "name": "Malo AYMARD",
+      "role": "Rigger - Intermediate",
+      "mobile": "0475 382 914",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "56DB33B4-E421-4319-A173-6984A8EEAE56",
+      "name": "Manuel AUGILOR",
+      "role": "Electrician",
+      "mobile": "0448 576 336",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-28",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "EBA0088A-878A-4F99-B023-2827FC38134B",
+      "name": "Mao LI",
+      "role": "Mechanical Fitter",
+      "mobile": "0432 066 471",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-24",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -31663,6 +34624,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "5790",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -31670,6 +34640,249 @@
           "end": "2026-05-05",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "027304F6-8511-468A-AD6A-DB0F0573E02D",
+      "name": "Mathias MENDY",
+      "role": "Boilermaker",
+      "mobile": "0493 038 522",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "3CCA8B5F-8046-4555-A198-203FDE91D029",
+      "name": "Matt LODGE",
+      "role": "Supervisor - Scaffold",
+      "mobile": "0418 953 354",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "AA29286D-A0DC-43E9-8986-A7391DAF3A7C",
+      "name": "Mazundar KALLAM",
+      "role": "Mechanical Fitter",
+      "mobile": "0425 436 520",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-24",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "19B92276-E4C9-4A1B-8F8D-7D052E85F3FD",
+      "name": "Mehdi BENDANI",
+      "role": "Trade Assistant",
+      "mobile": "0493 536 751",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "163B5778-EB08-46D1-A7C2-272FE5C79EFA",
+      "name": "Melvin TIAMSON",
+      "role": "Boilermaker",
+      "mobile": "0429 525 137",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -34689,6 +37902,159 @@
       ]
     },
     {
+      "personnel_id": "C7E6510C-1B53-4253-85A4-6ECB278B51F9",
+      "name": "Michael LONERGAN",
+      "role": "Mechanical Fitter",
+      "mobile": "0493 542 602",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-28",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "E87076F3-5E95-4B6D-828A-1CCFBC9550C6",
       "name": "Michael TE PUIA (SNR)",
       "role": "Scaffolder - Advanced",
@@ -36075,6 +39441,69 @@
       ]
     },
     {
+      "personnel_id": "591BA061-90A1-413F-99C5-38D93EE30AAC",
+      "name": "Michele ZENONI",
+      "role": "Mechanical Fitter",
+      "mobile": "0490 199 906",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "BFFA8357-544F-49C0-BB0C-806C0AF55972",
+      "name": "Mirko RISCHIA",
+      "role": "Coded Welder",
+      "mobile": "0410 851 191",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "1C18F251-35E7-4E76-9B4B-0DDFAE7A830B",
+      "name": "Mitya DOBBELAERE",
+      "role": "Mechanical Fitter",
+      "mobile": "0447 582 473",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-03-25",
+          "end": "2026-03-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "D3FF437A-525F-4BE1-BC65-22D33806CC28",
       "name": "Modesto JAIME",
       "role": "Coded Welder",
@@ -36087,6 +39516,159 @@
           "site": "Tronox",
           "start": "2026-01-28",
           "end": "2026-01-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-14",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
           "schedule_type": "Day Shift",
           "is_on_location": true
         },
@@ -37594,6 +41176,159 @@
           "is_on_location": true
         },
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-15",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
           "job_no": "4992",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -39081,6 +42816,24 @@
       ]
     },
     {
+      "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
+      "name": "Naomi NDENGA",
+      "role": "Trade Assistant",
+      "mobile": "0472586919",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "F94B1B06-9A90-4E7B-8BDE-8CC35338A578",
       "name": "Nathan CHITEPO",
       "role": "Mechanical Fitter",
@@ -39095,6 +42848,24 @@
           "end": "2026-01-21",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "FEFAAFC8-7E0D-431A-9269-EA499C24DD63",
+      "name": "Ngoni USORE",
+      "role": "Mechanical Fitter",
+      "mobile": "0401 500 098",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -39142,6 +42913,33 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
           "job_no": "8903",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -39149,6 +42947,33 @@
           "end": "2026-05-02",
           "schedule_type": "Day Shift",
           "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "12CB2423-1EC1-4F3D-87D3-2143655BEBDE",
+      "name": "Omkar Uttam DORUGADE",
+      "role": "Mechanical Fitter",
+      "mobile": "0424804281",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
         }
       ]
     },
@@ -40674,6 +44499,168 @@
       ]
     },
     {
+      "personnel_id": "881DDF41-276D-480B-81C0-75E8671346C0",
+      "name": "Paul BERRY",
+      "role": "Superintendent",
+      "mobile": "0455 599 800",
+      "hire_company": "SRG - Southwest Tronox",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-15",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-06",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "5D93FD4B-4778-434A-A3F8-44AF397E631A",
       "name": "Paul BESTWICK",
       "role": "Mechanical Fitter",
@@ -40688,6 +44675,51 @@
           "end": "2026-01-14",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-04",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
+      "name": "Peter BURNS",
+      "role": "Supervisor - Mechanical",
+      "mobile": "0437 183 009",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-01",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -40863,6 +44895,24 @@
       ]
     },
     {
+      "personnel_id": "4A1E8272-87EB-4CA8-8141-B6DACE776DD1",
+      "name": "Prabhakaran THANGARASU",
+      "role": "Mechanical Fitter",
+      "mobile": "0434 916 762",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "B4D95FDA-C6BA-4F83-98A7-E6DE12EB7F86",
       "name": "Qi WANG \ud83d\udd37",
       "role": "Mechanical Fitter",
@@ -40875,6 +44925,69 @@
           "site": "Tianqi Lithium",
           "start": "2026-02-10",
           "end": "2026-02-10",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "174C6CBE-63E8-4652-B4FC-01C5F76E198B",
+      "name": "Renan SANCHEZ",
+      "role": "Mechanical Fitter",
+      "mobile": "0431 951 293",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "D40F06BF-BEB8-44B0-AD9F-D02C08939F33",
+      "name": "Richard PARRY",
+      "role": "Supervisor - Mechanical",
+      "mobile": "0404 212 667",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "16695B58-69A4-44CC-9E39-908F0B1C0803",
+      "name": "Ricky TRUSLOVE",
+      "role": "Rigger - Intermediate",
+      "mobile": "0436 111 460",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-30",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -42420,6 +46533,24 @@
       ]
     },
     {
+      "personnel_id": "F6DCD4FE-6A42-4D77-98D0-23A5CE1A7A69",
+      "name": "Robert FRONGILLO",
+      "role": "Trade Assistant",
+      "mobile": "0404 632 455",
+      "hire_company": "SRG - Southwest Tianqi",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "184D7AE9-8146-44E9-B0CC-63C50D7812A1",
       "name": "Robert HARRIS",
       "role": "Trade Assistant",
@@ -42434,6 +46565,15 @@
           "end": "2026-01-29",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         },
         {
           "job_no": "4992",
@@ -42453,6 +46593,33 @@
       "mobile": "0419 949 242",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1409",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-05-12",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "2386",
           "client": "SOUTH WEST",
@@ -42873,6 +47040,204 @@
           "site": "Tianqi Lithium",
           "start": "2026-06-29",
           "end": "2026-06-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "1C24C6DF-DEB2-4429-AF65-15598D3614E7",
+      "name": "Sam RICHDALE",
+      "role": "Trade Assistant",
+      "mobile": "0474 342 326",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1196",
+          "client": "ALCOA",
+          "site": "Kwinana",
+          "start": "2026-03-10",
+          "end": "2026-04-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "5E9E568B-1065-4A84-96D2-C45ABDAF354B",
+      "name": "Samsul FATA",
+      "role": "Sheet Metal Worker",
+      "mobile": "0490 804 999",
+      "hire_company": "SRG - Southwest Tronox",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "AA87BC36-A154-4DAC-85DB-EDBA15624116",
+      "name": "Samuel MATHERSON",
+      "role": "Rope Access - Boilermaker",
+      "mobile": "0460 962 300",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-14",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -45928,6 +50293,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "4992",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -46488,6 +50862,24 @@
       ]
     },
     {
+      "personnel_id": "C5B2056C-7CDF-4953-A4D1-92D4CB6FDC8D",
+      "name": "Sharon GILCHRIST",
+      "role": "Trade Assistant",
+      "mobile": "0417 096 745",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-08",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
       "personnel_id": "520F3B5D-2006-4940-AC77-7A70D87AF5A2",
       "name": "Stacey-Lee BOOTHMAN \ud83d\udd37",
       "role": "Mechanical Fitter",
@@ -46502,6 +50894,51 @@
           "end": "2026-01-11",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "9DF04EFA-4215-4129-B836-45DD9245183A",
+      "name": "Stefanos KARIKIS",
+      "role": "Trade Assistant",
+      "mobile": "0403 267 784",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "3B73F7A2-3748-4FC6-A3E6-5CC413A791D7",
+      "name": "Stephen KNOWLES",
+      "role": "Supervisor",
+      "mobile": "0467796190",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -46549,6 +50986,15 @@
           "is_on_location": true
         },
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "4992",
           "client": "SOUTH WEST",
           "site": "Tronox",
@@ -46571,6 +51017,177 @@
           "client": "SOUTH WEST",
           "site": "Tronox",
           "start": "2026-04-29",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "38038A9C-31DF-4235-88B1-74AF202C0E36",
+      "name": "Subramanian IYER",
+      "role": "Mechanical Fitter",
+      "mobile": "0474 022 542",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-18",
+          "end": "2026-05-01",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-03",
+          "end": "2026-05-03",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-05",
+          "end": "2026-05-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-07",
+          "end": "2026-05-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-09",
+          "end": "2026-05-09",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-11",
+          "end": "2026-05-11",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-13",
+          "end": "2026-05-13",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-15",
+          "end": "2026-05-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-17",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-19",
+          "end": "2026-05-19",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-21",
+          "end": "2026-05-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-25",
+          "end": "2026-05-25",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-27",
+          "end": "2026-05-27",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-29",
+          "end": "2026-05-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-05-31",
+          "end": "2026-06-05",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "8F9D8183-1CA8-461E-B47D-933268FEE1B4",
+      "name": "Sujin JEON",
+      "role": "Telehandler Operator",
+      "mobile": "0474828152",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-20",
           "end": "2026-05-01",
           "schedule_type": "Day Shift",
           "is_on_location": true
@@ -46603,11 +51220,56 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "8903",
           "client": "SOUTH WEST",
           "site": "Tronox",
           "start": "2026-04-14",
           "end": "2026-04-15",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "B8D1B9DD-B92C-4215-A1E7-52EED6B5F5FE",
+      "name": "Teresita MATILLA",
+      "role": "Trade Assistant",
+      "mobile": "0486 046 871",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "6D9756BA-7ED5-4C4D-9020-D9BCAEC1F962",
+      "name": "Teufik (Teo) MEDANOVIC",
+      "role": "Electrician",
+      "mobile": "0451029041",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-21",
+          "end": "2026-04-29",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -46620,6 +51282,15 @@
       "mobile": "0420 807 179",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1336",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-04-29",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
         {
           "job_no": "8903",
           "client": "SOUTH WEST",
@@ -47490,6 +52161,24 @@
           "site": "Kleenheat",
           "start": "2026-03-06",
           "end": "2026-03-06",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "3C8501A9-5060-44ED-B94E-88630B80CEAD",
+      "name": "Trevor POWELL",
+      "role": "Trade Assistant",
+      "mobile": "0419 907 031",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1196",
+          "client": "ALCOA",
+          "site": "Kwinana",
+          "start": "2026-03-10",
+          "end": "2026-04-27",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }
@@ -49042,6 +53731,15 @@
       "hire_company": "SRG - South West",
       "assignments": [
         {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
           "job_no": "5790",
           "client": "SOUTH WEST",
           "site": "Kleenheat",
@@ -49329,6 +54027,15 @@
       "mobile": "0434 108 939",
       "hire_company": "SRG - South West",
       "assignments": [
+        {
+          "job_no": "1411",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-04-29",
+          "end": "2026-05-12",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
         {
           "job_no": "4992",
           "client": "SOUTH WEST",
@@ -49638,6 +54345,24 @@
       ]
     },
     {
+      "personnel_id": "F4196556-96E9-4599-9146-2BD78C6E9057",
+      "name": "Warrick MORLEY",
+      "role": "Electrician",
+      "mobile": "0418 755 234",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1391",
+          "client": "SOUTH WEST",
+          "site": "Tianqi Lithium",
+          "start": "2026-04-29",
+          "end": "2026-05-17",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
       "personnel_id": "0F28AE7F-EE93-4A78-A9E1-C53AF73FFBE6",
       "name": "Wayne FORREST",
       "role": "Mechanical Fitter",
@@ -49652,6 +54377,60 @@
           "end": "2026-01-14",
           "schedule_type": "Day Shift",
           "is_on_location": true
+        },
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-21",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        }
+      ]
+    },
+    {
+      "personnel_id": "9C9AB719-37E2-4D3E-A87F-D7F890229D95",
+      "name": "William THOMPSON",
+      "role": "Trade Assistant",
+      "mobile": "0429 331 817",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1353",
+          "client": "SOUTH WEST",
+          "site": "Tronox",
+          "start": "2026-05-18",
+          "end": "2026-05-22",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
+        },
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        },
+        {
+          "job_no": "1375",
+          "client": "CSBP",
+          "site": "CSBP Kwinana",
+          "start": "2026-06-06",
+          "end": "2026-06-18",
+          "schedule_type": "Day Shift",
+          "is_on_location": false
         }
       ]
     },
@@ -49803,6 +54582,24 @@
           "site": "Tianqi Lithium",
           "start": "2026-05-31",
           "end": "2026-06-07",
+          "schedule_type": "Day Shift",
+          "is_on_location": true
+        }
+      ]
+    },
+    {
+      "personnel_id": "59FC58D1-2C72-47CC-828E-24722F894A63",
+      "name": "Wisdom MANDIZVIDA",
+      "role": "Mechanical Fitter",
+      "mobile": "0488 401 076",
+      "hire_company": "SRG - South West",
+      "assignments": [
+        {
+          "job_no": "1359",
+          "client": "SOUTH WEST",
+          "site": "Covalent Lithium",
+          "start": "2026-04-23",
+          "end": "2026-04-28",
           "schedule_type": "Day Shift",
           "is_on_location": true
         }

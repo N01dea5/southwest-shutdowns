@@ -187,6 +187,36 @@ def _load_client_lookup(wb: openpyxl.Workbook) -> dict[str, str]:
     return out
 
 
+def _load_job_id_to_job_no(wb: openpyxl.Workbook) -> dict[str, int]:
+    """Build {Job Id GUID -> Job No int} from `xpbi02 JobDetailsView`.
+
+    DailyPersonnelSchedule rows for active jobs sometimes carry only a GUID
+    `JobId` with no QuoteNo/OrderNo populated (e.g. JobNo 1353 Tronox May
+    2026). Without this lookup the DPS->PersonnelRosterView synthesis can't
+    derive a numeric Job No and silently drops every row for those jobs —
+    which made the dashboard fall back to the stale RosterCut export
+    instead of the live mobilising count.
+    """
+    sheet = _resolve_sheet(wb, "xpbi02 JobDetailsView")
+    if not sheet:
+        return {}
+    ws = wb[sheet]
+    idx = _header_index(ws)
+    normal = {_norm(k): v for k, v in idx.items()}
+    job_id_col = normal.get(_norm("Job Id")) or normal.get(_norm("JobId"))
+    job_no_col = normal.get(_norm("Job No")) or normal.get(_norm("JobNo"))
+    if job_id_col is None or job_no_col is None:
+        return {}
+    out: dict[str, int] = {}
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        gid = _clean(_get(row, job_id_col))
+        job = _parse_job(_get(row, job_no_col))
+        if gid and job is not None:
+            out[gid] = job
+            out[_norm(gid)] = job
+    return out
+
+
 def _resolve_client(raw: Any, client_lookup: dict[str, str]) -> str:
     text = _clean(raw)
     return client_lookup.get(text) or client_lookup.get(_norm(text)) or text
@@ -351,6 +381,7 @@ def _normalise_daily_schedule(wb: openpyxl.Workbook) -> bool:
     onsite_col = _find_col(idx, "OnSite", required=False)
 
     client_lookup = _load_client_lookup(wb)
+    job_id_to_no = _load_job_id_to_job_no(wb)
     today = dt.date.today()
     dedup: dict[tuple[int, str, dt.date], tuple[int, tuple[Any, ...]]] = {}
 
@@ -359,7 +390,11 @@ def _normalise_daily_schedule(wb: openpyxl.Workbook) -> bool:
             continue
         job = _parse_job(_get(row, job_col))
         if job is None and job_id_col is not None:
-            job = _parse_job(_get(row, job_id_col))
+            raw_job_id = _get(row, job_id_col)
+            job = _parse_job(raw_job_id)
+            if job is None:
+                key = _clean(raw_job_id)
+                job = job_id_to_no.get(key) or job_id_to_no.get(_norm(key))
         pid = _clean(_get(row, pid_col))
         row_date = _parse_date(_get(row, date_col))
         if not job or not pid or not row_date:

@@ -38,6 +38,19 @@ DAILY_SCHEDULE_SHEET = "xpbi02 DailyPersonnelSchedule"
 ROSTER_VIEW_SHEET = "xpbi02 PersonnelRosterView"
 CLIENT_VIEW_SHEET = "xpbi02 ClientView"
 
+# Rapid Crews now exports two parallel instances — North West (the original
+# sheet names) and South West (same sheets suffixed with ` SW`). The
+# downstream parser still expects a single combined view per topic, so we
+# splice the SW rows onto the bottom of each NW sheet during normalisation.
+SOUTHWEST_SUFFIX = " SW"
+
+# When the SRG-prefixed planning view lands in place of the legacy
+# JobPlanningView name, rename it back to the canonical name the parser
+# uses. Same headers, same semantics — only the source SQL view's display
+# name changed when the NW/SW split happened upstream.
+SRG_PLANNING_VIEW = "xpbi02 SRGJobPlanningView"
+LEGACY_PLANNING_VIEW = "xpbi02 JobPlanningView"
+
 COMPAT_HEADERS = [
     "Job No",
     "Client",
@@ -374,6 +387,55 @@ def _normalise_daily_schedule(wb: openpyxl.Workbook) -> bool:
     return True
 
 
+def _merge_southwest_sheets(wb: openpyxl.Workbook) -> bool:
+    """Append rows from each ` SW`-suffixed sheet onto its NW counterpart.
+
+    Rapid Crews now exports the SRG North West and SRG South West instances
+    as two parallel sheet sets in the same workbook (e.g. `xll01 Personnel`
+    + `xll01 Personnel SW`). The parser only knows about the NW name, so we
+    concatenate SW rows under the NW header and drop the now-redundant SW
+    sheet — keeps the downstream code untouched and the operation
+    idempotent across re-runs (no SW sheet on the next run = no merge).
+    """
+    changed = False
+    sw_sheets = [n for n in wb.sheetnames if n.endswith(SOUTHWEST_SUFFIX)]
+    for sw_name in sw_sheets:
+        base_name = sw_name[: -len(SOUTHWEST_SUFFIX)]
+        if base_name not in wb.sheetnames:
+            print(f"normalise_rapidcrews_workbook: {sw_name!r} has no base "
+                  f"{base_name!r} — leaving in place")
+            continue
+        base_ws = wb[base_name]
+        sw_ws = wb[sw_name]
+        appended = 0
+        rows = sw_ws.iter_rows(values_only=True)
+        try:
+            next(rows)  # skip SW header — base sheet's header wins
+        except StopIteration:
+            pass
+        for row in rows:
+            if not row or not any(cell is not None and cell != "" for cell in row):
+                continue
+            base_ws.append(list(row))
+            appended += 1
+        del wb[sw_name]
+        print(f"normalise_rapidcrews_workbook: merged {appended} rows from "
+              f"{sw_name!r} into {base_name!r}")
+        changed = True
+    return changed
+
+
+def _rename_srg_planning_view(wb: openpyxl.Workbook) -> bool:
+    """Rename `xpbi02 SRGJobPlanningView` to the legacy `xpbi02 JobPlanningView`
+    name the parser still references. Identical 12-column schema."""
+    if SRG_PLANNING_VIEW in wb.sheetnames and LEGACY_PLANNING_VIEW not in wb.sheetnames:
+        wb[SRG_PLANNING_VIEW].title = LEGACY_PLANNING_VIEW
+        print(f"normalise_rapidcrews_workbook: renamed "
+              f"{SRG_PLANNING_VIEW!r} -> {LEGACY_PLANNING_VIEW!r}")
+        return True
+    return False
+
+
 def main() -> int:
     if not MACRO_FILE.exists():
         print("normalise_rapidcrews_workbook: macro workbook not found; skipped")
@@ -381,7 +443,11 @@ def main() -> int:
 
     wb = openpyxl.load_workbook(MACRO_FILE)
     try:
-        changed = _normalise_numbered_sheet_names(wb)
+        # Merge SW into NW first so the rename + numbered-sheet pass below
+        # operates on the combined sheet under its canonical name.
+        changed = _merge_southwest_sheets(wb)
+        changed = _rename_srg_planning_view(wb) or changed
+        changed = _normalise_numbered_sheet_names(wb) or changed
         changed = _normalise_daily_schedule(wb) or changed
         if changed:
             wb.save(MACRO_FILE)

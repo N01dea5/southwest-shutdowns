@@ -1,7 +1,7 @@
 {
   "company_key": "tronox",
   "client_name": "Tronox",
-  "archived_at": "2026-04-30T23:46:37Z",
+  "archived_at": "2026-05-05T01:12:49Z",
   "shutdown": {
     "id": "tronox-2025-11",
     "name": "1116 \u2013 Tronox Major Shutdown November 2025",
@@ -10,42 +10,48 @@
     "end_date": "2025-11-16",
     "status": "completed",
     "required_by_role": {
-      "Trade Assistant": 20,
-      "Rope Access - Level 3": 1,
-      "Mechanical Fitter": 18,
       "Coded Welder": 4,
-      "Scaffolder": 11,
-      "Advanced Rigger": 3,
-      "Boilermaker": 5,
       "Superintendent": 2,
-      "Supervisor - Mechanical": 7,
-      "Supervisor - Scaffold": 2,
+      "Rope Access - Trade Assistant": 4,
+      "Mechanical Fitter": 30,
+      "Boilermaker": 4,
+      "Rope Access - Superintendent": 0,
+      "Sheet Metal Worker": 4,
+      "Fibre Glasser": 1,
+      "NDT": 0,
       "Intermediate Rigger": 7,
-      "Rope Access - Superintendent": 1,
-      "NDT": 1,
-      "Sheet Metal Worker": 1,
-      "Painter & Blaster": 1,
-      "Rope Access - Trade Assistant": 2,
-      "Fibre Glasser": 1
+      "Supervisor - Scaffold": 2,
+      "Trade Assistant": 20,
+      "Advanced Rigger": 5,
+      "Supervisor - Mechanical": 8,
+      "Rope Access - Level 3": 2,
+      "Pipe Fitter": 4,
+      "Scaffolder": 12,
+      "Superintendent - Rope Access": 1,
+      "Painter & Blaster": 2,
+      "NDT Technician": 1
     },
     "filled_by_role": {
-      "Trade Assistant": 20,
-      "Rope Access - Level 3": 1,
-      "Mechanical Fitter": 18,
-      "Coded Welder": 4,
-      "Scaffolder": 11,
-      "Advanced Rigger": 3,
-      "Boilermaker": 5,
-      "Superintendent": 2,
-      "Supervisor - Mechanical": 7,
-      "Supervisor - Scaffold": 2,
-      "Intermediate Rigger": 7,
-      "Rope Access - Superintendent": 1,
-      "NDT": 1,
+      "Coded Welder": 3,
+      "Superintendent": 1,
+      "Rope Access - Trade Assistant": 1,
+      "Mechanical Fitter": 13,
+      "Boilermaker": 2,
+      "Rope Access - Superintendent": 0,
       "Sheet Metal Worker": 1,
+      "Fibre Glasser": 1,
+      "NDT": 0,
+      "Intermediate Rigger": 4,
+      "Supervisor - Scaffold": 2,
+      "Trade Assistant": 19,
+      "Advanced Rigger": 3,
+      "Supervisor - Mechanical": 7,
+      "Rope Access - Level 3": 0,
+      "Pipe Fitter": 0,
+      "Scaffolder": 8,
+      "Superintendent - Rope Access": 0,
       "Painter & Blaster": 1,
-      "Rope Access - Trade Assistant": 2,
-      "Fibre Glasser": 1
+      "NDT Technician": 1
     },
     "crew_split": {
       "Day": 48,
@@ -83,14 +89,14 @@
         "end": "2025-11-07",
         "personnel_id": "0F403AC5-7005-4767-B704-E68DDC9F7C76",
         "tickets": {
-          "wah": {
-            "expiry": "2026-10-28",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DORRONSORO, Jon - 0f403ac5-7005-4767-b704-e68ddc9f7c76/DORRONSORO, Jon - Working at Heights.pdf",
-            "status": "current"
-          },
           "cse": {
             "expiry": "2026-10-27",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DORRONSORO, Jon - 0f403ac5-7005-4767-b704-e68ddc9f7c76/DORRONSORO, Jon - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DORRONSORO, Jon - 0f403ac5-7005-4767-b704-e68ddc9f7c76/DORRONSORO, Jon - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2026-10-28",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DORRONSORO, Jon - 0f403ac5-7005-4767-b704-e68ddc9f7c76/DORRONSORO, Jon - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -156,22 +162,22 @@
         "tickets": {
           "cse": {
             "expiry": "2028-03-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - Confined Spaces Entry.jpg",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-10-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - Confined Spaces Entry.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2028-03-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - Working at Heights.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-10-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
             "status": "current"
           },
           "fork": {
             "expiry": "2030-10-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/EDWARDS, Aidan - 8ca45f5b-c7df-43fb-8f38-85263ebb2eb3/EDWARDS, Aidan - HRWL.jpg",
             "status": "current"
           }
         },
@@ -229,24 +235,24 @@
         "end": "2025-11-14",
         "personnel_id": "8C684C15-93BC-4698-A010-FDCE8F05D666",
         "tickets": {
-          "ewp": {
-            "expiry": "2031-04-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HANCOCK , John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK, John - HRWL.pdf",
+          "cse": {
+            "expiry": "2026-11-01",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HANCOCK, John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK, John - Working at Heights.PNG",
             "status": "current"
           },
           "wah": {
             "expiry": "2026-11-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HANCOCK , John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK , John - Confined Spaces.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HANCOCK, John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK, John - Working at Heights.PNG",
             "status": "current"
           },
-          "cse": {
-            "expiry": "2026-11-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HANCOCK , John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK , John - Confined Spaces.PNG",
+          "ewp": {
+            "expiry": "2031-04-07",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HANCOCK, John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK, John - HRWL.pdf",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2031-04-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HANCOCK , John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK, John - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HANCOCK, John - 8c684c15-93bc-4698-a010-fdce8f05d666/HANCOCK, John - HRWL.pdf",
             "status": "current"
           }
         },
@@ -261,19 +267,19 @@
         "end": "2025-11-14",
         "personnel_id": "D8A71843-4B21-40D5-B011-836450432A93",
         "tickets": {
+          "cse": {
+            "expiry": "2027-05-06",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MATENGA, Khan - d8a71843-4b21-40d5-b011-836450432a93/MATENGA, Khan - Confined Spaces Entry.jpg",
+            "status": "current"
+          },
           "wah": {
             "expiry": "2027-05-06",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Khan - d8a71843-4b21-40d5-b011-836450432a93/MATENGA, Khan - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MATENGA, Khan - d8a71843-4b21-40d5-b011-836450432a93/MATENGA, Khan - Working at Heights.jpg",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2029-04-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Khan - d8a71843-4b21-40d5-b011-836450432a93/MATENGA, Khan - HRWL.jpg",
-            "status": "current"
-          },
-          "cse": {
-            "expiry": "2027-05-06",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MATENGA, Khan - d8a71843-4b21-40d5-b011-836450432a93/MATENGA, Khan - Confined Spaces Entry.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MATENGA, Khan - d8a71843-4b21-40d5-b011-836450432a93/MATENGA, Khan - HRWL.jpg",
             "status": "current"
           }
         },
@@ -288,35 +294,35 @@
         "end": "2025-11-14",
         "personnel_id": "B2EA1F52-15A2-46E7-98A4-6707052B1AAA",
         "tickets": {
-          "cse": {
+          "rig": {
+            "expiry": null,
+            "doc": null,
+            "status": "current",
+            "level": "Advanced"
+          },
+          "gta": {
             "expiry": "2026-09-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "dog": {
             "expiry": "2029-11-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
             "status": "current"
           },
-          "rig": {
-            "expiry": "2029-11-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
-            "status": "current",
-            "level": "Intermediate"
-          },
-          "gta": {
+          "cse": {
             "expiry": "2026-09-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2029-11-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2026-09-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - Working at Heights.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-11-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/FERNANDES, Luis - b2ea1f52-15a2-46e7-98a4-6707052b1aaa/FERNANDES, Luis - HRWL.pdf",
             "status": "current"
           }
         },
@@ -331,29 +337,29 @@
         "end": "2025-11-14",
         "personnel_id": "174C6CBE-63E8-4652-B4FC-01C5F76E198B",
         "tickets": {
-          "ewp": {
-            "expiry": "2029-10-03",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SANCHEZ , Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ , Renan - HRWL.PNG",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2027-04-30",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SANCHEZ , Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ , Renan - Working at Heights.PNG",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-04-30",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SANCHEZ , Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ , Renan - Gas Test Atmospheres.PNG",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2029-10-03",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SANCHEZ , Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ , Renan - HRWL.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SANCHEZ, Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ, Renan - Gas Test Atmospheres.PNG",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-04-30",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SANCHEZ , Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ , Renan - Confined Spaces Entry.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SANCHEZ, Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ, Renan - Confined Spaces Entry.PNG",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-04-30",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SANCHEZ, Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ, Renan - Working at Heights.PNG",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2029-10-03",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SANCHEZ, Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ, Renan - HRWL.PNG",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-10-03",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SANCHEZ, Renan - 174c6cbe-63e8-4652-b4fc-01c5f76e198b/SANCHEZ, Renan - HRWL.PNG",
             "status": "current"
           }
         },
@@ -370,17 +376,17 @@
         "tickets": {
           "cse": {
             "expiry": "2027-10-27",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ENUA, Jordan - 001882/ENUA, Jordan - Confined Spaces Entry.jpg",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2027-09-27",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ENUA, Jordan - 001882/ENUA, Jordan - SA - Advanced Scaffolding (includes basic & intermediate scaffolding).jpeg",
+            "doc": null,
             "status": "current"
           },
           "wah": {
             "expiry": "2027-10-27",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ENUA, Jordan - 001882/ENUA, Jordan - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ENUA, Jordan - 001882/ENUA, Jordan - Working at Heights.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2027-09-27",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ENUA, Jordan - 001882/ENUA, Jordan - HRWL.jpeg",
             "status": "current"
           }
         },
@@ -395,24 +401,24 @@
         "end": "2025-11-14",
         "personnel_id": "D1FF5ECF-C03C-417C-9954-3782C11BE943",
         "tickets": {
-          "hrwl": {
-            "expiry": "2029-11-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - HRWL.JPG",
+          "cse": {
+            "expiry": "2027-09-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-09-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - Working at Heights.pdf",
             "status": "current"
           },
           "ewp": {
             "expiry": "2029-11-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - HRWL.JPG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - HRWL.JPG",
             "status": "current"
           },
-          "cse": {
-            "expiry": "2027-09-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - Confined Spaces Entry.pdf",
+          "hrwl": {
+            "expiry": "2029-11-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEOFILO, Neva - d1ff5ecf-c03c-417c-9954-3782c11be943/TEOFILO, Neva - HRWL.JPG",
             "status": "current"
           }
         },
@@ -427,19 +433,19 @@
         "end": "2025-11-14",
         "personnel_id": "02FD7BD7-37A1-4FA8-9E51-B2B7BA75BFCA",
         "tickets": {
-          "wah": {
+          "gta": {
             "expiry": "2027-10-13",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NGUYEN, Gabriel - 02fd7bd7-37a1-4fa8-9e51-b2b7ba75bfca/NGUYEN, Gabriel - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NGUYEN, Gabriel - 02fd7bd7-37a1-4fa8-9e51-b2b7ba75bfca/NGUYEN, Gabriel - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-10-13",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NGUYEN, Gabriel - 02fd7bd7-37a1-4fa8-9e51-b2b7ba75bfca/NGUYEN, Gabriel - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NGUYEN, Gabriel - 02fd7bd7-37a1-4fa8-9e51-b2b7ba75bfca/NGUYEN, Gabriel - Confined Spaces Entry.pdf",
             "status": "current"
           },
-          "gta": {
+          "wah": {
             "expiry": "2027-10-13",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NGUYEN, Gabriel - 02fd7bd7-37a1-4fa8-9e51-b2b7ba75bfca/NGUYEN, Gabriel - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NGUYEN, Gabriel - 02fd7bd7-37a1-4fa8-9e51-b2b7ba75bfca/NGUYEN, Gabriel - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -494,22 +500,22 @@
         "tickets": {
           "cse": {
             "expiry": "2027-09-18",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WHITE , Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE , Ricky - Confined Spaces Entry.jpg",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2030-11-11",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WHITE , Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE , Ricky - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WHITE, Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE, Ricky - Confined Spaces Entry.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-09-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WHITE , Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE , Ricky - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WHITE, Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE, Ricky - Working at Heights.jpg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-11-11",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WHITE, Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE, Ricky - HRWL.jpg",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2030-11-11",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WHITE , Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE , Ricky - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WHITE, Ricky - c29279f4-529e-4bf2-8395-a78b819f6bd5/WHITE, Ricky - HRWL.jpg",
             "status": "current"
           }
         },
@@ -537,23 +543,23 @@
         "tickets": {
           "rig": {
             "expiry": "2027-08-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
             "status": "current",
             "level": "Basic"
           },
           "dog": {
             "expiry": "2027-08-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2027-08-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
             "status": "current"
           },
           "ewp": {
             "expiry": "2027-08-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2027-08-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LODGE, Matt - 3cca8b5f-8046-4555-a198-203fde91d029/LODGE, Matt - HRWL.PNG",
             "status": "current"
           }
         },
@@ -606,24 +612,24 @@
         "end": "2025-11-14",
         "personnel_id": "7BDC1767-96E2-4C7B-9EF6-F626850E6A9B",
         "tickets": {
-          "ewp": {
-            "expiry": "2030-06-23",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KONOKONO, Anges - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - HRWL.png",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-06-23",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KONOKONO, Anges - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - HRWL.png",
-            "status": "current"
-          },
           "wah": {
             "expiry": "2027-08-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KONOKONO, Anges - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KONOKONO, Agnes - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - Working at Heights.jpg",
             "status": "current"
           },
           "fork": {
             "expiry": "2030-06-23",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KONOKONO, Anges - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - HRWL.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KONOKONO, Agnes - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - HRWL.png",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-06-23",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KONOKONO, Agnes - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - HRWL.png",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-06-23",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KONOKONO, Agnes - 7bdc1767-96e2-4c7b-9ef6-f626850e6a9b/KONOKONO, Agnes - HRWL.png",
             "status": "current"
           }
         },
@@ -638,24 +644,24 @@
         "end": "2025-11-14",
         "personnel_id": "661ED6D8-FF8C-4979-9EDD-057E957C53BB",
         "tickets": {
-          "hrwl": {
-            "expiry": "2029-07-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - HRWL.jpg",
+          "gta": {
+            "expiry": "2027-03-06",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - Gas Test Atmospheres.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-01-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - Working at Heights.jpg",
             "status": "current"
           },
           "ewp": {
             "expiry": "2029-07-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - HRWL.jpg",
             "status": "current"
           },
-          "gta": {
-            "expiry": "2027-03-06",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - Gas Test Atmospheres.jpg",
+          "hrwl": {
+            "expiry": "2029-07-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NYAMAKAZI, Alexio - 661ed6d8-ff8c-4979-9edd-057e957c53bb/NYAMAKAZI, Alexio - HRWL.jpg",
             "status": "current"
           }
         },
@@ -670,24 +676,24 @@
         "end": "2025-11-14",
         "personnel_id": "EF4B5F4C-3F68-4A59-A517-C12C931667CF",
         "tickets": {
+          "cse": {
+            "expiry": "2027-10-24",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KAONZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KAONZA, John - Confined Spaces Entry.PNG",
+            "status": "current"
+          },
           "wah": {
             "expiry": "2027-10-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KOANZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KAONZA, John - Working at Heights.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KAONZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KAONZA, John - Working at Heights.PNG",
             "status": "current"
           },
           "fork": {
             "expiry": "2030-07-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KOANZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KOANZA, John - HRWL.jpg",
-            "status": "current"
-          },
-          "cse": {
-            "expiry": "2027-10-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KOANZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KAONZA, John - Confined Spaces Entry.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KAONZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KAONZA, John - HRWL.jpg",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2030-07-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KOANZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KOANZA, John - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KAONZA, John - ef4b5f4c-3f68-4a59-a517-c12c931667cf/KAONZA, John - HRWL.jpg",
             "status": "current"
           }
         },
@@ -702,24 +708,24 @@
         "end": "2025-11-14",
         "personnel_id": "675FB686-A0BA-4CFA-A823-0155ECEF4879",
         "tickets": {
+          "fa": {
+            "expiry": "2028-09-27",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - First Aid.png",
+            "status": "current"
+          },
           "gta": {
             "expiry": "2027-09-26",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - Gas Test Atmospheres.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - Gas Test Atmospheres.png",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-09-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - Confined Spaces Entry.png",
-            "status": "current"
-          },
-          "fa": {
-            "expiry": "2028-09-27",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - First Aid.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - Confined Spaces Entry.png",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-09-26",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - Working at Heights.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PLUNIAN, Adrien - 675fb686-a0ba-4cfa-a823-0155ecef4879/PLUNIAN, Adrien - Working at Heights.png",
             "status": "current"
           }
         },
@@ -761,19 +767,19 @@
         "end": "2025-11-14",
         "personnel_id": "DC132943-0F0D-4FA4-AC3E-B89B161D8FAC",
         "tickets": {
-          "wah": {
-            "expiry": "2027-04-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOSNJAK , Stjepan - dc132943-0f0d-4fa4-ac3e-b89b161d8fac/BOSNJAK, Stjepan - Working at Heights.pdf",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-04-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOSNJAK , Stjepan - dc132943-0f0d-4fa4-ac3e-b89b161d8fac/BOSNJAK, Stjepan - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BOSNJAK, Stjepan - dc132943-0f0d-4fa4-ac3e-b89b161d8fac/BOSNJAK, Stjepan - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-04-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BOSNJAK , Stjepan - dc132943-0f0d-4fa4-ac3e-b89b161d8fac/BOSNJAK, Stjepan - Confined Spaces.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BOSNJAK, Stjepan - dc132943-0f0d-4fa4-ac3e-b89b161d8fac/BOSNJAK, Stjepan - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-04-24",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BOSNJAK, Stjepan - dc132943-0f0d-4fa4-ac3e-b89b161d8fac/BOSNJAK, Stjepan - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -790,12 +796,12 @@
         "tickets": {
           "cse": {
             "expiry": "2027-10-10",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAREMBA, Fungai - 002242/KAREMBA, Fungai - Confined Spaces Entry.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KAREMBA, Fungai - 4a27c571-0fa6-4052-ac19-b73319e262cb/KAREMBA, Fungai - Confined Spaces Entry.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-10-10",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KAREMBA, Fungai - 002242/KAREMBA, Fungai - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KAREMBA, Fungai - 4a27c571-0fa6-4052-ac19-b73319e262cb/KAREMBA, Fungai - Working at Heights.jpg",
             "status": "current"
           }
         },
@@ -837,24 +843,24 @@
         "end": "2025-11-14",
         "personnel_id": "76855A98-FDFB-4D3E-AC65-FB95B359E127",
         "tickets": {
-          "gta": {
-            "expiry": "2027-09-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2027-09-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - Working at Heights.pdf",
-            "status": "current"
-          },
           "fa": {
             "expiry": "2028-09-29",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - First Aid.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - First Aid.pdf",
+            "status": "current"
+          },
+          "gta": {
+            "expiry": "2027-09-16",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-09-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-09-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/JOVENEAU, Victor - 76855a98-fdfb-4d3e-ac65-fb95b359e127/JOVENEAU, Victor - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -869,14 +875,14 @@
         "end": "2025-11-14",
         "personnel_id": "766265A8-ECAB-4811-BFB7-22DBF7A347F1",
         "tickets": {
-          "hrwl": {
-            "expiry": "2028-04-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SLATER , Grant - 766265a8-ecab-4811-bfb7-22dbf7a347f1/SLATER , Grant - HRWL.jpg",
-            "status": "current"
-          },
           "ewp": {
             "expiry": "2028-04-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SLATER , Grant - 766265a8-ecab-4811-bfb7-22dbf7a347f1/SLATER , Grant - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SLATER, Grant - 766265a8-ecab-4811-bfb7-22dbf7a347f1/SLATER, Grant - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-04-07",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SLATER, Grant - 766265a8-ecab-4811-bfb7-22dbf7a347f1/SLATER, Grant - HRWL.jpg",
             "status": "current"
           }
         },
@@ -891,24 +897,24 @@
         "end": "2025-11-14",
         "personnel_id": "0A15D5E4-AD1A-42EA-8C74-0A22E6EF8126",
         "tickets": {
-          "hrwl": {
-            "expiry": "2029-02-28",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - HRWL.png",
-            "status": "current"
-          },
-          "cse": {
-            "expiry": "2027-10-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
           "wah": {
             "expiry": "2027-11-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - Working at Heights.pdf",
             "status": "current"
           },
           "fork": {
             "expiry": "2029-02-28",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - HRWL.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - HRWL.png",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-10-22",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-02-28",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ANDERSON, Brodie - 0a15d5e4-ad1a-42ea-8c74-0a22e6ef8126/ANDERSON, Brodie - HRWL.png",
             "status": "current"
           }
         },
@@ -947,12 +953,12 @@
         "tickets": {
           "wah": {
             "expiry": "2028-04-10",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS, Beau - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WITHERS, Beau - 002243/WITHERS, Beau - Working at Heights.jpg",
             "status": "current"
           },
           "cse": {
             "expiry": "2026-05-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WITHERS, Beau - 002243/WITHERS , Beau - Confined Spaces.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WITHERS, Beau - 002243/WITHERS, Beau - Confined Spaces Entry.pdf",
             "status": "expiring_soon"
           }
         },
@@ -969,22 +975,22 @@
         "tickets": {
           "fork": {
             "expiry": "2029-08-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITEPO , Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO , Nathan - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CHITEPO, Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO, Nathan - HRWL.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2026-07-18",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITEPO , Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO , Nathan - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2029-08-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITEPO , Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO , Nathan - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CHITEPO, Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO, Nathan - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2026-07-18",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CHITEPO , Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO , Nathan - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CHITEPO, Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO, Nathan - Working at Heights.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-08-02",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CHITEPO, Nathan - f94b1b06-9a90-4e7b-8bde-8cc35338a578/CHITEPO, Nathan - HRWL.pdf",
             "status": "current"
           }
         },
@@ -999,35 +1005,35 @@
         "end": "2025-11-14",
         "personnel_id": "055BAAA5-5685-465E-BA8F-5F5F577218B7",
         "tickets": {
-          "hrwl": {
-            "expiry": "2030-05-13",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
-            "status": "current"
-          },
           "rig": {
-            "expiry": "2030-05-13",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
+            "expiry": null,
+            "doc": null,
             "status": "current",
-            "level": "Intermediate"
+            "level": "Advanced"
+          },
+          "gta": {
+            "expiry": "2027-03-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Gas Test Atmospheres.pdf",
+            "status": "current"
           },
           "dog": {
             "expiry": "2030-05-13",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-03-31",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-03-31",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Working at Heights.pdf",
             "status": "current"
           },
-          "gta": {
-            "expiry": "2027-03-31",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - Gas Test Atmospheres.pdf",
+          "hrwl": {
+            "expiry": "2030-05-13",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DACK, Joe - 055baaa5-5685-465e-ba8f-5f5f577218b7/DACK, Joe - HRWL.pdf",
             "status": "current"
           }
         },
@@ -1042,14 +1048,14 @@
         "end": "2025-11-14",
         "personnel_id": "881DDF41-276D-480B-81C0-75E8671346C0",
         "tickets": {
-          "wah": {
-            "expiry": "2027-07-31",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BERRY, Paul - 881ddf41-276d-480b-81c0-75e8671346c0/BERRY, Paul - Working at Heights.JPG",
-            "status": "current"
-          },
           "cse": {
             "expiry": "2027-08-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BERRY, Paul - 881ddf41-276d-480b-81c0-75e8671346c0/BERRY, Paul - Confined Spaces Entry.JPG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BERRY, Paul - 881ddf41-276d-480b-81c0-75e8671346c0/BERRY, Paul - Confined Spaces Entry.JPG",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-07-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BERRY, Paul - 881ddf41-276d-480b-81c0-75e8671346c0/BERRY, Paul - Working at Heights.JPG",
             "status": "current"
           }
         },
@@ -1066,22 +1072,22 @@
         "tickets": {
           "cse": {
             "expiry": "2028-02-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2029-10-10",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - HRWL.jpg",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2029-10-10",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2028-02-01",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - Working at Heights.pdf",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2029-10-10",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-10-10",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MCLENNAN, Christopher - 36c1e1ae-9b30-40e0-b144-fbc7bf7108ad/MCLENNAN, Christopher - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1096,35 +1102,35 @@
         "end": "2025-11-14",
         "personnel_id": "092D727D-F0EE-42DC-8AEF-BE06531EAAE5",
         "tickets": {
-          "dog": {
-            "expiry": "2028-11-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LEMON, Clifforn - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - HRWL.pdf",
-            "status": "current"
-          },
-          "gta": {
-            "expiry": "2027-11-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LEMON, Clifforn - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
           "rig": {
-            "expiry": "2028-11-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LEMON, Clifforn - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - HRWL.pdf",
+            "expiry": null,
+            "doc": null,
             "status": "current",
             "level": "Advanced"
           },
-          "hrwl": {
-            "expiry": "2028-11-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LEMON, Clifforn - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - HRWL.pdf",
+          "gta": {
+            "expiry": "2027-11-24",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LEMON, Clifford - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - Gas Test Atmospheres.pdf",
             "status": "current"
           },
-          "wah": {
-            "expiry": "2027-11-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LEMON, Clifforn - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - Working at Heights.pdf",
+          "dog": {
+            "expiry": "2028-11-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LEMON, Clifford - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - HRWL.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-11-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/LEMON, Clifforn - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LEMON, Clifford - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-11-20",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LEMON, Clifford - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - Working at Heights.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-11-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/LEMON, Clifford - 092d727d-f0ee-42dc-8aef-be06531eaae5/LEMON, Clifford - HRWL.pdf",
             "status": "current"
           }
         },
@@ -1139,30 +1145,30 @@
         "end": "2025-11-14",
         "personnel_id": "E4AC9591-767F-4D92-A27A-0A750EFD7192",
         "tickets": {
+          "rig": {
+            "expiry": "2031-02-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ARNOULD, James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
+            "status": "current",
+            "level": "Basic"
+          },
+          "dog": {
+            "expiry": "2031-02-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ARNOULD, James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2031-02-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ARNOULD, James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
+            "status": "current"
+          },
           "ewp": {
             "expiry": "2031-02-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ARNOULD , James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ARNOULD, James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2031-02-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ARNOULD , James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
-            "status": "current"
-          },
-          "rig": {
-            "expiry": "2031-02-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ARNOULD , James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
-            "status": "current",
-            "level": "Basic"
-          },
-          "fork": {
-            "expiry": "2031-02-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ARNOULD , James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
-            "status": "current"
-          },
-          "dog": {
-            "expiry": "2031-02-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ARNOULD , James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ARNOULD, James - e4ac9591-767f-4d92-a27a-0a750efd7192/ARNOULD, James - HRWL.jpeg",
             "status": "current"
           }
         },
@@ -1188,19 +1194,14 @@
         "end": "2025-11-14",
         "personnel_id": "C0CAEC8E-F002-4BF2-87FC-83E2A4321B26",
         "tickets": {
-          "hrwl": {
-            "expiry": "2026-05-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TE PUIA, Michael - c0caec8e-f002-4bf2-87fc-83e2a4321b26/TE PUIA, Michael - HRWL.JPG",
-            "status": "expiring_soon"
+          "cse": {
+            "expiry": "2027-09-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TE PUIA (JNR), Michael - c0caec8e-f002-4bf2-87fc-83e2a4321b26/TE PUIA (JNR), Michael - Confined Spaces Entry.pdf",
+            "status": "current"
           },
           "wah": {
             "expiry": "2027-09-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TE PUIA, Michael - c0caec8e-f002-4bf2-87fc-83e2a4321b26/TE PUIA, Michael - Working at Heights.pdf",
-            "status": "current"
-          },
-          "cse": {
-            "expiry": "2027-09-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TE PUIA, Michael - c0caec8e-f002-4bf2-87fc-83e2a4321b26/TE PUIA, Michael - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TE PUIA (JNR), Michael - c0caec8e-f002-4bf2-87fc-83e2a4321b26/TE PUIA (JNR), Michael - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -1269,29 +1270,29 @@
         "end": "2025-11-14",
         "personnel_id": "1B5317DE-E9E5-4D82-9F4F-C6955B3E265A",
         "tickets": {
-          "hrwl": {
-            "expiry": "2026-10-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - HRWL.jpg",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-07-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - Gas Test Atmospheres.jpg",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2027-07-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - Working at Heights.jpg",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2026-10-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - Gas Test Atmospheres.jpg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-07-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - Confined Spaces Entry.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - Confined Spaces Entry.jpg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-07-02",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - Working at Heights.jpg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2026-10-19",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2026-10-19",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BAKER, Riley - 1b5317de-e9e5-4d82-9f4f-c6955b3e265a/BAKER, Riley - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1308,22 +1309,22 @@
         "tickets": {
           "cse": {
             "expiry": "2026-08-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - Confined Spaces Entry.jpg",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2026-07-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - HRWL.jpg",
-            "status": "current"
-          },
-          "fork": {
-            "expiry": "2026-07-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - Confined Spaces Entry.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2026-08-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - Working at Heights.jpg",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2026-07-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2026-07-15",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HOLMES, Thomas - 26de6ef0-737a-4ee4-877a-e7552b3dab13/HOLMES, Thomas - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1349,14 +1350,14 @@
         "end": "2025-11-14",
         "personnel_id": "8321AB5E-1984-4BA4-8197-D085AE535B65",
         "tickets": {
-          "hrwl": {
-            "expiry": "2028-03-28",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARTIN, Craig - 8321ab5e-1984-4ba4-8197-d085ae535b65/MARTIN, Craig - HRWL.jpg",
-            "status": "current"
-          },
           "ewp": {
             "expiry": "2028-03-28",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARTIN, Craig - 8321ab5e-1984-4ba4-8197-d085ae535b65/MARTIN, Craig - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARTIN, Craig - 8321ab5e-1984-4ba4-8197-d085ae535b65/MARTIN, Craig - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-03-28",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARTIN, Craig - 8321ab5e-1984-4ba4-8197-d085ae535b65/MARTIN, Craig - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1395,7 +1396,7 @@
         "tickets": {
           "wah": {
             "expiry": "2026-11-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/STITZ, David - 1a79a55c-deb3-4c16-96a5-8cde24fd107f/STITZ, David - Working at Heights.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/STITZ, David - 1a79a55c-deb3-4c16-96a5-8cde24fd107f/STITZ, David - Working at Heights.png",
             "status": "current"
           }
         },
@@ -1411,24 +1412,24 @@
         "personnel_id": "F3CAA4F1-AF27-460B-9DDB-DE450B0BC8DB",
         "tickets": {
           "rig": {
-            "expiry": "2028-10-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - HRWL.png",
+            "expiry": null,
+            "doc": null,
             "status": "current",
-            "level": "Basic"
+            "level": "Intermediate"
+          },
+          "wah": {
+            "expiry": "2027-11-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - Working at Heights.jpeg",
+            "status": "current"
           },
           "dog": {
             "expiry": "2028-10-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - HRWL.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - HRWL.png",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2028-10-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - HRWL.png",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2027-11-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - Working at Heights.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Jackson - f3caa4f1-af27-460b-9ddb-de450b0bc8db/POWELL, Jackson - HRWL.png",
             "status": "current"
           }
         },
@@ -1471,29 +1472,29 @@
         "end": "2025-11-15",
         "personnel_id": "163B5778-EB08-46D1-A7C2-272FE5C79EFA",
         "tickets": {
-          "ewp": {
-            "expiry": "2027-05-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - HRWL.png",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2027-05-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - HRWL.png",
-            "status": "current"
-          },
-          "wah": {
+          "gta": {
             "expiry": "2027-09-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - Working at Heights.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - Gas Test Atmospheres.png",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-09-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - Confined Spaces Entry.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - Confined Spaces Entry.png",
             "status": "current"
           },
-          "gta": {
+          "wah": {
             "expiry": "2027-09-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - Gas Test Atmospheres.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - Working at Heights.png",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2027-05-24",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - HRWL.png",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2027-05-24",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TIAMSON, Melvin - 163b5778-eb08-46d1-a7c2-272fe5c79efa/TIAMSON, Melvin - HRWL.png",
             "status": "current"
           }
         },
@@ -1508,34 +1509,34 @@
         "end": "2025-11-15",
         "personnel_id": "F3F86789-5308-48AE-9F4F-9756C1CA1125",
         "tickets": {
-          "hrwl": {
-            "expiry": "2030-04-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - HRWL.pdf",
-            "status": "current"
-          },
-          "hr": {
-            "expiry": "2029-03-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Driver's Licence.pdf",
-            "status": "current"
-          },
-          "wah": {
+          "gta": {
             "expiry": "2027-05-29",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-05-29",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Confined Spaces Entry.pdf",
             "status": "current"
           },
-          "gta": {
+          "wah": {
             "expiry": "2027-05-29",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Working at Heights.pdf",
+            "status": "current"
+          },
+          "hr": {
+            "expiry": "2029-03-20",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - Driver's Licence.pdf",
             "status": "current"
           },
           "fork": {
             "expiry": "2030-04-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - HRWL.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ABDIKARIM ISSA, Abdirizak - f3f86789-5308-48ae-9f4f-9756c1ca1125/ABDIKARIM ISSA, Abdirizak - HRWL.pdf",
             "status": "current"
           }
         },
@@ -1550,45 +1551,45 @@
         "end": "2025-11-15",
         "personnel_id": "4BBB3EF5-1359-4B75-852E-5F543E9F9747",
         "tickets": {
-          "hrwl": {
-            "expiry": "2030-05-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
-            "status": "current"
-          },
-          "fa": {
-            "expiry": "2028-03-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - First Aid.pdf",
-            "status": "current"
-          },
           "rig": {
-            "expiry": "2030-05-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
+            "expiry": null,
+            "doc": null,
             "status": "current",
             "level": "Advanced"
           },
-          "ewp": {
-            "expiry": "2030-05-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
-            "status": "current"
-          },
-          "dog": {
-            "expiry": "2030-05-08",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
+          "fa": {
+            "expiry": "2028-03-22",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - First Aid.pdf",
             "status": "current"
           },
           "gta": {
             "expiry": "2027-02-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2030-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-02-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-02-02",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - Working at Heights.pdf",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-05-08",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MARGOTTA, Vincenzo - 4bbb3ef5-1359-4b75-852e-5f543e9f9747/MARGOTTA, Vincenzo - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1601,9 +1602,30 @@
         "mobile": "0408 757 774",
         "start": "2025-11-13",
         "end": "2025-11-15",
-        "personnel_id": "7768382C-FCCC-4522-8E5F-3E62B61B0D08",
-        "tickets": {},
-        "hire_company": "SRG - Alcoa"
+        "personnel_id": "6D729E06-F0A1-46B2-86B6-0B8F0CF3F614",
+        "tickets": {
+          "dog": {
+            "expiry": "2027-11-02",
+            "doc": null,
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2027-11-02",
+            "doc": null,
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2027-11-02",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PAKAU, Aden - 6d729e06-f0a1-46b2-86b6-0b8f0cf3f614/PAKAU, Aden - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2027-11-02",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PAKAU, Aden - 6d729e06-f0a1-46b2-86b6-0b8f0cf3f614/PAKAU, Aden - HRWL.jpg",
+            "status": "current"
+          }
+        },
+        "hire_company": "SRG - South West"
       },
       {
         "name": "Cameron DUNN",
@@ -1614,19 +1636,19 @@
         "end": "2025-11-15",
         "personnel_id": "2BAC97C9-76ED-42B8-BFC4-B6E966EA223C",
         "tickets": {
-          "wah": {
-            "expiry": "2026-09-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DUNN, Cameron - 2bac97c9-76ed-42b8-bfc4-b6e966ea223c/DUNN, Cameron - Working at Heights.png",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-10-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DUNN, Cameron - 2bac97c9-76ed-42b8-bfc4-b6e966ea223c/DUNN, Cameron - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DUNN, Cameron - 2bac97c9-76ed-42b8-bfc4-b6e966ea223c/DUNN, Cameron - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-10-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DUNN, Cameron - 2bac97c9-76ed-42b8-bfc4-b6e966ea223c/DUNN, Cameron - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DUNN, Cameron - 2bac97c9-76ed-42b8-bfc4-b6e966ea223c/DUNN, Cameron - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2026-09-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DUNN, Cameron - 2bac97c9-76ed-42b8-bfc4-b6e966ea223c/DUNN, Cameron - Working at Heights.png",
             "status": "current"
           }
         },
@@ -1731,19 +1753,19 @@
         "end": "2025-11-15",
         "personnel_id": "7544B635-4F62-4B54-AEEF-D2AA5F28C1BA",
         "tickets": {
-          "cse": {
-            "expiry": "2026-06-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2026-06-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2026-06-12",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2026-06-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONDESIR, Lea - 7544b635-4f62-4b54-aeef-d2aa5f28c1ba/MONDESIR, Lea - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -1758,19 +1780,19 @@
         "end": "2025-11-15",
         "personnel_id": "E5F1156F-B331-4682-BCC6-A1E0BB3A43E3",
         "tickets": {
-          "wah": {
-            "expiry": "2027-11-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - Working at Heights.pdf",
+          "fa": {
+            "expiry": "2027-03-20",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - First Aid.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-11-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - Confined Spaces Entry.pdf",
             "status": "current"
           },
-          "fa": {
-            "expiry": "2027-03-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - First Aid.pdf",
+          "wah": {
+            "expiry": "2027-11-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BURNS, Peter - e5f1156f-b331-4682-bcc6-a1e0bb3a43e3/BURNS, Peter - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -1803,12 +1825,12 @@
           },
           "cse": {
             "expiry": "2027-06-05",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HERNANDEZ, Jamie - 634b5548-ba39-44c4-9b46-aa04f032d8ba/HERNANDEZ, Jamie - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HERNANDEZ, Jaime - 634b5548-ba39-44c4-9b46-aa04f032d8ba/HERNANDEZ, Jaime - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-06-05",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HERNANDEZ, Jamie - 634b5548-ba39-44c4-9b46-aa04f032d8ba/HERNANDEZ, Jamie - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HERNANDEZ, Jaime - 634b5548-ba39-44c4-9b46-aa04f032d8ba/HERNANDEZ, Jaime - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -1823,24 +1845,24 @@
         "end": "2025-11-15",
         "personnel_id": "9B6F31D7-F288-4BC4-85D7-96D1C2724B9E",
         "tickets": {
-          "wah": {
-            "expiry": "2027-08-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - Working at Heights.png",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-08-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - Gas Test Atmospheres.png",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-11-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - Gas Test Atmospheres.png",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-08-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - Confined Spaces Entry.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - Confined Spaces Entry.png",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-08-19",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - Working at Heights.png",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-11-07",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/CANTOS, Joey - 9b6f31d7-f288-4bc4-85d7-96d1c2724b9e/CANTOS, Joey - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1855,40 +1877,40 @@
         "end": "2025-11-15",
         "personnel_id": "F6DFD541-679E-481C-AFE0-57C72A575335",
         "tickets": {
-          "fork": {
-            "expiry": "2030-08-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2030-08-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
-            "status": "current"
-          },
           "rig": {
-            "expiry": "2030-08-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
+            "expiry": null,
+            "doc": null,
             "status": "current",
             "level": "Intermediate"
           },
-          "dog": {
-            "expiry": "2030-08-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-08-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
+          "cse": {
+            "expiry": "2027-07-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - Confined Spaces Entry.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-07-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - Working at Heights.jpg",
             "status": "current"
           },
-          "cse": {
-            "expiry": "2027-07-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - Confined Spaces Entry.jpg",
+          "dog": {
+            "expiry": "2030-08-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2030-08-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-08-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-08-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/KIM, Chaeyoon - f6dfd541-679e-481c-afe0-57c72a575335/KIM, Chaeyoon - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1903,30 +1925,30 @@
         "end": "2025-11-15",
         "personnel_id": "DBA7B127-FEAF-4F9F-9DF7-782317AFF864",
         "tickets": {
-          "dog": {
-            "expiry": "2029-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
-            "status": "current"
-          },
           "rig": {
             "expiry": "2029-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
             "status": "current",
             "level": "Advanced"
           },
-          "ewp": {
+          "dog": {
             "expiry": "2029-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2029-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
             "status": "current"
           },
           "fork": {
             "expiry": "2029-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2029-10-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-10-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DALY, Patrick - dba7b127-feaf-4f9f-9df7-782317aff864/DALY, Patrick - HRWL.jpg",
             "status": "current"
           }
         },
@@ -1943,17 +1965,17 @@
         "tickets": {
           "gta": {
             "expiry": "2027-09-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Gas Test Atmospheres.jpg",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2027-09-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Gas Test Atmospheres.jpg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-09-25",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Confined Spaces Entry.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Confined Spaces Entry.jpg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-09-25",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/DEVIREDDY, Karunakar - 2652802a-795d-400c-82f0-6e87de14dbf1/DEVIREDDY, Karunakar - Working at Heights.jpg",
             "status": "current"
           }
         },
@@ -1968,24 +1990,24 @@
         "end": "2025-11-15",
         "personnel_id": "3E6B034F-EAF2-4262-A143-6C4A24FEE296",
         "tickets": {
-          "ewp": {
-            "expiry": "2028-04-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - HRWL.JPG",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2028-04-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - HRWL.JPG",
-            "status": "current"
-          },
           "cse": {
             "expiry": "2027-08-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-08-05",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - Working at Heights.JPG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - Working at Heights.JPG",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2028-04-07",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - HRWL.JPG",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2028-04-07",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/VAN DER MERWE, Andre - 3e6b034f-eaf2-4262-a143-6c4a24fee296/VAN DER MERWE, Andre - HRWL.JPG",
             "status": "current"
           }
         },
@@ -2000,20 +2022,20 @@
         "end": "2025-11-15",
         "personnel_id": "2158DA5B-EC2E-491E-BCAA-DB7117C25D2A",
         "tickets": {
-          "dog": {
-            "expiry": "2028-10-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NEWELL , Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
-            "status": "current"
-          },
           "rig": {
             "expiry": "2028-10-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NEWELL , Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NEWELL, Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
             "status": "current",
             "level": "Advanced"
           },
+          "dog": {
+            "expiry": "2028-10-19",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NEWELL, Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
+            "status": "current"
+          },
           "hrwl": {
             "expiry": "2028-10-19",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NEWELL , Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NEWELL, Lewis - 2158da5b-ec2e-491e-bcaa-db7117c25d2a/NEWELL, Lewis - HRWL.jpg",
             "status": "current"
           }
         },
@@ -2028,19 +2050,19 @@
         "end": "2025-11-15",
         "personnel_id": "D5198AAE-943B-4DE3-A257-235F091A2348",
         "tickets": {
-          "wah": {
-            "expiry": "2027-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Working at Heights.jpeg",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Gas Test Atmospheres.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Gas Test Atmospheres.jpeg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-10-17",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Confined Spaces Entry.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Confined Spaces Entry.jpeg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-10-17",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/GARDINER, Edward - d5198aae-943b-4de3-a257-235f091a2348/GARDINER, Edward - Working at Heights.jpeg",
             "status": "current"
           }
         },
@@ -2055,14 +2077,14 @@
         "end": "2025-11-15",
         "personnel_id": "184D7AE9-8146-44E9-B0CC-63C50D7812A1",
         "tickets": {
-          "wah": {
-            "expiry": "2027-10-31",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Working at Heights.pdf",
-            "status": "current"
-          },
           "cse": {
             "expiry": "2027-10-31",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-10-31",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/HARRIS, Robert - 184d7ae9-8146-44e9-b0cc-63c50d7812a1/HARRIS, Robert - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -2079,12 +2101,12 @@
         "tickets": {
           "cse": {
             "expiry": "2027-06-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WIN, Naing - c17a4258-46c1-45ae-a0fd-3aa66fd1ef49/WIN, Naing - Confined Spaces Entry.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WIN, Naing - c17a4258-46c1-45ae-a0fd-3aa66fd1ef49/WIN, Naing - Confined Spaces Entry.jpg",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-06-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/WIN, Naing - c17a4258-46c1-45ae-a0fd-3aa66fd1ef49/WIN, Naing - Working at Heights.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/WIN, Naing - c17a4258-46c1-45ae-a0fd-3aa66fd1ef49/WIN, Naing - Working at Heights.jpg",
             "status": "current"
           }
         },
@@ -2099,14 +2121,14 @@
         "end": "2025-11-15",
         "personnel_id": "140039F4-8B6B-46A3-B19B-96AFE40AA441",
         "tickets": {
-          "hrwl": {
-            "expiry": "2029-04-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PRATAMA, Dian - 140039f4-8b6b-46a3-b19b-96afe40aa441/PRATAMA, Dian - HRWL.pdf",
-            "status": "current"
-          },
           "fork": {
             "expiry": "2029-04-22",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/PRATAMA, Dian - 140039f4-8b6b-46a3-b19b-96afe40aa441/PRATAMA, Dian - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PRATAMA, Dian - 140039f4-8b6b-46a3-b19b-96afe40aa441/PRATAMA, Dian - HRWL.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-04-22",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/PRATAMA, Dian - 140039f4-8b6b-46a3-b19b-96afe40aa441/PRATAMA, Dian - HRWL.pdf",
             "status": "current"
           }
         },
@@ -2121,19 +2143,19 @@
         "end": "2025-11-15",
         "personnel_id": "2F9BBFAF-3296-4AB5-A094-CF89182172D4",
         "tickets": {
-          "cse": {
-            "expiry": "2027-06-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROOKS, Joe - 2f9bbfaf-3296-4ab5-a094-cf89182172d4/BROOKS, Joe - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-06-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROOKS, Joe - 2f9bbfaf-3296-4ab5-a094-cf89182172d4/BROOKS, Joe - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROOKS, Joe - 2f9bbfaf-3296-4ab5-a094-cf89182172d4/BROOKS, Joe - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2027-06-14",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROOKS, Joe - 2f9bbfaf-3296-4ab5-a094-cf89182172d4/BROOKS, Joe - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-06-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROOKS, Joe - 2f9bbfaf-3296-4ab5-a094-cf89182172d4/BROOKS, Joe - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROOKS, Joe - 2f9bbfaf-3296-4ab5-a094-cf89182172d4/BROOKS, Joe - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -2150,27 +2172,27 @@
         "tickets": {
           "gta": {
             "expiry": "2027-07-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2030-09-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - HRWL.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-07-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-07-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - Working at Heights.pdf",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - HRWL.jpeg",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2030-09-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - HRWL.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/MONNET, Lise - 8310d30a-030d-4dc4-93a2-b2ad73248638/MONNET, Lise - HRWL.jpeg",
             "status": "current"
           }
         },
@@ -2185,29 +2207,29 @@
         "end": "2025-11-16",
         "personnel_id": "85F94D22-2A8D-45A4-8012-38EE4FD226CF",
         "tickets": {
-          "cse": {
-            "expiry": "2028-01-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REDUIT , Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2028-01-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REDUIT , Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - Working at Heights.pdf",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2028-01-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REDUIT , Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2029-11-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REDUIT , Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT , Lauryn - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/REDUIT, Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "fork": {
             "expiry": "2029-11-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/REDUIT , Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT , Lauryn - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/REDUIT, Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - HRWL.pdf",
+            "status": "current"
+          },
+          "cse": {
+            "expiry": "2028-01-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/REDUIT, Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - Confined Spaces Entry.pdf",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2028-01-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/REDUIT, Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - Working at Heights.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-11-12",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/REDUIT, Lauryn - 85f94d22-2a8d-45a4-8012-38ee4fd226cf/REDUIT, Lauryn - HRWL.pdf",
             "status": "current"
           }
         },
@@ -2224,27 +2246,27 @@
         "tickets": {
           "gta": {
             "expiry": "2027-07-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - Gas Test Atmospheres.pdf",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2030-09-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - Gas Test Atmospheres.pdf",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-07-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-09-04",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - HRWL.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-07-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - Working at Heights.pdf",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - HRWL.pdf",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-09-04",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/TEIXEIRA, Paula - 912fccbb-dd9b-4624-85a9-8c6f4a492696/TEIXEIRA, Paula - HRWL.pdf",
             "status": "current"
           }
         },
@@ -2259,19 +2281,19 @@
         "end": "2025-11-16",
         "personnel_id": "FA310A12-5F81-4C6B-9D45-DA992488CC90",
         "tickets": {
+          "gta": {
+            "expiry": "2027-12-07",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
           "cse": {
             "expiry": "2027-12-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-12-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Working at Heights.pdf",
-            "status": "current"
-          },
-          "gta": {
-            "expiry": "2027-12-07",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/NDENGA, Naomi - fa310a12-5f81-4c6b-9d45-da992488cc90/NDENGA, Naomi - Working at Heights.pdf",
             "status": "current"
           }
         },
@@ -2288,17 +2310,17 @@
         "tickets": {
           "gta": {
             "expiry": "2027-06-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SULTAN, Hannah - c5b95cad-9e14-4650-8ace-7a9e6049cab7/SULTAN, Hannah - Gas Test Atmospheres.png",
-            "status": "current"
-          },
-          "wah": {
-            "expiry": "2027-06-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SULTAN, Hannah - c5b95cad-9e14-4650-8ace-7a9e6049cab7/SULTAN, Hannah - Working at Heights.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SULTAN, Hannah - c5b95cad-9e14-4650-8ace-7a9e6049cab7/SULTAN, Hannah - Gas Test Atmospheres.png",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-06-12",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SULTAN, Hannah - c5b95cad-9e14-4650-8ace-7a9e6049cab7/SULTAN, Hannah - Confined Spaces Entry.png",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SULTAN, Hannah - c5b95cad-9e14-4650-8ace-7a9e6049cab7/SULTAN, Hannah - Confined Spaces Entry.png",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-06-12",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SULTAN, Hannah - c5b95cad-9e14-4650-8ace-7a9e6049cab7/SULTAN, Hannah - Working at Heights.png",
             "status": "current"
           }
         },
@@ -2313,19 +2335,19 @@
         "end": "2025-11-16",
         "personnel_id": "1C24C6DF-DEB2-4429-AF65-15598D3614E7",
         "tickets": {
+          "gta": {
+            "expiry": "2027-08-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/RICHDALE, Sam - 1c24c6df-deb2-4429-af65-15598d3614e7/RICHDALE, Sam - Gas Test Atmospheres.jpeg",
+            "status": "current"
+          },
           "cse": {
             "expiry": "2027-08-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RICHDALE, Sam - 1c24c6df-deb2-4429-af65-15598d3614e7/RICHDALE, Sam - Confined Spaces Entry.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/RICHDALE, Sam - 1c24c6df-deb2-4429-af65-15598d3614e7/RICHDALE, Sam - Confined Spaces Entry.jpeg",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-08-15",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RICHDALE, Sam - 1c24c6df-deb2-4429-af65-15598d3614e7/RICHDALE, Sam - Working at Heights.jpeg",
-            "status": "current"
-          },
-          "gta": {
-            "expiry": "2027-08-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RICHDALE, Sam - 1c24c6df-deb2-4429-af65-15598d3614e7/RICHDALE, Sam - Gas Test Atmospheres.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/RICHDALE, Sam - 1c24c6df-deb2-4429-af65-15598d3614e7/RICHDALE, Sam - Working at Heights.jpeg",
             "status": "current"
           }
         },
@@ -2340,34 +2362,34 @@
         "end": "2025-11-16",
         "personnel_id": "0BF775FC-76D3-4476-9186-12A2BB2561A2",
         "tickets": {
-          "fork": {
-            "expiry": "2030-06-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - HRWL.jpg",
+          "fa": {
+            "expiry": "2028-04-29",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - First Aid.pdf",
             "status": "current"
           },
           "gta": {
             "expiry": "2027-04-26",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - Gas Test Atmospheres.pdf",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2030-06-24",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - HRWL.jpg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-04-26",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - Confined Spaces Entry.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2027-04-26",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - Working at Heights.pdf",
-            "status": "current"
-          },
-          "fa": {
-            "expiry": "2028-04-29",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - First Aid.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - Working at Heights.pdf",
             "status": "current"
           },
           "hrwl": {
             "expiry": "2030-06-24",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ONOLFO, Fabien - 0bf775fc-76d3-4476-9186-12a2bb2561a2/ONOLFO, Fabien - HRWL.jpg",
             "status": "current"
           }
         },
@@ -2382,34 +2404,34 @@
         "end": "2025-11-16",
         "personnel_id": "3C8501A9-5060-44ED-B94E-88630B80CEAD",
         "tickets": {
-          "wah": {
+          "gta": {
             "expiry": "2026-12-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL , Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL , Trevor - Working at Heights.PNG",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-08-11",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL , Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - HRWL.jpg",
-            "status": "current"
-          },
-          "fork": {
-            "expiry": "2030-08-11",
-            "doc": null,
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2030-08-11",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL , Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - HRWL.jpg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - Gas Test Atmospheres.PNG",
             "status": "current"
           },
           "cse": {
             "expiry": "2026-12-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL , Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL , Trevor - Confined Spaces Entry.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - Confined Spaces Entry.PNG",
             "status": "current"
           },
-          "gta": {
+          "wah": {
             "expiry": "2026-12-20",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/POWELL , Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL , Trevor - Gas Test Atmospheres.PNG",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - Working at Heights.PNG",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-08-11",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - HRWL.jpg",
+            "status": "current"
+          },
+          "fork": {
+            "expiry": "2030-08-11",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - HRWL.jpg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-08-11",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/POWELL, Trevor - 3c8501a9-5060-44ed-b94e-88630b80cead/POWELL, Trevor - HRWL.jpg",
             "status": "current"
           }
         },
@@ -2426,27 +2448,27 @@
         "tickets": {
           "wah": {
             "expiry": "2027-04-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN , Malcolm - Working at Heights.jpeg",
-            "status": "current"
-          },
-          "hr": {
-            "expiry": "2026-09-03",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN , Malcolm - Driver's Licence.jpeg",
-            "status": "current"
-          },
-          "ewp": {
-            "expiry": "2030-05-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN , Malcolm - HRWL.jpeg",
-            "status": "current"
-          },
-          "hrwl": {
-            "expiry": "2030-05-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN , Malcolm - HRWL.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN, Malcolm - Working at Heights.jpeg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-04-11",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN , Malcolm - Confined Spaces Entry.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN, Malcolm - Confined Spaces Entry.jpeg",
+            "status": "current"
+          },
+          "ewp": {
+            "expiry": "2030-05-16",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN, Malcolm - HRWL.jpeg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2030-05-16",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN, Malcolm - HRWL.jpeg",
+            "status": "current"
+          },
+          "hr": {
+            "expiry": "2026-09-03",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/BROWN, Malcolm - 878ca629-e7c2-4b7c-8755-c882d3a4c386/BROWN, Malcolm - Driver's Licence.jpeg",
             "status": "current"
           }
         },
@@ -2461,19 +2483,19 @@
         "end": "2025-11-16",
         "personnel_id": "CD85F944-FEB4-4FA9-834F-770337D4E289",
         "tickets": {
-          "wah": {
-            "expiry": "2027-05-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAMOS, John - cd85f944-feb4-4fa9-834f-770337d4e289/RAMOS, John - Working at Heights.jpeg",
-            "status": "current"
-          },
           "gta": {
             "expiry": "2027-05-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAMOS, John - cd85f944-feb4-4fa9-834f-770337d4e289/RAMOS, John - Gas Test Atmospheres.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/RAMOS, John - cd85f944-feb4-4fa9-834f-770337d4e289/RAMOS, John - Gas Test Atmospheres.jpeg",
             "status": "current"
           },
           "cse": {
             "expiry": "2027-05-14",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/RAMOS, John - cd85f944-feb4-4fa9-834f-770337d4e289/RAMOS, John - Confined Spaces Entry.jpeg",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/RAMOS, John - cd85f944-feb4-4fa9-834f-770337d4e289/RAMOS, John - Confined Spaces Entry.jpeg",
+            "status": "current"
+          },
+          "wah": {
+            "expiry": "2027-05-14",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/RAMOS, John - cd85f944-feb4-4fa9-834f-770337d4e289/RAMOS, John - Working at Heights.jpeg",
             "status": "current"
           }
         },
@@ -2501,12 +2523,12 @@
         "tickets": {
           "gta": {
             "expiry": "2026-05-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ISAAC, Irwin - 002204/ISAAC , Irwin - Gas Test Atmospheres.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ISSAC, Irwin - 9317c9bc-f97e-4690-9a15-1f4783519bf1/ISSAC, Irwin - Gas Test Atmospheres.pdf",
             "status": "expiring_soon"
           },
           "cse": {
             "expiry": "2026-05-16",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/ISAAC, Irwin - 002204/ISAAC , Irwin - Confined Spaces.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/ISSAC, Irwin - 9317c9bc-f97e-4690-9a15-1f4783519bf1/ISSAC, Irwin - Confined Spaces Entry.pdf",
             "status": "expiring_soon"
           }
         },
@@ -2521,30 +2543,30 @@
         "end": "2025-11-15",
         "personnel_id": "86417FEA-2E4E-4CF9-B000-1513F23D2A03",
         "tickets": {
-          "cse": {
-            "expiry": "2028-02-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Confined Spaces Entry.pdf",
-            "status": "current"
-          },
-          "dog": {
-            "expiry": "2029-04-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
-            "status": "current"
-          },
           "rig": {
-            "expiry": "2029-04-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
+            "expiry": null,
+            "doc": null,
             "status": "current",
             "level": "Intermediate"
           },
-          "hrwl": {
-            "expiry": "2029-04-09",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS , Daniel - HRWL.jpg",
+          "cse": {
+            "expiry": "2028-02-21",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SILLIS, Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Confined Spaces Entry.pdf",
             "status": "current"
           },
           "wah": {
             "expiry": "2028-02-21",
-            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Shared Documents/SILLIS , Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Working at Heights.pdf",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SILLIS, Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - Working at Heights.pdf",
+            "status": "current"
+          },
+          "dog": {
+            "expiry": "2029-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SILLIS, Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - HRWL.jpg",
+            "status": "current"
+          },
+          "hrwl": {
+            "expiry": "2029-04-09",
+            "doc": "https://mysrgglobal.sharepoint.com/sites/RapidCrews-Personnel/Documents  South West/SILLIS, Daniel - 86417fea-2e4e-4cf9-b000-1513f23d2a03/SILLIS, Daniel - HRWL.jpg",
             "status": "current"
           }
         },
@@ -2598,7 +2620,7 @@
       "rapid_crews_roster_id": "1116",
       "rapid_crews_export_file": "1116 Tronox.xlsx",
       "source_format": "pegasus",
-      "required_target_source": "PLACEHOLDER_FROM_ROSTER",
+      "required_target_source": "RAPID_CREWS_JOB_PLANNING",
       "rapid_crews_roster_size": 87,
       "rapid_crews_filled_by_role": {
         "Trade Assistant": 20,
@@ -2619,7 +2641,13 @@
         "Rope Access - Trade Assistant": 2,
         "Fibre Glasser": 1
       },
-      "target_source": null,
+      "target_source": {
+        "source": "rapid_crews_job_planning_view",
+        "job_no": 1116,
+        "total_required": 113,
+        "total_filled": 67,
+        "job_description": "Tronox Major Shutdown November 2025"
+      },
       "name_resolution": {
         "explicit_column": 87,
         "email_heuristic": 0,
